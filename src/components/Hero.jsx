@@ -81,21 +81,22 @@ const Hero = () => {
       onMouseMove={handleMouseMove}
       className="relative h-[100svh] min-h-[640px] w-full overflow-hidden bg-midnight select-none"
     >
-      {/* 3 Partitioned Video Sections with 2 Dividing Lines */}
-      <motion.div
-        style={{ scale: bgScale }}
-        className="absolute inset-0 flex flex-row w-full h-full"
-      >
-        {panels.map((panel) => {
+      {/* 3 Partitioned Video Sections with Integrated Dividing Borders */}
+      <div className="absolute inset-0 flex flex-row w-full h-full">
+        {panels.map((panel, idx) => {
           const IconComponent = panel.icon;
+          const isNotLast = idx < panels.length - 1;
 
           return (
             <div
               key={panel.id}
-              className="group relative h-full flex-1 w-1/3 overflow-hidden"
+              className={`group relative h-full flex-1 w-1/3 overflow-hidden ${
+                isNotLast ? "border-r border-ivory/20" : ""
+              }`}
             >
-              {/* Individual Background Video */}
-              <video
+              {/* Individual Background Video with smooth scroll zoom */}
+              <motion.video
+                style={{ scale: bgScale }}
                 className="h-full w-full object-cover brightness-95"
                 src={panel.src}
                 autoPlay
@@ -111,6 +112,18 @@ const Hero = () => {
               {/* Gradients for text contrast */}
               <div className="absolute inset-0 bg-linear-to-t from-midnight via-midnight/40 to-transparent pointer-events-none" />
               <div className="absolute inset-0 bg-linear-to-b from-midnight/75 via-transparent to-midnight/80 pointer-events-none" />
+
+              {/* Column Dividing Intersection Markers */}
+              {isNotLast && (
+                <>
+                  <div className="absolute top-24 md:top-28 -right-[6px] text-sand/70 text-[12px] font-mono select-none pointer-events-none z-20">
+                    +
+                  </div>
+                  <div className="absolute bottom-12 -right-[6px] text-ivory/40 text-[12px] font-mono select-none pointer-events-none z-20">
+                    +
+                  </div>
+                </>
+              )}
 
               {/* Column Content */}
               <motion.div
@@ -166,33 +179,6 @@ const Hero = () => {
             </div>
           );
         })}
-      </motion.div>
-
-      {/* Two Dividing Lines separating the 3 sections */}
-      <div
-        className="absolute top-0 bottom-0 left-1/3 w-px pointer-events-none z-20"
-        aria-hidden="true"
-      >
-        <div className="h-full w-full bg-linear-to-b from-ivory/10 via-ivory/30 to-ivory/10" />
-        <div className="absolute top-24 md:top-28 -left-[5px] text-sand/60 text-[11px] font-mono select-none">
-          +
-        </div>
-        <div className="absolute bottom-12 -left-[5px] text-ivory/40 text-[11px] font-mono select-none">
-          +
-        </div>
-      </div>
-
-      <div
-        className="absolute top-0 bottom-0 left-2/3 w-px pointer-events-none z-20"
-        aria-hidden="true"
-      >
-        <div className="h-full w-full bg-linear-to-b from-ivory/10 via-ivory/30 to-ivory/10" />
-        <div className="absolute top-24 md:top-28 -left-[5px] text-sand/60 text-[11px] font-mono select-none">
-          +
-        </div>
-        <div className="absolute bottom-12 -left-[5px] text-ivory/40 text-[11px] font-mono select-none">
-          +
-        </div>
       </div>
 
       {/* Global Interactive Cursor Spotlight */}

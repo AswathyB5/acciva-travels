@@ -27,7 +27,7 @@ const Footer = () => {
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-12 pb-16 border-b border-ivory/10">
           <div className="space-y-4 max-w-sm">
             <img
-              src="/acciva-logo-sand.png"
+              src="/acciva-logo-white.png"
               alt="Acciva Travels"
               className="h-12 sm:h-14 w-auto object-contain opacity-95"
             />

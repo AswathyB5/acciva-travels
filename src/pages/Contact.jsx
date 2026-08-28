@@ -108,7 +108,12 @@ const Contact = () => {
           {/* 2-Column Main Section: Left Visuals & Info | Right Contact Form FIRST */}
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
             {/* RIGHT COLUMN (Placed in Grid Col 7-12) - THE CONTACT FORM */}
-            <div className="lg:col-span-7 order-1 lg:order-2">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="lg:col-span-7 order-1 lg:order-2"
+            >
               <div className="p-7 sm:p-10 md:p-12 rounded-3xl bg-white border border-navy/10 shadow-2xl relative">
                 <div className="mb-8 pb-6 border-b border-navy/10 flex items-center justify-between">
                   <div>
@@ -125,7 +130,11 @@ const Contact = () => {
                 </div>
 
                 {status === "success" && (
-                  <div className="p-6 rounded-2xl bg-teal/10 border border-teal/30 text-navy mb-8 flex items-center gap-4">
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="p-6 rounded-2xl bg-teal/10 border border-teal/30 text-navy mb-8 flex items-center gap-4"
+                  >
                     <CheckCircle2 size={24} className="text-teal shrink-0" />
                     <div>
                       <h4 className="font-sans font-bold text-sm text-navy">
@@ -135,7 +144,7 @@ const Contact = () => {
                         Our corporate enterprise manager will review your requirement and send over the proposal within 4 hours.
                       </p>
                     </div>
-                  </div>
+                  </motion.div>
                 )}
 
                 <form onSubmit={handleSubmit} noValidate className="space-y-6">
@@ -219,56 +228,71 @@ const Contact = () => {
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-xs font-mono uppercase tracking-wider text-navy/70 mb-2">
-                        Service Required
+                        Service Requirement
                       </label>
                       <select
                         name="serviceType"
                         value={form.serviceType}
                         onChange={handleChange}
-                        className="w-full px-4 py-3.5 rounded-2xl bg-soft border border-navy/10 text-sm text-navy focus:outline-none focus:border-teal transition-colors cursor-pointer"
+                        className="w-full px-4 py-3.5 rounded-2xl bg-soft border border-navy/10 text-sm text-navy focus:outline-none focus:border-teal transition-colors"
                       >
-                        <option value="Corporate Employee Transportation">Corporate Employee Transportation</option>
-                        <option value="Enterprise Fleet Management">Enterprise Fleet Management</option>
-                        <option value="Airport Transfer Services">Airport Transfer Services</option>
-                        <option value="Staff Bus & Campus Shuttle">Staff Bus & Campus Shuttle</option>
-                        <option value="Corporate Ad-Hoc & VIP Delegations">Corporate Ad-Hoc & VIP Delegations</option>
-                        <option value="Outstation & Inter-City Transit">Outstation & Inter-City Transit</option>
+                        <option>Corporate Employee Transportation</option>
+                        <option>Enterprise Fleet Management</option>
+                        <option>Airport Transfer & Meet-and-Greet</option>
+                        <option>Staff Bus Shuttle Services</option>
+                        <option>Corporate Ad-Hoc / VIP Delegations</option>
+                        <option>Outstation Inter-City Transit</option>
                       </select>
                     </div>
 
                     <div>
                       <label className="block text-xs font-mono uppercase tracking-wider text-navy/70 mb-2">
-                        Primary City / Metro
+                        Estimated Fleet / Shift Volume
                       </label>
                       <select
-                        name="city"
-                        value={form.city}
+                        name="fleetSize"
+                        value={form.fleetSize}
                         onChange={handleChange}
-                        className="w-full px-4 py-3.5 rounded-2xl bg-soft border border-navy/10 text-sm text-navy focus:outline-none focus:border-teal transition-colors cursor-pointer"
+                        className="w-full px-4 py-3.5 rounded-2xl bg-soft border border-navy/10 text-sm text-navy focus:outline-none focus:border-teal transition-colors"
                       >
-                        <option value="Bengaluru">Bengaluru (HQ)</option>
-                        <option value="Hyderabad">Hyderabad</option>
-                        <option value="Chennai">Chennai</option>
-                        <option value="Mumbai">Mumbai</option>
-                        <option value="Pune">Pune</option>
-                        <option value="Delhi NCR">Delhi NCR</option>
-                        <option value="Ahmedabad">Ahmedabad</option>
-                        <option value="Kolkata">Kolkata</option>
-                        <option value="Kochi">Kochi</option>
+                        <option>1 - 10 Vehicles (Pilot / Ad-Hoc)</option>
+                        <option>10 - 50 Vehicles (Standard Roster)</option>
+                        <option>50 - 200 Vehicles (Tech Park / Enterprise)</option>
+                        <option>200+ Vehicles (Pan-India GCC Network)</option>
                       </select>
                     </div>
                   </div>
 
                   <div>
                     <label className="block text-xs font-mono uppercase tracking-wider text-navy/70 mb-2">
-                      Specific Fleet Requirements & Shift Details *
+                      Operational City / Tech Corridor
+                    </label>
+                    <select
+                      name="city"
+                      value={form.city}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3.5 rounded-2xl bg-soft border border-navy/10 text-sm text-navy focus:outline-none focus:border-teal transition-colors"
+                    >
+                      <option>Bengaluru (Manyata, Electronic City, Whitefield, ORR)</option>
+                      <option>Hyderabad (HITEC City, Gachibowli, Financial District)</option>
+                      <option>Chennai (OMR, Guindy, Siruseri SIPCOT)</option>
+                      <option>Pune (Hinjawadi, Magarpatta, Kharadi)</option>
+                      <option>Mumbai / Navi Mumbai (BKC, Airoli, Powai)</option>
+                      <option>Delhi NCR (Gurugram Cyber City, Noida Sector 62)</option>
+                      <option>Other / Multi-City Contract</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-mono uppercase tracking-wider text-navy/70 mb-2">
+                      Specific Transit Requirements & Notes *
                     </label>
                     <textarea
-                      rows={4}
                       name="message"
+                      rows={4}
                       value={form.message}
                       onChange={handleChange}
-                      placeholder="Share estimated employee headcount, shift timings, vehicle type preference (Sedans / SUVs / TTs / Buses), or any specific RFP requirements..."
+                      placeholder="Please mention shift timings, EV preference, pickup hubs, or SLA compliance details..."
                       className={`w-full px-4 py-3.5 rounded-2xl bg-soft border text-sm text-navy placeholder:text-navy/30 focus:outline-none focus:border-teal transition-colors resize-none ${
                         errors.message ? "border-red-400" : "border-navy/10"
                       }`}
@@ -280,17 +304,22 @@ const Contact = () => {
 
                   <button
                     type="submit"
-                    className="w-full py-4 rounded-full bg-navy text-ivory font-bold text-sm sm:text-base hover:bg-teal transition-all flex items-center justify-center gap-2 cursor-pointer shadow-lg hover:shadow-xl"
+                    className="w-full py-4 rounded-full bg-navy text-ivory font-bold text-xs font-mono uppercase tracking-wider hover:bg-teal transition-all shadow-lg flex items-center justify-center gap-2 cursor-pointer"
                   >
-                    <span>Submit Enterprise Inquiry</span>
-                    <Send size={16} />
+                    <span>Submit RFP & Request Enterprise Rate Card</span>
+                    <ArrowUpRight size={16} />
                   </button>
                 </form>
               </div>
-            </div>
+            </motion.div>
 
             {/* LEFT COLUMN (Grid Col 1-5) - SHOWCASE IMAGE BANNER & CONTACT CHANNELS */}
-            <div className="lg:col-span-5 order-2 lg:order-1 space-y-6">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+              className="lg:col-span-5 order-2 lg:order-1 space-y-6"
+            >
               {/* Showcase Image Banner */}
               <div className="relative rounded-3xl overflow-hidden shadow-xl border border-navy/10 group">
                 <img
@@ -300,9 +329,10 @@ const Contact = () => {
                 />
               </div>
 
-              {/* Direct Contact Cards */}
+              {/* Direct Contact Cards with Hover Spring */}
               <div className="space-y-3">
-                <a
+                <motion.a
+                  whileHover={{ y: -3, scale: 1.01 }}
                   href="tel:+919035012166"
                   className="p-4 rounded-2xl bg-white border border-navy/10 shadow-xs hover:border-teal/50 hover:shadow-md transition-all group flex items-center gap-4"
                 >
@@ -315,9 +345,10 @@ const Contact = () => {
                       +91 903 501 2166 / +91 80 2354 1166
                     </p>
                   </div>
-                </a>
+                </motion.a>
 
-                <a
+                <motion.a
+                  whileHover={{ y: -3, scale: 1.01 }}
                   href="mailto:info@accivatravels.com"
                   className="p-4 rounded-2xl bg-white border border-navy/10 shadow-xs hover:border-teal/50 hover:shadow-md transition-all group flex items-center gap-4"
                 >
@@ -330,9 +361,12 @@ const Contact = () => {
                       info@accivatravels.com
                     </p>
                   </div>
-                </a>
+                </motion.a>
 
-                <div className="p-4 rounded-2xl bg-white border border-navy/10 shadow-xs flex items-center gap-4">
+                <motion.div
+                  whileHover={{ y: -3, scale: 1.01 }}
+                  className="p-4 rounded-2xl bg-white border border-navy/10 shadow-xs flex items-center gap-4"
+                >
                   <div className="w-10 h-10 rounded-xl bg-teal/10 flex items-center justify-center text-teal shrink-0">
                     <MapPin size={18} />
                   </div>
@@ -342,9 +376,12 @@ const Contact = () => {
                       Bengaluru, Karnataka, India
                     </p>
                   </div>
-                </div>
+                </motion.div>
 
-                <div className="p-4 rounded-2xl bg-white border border-navy/10 shadow-xs flex items-center gap-4">
+                <motion.div
+                  whileHover={{ y: -3, scale: 1.01 }}
+                  className="p-4 rounded-2xl bg-white border border-navy/10 shadow-xs flex items-center gap-4"
+                >
                   <div className="w-10 h-10 rounded-xl bg-teal/10 flex items-center justify-center text-teal shrink-0">
                     <Clock size={18} />
                   </div>
@@ -354,9 +391,9 @@ const Contact = () => {
                       24/7/365 Non-Stop Operations
                     </p>
                   </div>
-                </div>
+                </motion.div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>

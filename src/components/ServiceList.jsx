@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
 import { CheckCircle2, ArrowUpRight } from "lucide-react";
 
@@ -7,9 +8,14 @@ const ServiceList = ({ services }) => {
       {services.map((service, i) => {
         const Icon = service.icon;
         return (
-          <div
+          <motion.div
             key={service.slug}
-            className="rounded-3xl bg-white border border-navy/10 hover:border-teal/50 hover:shadow-2xl transition-all duration-300 flex flex-col justify-between overflow-hidden group"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.5, delay: (i % 2) * 0.12 }}
+            whileHover={{ y: -8 }}
+            className="rounded-3xl bg-white border border-navy/10 hover:border-teal/50 hover:shadow-2xl transition-all duration-300 flex flex-col justify-between overflow-hidden group shadow-md"
           >
             {/* Top Image Showcase - Clean Without Small Cards */}
             <div className="relative h-64 sm:h-72 w-full overflow-hidden">
@@ -79,7 +85,7 @@ const ServiceList = ({ services }) => {
                 </span>
               </div>
             </div>
-          </div>
+          </motion.div>
         );
       })}
     </div>

@@ -212,20 +212,25 @@ const About = () => {
             </p>
           </div>
 
-          {/* 4 Feature Cards Grid */}
+          {/* 4 Feature Cards Grid with Stagger Animation */}
           <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
-            {whyChooseFeatures.map((f) => {
+            {whyChooseFeatures.map((f, idx) => {
               const Icon = f.icon;
               return (
-                <div
+                <motion.div
                   key={f.title}
-                  className={`p-7 sm:p-9 rounded-3xl bg-white/[0.04] border ${f.borderColor} hover:bg-white/[0.07] transition-all duration-300 flex flex-col justify-between group relative overflow-hidden shadow-xl hover:shadow-2xl hover:scale-[1.01]`}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.1 }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  whileHover={{ y: -6 }}
+                  className={`p-7 sm:p-9 rounded-3xl bg-white/[0.04] border ${f.borderColor} hover:bg-white/[0.08] transition-all duration-300 flex flex-col justify-between group relative overflow-hidden shadow-xl hover:shadow-2xl`}
                 >
                   <div className={`absolute top-0 right-0 w-36 h-36 bg-linear-to-bl ${f.color} rounded-bl-full pointer-events-none transition-transform duration-500 group-hover:scale-125`} />
 
                   <div>
                     <div className="flex items-center justify-between gap-4 mb-6">
-                      <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-sand shadow-inner">
+                      <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-sand shadow-inner group-hover:scale-110 transition-transform">
                         <Icon size={24} className={f.accentColor} />
                       </div>
                       <span className="px-3 py-1 rounded-full bg-white/10 border border-ivory/15 text-[11px] font-mono tracking-wider uppercase text-ivory/80">
@@ -254,7 +259,7 @@ const About = () => {
                       <ArrowUpRight size={14} />
                     </NavLink>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           </div>
@@ -280,12 +285,19 @@ const About = () => {
           {/* Vision & Mission Split Cards Grid */}
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-stretch">
             {/* OUR VISION CARD */}
-            <div className="p-8 sm:p-12 rounded-3xl bg-white border border-navy/10 shadow-xl hover:shadow-2xl hover:border-teal/40 transition-all duration-300 flex flex-col justify-between relative overflow-hidden group">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.6 }}
+              whileHover={{ y: -6 }}
+              className="p-8 sm:p-12 rounded-3xl bg-white border border-navy/10 shadow-xl hover:shadow-2xl hover:border-teal/40 transition-all duration-300 flex flex-col justify-between relative overflow-hidden group"
+            >
               <div className="absolute top-0 right-0 w-44 h-44 bg-teal/5 rounded-bl-full pointer-events-none transition-transform duration-500 group-hover:scale-125" />
 
               <div>
                 <div className="flex items-center justify-between gap-4 mb-8">
-                  <div className="w-14 h-14 rounded-2xl bg-teal/10 flex items-center justify-center text-teal shadow-xs">
+                  <div className="w-14 h-14 rounded-2xl bg-teal/10 flex items-center justify-center text-teal shadow-xs group-hover:rotate-6 transition-transform">
                     <Compass size={28} />
                   </div>
                   <span className="px-3.5 py-1 rounded-full bg-teal/10 border border-teal/20 text-teal text-[11px] font-mono tracking-widest uppercase font-semibold">
@@ -321,15 +333,22 @@ const About = () => {
                   <p className="text-[9px] text-navy/50 uppercase mt-0.5">Assured</p>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* OUR MISSION CARD */}
-            <div className="p-8 sm:p-12 rounded-3xl bg-white border border-navy/10 shadow-xl hover:shadow-2xl hover:border-sand/60 transition-all duration-300 flex flex-col justify-between relative overflow-hidden group">
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.6 }}
+              whileHover={{ y: -6 }}
+              className="p-8 sm:p-12 rounded-3xl bg-white border border-navy/10 shadow-xl hover:shadow-2xl hover:border-sand/60 transition-all duration-300 flex flex-col justify-between relative overflow-hidden group"
+            >
               <div className="absolute top-0 right-0 w-44 h-44 bg-sand/15 rounded-bl-full pointer-events-none transition-transform duration-500 group-hover:scale-125" />
 
               <div>
                 <div className="flex items-center justify-between gap-4 mb-8">
-                  <div className="w-14 h-14 rounded-2xl bg-sand/20 flex items-center justify-center text-navy shadow-xs">
+                  <div className="w-14 h-14 rounded-2xl bg-sand/20 flex items-center justify-center text-navy shadow-xs group-hover:rotate-6 transition-transform">
                     <ShieldCheck size={28} className="text-teal" />
                   </div>
                   <span className="px-3.5 py-1 rounded-full bg-sand/20 border border-sand/40 text-navy text-[11px] font-mono tracking-widest uppercase font-semibold">
@@ -365,7 +384,7 @@ const About = () => {
                   <p className="text-[9px] text-navy/50 uppercase mt-0.5">Priority</p>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>

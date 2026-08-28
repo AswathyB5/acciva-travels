@@ -49,7 +49,7 @@ const Navbar = () => {
           className="flex items-center gap-3 py-1 group"
         >
           <img
-            src="/acciva-logo-sand.png"
+            src="/acciva-logo-white.png"
             alt="Acciva Travels"
             className="h-8 sm:h-9 md:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
           />
