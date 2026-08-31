@@ -14,7 +14,7 @@ const DestinationExpand = ({ destinations }) => {
       <div className="flex items-center justify-between mb-8">
         <p className="eyebrow text-teal/80 flex items-center gap-2">
           <Sparkles size={14} className="animate-spin text-teal" style={{ animationDuration: "6s" }} />
-          <span>Interactive Corridor Explorer &mdash; Hover to Expand</span>
+          <span>Luxury Fleet Showcase &mdash; Hover to Expand</span>
         </p>
 
         {/* Dynamic active index indicator */}
@@ -94,7 +94,7 @@ const DestinationExpand = ({ destinations }) => {
                       {d.description}
                     </p>
                     <div className="mt-6 inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full bg-sand text-navy text-xs font-mono font-bold hover:bg-white transition-all shadow-md">
-                      <span>Explore Corridor</span>
+                      <span>Book This Fleet</span>
                       <ArrowUpRight size={14} />
                     </div>
                   </motion.div>

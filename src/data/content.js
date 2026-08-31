@@ -11,15 +11,15 @@ export const services = [
   {
     slug: "corporate-employee-transportation",
     icon: Car,
-    title: "Corporate Employee Transportation",
+    title: "Employee Transportation Services",
     tag: "Shift Logistics",
     description:
-      "End-to-end 24/7 employee shift commute solutions with automated GPS telematics, AI route optimization, and panic alert integration.",
+      "Acciva ensure that employee transportation is done with upmost care which turns the daily commute with safety, punctuality and efficiency.",
     features: [
-      "24/7 Shift Roster Dispatch",
-      "Live Speed & Geofence Telemetry",
-      "Zero Unauthorized Stops Policy",
-      "In-Cabin SOS Panic Button",
+      "Daily Commute Safety",
+      "Punctuality & Efficiency",
+      "GPS Telematics & AI Routing",
+      "24/7 Shift Operations",
     ],
     image:
       "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1200&q=80",
@@ -27,18 +27,34 @@ export const services = [
   {
     slug: "fleet-management",
     icon: Building2,
-    title: "Enterprise Fleet Management",
-    tag: "Full Lifecycle Operations",
+    title: "Fleet Management",
+    tag: "Route Optimization",
     description:
-      "Complete vehicle deployment, regular maintenance audits, compliance verification, and dedicated on-campus transport helpdesks.",
+      "Acciva’s efficient route mapping system focuses on maximum optimization of the cabs by multiple pick-ups and reports as per the requirement provided by the client.",
     features: [
-      "Dedicated On-Campus Transport Helpdesk",
-      "Preventive Vehicle Hygiene & Audits",
-      "Certified Uniformed Chauffeurs",
-      "Real-Time Fleet Utilization Analytics",
+      "Efficient Route Mapping",
+      "Cab Utilization Optimization",
+      "Multiple Pick-Up Scheduling",
+      "Custom Client Reports",
     ],
     image:
       "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    slug: "school-transportation",
+    icon: Bus,
+    title: "School Transportation",
+    tag: "Student Safety",
+    description:
+      "School Transportation offers our customers are intended to provide safety, reliability and quality. Our operations have both the assets and experience to efficiently design.",
+    features: [
+      "Safety & Reliability",
+      "Quality Operations & Assets",
+      "Experienced Design & Routing",
+      "Dedicated Chauffeurs & Captains",
+    ],
+    image:
+      "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80",
   },
   {
     slug: "airport-transfer-services",
@@ -158,10 +174,10 @@ export const destinations = [
 ];
 
 export const stats = [
-  { value: 25, suffix: "+", label: "Destinations" },
-  { value: 5000, suffix: "+", label: "Travelers", display: "5K+" },
-  { value: 10, suffix: "+", label: "Years of Experience" },
-  { value: 24, suffix: "/7", label: "Support", display: "24/7" },
+  { icon: "MapPin", value: 25, suffix: "+", label: "Destinations" },
+  { icon: "Users", value: 5000, display: "5K+", suffix: "", label: "Travelers" },
+  { icon: "Award", value: 10, suffix: "+", label: "Years of Experience" },
+  { icon: "Headphones", value: 24, display: "24/7", suffix: "", label: "Customer Support" },
 ];
 
 export const testimonials = [
