@@ -31,7 +31,7 @@ const panels = [
     badge: "Pan India Presence",
     tag: "About Us",
     title: "Welcome To Acciva",
-    desc: "Acciva Travels has emerged to be one of the best leading Corporate Employee Transport Services & Solutions Pan India.",
+    desc: "Acciva Travels has emerged to be one of the best leading Corporate Employee Transport Services.",
     icon: Building2,
     src: "/hero-ocean.mp4",
     link: "/contact",
@@ -163,8 +163,8 @@ const Hero = () => {
               aria-hidden="true"
             />
 
-            {/* Overlay: dark only where the text sits, clear elsewhere */}
-            <div className="absolute inset-0 bg-linear-to-t from-midnight via-midnight/25 to-transparent pointer-events-none" />
+            {/* Overlay: balanced midnight gradient extending slightly higher */}
+            <div className="absolute inset-0 bg-linear-to-t from-midnight/92 via-midnight/50 via-38% to-transparent pointer-events-none" />
 
             {/* Mobile Bottom Content */}
             <div className="relative z-10 px-6 pb-24 flex flex-col justify-end">
@@ -175,7 +175,7 @@ const Hero = () => {
                 </span>
               </div>
 
-              <h2 className="font-display text-ivory text-3xl sm:text-4xl leading-[1.15] tracking-tight drop-shadow-[0_8px_20px_rgba(0,0,0,0.9)]">
+              <h2 className="font-display text-ivory text-2xl sm:text-3xl leading-[1.18] tracking-tight drop-shadow-[0_8px_20px_rgba(0,0,0,0.9)]">
                 {currentPanel.title}
               </h2>
 
@@ -208,11 +208,10 @@ const Hero = () => {
                   setCurrent(idx);
                 }}
                 aria-label={`Go to slide ${idx + 1}`}
-                className={`h-1.5 rounded-full transition-all duration-300 ${
-                  idx === current
+                className={`h-1.5 rounded-full transition-all duration-300 ${idx === current
                     ? "w-8 bg-sand shadow-sm"
                     : "w-2 bg-ivory/30 hover:bg-ivory/60"
-                }`}
+                  }`}
               />
             ))}
           </div>
@@ -247,9 +246,8 @@ const Hero = () => {
           return (
             <div
               key={panel.id}
-              className={`group relative h-full flex-1 w-1/3 overflow-hidden ${
-                isNotLast ? "border-r border-ivory/20" : ""
-              }`}
+              className={`group relative h-full flex-1 w-1/3 overflow-hidden ${isNotLast ? "border-r border-ivory/20" : ""
+                }`}
             >
               {/* Individual Background Video with smooth scroll zoom */}
               <motion.video
@@ -263,8 +261,8 @@ const Hero = () => {
                 aria-hidden="true"
               />
 
-              {/* Overlay: dark only where the text sits, clear elsewhere */}
-              <div className="absolute inset-0 bg-linear-to-t from-midnight via-midnight/20 to-transparent pointer-events-none" />
+              {/* Overlay: balanced midnight gradient extending slightly higher */}
+              <div className="absolute inset-0 bg-linear-to-t from-midnight/92 via-midnight/50 via-38% to-transparent pointer-events-none" />
 
               {/* Column Dividing Intersection Markers */}
               {isNotLast && (
@@ -294,7 +292,10 @@ const Hero = () => {
                   </div>
 
                   {/* Heading */}
-                  <h2 className="font-display text-ivory text-2xl sm:text-3xl md:text-4xl leading-[1.1] tracking-tight drop-shadow-[0_8px_16px_rgba(0,0,0,0.8)]">
+                  <h2
+                    style={{ fontSize: "clamp(1.3rem, 1.8vw, 2.05rem)" }}
+                    className="font-display text-ivory leading-tight tracking-tight drop-shadow-[0_8px_16px_rgba(0,0,0,0.8)]"
+                  >
                     {panel.title}
                   </h2>
 
