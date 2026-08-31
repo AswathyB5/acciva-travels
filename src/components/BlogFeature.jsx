@@ -11,13 +11,13 @@ const BlogFeature = ({ featured, rest }) => (
         className="h-[55vh] md:h-[85vh]"
         imgClassName="transition-transform duration-700 group-hover:scale-105"
       />
-      <div className="absolute inset-0 bg-linear-to-t from-midnight/80 via-midnight/10 to-transparent" />
+      <div className="absolute inset-0 bg-linear-to-t from-midnight via-midnight/30 to-transparent" />
       <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-14">
         <span className="eyebrow text-sand mb-4">{featured.category}</span>
         <h3 className="font-display italic text-ivory text-4xl sm:text-5xl md:text-7xl max-w-3xl leading-tight">
           {featured.title}
         </h3>
-        <p className="eyebrow text-ivory/50 mt-6">{featured.date}</p>
+        <p className="eyebrow text-ivory/60 mt-6">{featured.date}</p>
       </div>
     </NavLink>
 

@@ -1,6 +1,7 @@
-import { useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   motion,
+  AnimatePresence,
   useScroll,
   useTransform,
   useReducedMotion,
@@ -8,46 +9,85 @@ import {
   useSpring,
   useMotionTemplate,
 } from "framer-motion";
-import { ArrowUpRight, Cpu, ShieldCheck, Building2 } from "lucide-react";
+import { ArrowUpRight, Cpu, ShieldCheck, Building2, ChevronLeft, ChevronRight } from "lucide-react";
+import { NavLink } from "react-router-dom";
 
 const panels = [
   {
     id: "left-tech",
     num: "01",
     badge: "Smart Mobility",
+    tag: "Technology",
     title: "Acciva Driven By Technology",
-    desc: (
-      <>
-        Maximizing transport efficiency
-        <br className="hidden sm:inline" /> & minimizing operational costs.
-      </>
-    ),
+    desc: "Maximizing transport efficiency & minimizing operational costs with automated intelligent routing.",
     icon: Cpu,
     src: "/hero-mountains.mp4",
+    link: "/contact",
+    linkText: "Book Now",
   },
   {
     id: "center-welcome",
     num: "02",
     badge: "Pan India Presence",
+    tag: "About Us",
     title: "Welcome To Acciva",
     desc: "Acciva Travels has emerged to be one of the best leading Corporate Employee Transport Services & Solutions Pan India.",
     icon: Building2,
     src: "/hero-ocean.mp4",
+    link: "/contact",
+    linkText: "Book Now",
   },
   {
     id: "right-reliable",
     num: "03",
     badge: "Trusted Partner",
+    tag: "Safety & SLA",
     title: "Reliable & Professional",
     desc: "Corporate employee transportation provider delivering seamless, secure, and punctual transit.",
     icon: ShieldCheck,
     src: "/hero-desert.mp4",
+    link: "/contact",
+    linkText: "Book Now",
   },
 ];
+
+const slideVariants = {
+  enter: (direction) => ({
+    x: direction > 0 ? "100%" : "-100%",
+    opacity: 0,
+  }),
+  center: {
+    zIndex: 1,
+    x: 0,
+    opacity: 1,
+  },
+  exit: (direction) => ({
+    zIndex: 0,
+    x: direction < 0 ? "100%" : "-100%",
+    opacity: 0,
+  }),
+};
 
 const Hero = () => {
   const ref = useRef(null);
   const reduceMotion = useReducedMotion();
+
+  // Mobile slider state
+  const [current, setCurrent] = useState(0);
+  const [direction, setDirection] = useState(0);
+
+  const paginate = (newDirection) => {
+    setDirection(newDirection);
+    setCurrent((prev) => (prev + newDirection + panels.length) % panels.length);
+  };
+
+  // Auto slide on mobile every 6 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      paginate(1);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -58,7 +98,7 @@ const Hero = () => {
   const contentY = useTransform(scrollYProgress, [0, 1], reduceMotion ? [0, 0] : [0, 80]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.85], [1, 0]);
 
-  // Cursor spotlight
+  // Cursor spotlight for desktop
   const mvX = useMotionValue(0.5);
   const mvY = useMotionValue(0.5);
   const springX = useSpring(mvX, { stiffness: 45, damping: 20, mass: 0.5 });
@@ -75,16 +115,133 @@ const Hero = () => {
     mvY.set((e.clientY - rect.top) / rect.height);
   };
 
+  const currentPanel = panels[current];
+
   return (
     <section
       ref={ref}
       onMouseMove={handleMouseMove}
-      className="relative h-[100svh] min-h-[640px] w-full overflow-hidden bg-midnight select-none"
+      className="relative h-[100svh] min-h-[600px] w-full overflow-hidden bg-midnight select-none"
     >
-      {/* 3 Partitioned Video Sections with Integrated Dividing Borders */}
-      <div className="absolute inset-0 flex flex-row w-full h-full">
+      {/* ========================================================================= */}
+      {/* MOBILE SLIDER VIEW (Active on screens < md)                               */}
+      {/* ========================================================================= */}
+      <div className="relative md:hidden w-full h-full overflow-hidden">
+        <AnimatePresence initial={false} custom={direction} mode="popLayout">
+          <motion.div
+            key={currentPanel.id}
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{
+              x: { type: "spring", stiffness: 300, damping: 32 },
+              opacity: { duration: 0.35 },
+            }}
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.3}
+            onDragEnd={(e, { offset, velocity }) => {
+              const swipe = Math.abs(offset.x) * velocity.x;
+              if (swipe < -60 || offset.x < -70) {
+                paginate(1);
+              } else if (swipe > 60 || offset.x > 70) {
+                paginate(-1);
+              }
+            }}
+            className="absolute inset-0 w-full h-full flex flex-col justify-end"
+          >
+            {/* Background Video */}
+            <video
+              className="absolute inset-0 h-full w-full object-cover"
+              src={currentPanel.src}
+              autoPlay
+              loop
+              muted
+              playsInline
+              aria-hidden="true"
+            />
+
+            {/* Overlay: dark only where the text sits, clear elsewhere */}
+            <div className="absolute inset-0 bg-linear-to-t from-midnight via-midnight/25 to-transparent pointer-events-none" />
+
+            {/* Mobile Bottom Content */}
+            <div className="relative z-10 px-6 pb-24 flex flex-col justify-end">
+              <div className="flex items-center gap-2 mb-2.5">
+                <span className="h-px w-5 bg-sand" />
+                <span className="eyebrow text-sand text-[10px] tracking-[0.25em]">
+                  {currentPanel.tag}
+                </span>
+              </div>
+
+              <h2 className="font-display text-ivory text-3xl sm:text-4xl leading-[1.15] tracking-tight drop-shadow-[0_8px_20px_rgba(0,0,0,0.9)]">
+                {currentPanel.title}
+              </h2>
+
+              <p className="mt-3 text-sm text-ivory/80 font-light leading-relaxed drop-shadow-md line-clamp-3">
+                {currentPanel.desc}
+              </p>
+
+              <div className="mt-5 flex items-center gap-3">
+                <NavLink
+                  to={currentPanel.link}
+                  className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full border border-sand/80 bg-midnight/30 backdrop-blur-xs text-sand active:bg-sand active:text-midnight hover:bg-sand hover:text-midnight font-semibold text-xs tracking-widest uppercase active:scale-95 transition-all"
+                >
+                  <span>{currentPanel.linkText}</span>
+                  <ArrowUpRight size={16} />
+                </NavLink>
+              </div>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Mobile Navigation Controls & Pagination */}
+        <div className="absolute bottom-6 inset-x-6 z-20 flex items-center justify-between pointer-events-auto">
+          {/* Segmented Indicators */}
+          <div className="flex items-center gap-2">
+            {panels.map((p, idx) => (
+              <button
+                key={p.id}
+                onClick={() => {
+                  setDirection(idx > current ? 1 : -1);
+                  setCurrent(idx);
+                }}
+                aria-label={`Go to slide ${idx + 1}`}
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  idx === current
+                    ? "w-8 bg-sand shadow-sm"
+                    : "w-2 bg-ivory/30 hover:bg-ivory/60"
+                }`}
+              />
+            ))}
+          </div>
+
+          {/* Left / Right Arrow Buttons */}
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => paginate(-1)}
+              aria-label="Previous slide"
+              className="w-9 h-9 rounded-full bg-midnight/70 backdrop-blur-md border border-ivory/20 flex items-center justify-center text-ivory active:scale-90 transition-all hover:bg-midnight hover:border-sand hover:text-sand"
+            >
+              <ChevronLeft size={16} />
+            </button>
+            <button
+              onClick={() => paginate(1)}
+              aria-label="Next slide"
+              className="w-9 h-9 rounded-full bg-midnight/70 backdrop-blur-md border border-ivory/20 flex items-center justify-center text-ivory active:scale-90 transition-all hover:bg-midnight hover:border-sand hover:text-sand"
+            >
+              <ChevronRight size={16} />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* ========================================================================= */}
+      {/* DESKTOP / TABLET 3-PARTITION VIEW (Active on screens >= md)               */}
+      {/* ========================================================================= */}
+      <div className="hidden md:flex absolute inset-0 flex-row w-full h-full">
         {panels.map((panel, idx) => {
-          const IconComponent = panel.icon;
           const isNotLast = idx < panels.length - 1;
 
           return (
@@ -97,7 +254,7 @@ const Hero = () => {
               {/* Individual Background Video with smooth scroll zoom */}
               <motion.video
                 style={{ scale: bgScale }}
-                className="h-full w-full object-cover brightness-95"
+                className="h-full w-full object-cover"
                 src={panel.src}
                 autoPlay
                 loop
@@ -106,12 +263,8 @@ const Hero = () => {
                 aria-hidden="true"
               />
 
-              {/* Per-Section Atmospheric Overlays */}
-              <div className="absolute inset-0 bg-midnight opacity-35 pointer-events-none" />
-
-              {/* Gradients for text contrast */}
-              <div className="absolute inset-0 bg-linear-to-t from-midnight via-midnight/40 to-transparent pointer-events-none" />
-              <div className="absolute inset-0 bg-linear-to-b from-midnight/75 via-transparent to-midnight/80 pointer-events-none" />
+              {/* Overlay: dark only where the text sits, clear elsewhere */}
+              <div className="absolute inset-0 bg-linear-to-t from-midnight via-midnight/20 to-transparent pointer-events-none" />
 
               {/* Column Dividing Intersection Markers */}
               {isNotLast && (
@@ -128,30 +281,15 @@ const Hero = () => {
               {/* Column Content */}
               <motion.div
                 style={{ y: contentY, opacity: contentOpacity }}
-                className="absolute inset-0 p-5 sm:p-7 md:p-9 flex flex-col justify-between pointer-events-none z-10"
+                className="absolute inset-0 p-5 sm:p-7 md:p-9 flex flex-col justify-end pointer-events-none z-10"
               >
-                {/* Column Top: Tag & Number */}
-                <div className="pt-20 sm:pt-24 flex items-center justify-between border-b border-ivory/15 pb-3">
-                  <div className="flex items-center gap-2">
-                    <span className="text-[11px] font-mono tracking-widest text-sand font-bold">
-                      {panel.num}
-                    </span>
-                    <span className="text-xs tracking-[0.2em] uppercase text-ivory/90 font-medium">
-                      {panel.badge}
-                    </span>
-                  </div>
-                  <div className="text-ivory/50">
-                    <IconComponent size={14} className="text-sand/80" />
-                  </div>
-                </div>
-
                 {/* Column Bottom: Heading & Description */}
                 <div className="pb-8 sm:pb-10 flex flex-col justify-end">
                   {/* Small Eyebrow Label */}
                   <div className="flex items-center gap-2 mb-2">
                     <span className="h-px w-4 bg-sand/80" />
                     <span className="eyebrow text-sand text-[9px] sm:text-[10px] tracking-[0.25em]">
-                      {panel.id === "center-welcome" ? "About Us" : "Solution"}
+                      {panel.tag}
                     </span>
                   </div>
 
@@ -166,13 +304,14 @@ const Hero = () => {
                   </p>
 
                   {/* Button */}
-                  <div className="mt-4 pt-1">
-                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-ivory/20 bg-midnight/60 text-ivory/80">
-                      <span className="text-[10px] font-medium tracking-wider uppercase">
-                        Learn More
-                      </span>
-                      <ArrowUpRight size={12} />
-                    </div>
+                  <div className="mt-5 pt-1">
+                    <NavLink
+                      to={panel.link}
+                      className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full border border-sand/80 bg-midnight/15 backdrop-blur-xs text-sand hover:bg-sand hover:text-midnight hover:border-sand font-semibold text-xs tracking-widest uppercase transition-all duration-300 transform hover:-translate-y-0.5 group/btn"
+                    >
+                      <span>{panel.linkText}</span>
+                      <ArrowUpRight size={16} className="transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+                    </NavLink>
                   </div>
                 </div>
               </motion.div>
@@ -181,13 +320,17 @@ const Hero = () => {
         })}
       </div>
 
+      {/* Top scrim so the transparent navbar stays readable over bright video */}
+      <div className="absolute top-0 inset-x-0 h-28 sm:h-36 bg-linear-to-b from-midnight/70 to-transparent pointer-events-none z-30" />
+
       {/* Global Interactive Cursor Spotlight */}
       <motion.div
         style={{ background: spotlight }}
-        className="absolute inset-0 pointer-events-none z-20"
+        className="hidden md:block absolute inset-0 pointer-events-none z-20"
       />
     </section>
   );
 };
 
 export default Hero;
+

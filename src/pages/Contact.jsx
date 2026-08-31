@@ -80,20 +80,18 @@ const Contact = () => {
           </div>
 
           {/* Full Width Stacked Header: Each on a Separate Row */}
-          <div className="w-full mb-12 space-y-4">
-            {/* Row 1: Badges */}
-            <div className="flex items-center gap-3">
-              <span className="px-3.5 py-1 rounded-full bg-teal/10 border border-teal/20 text-teal text-[11px] font-mono tracking-widest uppercase font-semibold">
-                Enterprise Inquiries & RFPs
-              </span>
-              <span className="text-xs font-mono text-navy/40">
-                24/7 Dedicated Command Tower
-              </span>
-            </div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full mb-12 space-y-4"
+          >
+            <span className="eyebrow text-teal">01 — Get In Touch</span>
 
             {/* Row 2: Main Heading */}
-            <h1 className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-[76px] text-navy leading-[1.04] tracking-tight w-full">
-              Connect with Our{" "}
+            <h1 className="font-display text-navy text-3xl sm:text-5xl md:text-6xl leading-[1.08] tracking-tight w-full mt-4">
+              Connect With Our{" "} <br className="hidden sm:inline" />
               <span className="italic text-teal font-normal">
                 Mobility Specialists.
               </span>
@@ -103,14 +101,15 @@ const Contact = () => {
             <p className="text-navy/70 text-base sm:text-xl font-light leading-relaxed max-w-4xl pt-2">
               Request customized enterprise proposals, corporate rate cards, tech park shuttle network setups, or 24/7 dispatch support.
             </p>
-          </div>
+          </motion.div>
 
           {/* 2-Column Main Section: Left Visuals & Info | Right Contact Form FIRST */}
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
             {/* RIGHT COLUMN (Placed in Grid Col 7-12) - THE CONTACT FORM */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 35 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.08 }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-7 order-1 lg:order-2"
             >
@@ -315,8 +314,9 @@ const Contact = () => {
 
             {/* LEFT COLUMN (Grid Col 1-5) - SHOWCASE IMAGE BANNER & CONTACT CHANNELS */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 35 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.08 }}
               transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-5 order-2 lg:order-1 space-y-6"
             >
@@ -403,16 +403,22 @@ const Contact = () => {
       {/* ========================================================================= */}
       <section className="pb-24 md:pb-36 bg-soft">
         <div className="container-px">
-          <div className="rounded-3xl overflow-hidden bg-white border border-navy/10 shadow-2xl">
+          <motion.div
+            initial={{ opacity: 0, y: 35 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="rounded-3xl overflow-hidden bg-white border border-navy/10 shadow-2xl"
+          >
             {/* Top Map Bar */}
             <div className="p-6 md:p-8 bg-white border-b border-navy/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
-                <span className="text-xs font-mono uppercase tracking-widest text-teal font-semibold block">
-                  Central Command & Fleet Dispatch Center
+                <span className="eyebrow text-teal block mb-3">
+                  02 — Central Command & Fleet Dispatch
                 </span>
-                <h3 className="font-display text-2xl sm:text-3xl text-navy mt-1">
-                  Acciva Travels Headquarters &mdash; Bengaluru
-                </h3>
+                <h2 className="font-display text-2xl sm:text-3xl text-navy mt-1">
+                  Acciva Travels Headquarters &mdash; <span className="italic text-teal font-normal">Bengaluru.</span>
+                </h2>
                 <p className="text-xs text-navy/60 mt-1">
                   Serving Manyata Tech Park, Electronic City, Whitefield, Outer Ring Road & Pan-India Corridors.
                 </p>
@@ -443,25 +449,42 @@ const Contact = () => {
                 className="w-full h-full grayscale contrast-125 opacity-90 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
               />
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* ========================================================================= */}
       {/* 03 — CLOSING ASSISTANCE BANNER                                            */}
       {/* ========================================================================= */}
-      <section className="py-16 md:py-24 bg-midnight text-ivory relative overflow-hidden border-t border-ivory/15">
-        <div className="container-px text-center max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sand/15 border border-sand/30 text-sand text-xs font-mono uppercase tracking-widest mb-4">
-            <Award size={14} />
-            <span>Dedicated Enterprise Mobility</span>
-          </div>
+      <section className="py-8 md:py-10 bg-soft text-navy relative overflow-hidden border-t border-navy/15">
+        <motion.div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[240px] bg-teal/15 rounded-full blur-3xl pointer-events-none"
+          animate={{ x: [0, 25, 0], y: [0, -15, 0] }}
+          transition={{ duration: 9, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
+        />
+        {/* Corner quarter-circle accents — section-scale echo of the card motif */}
+        <div className="absolute top-0 right-0 w-72 h-72 bg-teal/20 rounded-bl-full pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-60 h-60 bg-sand/25 rounded-tr-full pointer-events-none" />
 
-          <h3 className="font-display text-3xl sm:text-4xl text-ivory">
-            Need Immediate Assistance or Fleet Consultation?
-          </h3>
+        <div className="container-px relative z-10 text-center max-w-3xl mx-auto">
+          <span className="eyebrow text-teal inline-block mb-4">
+            03 — Dedicated Enterprise Mobility
+          </span>
 
-          <p className="mt-3 text-ivory/70 text-sm sm:text-base font-light">
+          <motion.div
+            className="mx-auto mb-6 h-px w-14 bg-teal/50"
+            style={{ transformOrigin: "center" }}
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          />
+
+          <h2 className="font-display text-2xl sm:text-4xl md:text-5xl text-navy leading-[1.08] tracking-tight">
+            Need Immediate Assistance Or <span className="italic text-teal font-normal">Fleet Consultation?</span>
+          </h2>
+
+          <p className="mt-3 text-navy/70 text-sm sm:text-base font-light">
             Our corporate transit managers are available round-the-clock to structure scalable transit contracts for your team.
           </p>
 
@@ -475,7 +498,7 @@ const Contact = () => {
             </a>
             <NavLink
               to="/services"
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full border border-ivory/20 text-ivory hover:bg-white/10 transition-all text-xs font-medium"
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full border border-navy/20 text-navy hover:bg-navy/5 transition-all text-xs font-medium"
             >
               <span>Explore Fleet Capabilities</span>
             </NavLink>

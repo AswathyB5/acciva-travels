@@ -85,25 +85,20 @@ const Testimonial = () => {
   };
 
   return (
-    <section className="relative py-24 md:py-36 overflow-hidden bg-midnight text-ivory select-none">
+    <section className="relative py-24 md:py-36 overflow-hidden bg-soft text-navy select-none">
       {/* Ambient background glows */}
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-teal/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-sand/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.12),rgba(255,255,255,0))] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.08),rgba(255,255,255,0))] pointer-events-none" />
 
       <div className="container-px relative z-10">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 pb-8 border-b border-ivory/10 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 pb-8 border-b border-navy/10 gap-6">
           <div>
-            <div className="flex items-center gap-2.5 mb-3">
-              <Award size={15} className="text-sand" />
-              <span className="eyebrow text-sand text-xs tracking-[0.25em]">
-                Enterprise Trust & Reviews
-              </span>
-            </div>
-            <h2 className="font-display text-ivory text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-tight">
-              Trusted by India&rsquo;s Leading <br className="hidden sm:inline" />
-              <span className="italic text-sand font-normal">Enterprises & Executives.</span>
+            <span className="eyebrow text-teal">07 — Enterprise Trust & Reviews</span>
+            <h2 className="font-display text-navy text-2xl sm:text-4xl md:text-5xl tracking-tight leading-[1.08] mt-6">
+              Trusted By India&rsquo;s Leading <br className="hidden sm:inline" />
+              <span className="italic text-teal font-normal">Enterprises & Executives.</span>
             </h2>
           </div>
 
@@ -113,13 +108,13 @@ const Testimonial = () => {
             <button
               onClick={() => setIsPlaying((prev) => !prev)}
               aria-label={isPlaying ? "Pause auto-slide" : "Start auto-slide"}
-              className="flex items-center gap-2 px-3.5 py-2 rounded-full bg-white/5 border border-ivory/15 hover:border-sand/40 transition-all text-xs font-mono text-ivory/80 cursor-pointer"
+              className="flex items-center gap-2 px-3.5 py-2 rounded-full bg-white border border-navy/15 hover:border-sand/40 transition-all text-xs font-mono text-navy/70 cursor-pointer shadow-xs"
             >
               <span
                 className={`w-2 h-2 rounded-full ${
                   isPlaying && !isHovered
                     ? "bg-teal animate-pulse"
-                    : "bg-ivory/40"
+                    : "bg-navy/30"
                 }`}
               />
               <span>{isPlaying && !isHovered ? "Auto-playing" : "Paused"}</span>
@@ -127,7 +122,7 @@ const Testimonial = () => {
             </button>
 
             {/* Slide Counter */}
-            <div className="text-xs font-mono tracking-widest text-ivory/50 px-2">
+            <div className="text-xs font-mono tracking-widest text-navy/50 px-2">
               <span className="text-sand font-bold text-sm">
                 0{currentIndex + 1}
               </span>{" "}
@@ -139,14 +134,14 @@ const Testimonial = () => {
               <button
                 onClick={handlePrev}
                 aria-label="Previous testimonial"
-                className="w-10 h-10 rounded-full border border-ivory/20 flex items-center justify-center text-ivory hover:text-navy hover:bg-sand hover:border-sand transition-all duration-300 cursor-pointer shadow-md active:scale-95"
+                className="w-10 h-10 rounded-full border border-navy/20 flex items-center justify-center text-navy hover:text-navy hover:bg-sand hover:border-sand transition-all duration-300 cursor-pointer shadow-md active:scale-95"
               >
                 <ChevronLeft size={18} />
               </button>
               <button
                 onClick={handleNext}
                 aria-label="Next testimonial"
-                className="w-10 h-10 rounded-full border border-ivory/20 flex items-center justify-center text-ivory hover:text-navy hover:bg-sand hover:border-sand transition-all duration-300 cursor-pointer shadow-md active:scale-95"
+                className="w-10 h-10 rounded-full border border-navy/20 flex items-center justify-center text-navy hover:text-navy hover:bg-sand hover:border-sand transition-all duration-300 cursor-pointer shadow-md active:scale-95"
               >
                 <ChevronRight size={18} />
               </button>
@@ -160,12 +155,12 @@ const Testimonial = () => {
           <div
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            className="lg:col-span-8 relative rounded-3xl bg-midnight/80 border border-ivory/15 p-7 sm:p-10 md:p-12 backdrop-blur-xl shadow-2xl flex flex-col justify-between overflow-hidden group min-h-[460px]"
+            className="lg:col-span-8 relative rounded-3xl bg-white border border-navy/10 p-7 sm:p-10 md:p-12 shadow-2xl flex flex-col justify-between overflow-hidden group min-h-[460px]"
           >
             {/* Decorative Quote Background */}
             <Quote
               size={160}
-              className="absolute -top-4 -right-4 text-ivory/[0.04] pointer-events-none select-none transition-transform duration-700 group-hover:scale-105"
+              className="absolute -top-4 -right-4 text-navy/[0.05] pointer-events-none select-none transition-transform duration-700 group-hover:scale-105"
             />
 
             <div>
@@ -175,7 +170,7 @@ const Testimonial = () => {
                   {[...Array(active.rating)].map((_, i) => (
                     <Star key={i} size={16} className="fill-sand text-sand" />
                   ))}
-                  <span className="text-xs font-mono ml-2 text-ivory/70 font-semibold">
+                  <span className="text-xs font-mono ml-2 text-navy/70 font-semibold">
                     5.0 / 5.0 Rating
                   </span>
                 </div>
@@ -198,7 +193,7 @@ const Testimonial = () => {
                     exit="exit"
                     className="w-full"
                   >
-                    <blockquote className="font-display italic text-ivory text-xl sm:text-2xl md:text-[26px] lg:text-[28px] leading-snug tracking-tight">
+                    <blockquote className="font-display italic text-navy text-xl sm:text-2xl md:text-[26px] lg:text-[28px] leading-snug tracking-tight">
                       &ldquo;{active.quote}&rdquo;
                     </blockquote>
                   </motion.div>
@@ -208,7 +203,7 @@ const Testimonial = () => {
 
             {/* Author Profile & Key Metric */}
             <div>
-              <div className="pt-8 mt-6 border-t border-ivory/10 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+              <div className="pt-8 mt-6 border-t border-navy/10 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
                 <AnimatePresence mode="wait" custom={direction}>
                   <motion.div
                     key={currentIndex}
@@ -225,13 +220,13 @@ const Testimonial = () => {
                       className="w-14 h-14 rounded-full object-cover border-2 border-sand/60 shadow-lg"
                     />
                     <div>
-                      <h3 className="font-sans font-bold text-ivory text-base sm:text-lg tracking-wide">
+                      <h3 className="font-sans font-bold text-navy text-base sm:text-lg tracking-wide">
                         {active.name}
                       </h3>
                       <p className="text-xs text-sand font-medium mt-0.5">
                         {active.role}
                       </p>
-                      <p className="text-xs text-ivory/60 flex items-center gap-1.5 mt-0.5">
+                      <p className="text-xs text-navy/60 flex items-center gap-1.5 mt-0.5">
                         <Building size={12} className="text-teal" />
                         <span>{active.company}</span>
                       </p>
@@ -248,9 +243,9 @@ const Testimonial = () => {
                     initial="enter"
                     animate="center"
                     exit="exit"
-                    className="bg-white/5 border border-white/10 rounded-2xl px-5 py-3 text-left sm:text-right backdrop-blur-xs shadow-inner"
+                    className="bg-navy/5 border border-navy/10 rounded-2xl px-5 py-3 text-left sm:text-right shadow-inner"
                   >
-                    <p className="text-[10px] uppercase font-mono tracking-widest text-ivory/40">
+                    <p className="text-[10px] uppercase font-mono tracking-widest text-navy/40">
                       Impact Delivered
                     </p>
                     <p className="font-display text-sand text-base sm:text-lg font-bold mt-0.5">
@@ -261,7 +256,7 @@ const Testimonial = () => {
               </div>
 
               {/* Slide Dots / Indicators */}
-              <div className="flex items-center gap-2 mt-8 pt-4 border-t border-ivory/5">
+              <div className="flex items-center gap-2 mt-8 pt-4 border-t border-navy/5">
                 {testimonials.map((_, idx) => (
                   <button
                     key={idx}
@@ -270,7 +265,7 @@ const Testimonial = () => {
                     className={`relative h-2 rounded-full transition-all duration-300 cursor-pointer overflow-hidden ${
                       currentIndex === idx
                         ? "w-10 bg-sand/30"
-                        : "w-2.5 bg-ivory/20 hover:bg-ivory/40"
+                        : "w-2.5 bg-navy/15 hover:bg-navy/30"
                     }`}
                   >
                     {currentIndex === idx && (
@@ -293,7 +288,7 @@ const Testimonial = () => {
             </div>
 
             {/* Auto-play Smooth Progress Bar at bottom of card */}
-            <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/5">
+            <div className="absolute bottom-0 left-0 right-0 h-1 bg-navy/5">
               {isPlaying && !isHovered && (
                 <motion.div
                   key={currentIndex}
@@ -318,8 +313,8 @@ const Testimonial = () => {
                     onClick={() => handleSelect(idx)}
                     className={`w-full text-left p-3.5 sm:p-4 rounded-2xl border transition-all duration-300 cursor-pointer flex items-center gap-3.5 relative overflow-hidden ${
                       isSelected
-                        ? "bg-sand/15 border-sand text-ivory shadow-lg translate-x-1.5"
-                        : "bg-midnight/60 border-ivory/10 text-ivory/60 hover:bg-white/5 hover:border-ivory/20"
+                        ? "bg-sand/15 border-sand text-navy shadow-lg translate-x-1.5"
+                        : "bg-white border-navy/10 text-navy/60 hover:bg-navy/5 hover:border-navy/20"
                     }`}
                   >
                     {isSelected && (
@@ -331,14 +326,14 @@ const Testimonial = () => {
                       className={`w-10 h-10 rounded-full object-cover border transition-all shrink-0 ${
                         isSelected
                           ? "border-sand scale-105 shadow-md"
-                          : "border-white/10 opacity-70"
+                          : "border-navy/10 opacity-70"
                       }`}
                     />
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-2">
                         <p
                           className={`text-sm font-semibold truncate ${
-                            isSelected ? "text-ivory" : "text-ivory/80"
+                            isSelected ? "text-navy" : "text-navy/80"
                           }`}
                         >
                           {t.name}
@@ -347,13 +342,13 @@ const Testimonial = () => {
                           className={`text-[10px] font-mono shrink-0 ${
                             isSelected
                               ? "text-sand font-bold"
-                              : "text-ivory/40"
+                              : "text-navy/40"
                           }`}
                         >
                           0{idx + 1}
                         </span>
                       </div>
-                      <p className="text-xs text-ivory/50 truncate mt-0.5">
+                      <p className="text-xs text-navy/50 truncate mt-0.5">
                         {t.company}
                       </p>
                     </div>
@@ -363,7 +358,7 @@ const Testimonial = () => {
             </div>
 
             {/* Live Trust Proof Badge */}
-            <div className="p-4 rounded-2xl bg-linear-to-br from-teal/20 via-navy/40 to-sand/10 border border-ivory/15 flex items-center gap-3.5 shadow-md">
+            <div className="p-4 rounded-2xl bg-linear-to-br from-teal/15 via-sand/10 to-sand/15 border border-navy/10 flex items-center gap-3.5 shadow-md">
               <div className="w-10 h-10 rounded-xl bg-sand/15 border border-sand/30 flex items-center justify-center text-sand shrink-0">
                 <ShieldCheck size={20} />
               </div>
@@ -371,7 +366,7 @@ const Testimonial = () => {
                 <p className="text-xs font-mono uppercase tracking-wider text-sand font-bold">
                   99.8% On-Time Reliability
                 </p>
-                <p className="text-[11px] text-ivory/70 mt-0.5 font-light leading-snug">
+                <p className="text-[11px] text-navy/70 mt-0.5 font-light leading-snug">
                   50,000+ monthly enterprise commutes executed with 100% safety.
                 </p>
               </div>
@@ -380,9 +375,9 @@ const Testimonial = () => {
         </div>
 
         {/* Continuous Automatic Infinite Marquee Ribbon of Reviews & Stats */}
-        <div className="mt-14 pt-8 border-t border-ivory/10 overflow-hidden relative">
-          <div className="absolute left-0 top-0 bottom-0 w-20 bg-linear-to-r from-midnight to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-20 bg-linear-to-l from-midnight to-transparent z-10 pointer-events-none" />
+        <div className="mt-14 pt-8 border-t border-navy/10 overflow-hidden relative">
+          <div className="absolute left-0 top-0 bottom-0 w-20 bg-linear-to-r from-soft to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-20 bg-linear-to-l from-soft to-transparent z-10 pointer-events-none" />
 
           <motion.div
             className="flex items-center gap-8 w-max"
@@ -397,17 +392,17 @@ const Testimonial = () => {
               <div
                 key={`${item.name}-${index}`}
                 onClick={() => handleSelect(index % testimonials.length)}
-                className="flex items-center gap-3.5 px-5 py-2.5 rounded-full bg-white/[0.04] border border-ivory/10 hover:border-sand/40 hover:bg-white/[0.08] transition-all cursor-pointer text-xs shrink-0"
+                className="flex items-center gap-3.5 px-5 py-2.5 rounded-full bg-white border border-navy/10 hover:border-sand/40 hover:bg-navy/5 transition-all cursor-pointer text-xs shrink-0 shadow-xs"
               >
                 <img
                   src={item.avatar}
                   alt={item.name}
                   className="w-6 h-6 rounded-full object-cover border border-sand/50"
                 />
-                <span className="font-semibold text-ivory">{item.name}</span>
-                <span className="text-ivory/40">•</span>
+                <span className="font-semibold text-navy">{item.name}</span>
+                <span className="text-navy/40">•</span>
                 <span className="text-sand">{item.company}</span>
-                <span className="text-ivory/40">•</span>
+                <span className="text-navy/40">•</span>
                 <span className="text-teal font-mono">{item.stats}</span>
               </div>
             ))}

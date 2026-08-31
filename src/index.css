@@ -1,15 +1,25 @@
 @import "tailwindcss";
 
-@theme {
-  --font-display: "Playfair Display", "Georgia", serif;
-  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+:root {
+  --color-navy: #192a3a;
+  --color-midnight: #0b1926;
+  --color-ivory: #f5f1ea;
+  --color-sand: #e1c59d;
+  --color-teal: #3b8dc4;
+  --color-soft: #fcfbfa;
+}
 
-  --color-navy: #071a24;
-  --color-midnight: #0b1114;
-  --color-ivory: #f4f0e8;
-  --color-sand: #d8c7a5;
-  --color-teal: #477c82;
-  --color-soft: #faf9f6;
+@theme {
+  --font-display: "IBM Plex Serif", "Georgia", serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-accent: "IBM Plex Serif", "Georgia", serif;
+
+  --color-navy: var(--color-navy);
+  --color-midnight: var(--color-midnight);
+  --color-ivory: var(--color-ivory);
+  --color-sand: var(--color-sand);
+  --color-teal: var(--color-teal);
+  --color-soft: var(--color-soft);
 }
 
 html {
@@ -23,8 +33,34 @@ body {
   overflow-x: hidden;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4,
+.font-display {
   font-family: var(--font-display);
+  font-weight: 400 !important;
+  letter-spacing: -0.015em;
+}
+
+h1 {
+  font-weight: 500 !important;
+}
+
+/* Subtle, elegant IBM Plex Serif italic accent for highlighted words in headings */
+h1 .italic,
+h2 .italic,
+h3 .italic,
+h4 .italic,
+h1 em,
+h2 em,
+h3 em,
+h4 em,
+.font-accent {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-weight: 400 !important;
+  letter-spacing: 0.01em;
 }
 
 ::selection {
@@ -35,9 +71,11 @@ h1, h2, h3, h4 {
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--color-soft);
 }
+
 ::-webkit-scrollbar-thumb {
   background: var(--color-navy);
   border-radius: 999px;
@@ -47,12 +85,14 @@ h1, h2, h3, h4 {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
 }
+
 @media (min-width: 768px) {
   .container-px {
     padding-left: 3rem;
     padding-right: 3rem;
   }
 }
+
 @media (min-width: 1280px) {
   .container-px {
     padding-left: 6rem;
@@ -83,6 +123,7 @@ h1, h2, h3, h4 {
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
+
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
@@ -91,8 +132,38 @@ h1, h2, h3, h4 {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes shimmerSweep {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.08);
   }
 }
 
@@ -100,8 +171,28 @@ h1, h2, h3, h4 {
   animation: spinSlow 12s linear infinite;
 }
 
+.animate-float {
+  animation: floatSlow 5s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+.shimmer-text {
+  background: linear-gradient(90deg, var(--color-navy) 0%, var(--color-teal) 50%, var(--color-navy) 100%);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shimmerSweep 6s linear infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;

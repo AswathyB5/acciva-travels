@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { motion } from "framer-motion";
 import {
   ChevronRight,
   ShieldCheck,
@@ -29,81 +30,119 @@ const Services = () => {
             <span className="text-teal font-semibold">Services</span>
           </div>
 
-          {/* Title & Intro Row */}
+          {/* Title & Intro Row with Staggered Fade Up */}
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
-            <div className="max-w-3xl">
-              <div className="flex items-center gap-3 mb-4">
-                <span className="px-3.5 py-1 rounded-full bg-teal/10 border border-teal/20 text-teal text-[11px] font-mono tracking-widest uppercase font-semibold">
-                  Enterprise Solutions
-                </span>
-                <span className="text-xs font-mono text-navy/40">
-                  Pan-India Corporate Fleet Network
-                </span>
-              </div>
-
-              <h1 className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-[76px] text-navy leading-[1.04] tracking-tight">
-                Corporate Mobility & <br />
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="max-w-3xl"
+            >
+              <span className="eyebrow text-teal">01 — Enterprise Solutions</span>
+              <h1 className="font-display text-navy text-3xl sm:text-5xl md:text-6xl leading-[1.08] mt-6 tracking-tight">
+                Corporate Mobility & Fleet Solutions{" "}
                 <span className="italic text-teal font-normal">
-                  Fleet Solutions Engineered for Scale.
+                  At Scale.
                 </span>
               </h1>
-            </div>
+            </motion.div>
 
-            <p className="max-w-md text-navy/70 text-base sm:text-lg font-light leading-relaxed pb-2">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+              className="max-w-md text-navy/70 text-base sm:text-lg font-light leading-relaxed pb-2"
+            >
               End-to-end employee transportation, tech park shuttle networks, executive transit, and airport transfers managed with 99.8% on-time precision.
-            </p>
+            </motion.p>
           </div>
 
           {/* Prominent Header Showcase Image Banner */}
-          <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-navy/10 mb-12 group">
+          <motion.div
+            initial={{ opacity: 0, y: 35, scale: 0.98 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="relative rounded-3xl overflow-hidden shadow-2xl border border-navy/10 mb-12 group"
+          >
             <img
               src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1800&q=80"
               alt="Acciva Corporate Fleet Solutions"
               className="w-full h-[340px] sm:h-[440px] md:h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
             />
-          </div>
+          </motion.div>
 
-          {/* Quick Stats Strip */}
+          {/* Quick Stats Strip with Interactive Hover Cards */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4">
-            <div className="p-5 rounded-2xl bg-white border border-navy/10 shadow-xs flex items-center gap-4">
-              <div className="w-11 h-11 rounded-xl bg-teal/10 flex items-center justify-center text-teal shrink-0">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.5, delay: 0.05 }}
+              whileHover={{ y: -4 }}
+              className="p-5 rounded-2xl bg-white border border-navy/10 hover:border-teal/40 hover:shadow-md transition-all flex items-center gap-4 group"
+            >
+              <div className="w-11 h-11 rounded-xl bg-teal/10 group-hover:bg-teal group-hover:text-ivory transition-colors flex items-center justify-center text-teal shrink-0">
                 <Car size={22} />
               </div>
               <div>
                 <p className="font-display text-xl sm:text-2xl text-navy font-bold">5,000+ Cabs</p>
                 <p className="text-[11px] font-mono text-navy/50 uppercase">Pan-India Fleet</p>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="p-5 rounded-2xl bg-white border border-navy/10 shadow-xs flex items-center gap-4">
-              <div className="w-11 h-11 rounded-xl bg-teal/10 flex items-center justify-center text-teal shrink-0">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              whileHover={{ y: -4 }}
+              className="p-5 rounded-2xl bg-white border border-navy/10 hover:border-teal/40 hover:shadow-md transition-all flex items-center gap-4 group"
+            >
+              <div className="w-11 h-11 rounded-xl bg-teal/10 group-hover:bg-teal group-hover:text-ivory transition-colors flex items-center justify-center text-teal shrink-0">
                 <Clock size={22} />
               </div>
               <div>
                 <p className="font-display text-xl sm:text-2xl text-teal font-bold">99.8% SLA</p>
                 <p className="text-[11px] font-mono text-navy/50 uppercase">Shift Punctuality</p>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="p-5 rounded-2xl bg-white border border-navy/10 shadow-xs flex items-center gap-4">
-              <div className="w-11 h-11 rounded-xl bg-teal/10 flex items-center justify-center text-teal shrink-0">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.5, delay: 0.15 }}
+              whileHover={{ y: -4 }}
+              className="p-5 rounded-2xl bg-white border border-navy/10 hover:border-teal/40 hover:shadow-md transition-all flex items-center gap-4 group"
+            >
+              <div className="w-11 h-11 rounded-xl bg-teal/10 group-hover:bg-teal group-hover:text-ivory transition-colors flex items-center justify-center text-teal shrink-0">
                 <ShieldCheck size={22} />
               </div>
               <div>
                 <p className="font-display text-xl sm:text-2xl text-navy font-bold">100% Vetted</p>
                 <p className="text-[11px] font-mono text-navy/50 uppercase">Background Checks</p>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="p-5 rounded-2xl bg-white border border-navy/10 shadow-xs flex items-center gap-4">
-              <div className="w-11 h-11 rounded-xl bg-teal/10 flex items-center justify-center text-teal shrink-0">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              whileHover={{ y: -4 }}
+              className="p-5 rounded-2xl bg-white border border-navy/10 hover:border-teal/40 hover:shadow-md transition-all flex items-center gap-4 group"
+            >
+              <div className="w-11 h-11 rounded-xl bg-teal/10 group-hover:bg-teal group-hover:text-ivory transition-colors flex items-center justify-center text-teal shrink-0">
                 <Users size={22} />
               </div>
               <div>
                 <p className="font-display text-xl sm:text-2xl text-teal font-bold">24/7 ERT</p>
                 <p className="text-[11px] font-mono text-navy/50 uppercase">Command Tower</p>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -113,17 +152,23 @@ const Services = () => {
       {/* ========================================================================= */}
       <section className="py-20 md:py-32 bg-soft">
         <div className="container-px">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-navy/10 gap-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-navy/10 gap-6"
+          >
             <div>
-              <span className="eyebrow text-teal">Our Fleet Offerings</span>
-              <h2 className="font-display text-3xl sm:text-5xl text-navy mt-2">
-                Tailored Mobility Programs
+              <span className="eyebrow text-teal">02 — Our Fleet Offerings</span>
+              <h2 className="font-display text-2xl sm:text-4xl md:text-5xl leading-[1.08] mt-6 tracking-tight">
+                Tailored Mobility <span className="italic text-teal font-normal">Programs.</span>
               </h2>
             </div>
             <p className="text-navy/60 text-sm sm:text-base max-w-md font-light">
               Explore our comprehensive range of specialized transport capabilities designed for corporate technology parks, GCCs, and enterprise teams.
             </p>
-          </div>
+          </motion.div>
 
           <ServiceList services={services} />
         </div>
@@ -132,7 +177,7 @@ const Services = () => {
       {/* ========================================================================= */}
       {/* 03 — CINEMATIC MAGNETIC CLOSING CTA WITH BACKGROUND VIDEO                 */}
       {/* ========================================================================= */}
-      <section className="py-28 md:py-40 bg-midnight text-ivory relative overflow-hidden border-t border-ivory/15">
+      <section className="py-14 md:py-20 bg-soft text-navy relative overflow-hidden border-t border-navy/10">
         {/* Background Video & Overlays */}
         <video
           autoPlay
@@ -140,23 +185,48 @@ const Services = () => {
           muted
           playsInline
           src="/hero-ocean.mp4"
-          className="absolute inset-0 w-full h-full object-cover opacity-30 scale-105 pointer-events-none"
+          className="absolute inset-0 w-full h-full object-cover opacity-15 scale-105 pointer-events-none"
         />
-        <div className="absolute inset-0 bg-linear-to-b from-midnight/85 via-midnight/60 to-midnight/85 pointer-events-none" />
+        <div className="absolute inset-0 bg-linear-to-b from-soft/95 via-soft/85 to-soft/95 pointer-events-none" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-teal/20 rounded-full blur-3xl pointer-events-none" />
+        {/* Corner quarter-circle accents — same motif as the About page's cards */}
+        <div className="absolute top-0 right-0 w-72 h-72 bg-teal/20 rounded-bl-full pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-sand/20 rounded-tr-full pointer-events-none" />
 
         <div className="container-px relative z-10 text-center max-w-4xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sand/15 border border-sand/30 text-sand text-xs font-mono uppercase tracking-widest mb-6">
-            <Award size={14} />
-            <span>Enterprise Mobility Consulting</span>
-          </div>
+          <span className="eyebrow text-teal inline-block">
+            03 — Enterprise Mobility Consulting
+          </span>
 
-          <h2 className="font-display text-4xl sm:text-6xl md:text-7xl text-ivory leading-tight drop-shadow-md">
-            Ready to Optimize Your <br />
-            <span className="italic text-sand font-normal">Company Transportation?</span>
+          <motion.div
+            className="mx-auto my-6 h-px w-16 bg-sand/60"
+            style={{ transformOrigin: "center" }}
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          />
+
+          <h2 className="font-display text-3xl sm:text-5xl md:text-6xl leading-[1.08] tracking-tight">
+            {[
+              { text: "Ready to Optimize Your", cls: "" },
+              { text: "Company Transportation?", cls: "italic text-teal font-normal" },
+            ].map((line, i) => (
+              <span className="line-mask block" key={line.text}>
+                <motion.span
+                  initial={{ y: "40%", opacity: 0 }}
+                  whileInView={{ y: "0%", opacity: 1 }}
+                  viewport={{ once: true, amount: 0.05 }}
+                  transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: i * 0.12 }}
+                  className={`block ${line.cls}`}
+                >
+                  {line.text}
+                </motion.span>
+              </span>
+            ))}
           </h2>
 
-          <p className="mt-6 text-ivory/80 text-base sm:text-xl font-light max-w-2xl mx-auto leading-relaxed">
+          <p className="mt-6 text-navy/70 text-base sm:text-xl font-light max-w-2xl mx-auto leading-relaxed">
             Get a tailored fleet proposal with live telemetry integration, automated shift rostering, and dedicated command support.
           </p>
 
@@ -164,7 +234,7 @@ const Services = () => {
             <Magnetic strength={20}>
               <NavLink
                 to="/contact"
-                className="inline-flex items-center gap-3 px-9 py-4 rounded-full bg-sand text-navy font-bold text-sm sm:text-base hover:bg-white hover:shadow-2xl hover:scale-105 transition-all shadow-xl"
+                className="inline-flex items-center gap-3 px-9 py-4 rounded-full bg-sand text-navy font-bold text-sm sm:text-base hover:bg-navy hover:text-ivory hover:shadow-2xl hover:scale-105 transition-all shadow-xl"
               >
                 <span>Request Enterprise Quote</span>
                 <ArrowUpRight size={18} />
@@ -174,7 +244,7 @@ const Services = () => {
             <Magnetic strength={15}>
               <NavLink
                 to="/about"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-ivory/20 bg-white/5 text-ivory hover:bg-white/10 hover:border-ivory/40 transition-all text-sm font-medium backdrop-blur-xs"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-navy/20 bg-white text-navy hover:bg-navy/5 hover:border-navy/40 transition-all text-sm font-medium"
               >
                 <span>Learn About Our Standards</span>
               </NavLink>

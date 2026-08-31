@@ -4,6 +4,7 @@ const links = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
   { to: "/services", label: "Services" },
+  { to: "/technology", label: "Technology" },
   { to: "/blog", label: "Journal" },
   { to: "/contact", label: "Contact" },
 ];
@@ -14,7 +15,7 @@ const IconLink = ({ href, label, children }) => (
     target="_blank"
     rel="noreferrer"
     aria-label={label}
-    className="w-9 h-9 flex items-center justify-center rounded-full border border-ivory/20 text-ivory/70 hover:text-midnight hover:bg-sand hover:border-sand transition-colors duration-300"
+    className="w-9 h-9 flex items-center justify-center rounded-full border border-navy/15 text-navy/60 hover:text-soft hover:bg-teal hover:border-teal transition-colors duration-300"
   >
     {children}
   </a>
@@ -22,16 +23,16 @@ const IconLink = ({ href, label, children }) => (
 
 const Footer = () => {
   return (
-    <footer className="bg-midnight text-ivory pt-24 pb-10">
+    <footer className="bg-soft text-navy pt-24 pb-10 border-t border-navy/10">
       <div className="container-px">
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-12 pb-16 border-b border-ivory/10">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-12 pb-16 border-b border-navy/10">
           <div className="space-y-4 max-w-sm">
             <img
-              src="/acciva-logo-white.png"
+              src="/acciva-logo.png"
               alt="Acciva Travels"
               className="h-12 sm:h-14 w-auto object-contain opacity-95"
             />
-            <p className="text-xs font-mono text-ivory/50 uppercase tracking-widest leading-relaxed">
+            <p className="text-xs font-mono text-navy/50 uppercase tracking-widest leading-relaxed">
               Pan-India Corporate Mobility Benchmark • 24/7 Dedicated Command Tower
             </p>
           </div>
@@ -42,7 +43,7 @@ const Footer = () => {
                 <li key={l.to}>
                   <NavLink
                     to={l.to}
-                    className="eyebrow text-ivory/60 hover:text-sand transition-colors"
+                    className="eyebrow text-navy/60 hover:text-teal transition-colors"
                   >
                     {l.label}
                   </NavLink>
@@ -51,17 +52,17 @@ const Footer = () => {
             </ul>
 
             <div className="space-y-3 text-sm">
-              <p className="text-ivory/60">
-                <a href="mailto:info@accivatravels.com" className="hover:text-sand transition-colors">
+              <p className="text-navy/60">
+                <a href="mailto:info@accivatravels.com" className="hover:text-teal transition-colors">
                   info@accivatravels.com
                 </a>
               </p>
-              <p className="text-ivory/60">
-                <a href="tel:+919035012166" className="hover:text-sand transition-colors">
+              <p className="text-navy/60">
+                <a href="tel:+919035012166" className="hover:text-teal transition-colors">
                   +91 903 501 2166
                 </a>
               </p>
-              <p className="text-ivory/40 max-w-[220px]">
+              <p className="text-navy/40 max-w-[220px]">
                 Bengaluru, Karnataka, India
               </p>
             </div>
@@ -69,7 +70,7 @@ const Footer = () => {
         </div>
 
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <p className="eyebrow text-ivory/40">© 2026 Acciva Travels</p>
+          <p className="eyebrow text-navy/40">© 2026 Acciva Travels</p>
           <div className="flex items-center gap-3">
             <IconLink href="https://instagram.com" label="Instagram">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

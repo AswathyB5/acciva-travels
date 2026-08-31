@@ -6,6 +6,7 @@ const links = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
   { to: "/services", label: "Services" },
+  { to: "/technology", label: "Technology" },
   { to: "/blog", label: "Journal" },
   { to: "/contact", label: "Contact" },
 ];
@@ -39,7 +40,7 @@ const Navbar = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         solid
-          ? "bg-midnight/90 backdrop-blur-md border-b border-white/10 py-4 shadow-lg"
+          ? "bg-soft/95 backdrop-blur-md border-b border-navy/10 py-4 shadow-sm"
           : "bg-transparent border-b border-transparent py-6"
       }`}
     >
@@ -49,7 +50,7 @@ const Navbar = () => {
           className="flex items-center gap-3 py-1 group"
         >
           <img
-            src="/acciva-logo-white.png"
+            src={solid ? "/acciva-logo.png" : "/acciva-logo-white.png"}
             alt="Acciva Travels"
             className="h-8 sm:h-9 md:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
           />
@@ -63,7 +64,11 @@ const Navbar = () => {
                 end={link.to === "/"}
                 className={({ isActive }) =>
                   `eyebrow relative pb-1 transition-colors duration-300 ${
-                    isActive ? "text-sand" : "text-ivory/70 hover:text-ivory"
+                    isActive
+                      ? "text-teal"
+                      : solid
+                      ? "text-navy/70 hover:text-navy"
+                      : "text-ivory/70 hover:text-ivory"
                   }`
                 }
               >
@@ -71,7 +76,7 @@ const Navbar = () => {
                   <span className="relative inline-block">
                     {link.label}
                     <span
-                      className={`absolute left-0 -bottom-1 h-px bg-sand transition-all duration-300 ${
+                      className={`absolute left-0 -bottom-1 h-px bg-teal transition-all duration-300 ${
                         isActive ? "w-full" : "w-0"
                       }`}
                     />
@@ -86,19 +91,19 @@ const Navbar = () => {
           onClick={() => setOpen((o) => !o)}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
-          className="flex lg:hidden items-center gap-3 text-ivory"
+          className={`flex lg:hidden items-center gap-3 ${solid ? "text-navy" : "text-ivory"}`}
         >
           <span className="eyebrow">{open ? "Close" : "Menu"}</span>
           <span className="relative w-6 h-4">
             <span
-              className={`absolute left-0 top-0 w-full h-px bg-ivory transition-transform duration-300 ${
-                open ? "translate-y-[7px] rotate-45" : ""
-              }`}
+              className={`absolute left-0 top-0 w-full h-px transition-transform duration-300 ${
+                solid ? "bg-navy" : "bg-ivory"
+              } ${open ? "translate-y-[7px] rotate-45" : ""}`}
             />
             <span
-              className={`absolute left-0 bottom-0 w-full h-px bg-ivory transition-transform duration-300 ${
-                open ? "-translate-y-[7px] -rotate-45" : ""
-              }`}
+              className={`absolute left-0 bottom-0 w-full h-px transition-transform duration-300 ${
+                solid ? "bg-navy" : "bg-ivory"
+              } ${open ? "-translate-y-[7px] -rotate-45" : ""}`}
             />
           </span>
         </button>
@@ -111,7 +116,7 @@ const Navbar = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:hidden overflow-hidden bg-midnight border-t border-white/10"
+            className="lg:hidden overflow-hidden bg-soft border-t border-navy/10"
           >
             <ul className="container-px py-8 flex flex-col gap-2">
               {links.map((link, i) => (
@@ -125,8 +130,8 @@ const Navbar = () => {
                     to={link.to}
                     end={link.to === "/"}
                     className={({ isActive }) =>
-                      `font-display text-3xl py-3 block border-b border-white/10 ${
-                        isActive ? "text-sand" : "text-ivory"
+                      `font-display text-3xl py-3 block border-b border-navy/10 ${
+                        isActive ? "text-teal" : "text-navy"
                       }`
                     }
                   >

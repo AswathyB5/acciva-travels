@@ -57,37 +57,48 @@ const Blog = () => {
 
           {/* Title & Intro Row */}
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
-            <div className="max-w-3xl">
-              <div className="flex items-center gap-3 mb-4">
-                <span className="px-3.5 py-1 rounded-full bg-teal/10 border border-teal/20 text-teal text-[11px] font-mono tracking-widest uppercase font-semibold">
-                  Mobility Intelligence & Insights
-                </span>
-                <span className="text-xs font-mono text-navy/40">
-                  Corporate Transit Trends
-                </span>
-              </div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="max-w-3xl"
+            >
+              <span className="eyebrow text-teal">01 — Mobility Intelligence & Insights</span>
 
-              <h1 className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-[76px] text-navy leading-[1.04] tracking-tight">
+              <h1 className="font-display text-navy text-3xl sm:text-5xl md:text-6xl leading-[1.08] mt-6 tracking-tight">
                 Stories, Tech & <br />
                 <span className="italic text-teal font-normal">
                   Fleet Innovation.
                 </span>
               </h1>
-            </div>
+            </motion.div>
 
-            <p className="max-w-md text-navy/70 text-base sm:text-lg font-light leading-relaxed pb-2">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+              className="max-w-md text-navy/70 text-base sm:text-lg font-light leading-relaxed pb-2"
+            >
               Explore key industry insights on corporate employee transportation, AI dispatch telematics, EV sustainability, and mobility benchmarks across India.
-            </p>
+            </motion.p>
           </div>
 
           {/* Prominent Header Showcase Image Banner */}
-          <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-navy/10 mb-12 group">
+          <motion.div
+            initial={{ opacity: 0, y: 35, scale: 0.98 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="relative rounded-3xl overflow-hidden shadow-2xl border border-navy/10 mb-12 group"
+          >
             <img
               src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1800&q=80"
               alt="Acciva Corporate Mobility Intelligence & Tech"
               className="w-full h-[340px] sm:h-[440px] md:h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
             />
-          </div>
+          </motion.div>
 
           {/* Quick Stats Strip */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4">
@@ -228,7 +239,7 @@ const Blog = () => {
       {/* ========================================================================= */}
       {/* 03 — NEWSLETTER & MOBILITY INTELLIGENCE SUBSCRIPTION WITH VIDEO BG        */}
       {/* ========================================================================= */}
-      <section className="py-28 md:py-40 bg-midnight text-ivory relative overflow-hidden border-t border-ivory/15">
+      <section className="py-14 md:py-20 bg-soft text-navy relative overflow-hidden border-t border-navy/10">
         {/* Background Video Loop */}
         <video
           autoPlay
@@ -236,25 +247,39 @@ const Blog = () => {
           muted
           playsInline
           src="/hero-mountains.mp4"
-          className="absolute inset-0 w-full h-full object-cover opacity-30 scale-105 pointer-events-none"
+          className="absolute inset-0 w-full h-full object-cover opacity-15 scale-105 pointer-events-none"
         />
-        <div className="absolute inset-0 bg-linear-to-b from-midnight/85 via-midnight/60 to-midnight/85 pointer-events-none" />
+        <div className="absolute inset-0 bg-linear-to-b from-soft/95 via-soft/85 to-soft/95 pointer-events-none" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-teal/20 rounded-full blur-3xl pointer-events-none" />
+        {/* Corner quarter-circle accents — same motif as the About page's cards */}
+        <div className="absolute top-0 right-0 w-80 h-80 bg-sand/25 rounded-bl-full pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-teal/20 rounded-tr-full pointer-events-none" />
 
         <div className="container-px relative z-10 text-center max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sand/15 border border-sand/30 text-sand text-xs font-mono uppercase tracking-widest mb-6">
-            <Sparkles size={14} />
-            <span>Monthly Fleet Dispatch Digest</span>
-          </div>
+          <span className="eyebrow text-teal inline-block mb-6">
+            02 — Monthly Fleet Dispatch Digest
+          </span>
 
-          <h2 className="font-display text-4xl sm:text-6xl text-ivory leading-tight drop-shadow-md">
-            Stay Ahead in <br />
-            <span className="italic text-sand font-normal">
-              Corporate Mobility Innovation.
-            </span>
+          <h2 className="font-display text-navy text-3xl sm:text-5xl md:text-6xl leading-[1.08] tracking-tight mb-6">
+            {[
+              { text: "Stay Ahead in Corporate", cls: "" },
+              { text: "Mobility Innovation.", cls: "italic text-teal font-normal" },
+            ].map((line, i) => (
+              <span className="line-mask block" key={line.text}>
+                <motion.span
+                  initial={{ y: "40%", opacity: 0 }}
+                  whileInView={{ y: "0%", opacity: 1 }}
+                  viewport={{ once: true, amount: 0.05 }}
+                  transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: i * 0.12 }}
+                  className={`block ${line.cls}`}
+                >
+                  {line.text}
+                </motion.span>
+              </span>
+            ))}
           </h2>
 
-          <p className="mt-6 text-ivory/80 text-base sm:text-lg font-light max-w-xl mx-auto leading-relaxed">
+          <p className="mt-6 text-navy/70 text-base sm:text-lg font-light max-w-xl mx-auto leading-relaxed">
             Subscribe to receive quarterly whitepapers, EV transition benchmarks, and tech park transit optimization case studies.
           </p>
 
@@ -262,7 +287,7 @@ const Blog = () => {
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="mt-10 p-5 rounded-2xl bg-teal/20 border border-teal/40 text-sand inline-flex items-center gap-3 text-sm font-semibold"
+              className="mt-10 p-5 rounded-2xl bg-teal/10 border border-teal/40 text-navy inline-flex items-center gap-3 text-sm font-semibold"
             >
               <CheckCircle2 size={20} className="text-teal" />
               <span>Thank you for subscribing to Acciva Mobility Intelligence!</span>
@@ -275,16 +300,23 @@ const Blog = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your corporate email"
-                className="flex-1 px-5 py-3.5 rounded-full bg-white/10 border border-ivory/20 text-ivory placeholder:text-ivory/40 text-sm focus:outline-none focus:border-sand transition-colors"
+                className="flex-1 px-5 py-3.5 rounded-full bg-white border border-navy/15 text-navy placeholder:text-navy/40 text-sm focus:outline-none focus:border-teal transition-colors"
               />
               <button
                 type="submit"
-                className="px-7 py-3.5 rounded-full bg-sand text-navy font-bold text-xs font-mono uppercase tracking-wider hover:bg-white transition-all shrink-0 cursor-pointer shadow-lg"
+                className="px-7 py-3.5 rounded-full bg-sand text-navy font-bold text-xs font-mono uppercase tracking-wider hover:bg-navy hover:text-ivory transition-all shrink-0 cursor-pointer shadow-lg"
               >
                 <span>Subscribe</span>
               </button>
             </form>
           )}
+
+          <NavLink
+            to="/contact"
+            className="mt-6 inline-flex items-center gap-2 px-8 py-3.5 rounded-full border border-navy/20 text-navy hover:bg-navy hover:text-ivory hover:border-navy transition-all text-xs font-mono uppercase tracking-wider font-semibold"
+          >
+            <span>Book Now</span>
+          </NavLink>
         </div>
       </section>
     </div>
