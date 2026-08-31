@@ -23,7 +23,7 @@ const IconLink = ({ href, label, children }) => (
 
 const Footer = () => {
   return (
-    <footer className="bg-soft text-navy pt-24 pb-10 border-t border-navy/10">
+    <footer className="bg-soft text-navy pt-14 md:pt-18 pb-8">
       <div className="container-px">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-12 pb-16 border-b border-navy/10">
           <div className="space-y-4 max-w-sm">

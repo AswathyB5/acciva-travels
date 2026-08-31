@@ -206,7 +206,7 @@ const Technology = () => {
       {/* ========================================================================= */}
       {/* 01 — SUBPAGE HEADER: TECH SHOWCASE HERO                                   */}
       {/* ========================================================================= */}
-      <section className="pt-36 sm:pt-44 pb-14 md:pb-20 bg-soft border-b border-navy/10 relative">
+      <section className="pt-32 sm:pt-36 pb-10 md:pb-12 bg-soft relative">
         {/* Subtle Ambient Tech Grid Glow */}
         <div className="absolute top-0 right-1/4 w-96 h-96 bg-teal/5 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-10 left-10 w-80 h-80 bg-sand/10 rounded-full blur-3xl pointer-events-none" />
@@ -310,14 +310,14 @@ const Technology = () => {
       {/* ========================================================================= */}
       {/* 02 — THE 4 PILLARS OF ACCIVA TECHNOLOGY (INTERACTIVE EXPLORER)            */}
       {/* ========================================================================= */}
-      <section className="py-20 md:py-32 bg-soft border-b border-navy/10 relative">
+      <section className="py-16 md:py-20 bg-soft relative">
         <div className="container-px">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-navy/10 gap-6"
+            className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6"
           >
             <div>
               <span className="eyebrow text-teal">02 — Core Architecture</span>
@@ -473,7 +473,7 @@ const Technology = () => {
       {/* ========================================================================= */}
       {/* 03 — INTERACTIVE SAFETY & SOS ESCALATION PIPELINE                         */}
       {/* ========================================================================= */}
-      <section className="py-20 md:py-32 bg-soft text-navy relative overflow-hidden border-b border-navy/10">
+      <section className="py-16 md:py-20 bg-soft text-navy relative overflow-hidden">
         {/* Background Grid Accent */}
         <div
           className="absolute inset-0 opacity-10 pointer-events-none"
@@ -605,7 +605,7 @@ const Technology = () => {
       {/* ========================================================================= */}
       {/* 04 — ENTERPRISE API & ECOSYSTEM INTEGRATION                               */}
       {/* ========================================================================= */}
-      <section className="py-20 md:py-32 bg-soft border-b border-navy/10">
+      <section className="py-16 md:py-20 bg-soft">
         <div className="container-px">
           <div className="grid lg:grid-cols-12 gap-12 items-center">
             <motion.div
@@ -679,7 +679,7 @@ const Technology = () => {
       {/* ========================================================================= */}
       {/* 05 — CINEMATIC CLOSING CTA                                                */}
       {/* ========================================================================= */}
-      <section className="py-14 md:py-20 bg-soft text-navy relative overflow-hidden">
+      <section className="py-12 md:py-16 bg-soft text-navy relative overflow-hidden">
         {/* Background Video & Overlays */}
         <video
           autoPlay

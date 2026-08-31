@@ -44,7 +44,7 @@ const Blog = () => {
       {/* ========================================================================= */}
       {/* 01 — SUBPAGE HEADER: CLEAN WHITE/SOFT SECTION WITH HERO SHOWCASE IMAGE    */}
       {/* ========================================================================= */}
-      <section className="pt-36 sm:pt-44 pb-14 md:pb-20 bg-soft border-b border-navy/10">
+      <section className="pt-32 sm:pt-36 pb-10 md:pb-12 bg-soft">
         <div className="container-px">
           {/* Breadcrumb Navigation */}
           <div className="flex items-center gap-2 text-xs font-mono text-navy/40 mb-6 uppercase tracking-wider">
@@ -148,10 +148,10 @@ const Blog = () => {
       {/* ========================================================================= */}
       {/* 02 — CATEGORY FILTER & ARTICLES GRID WITH STAGGER ANIMATIONS              */}
       {/* ========================================================================= */}
-      <section className="py-20 md:py-32 bg-soft">
+      <section className="py-16 md:py-20 bg-soft">
         <div className="container-px">
           {/* Animated Category Filter Pills */}
-          <div className="flex flex-wrap items-center gap-3 mb-14 pb-6 border-b border-navy/10">
+          <div className="flex flex-wrap items-center gap-3 mb-10">
             {blogCategories.map((cat) => {
               const isSelected = activeCategory === cat;
               return (
@@ -239,7 +239,7 @@ const Blog = () => {
       {/* ========================================================================= */}
       {/* 03 — NEWSLETTER & MOBILITY INTELLIGENCE SUBSCRIPTION WITH VIDEO BG        */}
       {/* ========================================================================= */}
-      <section className="py-14 md:py-20 bg-soft text-navy relative overflow-hidden border-t border-navy/10">
+      <section className="py-12 md:py-16 bg-soft text-navy relative overflow-hidden">
         {/* Background Video Loop */}
         <video
           autoPlay

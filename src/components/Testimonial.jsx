@@ -85,7 +85,7 @@ const Testimonial = () => {
   };
 
   return (
-    <section className="relative py-24 md:py-36 overflow-hidden bg-soft text-navy select-none">
+    <section className="relative py-16 md:py-20 overflow-hidden bg-soft text-navy select-none">
       {/* Ambient background glows */}
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-teal/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-sand/10 rounded-full blur-3xl pointer-events-none" />
@@ -93,7 +93,7 @@ const Testimonial = () => {
 
       <div className="container-px relative z-10">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 pb-8 border-b border-navy/10 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 md:mb-12 gap-6">
           <div>
             <span className="eyebrow text-teal">07 — Enterprise Trust & Reviews</span>
             <h2 className="font-display text-navy text-2xl sm:text-4xl md:text-5xl tracking-tight leading-[1.08] mt-6">

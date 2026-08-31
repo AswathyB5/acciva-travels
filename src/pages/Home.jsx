@@ -43,7 +43,7 @@ const Home = () => {
       <Hero />
 
       {/* 01 — Introduction + Giant image story */}
-      <section className="bg-soft py-32 md:py-48 overflow-hidden">
+      <section className="bg-soft py-16 md:py-24 overflow-hidden">
         <div className="container-px grid md:grid-cols-12 gap-10 md:gap-14 items-start">
           <div className="md:col-span-5">
             <span className="eyebrow text-teal">01 — The Acciva Experience</span>
@@ -83,7 +83,7 @@ const Home = () => {
       </section>
 
       {/* 02 — Destinations expanding accordion */}
-      <section className="bg-soft pb-32 md:pb-48 pt-16">
+      <section className="bg-soft py-16 md:py-20">
         <div className="container-px mb-16">
           <span className="eyebrow text-teal">02 — Featured Destinations</span>
           <h2 className="font-display text-navy text-2xl sm:text-4xl md:text-5xl leading-[1.08] mt-6 max-w-2xl tracking-tight">
@@ -94,7 +94,7 @@ const Home = () => {
       </section>
 
       {/* 03 — Huge statement with Cinematic Background Video */}
-      <section className="relative bg-soft py-16 md:py-24 overflow-hidden">
+      <section className="relative bg-soft py-14 md:py-18 overflow-hidden">
         {/* Background Video & Overlays */}
         <video
           autoPlay
@@ -176,7 +176,7 @@ const Home = () => {
       </section>
 
       {/* 04 — What We Offer (Enhanced Featured Showcase) */}
-      <section className="bg-soft py-24 md:py-36 text-navy">
+      <section className="bg-soft py-16 md:py-20 text-navy">
         <div className="container-px">
           <FeaturedServices />
         </div>
@@ -186,7 +186,7 @@ const Home = () => {
       <HorizontalGallery panels={galleryPanels} />
 
       {/* 06 — Numbers / Metrics */}
-      <section className="bg-soft py-24 md:py-36 border-y border-navy/10">
+      <section className="bg-soft py-14 md:py-18">
         <div className="container-px grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-8">
           {stats.map((s) => (
             <StatCounter key={s.label} {...s} />
@@ -198,7 +198,7 @@ const Home = () => {
       <Testimonial />
 
       {/* 08 — Travel Journal */}
-      <section className="bg-soft py-24 md:py-40">
+      <section className="bg-soft py-16 md:py-20">
         <div className="container-px">
           <span className="eyebrow text-teal">08 — The Journal</span>
           <h2 className="font-display text-navy text-2xl sm:text-4xl md:text-5xl leading-[1.08] mt-6 max-w-xl tracking-tight">
@@ -211,7 +211,7 @@ const Home = () => {
       </section>
 
       {/* Final CTA */}
-      <section className="relative py-32 md:py-48 overflow-hidden">
+      <section className="relative py-16 md:py-24 overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1800&q=80"
           alt=""

@@ -19,7 +19,7 @@ const Services = () => {
       {/* ========================================================================= */}
       {/* 01 — SUBPAGE HEADER: CLEAN WHITE/SOFT SECTION WITH HERO SHOWCASE IMAGE    */}
       {/* ========================================================================= */}
-      <section className="pt-36 sm:pt-44 pb-14 md:pb-20 bg-soft border-b border-navy/10">
+      <section className="pt-32 sm:pt-36 pb-10 md:pb-12 bg-soft">
         <div className="container-px">
           {/* Breadcrumb Navigation */}
           <div className="flex items-center gap-2 text-xs font-mono text-navy/40 mb-6 uppercase tracking-wider">
@@ -150,14 +150,14 @@ const Services = () => {
       {/* ========================================================================= */}
       {/* 02 — SERVICES CATALOGUE GRID                                              */}
       {/* ========================================================================= */}
-      <section className="py-20 md:py-32 bg-soft">
+      <section className="py-16 md:py-20 bg-soft">
         <div className="container-px">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-navy/10 gap-6"
+            className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6"
           >
             <div>
               <span className="eyebrow text-teal">02 — Our Fleet Offerings</span>
@@ -177,7 +177,7 @@ const Services = () => {
       {/* ========================================================================= */}
       {/* 03 — CINEMATIC MAGNETIC CLOSING CTA WITH BACKGROUND VIDEO                 */}
       {/* ========================================================================= */}
-      <section className="py-14 md:py-20 bg-soft text-navy relative overflow-hidden border-t border-navy/10">
+      <section className="py-12 md:py-16 bg-soft text-navy relative overflow-hidden">
         {/* Background Video & Overlays */}
         <video
           autoPlay

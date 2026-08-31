@@ -68,7 +68,7 @@ const Contact = () => {
       {/* ========================================================================= */}
       {/* 01 — MAIN SECTION: SUBPAGE HEADER & IMMEDIATE CONTACT FORM FIRST          */}
       {/* ========================================================================= */}
-      <section className="pt-36 sm:pt-44 pb-20 md:pb-28 bg-soft">
+      <section className="pt-32 sm:pt-36 pb-14 md:pb-18 bg-soft">
         <div className="container-px">
           {/* Breadcrumb Navigation */}
           <div className="flex items-center gap-2 text-xs font-mono text-navy/40 mb-6 uppercase tracking-wider">
@@ -401,7 +401,7 @@ const Contact = () => {
       {/* ========================================================================= */}
       {/* 02 — INTERACTIVE LOCATION & GOOGLE MAP SECTION                            */}
       {/* ========================================================================= */}
-      <section className="pb-24 md:pb-36 bg-soft">
+      <section className="pb-16 md:pb-20 bg-soft">
         <div className="container-px">
           <motion.div
             initial={{ opacity: 0, y: 35 }}
@@ -456,7 +456,7 @@ const Contact = () => {
       {/* ========================================================================= */}
       {/* 03 — CLOSING ASSISTANCE BANNER                                            */}
       {/* ========================================================================= */}
-      <section className="py-8 md:py-10 bg-soft text-navy relative overflow-hidden border-t border-navy/15">
+      <section className="py-8 md:py-10 bg-soft text-navy relative overflow-hidden">
         <motion.div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[240px] bg-teal/15 rounded-full blur-3xl pointer-events-none"
           animate={{ x: [0, 25, 0], y: [0, -15, 0] }}

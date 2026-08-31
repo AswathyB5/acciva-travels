@@ -64,7 +64,7 @@ const About = () => {
       {/* ========================================================================= */}
       {/* 01 — SUBPAGE HEADER: CLEAN WHITE/SOFT SECTION WITH HERO SHOWCASE IMAGE    */}
       {/* ========================================================================= */}
-      <section className="pt-36 sm:pt-44 pb-14 md:pb-20 bg-soft border-b border-navy/10">
+      <section className="pt-32 sm:pt-36 pb-10 md:pb-12 bg-soft">
         <div className="container-px">
           {/* Breadcrumb Navigation */}
           <div className="flex items-center gap-2 text-xs font-mono text-navy/40 mb-6 uppercase tracking-wider">
@@ -124,7 +124,7 @@ const About = () => {
       {/* ========================================================================= */}
       {/* 02 — WHO WE ARE: BRAND STORYTELLING & PHILOSOPHY                          */}
       {/* ========================================================================= */}
-      <section className="py-24 md:py-36 bg-soft">
+      <section className="py-16 md:py-20 bg-soft">
         <div className="container-px">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Left Content */}
@@ -189,7 +189,7 @@ const About = () => {
       {/* ========================================================================= */}
       {/* 03 — WHY CHOOSE ACCIVA? (EXPERIENCE, SAFETY & CUSTOMER FOCUS)             */}
       {/* ========================================================================= */}
-      <section className="py-24 md:py-36 bg-soft text-navy relative overflow-hidden">
+      <section className="py-16 md:py-20 bg-soft text-navy relative overflow-hidden">
         {/* Glow ambient background */}
         <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-teal/15 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-sand/15 rounded-full blur-3xl pointer-events-none" />
@@ -197,7 +197,7 @@ const About = () => {
 
         <div className="container-px relative z-10">
           {/* Section Header */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-8 border-b border-navy/15 gap-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
             <div className="max-w-3xl">
               <span className="eyebrow text-teal">03 — Why Choose Acciva?</span>
               <h2 className="font-display text-navy text-2xl sm:text-4xl md:text-5xl tracking-tight leading-[1.08] mt-6">
@@ -267,7 +267,7 @@ const About = () => {
       {/* ========================================================================= */}
       {/* 04 — OUR VISION & OUR MISSION                                             */}
       {/* ========================================================================= */}
-      <section className="py-24 md:py-36 bg-soft relative">
+      <section className="py-16 md:py-20 bg-soft relative">
         <div className="container-px">
           {/* Header */}
           <div className="text-center max-w-3xl mx-auto mb-16">
@@ -390,7 +390,7 @@ const About = () => {
       {/* ========================================================================= */}
       {/* 05 — CINEMATIC MAGNETIC ENTERPRISE CLOSING CTA WITH BACKGROUND VIDEO      */}
       {/* ========================================================================= */}
-      <section className="py-14 md:py-20 bg-soft text-navy relative overflow-hidden border-t border-navy/10">
+      <section className="py-12 md:py-16 bg-soft text-navy relative overflow-hidden">
         {/* Background Video & Overlays */}
         <video
           autoPlay
