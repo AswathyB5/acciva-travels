@@ -275,23 +275,24 @@ const Technology = () => {
             className="grid grid-cols-2 md:grid-cols-4 gap-4"
           >
             {[
-              { icon: Activity, val: "500 ms", label: "GPS Ping Latency", color: "text-navy" },
-              { icon: Clock, val: "< 15s", label: "SOS Triage SLA", color: "text-teal" },
-              { icon: Zap, val: "28% Cut", label: "Avg Transit Time", color: "text-navy" },
-              { icon: Server, val: "100% API", label: "HRMS Integration", color: "text-teal" },
+              { icon: Activity, val: "500 ms", label: "GPS Ping Latency", color: "text-navy", grad: "from-teal/20 to-teal/5" },
+              { icon: Clock, val: "< 15s", label: "SOS Triage SLA", color: "text-teal", grad: "from-sand/25 to-sand/5" },
+              { icon: Zap, val: "28% Cut", label: "Avg Transit Time", color: "text-navy", grad: "from-teal/20 to-teal/5" },
+              { icon: Server, val: "100% API", label: "HRMS Integration", color: "text-teal", grad: "from-sand/25 to-sand/5" },
             ].map((m, i) => {
               const IconComp = m.icon;
               return (
                 <motion.div
                   key={m.label}
                   variants={itemVariants}
-                  whileHover={{ y: -3, transition: { duration: 0.2 } }}
-                  className="p-5 rounded-2xl bg-white border border-navy/10 shadow-xs flex items-center gap-4 group"
+                  whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                  className="p-5 rounded-2xl bg-white border border-navy/10 shadow-xs flex items-center gap-4 group relative overflow-hidden hover:shadow-md transition-all"
                 >
-                  <div className="w-11 h-11 rounded-xl bg-teal/10 group-hover:bg-teal group-hover:text-ivory transition-colors flex items-center justify-center text-teal shrink-0">
+                  <div className={`absolute top-0 right-0 w-24 h-24 bg-linear-to-bl ${m.grad} rounded-bl-full pointer-events-none transition-transform duration-500 group-hover:scale-125`} />
+                  <div className="w-11 h-11 rounded-xl bg-teal/10 group-hover:bg-teal group-hover:text-ivory transition-colors flex items-center justify-center text-teal shrink-0 relative z-10">
                     <IconComp size={22} />
                   </div>
-                  <div>
+                  <div className="relative z-10">
                     <p className={`font-display text-xl sm:text-2xl font-bold ${m.color}`}>
                       {m.val}
                     </p>
@@ -504,6 +505,7 @@ const Technology = () => {
             {safetySteps.map((step, idx) => {
               const StepIcon = step.icon;
               const isSelected = idx === activeSafetyStep;
+              const grad = idx % 2 === 0 ? "from-teal/20 to-teal/5" : "from-sand/25 to-sand/5";
 
               return (
                 <motion.div
@@ -514,13 +516,16 @@ const Technology = () => {
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
                   whileHover={{ y: -4 }}
                   onClick={() => setActiveSafetyStep(idx)}
-                  className={`p-6 rounded-2xl border relative flex flex-col justify-between cursor-pointer transition-all duration-300 ${
+                  className={`p-6 rounded-2xl border relative flex flex-col justify-between cursor-pointer transition-all duration-300 overflow-hidden group ${
                     isSelected
                       ? "bg-sand/10 border-sand shadow-[0_0_25px_rgba(216,199,165,0.35)]"
                       : "bg-white border-navy/10 hover:border-navy/30 shadow-xs"
                   }`}
                 >
-                  <div>
+                  {/* Decorative signature corner quarter-circle gradient */}
+                  <div className={`absolute top-0 right-0 w-28 h-28 bg-linear-to-bl ${grad} rounded-bl-full pointer-events-none transition-transform duration-500 group-hover:scale-125`} />
+
+                  <div className="relative z-10">
                     <div className="flex items-center justify-between mb-4">
                       <span
                         className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${
@@ -547,7 +552,7 @@ const Technology = () => {
                     </p>
                   </div>
 
-                  <div className="mt-6 pt-4 border-t border-navy/10 flex items-center gap-2 text-[10px] font-mono uppercase">
+                  <div className="mt-6 pt-4 border-t border-navy/10 flex items-center gap-2 text-[10px] font-mono uppercase relative z-10">
                     <span className={isSelected ? "text-sand font-bold" : "text-navy/40"}>
                       Stage {idx + 1} of 4
                     </span>
@@ -568,9 +573,11 @@ const Technology = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.6 }}
-            className="p-6 sm:p-8 rounded-3xl bg-white border border-sand/40 shadow-md flex flex-col md:flex-row items-center justify-between gap-6"
+            className="p-6 sm:p-8 rounded-3xl bg-white border border-sand/40 shadow-md flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden group"
           >
-            <div className="flex items-center gap-4">
+            <div className="absolute top-0 right-0 w-36 h-36 bg-linear-to-bl from-sand/20 to-transparent rounded-bl-full pointer-events-none transition-transform duration-500 group-hover:scale-125" />
+
+            <div className="flex items-center gap-4 relative z-10">
               <div className="w-12 h-12 rounded-2xl bg-sand/20 text-sand flex items-center justify-center shrink-0">
                 <Sparkles size={24} />
               </div>
@@ -586,7 +593,7 @@ const Technology = () => {
 
             <NavLink
               to="/contact"
-              className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-sand text-navy hover:bg-navy hover:text-ivory transition-colors text-xs font-mono uppercase tracking-wider font-semibold"
+              className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-sand text-navy hover:bg-navy hover:text-ivory transition-colors text-xs font-mono uppercase tracking-wider font-semibold relative z-10 shadow-sm"
             >
               <span>Download Safety SLA Audit</span>
               <ArrowUpRight size={14} />
@@ -630,6 +637,7 @@ const Technology = () => {
             <div className="lg:col-span-7 grid sm:grid-cols-2 gap-4">
               {integrationStack.map((item, idx) => {
                 const ItemIcon = item.icon;
+                const grad = idx % 2 === 0 ? "from-teal/20 to-teal/5" : "from-sand/25 to-sand/5";
                 return (
                   <motion.div
                     key={item.name}
@@ -638,23 +646,28 @@ const Technology = () => {
                     viewport={{ once: true, amount: 0.1 }}
                     transition={{ duration: 0.5, delay: idx * 0.1 }}
                     whileHover={{ y: -4 }}
-                    className="p-6 rounded-2xl bg-white border border-navy/10 shadow-xs hover:shadow-lg transition-all"
+                    className="p-6 rounded-2xl bg-white border border-navy/10 shadow-xs hover:shadow-lg transition-all relative overflow-hidden group"
                   >
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="w-10 h-10 rounded-xl bg-teal/10 text-teal flex items-center justify-center">
-                        <ItemIcon size={20} />
-                      </div>
-                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-navy/5 text-navy/60 font-semibold uppercase">
-                        {item.tag}
-                      </span>
-                    </div>
+                    {/* Decorative signature corner quarter-circle gradient */}
+                    <div className={`absolute top-0 right-0 w-28 h-28 bg-linear-to-bl ${grad} rounded-bl-full pointer-events-none transition-transform duration-500 group-hover:scale-125`} />
 
-                    <h4 className="font-display text-lg font-bold text-navy mb-2">
-                      {item.name}
-                    </h4>
-                    <p className="text-xs sm:text-sm text-navy/65 font-light leading-relaxed">
-                      {item.desc}
-                    </p>
+                    <div className="relative z-10">
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="w-10 h-10 rounded-xl bg-teal/10 text-teal flex items-center justify-center">
+                          <ItemIcon size={20} />
+                        </div>
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-navy/5 text-navy/60 font-semibold uppercase">
+                          {item.tag}
+                        </span>
+                      </div>
+
+                      <h4 className="font-display text-lg font-bold text-navy mb-2">
+                        {item.name}
+                      </h4>
+                      <p className="text-xs sm:text-sm text-navy/65 font-light leading-relaxed">
+                        {item.desc}
+                      </p>
+                    </div>
                   </motion.div>
                 );
               })}
