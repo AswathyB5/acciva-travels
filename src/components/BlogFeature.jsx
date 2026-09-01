@@ -49,7 +49,7 @@ const BlogCard = ({ post, index }) => (
       </h3>
 
       {/* Excerpt */}
-      <p className="text-navy/60 text-sm leading-relaxed line-clamp-3 flex-1">
+      <p className="text-navy/65 text-sm leading-relaxed line-clamp-3 flex-1">
         {post.excerpt}
       </p>
 

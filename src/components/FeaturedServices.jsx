@@ -114,7 +114,7 @@ const FeaturedServices = () => {
                     {service.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-navy/70 leading-relaxed font-light mt-3">
+                  <p className="text-xs sm:text-sm text-navy/75 leading-relaxed font-light mt-3">
                     {service.description}
                   </p>
                 </div>

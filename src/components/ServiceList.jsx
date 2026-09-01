@@ -92,7 +92,7 @@ const ServiceList = ({ services }) => {
                       {service.title}
                     </h3>
 
-                    <p className="text-sm sm:text-base text-navy/70 leading-relaxed font-light mt-3">
+                    <p className="text-sm sm:text-base text-navy/75 leading-relaxed font-light mt-3">
                       {service.description}
                     </p>
                   </div>

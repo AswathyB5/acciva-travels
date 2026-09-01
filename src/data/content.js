@@ -22,7 +22,7 @@ export const services = [
       "24/7 Shift Operations",
     ],
     image:
-      "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1200&q=80",
+      "https://routematic.com/wp-content/uploads/managing-employee-transport-in-metro-cities-1024x576.webp",
   },
   {
     slug: "fleet-management",
@@ -38,7 +38,7 @@ export const services = [
       "Custom Client Reports",
     ],
     image:
-      "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1200&q=80",
+      "https://i.pinimg.com/1200x/d5/7e/a6/d57ea63c519583f1342eb70c87552daf.jpg",
   },
   {
     slug: "school-transportation",
@@ -54,7 +54,7 @@ export const services = [
       "Dedicated Chauffeurs & Captains",
     ],
     image:
-      "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80",
+      "https://i.pinimg.com/736x/a1/72/bf/a172bfc1fe7913c45f81319b6a17a894.jpg",
   },
   {
     slug: "airport-transfer-services",
@@ -275,7 +275,7 @@ export const blogPosts = [
     excerpt:
       "A practical, step-by-step approach to planning a trip abroad without the stress — from budgeting to booking.",
     image:
-      "https://images.unsplash.com/photo-1503220317375-aaad61436b1b?auto=format&fit=crop&w=1200&q=80",
+      "https://plus.unsplash.com/premium_photo-1723629817274-5408105f3a48?auto=format&fit=crop&w=1200&q=80",
   },
   {
     slug: "best-destinations-relaxing-getaway",
@@ -285,7 +285,7 @@ export const blogPosts = [
     excerpt:
       "Slow down and unwind at these serene destinations built for rest, wellness, and quiet luxury.",
     image:
-      "https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1713843841925-6af6ed0df472?auto=format&fit=crop&w=1200&q=80",
   },
   {
     slug: "travel-tips-first-time-traveler",
@@ -295,7 +295,7 @@ export const blogPosts = [
     excerpt:
       "Essential advice on packing, documents, and etiquette to help first-time travelers feel confident abroad.",
     image:
-      "https://images.unsplash.com/photo-1503516459261-40c66117780a?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1741795854922-87217b375e79?auto=format&fit=crop&w=1200&q=80",
   },
   {
     slug: "stress-free-next-trip",

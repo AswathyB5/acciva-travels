@@ -85,7 +85,7 @@ const About = () => {
               </h1>
             </div>
 
-            <p className="max-w-md text-navy/70 text-base sm:text-lg font-light leading-relaxed pb-2">
+            <p className="max-w-md text-navy/75 text-base sm:text-lg font-light leading-relaxed pb-2">
               Tracing our journey from boutique employee transit in Bengaluru in 2007 to powering over 50,000+ monthly corporate commutes across India.
             </p>
           </div>
@@ -93,7 +93,7 @@ const About = () => {
           {/* Prominent Header Showcase Image */}
           <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-navy/10 mb-12 group">
             <img
-              src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1800&q=80"
+              src="https://images.unsplash.com/photo-1759197761283-882699970b3d?auto=format&fit=crop&w=1800&q=80"
               alt="Acciva Corporate Tech Park Transit Network"
               className="w-full h-[340px] sm:h-[440px] md:h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
             />
@@ -141,7 +141,7 @@ const About = () => {
                 Built To Be <span className="italic text-teal font-normal">Active</span> And Driven To <span className="italic text-teal font-normal">Achieve</span>.
               </h2>
 
-              <div className="space-y-4 text-navy/70 leading-relaxed text-base sm:text-lg font-light">
+              <div className="space-y-4 text-navy/75 leading-relaxed text-base sm:text-lg font-light">
                 <p>
                   <strong>Acciva Travels</strong> is a premier corporate employee transportation solutions provider. We partner with multinational technology firms, global capability centers (GCCs), and enterprise corporations to manage end-to-end employee transit.
                 </p>
@@ -205,7 +205,7 @@ const About = () => {
                 <span className="italic text-teal font-normal">Confident & Courteous.</span>
               </h2>
             </div>
-            <p className="text-navy/70 text-base max-w-md font-light leading-relaxed">
+            <p className="text-navy/75 text-base max-w-md font-light leading-relaxed">
               To Acciva, customer experience is incredibly valuable. We have succeeded for over many years by staying strong on our approach to customer service.
             </p>
           </div>
@@ -240,7 +240,7 @@ const About = () => {
                       {f.title}
                     </h3>
 
-                    <p className="text-sm text-navy/70 leading-relaxed font-light mb-6">
+                    <p className="text-sm text-navy/75 leading-relaxed font-light mb-6">
                       {f.desc}
                     </p>
                   </div>
@@ -275,7 +275,7 @@ const About = () => {
             <h2 className="font-display text-navy text-2xl sm:text-4xl md:text-5xl mt-6 leading-[1.08] tracking-tight">
               Our Vision & <span className="italic text-teal font-normal">Mission.</span>
             </h2>
-            <p className="text-navy/60 text-base sm:text-lg mt-4 font-light leading-relaxed">
+            <p className="text-navy/65 text-base sm:text-lg mt-4 font-light leading-relaxed">
               The foundational compass that guides our hospitality, operations, and commitment to corporate travelers.
             </p>
           </div>
@@ -311,7 +311,7 @@ const About = () => {
                   OUR VISION
                 </h3>
 
-                <blockquote className="text-navy/80 text-base sm:text-xl font-light leading-relaxed italic border-l-2 border-teal pl-5 py-1">
+                <blockquote className="text-navy/85 text-base sm:text-xl font-light leading-relaxed italic border-l-2 border-teal pl-5 py-1">
                   &ldquo;We strive to deliver superior travel and transportation services with a proactive approach in ensuring hospitality, integrity and reliability.&rdquo;
                 </blockquote>
               </div>
@@ -362,7 +362,7 @@ const About = () => {
                   OUR MISSION
                 </h3>
 
-                <blockquote className="text-navy/80 text-base sm:text-xl font-light leading-relaxed italic border-l-2 border-sand pl-5 py-1">
+                <blockquote className="text-navy/85 text-base sm:text-xl font-light leading-relaxed italic border-l-2 border-sand pl-5 py-1">
                   &ldquo;Our goal is to ensure utmost dedication to safety with customer security and comfort at the center of our corporate philosophy.&rdquo;
                 </blockquote>
               </div>
@@ -444,7 +444,7 @@ const About = () => {
             ))}
           </h2>
 
-          <p className="mt-6 text-navy/70 text-base sm:text-xl font-light max-w-2xl mx-auto leading-relaxed">
+          <p className="mt-6 text-navy/75 text-base sm:text-xl font-light max-w-2xl mx-auto leading-relaxed">
             Discover why Fortune 500 enterprises and leading Indian corporations trust Acciva for punctual, transparent, and technology-driven mobility.
           </p>
 

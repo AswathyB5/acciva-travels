@@ -20,7 +20,7 @@ const whyChoosePanels = [
     description:
       "Acciva's software provides real time monitoring, centralised to security operations, an automated safe drop confirmation through IVR call and assures response time of less than 60 seconds in any panic situations.",
     image:
-      "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1758411898007-6a17c74ef528?auto=format&fit=crop&w=1600&q=80",
   },
   {
     word: "Cost Optimization",
@@ -36,7 +36,7 @@ const whyChoosePanels = [
     description:
       "Acciva’s state of art technology is an automation platform for employee transportation that helps Rostering, routing, deployment, live tracking, paperless automated billing and e-trip sheet.",
     image:
-      "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1724620962048-8e4fde0e06c3?auto=format&fit=crop&w=1600&q=80",
   },
 ];
 
@@ -91,7 +91,7 @@ const Home = () => {
               </h1>
             </div>
             <div className="mt-10">
-              <p className="text-navy/65 leading-relaxed text-base max-w-sm">
+              <p className="text-navy/70 leading-relaxed text-base max-w-sm text-justify">
                 Acciva Travels has emerged to be one of the best leading Corporate Employee Transport Services &amp; Solutions Pan India. We are committed to provide quality and reliable Employee Transportation services. Our state-of-art app based Technology empowers the entire Employee Transportation Management System process for our Corporate companies.
               </p>
             </div>
@@ -112,7 +112,7 @@ const Home = () => {
                       <path d="M2 5l2.5 2.5L8 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </span>
-                  <span className="text-navy/75 text-sm leading-relaxed">{service}</span>
+                  <span className="text-navy/80 text-sm leading-relaxed">{service}</span>
                 </div>
               ))}
             </div>
@@ -120,13 +120,13 @@ const Home = () => {
 
           <div className="md:col-span-7 relative md:sticky md:top-32">
             <RevealImage
-              src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1920&q=80"
-              alt="Acciva executive black luxury sedan fleet"
+              src="https://i.pinimg.com/1200x/6e/46/5a/6e465aacc98f07549078a74b0050f979.jpg"
+              alt="Acciva executive fleet vehicle"
               className="h-[50vh] md:h-[78vh] ml-auto w-full md:w-[90%]"
             />
             <div className="absolute -bottom-10 -left-4 sm:left-0 md:-left-10 w-1/2 md:w-[40%] shadow-[0_20px_60px_rgba(7,26,36,0.25)] border-4 border-soft">
               <RevealImage
-                src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1000&q=80"
+                src="https://images.unsplash.com/photo-1647242097616-5000e3ae5bd3?auto=format&fit=crop&w=1000&q=80"
                 alt="Acciva professional VIP executive chauffeur"
                 className="h-[24vh] md:h-[32vh]"
               />

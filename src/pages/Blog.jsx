@@ -79,7 +79,7 @@ const Blog = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
-              className="max-w-md text-navy/70 text-base sm:text-lg font-light leading-relaxed pb-2"
+              className="max-w-md text-navy/75 text-base sm:text-lg font-light leading-relaxed pb-2"
             >
               Explore key industry insights on corporate employee transportation, AI dispatch telematics, EV sustainability, and mobility benchmarks across India.
             </motion.p>
@@ -211,7 +211,7 @@ const Blog = () => {
                         {post.title}
                       </h3>
 
-                      <p className="text-xs sm:text-sm text-navy/70 leading-relaxed font-light mt-3 line-clamp-3">
+                      <p className="text-xs sm:text-sm text-navy/75 leading-relaxed font-light mt-3 line-clamp-3">
                         {post.excerpt}
                       </p>
                     </div>
@@ -279,7 +279,7 @@ const Blog = () => {
             ))}
           </h2>
 
-          <p className="mt-6 text-navy/70 text-base sm:text-lg font-light max-w-xl mx-auto leading-relaxed">
+          <p className="mt-6 text-navy/75 text-base sm:text-lg font-light max-w-xl mx-auto leading-relaxed">
             Subscribe to receive quarterly whitepapers, EV transition benchmarks, and tech park transit optimization case studies.
           </p>
 

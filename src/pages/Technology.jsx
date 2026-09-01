@@ -245,7 +245,7 @@ const Technology = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.15 }}
-              className="max-w-md text-navy/70 text-base sm:text-lg font-light leading-relaxed pb-2"
+              className="max-w-md text-navy/75 text-base sm:text-lg font-light leading-relaxed pb-2"
             >
               From automated AI roster routing to 24/7 command tower surveillance, our proprietary technology platform powers over 50,000+ seamless enterprise commutes monthly.
             </motion.p>
@@ -415,7 +415,7 @@ const Technology = () => {
                       {techPillars[activePillar].title}
                     </h3>
 
-                    <p className="text-navy/70 text-sm sm:text-base leading-relaxed mb-8 font-light">
+                    <p className="text-navy/75 text-sm sm:text-base leading-relaxed mb-8 font-light">
                       {techPillars[activePillar].description}
                     </p>
 
@@ -496,7 +496,7 @@ const Technology = () => {
             <h2 className="font-display text-navy text-2xl sm:text-4xl md:text-5xl leading-[1.08] mt-6 tracking-tight">
               Automated SOS & <span className="italic text-teal font-normal">Incident Response.</span>
             </h2>
-            <p className="text-navy/70 text-sm sm:text-base mt-4 font-light leading-relaxed">
+            <p className="text-navy/75 text-sm sm:text-base mt-4 font-light leading-relaxed">
               Every vehicle in the Acciva network is outfitted with dual in-cabin panic switches and connected to our 24/7 Command Tower for rapid on-ground intervention. Click each stage to simulate the response chain.
             </p>
           </motion.div>
@@ -619,7 +619,7 @@ const Technology = () => {
               <h2 className="font-display text-navy text-2xl sm:text-4xl md:text-5xl leading-[1.08] mt-6 tracking-tight">
                 Built To Integrate Seamlessly With <span className="italic text-teal font-normal">Your IT Stack.</span>
               </h2>
-              <p className="text-navy/70 text-sm sm:text-base mt-4 font-light leading-relaxed">
+              <p className="text-navy/75 text-sm sm:text-base mt-4 font-light leading-relaxed">
                 No painful manual roster uploads. Our automated connectors ingest shift schedules, employee geo-locations, and approval workflows directly from your existing enterprise HR and ERP software.
               </p>
 
@@ -731,7 +731,7 @@ const Technology = () => {
             ))}
           </h2>
 
-          <p className="text-navy/70 text-sm sm:text-base font-light max-w-xl mx-auto mb-10 leading-relaxed">
+          <p className="text-navy/75 text-sm sm:text-base font-light max-w-xl mx-auto mb-10 leading-relaxed">
             Let our technical mobility consultants audit your current route logistics, calculate potential cost savings, and set up a live Command Tower trial.
           </p>
 

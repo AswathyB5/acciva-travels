@@ -53,7 +53,7 @@ const Services = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
-              className="max-w-md text-navy/70 text-base sm:text-lg font-light leading-relaxed pb-2"
+              className="max-w-md text-navy/75 text-base sm:text-lg font-light leading-relaxed pb-2"
             >
               End-to-end employee transportation, tech park shuttle networks, executive transit, and airport transfers managed with 99.8% on-time precision.
             </motion.p>
@@ -226,7 +226,7 @@ const Services = () => {
             ))}
           </h2>
 
-          <p className="mt-6 text-navy/70 text-base sm:text-xl font-light max-w-2xl mx-auto leading-relaxed">
+          <p className="mt-6 text-navy/75 text-base sm:text-xl font-light max-w-2xl mx-auto leading-relaxed">
             Get a tailored fleet proposal with live telemetry integration, automated shift rostering, and dedicated command support.
           </p>
 

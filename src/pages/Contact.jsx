@@ -98,7 +98,7 @@ const Contact = () => {
             </h1>
 
             {/* Row 3: Description */}
-            <p className="text-navy/70 text-base sm:text-xl font-light leading-relaxed max-w-4xl pt-2">
+            <p className="text-navy/75 text-base sm:text-xl font-light leading-relaxed max-w-4xl pt-2">
               Request customized enterprise proposals, corporate rate cards, tech park shuttle network setups, or 24/7 dispatch support.
             </p>
           </motion.div>
