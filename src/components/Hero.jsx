@@ -2,38 +2,33 @@ import { useState, useEffect, useRef } from "react";
 import {
   motion,
   AnimatePresence,
-  useScroll,
-  useTransform,
   useReducedMotion,
-  useMotionValue,
-  useSpring,
-  useMotionTemplate,
 } from "framer-motion";
-import { ArrowUpRight, Cpu, ShieldCheck, Building2, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowUpRight, ChevronLeft, ChevronRight, Cpu, Building2, ShieldCheck } from "lucide-react";
 import { NavLink } from "react-router-dom";
 
 const panels = [
   {
-    id: "left-tech",
-    num: "01",
-    badge: "Smart Mobility",
-    tag: "Technology",
-    title: "Acciva Driven By Technology",
-    desc: "Maximizing transport efficiency & minimizing operational costs with automated intelligent routing.",
-    icon: Cpu,
-    src: "/hero-mountains.mp4",
-    link: "/contact",
-    linkText: "Book Now",
-  },
-  {
     id: "center-welcome",
-    num: "02",
+    num: "01",
     badge: "Pan India Presence",
     tag: "About Us",
     title: "Welcome To Acciva",
     desc: "Acciva Travels has emerged to be one of the best leading Corporate Employee Transport Services.",
     icon: Building2,
-    src: "/hero-ocean.mp4",
+    src: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=2000&q=80",
+    link: "/contact",
+    linkText: "Book Now",
+  },
+  {
+    id: "left-tech",
+    num: "02",
+    badge: "Smart Mobility",
+    tag: "Technology",
+    title: "Acciva Driven By Technology",
+    desc: "Maximizing transport efficiency & minimizing operational costs with automated intelligent routing.",
+    icon: Cpu,
+    src: "https://images.unsplash.com/photo-1600320254374-ce2d293c324e?auto=format&fit=crop&w=2000&q=80",
     link: "/contact",
     linkText: "Book Now",
   },
@@ -45,7 +40,7 @@ const panels = [
     title: "Reliable & Professional",
     desc: "Corporate employee transportation provider delivering seamless, secure, and punctual transit.",
     icon: ShieldCheck,
-    src: "/hero-desert.mp4",
+    src: "https://images.unsplash.com/photo-1494515843206-f3117d3f51b7?auto=format&fit=crop&w=2000&q=80",
     link: "/contact",
     linkText: "Book Now",
   },
@@ -68,65 +63,49 @@ const slideVariants = {
   }),
 };
 
-const Hero = () => {
-  const ref = useRef(null);
-  const reduceMotion = useReducedMotion();
+const textVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, delay: 0.15 + i * 0.1, ease: [0.16, 1, 0.3, 1] },
+  }),
+};
 
-  // Mobile slider state
+const Hero = () => {
+  const reduceMotion = useReducedMotion();
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(0);
+  const timer = useRef(null);
 
   const paginate = (newDirection) => {
     setDirection(newDirection);
     setCurrent((prev) => (prev + newDirection + panels.length) % panels.length);
   };
 
-  // Auto slide on mobile every 6 seconds
-  useEffect(() => {
-    const timer = setInterval(() => {
-      paginate(1);
-    }, 6000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-
-  const bgScale = useTransform(scrollYProgress, [0, 1], reduceMotion ? [1, 1] : [1, 1.12]);
-  const contentY = useTransform(scrollYProgress, [0, 1], reduceMotion ? [0, 0] : [0, 80]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.85], [1, 0]);
-
-  // Cursor spotlight for desktop
-  const mvX = useMotionValue(0.5);
-  const mvY = useMotionValue(0.5);
-  const springX = useSpring(mvX, { stiffness: 45, damping: 20, mass: 0.5 });
-  const springY = useSpring(mvY, { stiffness: 45, damping: 20, mass: 0.5 });
-  const spotlight = useMotionTemplate`radial-gradient(750px circle at ${useTransform(
-    springX,
-    (v) => `${v * 100}%`
-  )} ${useTransform(springY, (v) => `${v * 100}%`)}, rgba(216,199,165,0.12), transparent 75%)`;
-
-  const handleMouseMove = (e) => {
-    if (reduceMotion) return;
-    const rect = e.currentTarget.getBoundingClientRect();
-    mvX.set((e.clientX - rect.left) / rect.width);
-    mvY.set((e.clientY - rect.top) / rect.height);
+  const goToSlide = (idx) => {
+    setDirection(idx > current ? 1 : -1);
+    setCurrent(idx);
   };
 
+  // Auto slide every 6 seconds
+  useEffect(() => {
+    timer.current = setInterval(() => {
+      paginate(1);
+    }, 6000);
+    return () => clearInterval(timer.current);
+  }, [current]);
+
   const currentPanel = panels[current];
+  const IconComponent = currentPanel.icon;
 
   return (
-    <section
-      ref={ref}
-      onMouseMove={handleMouseMove}
-      className="relative h-[100svh] min-h-[600px] w-full overflow-hidden bg-midnight select-none"
-    >
-      {/* ========================================================================= */}
-      {/* MOBILE SLIDER VIEW (Active on screens < md)                               */}
-      {/* ========================================================================= */}
-      <div className="relative md:hidden w-full h-full overflow-hidden">
+    <section className="relative h-[100svh] min-h-[620px] w-full overflow-hidden bg-midnight select-none">
+      {/* Top scrim gradient for transparent navbar */}
+      <div className="absolute top-0 inset-x-0 h-32 sm:h-40 bg-linear-to-b from-midnight/80 via-midnight/40 to-transparent pointer-events-none z-30" />
+
+      {/* Main Full-Screen Slider View */}
+      <div className="relative w-full h-full overflow-hidden">
         <AnimatePresence initial={false} custom={direction} mode="popLayout">
           <motion.div
             key={currentPanel.id}
@@ -136,8 +115,8 @@ const Hero = () => {
             animate="center"
             exit="exit"
             transition={{
-              x: { type: "spring", stiffness: 300, damping: 32 },
-              opacity: { duration: 0.35 },
+              x: { type: "spring", stiffness: 280, damping: 30 },
+              opacity: { duration: 0.4 },
             }}
             drag="x"
             dragConstraints={{ left: 0, right: 0 }}
@@ -152,186 +131,134 @@ const Hero = () => {
             }}
             className="absolute inset-0 w-full h-full flex flex-col justify-end"
           >
-            {/* Background Video */}
-            <video
+            {/* Background Image with Cinematic Slow Zoom */}
+            <motion.img
+              key={`img-${currentPanel.id}`}
+              initial={{ scale: 1.12 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 7, ease: "easeOut" }}
               className="absolute inset-0 h-full w-full object-cover"
               src={currentPanel.src}
-              autoPlay
-              loop
-              muted
-              playsInline
-              aria-hidden="true"
+              alt={currentPanel.title}
             />
+            {/* Left and Right Side Soft Dark Gradients + Bottom Scrim */}
+            <div className="absolute inset-0 bg-gradient-to-r from-midnight/95 via-midnight/55 via-40% to-transparent pointer-events-none" />
+            <div className="absolute inset-y-0 right-0 w-[50%] bg-gradient-to-l from-midnight/85 via-midnight/40 to-transparent pointer-events-none" />
+            <div className="absolute bottom-0 inset-x-0 h-44 bg-gradient-to-t from-midnight/80 to-transparent pointer-events-none" />
 
-            {/* Overlay: balanced midnight gradient extending slightly higher */}
-            <div className="absolute inset-0 bg-linear-to-t from-midnight/92 via-midnight/50 via-38% to-transparent pointer-events-none" />
-
-            {/* Mobile Bottom Content */}
-            <div className="relative z-10 px-6 pb-24 flex flex-col justify-end">
-              <div className="flex items-center gap-2 mb-2.5">
-                <span className="h-px w-5 bg-sand" />
-                <span className="eyebrow text-sand text-[10px] tracking-[0.25em]">
-                  {currentPanel.tag}
-                </span>
-              </div>
-
-              <h2 className="font-display text-ivory text-2xl sm:text-3xl leading-[1.18] tracking-tight drop-shadow-[0_8px_20px_rgba(0,0,0,0.9)]">
-                {currentPanel.title}
-              </h2>
-
-              <p className="mt-3 text-sm text-ivory/80 font-light leading-relaxed drop-shadow-md line-clamp-3">
-                {currentPanel.desc}
-              </p>
-
-              <div className="mt-5 flex items-center gap-3">
-                <NavLink
-                  to={currentPanel.link}
-                  className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full border border-sand/80 bg-midnight/30 backdrop-blur-xs text-sand active:bg-sand active:text-midnight hover:bg-sand hover:text-midnight font-semibold text-xs tracking-widest uppercase active:scale-95 transition-all"
+            {/* Slide Content */}
+            <div className="relative z-10 container-px pb-28 sm:pb-32 md:pb-36 flex flex-col justify-end max-w-4xl">
+              <div>
+                {/* Tag and Badge Header */}
+                <motion.div
+                  custom={0}
+                  variants={textVariants}
+                  initial="hidden"
+                  animate="visible"
+                  className="flex items-center gap-3 mb-4"
                 >
-                  <span>{currentPanel.linkText}</span>
-                  <ArrowUpRight size={16} />
-                </NavLink>
+                  <div className="w-8 h-8 rounded-xl bg-sand/20 border border-sand/30 flex items-center justify-center text-sand">
+                    <IconComponent size={16} />
+                  </div>
+                  <span className="h-px w-6 bg-sand" />
+                  <span className="eyebrow text-sand text-xs tracking-[0.25em]">
+                    {currentPanel.tag} &mdash; {currentPanel.badge}
+                  </span>
+                </motion.div>
+
+                {/* Title */}
+                <motion.h1
+                  custom={1}
+                  variants={textVariants}
+                  initial="hidden"
+                  animate="visible"
+                  className="font-display text-ivory text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight drop-shadow-[0_8px_20px_rgba(0,0,0,0.9)] max-w-3xl"
+                >
+                  {currentPanel.title}
+                </motion.h1>
+
+                {/* Description */}
+                <motion.p
+                  custom={2}
+                  variants={textVariants}
+                  initial="hidden"
+                  animate="visible"
+                  className="mt-4 sm:mt-5 text-sm sm:text-base md:text-lg text-ivory/90 font-light leading-relaxed max-w-2xl drop-shadow-md"
+                >
+                  {currentPanel.desc}
+                </motion.p>
+
+                {/* CTA Button */}
+                <motion.div
+                  custom={3}
+                  variants={textVariants}
+                  initial="hidden"
+                  animate="visible"
+                  className="mt-7 sm:mt-8 flex items-center gap-4"
+                >
+                  <NavLink
+                    to={currentPanel.link}
+                    className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full border-2 border-sand bg-sand text-midnight font-mono font-bold text-xs tracking-widest uppercase hover:bg-white hover:border-white transition-all duration-300 shadow-xl group active:scale-95"
+                  >
+                    <span>{currentPanel.linkText}</span>
+                    <ArrowUpRight
+                      size={16}
+                      className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+                    />
+                  </NavLink>
+                </motion.div>
               </div>
             </div>
           </motion.div>
         </AnimatePresence>
 
-        {/* Mobile Navigation Controls & Pagination */}
-        <div className="absolute bottom-6 inset-x-6 z-20 flex items-center justify-between pointer-events-auto">
-          {/* Segmented Indicators */}
-          <div className="flex items-center gap-2">
-            {panels.map((p, idx) => (
-              <button
-                key={p.id}
-                onClick={() => {
-                  setDirection(idx > current ? 1 : -1);
-                  setCurrent(idx);
-                }}
-                aria-label={`Go to slide ${idx + 1}`}
-                className={`h-1.5 rounded-full transition-all duration-300 ${idx === current
-                    ? "w-8 bg-sand shadow-sm"
-                    : "w-2 bg-ivory/30 hover:bg-ivory/60"
-                  }`}
-              />
-            ))}
-          </div>
+        {/* Global Controls & Indicators Bar */}
+        <div className="absolute bottom-8 sm:bottom-10 inset-x-0 z-30 pointer-events-auto">
+          <div className="container-px flex items-center justify-between">
+            {/* Segmented Pill Indicators + Counter */}
+            <div className="flex items-center gap-4">
+              <span className="font-mono text-xs font-bold text-sand tracking-widest">
+                0{current + 1} <span className="text-ivory/30">/</span> 0{panels.length}
+              </span>
 
-          {/* Left / Right Arrow Buttons */}
-          <div className="flex items-center gap-2">
-            <button
-              onClick={() => paginate(-1)}
-              aria-label="Previous slide"
-              className="w-9 h-9 rounded-full bg-midnight/70 backdrop-blur-md border border-ivory/20 flex items-center justify-center text-ivory active:scale-90 transition-all hover:bg-midnight hover:border-sand hover:text-sand"
-            >
-              <ChevronLeft size={16} />
-            </button>
-            <button
-              onClick={() => paginate(1)}
-              aria-label="Next slide"
-              className="w-9 h-9 rounded-full bg-midnight/70 backdrop-blur-md border border-ivory/20 flex items-center justify-center text-ivory active:scale-90 transition-all hover:bg-midnight hover:border-sand hover:text-sand"
-            >
-              <ChevronRight size={16} />
-            </button>
+              <div className="flex items-center gap-2">
+                {panels.map((p, idx) => (
+                  <button
+                    key={p.id}
+                    onClick={() => goToSlide(idx)}
+                    aria-label={`Go to slide ${idx + 1}`}
+                    className={`h-2 rounded-full transition-all duration-500 cursor-pointer ${
+                      idx === current
+                        ? "w-10 bg-sand shadow-lg"
+                        : "w-2 bg-ivory/30 hover:bg-ivory/60"
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Next / Prev Nav Arrow Buttons */}
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => paginate(-1)}
+                aria-label="Previous slide"
+                className="w-11 h-11 rounded-full bg-midnight/80 backdrop-blur-md border border-ivory/20 flex items-center justify-center text-ivory active:scale-90 transition-all duration-300 hover:bg-sand hover:border-sand hover:text-midnight shadow-lg cursor-pointer"
+              >
+                <ChevronLeft size={18} />
+              </button>
+              <button
+                onClick={() => paginate(1)}
+                aria-label="Next slide"
+                className="w-11 h-11 rounded-full bg-midnight/80 backdrop-blur-md border border-ivory/20 flex items-center justify-center text-ivory active:scale-90 transition-all duration-300 hover:bg-sand hover:border-sand hover:text-midnight shadow-lg cursor-pointer"
+              >
+                <ChevronRight size={18} />
+              </button>
+            </div>
           </div>
         </div>
       </div>
-
-      {/* ========================================================================= */}
-      {/* DESKTOP / TABLET 3-PARTITION VIEW (Active on screens >= md)               */}
-      {/* ========================================================================= */}
-      <div className="hidden md:flex absolute inset-0 flex-row w-full h-full">
-        {panels.map((panel, idx) => {
-          const isNotLast = idx < panels.length - 1;
-
-          return (
-            <div
-              key={panel.id}
-              className={`group relative h-full flex-1 w-1/3 overflow-hidden ${isNotLast ? "border-r border-ivory/20" : ""
-                }`}
-            >
-              {/* Individual Background Video with smooth scroll zoom */}
-              <motion.video
-                style={{ scale: bgScale }}
-                className="h-full w-full object-cover"
-                src={panel.src}
-                autoPlay
-                loop
-                muted
-                playsInline
-                aria-hidden="true"
-              />
-
-              {/* Overlay: balanced midnight gradient extending slightly higher */}
-              <div className="absolute inset-0 bg-linear-to-t from-midnight/92 via-midnight/50 via-38% to-transparent pointer-events-none" />
-
-              {/* Column Dividing Intersection Markers */}
-              {isNotLast && (
-                <>
-                  <div className="absolute top-24 md:top-28 -right-[6px] text-sand/70 text-[12px] font-mono select-none pointer-events-none z-20">
-                    +
-                  </div>
-                  <div className="absolute bottom-12 -right-[6px] text-ivory/40 text-[12px] font-mono select-none pointer-events-none z-20">
-                    +
-                  </div>
-                </>
-              )}
-
-              {/* Column Content */}
-              <motion.div
-                style={{ y: contentY, opacity: contentOpacity }}
-                className="absolute inset-0 p-5 sm:p-7 md:p-9 flex flex-col justify-end pointer-events-none z-10"
-              >
-                {/* Column Bottom: Heading & Description */}
-                <div className="pb-8 sm:pb-10 flex flex-col justify-end">
-                  {/* Small Eyebrow Label */}
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="h-px w-4 bg-sand/80" />
-                    <span className="eyebrow text-sand text-[9px] sm:text-[10px] tracking-[0.25em]">
-                      {panel.tag}
-                    </span>
-                  </div>
-
-                  {/* Heading */}
-                  <h2
-                    style={{ fontSize: "clamp(1.3rem, 1.8vw, 2.05rem)" }}
-                    className="font-display text-ivory leading-tight tracking-tight drop-shadow-[0_8px_16px_rgba(0,0,0,0.8)]"
-                  >
-                    {panel.title}
-                  </h2>
-
-                  {/* Description */}
-                  <p className="mt-2.5 text-xs sm:text-sm text-ivory/75 font-light leading-relaxed max-w-sm drop-shadow-md">
-                    {panel.desc}
-                  </p>
-
-                  {/* Button */}
-                  <div className="mt-5 pt-1">
-                    <NavLink
-                      to={panel.link}
-                      className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full border border-sand/80 bg-midnight/15 backdrop-blur-xs text-sand hover:bg-sand hover:text-midnight hover:border-sand font-semibold text-xs tracking-widest uppercase transition-all duration-300 transform hover:-translate-y-0.5 group/btn"
-                    >
-                      <span>{panel.linkText}</span>
-                      <ArrowUpRight size={16} className="transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
-                    </NavLink>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          );
-        })}
-      </div>
-
-      {/* Top scrim so the transparent navbar stays readable over bright video */}
-      <div className="absolute top-0 inset-x-0 h-28 sm:h-36 bg-linear-to-b from-midnight/70 to-transparent pointer-events-none z-30" />
-
-      {/* Global Interactive Cursor Spotlight */}
-      <motion.div
-        style={{ background: spotlight }}
-        className="hidden md:block absolute inset-0 pointer-events-none z-20"
-      />
     </section>
   );
 };
 
 export default Hero;
-

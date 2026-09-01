@@ -120,14 +120,14 @@ const Home = () => {
 
           <div className="md:col-span-7 relative md:sticky md:top-32">
             <RevealImage
-              src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1920&q=80"
-              alt="Acciva corporate taxi cab fleet"
+              src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1920&q=80"
+              alt="Acciva executive black luxury sedan fleet"
               className="h-[50vh] md:h-[78vh] ml-auto w-full md:w-[90%]"
             />
             <div className="absolute -bottom-10 -left-4 sm:left-0 md:-left-10 w-1/2 md:w-[40%] shadow-[0_20px_60px_rgba(7,26,36,0.25)] border-4 border-soft">
               <RevealImage
                 src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1000&q=80"
-                alt="Acciva professional corporate chauffeur"
+                alt="Acciva professional VIP executive chauffeur"
                 className="h-[24vh] md:h-[32vh]"
               />
             </div>
@@ -223,14 +223,14 @@ const Home = () => {
       </section>
 
       {/* 04 — What We Offer (Enhanced Featured Showcase) */}
-      <section className="bg-soft py-16 md:py-20 text-navy">
+      <section className="bg-soft pt-14 md:pt-18 pb-6 md:pb-8 text-navy">
         <div className="container-px">
           <FeaturedServices />
         </div>
       </section>
 
       {/* 05 — Enterprise Trust */}
-      <section className="bg-soft pt-16 md:pt-24 pb-8">
+      <section className="bg-soft pt-8 md:pt-10 pb-6">
         <div className="container-px">
           <span className="eyebrow text-teal">05 — Enterprise Trust</span>
           <h2 className="font-display text-navy text-2xl sm:text-4xl md:text-5xl leading-[1.08] mt-6 tracking-tight">
@@ -241,8 +241,8 @@ const Home = () => {
       <HorizontalGallery panels={whyChoosePanels} />
 
       {/* 06 — Numbers / Metrics */}
-      <section className="bg-soft py-14 md:py-18">
-        <div className="container-px grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-8">
+      <section className="bg-soft pt-0 md:pt-1 pb-15">
+        <div className="container-px grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
           {stats.map((s, idx) => (
             <StatCounter key={s.label} {...s} index={idx} />
           ))}
@@ -254,7 +254,7 @@ const Home = () => {
       <Testimonial />
 
       {/* 08 — Travel Journal */}
-      <section className="bg-soft py-16 md:py-20">
+      <section className="bg-soft pt-8 md:pt-10 pb-16 md:pb-20">
         <div className="container-px">
           <span className="eyebrow text-teal">08 — The Journal</span>
           <h2 className="font-display text-navy text-2xl sm:text-4xl md:text-5xl leading-[1.08] mt-6 max-w-xl tracking-tight">

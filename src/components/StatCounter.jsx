@@ -48,19 +48,19 @@ const StatCounter = ({ value, suffix = "", display, label, icon, duration = 1.8,
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.55, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
       whileHover={{ y: -6, transition: { duration: 0.25 } }}
-      className="p-6 sm:p-8 rounded-3xl bg-white border border-teal/25 shadow-md hover:shadow-2xl hover:border-teal/50 transition-all duration-300 relative overflow-hidden flex flex-col justify-between group"
+      className="p-4 sm:p-6 md:p-8 rounded-3xl bg-white border border-teal/25 shadow-md hover:shadow-2xl hover:border-teal/50 transition-all duration-300 relative overflow-hidden flex flex-col justify-between group"
     >
       {/* Permanent top gradient line */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-teal via-sand to-teal" />
 
       {/* Top row: Value + Icon Badge */}
       <div className="flex items-start justify-between gap-3">
-        <div className="flex items-baseline gap-1">
-          <p className="font-display text-4xl sm:text-5xl md:text-6xl text-navy font-semibold tracking-tight">
+        <div className="flex items-baseline gap-1 flex-wrap">
+          <p className="font-display text-3xl sm:text-5xl md:text-6xl text-navy font-semibold tracking-tight whitespace-nowrap">
             {mainText}
           </p>
           {showSuffix && (
-            <span className="font-display text-2xl sm:text-3xl text-teal font-medium">
+            <span className="font-display text-xl sm:text-3xl text-teal font-medium">
               {suffix}
             </span>
           )}
@@ -74,9 +74,9 @@ const StatCounter = ({ value, suffix = "", display, label, icon, duration = 1.8,
       </div>
 
       {/* Bottom row: Label with dot accent */}
-      <div className="mt-5 pt-3 border-t border-navy/10 flex items-center gap-2">
-        <span className="w-2 h-2 rounded-full bg-teal shrink-0" />
-        <p className="text-xs font-mono uppercase tracking-widest text-navy/80 font-semibold truncate">
+      <div className="mt-5 pt-3 border-t border-navy/10 flex items-start gap-2">
+        <span className="w-2 h-2 rounded-full bg-teal shrink-0 mt-1" />
+        <p className="text-[0.65rem] sm:text-xs font-mono uppercase tracking-widest text-navy/80 font-semibold leading-snug">
           {label}
         </p>
       </div>

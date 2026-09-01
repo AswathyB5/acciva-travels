@@ -25,8 +25,8 @@ const HorizontalGallery = ({ panels }) => {
   }
 
   return (
-    <section ref={ref} className="relative bg-soft" style={{ height: `${panels.length * 100}vh` }}>
-      <div className="sticky top-0 h-[100svh] overflow-hidden flex items-center">
+    <section ref={ref} className="relative bg-soft" style={{ height: `${panels.length * 70}vh` }}>
+      <div className="sticky top-0 h-[100svh] overflow-hidden flex items-start pt-2 md:pt-3">
         <GalleryBackdrop />
 
         <motion.div style={{ x }} className="relative z-10 flex h-full">
@@ -38,7 +38,7 @@ const HorizontalGallery = ({ panels }) => {
         </motion.div>
 
         {/* Slim progress rail */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 w-40 h-px bg-navy/10">
+        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-10 w-40 h-px bg-navy/10">
           <motion.div
             style={{ scaleX: scrollYProgress }}
             className="h-full bg-sand origin-left"
@@ -85,7 +85,9 @@ const Panel = ({ panel, index, total }) => {
           <p className="text-navy/75 leading-relaxed text-sm sm:text-base font-light">{panel.description}</p>
         </div>
 
-        <span className="mt-6 inline-block font-mono text-xs tracking-[0.3em] text-navy/35">
+
+
+        <span className="mt-3 inline-block font-mono text-xs tracking-[0.3em] text-navy/35">
           {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
         </span>
       </div>

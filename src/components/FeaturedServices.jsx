@@ -3,14 +3,49 @@ import { ArrowUpRight, CheckCircle2, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { services } from "../data/content";
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.35,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 70, scale: 0.92 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 1.1, ease: [0.16, 1, 0.3, 1], staggerChildren: 0.18, delayChildren: 0.4 },
+  },
+};
+
+const chipVariants = {
+  hidden: { opacity: 0, x: -28 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
+  },
+};
+
 const FeaturedServices = () => {
   // Select the top 3 flagship solutions for the homepage
   const featured = services.slice(0, 3);
 
   return (
     <div>
-      {/* Header Row */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+      {/* Header Row with Entry Animation */}
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6"
+      >
         <div>
           <span className="eyebrow text-teal">04 — Our Services</span>
           <h2 className="font-display text-navy text-2xl sm:text-4xl md:text-5xl leading-[1.08] mt-6 tracking-tight">
@@ -20,37 +55,45 @@ const FeaturedServices = () => {
 
         <NavLink
           to="/services"
-          className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-navy text-ivory text-xs font-mono font-semibold hover:bg-teal transition-all shadow-md shrink-0 group self-start md:self-end"
+          className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-navy text-ivory text-xs font-mono font-semibold hover:bg-teal transition-all duration-300 shadow-md shrink-0 group self-start md:self-end"
         >
-          <span>Explore All 6+ Services</span>
+          <span>Explore All Services</span>
           <ArrowUpRight
             size={15}
             className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
           />
         </NavLink>
-      </div>
+      </motion.div>
 
-      {/* 3 Flagship Featured Cards Grid */}
-      <div className="grid md:grid-cols-3 gap-8">
+      {/* 3 Flagship Featured Cards Grid with Stagger & Micro-animations */}
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.15 }}
+        className="grid md:grid-cols-2 xl:grid-cols-3 gap-8"
+      >
         {featured.map((service, i) => {
           const Icon = service.icon;
           return (
             <motion.div
               key={service.slug}
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.5, delay: i * 0.15 }}
-              whileHover={{ y: -8 }}
-              className="p-4 rounded-3xl bg-white border border-navy/10 hover:border-teal/40 hover:shadow-[0_25px_60px_rgba(38,55,74,0.12)] transition-all duration-500 flex flex-col justify-between group relative overflow-hidden shadow-[0_10px_35px_rgba(38,55,74,0.05)]"
+              variants={cardVariants}
+              whileHover={{ y: -10, scale: 1.015 }}
+              className="p-4 rounded-3xl bg-white border border-navy/10 hover:border-teal/50 hover:shadow-[0_30px_70px_rgba(7,26,36,0.14)] transition-all duration-500 flex flex-col justify-between group relative overflow-hidden shadow-[0_10px_35px_rgba(38,55,74,0.05)]"
             >
-              {/* Top Image Showcase - Completely Clean Without Cards/Overlays */}
+              {/* Animated Top Glow Bar on Hover */}
+              <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-teal via-sand to-teal opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+              {/* Top Image Showcase */}
               <div className="relative h-60 sm:h-64 w-full rounded-2xl overflow-hidden bg-navy/5">
-                <img
+                <motion.img
                   src={service.image}
                   alt={service.title}
-                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  loading="lazy"
+                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108"
                 />
+                <div className="absolute inset-0 bg-linear-to-t from-navy/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
               </div>
 
               {/* Card Body */}
@@ -58,16 +101,16 @@ const FeaturedServices = () => {
                 <div>
                   {/* Tag and Index Header */}
                   <div className="flex items-center justify-between mb-3.5">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal/10 border border-teal/20 text-teal text-[11px] font-mono uppercase font-bold tracking-wider">
-                      <Icon size={12} className="text-teal" />
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal/10 border border-teal/20 text-teal text-[11px] font-mono uppercase font-bold tracking-wider group-hover:bg-teal/20 transition-colors">
+                      <Icon size={12} className="text-teal group-hover:scale-110 transition-transform duration-300" />
                       {service.tag}
                     </span>
-                    <span className="text-xs font-mono text-navy/40 font-bold">
+                    <span className="text-xs font-mono text-navy/40 font-bold group-hover:text-teal transition-colors">
                       0{i + 1}
                     </span>
                   </div>
 
-                  <h3 className="font-display text-xl sm:text-2xl text-navy font-bold leading-snug group-hover:text-teal transition-colors">
+                  <h3 className="font-display text-xl sm:text-2xl text-navy font-bold leading-snug group-hover:text-teal transition-colors duration-300">
                     {service.title}
                   </h3>
 
@@ -79,17 +122,18 @@ const FeaturedServices = () => {
                 {/* Feature Chips */}
                 <div className="space-y-2 pt-2">
                   {service.features.slice(0, 2).map((feat) => (
-                    <div
+                    <motion.div
                       key={feat}
-                      className="p-2.5 rounded-xl bg-soft/80 border border-navy/5 flex items-center gap-2.5 transition-colors group-hover:bg-soft"
+                      variants={chipVariants}
+                      className="p-2.5 rounded-xl bg-soft/80 border border-navy/5 flex items-center gap-2.5 transition-all duration-300 group-hover:bg-soft group-hover:border-teal/20"
                     >
-                      <div className="w-4 h-4 rounded-full bg-teal/15 text-teal flex items-center justify-center shrink-0">
+                      <div className="w-4 h-4 rounded-full bg-teal/15 text-teal flex items-center justify-center shrink-0 group-hover:bg-teal group-hover:text-white transition-colors duration-300">
                         <CheckCircle2 size={11} />
                       </div>
                       <span className="text-xs text-navy/85 font-medium truncate">
                         {feat}
                       </span>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
 
@@ -100,8 +144,8 @@ const FeaturedServices = () => {
                     className="flex items-center justify-between w-full p-3 rounded-2xl bg-soft group-hover:bg-navy group-hover:text-ivory text-navy transition-all duration-300 font-mono text-xs font-semibold shadow-xs"
                   >
                     <span>View Specifications</span>
-                    <div className="w-6 h-6 rounded-full bg-white group-hover:bg-teal text-navy group-hover:text-ivory flex items-center justify-center transition-colors shadow-xs">
-                      <ArrowUpRight size={13} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    <div className="w-6 h-6 rounded-full bg-white group-hover:bg-teal text-navy group-hover:text-white flex items-center justify-center transition-colors duration-300 shadow-xs">
+                      <ArrowUpRight size={13} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </div>
                   </NavLink>
                 </div>
@@ -109,32 +153,41 @@ const FeaturedServices = () => {
             </motion.div>
           );
         })}
-      </div>
+      </motion.div>
 
-      {/* Bottom Service Capability Strip */}
-      <div className="mt-14 p-6 sm:p-8 rounded-3xl bg-linear-to-r from-teal/10 via-soft to-sand/15 border border-navy/10 flex flex-col sm:flex-row sm:items-center justify-between gap-6 shadow-xs">
+      {/* Bottom Service Capability Strip with Subtle Animation */}
+      <motion.div
+        initial={{ opacity: 0, y: 25 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.65, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+        className="mt-14 p-6 sm:p-8 rounded-3xl bg-linear-to-r from-teal/10 via-soft to-sand/15 border border-navy/10 flex flex-col sm:flex-row sm:items-center justify-between gap-6 shadow-xs group"
+      >
         <div className="flex items-center gap-4">
-          <div className="w-12 h-12 rounded-2xl bg-teal/20 text-teal flex items-center justify-center shrink-0 shadow-xs">
+          <motion.div
+            whileHover={{ rotate: 15, scale: 1.1 }}
+            className="w-12 h-12 rounded-2xl bg-teal/20 text-teal flex items-center justify-center shrink-0 shadow-xs"
+          >
             <Sparkles size={22} />
-          </div>
+          </motion.div>
           <div>
             <p className="text-xs font-mono uppercase tracking-wider text-teal font-bold">
               Full Spectrum Fleet Management
             </p>
             <p className="text-xs sm:text-sm text-navy/70 mt-0.5 font-light">
-              Also providing Dedicated Staff Bus Shuttles, Corporate VIP Delegations & Inter-City Business Transit.
+              Also providing Dedicated Staff Bus Shuttles, Corporate VIP Delegations &amp; Inter-City Business Transit.
             </p>
           </div>
         </div>
 
         <NavLink
           to="/services"
-          className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-navy text-ivory text-xs font-mono font-semibold hover:bg-teal transition-all shrink-0 shadow-sm"
+          className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-navy text-ivory text-xs font-mono font-semibold hover:bg-teal transition-all duration-300 shrink-0 shadow-sm group-hover:shadow-md"
         >
           <span>View All Capabilities</span>
-          <ArrowUpRight size={14} />
+          <ArrowUpRight size={14} className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
         </NavLink>
-      </div>
+      </motion.div>
     </div>
   );
 };
