@@ -76,6 +76,7 @@ const Hero = () => {
   const reduceMotion = useReducedMotion();
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(0);
+  const [zoomed, setZoomed] = useState(false);
   const timer = useRef(null);
 
   const paginate = (newDirection) => {
@@ -94,6 +95,17 @@ const Hero = () => {
       paginate(1);
     }, 6000);
     return () => clearInterval(timer.current);
+  }, [current]);
+
+  // Guarantee the zoom-out always plays from a fresh 1.12 scale, even on the very first
+  // mount, by driving it off explicit state instead of relying on Framer's initial prop
+  // (which can be skipped when nested inside an AnimatePresence configured with initial={false}).
+  useEffect(() => {
+    setZoomed(false);
+    const raf = requestAnimationFrame(() => {
+      requestAnimationFrame(() => setZoomed(true));
+    });
+    return () => cancelAnimationFrame(raf);
   }, [current]);
 
   const currentPanel = panels[current];
@@ -135,7 +147,7 @@ const Hero = () => {
             <motion.img
               key={`img-${currentPanel.id}`}
               initial={{ scale: 1.12 }}
-              animate={{ scale: 1 }}
+              animate={{ scale: zoomed ? 1 : 1.12 }}
               transition={{ duration: 7, ease: "easeOut" }}
               className="absolute inset-0 h-full w-full object-cover"
               src={currentPanel.src}
