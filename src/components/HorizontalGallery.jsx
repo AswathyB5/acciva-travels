@@ -78,7 +78,7 @@ const Panel = ({ panel, index, total }) => {
           <span className="eyebrow text-teal">{panel.label}</span>
         </div>
 
-        <h3 className="font-display font-bold text-navy text-3xl sm:text-5xl lg:text-6xl leading-[1.05] tracking-tight">
+        <h3 className="font-display font-bold text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.08] tracking-tight">
           {panel.word}
         </h3>
 
