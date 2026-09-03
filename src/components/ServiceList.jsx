@@ -90,11 +90,11 @@ const ServiceList = ({ services }) => {
                       </span>
                     </div>
 
-                    <h3 className="font-display text-2xl sm:text-3xl text-navy font-bold leading-tight group-hover:text-teal transition-colors">
+                    <h3 className="font-display text-xl sm:text-2xl text-navy font-bold leading-tight group-hover:text-teal transition-colors">
                       {service.title}
                     </h3>
 
-                    <p className="text-sm sm:text-base text-navy/75 leading-relaxed font-light mt-3">
+                    <p className="text-[15px] text-slate-700 leading-relaxed font-normal mt-3">
                       {service.description}
                     </p>
                   </div>

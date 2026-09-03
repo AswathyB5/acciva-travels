@@ -50,12 +50,12 @@ const BlogCard = ({ post, index }) => (
       </p>
 
       {/* Title */}
-      <h3 className="font-display text-navy text-xl leading-snug tracking-tight group-hover:text-teal transition-colors duration-300">
+      <h3 className="font-display text-navy text-xl sm:text-2xl leading-snug tracking-tight group-hover:text-teal transition-colors duration-300">
         {post.title}
       </h3>
 
       {/* Excerpt */}
-      <p className="text-navy/65 text-sm leading-relaxed line-clamp-3 flex-1">
+      <p className="text-slate-600 text-[15px] font-normal leading-relaxed line-clamp-3 flex-1">
         {post.excerpt}
       </p>
 

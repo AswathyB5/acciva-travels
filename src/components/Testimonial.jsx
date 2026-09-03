@@ -49,8 +49,8 @@ const Testimonial = () => {
       <div className="container-px relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
-          <span className="eyebrow text-teal">07 — Enterprise Trust &amp; Reviews</span>
-          <h2 className="font-display text-navy text-3xl sm:text-5xl md:text-6xl mt-6 leading-[1.05] tracking-tight">
+          <span className="eyebrow text-teal">Enterprise Trust &amp; Reviews</span>
+          <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl mt-6 leading-[1.08] tracking-tight">
             Trusted By India&rsquo;s Leading{" "}
             <span className="italic text-teal font-normal">Enterprises.</span>
           </h2>

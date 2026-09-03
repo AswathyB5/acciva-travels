@@ -51,8 +51,8 @@ const FeaturedServices = () => {
         className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6"
       >
         <div>
-          <span className="eyebrow text-teal">04 — Our Services</span>
-          <h2 className="font-display text-navy text-2xl sm:text-4xl md:text-5xl leading-[1.08] mt-6 tracking-tight">
+          <span className="eyebrow text-teal">Our Services</span>
+          <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-6 tracking-tight">
             Our Transport <span className="italic text-teal font-normal">Services.</span>
           </h2>
         </div>
@@ -120,7 +120,7 @@ const FeaturedServices = () => {
                     {service.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-navy/75 leading-relaxed font-light mt-3">
+                  <p className="text-[15px] text-slate-700 leading-relaxed font-normal mt-3">
                     {service.description}
                   </p>
                 </div>

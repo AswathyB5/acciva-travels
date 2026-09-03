@@ -83,7 +83,7 @@ const Panel = ({ panel, index, total }) => {
         </h3>
 
         <div className={`mt-5 pl-5 border-l max-w-lg ${isTeal ? "border-teal/60" : "border-sand/60"}`}>
-          <p className="text-navy/80 leading-relaxed text-sm sm:text-base font-light">{panel.description}</p>
+          <p className="text-slate-700 leading-relaxed text-[15px] font-normal">{panel.description}</p>
         </div>
 
 

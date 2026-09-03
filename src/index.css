@@ -10,9 +10,9 @@
 }
 
 @theme {
-  --font-display: "IBM Plex Serif", "Georgia", serif;
+  --font-display: "Lato", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-accent: "IBM Plex Serif", "Georgia", serif;
+  --font-accent: "Lato", ui-sans-serif, system-ui, sans-serif;
 
   --color-navy: var(--color-navy);
   --color-midnight: var(--color-midnight);

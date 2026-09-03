@@ -195,19 +195,19 @@ const Technology = () => {
   return (
     <div className="bg-soft text-navy overflow-hidden">
       {/* ========================================================================= */}
-      {/* 01 — SUBPAGE HEADER: TECH SHOWCASE HERO                                   */}
+      {/* SUBPAGE HEADER: TECH SHOWCASE HERO                                   */}
       {/* ========================================================================= */}
       <section
-        className="pt-32 sm:pt-36 pb-10 md:pb-12 relative overflow-hidden"
+        className="pt-28 sm:pt-32 pb-4 md:pb-6 relative overflow-hidden"
         style={{
           backgroundImage: `url('https://www.shutterstock.com/image-photo/hand-engages-sleek-digital-tablet-260nw-2713910673.jpg')`,
           backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundPosition: "center bottom",
           backgroundAttachment: "fixed",
         }}
       >
         {/* Light overlay for text legibility */}
-        <div className="absolute inset-0 bg-white/75 backdrop-blur-[1px]" />
+        <div className="absolute inset-0 bg-slate-300/80 backdrop-blur-[1px]" />
 
         <div className="container-px relative z-10">
           {/* Breadcrumb Navigation */}
@@ -224,16 +224,16 @@ const Technology = () => {
           </motion.div>
 
           {/* Title & Intro Row */}
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               className="max-w-3xl"
             >
-              <span className="eyebrow text-teal">01 — Employee Management Solutions</span>
+              <span className="eyebrow text-teal">Employee Management Solutions</span>
 
-              <h1 className="font-display text-navy text-3xl sm:text-5xl md:text-6xl leading-[1.08] mt-6 tracking-tight">
+              <h1 className="font-display text-navy text-3xl sm:text-4xl md:text-5xl leading-[1.08] mt-6 tracking-tight">
                 Automate Every Mile Of <br />
                 Employee <span className="italic text-teal font-normal">Transportation.</span>
               </h1>
@@ -243,7 +243,7 @@ const Technology = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.15 }}
-              className="max-w-md text-navy/90 text-base sm:text-lg font-medium leading-relaxed pb-2"
+              className="max-w-md text-navy/90 text-[15px] font-medium leading-relaxed pb-2"
             >
               Acciva's state of the art technology is an automation platform for employee transportation that automates everything — rostering, routing, deployment, live tracking, paperless automated billing, and e-trip sheets.
             </motion.p>
@@ -252,7 +252,7 @@ const Technology = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* 02 — THE 4 PILLARS OF ACCIVA TECHNOLOGY (INTERACTIVE EXPLORER)            */}
+      {/* THE 4 PILLARS OF ACCIVA TECHNOLOGY (INTERACTIVE EXPLORER)            */}
       {/* ========================================================================= */}
       <section className="py-16 md:py-20 bg-soft relative">
         <div className="container-px">
@@ -264,12 +264,12 @@ const Technology = () => {
             className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6"
           >
             <div>
-              <span className="eyebrow text-teal">02 — Our Features</span>
-              <h2 className="font-display text-navy text-2xl sm:text-4xl md:text-5xl leading-[1.08] mt-6 tracking-tight">
+              <span className="eyebrow text-teal">Our Features</span>
+              <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-6 tracking-tight">
                 Our <span className="italic text-teal font-normal">Features.</span>
               </h2>
             </div>
-            <p className="text-navy/60 text-sm sm:text-base max-w-md font-light">
+            <p className="text-slate-600 text-[15px] font-normal leading-relaxed max-w-md">
               Six pillars of Acciva's automation platform for employee transportation — from rostering and routing to live tracking and paperless billing.
             </p>
           </motion.div>
@@ -355,11 +355,11 @@ const Technology = () => {
                       </span>
                     </div>
 
-                    <h3 className="font-display text-2xl sm:text-4xl text-navy leading-tight mb-4">
+                    <h3 className="font-display text-xl sm:text-2xl text-navy leading-tight mb-4">
                       {techPillars[activePillar].title}
                     </h3>
 
-                    <p className="text-navy/75 text-sm sm:text-base leading-relaxed mb-6 font-light">
+                    <p className="text-slate-700 text-[15px] font-normal leading-relaxed mb-6">
                       {techPillars[activePillar].description}
                     </p>
 
@@ -380,9 +380,9 @@ const Technology = () => {
                     {/* Feature Checklist */}
                     <div className="space-y-3">
                       {techPillars[activePillar].features.map((feat) => (
-                        <div key={feat} className="flex items-start gap-3 text-sm text-navy/80">
+                        <div key={feat} className="flex items-start gap-3 text-[15px] text-slate-700 font-normal">
                           <CheckCircle2 size={16} className="text-teal shrink-0 mt-0.5" />
-                          <span className="font-light">{feat}</span>
+                          <span>{feat}</span>
                         </div>
                       ))}
                     </div>
@@ -421,7 +421,7 @@ const Technology = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* 03 — SAFE TRANSPORTATION CTA BANNER                                       */}
+      {/* SAFE TRANSPORTATION CTA BANNER                                       */}
       {/* ========================================================================= */}
       <section className="py-10 md:py-14 bg-soft">
         <div className="container-px">
@@ -439,10 +439,10 @@ const Technology = () => {
                 <Sparkles size={24} />
               </div>
               <div>
-                <h4 className="font-display text-lg text-navy font-bold">
+                <h4 className="font-display text-xl sm:text-2xl text-navy font-bold">
                   Safety Transportation Made Easy
                 </h4>
-                <p className="text-xs sm:text-sm text-navy/90 font-light mt-0.5">
+                <p className="text-slate-600 text-[15px] font-normal mt-0.5">
                   Feel free to touch with us.
                 </p>
               </div>
@@ -460,7 +460,7 @@ const Technology = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* 04 — TECHNOLOGY SOLUTIONS                                                 */}
+      {/* TECHNOLOGY SOLUTIONS                                                 */}
       {/* ========================================================================= */}
       <section className="py-16 md:py-20 bg-soft">
         <div className="container-px">
@@ -472,11 +472,11 @@ const Technology = () => {
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-4"
             >
-              <span className="eyebrow text-teal">04 — Technology Solutions</span>
-              <h2 className="font-display text-navy text-2xl sm:text-4xl md:text-5xl leading-[1.08] mt-6 tracking-tight">
+              <span className="eyebrow text-teal">Technology Solutions</span>
+              <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-6 tracking-tight">
                 One Platform. <span className="italic text-teal font-normal">Three Seamless Experiences.</span>
               </h2>
-              <p className="text-navy/75 text-sm sm:text-base mt-4 font-light leading-relaxed">
+              <p className="text-slate-700 text-[15px] font-normal mt-4 leading-relaxed">
                 Purpose-built apps for employees, drivers, and transport managers — connected in real time to deliver a smooth, on-time, and safe commute for every enterprise shift.
               </p>
 
@@ -518,10 +518,10 @@ const Technology = () => {
                         </span>
                       </div>
 
-                      <h4 className="font-display text-lg font-bold text-navy mb-2">
+                      <h4 className="font-display text-xl sm:text-2xl font-bold text-navy mb-2">
                         {item.name}
                       </h4>
-                      <p className="text-xs sm:text-sm text-navy/65 font-light leading-relaxed">
+                      <p className="text-slate-600 text-[15px] font-normal leading-relaxed">
                         {item.desc}
                       </p>
                     </div>
@@ -534,7 +534,7 @@ const Technology = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* 05 — CINEMATIC CLOSING CTA                                                */}
+      {/* CINEMATIC CLOSING CTA                                                */}
       {/* ========================================================================= */}
       <section className="py-12 md:py-16 bg-soft text-navy relative overflow-hidden">
         {/* Background Video & Overlays */}
@@ -558,10 +558,10 @@ const Technology = () => {
 
         <div className="container-px relative z-10 text-center max-w-4xl mx-auto">
           <span className="eyebrow text-teal inline-block mb-6">
-            05 — Schedule a Demo
+            Schedule a Demo
           </span>
 
-          <h2 className="font-display text-navy text-3xl sm:text-5xl md:text-6xl leading-[1.08] tracking-tight mb-6">
+          <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.08] tracking-tight mb-6">
             {[
               { text: "Ready to Upgrade to Intelligent", cls: "" },
               { text: "Corporate Mobility?", cls: "italic text-teal font-normal" },
@@ -580,7 +580,7 @@ const Technology = () => {
             ))}
           </h2>
 
-          <p className="text-navy/75 text-sm sm:text-base font-light max-w-xl mx-auto mb-10 leading-relaxed">
+          <p className="text-slate-700 text-[15px] font-normal max-w-xl mx-auto mb-10 leading-relaxed">
             Let our technical mobility consultants audit your current route logistics, calculate potential cost savings, and set up a live Command Tower trial.
           </p>
 

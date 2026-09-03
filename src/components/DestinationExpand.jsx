@@ -91,7 +91,7 @@ const DestinationExpand = ({ destinations }) => {
                     <h3 className="font-display text-ivory text-3xl lg:text-5xl leading-tight font-normal">
                       {d.name}
                     </h3>
-                    <p className="text-ivory/85 text-sm mt-3 max-w-sm leading-relaxed font-light">
+                    <p className="text-ivory/85 text-[15px] mt-3 max-w-sm leading-relaxed font-normal">
                       {d.description}
                     </p>
                     <div className="mt-6 inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full bg-sand text-navy text-xs font-mono font-bold hover:bg-white transition-all shadow-md">

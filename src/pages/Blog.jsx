@@ -43,19 +43,19 @@ const Blog = () => {
   return (
     <div className="bg-soft text-navy overflow-hidden">
       {/* ========================================================================= */}
-      {/* 01 — SUBPAGE HEADER: CLEAN WHITE/SOFT SECTION WITH HERO SHOWCASE IMAGE    */}
+      {/* SUBPAGE HEADER: CLEAN WHITE/SOFT SECTION WITH HERO SHOWCASE IMAGE    */}
       {/* ========================================================================= */}
       <section
-        className="pt-32 sm:pt-36 pb-10 md:pb-12 relative overflow-hidden"
+        className="pt-28 sm:pt-32 pb-4 md:pb-6 relative overflow-hidden"
         style={{
           backgroundImage: `url('https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=2000&q=85')`,
           backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundPosition: "center bottom",
           backgroundAttachment: "fixed",
         }}
       >
         {/* Light overlay for text legibility */}
-        <div className="absolute inset-0 bg-white/75 backdrop-blur-[1px]" />
+        <div className="absolute inset-0 bg-slate-300/80 backdrop-blur-[1px]" />
 
         <div className="container-px relative z-10">
           {/* Breadcrumb Navigation */}
@@ -68,16 +68,16 @@ const Blog = () => {
           </div>
 
           {/* Title & Intro Row */}
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               className="max-w-3xl"
             >
-              <span className="eyebrow text-teal">01 — Mobility Intelligence & Insights</span>
+              <span className="eyebrow text-teal">Mobility Intelligence & Insights</span>
 
-              <h1 className="font-display text-navy text-3xl sm:text-5xl md:text-6xl leading-[1.08] mt-6 tracking-tight">
+              <h1 className="font-display text-navy text-3xl sm:text-4xl md:text-5xl leading-[1.08] mt-6 tracking-tight">
                 Stories, Tech & <br />
                 <span className="italic text-teal font-normal">
                   Fleet Innovation.
@@ -89,7 +89,7 @@ const Blog = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
-              className="max-w-md text-navy/90 text-base sm:text-lg font-medium leading-relaxed pb-2"
+              className="max-w-md text-navy/90 text-[15px] font-medium leading-relaxed pb-2"
             >
               Explore key industry insights on corporate employee transportation, AI dispatch telematics, EV sustainability, and mobility benchmarks across India.
             </motion.p>
@@ -100,7 +100,7 @@ const Blog = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* 02 — CATEGORY FILTER & ARTICLES GRID WITH STAGGER ANIMATIONS              */}
+      {/* CATEGORY FILTER & ARTICLES GRID WITH STAGGER ANIMATIONS              */}
       {/* ========================================================================= */}
       <section className="py-16 md:py-20 bg-soft">
         <div className="container-px">
@@ -167,7 +167,7 @@ const Blog = () => {
                         {post.title}
                       </h3>
 
-                      <p className="text-xs sm:text-sm text-navy/75 leading-relaxed font-light mt-3 line-clamp-3">
+                      <p className="text-slate-600 text-[15px] font-normal leading-relaxed mt-3 line-clamp-3">
                         {post.excerpt}
                       </p>
                     </div>
@@ -193,7 +193,7 @@ const Blog = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* 03 — NEWSLETTER & MOBILITY INTELLIGENCE SUBSCRIPTION WITH VIDEO BG        */}
+      {/* NEWSLETTER & MOBILITY INTELLIGENCE SUBSCRIPTION WITH VIDEO BG        */}
       {/* ========================================================================= */}
       <section className="py-12 md:py-16 bg-soft text-navy relative overflow-hidden">
         {/* Background Video Loop */}
@@ -213,10 +213,10 @@ const Blog = () => {
 
         <div className="container-px relative z-10 text-center max-w-3xl mx-auto">
           <span className="eyebrow text-teal inline-block mb-6">
-            02 — Monthly Fleet Dispatch Digest
+            Monthly Fleet Dispatch Digest
           </span>
 
-          <h2 className="font-display text-navy text-3xl sm:text-5xl md:text-6xl leading-[1.08] tracking-tight mb-6">
+          <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.08] tracking-tight mb-6">
             {[
               { text: "Stay Ahead in Corporate", cls: "" },
               { text: "Mobility Innovation.", cls: "italic text-teal font-normal" },
@@ -235,7 +235,7 @@ const Blog = () => {
             ))}
           </h2>
 
-          <p className="mt-6 text-navy/75 text-base sm:text-lg font-light max-w-xl mx-auto leading-relaxed">
+          <p className="mt-6 text-slate-700 text-[15px] font-normal max-w-xl mx-auto leading-relaxed">
             Subscribe to receive quarterly whitepapers, EV transition benchmarks, and tech park transit optimization case studies.
           </p>
 

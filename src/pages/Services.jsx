@@ -18,24 +18,27 @@ const Services = () => {
   return (
     <div className="bg-soft text-navy overflow-hidden">
       {/* ========================================================================= */}
-      {/* 01 — SUBPAGE HEADER: CLEAN WHITE/SOFT SECTION WITH HERO SHOWCASE IMAGE    */}
+      {/* SUBPAGE HEADER: CLEAN WHITE/SOFT SECTION WITH HERO SHOWCASE IMAGE    */}
       {/* ========================================================================= */}
       <section
-        className="pt-32 sm:pt-36 pb-10 md:pb-12 relative overflow-hidden"
+        className="pt-28 sm:pt-32 pb-4 md:pb-6 relative overflow-hidden"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1575147144179-7e23d752d8a9?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGxhbmRzY2FwZSUyMGNhcnxlbnwwfHwwfHx8MA%3D%3D')`,
+          backgroundImage: `url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0XMRtF5FrYcjM5vMeWg8KtJOKuYgPyxxr8TqEz62sVFziSolGhfrIs6Y&s=10')`,
           backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundPosition: "center 35%",
           backgroundAttachment: "fixed",
         }}
       >
         {/* Light overlay for text legibility */}
-        <div className="absolute inset-0 bg-white/75 backdrop-blur-[1px]" />
+        <div className="absolute inset-0 bg-slate-300/80 backdrop-blur-[1px]" />
 
         <div className="container-px relative z-10">
           {/* Breadcrumb Navigation */}
           <div className="flex items-center gap-2 text-xs font-bold text-navy mb-6 uppercase tracking-wider">
-            <NavLink to="/" className="hover:text-teal transition-colors text-navy/70 font-bold">
+            <NavLink
+              to="/"
+              className="hover:text-teal transition-colors text-navy/70 font-bold"
+            >
               Home
             </NavLink>
             <ChevronRight size={12} />
@@ -43,17 +46,15 @@ const Services = () => {
           </div>
 
           {/* Title & Intro Row with Staggered Fade Up */}
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               className="max-w-3xl"
             >
-              <span className="eyebrow text-teal">
-                01 — Enterprise Solutions
-              </span>
-              <h1 className="font-display text-navy text-3xl sm:text-5xl md:text-6xl leading-[1.08] mt-6 tracking-tight">
+              <span className="eyebrow text-teal">Enterprise Solutions</span>
+              <h1 className="font-display text-navy text-3xl sm:text-4xl md:text-5xl leading-[1.08] mt-6 tracking-tight">
                 Corporate Mobility & Fleet Solutions{" "}
                 <span className="italic text-teal font-normal">At Scale.</span>
               </h1>
@@ -67,20 +68,18 @@ const Services = () => {
                 ease: [0.16, 1, 0.3, 1],
                 delay: 0.15,
               }}
-              className="max-w-md text-navy/90 text-base sm:text-lg font-medium leading-relaxed pb-2"
+              className="max-w-md text-navy/90 text-[15px] font-medium leading-relaxed pb-2"
             >
               End-to-end employee transportation, tech park shuttle networks,
               executive transit, and airport transfers managed with 99.8%
               on-time precision.
             </motion.p>
           </div>
-
-
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* 02 — SERVICES CATALOGUE GRID                                              */}
+      {/* SERVICES CATALOGUE GRID                                              */}
       {/* ========================================================================= */}
       <section className="py-16 md:py-20 bg-soft">
         <div className="container-px">
@@ -92,15 +91,13 @@ const Services = () => {
             className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6"
           >
             <div>
-              <span className="eyebrow text-teal">
-                02 — Our Fleet Offerings
-              </span>
-              <h2 className="font-display text-2xl sm:text-4xl md:text-5xl leading-[1.08] mt-6 tracking-tight">
+              <span className="eyebrow text-teal">Our Fleet Offerings</span>
+              <h2 className="font-display text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-6 tracking-tight">
                 Tailored Mobility{" "}
                 <span className="italic text-teal font-normal">Programs.</span>
               </h2>
             </div>
-            <p className="text-navy/60 text-sm sm:text-base max-w-md font-light">
+            <p className="text-slate-600 text-[15px] font-normal leading-relaxed max-w-md">
               Explore our comprehensive range of specialized transport
               capabilities designed for corporate technology parks, GCCs, and
               enterprise teams.
@@ -112,7 +109,7 @@ const Services = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* 03 — CINEMATIC MAGNETIC CLOSING CTA WITH BACKGROUND VIDEO                 */}
+      {/* CINEMATIC MAGNETIC CLOSING CTA WITH BACKGROUND VIDEO                 */}
       {/* ========================================================================= */}
       <section className="py-12 md:py-16 bg-soft text-navy relative overflow-hidden">
         {/* Background Video & Overlays */}
@@ -132,7 +129,7 @@ const Services = () => {
 
         <div className="container-px relative z-10 text-center max-w-4xl mx-auto">
           <span className="eyebrow text-teal inline-block">
-            03 — Enterprise Mobility Consulting
+            Enterprise Mobility Consulting
           </span>
 
           <motion.div
@@ -144,7 +141,7 @@ const Services = () => {
             transition={{ duration: 0.8 }}
           />
 
-          <h2 className="font-display text-3xl sm:text-5xl md:text-6xl leading-[1.08] tracking-tight">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl leading-[1.08] tracking-tight">
             {[
               { text: "Ready to Optimize Your", cls: "" },
               {
@@ -170,7 +167,7 @@ const Services = () => {
             ))}
           </h2>
 
-          <p className="mt-6 text-navy/75 text-base sm:text-xl font-light max-w-2xl mx-auto leading-relaxed">
+          <p className="mt-6 text-slate-700 text-[15px] font-normal max-w-2xl mx-auto leading-relaxed">
             Get a tailored fleet proposal with live telemetry integration,
             automated shift rostering, and dedicated command support.
           </p>

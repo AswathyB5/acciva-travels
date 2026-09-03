@@ -16,7 +16,7 @@ import { services, stats, blogPosts } from "../data/content";
 const whyChoosePanels = [
   {
     word: "Safety And Security",
-    label: "01 — Real-Time Protection",
+    label: "Real-Time Protection",
     description:
       "Acciva's software provides real time monitoring, centralised to security operations, an automated safe drop confirmation through IVR call and assures response time of less than 60 seconds in any panic situations.",
     image:
@@ -24,7 +24,7 @@ const whyChoosePanels = [
   },
   {
     word: "Cost Optimization",
-    label: "02 — Maximum Efficiency",
+    label: "Maximum Efficiency",
     description:
       "It increases transport efficiency by utilising the largest technologies and reduces operation cost by utilising manpower and fleet optimally.",
     image:
@@ -32,7 +32,7 @@ const whyChoosePanels = [
   },
   {
     word: "Technology Integration",
-    label: "03 — Automation Platform",
+    label: "Automation Platform",
     description:
       "Acciva’s state of art technology is an automation platform for employee transportation that helps Rostering, routing, deployment, live tracking, paperless automated billing and e-trip sheet.",
     image:
@@ -80,18 +80,18 @@ const Home = () => {
     <>
       <Hero />
 
-      {/* 01 — Introduction + Giant image story */}
+      {/* Introduction + Giant image story */}
       <section className="bg-soft py-16 md:py-24 overflow-hidden">
         <div className="container-px grid md:grid-cols-12 gap-10 md:gap-14 items-start">
           <div className="md:col-span-5">
-            <span className="eyebrow text-teal">01 — About Us</span>
+            <span className="eyebrow text-teal">About Us</span>
             <div className="mt-8 space-y-2">
-              <h1 className="font-display text-navy text-3xl sm:text-5xl md:text-6xl leading-[1.05]">
+              <h1 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.08] tracking-tight">
                 Welcome To <span className="italic text-teal font-normal">Acciva.</span>
               </h1>
             </div>
             <div className="mt-10">
-              <p className="text-navy/90 leading-relaxed text-base max-w-sm">
+              <p className="text-slate-700 text-[15px] font-normal leading-relaxed max-w-sm">
                 Acciva Travels has emerged to be one of the best leading Corporate Employee Transport Services &amp; Solutions Pan India. We are committed to provide quality and reliable Employee Transportation services. Our state-of-art app based Technology empowers the entire Employee Transportation Management System process for our Corporate companies.
               </p>
             </div>
@@ -133,7 +133,7 @@ const Home = () => {
                       />
                     </svg>
                   </motion.span>
-                  <span className="text-navy/90 text-base leading-relaxed">{service}</span>
+                  <span className="text-slate-700 text-[15px] font-normal leading-relaxed">{service}</span>
                 </motion.div>
               ))}
             </div>
@@ -157,18 +157,18 @@ const Home = () => {
       </section>
 
 
-      {/* 02 — Luxury Cab Services */}
+      {/* Luxury Cab Services */}
       <section className="bg-soft py-16 md:py-20">
         <div className="container-px mb-16">
-          <span className="eyebrow text-teal">02 — Cab Service</span>
-          <h2 className="font-display text-navy text-2xl sm:text-4xl md:text-5xl leading-[1.08] mt-6 max-w-2xl tracking-tight">
+          <span className="eyebrow text-teal">Cab Service</span>
+          <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-6 max-w-2xl tracking-tight">
             Luxury Cab Services <span className="italic text-teal font-normal">For Every Occasion.</span>
           </h2>
         </div>
         <DestinationExpand destinations={luxuryCabs} />
       </section>
 
-      {/* 03 — Statement Banner */}
+      {/* Statement Banner */}
       <section className="relative bg-soft py-4 md:py-7 overflow-hidden">
         {/* Background Video & Overlays */}
         <video
@@ -243,25 +243,25 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 04 — What We Offer (Enhanced Featured Showcase) */}
+      {/* What We Offer (Enhanced Featured Showcase) */}
       <section className="bg-soft pt-14 md:pt-18 pb-6 md:pb-8 text-navy">
         <div className="container-px">
           <FeaturedServices />
         </div>
       </section>
 
-      {/* 05 — Enterprise Trust */}
+      {/* Enterprise Trust */}
       <section className="bg-soft pt-8 md:pt-10 pb-6">
         <div className="container-px">
-          <span className="eyebrow text-teal">05 — Enterprise Trust</span>
-          <h2 className="font-display text-navy text-2xl sm:text-4xl md:text-5xl leading-[1.08] mt-6 tracking-tight">
+          <span className="eyebrow text-teal">Enterprise Trust</span>
+          <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-6 tracking-tight">
             Why Enterprises <span className="italic text-teal font-normal">Trust Us.</span>
           </h2>
         </div>
       </section>
       <HorizontalGallery panels={whyChoosePanels} />
 
-      {/* 06 — Numbers / Metrics */}
+      {/* Numbers / Metrics */}
       <section className="bg-soft pt-0 md:pt-1 pb-15">
         <div className="container-px grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
           {stats.map((s, idx) => (
@@ -271,14 +271,14 @@ const Home = () => {
       </section>
 
 
-      {/* 07 — Creative Modern Animated Testimonials */}
+      {/* Creative Modern Animated Testimonials */}
       <Testimonial />
 
-      {/* 08 — Travel Journal */}
+      {/* Travel Journal */}
       <section className="bg-soft pt-8 md:pt-10 pb-16 md:pb-20">
         <div className="container-px">
-          <span className="eyebrow text-teal">08 — The Journal</span>
-          <h2 className="font-display text-navy text-2xl sm:text-4xl md:text-5xl leading-[1.08] mt-6 max-w-xl tracking-tight">
+          <span className="eyebrow text-teal">The Journal</span>
+          <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-6 max-w-xl tracking-tight">
             Stories From The <span className="italic text-teal font-normal">Open Road.</span>
           </h2>
           <div className="mt-12">
@@ -316,7 +316,7 @@ const Home = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.15 }}
           />
-          <h2 className="font-display text-navy text-3xl sm:text-5xl md:text-6xl leading-[1.05] mt-6">
+          <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-6">
             Where Will <br />
             <span className="italic text-teal font-normal">You Go Next?</span>
           </h2>

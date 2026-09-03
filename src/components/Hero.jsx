@@ -184,7 +184,7 @@ const Hero = () => {
                   variants={textVariants}
                   initial="hidden"
                   animate="visible"
-                  className="font-display text-ivory text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight drop-shadow-[0_8px_20px_rgba(0,0,0,0.9)] max-w-3xl"
+                  className="font-display text-ivory text-3xl sm:text-4xl md:text-5xl leading-[1.08] tracking-tight drop-shadow-[0_8px_20px_rgba(0,0,0,0.9)] max-w-3xl"
                 >
                   {currentPanel.title}
                 </motion.h1>
@@ -195,7 +195,7 @@ const Hero = () => {
                   variants={textVariants}
                   initial="hidden"
                   animate="visible"
-                  className="mt-4 sm:mt-5 text-sm sm:text-base md:text-lg text-ivory/90 font-light leading-relaxed max-w-2xl drop-shadow-md"
+                  className="mt-4 sm:mt-5 text-[15px] text-ivory/90 font-medium leading-relaxed max-w-2xl drop-shadow-md"
                 >
                   {currentPanel.desc}
                 </motion.p>

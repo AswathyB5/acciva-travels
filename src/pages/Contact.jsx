@@ -67,19 +67,19 @@ const Contact = () => {
   return (
     <div className="bg-soft text-navy overflow-hidden">
       {/* ========================================================================= */}
-      {/* 01 — MAIN SECTION: SUBPAGE HEADER & IMMEDIATE CONTACT FORM FIRST          */}
+      {/* MAIN SECTION: SUBPAGE HEADER & IMMEDIATE CONTACT FORM FIRST          */}
       {/* ========================================================================= */}
       <section
-        className="pt-32 sm:pt-36 pb-14 md:pb-18 relative overflow-hidden"
+        className="pt-28 sm:pt-32 pb-4 md:pb-6 relative overflow-hidden"
         style={{
           backgroundImage: `url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2000&q=85')`,
           backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundPosition: "center bottom",
           backgroundAttachment: "fixed",
         }}
       >
         {/* Light overlay for text legibility */}
-        <div className="absolute inset-0 bg-white/75 backdrop-blur-[1px]" />
+        <div className="absolute inset-0 bg-slate-300/80 backdrop-blur-[1px]" />
 
         <div className="container-px relative z-10">
           {/* Breadcrumb Navigation */}
@@ -91,29 +91,38 @@ const Contact = () => {
             <span className="text-teal font-semibold">Contact Us</span>
           </div>
 
-          {/* Full Width Stacked Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full mb-12 space-y-4"
-          >
-            <span className="eyebrow text-teal">01 — Get In Touch</span>
+          {/* Title & Intro Row */}
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-8">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="max-w-3xl"
+            >
+              <span className="eyebrow text-teal">Get In Touch</span>
 
-            {/* Row 2: Main Heading */}
-            <h1 className="font-display text-navy text-3xl sm:text-5xl md:text-6xl leading-[1.08] tracking-tight w-full mt-4">
-              Connect With Our{" "} <br className="hidden sm:inline" />
-              <span className="italic text-teal font-normal">
-                Mobility Specialists.
-              </span>
-            </h1>
+              <h1 className="font-display text-navy text-3xl sm:text-4xl md:text-5xl leading-[1.08] mt-6 tracking-tight">
+                Connect With Our{" "}
+                <span className="italic text-teal font-normal">
+                  Mobility Specialists.
+                </span>
+              </h1>
+            </motion.div>
 
-            {/* Row 3: Description */}
-            <p className="text-navy/90 text-base sm:text-xl font-light leading-relaxed max-w-4xl pt-2">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+              className="max-w-md text-navy/90 text-[15px] font-medium leading-relaxed pb-2"
+            >
               Request customized enterprise proposals, corporate rate cards, tech park shuttle network setups, or 24/7 dispatch support.
-            </p>
-          </motion.div>
+            </motion.p>
+          </div>
+        </div>
+      </section>
 
+      <section className="py-8 md:py-10 bg-soft">
+        <div className="container-px">
           {/* 2-Column Main Section: Left Visuals & Info | Right Contact Form FIRST */}
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
             {/* RIGHT COLUMN (Placed in Grid Col 7-12) - THE CONTACT FORM */}
@@ -126,10 +135,10 @@ const Contact = () => {
               <div className="p-7 sm:p-10 md:p-12 rounded-3xl bg-white border border-navy/10 shadow-2xl relative">
                 <div className="mb-8 pb-6 border-b border-navy/10 flex items-center justify-between">
                   <div>
-                    <h2 className="font-display text-2xl sm:text-3xl text-navy">
+                    <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-navy">
                       Request Enterprise Proposal
                     </h2>
-                    <p className="text-xs sm:text-sm text-navy/60 mt-1 font-light">
+                    <p className="text-slate-600 text-[15px] font-normal leading-relaxed mt-1">
                       Submit your fleet requirements below. Our corporate team will respond within 4 hours.
                     </p>
                   </div>
@@ -149,7 +158,7 @@ const Contact = () => {
                       <h4 className="font-sans font-bold text-sm text-navy">
                         Inquiry Received Successfully!
                       </h4>
-                      <p className="text-xs text-navy/90 mt-0.5 font-light">
+                      <p className="text-slate-600 text-[15px] font-normal leading-relaxed mt-0.5">
                         Our corporate enterprise manager will review your requirement and send over the proposal within 4 hours.
                       </p>
                     </div>
@@ -427,7 +436,7 @@ const Contact = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* 02 — INTERACTIVE LOCATION & GOOGLE MAP SECTION                            */}
+      {/* INTERACTIVE LOCATION & GOOGLE MAP SECTION                            */}
       {/* ========================================================================= */}
       <section className="pb-16 md:pb-20 bg-soft">
         <div className="container-px">
@@ -442,12 +451,12 @@ const Contact = () => {
             <div className="p-6 md:p-8 bg-white border-b border-navy/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
                 <span className="eyebrow text-teal block mb-3">
-                  02 — Central Command & Fleet Dispatch
+                  Central Command & Fleet Dispatch
                 </span>
-                <h2 className="font-display text-2xl sm:text-3xl text-navy mt-1">
+                <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-navy mt-1">
                   Acciva Travels Headquarters &mdash; <span className="italic text-teal font-normal">Bengaluru.</span>
                 </h2>
-                <p className="text-xs text-navy/60 mt-1">
+                <p className="text-slate-600 text-[15px] font-normal leading-relaxed mt-1">
                   Serving Manyata Tech Park, Electronic City, Whitefield, Outer Ring Road & Pan-India Corridors.
                 </p>
               </div>
@@ -482,7 +491,7 @@ const Contact = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* 03 — CLOSING ASSISTANCE BANNER                                            */}
+      {/* CLOSING ASSISTANCE BANNER                                            */}
       {/* ========================================================================= */}
       <section className="py-8 md:py-10 bg-soft text-navy relative overflow-hidden">
         <motion.div
@@ -496,7 +505,7 @@ const Contact = () => {
 
         <div className="container-px relative z-10 text-center max-w-3xl mx-auto">
           <span className="eyebrow text-teal inline-block mb-4">
-            03 — Dedicated Enterprise Mobility
+            Dedicated Enterprise Mobility
           </span>
 
           <motion.div
@@ -508,11 +517,11 @@ const Contact = () => {
             transition={{ duration: 0.8 }}
           />
 
-          <h2 className="font-display text-2xl sm:text-4xl md:text-5xl text-navy leading-[1.08] tracking-tight">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-navy leading-[1.08] tracking-tight">
             Need Immediate Assistance Or <span className="italic text-teal font-normal">Fleet Consultation?</span>
           </h2>
 
-          <p className="mt-3 text-navy/90 text-sm sm:text-base font-light">
+          <p className="mt-3 text-slate-700 text-[15px] font-normal leading-relaxed">
             Our corporate transit managers are available round-the-clock to structure scalable transit contracts for your team.
           </p>
 

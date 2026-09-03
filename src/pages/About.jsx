@@ -96,19 +96,19 @@ const About = () => {
   return (
     <div className="bg-soft text-navy overflow-hidden">
       {/* ========================================================================= */}
-      {/* 01 — SUBPAGE HEADER: CLEAN WHITE/SOFT SECTION WITH HERO SHOWCASE IMAGE    */}
+      {/* SUBPAGE HEADER: CLEAN WHITE/SOFT SECTION WITH HERO SHOWCASE IMAGE    */}
       {/* ========================================================================= */}
       <section
-        className="pt-32 sm:pt-36 pb-10 md:pb-12 relative overflow-hidden"
+        className="pt-28 sm:pt-32 pb-4 md:pb-6 relative overflow-hidden"
         style={{
           backgroundImage: `url('https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=2000&q=85')`,
           backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundPosition: "center bottom",
           backgroundAttachment: "fixed",
         }}
       >
         {/* Light overlay for text legibility */}
-        <div className="absolute inset-0 bg-white/75 backdrop-blur-[1px]" />
+        <div className="absolute inset-0 bg-slate-300/80 backdrop-blur-[1px]" />
 
         <div className="container-px relative z-10">
           {/* Breadcrumb Navigation */}
@@ -124,12 +124,12 @@ const About = () => {
           </div>
 
           {/* Title & Intro Row */}
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-8">
             <div className="max-w-3xl">
               <span className="eyebrow text-teal">
-                01 — About Acciva Travels
+                About Acciva Travels
               </span>
-              <h1 className="font-display text-navy text-3xl sm:text-5xl md:text-6xl leading-[1.08] mt-6 tracking-tight">
+              <h1 className="font-display text-navy text-3xl sm:text-4xl md:text-5xl leading-[1.08] mt-6 tracking-tight">
                 Our Story, Ethos & <br />
                 <span className="italic text-teal font-normal">
                   Decades of Trust.
@@ -137,7 +137,7 @@ const About = () => {
               </h1>
             </div>
 
-            <p className="max-w-md text-navy/90 text-base sm:text-lg font-medium leading-relaxed pb-2">
+            <p className="max-w-md text-navy/90 text-[15px] font-medium leading-relaxed pb-2">
               Tracing our journey from boutique employee transit in Bengaluru in
               2007 to powering over 50,000+ monthly corporate commutes across
               India.
@@ -147,9 +147,9 @@ const About = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* 02 — ACCIVA HISTORY                                                       */}
+      {/* ACCIVA HISTORY                                                       */}
       {/* ========================================================================= */}
-      <section className="py-16 md:py-24 bg-soft">
+      <section className="py-8 md:py-10 bg-soft">
         <div className="container-px">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Left Content */}
@@ -160,14 +160,14 @@ const About = () => {
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-7 space-y-6"
             >
-              <span className="eyebrow text-teal">02 — Our Heritage</span>
+              <span className="eyebrow text-teal">Our Heritage</span>
 
-              <h2 className="font-display text-navy text-3xl sm:text-4xl md:text-5xl leading-[1.1] mt-4 tracking-tight">
+              <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.1] mt-4 tracking-tight">
                 Acciva{" "}
                 <span className="italic text-teal font-normal">History</span>
               </h2>
 
-              <div className="space-y-5 text-navy/80 leading-relaxed text-base sm:text-lg font-light">
+              <div className="space-y-5 text-slate-700 leading-relaxed text-[15px] font-normal">
                 <p>
                   Acciva Travels was founded in 2016 as a Private Limited
                   Company, building on a strong foundation established in 2007
@@ -214,9 +214,9 @@ const About = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* 03 — OUR VISION & MISSION (DRAMATIC MOVING LASER LINES & ANIMATED ICONS)   */}
+      {/* OUR VISION & MISSION (DRAMATIC MOVING LASER LINES & ANIMATED ICONS)   */}
       {/* ========================================================================= */}
-      <section className="py-14 md:py-20 bg-soft relative overflow-hidden">
+      <section className="py-8 md:py-10 bg-soft relative overflow-hidden">
         {/* Dynamic Animated Background Laser Lines & Traveling Energy Photons */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden -z-10 opacity-75">
           <svg
@@ -303,11 +303,11 @@ const About = () => {
 
         <div className="container-px relative z-10">
           {/* Header */}
-          <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
-            <span className="eyebrow text-teal">03 — Strategic Compass</span>
-            <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl mt-3 leading-[1.08] tracking-tight uppercase">
-              OUR VISION &{" "}
-              <span className="italic text-teal font-normal">MISSION</span>
+          <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
+            <span className="eyebrow text-teal">Strategic Compass</span>
+            <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl mt-3 leading-[1.08] tracking-tight">
+              Our Vision &{" "}
+              <span className="italic text-teal font-normal">Mission</span>
             </h2>
 
             {/* Expanding Neon Laser Line Beneath Title */}
@@ -336,7 +336,7 @@ const About = () => {
               >
                 <TiltCard
                   glowColor="rgba(59,141,196,0.25)"
-                  className="p-6 sm:p-8 rounded-3xl bg-white border-2 border-teal/20 shadow-xl flex flex-col justify-between overflow-hidden h-full cursor-default relative"
+                  className="p-5 sm:p-7 rounded-3xl bg-white border-2 border-teal/20 shadow-xl flex flex-col justify-between overflow-hidden h-full cursor-default relative"
                 >
                   <div
                     style={{
@@ -406,7 +406,7 @@ const About = () => {
                     </motion.h3>
 
                     <motion.p
-                      className="text-navy/80 text-sm sm:text-base font-light leading-relaxed"
+                      className="text-slate-700 text-[15px] font-normal leading-relaxed"
                       initial={{ opacity: 0, y: 16 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true, amount: 0.4 }}
@@ -438,7 +438,7 @@ const About = () => {
               >
                 <TiltCard
                   glowColor="rgba(225,197,157,0.3)"
-                  className="p-6 sm:p-8 rounded-3xl bg-white border-2 border-sand/30 shadow-xl flex flex-col justify-between overflow-hidden h-full cursor-default relative"
+                  className="p-5 sm:p-7 rounded-3xl bg-white border-2 border-sand/30 shadow-xl flex flex-col justify-between overflow-hidden h-full cursor-default relative"
                 >
                   <div
                     style={{
@@ -508,7 +508,7 @@ const About = () => {
                     </motion.h3>
 
                     <motion.p
-                      className="text-navy/80 text-sm sm:text-base font-light leading-relaxed"
+                      className="text-slate-700 text-[15px] font-normal leading-relaxed"
                       initial={{ opacity: 0, y: 16 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true, amount: 0.4 }}
@@ -531,23 +531,23 @@ const About = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* 04 — WHY CHOOSE ACCIVA? (DRAMATIC INTERACTIVE 3D FEATURE CARDS)           */}
+      {/* WHY CHOOSE ACCIVA? (DRAMATIC INTERACTIVE 3D FEATURE CARDS)           */}
       {/* ========================================================================= */}
-      <section className="py-16 md:py-24 bg-soft text-navy relative overflow-hidden">
+      <section className="py-8 md:py-10 bg-soft text-navy relative overflow-hidden">
         {/* Ambient atmospheric backdrop */}
         <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-teal/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-sand/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="container-px relative z-10">
           {/* Section Header */}
-          <div className="mb-14">
-            <span className="eyebrow text-teal">04 — Distinct Advantage</span>
-            <h2 className="font-display text-navy text-3xl sm:text-4xl md:text-5xl tracking-tight leading-[1.08] mt-4 uppercase">
-              WHY CHOOSE{" "}
-              <span className="italic text-teal font-normal">ACCIVA?</span>
+          <div className="mb-8">
+            <span className="eyebrow text-teal">Distinct Advantage</span>
+            <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl tracking-tight leading-[1.08] mt-4">
+              Why Choose{" "}
+              <span className="italic text-teal font-normal">Acciva?</span>
             </h2>
 
-            <div className="mt-6 space-y-4 text-navy/80 text-base sm:text-lg font-light leading-relaxed">
+            <div className="mt-6 space-y-4 text-slate-700 text-[15px] font-normal leading-relaxed">
               <p>
                 At Acciva Travels, we combine experience, knowledge, confidence
                 and courteous service to deliver reliable travel and
@@ -597,7 +597,7 @@ const About = () => {
             >
               <TiltCard
                 glowColor="rgba(59,141,196,0.25)"
-                className="p-7 sm:p-9 rounded-3xl bg-white border-2 border-teal/25 flex flex-col justify-between overflow-hidden shadow-lg cursor-default h-full"
+                className="p-6 sm:p-8 rounded-3xl bg-white border-2 border-teal/25 flex flex-col justify-between overflow-hidden shadow-lg cursor-default h-full"
               >
                 <div
                   style={{
@@ -656,7 +656,7 @@ const About = () => {
                   </motion.h3>
 
                   <motion.div
-                    className="space-y-3 text-sm sm:text-base text-navy/75 leading-relaxed font-light"
+                    className="space-y-3 text-[15px] text-slate-700 leading-relaxed font-normal"
                     initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.4 }}
@@ -700,7 +700,7 @@ const About = () => {
             >
               <TiltCard
                 glowColor="rgba(225,197,157,0.3)"
-                className="p-7 sm:p-9 rounded-3xl bg-white border-2 border-sand/30 flex flex-col justify-between overflow-hidden shadow-lg cursor-default h-full"
+                className="p-6 sm:p-8 rounded-3xl bg-white border-2 border-sand/30 flex flex-col justify-between overflow-hidden shadow-lg cursor-default h-full"
               >
                 <div
                   style={{
@@ -767,7 +767,7 @@ const About = () => {
                   </motion.h3>
 
                   <motion.div
-                    className="space-y-3 text-sm sm:text-base text-navy/75 leading-relaxed font-light"
+                    className="space-y-3 text-[15px] text-slate-700 leading-relaxed font-normal"
                     initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.4 }}
@@ -810,7 +810,7 @@ const About = () => {
             >
               <TiltCard
                 glowColor="rgba(59,141,196,0.25)"
-                className="p-7 sm:p-9 rounded-3xl bg-white border-2 border-teal/25 flex flex-col justify-between overflow-hidden shadow-lg cursor-default h-full"
+                className="p-6 sm:p-8 rounded-3xl bg-white border-2 border-teal/25 flex flex-col justify-between overflow-hidden shadow-lg cursor-default h-full"
               >
                 <div
                   style={{
@@ -873,7 +873,7 @@ const About = () => {
                   </motion.h3>
 
                   <motion.div
-                    className="space-y-3 text-sm sm:text-base text-navy/75 leading-relaxed font-light"
+                    className="space-y-3 text-[15px] text-slate-700 leading-relaxed font-normal"
                     initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.4 }}
@@ -917,7 +917,7 @@ const About = () => {
             >
               <TiltCard
                 glowColor="rgba(225,197,157,0.3)"
-                className="p-7 sm:p-9 rounded-3xl bg-white border-2 border-sand/30 flex flex-col justify-between overflow-hidden shadow-lg cursor-default h-full"
+                className="p-6 sm:p-8 rounded-3xl bg-white border-2 border-sand/30 flex flex-col justify-between overflow-hidden shadow-lg cursor-default h-full"
               >
                 <div
                   style={{
@@ -980,7 +980,7 @@ const About = () => {
                   </motion.h3>
 
                   <motion.div
-                    className="space-y-3 text-sm sm:text-base text-navy/75 leading-relaxed font-light"
+                    className="space-y-3 text-[15px] text-slate-700 leading-relaxed font-normal"
                     initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.4 }}
@@ -1010,9 +1010,9 @@ const About = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* 05 — SAFE JOURNEYS. SMARTER MOBILITY. STRONGER CONNECTIONS.               */}
+      {/* SAFE JOURNEYS. SMARTER MOBILITY. STRONGER CONNECTIONS.               */}
       {/* ========================================================================= */}
-      <section className="py-16 md:py-24 bg-soft text-navy relative overflow-hidden">
+      <section className="py-8 md:py-10 bg-soft text-navy relative overflow-hidden">
         <div className="container-px relative z-10">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Left Column — Description, slides in from the left */}
@@ -1021,14 +1021,14 @@ const About = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="lg:col-span-7 space-y-8"
+              className="lg:col-span-7 space-y-6"
             >
-              <span className="eyebrow text-teal">05 — Our Purpose</span>
+              <span className="eyebrow text-teal">Our Purpose</span>
 
-              <h2 className="font-display text-2xl sm:text-4xl md:text-5xl text-navy tracking-tight leading-[1.12] uppercase">
-                SAFE JOURNEYS. SMARTER MOBILITY. <br />
+              <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-navy tracking-tight leading-[1.12]">
+                Safe Journeys. Smarter Mobility. <br />
                 <span className="italic text-teal font-normal">
-                  STRONGER CONNECTIONS.
+                  Stronger Connections.
                 </span>
               </h2>
 
@@ -1036,7 +1036,7 @@ const About = () => {
                 We Move What Matters Most - Your People.
               </p>
 
-              <div className="space-y-5 text-navy/80 text-base sm:text-lg font-light leading-relaxed">
+              <div className="space-y-5 text-slate-700 text-[15px] font-normal leading-relaxed">
                 <p>
                   Every journey carries a responsibility. At Acciva Travels, we
                   take that responsibility seriously.
@@ -1051,25 +1051,12 @@ const About = () => {
                 </p>
               </div>
 
-              {/* Highlighted Quote Box with Dramatic 3D Tilt, one beige + one blue accent circle */}
+              {/* Highlighted Quote Box with Dramatic 3D Tilt, single round accent (inherited from TiltCard) */}
               <TiltCard
                 glowColor="rgba(225,197,157,0.35)"
                 accentGlow="rgba(59,141,196,0.45)"
-                className="p-8 sm:p-10 rounded-3xl bg-white border border-teal/30 shadow-xl hover:shadow-[0_25px_60px_-10px_rgba(59,141,196,0.25)] cursor-default"
+                className="p-6 sm:p-8 rounded-3xl bg-white border border-teal/30 shadow-xl hover:shadow-[0_25px_60px_-10px_rgba(59,141,196,0.25)] cursor-default overflow-hidden"
               >
-                {/* Second accent circle, bottom-right, blue, pops in when the card scrolls into view */}
-                <motion.div
-                  className="absolute bottom-0 right-0 w-24 h-24 sm:w-32 sm:h-32 rounded-tl-full bg-teal/20 pointer-events-none origin-bottom-right"
-                  initial={{ scale: 0.4, opacity: 0 }}
-                  whileInView={{ scale: 1, opacity: 1 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{
-                    duration: 0.9,
-                    delay: 0.2,
-                    ease: [0.16, 1, 0.3, 1],
-                  }}
-                />
-
                 <motion.p
                   style={{ transform: "translateZ(20px)" }}
                   className="font-display text-lg sm:text-2xl text-navy font-medium italic leading-snug relative"
@@ -1120,9 +1107,9 @@ const About = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* 06 — SAFE AND RELIABLE TRANSPORTATION MADE EASY                            */}
+      {/* SAFE AND RELIABLE TRANSPORTATION MADE EASY                            */}
       {/* ========================================================================= */}
-      <section className="relative bg-soft py-4 md:py-6 mb-10 md:mb-16 overflow-hidden">
+      <section className="relative bg-soft py-8 md:py-10 overflow-hidden">
         {/* Background Video & Overlays (matches Home "Next Chapter" section) */}
         <video
           autoPlay
@@ -1149,23 +1136,23 @@ const About = () => {
 
         <div className="container-px relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-6">
-            <span className="eyebrow text-teal">06 — Corporate Mobility</span>
+            <span className="eyebrow text-teal">Corporate Mobility</span>
 
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl text-navy tracking-tight leading-[1.1] uppercase">
-              SAFE AND RELIABLE{" "}
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-navy tracking-tight leading-[1.1]">
+              Safe and Reliable{" "}
               <span className="italic text-teal font-normal">
-                TRANSPORTATION MADE EASY
+                Transportation Made Easy
               </span>
             </h2>
 
-            <p className="text-navy/80 text-base sm:text-xl font-light leading-relaxed max-w-3xl mx-auto">
+            <p className="text-slate-700 text-[15px] font-normal leading-relaxed max-w-3xl mx-auto">
               Experience safe, reliable and comfortable employee transportation
               services with Acciva Travels. Our dedicated team is committed to
               providing efficient transportation solutions designed around
               passenger safety, punctuality and customer satisfaction.
             </p>
 
-            <p className="text-navy/70 text-sm sm:text-base font-light max-w-2xl mx-auto">
+            <p className="text-slate-600 text-[15px] font-normal max-w-2xl mx-auto">
               Have questions or need a reliable transportation solution for your
               business? Get in touch with us today and discover how Acciva
               Travels can support your corporate transportation needs.
@@ -1187,9 +1174,9 @@ const About = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* 07 — READY TO MOVE WITH ACCIVA? (CLOSING CTA)                             */}
+      {/* READY TO MOVE WITH ACCIVA? (CLOSING CTA)                             */}
       {/* ========================================================================= */}
-      <section className="relative py-16 md:py-24 overflow-hidden">
+      <section className="relative py-8 md:py-10 overflow-hidden">
         {/* Background Image & Overlays (matches Home's Final CTA section) */}
         <img
           src="https://www.bmw-infinitycars.in/sites/default/files/2026-02/1280_610_new%202.jpg"
@@ -1207,12 +1194,12 @@ const About = () => {
             <span>Get Started Today</span>
           </div>
 
-          <h2 className="font-display text-3xl sm:text-5xl md:text-6xl text-navy leading-[1.08] uppercase">
-            READY TO MOVE WITH{" "}
-            <span className="italic text-teal font-normal">ACCIVA?</span>
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-navy leading-[1.08]">
+            Ready to Move With{" "}
+            <span className="italic text-teal font-normal">Acciva?</span>
           </h2>
 
-          <p className="text-navy/80 text-base sm:text-xl font-light leading-relaxed">
+          <p className="text-slate-700 text-[15px] font-normal leading-relaxed">
             Let&apos;s create a safer, smarter, and more dependable
             transportation experience for your organization.
           </p>

@@ -72,19 +72,19 @@ const Careers = () => {
   return (
     <div className="bg-soft text-navy overflow-hidden">
       {/* ========================================================================= */}
-      {/* 01 — SUBPAGE HEADER                                                       */}
+      {/* SUBPAGE HEADER                                                       */}
       {/* ========================================================================= */}
       <section
-        className="pt-32 sm:pt-36 pb-10 md:pb-12 relative overflow-hidden"
+        className="pt-28 sm:pt-32 pb-4 md:pb-6 relative overflow-hidden"
         style={{
           backgroundImage: `url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=2000&q=85')`,
           backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundPosition: "center bottom",
           backgroundAttachment: "fixed",
         }}
       >
         {/* Light overlay for text legibility */}
-        <div className="absolute inset-0 bg-white/75 backdrop-blur-[1px]" />
+        <div className="absolute inset-0 bg-slate-300/80 backdrop-blur-[1px]" />
 
         <div className="container-px relative z-10">
           <div className="flex items-center gap-2 text-xs font-bold text-navy mb-6 uppercase tracking-wider">
@@ -95,15 +95,15 @@ const Careers = () => {
             <span className="text-teal font-semibold">Careers</span>
           </div>
 
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               className="max-w-3xl"
             >
-              <span className="eyebrow text-teal">01 — Join Our Team</span>
-              <h1 className="font-display text-navy text-3xl sm:text-5xl md:text-6xl leading-[1.08] mt-6 tracking-tight">
+              <span className="eyebrow text-teal">Join Our Team</span>
+              <h1 className="font-display text-navy text-3xl sm:text-4xl md:text-5xl leading-[1.08] mt-6 tracking-tight">
                 Build the Future of{" "}
                 <span className="italic text-teal font-normal">Corporate Mobility.</span>
               </h1>
@@ -113,7 +113,7 @@ const Careers = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
-              className="max-w-md text-navy/90 text-base sm:text-lg font-medium leading-relaxed pb-2"
+              className="max-w-md text-navy/90 text-[15px] font-medium leading-relaxed pb-2"
             >
               Join a 500+ member pan-India team keeping enterprise fleets safe,
               punctual, and moving — from driver captains to command center
@@ -126,7 +126,7 @@ const Careers = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* 02 — OPEN POSITIONS ACCORDION                                             */}
+      {/* OPEN POSITIONS ACCORDION                                             */}
       {/* ========================================================================= */}
       <section className="py-16 md:py-20 bg-white">
         <div className="container-px">
@@ -137,8 +137,8 @@ const Careers = () => {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="mb-12"
           >
-            <span className="eyebrow text-teal">02 — Current Openings</span>
-            <h2 className="font-display text-2xl sm:text-4xl md:text-5xl leading-[1.08] mt-6 tracking-tight">
+            <span className="eyebrow text-teal">Current Openings</span>
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-6 tracking-tight">
               Open{" "}
               <span className="italic text-teal font-normal">Positions.</span>
             </h2>
@@ -162,7 +162,7 @@ const Careers = () => {
                   >
                     <div>
                       <div className="flex flex-wrap items-center gap-3 mb-1">
-                        <h3 className="font-display text-lg sm:text-xl text-navy">
+                        <h3 className="font-display text-xl sm:text-2xl text-navy">
                           {job.title}
                         </h3>
                         <span className="text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-full bg-teal/10 text-teal">
@@ -200,7 +200,7 @@ const Careers = () => {
                         className="overflow-hidden"
                       >
                         <div className="px-6 pb-6 pt-1 border-t border-navy/10">
-                          <p className="text-sm text-navy/90 font-light leading-relaxed mt-4 mb-4">
+                          <p className="text-slate-700 text-[15px] font-normal leading-relaxed mt-4 mb-4">
                             {job.description}
                           </p>
                           <p className="text-xs font-mono uppercase tracking-wider text-navy/50 mb-2">
@@ -210,7 +210,7 @@ const Careers = () => {
                             {job.requirements.map((req) => (
                               <li
                                 key={req}
-                                className="text-sm text-navy/90 flex items-start gap-2"
+                                className="text-slate-700 text-[15px] font-normal flex items-start gap-2"
                               >
                                 <CheckCircle2 size={14} className="text-teal shrink-0 mt-0.5" />
                                 <span>{req}</span>
@@ -241,7 +241,7 @@ const Careers = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* 04 — APPLICATION FORM                                                     */}
+      {/* APPLICATION FORM                                                     */}
       {/* ========================================================================= */}
       <section id="application-form" className="py-16 md:py-20 bg-soft scroll-mt-24">
         <div className="container-px">
@@ -253,12 +253,12 @@ const Careers = () => {
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-5"
             >
-              <span className="eyebrow text-teal">03 — Apply Now</span>
-              <h2 className="font-display text-2xl sm:text-4xl md:text-5xl leading-[1.08] mt-6 tracking-tight">
+              <span className="eyebrow text-teal">Apply Now</span>
+              <h2 className="font-display text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-6 tracking-tight">
                 Ready To{" "}
                 <span className="italic text-teal font-normal">Get Started?</span>
               </h2>
-              <p className="mt-5 text-navy/90 text-sm sm:text-base font-light leading-relaxed max-w-md">
+              <p className="mt-5 text-slate-700 text-[15px] font-normal leading-relaxed max-w-md">
                 Fill out the form and attach your resume. Our HR team reviews
                 every application and responds within 3 business days.
               </p>
@@ -283,7 +283,7 @@ const Careers = () => {
                       <h4 className="font-sans font-bold text-sm text-navy">
                         Application Received!
                       </h4>
-                      <p className="text-xs text-navy/90 mt-0.5 font-light">
+                      <p className="text-slate-600 text-[15px] font-normal mt-0.5">
                         Our HR team will review your profile and reach out within
                         3 business days.
                       </p>
@@ -428,7 +428,7 @@ const Careers = () => {
       </section>
 
       {/* ========================================================================= */}
-      {/* 05 — CLOSING CTA                                                          */}
+      {/* CLOSING CTA                                                          */}
       {/* ========================================================================= */}
       <section className="py-12 md:py-16 bg-soft text-navy relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-teal/20 rounded-full blur-3xl pointer-events-none" />
@@ -436,7 +436,7 @@ const Careers = () => {
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-sand/20 rounded-tr-full pointer-events-none" />
 
         <div className="container-px relative z-10 text-center max-w-4xl mx-auto">
-          <span className="eyebrow text-teal inline-block">04 — Don't See Your Role?</span>
+          <span className="eyebrow text-teal inline-block">Don't See Your Role?</span>
 
           <motion.div
             className="mx-auto my-6 h-px w-16 bg-sand/60"
@@ -447,12 +447,12 @@ const Careers = () => {
             transition={{ duration: 0.8 }}
           />
 
-          <h2 className="font-display text-3xl sm:text-5xl md:text-6xl leading-[1.08] tracking-tight">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl leading-[1.08] tracking-tight">
             We're Always Looking For{" "}
             <span className="italic text-teal font-normal">Great Talent.</span>
           </h2>
 
-          <p className="mt-6 text-navy/75 text-base sm:text-xl font-light max-w-2xl mx-auto leading-relaxed">
+          <p className="mt-6 text-slate-700 text-[15px] font-normal max-w-2xl mx-auto leading-relaxed">
             Send us your resume for future opportunities and our HR team will
             reach out when a matching role opens up.
           </p>

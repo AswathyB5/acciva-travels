@@ -38,12 +38,12 @@ const Footer = () => {
               alt="Acciva Travels"
               className="h-12 sm:h-14 w-auto object-contain opacity-95"
             />
-            <p className="text-navy/65 text-sm leading-relaxed max-w-sm font-light">
-              Acciva Travels is Pan-India's leading corporate employee transport partner &mdash; delivering safe, punctual, and technology-driven mobility for enterprises and GCCs.
+            <p className="text-slate-700 text-[15px] leading-relaxed max-w-sm font-normal">
+              Acciva Travels was founded in 2016 as a Private Limited Company,
+              building on a strong foundation established in 2007 as Gettz
+              Travel Solutions.
             </p>
-            <p className="text-[11px] font-mono text-teal uppercase tracking-widest font-semibold">
-              24/7 Dedicated Command Tower
-            </p>
+            
           </div>
 
           {/* Quick Links column */}
@@ -87,7 +87,9 @@ const Footer = () => {
                   <span className="w-8 h-8 rounded-lg bg-teal/10 text-teal flex items-center justify-center shrink-0 group-hover:bg-teal group-hover:text-white transition-colors duration-300">
                     <Mail size={14} />
                   </span>
-                  <span className="pt-1.5 break-all">info@accivatravels.com</span>
+                  <span className="pt-1.5 break-all">
+                    info@accivatravels.com
+                  </span>
                 </a>
               </li>
               <li className="flex items-start gap-3 text-sm text-navy/65">
@@ -113,19 +115,46 @@ const Footer = () => {
           </p>
           <div className="flex items-center gap-3">
             <IconLink href="https://instagram.com" label="Instagram">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <svg
+                width="15"
+                height="15"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
                 <rect x="3" y="3" width="18" height="18" rx="5" />
                 <circle cx="12" cy="12" r="4" />
-                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+                <circle
+                  cx="17.5"
+                  cy="6.5"
+                  r="1"
+                  fill="currentColor"
+                  stroke="none"
+                />
               </svg>
             </IconLink>
             <IconLink href="https://facebook.com" label="Facebook">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <svg
+                width="15"
+                height="15"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
                 <path d="M15 3h-2a4 4 0 0 0-4 4v3H7v4h2v7h4v-7h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
               </svg>
             </IconLink>
             <IconLink href="https://linkedin.com" label="LinkedIn">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <svg
+                width="15"
+                height="15"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
                 <rect x="3" y="3" width="18" height="18" rx="2" />
                 <line x1="7" y1="10" x2="7" y2="17" />
                 <circle cx="7" cy="7" r="0.6" fill="currentColor" />
@@ -133,7 +162,14 @@ const Footer = () => {
               </svg>
             </IconLink>
             <IconLink href="https://youtube.com" label="YouTube">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <svg
+                width="15"
+                height="15"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
                 <rect x="3" y="6" width="18" height="12" rx="4" />
                 <path d="M11 10l4 2-4 2z" fill="currentColor" stroke="none" />
               </svg>
