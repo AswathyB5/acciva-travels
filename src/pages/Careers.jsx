@@ -87,8 +87,7 @@ const Careers = () => {
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.1 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               className="max-w-3xl"
             >
@@ -101,8 +100,7 @@ const Careers = () => {
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.1 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
               className="max-w-md text-navy/75 text-base sm:text-lg font-light leading-relaxed pb-2"
             >
@@ -117,6 +115,7 @@ const Careers = () => {
               src="https://images.unsplash.com/photo-1626941946705-10e82ef4c533?auto=format&fit=crop&w=1600&q=80"
               alt="Acciva Travels Professional Driver Behind the Wheel"
               effect="zoom-in"
+              eager
               duration={0.9}
               className="w-full h-[340px] sm:h-[440px] md:h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
             />
@@ -131,10 +130,9 @@ const Careers = () => {
             ].map((stat, i) => (
               <motion.div
                 key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.1 }}
-                transition={{ duration: 0.5, delay: i * 0.05 }}
+                initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
                 whileHover={{ y: -4 }}
                 className="p-5 rounded-2xl bg-white border border-navy/10 hover:border-teal/40 hover:shadow-md transition-[border-color,box-shadow] flex items-center gap-4 group"
               >

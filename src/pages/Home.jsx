@@ -290,13 +290,14 @@ const Home = () => {
       {/* Final CTA */}
       <section className="relative py-16 md:py-24 overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1800&q=80"
+          src="https://i.pinimg.com/originals/0d/e5/a8/0de5a8eb83ab56ee38799cd6674b92a6.jpg"
           alt=""
           aria-hidden="true"
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover object-[center_55%]"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-soft/85" />
+        <div className="absolute inset-0 bg-neutral-300/45" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_35%_45%_at_50%_50%,rgba(212,212,212,0.88)_0%,rgba(212,212,212,0.55)_45%,rgba(212,212,212,0)_75%)]" />
         <div className="relative z-10 container-px text-center">
           <motion.span
             className="eyebrow text-teal inline-block"
@@ -322,7 +323,7 @@ const Home = () => {
           <Magnetic className="mt-12">
             <NavLink
               to="/contact"
-              className="inline-flex items-center gap-3 rounded-full border border-navy/40 text-navy px-10 py-5 eyebrow hover:bg-navy hover:text-soft transition-colors duration-500"
+              className="inline-flex items-center gap-3 rounded-full border-2 border-navy bg-navy text-soft font-bold px-10 py-5 eyebrow hover:bg-teal hover:border-teal transition-colors duration-500"
             >
               Plan Your Journey &rarr;
             </NavLink>

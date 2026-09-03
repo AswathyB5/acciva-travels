@@ -181,11 +181,11 @@ const containerVariants = {
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: (i) => ({ opacity: 0, x: i % 2 === 0 ? -50 : 50 }),
   visible: {
     opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
+    x: 0,
+    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
   },
 };
 
@@ -248,17 +248,17 @@ const Technology = () => {
               src="https://i.pinimg.com/originals/41/72/0b/41720bc2a498f13a0b1056fea62e8777.jpg"
               alt="Acciva Central Command Center and AI Telematics"
               effect="zoom-in"
+              eager
               duration={0.9}
               className="w-full h-[340px] sm:h-[440px] md:h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
-          zz  />
+            />
           </div>
 
           {/* Quick Technology Metrics Strip */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
+            animate="visible"
             className="grid grid-cols-2 md:grid-cols-4 gap-4"
           >
             {[
@@ -266,11 +266,12 @@ const Technology = () => {
               { icon: Clock, val: "Real-Time", label: "Security Monitoring", color: "text-teal", grad: "from-sand/25 to-sand/5" },
               { icon: Zap, val: "Optimized", label: "Transport Efficiency", color: "text-navy", grad: "from-teal/20 to-teal/5" },
               { icon: Server, val: "Paperless", label: "Billing & E-Trip Sheet", color: "text-teal", grad: "from-sand/25 to-sand/5" },
-            ].map((m) => {
+            ].map((m, i) => {
               const IconComp = m.icon;
               return (
                 <motion.div
                   key={m.label}
+                  custom={i}
                   variants={itemVariants}
                   whileHover={{ y: -4, transition: { duration: 0.2 } }}
                   className="p-5 rounded-2xl bg-white border border-navy/10 shadow-xs flex items-center gap-4 group relative overflow-hidden hover:shadow-md transition-shadow"

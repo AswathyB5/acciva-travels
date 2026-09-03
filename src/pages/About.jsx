@@ -97,6 +97,7 @@ const About = () => {
               src="https://static.vecteezy.com/system/resources/thumbnails/069/901/279/small_2x/white-delivery-van-fleet-parked-in-row-at-sunset-with-clear-sky-and-warm-light-creating-calm-and-professional-atmosphere-free-photo.jpeg"
               alt="Acciva Corporate Tech Park Transit Network"
               effect="zoom-in"
+              eager
               duration={0.9}
               className="w-full h-[340px] sm:h-[440px] md:h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
             />
@@ -104,19 +105,43 @@ const About = () => {
 
           {/* Quick Stats Strip */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4">
-            <motion.div whileHover={{ y: -4 }} className="p-5 rounded-2xl bg-white border border-navy/10 shadow-xs hover:border-teal/40 transition-colors">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ y: -4 }}
+              className="p-5 rounded-2xl bg-white border border-navy/10 shadow-xs hover:border-teal/40 transition-colors"
+            >
               <p className="font-display text-2xl sm:text-3xl text-teal font-bold">15+ Yrs</p>
               <p className="text-xs font-mono text-navy/50 mt-1 uppercase">Mobility Heritage</p>
             </motion.div>
-            <motion.div whileHover={{ y: -4 }} className="p-5 rounded-2xl bg-white border border-navy/10 shadow-xs hover:border-teal/40 transition-colors">
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ y: -4 }}
+              className="p-5 rounded-2xl bg-white border border-navy/10 shadow-xs hover:border-teal/40 transition-colors"
+            >
               <p className="font-display text-2xl sm:text-3xl text-navy font-bold">50,000+</p>
               <p className="text-xs font-mono text-navy/50 mt-1 uppercase">Monthly Commutes</p>
             </motion.div>
-            <motion.div whileHover={{ y: -4 }} className="p-5 rounded-2xl bg-white border border-navy/10 shadow-xs hover:border-teal/40 transition-colors">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ y: -4 }}
+              className="p-5 rounded-2xl bg-white border border-navy/10 shadow-xs hover:border-teal/40 transition-colors"
+            >
               <p className="font-display text-2xl sm:text-3xl text-teal font-bold">99.8%</p>
               <p className="text-xs font-mono text-navy/50 mt-1 uppercase">On-Time SLA</p>
             </motion.div>
-            <motion.div whileHover={{ y: -4 }} className="p-5 rounded-2xl bg-white border border-navy/10 shadow-xs hover:border-teal/40 transition-colors">
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ y: -4 }}
+              className="p-5 rounded-2xl bg-white border border-navy/10 shadow-xs hover:border-teal/40 transition-colors"
+            >
               <p className="font-display text-2xl sm:text-3xl text-navy font-bold">10+ Cities</p>
               <p className="text-xs font-mono text-navy/50 mt-1 uppercase">Pan-India Network</p>
             </motion.div>

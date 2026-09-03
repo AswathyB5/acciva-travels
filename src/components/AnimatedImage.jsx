@@ -18,10 +18,19 @@ const AnimatedImage = ({
   delay = 0,
   duration = 0.9,
   amount = 0.2,
+  eager = false,
   ...rest
 }) => {
   const reduceMotion = useReducedMotion();
   const variants = EFFECTS[effect] || EFFECTS["zoom-in"];
+
+  // Above-the-fold images (page headers/banners) use `eager` to animate on
+  // mount instead of on scroll — whileInView can silently miss its first
+  // check when a page mounts mid-route-transition (AnimatePresence), so
+  // content that's visible immediately shouldn't depend on it.
+  const viewProps = eager
+    ? { animate: "visible" }
+    : { whileInView: "visible", viewport: { once: true, amount } };
 
   return (
     <motion.img
@@ -29,8 +38,7 @@ const AnimatedImage = ({
       alt={alt}
       loading="lazy"
       initial={reduceMotion ? "visible" : "hidden"}
-      whileInView="visible"
-      viewport={{ once: true, amount }}
+      {...viewProps}
       variants={variants}
       transition={{ duration, delay, ease: [0.16, 1, 0.3, 1] }}
       className={className}

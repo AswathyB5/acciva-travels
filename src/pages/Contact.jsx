@@ -83,8 +83,7 @@ const Contact = () => {
           {/* Full Width Stacked Header: Each on a Separate Row */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.1 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="w-full mb-12 space-y-4"
           >
@@ -109,8 +108,7 @@ const Contact = () => {
             {/* RIGHT COLUMN (Placed in Grid Col 7-12) - THE CONTACT FORM */}
             <motion.div
               initial={{ opacity: 0, y: 35 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.08 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-7 order-1 lg:order-2"
             >
@@ -316,8 +314,7 @@ const Contact = () => {
             {/* LEFT COLUMN (Grid Col 1-5) - SHOWCASE IMAGE BANNER & CONTACT CHANNELS */}
             <motion.div
               initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true, amount: 0.08 }}
+              animate={{ opacity: 1 }}
               transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-5 order-2 lg:order-1 space-y-6"
             >
@@ -327,6 +324,7 @@ const Contact = () => {
                   src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80"
                   alt="Acciva Corporate Command & Operations"
                   effect="zoom-in"
+                  eager
                   duration={0.9}
                   className="w-full h-72 sm:h-80 object-cover transition-transform duration-700 group-hover:scale-105"
                 />
@@ -335,6 +333,10 @@ const Contact = () => {
               {/* Direct Contact Cards with Hover Spring */}
               <div className="space-y-3">
                 <motion.a
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                   whileHover={{ y: -3, scale: 1.01 }}
                   href="tel:+919035012166"
                   className="p-4 rounded-2xl bg-white border border-navy/10 shadow-xs hover:border-teal/50 hover:shadow-md transition-[border-color,box-shadow] group flex items-center gap-4"
@@ -351,6 +353,10 @@ const Contact = () => {
                 </motion.a>
 
                 <motion.a
+                  initial={{ opacity: 0, x: 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.6, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
                   whileHover={{ y: -3, scale: 1.01 }}
                   href="mailto:info@accivatravels.com"
                   className="p-4 rounded-2xl bg-white border border-navy/10 shadow-xs hover:border-teal/50 hover:shadow-md transition-[border-color,box-shadow] group flex items-center gap-4"
@@ -367,6 +373,10 @@ const Contact = () => {
                 </motion.a>
 
                 <motion.div
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
                   whileHover={{ y: -3, scale: 1.01 }}
                   className="p-4 rounded-2xl bg-white border border-navy/10 shadow-xs flex items-center gap-4"
                 >
@@ -382,6 +392,10 @@ const Contact = () => {
                 </motion.div>
 
                 <motion.div
+                  initial={{ opacity: 0, x: 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
                   whileHover={{ y: -3, scale: 1.01 }}
                   className="p-4 rounded-2xl bg-white border border-navy/10 shadow-xs flex items-center gap-4"
                 >

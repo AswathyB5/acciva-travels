@@ -60,8 +60,7 @@ const Blog = () => {
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.1 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               className="max-w-3xl"
             >
@@ -77,8 +76,7 @@ const Blog = () => {
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.1 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
               className="max-w-md text-navy/75 text-base sm:text-lg font-light leading-relaxed pb-2"
             >
@@ -92,6 +90,7 @@ const Blog = () => {
               src="https://images.ctfassets.net/i874q3cs1cvx/78289/417b8a1b696306ce7c188499a4cfb747/Fleet-Vehicles.jpg"
               alt="Acciva Corporate Mobility Intelligence & Tech"
               effect="zoom-in"
+              eager
               duration={0.9}
               className="w-full h-[340px] sm:h-[440px] md:h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
             />
@@ -99,45 +98,29 @@ const Blog = () => {
 
           {/* Quick Stats Strip */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4">
-            <div className="p-5 rounded-2xl bg-white border border-navy/10 shadow-xs flex items-center gap-4">
-              <div className="w-11 h-11 rounded-xl bg-teal/10 flex items-center justify-center text-teal shrink-0">
-                <BookOpen size={22} />
-              </div>
-              <div>
-                <p className="font-display text-xl sm:text-2xl text-navy font-bold">25+ Articles</p>
-                <p className="text-[11px] font-mono text-navy/50 uppercase">Research & Guides</p>
-              </div>
-            </div>
-
-            <div className="p-5 rounded-2xl bg-white border border-navy/10 shadow-xs flex items-center gap-4">
-              <div className="w-11 h-11 rounded-xl bg-teal/10 flex items-center justify-center text-teal shrink-0">
-                <Zap size={22} />
-              </div>
-              <div>
-                <p className="font-display text-xl sm:text-2xl text-teal font-bold">EV & AI</p>
-                <p className="text-[11px] font-mono text-navy/50 uppercase">Smart Telematics</p>
-              </div>
-            </div>
-
-            <div className="p-5 rounded-2xl bg-white border border-navy/10 shadow-xs flex items-center gap-4">
-              <div className="w-11 h-11 rounded-xl bg-teal/10 flex items-center justify-center text-teal shrink-0">
-                <TrendingUp size={22} />
-              </div>
-              <div>
-                <p className="font-display text-xl sm:text-2xl text-navy font-bold">50K+ Monthly</p>
-                <p className="text-[11px] font-mono text-navy/50 uppercase">Active Readers</p>
-              </div>
-            </div>
-
-            <div className="p-5 rounded-2xl bg-white border border-navy/10 shadow-xs flex items-center gap-4">
-              <div className="w-11 h-11 rounded-xl bg-teal/10 flex items-center justify-center text-teal shrink-0">
-                <ShieldCheck size={22} />
-              </div>
-              <div>
-                <p className="font-display text-xl sm:text-2xl text-teal font-bold">100% Verified</p>
-                <p className="text-[11px] font-mono text-navy/50 uppercase">SLA Benchmarks</p>
-              </div>
-            </div>
+            {[
+              { icon: BookOpen, value: "25+ Articles", label: "Research & Guides", color: "text-navy" },
+              { icon: Zap, value: "EV & AI", label: "Smart Telematics", color: "text-teal" },
+              { icon: TrendingUp, value: "50K+ Monthly", label: "Active Readers", color: "text-navy" },
+              { icon: ShieldCheck, value: "100% Verified", label: "SLA Benchmarks", color: "text-teal" },
+            ].map((stat, i) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
+                whileHover={{ y: -4 }}
+                className="p-5 rounded-2xl bg-white border border-navy/10 hover:border-teal/40 hover:shadow-md transition-[border-color,box-shadow] flex items-center gap-4 group"
+              >
+                <div className="w-11 h-11 rounded-xl bg-teal/10 group-hover:bg-teal group-hover:text-ivory transition-colors flex items-center justify-center text-teal shrink-0">
+                  <stat.icon size={22} />
+                </div>
+                <div>
+                  <p className={`font-display text-xl sm:text-2xl font-bold ${stat.color}`}>{stat.value}</p>
+                  <p className="text-[11px] font-mono text-navy/50 uppercase">{stat.label}</p>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
