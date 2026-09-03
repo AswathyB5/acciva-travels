@@ -1109,7 +1109,7 @@ const About = () => {
       {/* ========================================================================= */}
       {/* SAFE AND RELIABLE TRANSPORTATION MADE EASY                            */}
       {/* ========================================================================= */}
-      <section className="relative bg-soft py-8 md:py-10 overflow-hidden">
+      <section className="relative bg-soft py-8 md:py-10 mb-6 md:mb-10 overflow-hidden">
         {/* Background Video & Overlays (matches Home "Next Chapter" section) */}
         <video
           autoPlay
@@ -1176,7 +1176,7 @@ const About = () => {
       {/* ========================================================================= */}
       {/* READY TO MOVE WITH ACCIVA? (CLOSING CTA)                             */}
       {/* ========================================================================= */}
-      <section className="relative py-8 md:py-10 overflow-hidden">
+      <section className="relative py-16 md:py-24 overflow-hidden">
         {/* Background Image & Overlays (matches Home's Final CTA section) */}
         <img
           src="https://www.bmw-infinitycars.in/sites/default/files/2026-02/1280_610_new%202.jpg"
@@ -1189,11 +1189,6 @@ const About = () => {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_35%_45%_at_50%_50%,rgba(212,212,212,0.88)_0%,rgba(212,212,212,0.55)_45%,rgba(212,212,212,0)_75%)]" />
 
         <div className="container-px relative z-10 text-center max-w-3xl mx-auto space-y-6">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-teal/10 border border-teal/20 text-teal text-xs font-mono uppercase tracking-widest">
-            <Award size={14} />
-            <span>Get Started Today</span>
-          </div>
-
           <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-navy leading-[1.08]">
             Ready to Move With{" "}
             <span className="italic text-teal font-normal">Acciva?</span>
