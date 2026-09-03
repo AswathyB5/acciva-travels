@@ -51,6 +51,9 @@ const TiltCard = ({ children, className, glowColor = "rgba(59,141,196,0.22)", ac
       }}
       className={`${className} relative transition-all duration-500 group`}
     >
+      {/* Animated Top Glow Bar on Hover (matches Home's Featured Services card pattern) */}
+      <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-teal via-sand to-teal opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10" />
+
       {/* Corner quarter-circle round accent (matches Home "Next Chapter" pattern), pops in when the card scrolls into view */}
       <motion.div
         className="absolute top-0 right-0 w-28 h-28 sm:w-36 sm:h-36 rounded-bl-full pointer-events-none origin-top-right"
@@ -1012,8 +1015,14 @@ const About = () => {
       <section className="py-16 md:py-24 bg-soft text-navy relative overflow-hidden">
         <div className="container-px relative z-10">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            {/* Left Column — Description */}
-            <div className="lg:col-span-7 space-y-8">
+            {/* Left Column — Description, slides in from the left */}
+            <motion.div
+              initial={{ opacity: 0, x: -70 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="lg:col-span-7 space-y-8"
+            >
               <span className="eyebrow text-teal">05 — Our Purpose</span>
 
               <h2 className="font-display text-2xl sm:text-4xl md:text-5xl text-navy tracking-tight leading-[1.12] uppercase">
@@ -1083,10 +1092,16 @@ const About = () => {
                   It&apos;s about making every journey count.&rdquo;
                 </motion.p>
               </TiltCard>
-            </div>
+            </motion.div>
 
-            {/* Right Column — Car Image */}
-            <div className="lg:col-span-5 relative">
+            {/* Right Column — Car Image, slides in from the right */}
+            <motion.div
+              initial={{ opacity: 0, x: 70 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+              className="lg:col-span-5 relative"
+            >
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
@@ -1099,7 +1114,7 @@ const About = () => {
                   className="h-[420px] sm:h-[520px] w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </motion.div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
