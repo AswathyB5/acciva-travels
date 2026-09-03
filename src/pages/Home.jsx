@@ -91,7 +91,7 @@ const Home = () => {
               </h1>
             </div>
             <div className="mt-10">
-              <p className="text-navy/70 leading-relaxed text-base max-w-sm">
+              <p className="text-navy/90 leading-relaxed text-base max-w-sm">
                 Acciva Travels has emerged to be one of the best leading Corporate Employee Transport Services &amp; Solutions Pan India. We are committed to provide quality and reliable Employee Transportation services. Our state-of-art app based Technology empowers the entire Employee Transportation Management System process for our Corporate companies.
               </p>
             </div>
@@ -133,7 +133,7 @@ const Home = () => {
                       />
                     </svg>
                   </motion.span>
-                  <span className="text-navy/70 text-base leading-relaxed">{service}</span>
+                  <span className="text-navy/90 text-base leading-relaxed">{service}</span>
                 </motion.div>
               ))}
             </div>
@@ -204,7 +204,7 @@ const Home = () => {
               whileInView={{ y: "0%", opacity: 1 }}
               viewport={{ once: true, amount: 0.05 }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="font-display italic text-xl sm:text-2xl md:text-3xl text-navy/70 block"
+              className="font-display italic text-xl sm:text-2xl md:text-3xl text-navy/90 block"
             >
               Your
             </motion.span>
@@ -335,3 +335,9 @@ const Home = () => {
 };
 
 export default Home;
+
+
+
+
+
+

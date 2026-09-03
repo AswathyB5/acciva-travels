@@ -74,10 +74,21 @@ const Careers = () => {
       {/* ========================================================================= */}
       {/* 01 — SUBPAGE HEADER                                                       */}
       {/* ========================================================================= */}
-      <section className="pt-32 sm:pt-36 pb-10 md:pb-12 bg-soft">
-        <div className="container-px">
-          <div className="flex items-center gap-2 text-xs font-mono text-navy/40 mb-6 uppercase tracking-wider">
-            <NavLink to="/" className="hover:text-teal transition-colors">
+      <section
+        className="pt-32 sm:pt-36 pb-10 md:pb-12 relative overflow-hidden"
+        style={{
+          backgroundImage: `url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=2000&q=85')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundAttachment: "fixed",
+        }}
+      >
+        {/* Light overlay for text legibility */}
+        <div className="absolute inset-0 bg-white/75 backdrop-blur-[1px]" />
+
+        <div className="container-px relative z-10">
+          <div className="flex items-center gap-2 text-xs font-bold text-navy mb-6 uppercase tracking-wider">
+            <NavLink to="/" className="hover:text-teal transition-colors text-navy/70 font-bold">
               Home
             </NavLink>
             <ChevronRight size={12} />
@@ -102,7 +113,7 @@ const Careers = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
-              className="max-w-md text-navy/75 text-base sm:text-lg font-light leading-relaxed pb-2"
+              className="max-w-md text-navy/90 text-base sm:text-lg font-medium leading-relaxed pb-2"
             >
               Join a 500+ member pan-India team keeping enterprise fleets safe,
               punctual, and moving — from driver captains to command center
@@ -110,46 +121,7 @@ const Careers = () => {
             </motion.p>
           </div>
 
-          <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-navy/10 mb-12 group">
-            <AnimatedImage
-              src="https://images.unsplash.com/photo-1626941946705-10e82ef4c533?auto=format&fit=crop&w=1600&q=80"
-              alt="Acciva Travels Professional Driver Behind the Wheel"
-              effect="zoom-in"
-              eager
-              duration={0.9}
-              className="w-full h-[340px] sm:h-[440px] md:h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-          </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4">
-            {[
-              { icon: Users, value: "500+", label: "Team Members" },
-              { icon: MapPin, value: "6 Metros", label: "Pan-India Presence" },
-              { icon: Briefcase, value: `${jobOpenings.length} Open Roles`, label: "Hiring Now" },
-              { icon: TrendingUp, value: "80%", label: "Promoted Internally" },
-            ].map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
-                whileHover={{ y: -4 }}
-                className="p-5 rounded-2xl bg-white border border-navy/10 hover:border-teal/40 hover:shadow-md transition-[border-color,box-shadow] flex items-center gap-4 group"
-              >
-                <div className="w-11 h-11 rounded-xl bg-teal/10 group-hover:bg-teal group-hover:text-ivory transition-colors flex items-center justify-center text-teal shrink-0">
-                  <stat.icon size={22} />
-                </div>
-                <div>
-                  <p className="font-display text-xl sm:text-2xl text-navy font-bold">
-                    {stat.value}
-                  </p>
-                  <p className="text-[11px] font-mono text-navy/50 uppercase">
-                    {stat.label}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -228,7 +200,7 @@ const Careers = () => {
                         className="overflow-hidden"
                       >
                         <div className="px-6 pb-6 pt-1 border-t border-navy/10">
-                          <p className="text-sm text-navy/70 font-light leading-relaxed mt-4 mb-4">
+                          <p className="text-sm text-navy/90 font-light leading-relaxed mt-4 mb-4">
                             {job.description}
                           </p>
                           <p className="text-xs font-mono uppercase tracking-wider text-navy/50 mb-2">
@@ -238,7 +210,7 @@ const Careers = () => {
                             {job.requirements.map((req) => (
                               <li
                                 key={req}
-                                className="text-sm text-navy/70 flex items-start gap-2"
+                                className="text-sm text-navy/90 flex items-start gap-2"
                               >
                                 <CheckCircle2 size={14} className="text-teal shrink-0 mt-0.5" />
                                 <span>{req}</span>
@@ -286,7 +258,7 @@ const Careers = () => {
                 Ready To{" "}
                 <span className="italic text-teal font-normal">Get Started?</span>
               </h2>
-              <p className="mt-5 text-navy/70 text-sm sm:text-base font-light leading-relaxed max-w-md">
+              <p className="mt-5 text-navy/90 text-sm sm:text-base font-light leading-relaxed max-w-md">
                 Fill out the form and attach your resume. Our HR team reviews
                 every application and responds within 3 business days.
               </p>
@@ -311,7 +283,7 @@ const Careers = () => {
                       <h4 className="font-sans font-bold text-sm text-navy">
                         Application Received!
                       </h4>
-                      <p className="text-xs text-navy/70 mt-0.5 font-light">
+                      <p className="text-xs text-navy/90 mt-0.5 font-light">
                         Our HR team will review your profile and reach out within
                         3 business days.
                       </p>
@@ -322,7 +294,7 @@ const Careers = () => {
                 <form onSubmit={handleSubmit} noValidate className="space-y-6">
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-navy/70 mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-navy/90 mb-2">
                         Full Name *
                       </label>
                       <input
@@ -340,7 +312,7 @@ const Careers = () => {
                     </div>
 
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-navy/70 mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-navy/90 mb-2">
                         Position Applying For
                       </label>
                       <input
@@ -355,7 +327,7 @@ const Careers = () => {
 
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-navy/70 mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-navy/90 mb-2">
                         Email Address *
                       </label>
                       <input
@@ -374,7 +346,7 @@ const Careers = () => {
                     </div>
 
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-navy/70 mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-navy/90 mb-2">
                         Phone Number *
                       </label>
                       <input
@@ -393,7 +365,7 @@ const Careers = () => {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-navy/70 mb-2">
+                    <label className="block text-xs font-mono uppercase tracking-wider text-navy/90 mb-2">
                       Years of Experience
                     </label>
                     <input
@@ -406,7 +378,7 @@ const Careers = () => {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-navy/70 mb-2">
+                    <label className="block text-xs font-mono uppercase tracking-wider text-navy/90 mb-2">
                       Resume / CV
                     </label>
                     <label
@@ -428,7 +400,7 @@ const Careers = () => {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-navy/70 mb-2">
+                    <label className="block text-xs font-mono uppercase tracking-wider text-navy/90 mb-2">
                       Cover Note (Optional)
                     </label>
                     <textarea
@@ -512,3 +484,11 @@ const Careers = () => {
 };
 
 export default Careers;
+
+
+
+
+
+
+
+

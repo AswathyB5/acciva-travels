@@ -20,11 +20,22 @@ const Services = () => {
       {/* ========================================================================= */}
       {/* 01 — SUBPAGE HEADER: CLEAN WHITE/SOFT SECTION WITH HERO SHOWCASE IMAGE    */}
       {/* ========================================================================= */}
-      <section className="pt-32 sm:pt-36 pb-10 md:pb-12 bg-soft">
-        <div className="container-px">
+      <section
+        className="pt-32 sm:pt-36 pb-10 md:pb-12 relative overflow-hidden"
+        style={{
+          backgroundImage: `url('https://images.unsplash.com/photo-1575147144179-7e23d752d8a9?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGxhbmRzY2FwZSUyMGNhcnxlbnwwfHwwfHx8MA%3D%3D')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundAttachment: "fixed",
+        }}
+      >
+        {/* Light overlay for text legibility */}
+        <div className="absolute inset-0 bg-white/75 backdrop-blur-[1px]" />
+
+        <div className="container-px relative z-10">
           {/* Breadcrumb Navigation */}
-          <div className="flex items-center gap-2 text-xs font-mono text-navy/40 mb-6 uppercase tracking-wider">
-            <NavLink to="/" className="hover:text-teal transition-colors">
+          <div className="flex items-center gap-2 text-xs font-bold text-navy mb-6 uppercase tracking-wider">
+            <NavLink to="/" className="hover:text-teal transition-colors text-navy/70 font-bold">
               Home
             </NavLink>
             <ChevronRight size={12} />
@@ -56,7 +67,7 @@ const Services = () => {
                 ease: [0.16, 1, 0.3, 1],
                 delay: 0.15,
               }}
-              className="max-w-md text-navy/75 text-base sm:text-lg font-light leading-relaxed pb-2"
+              className="max-w-md text-navy/90 text-base sm:text-lg font-medium leading-relaxed pb-2"
             >
               End-to-end employee transportation, tech park shuttle networks,
               executive transit, and airport transfers managed with 99.8%
@@ -64,100 +75,7 @@ const Services = () => {
             </motion.p>
           </div>
 
-          {/* Prominent Header Showcase Image Banner */}
-          <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-navy/10 mb-12 group">
-            <AnimatedImage
-              src="https://static.vecteezy.com/system/resources/thumbnails/053/516/600/small_2x/a-large-number-of-cars-parked-in-a-parking-lot-photo.jpeg"
-              alt="Acciva Corporate Fleet Solutions"
-              effect="zoom-in"
-              eager
-              duration={0.9}
-              className="w-full h-[340px] sm:h-[440px] md:h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-          </div>
 
-          {/* Quick Stats Strip with Interactive Hover Cards */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={{ y: -4 }}
-              className="p-5 rounded-2xl bg-white border border-navy/10 hover:border-teal/40 hover:shadow-md transition-[border-color,box-shadow] flex items-center gap-4 group"
-            >
-              <div className="w-11 h-11 rounded-xl bg-teal/10 group-hover:bg-teal group-hover:text-ivory transition-colors flex items-center justify-center text-teal shrink-0">
-                <Car size={22} />
-              </div>
-              <div>
-                <p className="font-display text-xl sm:text-2xl text-navy font-bold">
-                  5,000+ Cabs
-                </p>
-                <p className="text-[11px] font-mono text-navy/50 uppercase">
-                  Pan-India Fleet
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={{ y: -4 }}
-              className="p-5 rounded-2xl bg-white border border-navy/10 hover:border-teal/40 hover:shadow-md transition-[border-color,box-shadow] flex items-center gap-4 group"
-            >
-              <div className="w-11 h-11 rounded-xl bg-teal/10 group-hover:bg-teal group-hover:text-ivory transition-colors flex items-center justify-center text-teal shrink-0">
-                <Clock size={22} />
-              </div>
-              <div>
-                <p className="font-display text-xl sm:text-2xl text-teal font-bold">
-                  99.8% SLA
-                </p>
-                <p className="text-[11px] font-mono text-navy/50 uppercase">
-                  Shift Punctuality
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={{ y: -4 }}
-              className="p-5 rounded-2xl bg-white border border-navy/10 hover:border-teal/40 hover:shadow-md transition-[border-color,box-shadow] flex items-center gap-4 group"
-            >
-              <div className="w-11 h-11 rounded-xl bg-teal/10 group-hover:bg-teal group-hover:text-ivory transition-colors flex items-center justify-center text-teal shrink-0">
-                <ShieldCheck size={22} />
-              </div>
-              <div>
-                <p className="font-display text-xl sm:text-2xl text-navy font-bold">
-                  100% Vetted
-                </p>
-                <p className="text-[11px] font-mono text-navy/50 uppercase">
-                  Background Checks
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={{ y: -4 }}
-              className="p-5 rounded-2xl bg-white border border-navy/10 hover:border-teal/40 hover:shadow-md transition-[border-color,box-shadow] flex items-center gap-4 group"
-            >
-              <div className="w-11 h-11 rounded-xl bg-teal/10 group-hover:bg-teal group-hover:text-ivory transition-colors flex items-center justify-center text-teal shrink-0">
-                <Users size={22} />
-              </div>
-              <div>
-                <p className="font-display text-xl sm:text-2xl text-teal font-bold">
-                  24/7 ERT
-                </p>
-                <p className="text-[11px] font-mono text-navy/50 uppercase">
-                  Command Tower
-                </p>
-              </div>
-            </motion.div>
-          </div>
         </div>
       </section>
 
@@ -284,3 +202,11 @@ const Services = () => {
 };
 
 export default Services;
+
+
+
+
+
+
+
+

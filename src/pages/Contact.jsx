@@ -69,18 +69,29 @@ const Contact = () => {
       {/* ========================================================================= */}
       {/* 01 — MAIN SECTION: SUBPAGE HEADER & IMMEDIATE CONTACT FORM FIRST          */}
       {/* ========================================================================= */}
-      <section className="pt-32 sm:pt-36 pb-14 md:pb-18 bg-soft">
-        <div className="container-px">
+      <section
+        className="pt-32 sm:pt-36 pb-14 md:pb-18 relative overflow-hidden"
+        style={{
+          backgroundImage: `url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2000&q=85')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundAttachment: "fixed",
+        }}
+      >
+        {/* Light overlay for text legibility */}
+        <div className="absolute inset-0 bg-white/75 backdrop-blur-[1px]" />
+
+        <div className="container-px relative z-10">
           {/* Breadcrumb Navigation */}
-          <div className="flex items-center gap-2 text-xs font-mono text-navy/40 mb-6 uppercase tracking-wider">
-            <NavLink to="/" className="hover:text-teal transition-colors">
+          <div className="flex items-center gap-2 text-xs font-bold text-navy mb-6 uppercase tracking-wider">
+            <NavLink to="/" className="hover:text-teal transition-colors text-navy/70 font-bold">
               Home
             </NavLink>
             <ChevronRight size={12} />
             <span className="text-teal font-semibold">Contact Us</span>
           </div>
 
-          {/* Full Width Stacked Header: Each on a Separate Row */}
+          {/* Full Width Stacked Header */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -98,7 +109,7 @@ const Contact = () => {
             </h1>
 
             {/* Row 3: Description */}
-            <p className="text-navy/75 text-base sm:text-xl font-light leading-relaxed max-w-4xl pt-2">
+            <p className="text-navy/90 text-base sm:text-xl font-light leading-relaxed max-w-4xl pt-2">
               Request customized enterprise proposals, corporate rate cards, tech park shuttle network setups, or 24/7 dispatch support.
             </p>
           </motion.div>
@@ -138,7 +149,7 @@ const Contact = () => {
                       <h4 className="font-sans font-bold text-sm text-navy">
                         Inquiry Received Successfully!
                       </h4>
-                      <p className="text-xs text-navy/70 mt-0.5 font-light">
+                      <p className="text-xs text-navy/90 mt-0.5 font-light">
                         Our corporate enterprise manager will review your requirement and send over the proposal within 4 hours.
                       </p>
                     </div>
@@ -148,7 +159,7 @@ const Contact = () => {
                 <form onSubmit={handleSubmit} noValidate className="space-y-6">
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-navy/70 mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-navy/90 mb-2">
                         Contact Person Name *
                       </label>
                       <input
@@ -166,7 +177,7 @@ const Contact = () => {
                     </div>
 
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-navy/70 mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-navy/90 mb-2">
                         Company / Organization *
                       </label>
                       <input
@@ -186,7 +197,7 @@ const Contact = () => {
 
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-navy/70 mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-navy/90 mb-2">
                         Corporate Email Address *
                       </label>
                       <input
@@ -205,7 +216,7 @@ const Contact = () => {
                     </div>
 
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-navy/70 mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-navy/90 mb-2">
                         Phone / Mobile Number *
                       </label>
                       <input
@@ -225,7 +236,7 @@ const Contact = () => {
 
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-navy/70 mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-navy/90 mb-2">
                         Service Requirement
                       </label>
                       <select
@@ -244,7 +255,7 @@ const Contact = () => {
                     </div>
 
                     <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-navy/70 mb-2">
+                      <label className="block text-xs font-mono uppercase tracking-wider text-navy/90 mb-2">
                         Estimated Fleet / Shift Volume
                       </label>
                       <select
@@ -262,7 +273,7 @@ const Contact = () => {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-navy/70 mb-2">
+                    <label className="block text-xs font-mono uppercase tracking-wider text-navy/90 mb-2">
                       Operational City / Tech Corridor
                     </label>
                     <select
@@ -282,7 +293,7 @@ const Contact = () => {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-navy/70 mb-2">
+                    <label className="block text-xs font-mono uppercase tracking-wider text-navy/90 mb-2">
                       Specific Transit Requirements & Notes *
                     </label>
                     <textarea
@@ -501,7 +512,7 @@ const Contact = () => {
             Need Immediate Assistance Or <span className="italic text-teal font-normal">Fleet Consultation?</span>
           </h2>
 
-          <p className="mt-3 text-navy/70 text-sm sm:text-base font-light">
+          <p className="mt-3 text-navy/90 text-sm sm:text-base font-light">
             Our corporate transit managers are available round-the-clock to structure scalable transit contracts for your team.
           </p>
 
@@ -527,3 +538,11 @@ const Contact = () => {
 };
 
 export default Contact;
+
+
+
+
+
+
+
+

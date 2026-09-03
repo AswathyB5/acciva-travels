@@ -197,19 +197,26 @@ const Technology = () => {
       {/* ========================================================================= */}
       {/* 01 — SUBPAGE HEADER: TECH SHOWCASE HERO                                   */}
       {/* ========================================================================= */}
-      <section className="pt-32 sm:pt-36 pb-10 md:pb-12 bg-soft relative">
-        {/* Subtle Ambient Tech Grid Glow */}
-        <div className="absolute top-0 right-1/4 w-96 h-96 bg-teal/5 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-10 left-10 w-80 h-80 bg-sand/10 rounded-full blur-3xl pointer-events-none" />
+      <section
+        className="pt-32 sm:pt-36 pb-10 md:pb-12 relative overflow-hidden"
+        style={{
+          backgroundImage: `url('https://www.shutterstock.com/image-photo/hand-engages-sleek-digital-tablet-260nw-2713910673.jpg')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundAttachment: "fixed",
+        }}
+      >
+        {/* Light overlay for text legibility */}
+        <div className="absolute inset-0 bg-white/75 backdrop-blur-[1px]" />
 
         <div className="container-px relative z-10">
           {/* Breadcrumb Navigation */}
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="flex items-center gap-2 text-xs font-mono text-navy/40 mb-6 uppercase tracking-wider"
+            className="flex items-center gap-2 text-xs font-bold text-navy mb-6 uppercase tracking-wider"
           >
-            <NavLink to="/" className="hover:text-teal transition-colors">
+            <NavLink to="/" className="hover:text-teal transition-colors text-navy/70 font-bold">
               Home
             </NavLink>
             <ChevronRight size={12} />
@@ -236,62 +243,11 @@ const Technology = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.15 }}
-              className="max-w-md text-navy/75 text-base sm:text-lg font-light leading-relaxed pb-2"
+              className="max-w-md text-navy/90 text-base sm:text-lg font-medium leading-relaxed pb-2"
             >
               Acciva's state of the art technology is an automation platform for employee transportation that automates everything — rostering, routing, deployment, live tracking, paperless automated billing, and e-trip sheets.
             </motion.p>
           </div>
-
-          {/* Prominent Header Showcase Image Banner */}
-          <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-navy/10 mb-12 group bg-navy/5">
-            <AnimatedImage
-              src="https://i.pinimg.com/originals/41/72/0b/41720bc2a498f13a0b1056fea62e8777.jpg"
-              alt="Acciva Central Command Center and AI Telematics"
-              effect="zoom-in"
-              eager
-              duration={0.9}
-              className="w-full h-[340px] sm:h-[440px] md:h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-          </div>
-
-          {/* Quick Technology Metrics Strip */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="grid grid-cols-2 md:grid-cols-4 gap-4"
-          >
-            {[
-              { icon: ShieldCheck, val: "< 60s", label: "Panic Response Time", color: "text-navy", grad: "from-teal/20 to-teal/5" },
-              { icon: Clock, val: "Real-Time", label: "Security Monitoring", color: "text-teal", grad: "from-sand/25 to-sand/5" },
-              { icon: Zap, val: "Optimized", label: "Transport Efficiency", color: "text-navy", grad: "from-teal/20 to-teal/5" },
-              { icon: Server, val: "Paperless", label: "Billing & E-Trip Sheet", color: "text-teal", grad: "from-sand/25 to-sand/5" },
-            ].map((m, i) => {
-              const IconComp = m.icon;
-              return (
-                <motion.div
-                  key={m.label}
-                  custom={i}
-                  variants={itemVariants}
-                  whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                  className="p-5 rounded-2xl bg-white border border-navy/10 shadow-xs flex items-center gap-4 group relative overflow-hidden hover:shadow-md transition-shadow"
-                >
-                  <div className={`absolute top-0 right-0 w-24 h-24 bg-linear-to-bl ${m.grad} rounded-bl-full pointer-events-none transition-transform duration-500 group-hover:scale-125`} />
-                  <div className="w-11 h-11 rounded-xl bg-teal/10 group-hover:bg-teal group-hover:text-ivory transition-colors flex items-center justify-center text-teal shrink-0 relative z-10">
-                    <IconComp size={22} />
-                  </div>
-                  <div className="relative z-10">
-                    <p className={`font-display text-xl sm:text-2xl font-bold ${m.color}`}>
-                      {m.val}
-                    </p>
-                    <p className="text-[11px] font-mono text-navy/50 uppercase mt-0.5">
-                      {m.label}
-                    </p>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
         </div>
       </section>
 
@@ -319,25 +275,28 @@ const Technology = () => {
           </motion.div>
 
           {/* Pillar Navigation Tabs */}
-          <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.1 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mb-10"
-          >
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mb-10">
             {techPillars.map((p, idx) => {
               const IconComp = p.icon;
               const isActive = idx === activePillar;
               return (
-                <button
+                <motion.button
                   key={p.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.1 }}
+                  transition={{
+                    duration: 0.5,
+                    delay: idx * 0.08,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                  whileHover={!isActive ? { y: -4, scale: 1.03 } : {}}
+                  whileTap={{ scale: 0.97 }}
                   onClick={() => setActivePillar(idx)}
-                  className={`p-5 rounded-2xl text-left transition-all duration-300 border cursor-pointer relative overflow-hidden ${
-                    isActive
-                      ? "bg-navy text-ivory border-navy shadow-xl scale-[1.02]"
-                      : "bg-white text-navy border-navy/10 hover:border-teal/40 hover:bg-teal/5"
-                  }`}
+                  className={`p-5 rounded-2xl text-left transition-all duration-300 border cursor-pointer relative overflow-hidden ${isActive
+                    ? "bg-navy text-ivory border-navy shadow-xl scale-[1.02]"
+                    : "bg-white text-navy border-navy/10 hover:border-teal/40 hover:bg-teal/5"
+                    }`}
                 >
                   {isActive && (
                     <motion.div
@@ -347,16 +306,14 @@ const Technology = () => {
                   )}
                   <div className="flex items-center justify-between mb-3">
                     <span
-                      className={`w-9 h-9 rounded-lg flex items-center justify-center transition-colors ${
-                        isActive ? "bg-sand text-navy" : "bg-navy/5 text-teal"
-                      }`}
+                      className={`w-9 h-9 rounded-lg flex items-center justify-center transition-colors ${isActive ? "bg-sand text-navy" : "bg-navy/5 text-teal"
+                        }`}
                     >
                       <IconComp size={18} />
                     </span>
                     <span
-                      className={`text-[10px] font-mono tracking-wider uppercase font-semibold ${
-                        isActive ? "text-sand" : "text-navy/40"
-                      }`}
+                      className={`text-[10px] font-mono tracking-wider uppercase font-semibold ${isActive ? "text-sand" : "text-navy/40"
+                        }`}
                     >
                       0{idx + 1}
                     </span>
@@ -365,16 +322,15 @@ const Technology = () => {
                     {p.title.split("&")[0]}
                   </h4>
                   <p
-                    className={`text-xs mt-1 ${
-                      isActive ? "text-ivory/60" : "text-navy/50"
-                    }`}
+                    className={`text-xs mt-1 ${isActive ? "text-ivory/60" : "text-navy/50"
+                      }`}
                   >
                     {p.tag}
                   </p>
-                </button>
+                </motion.button>
               );
             })}
-          </motion.div>
+          </div>
 
           {/* Active Pillar Detailed Showcase Card */}
           <AnimatePresence mode="wait">
@@ -486,7 +442,7 @@ const Technology = () => {
                 <h4 className="font-display text-lg text-navy font-bold">
                   Safety Transportation Made Easy
                 </h4>
-                <p className="text-xs sm:text-sm text-navy/70 font-light mt-0.5">
+                <p className="text-xs sm:text-sm text-navy/90 font-light mt-0.5">
                   Feel free to touch with us.
                 </p>
               </div>
@@ -643,3 +599,11 @@ const Technology = () => {
 };
 
 export default Technology;
+
+
+
+
+
+
+
+

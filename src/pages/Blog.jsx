@@ -45,11 +45,22 @@ const Blog = () => {
       {/* ========================================================================= */}
       {/* 01 — SUBPAGE HEADER: CLEAN WHITE/SOFT SECTION WITH HERO SHOWCASE IMAGE    */}
       {/* ========================================================================= */}
-      <section className="pt-32 sm:pt-36 pb-10 md:pb-12 bg-soft">
-        <div className="container-px">
+      <section
+        className="pt-32 sm:pt-36 pb-10 md:pb-12 relative overflow-hidden"
+        style={{
+          backgroundImage: `url('https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=2000&q=85')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundAttachment: "fixed",
+        }}
+      >
+        {/* Light overlay for text legibility */}
+        <div className="absolute inset-0 bg-white/75 backdrop-blur-[1px]" />
+
+        <div className="container-px relative z-10">
           {/* Breadcrumb Navigation */}
-          <div className="flex items-center gap-2 text-xs font-mono text-navy/40 mb-6 uppercase tracking-wider">
-            <NavLink to="/" className="hover:text-teal transition-colors">
+          <div className="flex items-center gap-2 text-xs font-bold text-navy mb-6 uppercase tracking-wider">
+            <NavLink to="/" className="hover:text-teal transition-colors text-navy/70 font-bold">
               Home
             </NavLink>
             <ChevronRight size={12} />
@@ -78,50 +89,13 @@ const Blog = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
-              className="max-w-md text-navy/75 text-base sm:text-lg font-light leading-relaxed pb-2"
+              className="max-w-md text-navy/90 text-base sm:text-lg font-medium leading-relaxed pb-2"
             >
               Explore key industry insights on corporate employee transportation, AI dispatch telematics, EV sustainability, and mobility benchmarks across India.
             </motion.p>
           </div>
 
-          {/* Prominent Header Showcase Image Banner */}
-          <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-navy/10 mb-12 group">
-            <AnimatedImage
-              src="https://images.ctfassets.net/i874q3cs1cvx/78289/417b8a1b696306ce7c188499a4cfb747/Fleet-Vehicles.jpg"
-              alt="Acciva Corporate Mobility Intelligence & Tech"
-              effect="zoom-in"
-              eager
-              duration={0.9}
-              className="w-full h-[340px] sm:h-[440px] md:h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-          </div>
 
-          {/* Quick Stats Strip */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4">
-            {[
-              { icon: BookOpen, value: "25+ Articles", label: "Research & Guides", color: "text-navy" },
-              { icon: Zap, value: "EV & AI", label: "Smart Telematics", color: "text-teal" },
-              { icon: TrendingUp, value: "50K+ Monthly", label: "Active Readers", color: "text-navy" },
-              { icon: ShieldCheck, value: "100% Verified", label: "SLA Benchmarks", color: "text-teal" },
-            ].map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
-                whileHover={{ y: -4 }}
-                className="p-5 rounded-2xl bg-white border border-navy/10 hover:border-teal/40 hover:shadow-md transition-[border-color,box-shadow] flex items-center gap-4 group"
-              >
-                <div className="w-11 h-11 rounded-xl bg-teal/10 group-hover:bg-teal group-hover:text-ivory transition-colors flex items-center justify-center text-teal shrink-0">
-                  <stat.icon size={22} />
-                </div>
-                <div>
-                  <p className={`font-display text-xl sm:text-2xl font-bold ${stat.color}`}>{stat.value}</p>
-                  <p className="text-[11px] font-mono text-navy/50 uppercase">{stat.label}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -141,7 +115,7 @@ const Blog = () => {
                   className={`px-6 py-2.5 rounded-full text-xs font-mono tracking-wider uppercase transition-all duration-300 cursor-pointer relative ${
                     isSelected
                       ? "bg-navy text-ivory font-bold shadow-md scale-105"
-                      : "bg-white border border-navy/10 text-navy/70 hover:border-teal/40 hover:text-teal"
+                      : "bg-white border border-navy/10 text-navy/90 hover:border-teal/40 hover:text-teal"
                   }`}
                 >
                   {cat}
@@ -306,3 +280,11 @@ const Blog = () => {
 };
 
 export default Blog;
+
+
+
+
+
+
+
+
