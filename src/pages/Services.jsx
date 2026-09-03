@@ -85,7 +85,7 @@ const Services = () => {
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.5, delay: 0.05 }}
               whileHover={{ y: -4 }}
-              className="p-5 rounded-2xl bg-white border border-navy/10 hover:border-teal/40 hover:shadow-md transition-all flex items-center gap-4 group"
+              className="p-5 rounded-2xl bg-white border border-navy/10 hover:border-teal/40 hover:shadow-md transition-[border-color,box-shadow] flex items-center gap-4 group"
             >
               <div className="w-11 h-11 rounded-xl bg-teal/10 group-hover:bg-teal group-hover:text-ivory transition-colors flex items-center justify-center text-teal shrink-0">
                 <Car size={22} />
@@ -106,7 +106,7 @@ const Services = () => {
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.5, delay: 0.1 }}
               whileHover={{ y: -4 }}
-              className="p-5 rounded-2xl bg-white border border-navy/10 hover:border-teal/40 hover:shadow-md transition-all flex items-center gap-4 group"
+              className="p-5 rounded-2xl bg-white border border-navy/10 hover:border-teal/40 hover:shadow-md transition-[border-color,box-shadow] flex items-center gap-4 group"
             >
               <div className="w-11 h-11 rounded-xl bg-teal/10 group-hover:bg-teal group-hover:text-ivory transition-colors flex items-center justify-center text-teal shrink-0">
                 <Clock size={22} />
@@ -127,7 +127,7 @@ const Services = () => {
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.5, delay: 0.15 }}
               whileHover={{ y: -4 }}
-              className="p-5 rounded-2xl bg-white border border-navy/10 hover:border-teal/40 hover:shadow-md transition-all flex items-center gap-4 group"
+              className="p-5 rounded-2xl bg-white border border-navy/10 hover:border-teal/40 hover:shadow-md transition-[border-color,box-shadow] flex items-center gap-4 group"
             >
               <div className="w-11 h-11 rounded-xl bg-teal/10 group-hover:bg-teal group-hover:text-ivory transition-colors flex items-center justify-center text-teal shrink-0">
                 <ShieldCheck size={22} />
@@ -148,7 +148,7 @@ const Services = () => {
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
               whileHover={{ y: -4 }}
-              className="p-5 rounded-2xl bg-white border border-navy/10 hover:border-teal/40 hover:shadow-md transition-all flex items-center gap-4 group"
+              className="p-5 rounded-2xl bg-white border border-navy/10 hover:border-teal/40 hover:shadow-md transition-[border-color,box-shadow] flex items-center gap-4 group"
             >
               <div className="w-11 h-11 rounded-xl bg-teal/10 group-hover:bg-teal group-hover:text-ivory transition-colors flex items-center justify-center text-teal shrink-0">
                 <Users size={22} />

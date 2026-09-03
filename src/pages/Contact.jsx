@@ -337,7 +337,7 @@ const Contact = () => {
                 <motion.a
                   whileHover={{ y: -3, scale: 1.01 }}
                   href="tel:+919035012166"
-                  className="p-4 rounded-2xl bg-white border border-navy/10 shadow-xs hover:border-teal/50 hover:shadow-md transition-all group flex items-center gap-4"
+                  className="p-4 rounded-2xl bg-white border border-navy/10 shadow-xs hover:border-teal/50 hover:shadow-md transition-[border-color,box-shadow] group flex items-center gap-4"
                 >
                   <div className="w-10 h-10 rounded-xl bg-teal/10 flex items-center justify-center text-teal shrink-0 group-hover:bg-teal group-hover:text-white transition-colors">
                     <Phone size={18} />
@@ -353,7 +353,7 @@ const Contact = () => {
                 <motion.a
                   whileHover={{ y: -3, scale: 1.01 }}
                   href="mailto:info@accivatravels.com"
-                  className="p-4 rounded-2xl bg-white border border-navy/10 shadow-xs hover:border-teal/50 hover:shadow-md transition-all group flex items-center gap-4"
+                  className="p-4 rounded-2xl bg-white border border-navy/10 shadow-xs hover:border-teal/50 hover:shadow-md transition-[border-color,box-shadow] group flex items-center gap-4"
                 >
                   <div className="w-10 h-10 rounded-xl bg-teal/10 flex items-center justify-center text-teal shrink-0 group-hover:bg-teal group-hover:text-white transition-colors">
                     <Mail size={18} />

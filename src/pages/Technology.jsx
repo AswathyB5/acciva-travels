@@ -273,7 +273,7 @@ const Technology = () => {
                   key={m.label}
                   variants={itemVariants}
                   whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                  className="p-5 rounded-2xl bg-white border border-navy/10 shadow-xs flex items-center gap-4 group relative overflow-hidden hover:shadow-md transition-all"
+                  className="p-5 rounded-2xl bg-white border border-navy/10 shadow-xs flex items-center gap-4 group relative overflow-hidden hover:shadow-md transition-shadow"
                 >
                   <div className={`absolute top-0 right-0 w-24 h-24 bg-linear-to-bl ${m.grad} rounded-bl-full pointer-events-none transition-transform duration-500 group-hover:scale-125`} />
                   <div className="w-11 h-11 rounded-xl bg-teal/10 group-hover:bg-teal group-hover:text-ivory transition-colors flex items-center justify-center text-teal shrink-0 relative z-10">
@@ -541,12 +541,12 @@ const Technology = () => {
                 return (
                   <motion.div
                     key={item.name}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0, x: idx % 2 === 0 ? -50 : 50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, amount: 0.1 }}
-                    transition={{ duration: 0.5, delay: idx * 0.1 }}
+                    transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
                     whileHover={{ y: -4 }}
-                    className="p-6 rounded-2xl bg-white border border-navy/10 shadow-xs hover:shadow-lg transition-all relative overflow-hidden group"
+                    className="p-6 rounded-2xl bg-white border border-navy/10 shadow-xs hover:shadow-lg transition-shadow relative overflow-hidden group"
                   >
                     {/* Decorative signature corner quarter-circle gradient */}
                     <div className={`absolute top-0 right-0 w-28 h-28 bg-linear-to-bl ${grad} rounded-bl-full pointer-events-none transition-transform duration-500 group-hover:scale-125`} />

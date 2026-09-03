@@ -177,12 +177,12 @@ const Blog = () => {
                 <motion.article
                   key={post.slug}
                   layout
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
+                  initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, amount: 0.1 }}
-                  transition={{ duration: 0.5, delay: (i % 3) * 0.1 }}
+                  transition={{ duration: 0.6, delay: (i % 3) * 0.08, ease: [0.16, 1, 0.3, 1] }}
                   whileHover={{ y: -8 }}
-                  className="rounded-3xl bg-white border border-navy/10 hover:border-teal/50 hover:shadow-2xl transition-all duration-300 flex flex-col justify-between overflow-hidden group relative shadow-md"
+                  className="rounded-3xl bg-white border border-navy/10 hover:border-teal/50 hover:shadow-2xl transition-[border-color,box-shadow] duration-300 flex flex-col justify-between overflow-hidden group relative shadow-md"
                 >
                   {/* Article Card Photo */}
                   <div className="relative h-56 w-full overflow-hidden">

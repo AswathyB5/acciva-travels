@@ -104,19 +104,19 @@ const About = () => {
 
           {/* Quick Stats Strip */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4">
-            <motion.div whileHover={{ y: -4 }} className="p-5 rounded-2xl bg-white border border-navy/10 shadow-xs hover:border-teal/40 transition-all">
+            <motion.div whileHover={{ y: -4 }} className="p-5 rounded-2xl bg-white border border-navy/10 shadow-xs hover:border-teal/40 transition-colors">
               <p className="font-display text-2xl sm:text-3xl text-teal font-bold">15+ Yrs</p>
               <p className="text-xs font-mono text-navy/50 mt-1 uppercase">Mobility Heritage</p>
             </motion.div>
-            <motion.div whileHover={{ y: -4 }} className="p-5 rounded-2xl bg-white border border-navy/10 shadow-xs hover:border-teal/40 transition-all">
+            <motion.div whileHover={{ y: -4 }} className="p-5 rounded-2xl bg-white border border-navy/10 shadow-xs hover:border-teal/40 transition-colors">
               <p className="font-display text-2xl sm:text-3xl text-navy font-bold">50,000+</p>
               <p className="text-xs font-mono text-navy/50 mt-1 uppercase">Monthly Commutes</p>
             </motion.div>
-            <motion.div whileHover={{ y: -4 }} className="p-5 rounded-2xl bg-white border border-navy/10 shadow-xs hover:border-teal/40 transition-all">
+            <motion.div whileHover={{ y: -4 }} className="p-5 rounded-2xl bg-white border border-navy/10 shadow-xs hover:border-teal/40 transition-colors">
               <p className="font-display text-2xl sm:text-3xl text-teal font-bold">99.8%</p>
               <p className="text-xs font-mono text-navy/50 mt-1 uppercase">On-Time SLA</p>
             </motion.div>
-            <motion.div whileHover={{ y: -4 }} className="p-5 rounded-2xl bg-white border border-navy/10 shadow-xs hover:border-teal/40 transition-all">
+            <motion.div whileHover={{ y: -4 }} className="p-5 rounded-2xl bg-white border border-navy/10 shadow-xs hover:border-teal/40 transition-colors">
               <p className="font-display text-2xl sm:text-3xl text-navy font-bold">10+ Cities</p>
               <p className="text-xs font-mono text-navy/50 mt-1 uppercase">Pan-India Network</p>
             </motion.div>
@@ -215,12 +215,12 @@ const About = () => {
               return (
                 <motion.div
                   key={f.title}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, x: idx % 2 === 0 ? -50 : 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, amount: 0.1 }}
-                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
                   whileHover={{ y: -6 }}
-                  className={`p-7 sm:p-9 rounded-3xl bg-white border ${f.borderColor} hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group relative overflow-hidden shadow-xl`}
+                  className={`p-7 sm:p-9 rounded-3xl bg-white border ${f.borderColor} hover:shadow-2xl transition-shadow duration-300 flex flex-col justify-between group relative overflow-hidden shadow-xl`}
                 >
                   <div className={`absolute top-0 right-0 w-36 h-36 bg-linear-to-bl ${f.color} rounded-bl-full pointer-events-none transition-transform duration-500 group-hover:scale-125`} />
 
@@ -287,7 +287,7 @@ const About = () => {
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.6 }}
               whileHover={{ y: -6 }}
-              className="p-8 sm:p-12 rounded-3xl bg-white border border-navy/10 shadow-xl hover:shadow-2xl hover:border-teal/40 transition-all duration-300 flex flex-col justify-between relative overflow-hidden group"
+              className="p-8 sm:p-12 rounded-3xl bg-white border border-navy/10 shadow-xl hover:shadow-2xl hover:border-teal/40 transition-[border-color,box-shadow] duration-300 flex flex-col justify-between relative overflow-hidden group"
             >
               <div className="absolute top-0 right-0 w-44 h-44 bg-teal/5 rounded-bl-full pointer-events-none transition-transform duration-500 group-hover:scale-125" />
 
@@ -338,7 +338,7 @@ const About = () => {
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.6 }}
               whileHover={{ y: -6 }}
-              className="p-8 sm:p-12 rounded-3xl bg-white border border-navy/10 shadow-xl hover:shadow-2xl hover:border-sand/60 transition-all duration-300 flex flex-col justify-between relative overflow-hidden group"
+              className="p-8 sm:p-12 rounded-3xl bg-white border border-navy/10 shadow-xl hover:shadow-2xl hover:border-sand/60 transition-[border-color,box-shadow] duration-300 flex flex-col justify-between relative overflow-hidden group"
             >
               <div className="absolute top-0 right-0 w-44 h-44 bg-sand/15 rounded-bl-full pointer-events-none transition-transform duration-500 group-hover:scale-125" />
 

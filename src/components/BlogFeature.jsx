@@ -4,10 +4,15 @@ import { ArrowUpRight, Calendar, Tag } from "lucide-react";
 import AnimatedImage from "./AnimatedImage";
 
 const cardVariants = {
-  hidden: { opacity: 0 },
+  hidden: (i) =>
+    i === 1
+      ? { opacity: 0, y: 50 }
+      : { opacity: 0, x: i === 0 ? -50 : 50 },
   visible: (i) => ({
     opacity: 1,
-    transition: { duration: 0.55, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] },
+    x: 0,
+    y: 0,
+    transition: { duration: 0.65, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] },
   }),
 };
 

@@ -56,12 +56,12 @@ const ServiceList = ({ services }) => {
             return (
               <motion.div
                 key={service.slug}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+                initial={{ opacity: 0, x: i % 2 === 0 ? -60 : 60 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, amount: 0.12 }}
-                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: (i % 2) * 0.15 }}
+                transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                 whileHover={{ y: -8, transition: { duration: 0.3 } }}
-                className="p-5 sm:p-6 rounded-3xl bg-white border border-navy/10 hover:border-teal/40 hover:shadow-[0_25px_60px_rgba(38,55,74,0.12)] transition-all duration-500 flex flex-col justify-between overflow-hidden group shadow-[0_10px_35px_rgba(38,55,74,0.05)] relative"
+                className="p-5 sm:p-6 rounded-3xl bg-white border border-navy/10 hover:border-teal/40 hover:shadow-[0_25px_60px_rgba(38,55,74,0.12)] transition-[border-color,box-shadow] duration-500 flex flex-col justify-between overflow-hidden group shadow-[0_10px_35px_rgba(38,55,74,0.05)] relative"
               >
                 {/* Subtle top shimmer sweep on card hover */}
                 <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-transparent via-teal/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

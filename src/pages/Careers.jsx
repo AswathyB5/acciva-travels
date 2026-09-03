@@ -136,7 +136,7 @@ const Careers = () => {
                 viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: 0.5, delay: i * 0.05 }}
                 whileHover={{ y: -4 }}
-                className="p-5 rounded-2xl bg-white border border-navy/10 hover:border-teal/40 hover:shadow-md transition-all flex items-center gap-4 group"
+                className="p-5 rounded-2xl bg-white border border-navy/10 hover:border-teal/40 hover:shadow-md transition-[border-color,box-shadow] flex items-center gap-4 group"
               >
                 <div className="w-11 h-11 rounded-xl bg-teal/10 group-hover:bg-teal group-hover:text-ivory transition-colors flex items-center justify-center text-teal shrink-0">
                   <stat.icon size={22} />
@@ -180,10 +180,10 @@ const Careers = () => {
               return (
                 <motion.div
                   key={job.slug}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, amount: 0.1 }}
-                  transition={{ duration: 0.5, delay: i * 0.05 }}
+                  transition={{ duration: 0.6, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
                   className="rounded-2xl bg-soft border-2 border-navy/15 shadow-sm hover:border-teal/50 hover:shadow-md transition-all overflow-hidden"
                 >
                   <button

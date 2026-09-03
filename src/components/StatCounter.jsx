@@ -43,12 +43,12 @@ const StatCounter = ({ value, suffix = "", display, label, icon, duration = 1.8,
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40 }}
+      whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.55, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
       whileHover={{ y: -6, transition: { duration: 0.25 } }}
-      className="p-4 sm:p-6 md:p-8 rounded-3xl bg-white border border-teal/25 shadow-md hover:shadow-2xl hover:border-teal/50 transition-all duration-300 relative overflow-hidden flex flex-col justify-between group"
+      className="p-4 sm:p-6 md:p-8 rounded-3xl bg-white border border-teal/25 shadow-md hover:shadow-2xl hover:border-teal/50 transition-[border-color,box-shadow] duration-300 relative overflow-hidden flex flex-col justify-between group"
     >
       {/* Permanent top gradient line */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-teal via-sand to-teal" />

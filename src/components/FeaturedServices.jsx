@@ -15,10 +15,15 @@ const containerVariants = {
 };
 
 const cardVariants = {
-  hidden: { opacity: 0 },
+  hidden: (i) =>
+    i === 1
+      ? { opacity: 0, y: 60 }
+      : { opacity: 0, x: i === 0 ? -60 : 60 },
   visible: {
     opacity: 1,
-    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1], staggerChildren: 0.18, delayChildren: 0.4 },
+    x: 0,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1], staggerChildren: 0.18, delayChildren: 0.4 },
   },
 };
 
@@ -77,9 +82,10 @@ const FeaturedServices = () => {
           return (
             <motion.div
               key={service.slug}
+              custom={i}
               variants={cardVariants}
               whileHover={{ y: -10, scale: 1.015 }}
-              className="p-4 rounded-3xl bg-white border border-navy/10 hover:border-teal/50 hover:shadow-[0_30px_70px_rgba(7,26,36,0.14)] transition-all duration-500 flex flex-col justify-between group relative overflow-hidden shadow-[0_10px_35px_rgba(38,55,74,0.05)]"
+              className="p-4 rounded-3xl bg-white border border-navy/10 hover:border-teal/50 hover:shadow-[0_30px_70px_rgba(7,26,36,0.14)] transition-[border-color,box-shadow] duration-500 flex flex-col justify-between group relative overflow-hidden shadow-[0_10px_35px_rgba(38,55,74,0.05)]"
             >
               {/* Animated Top Glow Bar on Hover */}
               <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-teal via-sand to-teal opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

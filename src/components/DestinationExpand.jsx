@@ -111,10 +111,10 @@ const DestinationExpand = ({ destinations }) => {
         {destinations.map((d, i) => (
           <motion.div
             key={d.name}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.1 }}
-            transition={{ duration: 0.5, delay: (i % 4) * 0.05 }}
+            transition={{ duration: 0.6, delay: (i % 4) * 0.05, ease: [0.16, 1, 0.3, 1] }}
           >
             <NavLink to="/services" className="group relative block h-[42vh] rounded-3xl overflow-hidden shadow-xl border border-navy/10">
               <AnimatedImage
