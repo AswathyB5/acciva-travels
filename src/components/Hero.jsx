@@ -174,7 +174,7 @@ const Hero = () => {
                   </div>
                   <span className="h-px w-6 bg-sand" />
                   <span className="eyebrow text-sand text-xs tracking-[0.25em]">
-                    {currentPanel.tag} &mdash; {currentPanel.badge}
+                    {currentPanel.tag} · {currentPanel.badge}
                   </span>
                 </motion.div>
 
@@ -210,7 +210,7 @@ const Hero = () => {
                 >
                   <NavLink
                     to={currentPanel.link}
-                    className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full border-2 border-sand bg-sand text-midnight font-mono font-bold text-xs tracking-widest uppercase hover:bg-white hover:border-white transition-all duration-300 shadow-xl group active:scale-95"
+                    className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full border-2 border-sand bg-sand text-midnight font-mono font-bold text-xs tracking-widest uppercase transition-all duration-300 shadow-xl group active:scale-95"
                   >
                     <span>{currentPanel.linkText}</span>
                     <ArrowUpRight
@@ -254,14 +254,14 @@ const Hero = () => {
               <button
                 onClick={() => paginate(-1)}
                 aria-label="Previous slide"
-                className="w-11 h-11 rounded-full bg-midnight/80 backdrop-blur-md border border-ivory/20 flex items-center justify-center text-ivory active:scale-90 transition-all duration-300 hover:bg-sand hover:border-sand hover:text-midnight shadow-lg cursor-pointer"
+                className="w-11 h-11 rounded-full bg-transparent border-2 border-sand flex items-center justify-center text-sand active:scale-90 transition-all duration-300 hover:bg-sand/10 shadow-lg cursor-pointer"
               >
                 <ChevronLeft size={18} />
               </button>
               <button
                 onClick={() => paginate(1)}
                 aria-label="Next slide"
-                className="w-11 h-11 rounded-full bg-midnight/80 backdrop-blur-md border border-ivory/20 flex items-center justify-center text-ivory active:scale-90 transition-all duration-300 hover:bg-sand hover:border-sand hover:text-midnight shadow-lg cursor-pointer"
+                className="w-11 h-11 rounded-full bg-transparent border-2 border-sand flex items-center justify-center text-sand active:scale-90 transition-all duration-300 hover:bg-sand/10 shadow-lg cursor-pointer"
               >
                 <ChevronRight size={18} />
               </button>

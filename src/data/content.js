@@ -273,7 +273,7 @@ export const blogPosts = [
     date: "July 28, 2026",
     title: "How to Plan the Perfect International Vacation",
     excerpt:
-      "A practical, step-by-step approach to planning a trip abroad without the stress — from budgeting to booking.",
+      "A practical, step-by-step approach to planning a trip abroad without the stress, from budgeting to booking.",
     image:
       "https://plus.unsplash.com/premium_photo-1723629817274-5408105f3a48?auto=format&fit=crop&w=1200&q=80",
   },
@@ -378,7 +378,7 @@ export const jobOpenings = [
     type: "Full-Time",
     experience: "3+ Years",
     description:
-      "Own the relationship for enterprise clients — from onboarding new shuttle routes to quarterly SLA reviews and renewals.",
+      "Own the relationship for enterprise clients, from onboarding new shuttle routes to quarterly SLA reviews and renewals.",
     requirements: [
       "3+ years in account management or B2B client success",
       "Experience with enterprise/corporate clients preferred",

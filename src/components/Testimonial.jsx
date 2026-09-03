@@ -173,7 +173,7 @@ const Testimonial = () => {
               <button
                 onClick={goPrev}
                 aria-label="Previous"
-                className="w-10 h-10 rounded-full border border-navy/20 flex items-center justify-center text-navy/50 hover:text-teal hover:border-teal transition-all duration-300 cursor-pointer active:scale-90"
+                className="w-10 h-10 rounded-full bg-sand text-navy flex items-center justify-center transition-all duration-300 cursor-pointer active:scale-90"
               >
                 <ChevronLeft size={18} />
               </button>
@@ -185,7 +185,7 @@ const Testimonial = () => {
                     onClick={() => go(i)}
                     aria-label={`Go to ${i + 1}`}
                     className={`rounded-full transition-all duration-300 cursor-pointer ${
-                      i === active ? "w-7 h-2 bg-teal" : "w-2 h-2 bg-navy/15 hover:bg-navy/30"
+                      i === active ? "w-7 h-2 bg-sand" : "w-2 h-2 bg-navy/15 hover:bg-navy/30"
                     }`}
                   />
                 ))}
@@ -194,7 +194,7 @@ const Testimonial = () => {
               <button
                 onClick={goNext}
                 aria-label="Next"
-                className="w-10 h-10 rounded-full border border-navy/20 flex items-center justify-center text-navy/50 hover:text-teal hover:border-teal transition-all duration-300 cursor-pointer active:scale-90"
+                className="w-10 h-10 rounded-full bg-sand text-navy flex items-center justify-center transition-all duration-300 cursor-pointer active:scale-90"
               >
                 <ChevronRight size={18} />
               </button>

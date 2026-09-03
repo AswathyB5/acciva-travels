@@ -59,7 +59,7 @@ const FeaturedServices = () => {
 
         <NavLink
           to="/services"
-          className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-navy text-ivory text-xs font-mono font-semibold hover:bg-teal transition-all duration-300 shadow-md shrink-0 group self-start md:self-end"
+          className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-sand text-navy text-xs font-mono font-semibold transition-all duration-300 shadow-md shrink-0 group self-start md:self-end"
         >
           <span>Explore All Services</span>
           <ArrowUpRight
@@ -147,10 +147,10 @@ const FeaturedServices = () => {
                 <div className="pt-3 border-t border-navy/10">
                   <NavLink
                     to="/services"
-                    className="flex items-center justify-between w-full p-3 rounded-2xl bg-soft group-hover:bg-navy group-hover:text-ivory text-navy transition-all duration-300 font-mono text-xs font-semibold shadow-xs"
+                    className="flex items-center justify-between w-full p-3 rounded-2xl bg-soft group-hover:bg-sand text-navy transition-all duration-300 font-mono text-xs font-semibold shadow-xs"
                   >
                     <span>View Specifications</span>
-                    <div className="w-6 h-6 rounded-full bg-white group-hover:bg-teal text-navy group-hover:text-white flex items-center justify-center transition-colors duration-300 shadow-xs">
+                    <div className="w-6 h-6 rounded-full bg-white text-navy flex items-center justify-center transition-colors duration-300 shadow-xs">
                       <ArrowUpRight size={13} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </div>
                   </NavLink>
@@ -188,7 +188,7 @@ const FeaturedServices = () => {
 
         <NavLink
           to="/services"
-          className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-navy text-ivory text-xs font-mono font-semibold hover:bg-teal transition-all duration-300 shrink-0 shadow-sm group-hover:shadow-md"
+          className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-sand text-navy text-xs font-mono font-semibold transition-all duration-300 shrink-0 shadow-sm group-hover:shadow-md"
         >
           <span>View All Capabilities</span>
           <ArrowUpRight size={14} className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />

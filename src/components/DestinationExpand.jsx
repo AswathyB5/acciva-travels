@@ -15,7 +15,7 @@ const DestinationExpand = ({ destinations }) => {
       <div className="flex items-center justify-between mb-8">
         <p className="eyebrow text-teal/80 flex items-center gap-2">
           <Sparkles size={14} className="animate-spin text-teal" style={{ animationDuration: "6s" }} />
-          <span>Luxury Fleet Showcase &mdash; Hover to Expand</span>
+          <span>Luxury Fleet Showcase · Hover to Expand</span>
         </p>
 
         {/* Dynamic active index indicator */}
@@ -86,7 +86,7 @@ const DestinationExpand = ({ destinations }) => {
                     transition={{ duration: 0.4, delay: 0.1 }}
                   >
                     <span className="inline-block px-3 py-1 rounded-full bg-teal/20 backdrop-blur-md border border-teal/30 text-teal text-[11px] font-mono tracking-wider uppercase mb-3">
-                      {String(i + 1).padStart(2, "0")} &mdash; {d.country}
+                      {String(i + 1).padStart(2, "0")} · {d.country}
                     </span>
                     <h3 className="font-display text-ivory text-3xl lg:text-5xl leading-tight font-normal">
                       {d.name}
@@ -94,7 +94,7 @@ const DestinationExpand = ({ destinations }) => {
                     <p className="text-ivory/85 text-[15px] mt-3 max-w-sm leading-relaxed font-normal">
                       {d.description}
                     </p>
-                    <div className="mt-6 inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full bg-sand text-navy text-xs font-mono font-bold hover:bg-white transition-all shadow-md">
+                    <div className="mt-6 inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full bg-sand text-navy text-xs font-mono font-bold transition-all shadow-md">
                       <span>Book This Fleet</span>
                       <ArrowUpRight size={14} />
                     </div>
@@ -126,7 +126,7 @@ const DestinationExpand = ({ destinations }) => {
               <div className="absolute inset-0 bg-linear-to-t from-midnight via-midnight/40 to-transparent" />
               <div className="absolute inset-0 flex flex-col justify-end p-6">
                 <span className="eyebrow text-sand font-mono">
-                  {String(i + 1).padStart(2, "0")} &mdash; {d.country}
+                  {String(i + 1).padStart(2, "0")} · {d.country}
                 </span>
                 <h3 className="font-display text-ivory text-2xl mt-1">{d.name}</h3>
               </div>

@@ -176,7 +176,7 @@ const Contact = () => {
                         value={form.name}
                         onChange={handleChange}
                         placeholder="e.g. Rajesh Kumar"
-                        className={`w-full px-4 py-3.5 rounded-2xl bg-soft border text-sm text-navy placeholder:text-navy/30 focus:outline-none focus:border-teal transition-colors ${
+                        className={`w-full px-4 py-3.5 rounded-2xl bg-soft border text-[15px] text-navy placeholder:text-navy/30 focus:outline-none focus:border-teal transition-colors ${
                           errors.name ? "border-red-400" : "border-navy/10"
                         }`}
                       />
@@ -194,7 +194,7 @@ const Contact = () => {
                         value={form.company}
                         onChange={handleChange}
                         placeholder="e.g. Infosys / Microsoft / Target"
-                        className={`w-full px-4 py-3.5 rounded-2xl bg-soft border text-sm text-navy placeholder:text-navy/30 focus:outline-none focus:border-teal transition-colors ${
+                        className={`w-full px-4 py-3.5 rounded-2xl bg-soft border text-[15px] text-navy placeholder:text-navy/30 focus:outline-none focus:border-teal transition-colors ${
                           errors.company ? "border-red-400" : "border-navy/10"
                         }`}
                       />
@@ -215,7 +215,7 @@ const Contact = () => {
                         value={form.email}
                         onChange={handleChange}
                         placeholder="rajesh@company.com"
-                        className={`w-full px-4 py-3.5 rounded-2xl bg-soft border text-sm text-navy placeholder:text-navy/30 focus:outline-none focus:border-teal transition-colors ${
+                        className={`w-full px-4 py-3.5 rounded-2xl bg-soft border text-[15px] text-navy placeholder:text-navy/30 focus:outline-none focus:border-teal transition-colors ${
                           errors.email ? "border-red-400" : "border-navy/10"
                         }`}
                       />
@@ -233,7 +233,7 @@ const Contact = () => {
                         value={form.phone}
                         onChange={handleChange}
                         placeholder="+91 98765 43210"
-                        className={`w-full px-4 py-3.5 rounded-2xl bg-soft border text-sm text-navy placeholder:text-navy/30 focus:outline-none focus:border-teal transition-colors ${
+                        className={`w-full px-4 py-3.5 rounded-2xl bg-soft border text-[15px] text-navy placeholder:text-navy/30 focus:outline-none focus:border-teal transition-colors ${
                           errors.phone ? "border-red-400" : "border-navy/10"
                         }`}
                       />
@@ -252,7 +252,7 @@ const Contact = () => {
                         name="serviceType"
                         value={form.serviceType}
                         onChange={handleChange}
-                        className="w-full px-4 py-3.5 rounded-2xl bg-soft border border-navy/10 text-sm text-navy focus:outline-none focus:border-teal transition-colors"
+                        className="w-full px-4 py-3.5 rounded-2xl bg-soft border border-navy/10 text-[15px] text-navy focus:outline-none focus:border-teal transition-colors"
                       >
                         <option>Corporate Employee Transportation</option>
                         <option>Enterprise Fleet Management</option>
@@ -271,7 +271,7 @@ const Contact = () => {
                         name="fleetSize"
                         value={form.fleetSize}
                         onChange={handleChange}
-                        className="w-full px-4 py-3.5 rounded-2xl bg-soft border border-navy/10 text-sm text-navy focus:outline-none focus:border-teal transition-colors"
+                        className="w-full px-4 py-3.5 rounded-2xl bg-soft border border-navy/10 text-[15px] text-navy focus:outline-none focus:border-teal transition-colors"
                       >
                         <option>1 - 10 Vehicles (Pilot / Ad-Hoc)</option>
                         <option>10 - 50 Vehicles (Standard Roster)</option>
@@ -289,7 +289,7 @@ const Contact = () => {
                       name="city"
                       value={form.city}
                       onChange={handleChange}
-                      className="w-full px-4 py-3.5 rounded-2xl bg-soft border border-navy/10 text-sm text-navy focus:outline-none focus:border-teal transition-colors"
+                      className="w-full px-4 py-3.5 rounded-2xl bg-soft border border-navy/10 text-[15px] text-navy focus:outline-none focus:border-teal transition-colors"
                     >
                       <option>Bengaluru (Manyata, Electronic City, Whitefield, ORR)</option>
                       <option>Hyderabad (HITEC City, Gachibowli, Financial District)</option>
@@ -311,7 +311,7 @@ const Contact = () => {
                       value={form.message}
                       onChange={handleChange}
                       placeholder="Please mention shift timings, EV preference, pickup hubs, or SLA compliance details..."
-                      className={`w-full px-4 py-3.5 rounded-2xl bg-soft border text-sm text-navy placeholder:text-navy/30 focus:outline-none focus:border-teal transition-colors resize-none ${
+                      className={`w-full px-4 py-3.5 rounded-2xl bg-soft border text-[15px] text-navy placeholder:text-navy/30 focus:outline-none focus:border-teal transition-colors resize-none ${
                         errors.message ? "border-red-400" : "border-navy/10"
                       }`}
                     />
@@ -322,7 +322,7 @@ const Contact = () => {
 
                   <button
                     type="submit"
-                    className="w-full py-4 rounded-full bg-navy text-ivory font-bold text-xs font-mono uppercase tracking-wider hover:bg-teal transition-all shadow-lg flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full py-4 rounded-full bg-sand text-navy font-bold text-xs font-mono uppercase tracking-wider transition-all shadow-lg flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <span>Submit RFP & Request Enterprise Rate Card</span>
                     <ArrowUpRight size={16} />
@@ -454,7 +454,7 @@ const Contact = () => {
                   Central Command & Fleet Dispatch
                 </span>
                 <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-navy mt-1">
-                  Acciva Travels Headquarters &mdash; <span className="italic text-teal font-normal">Bengaluru.</span>
+                  Acciva Travels Headquarters in <span className="italic text-teal font-normal">Bengaluru.</span>
                 </h2>
                 <p className="text-slate-600 text-[15px] font-normal leading-relaxed mt-1">
                   Serving Manyata Tech Park, Electronic City, Whitefield, Outer Ring Road & Pan-India Corridors.
@@ -465,7 +465,7 @@ const Contact = () => {
                 href="https://maps.google.com/?q=Bengaluru,+Karnataka,+India"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-navy text-ivory text-xs font-mono font-semibold hover:bg-teal transition-all shrink-0 shadow-xs"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-sand text-navy text-xs font-mono font-semibold transition-all shrink-0 shadow-xs"
               >
                 <span>Open in Google Maps</span>
                 <ArrowUpRight size={14} />
@@ -528,14 +528,14 @@ const Contact = () => {
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
             <a
               href="tel:+919035012166"
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-xs hover:bg-white transition-all shadow-md"
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-xs transition-all shadow-md"
             >
               <span>Call +91 903 501 2166</span>
               <ArrowUpRight size={14} />
             </a>
             <NavLink
               to="/services"
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full border border-navy/20 text-navy hover:bg-navy/5 transition-all text-xs font-medium"
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-sand text-navy transition-all text-xs font-medium"
             >
               <span>Explore Fleet Capabilities</span>
             </NavLink>

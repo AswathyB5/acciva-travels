@@ -116,7 +116,7 @@ const Careers = () => {
               className="max-w-md text-navy/90 text-[15px] font-medium leading-relaxed pb-2"
             >
               Join a 500+ member pan-India team keeping enterprise fleets safe,
-              punctual, and moving — from driver captains to command center
+              punctual, and moving, from driver captains to command center
               operations.
             </motion.p>
           </div>
@@ -224,7 +224,7 @@ const Careers = () => {
                                 .getElementById("application-form")
                                 ?.scrollIntoView({ behavior: "smooth", block: "start" });
                             }}
-                            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-navy text-ivory text-xs font-mono font-semibold uppercase tracking-wider hover:bg-teal transition-all cursor-pointer"
+                            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-sand text-navy text-xs font-mono font-semibold uppercase tracking-wider transition-all cursor-pointer"
                           >
                             <span>Apply for this Role</span>
                             <ArrowUpRight size={14} />
@@ -415,7 +415,7 @@ const Careers = () => {
 
                   <button
                     type="submit"
-                    className="w-full py-4 rounded-full bg-navy text-ivory font-bold text-xs font-mono uppercase tracking-wider hover:bg-teal transition-all shadow-lg flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full py-4 rounded-full bg-sand text-navy font-bold text-xs font-mono uppercase tracking-wider transition-all shadow-lg flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <span>Submit Application</span>
                     <Send size={16} />
@@ -461,7 +461,7 @@ const Careers = () => {
             <Magnetic strength={20}>
               <a
                 href="mailto:careers@accivatravels.com"
-                className="inline-flex items-center gap-3 px-9 py-4 rounded-full bg-sand text-navy font-bold text-sm sm:text-base hover:bg-navy hover:text-ivory hover:shadow-2xl hover:scale-105 transition-all shadow-xl"
+                className="inline-flex items-center gap-3 px-9 py-4 rounded-full bg-sand text-navy font-bold text-sm sm:text-base hover:shadow-2xl hover:scale-105 transition-all shadow-xl"
               >
                 <span>Email careers@accivatravels.com</span>
                 <ArrowUpRight size={18} />
@@ -471,7 +471,7 @@ const Careers = () => {
             <Magnetic strength={15}>
               <NavLink
                 to="/about"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-navy/20 bg-white text-navy hover:bg-navy/5 hover:border-navy/40 transition-all text-sm font-medium"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-sand text-navy transition-all text-sm font-medium"
               >
                 <span>Learn About Acciva</span>
               </NavLink>

@@ -154,7 +154,7 @@ const techSolutions = [
     name: "Employee App",
     tag: "For Corporate Employees",
     icon: Smartphone,
-    desc: "Ensures a seamless commute experience for corporate employees with on-time, comfortable, safe travel. Acciva's self-rostering app captures real-time GPS coordinates of employees for more accurate supervision. Employees are notified with relevant trip details such as driver profile, pickup and drop points, and vehicle details. Live vehicle tracking shows the assigned vehicle on a map with accurate ETA information, and timely notifications keep employees aware of important events like cab arrival, shift change, or a change of vehicle. Safety is our priority — employees can raise an alarm from the app itself during an emergency.",
+    desc: "Ensures a seamless commute experience for corporate employees with on-time, comfortable, safe travel. Acciva's self-rostering app captures real-time GPS coordinates of employees for more accurate supervision. Employees are notified with relevant trip details such as driver profile, pickup and drop points, and vehicle details. Live vehicle tracking shows the assigned vehicle on a map with accurate ETA information, and timely notifications keep employees aware of important events like cab arrival, shift change, or a change of vehicle. Safety is our priority: employees can raise an alarm from the app itself during an emergency.",
   },
   {
     name: "Driver App",
@@ -166,7 +166,7 @@ const techSolutions = [
     name: "Web Application",
     tag: "For Transport Managers",
     icon: Server,
-    desc: "The transport manager can easily manage all employee transportation activities centrally — rostering, booking, ongoing trips, real-time tracking, analysis, and MIS reports. Using the web platform, admins can view the list of all drivers with their current status, maintain the employee database with trip details and other records, and manage every vehicle in the transportation fleet.",
+    desc: "The transport manager can easily manage all employee transportation activities centrally: rostering, booking, ongoing trips, real-time tracking, analysis, and MIS reports. Using the web platform, admins can view the list of all drivers with their current status, maintain the employee database with trip details and other records, and manage every vehicle in the transportation fleet.",
   },
 ];
 
@@ -245,7 +245,7 @@ const Technology = () => {
               transition={{ duration: 0.6, delay: 0.15 }}
               className="max-w-md text-navy/90 text-[15px] font-medium leading-relaxed pb-2"
             >
-              Acciva's state of the art technology is an automation platform for employee transportation that automates everything — rostering, routing, deployment, live tracking, paperless automated billing, and e-trip sheets.
+              Acciva's state of the art technology is an automation platform for employee transportation that automates everything: rostering, routing, deployment, live tracking, paperless automated billing, and e-trip sheets.
             </motion.p>
           </div>
         </div>
@@ -270,7 +270,7 @@ const Technology = () => {
               </h2>
             </div>
             <p className="text-slate-600 text-[15px] font-normal leading-relaxed max-w-md">
-              Six pillars of Acciva's automation platform for employee transportation — from rostering and routing to live tracking and paperless billing.
+              Six pillars of Acciva's automation platform for employee transportation, from rostering and routing to live tracking and paperless billing.
             </p>
           </motion.div>
 
@@ -294,8 +294,8 @@ const Technology = () => {
                   whileTap={{ scale: 0.97 }}
                   onClick={() => setActivePillar(idx)}
                   className={`p-5 rounded-2xl text-left transition-all duration-300 border cursor-pointer relative overflow-hidden ${isActive
-                    ? "bg-navy text-ivory border-navy shadow-xl scale-[1.02]"
-                    : "bg-white text-navy border-navy/10 hover:border-teal/40 hover:bg-teal/5"
+                    ? "bg-sand text-navy border-sand shadow-xl scale-[1.02]"
+                    : "bg-white text-navy border-navy/10 hover:border-sand/50 hover:bg-sand/10"
                     }`}
                 >
                   {isActive && (
@@ -391,7 +391,7 @@ const Technology = () => {
                   <div className="mt-6 pt-5 border-t border-navy/10 flex items-center justify-between">
                     <NavLink
                       to="/contact"
-                      className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-navy text-ivory hover:bg-teal transition-all text-xs font-mono tracking-wider uppercase font-semibold group/btn"
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-sand text-navy transition-all text-xs font-mono tracking-wider uppercase font-semibold group/btn"
                     >
                       <span>Book Now</span>
                       <ArrowUpRight size={14} className="transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
@@ -450,7 +450,7 @@ const Technology = () => {
 
             <NavLink
               to="/contact"
-              className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-sand text-navy hover:bg-navy hover:text-ivory transition-colors text-xs font-mono uppercase tracking-wider font-semibold relative z-10 shadow-sm"
+              className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-sand text-navy transition-colors text-xs font-mono uppercase tracking-wider font-semibold relative z-10 shadow-sm"
             >
               <span>Book Now</span>
               <ArrowUpRight size={14} />
@@ -477,13 +477,13 @@ const Technology = () => {
                 One Platform. <span className="italic text-teal font-normal">Three Seamless Experiences.</span>
               </h2>
               <p className="text-slate-700 text-[15px] font-normal mt-4 leading-relaxed">
-                Purpose-built apps for employees, drivers, and transport managers — connected in real time to deliver a smooth, on-time, and safe commute for every enterprise shift.
+                Purpose-built apps for employees, drivers, and transport managers, connected in real time to deliver a smooth, on-time, and safe commute for every enterprise shift.
               </p>
 
               <div className="mt-8">
                 <NavLink
                   to="/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-navy/30 text-navy hover:bg-navy hover:text-ivory transition-colors text-xs font-mono uppercase tracking-widest font-semibold"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-sand text-navy transition-colors text-xs font-mono uppercase tracking-widest font-semibold"
                 >
                   <span>Book Now</span>
                   <ArrowUpRight size={14} />
@@ -587,7 +587,7 @@ const Technology = () => {
           <Magnetic>
             <NavLink
               to="/contact"
-              className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-sand text-navy hover:bg-navy hover:text-ivory transition-all font-bold text-xs tracking-widest uppercase shadow-lg transform hover:-translate-y-0.5"
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-sand text-navy transition-all font-bold text-xs tracking-widest uppercase shadow-lg transform hover:-translate-y-0.5"
             >
               <span>Book an Enterprise Platform Demo &rarr;</span>
             </NavLink>

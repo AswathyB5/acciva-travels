@@ -38,8 +38,8 @@ const ServiceList = ({ services }) => {
               onClick={() => setFilter(cat.id)}
               className={`px-5 py-2.5 rounded-full text-xs font-mono tracking-wider transition-all duration-300 cursor-pointer ${
                 isActive
-                  ? "bg-navy text-ivory font-bold shadow-md scale-105"
-                  : "bg-white border border-navy/10 text-navy/70 hover:border-teal/40 hover:text-teal"
+                  ? "bg-sand text-navy font-bold shadow-md scale-105"
+                  : "bg-white border border-navy/10 text-navy/70 hover:border-sand/60 hover:text-navy"
               }`}
             >
               {cat.label}
@@ -122,7 +122,7 @@ const ServiceList = ({ services }) => {
                   <div className="pt-4 border-t border-navy/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <NavLink
                       to="/contact"
-                      className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-navy text-ivory text-xs font-mono font-semibold hover:bg-teal transition-all group/btn shadow-md shrink-0"
+                      className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-sand text-navy text-xs font-mono font-semibold transition-all group/btn shadow-md shrink-0"
                     >
                       <span>Book / Inquire Fleet</span>
                       <ArrowUpRight

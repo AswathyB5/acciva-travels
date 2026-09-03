@@ -90,7 +90,7 @@ const BlogFeature = ({ posts }) => (
     >
       <NavLink
         to="/blog"
-        className="inline-flex items-center gap-3 px-8 py-4 rounded-full border-2 border-navy/20 text-navy font-bold text-sm tracking-widest uppercase hover:bg-navy hover:text-ivory hover:border-navy transition-all duration-300 shadow-sm hover:shadow-xl"
+        className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-sand text-navy font-bold text-sm tracking-widest uppercase transition-all duration-300 shadow-sm hover:shadow-xl"
       >
         Read All Stories
         <ArrowUpRight size={16} />

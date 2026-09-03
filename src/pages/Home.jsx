@@ -44,31 +44,31 @@ const luxuryCabs = [
   {
     name: "Rolls-Royce",
     country: "Ultra Luxury",
-    description: "Cullinan · Phantom · Wraith — The pinnacle of prestige motoring. Chauffeur-driven opulence for executives and high-profile events.",
+    description: "Cullinan · Phantom · Wraith. The pinnacle of prestige motoring. Chauffeur-driven opulence for executives and high-profile events.",
     image: "https://images.unsplash.com/photo-1631295868223-63265b40d9e4?auto=format&fit=crop&w=1600&q=80",
   },
   {
     name: "Mercedes-Benz",
     country: "Premium Luxury",
-    description: "AMG GLC · CLK · B-Class — Sophisticated engineering meets executive comfort. Perfect for corporate airport transfers and client rides.",
+    description: "AMG GLC · CLK · B-Class. Sophisticated engineering meets executive comfort. Perfect for corporate airport transfers and client rides.",
     image: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1600&q=80",
   },
   {
     name: "BMW",
     country: "Sport Luxury",
-    description: "M Sport · Luxury · xDrive — The ultimate driving experience. Dynamic, refined, and built for those who expect nothing but excellence.",
+    description: "M Sport · Luxury · xDrive. The ultimate driving experience. Dynamic, refined, and built for those who expect nothing but excellence.",
     image: "https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=1600&q=80",
   },
   {
     name: "Audi",
     country: "Executive Luxury",
-    description: "Audi A6 · Q5 · A8 · S5 — Vorsprung durch Technik. Sleek, intelligent cabins crafted for the discerning corporate traveller.",
+    description: "Audi A6 · Q5 · A8 · S5. Vorsprung durch Technik. Sleek, intelligent cabins crafted for the discerning corporate traveller.",
     image: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=1600&q=80",
   },
   {
     name: "Jaguar",
     country: "British Luxury",
-    description: "F-TYPE · F-PACE · XF · XE — Iconic British craftsmanship meets modern performance. A statement of style for every corporate journey.",
+    description: "F-TYPE · F-PACE · XF · XE. Iconic British craftsmanship meets modern performance. A statement of style for every corporate journey.",
     image: "https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1600&q=80",
   },
 ];
@@ -82,8 +82,8 @@ const Home = () => {
 
       {/* Introduction + Giant image story */}
       <section className="bg-soft py-16 md:py-24 overflow-hidden">
-        <div className="container-px grid md:grid-cols-12 gap-10 md:gap-14 items-start">
-          <div className="md:col-span-5">
+        <div className="container-px grid md:grid-cols-12 gap-8 md:gap-8 items-start">
+          <div className="md:col-span-6">
             <span className="eyebrow text-teal">About Us</span>
             <div className="mt-8 space-y-2">
               <h1 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.08] tracking-tight">
@@ -91,7 +91,7 @@ const Home = () => {
               </h1>
             </div>
             <div className="mt-10">
-              <p className="text-slate-700 text-[15px] font-normal leading-relaxed max-w-sm">
+              <p className="text-slate-700 text-[15px] font-normal leading-relaxed">
                 Acciva Travels has emerged to be one of the best leading Corporate Employee Transport Services &amp; Solutions Pan India. We are committed to provide quality and reliable Employee Transportation services. Our state-of-art app based Technology empowers the entire Employee Transportation Management System process for our Corporate companies.
               </p>
             </div>
@@ -139,7 +139,7 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="md:col-span-7 relative md:sticky md:top-32">
+          <div className="md:col-span-6 relative md:sticky md:top-32">
             <RevealImage
               src="https://i.pinimg.com/1200x/6e/46/5a/6e465aacc98f07549078a74b0050f979.jpg"
               alt="Acciva executive fleet vehicle"
@@ -229,12 +229,12 @@ const Home = () => {
             </motion.span>
           </div>
           <p className="mt-5 eyebrow text-teal font-mono tracking-widest uppercase">
-            Acciva Travels &mdash; Pan-India Corporate Mobility Benchmark
+            Acciva Travels · Pan-India Corporate Mobility Benchmark
           </p>
           <Magnetic className="mt-6 inline-block">
             <NavLink
               to="/contact"
-              className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:bg-navy hover:text-ivory hover:shadow-2xl transition-all shadow-xl"
+              className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
             >
               <span>Book Now</span>
               <ArrowUpRight size={16} />
@@ -320,10 +320,13 @@ const Home = () => {
             Where Will <br />
             <span className="italic text-teal font-normal">You Go Next?</span>
           </h2>
+          <p className="mt-5 text-slate-700 text-[15px] font-normal leading-relaxed max-w-xl mx-auto">
+            Tell us where your team needs to be, and we&apos;ll build a corporate mobility plan around it, from daily commutes to citywide fleet deployments.
+          </p>
           <Magnetic className="mt-12">
             <NavLink
               to="/contact"
-              className="inline-flex items-center gap-3 rounded-full border-2 border-navy bg-navy text-soft font-bold px-10 py-5 eyebrow hover:bg-teal hover:border-teal transition-colors duration-500"
+              className="inline-flex items-center gap-3 rounded-full border-2 border-sand bg-sand text-navy font-bold px-10 py-5 eyebrow transition-colors duration-500"
             >
               Plan Your Journey &rarr;
             </NavLink>

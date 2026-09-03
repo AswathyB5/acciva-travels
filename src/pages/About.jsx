@@ -390,7 +390,7 @@ const About = () => {
                       </span>
                     </div>
 
-                    <span className="text-[11px] font-mono uppercase tracking-widest text-teal font-bold block mb-1.5">
+                    <span className="text-[11px] font-mono uppercase tracking-widest text-sand font-bold block mb-1.5">
                       Strategic Direction
                     </span>
 
@@ -1162,7 +1162,7 @@ const About = () => {
               <Magnetic strength={20}>
                 <NavLink
                   to="/contact"
-                  className="inline-flex items-center gap-3 px-8 sm:px-10 py-4 rounded-full bg-sand text-navy font-bold text-sm sm:text-base hover:bg-navy hover:text-ivory hover:shadow-2xl hover:scale-105 transition-all shadow-xl"
+                  className="inline-flex items-center gap-3 px-8 sm:px-10 py-4 rounded-full bg-sand text-navy font-bold text-sm sm:text-base hover:shadow-2xl hover:scale-105 transition-all shadow-xl"
                 >
                   <span>Book Your Transportation Service Today</span>
                   <ArrowUpRight size={18} />
@@ -1203,7 +1203,7 @@ const About = () => {
             <Magnetic strength={20}>
               <NavLink
                 to="/contact"
-                className="inline-flex items-center gap-3 px-10 py-4 rounded-full bg-navy text-ivory font-bold text-base hover:bg-teal hover:shadow-2xl hover:scale-105 transition-all shadow-xl"
+                className="inline-flex items-center gap-3 px-10 py-4 rounded-full bg-sand text-navy font-bold text-base hover:shadow-2xl hover:scale-105 transition-all shadow-xl"
               >
                 <span>Get Started With Acciva →</span>
               </NavLink>

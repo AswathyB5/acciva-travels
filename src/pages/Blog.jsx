@@ -114,7 +114,7 @@ const Blog = () => {
                   onClick={() => setActiveCategory(cat)}
                   className={`px-6 py-2.5 rounded-full text-xs font-mono tracking-wider uppercase transition-all duration-300 cursor-pointer relative ${
                     isSelected
-                      ? "bg-navy text-ivory font-bold shadow-md scale-105"
+                      ? "bg-sand text-navy font-bold shadow-md scale-105"
                       : "bg-white border border-navy/10 text-navy/90 hover:border-teal/40 hover:text-teal"
                   }`}
                 >
@@ -260,7 +260,7 @@ const Blog = () => {
               />
               <button
                 type="submit"
-                className="px-7 py-3.5 rounded-full bg-sand text-navy font-bold text-xs font-mono uppercase tracking-wider hover:bg-navy hover:text-ivory transition-all shrink-0 cursor-pointer shadow-lg"
+                className="px-7 py-3.5 rounded-full bg-sand text-navy font-bold text-xs font-mono uppercase tracking-wider transition-all shrink-0 cursor-pointer shadow-lg"
               >
                 <span>Subscribe</span>
               </button>
@@ -269,7 +269,7 @@ const Blog = () => {
 
           <NavLink
             to="/contact"
-            className="mt-6 inline-flex items-center gap-2 px-8 py-3.5 rounded-full border border-navy/20 text-navy hover:bg-navy hover:text-ivory hover:border-navy transition-all text-xs font-mono uppercase tracking-wider font-semibold"
+            className="mt-6 inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-sand text-navy transition-all text-xs font-mono uppercase tracking-wider font-semibold"
           >
             <span>Book Now</span>
           </NavLink>

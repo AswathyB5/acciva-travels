@@ -176,7 +176,7 @@ const Services = () => {
             <Magnetic strength={20}>
               <NavLink
                 to="/contact"
-                className="inline-flex items-center gap-3 px-9 py-4 rounded-full bg-sand text-navy font-bold text-sm sm:text-base hover:bg-navy hover:text-ivory hover:shadow-2xl hover:scale-105 transition-all shadow-xl"
+                className="inline-flex items-center gap-3 px-9 py-4 rounded-full bg-sand text-navy font-bold text-sm sm:text-base hover:shadow-2xl hover:scale-105 transition-all shadow-xl"
               >
                 <span>Request Enterprise Quote</span>
                 <ArrowUpRight size={18} />
@@ -186,7 +186,7 @@ const Services = () => {
             <Magnetic strength={15}>
               <NavLink
                 to="/about"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-navy/20 bg-white text-navy hover:bg-navy/5 hover:border-navy/40 transition-all text-sm font-medium"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-sand text-navy transition-all text-sm font-medium"
               >
                 <span>Learn About Our Standards</span>
               </NavLink>
