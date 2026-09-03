@@ -36,7 +36,7 @@ const whyChoosePanels = [
     description:
       "Acciva’s state of art technology is an automation platform for employee transportation that helps Rostering, routing, deployment, live tracking, paperless automated billing and e-trip sheet.",
     image:
-      "https://images.unsplash.com/photo-1724620962048-8e4fde0e06c3?auto=format&fit=crop&w=1600&q=80",
+      "https://cdn.mos.cms.futurecdn.net/CqmoQX7egZuXKVrkrrUUkH.jpg",
   },
 ];
 
@@ -91,7 +91,7 @@ const Home = () => {
               </h1>
             </div>
             <div className="mt-10">
-              <p className="text-navy/70 leading-relaxed text-base max-w-sm text-justify">
+              <p className="text-navy/70 leading-relaxed text-base max-w-sm">
                 Acciva Travels has emerged to be one of the best leading Corporate Employee Transport Services &amp; Solutions Pan India. We are committed to provide quality and reliable Employee Transportation services. Our state-of-art app based Technology empowers the entire Employee Transportation Management System process for our Corporate companies.
               </p>
             </div>
@@ -106,14 +106,35 @@ const Home = () => {
                 "Cab Taxi Hiring Services Sedan / SUV / MUV",
                 "Hiring of Sedan / SUV / MUV Cars",
               ].map((service, i) => (
-                <div key={i} className="flex items-start gap-3 group">
-                  <span className="mt-1 w-5 h-5 rounded-full bg-teal/10 border border-teal/30 flex items-center justify-center shrink-0 group-hover:bg-teal group-hover:border-teal transition-colors duration-300">
-                    <svg className="w-2.5 h-2.5 text-teal group-hover:text-white transition-colors duration-300" fill="none" viewBox="0 0 10 10">
-                      <path d="M2 5l2.5 2.5L8 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: -16 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.4 }}
+                  transition={{ duration: 0.5, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                  className="flex items-start gap-3 group"
+                >
+                  <motion.span
+                    whileHover={{ scale: 1.15, rotate: 8 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 12 }}
+                    className="mt-1 w-6 h-6 rounded-full bg-teal/10 border border-teal/30 flex items-center justify-center shrink-0 group-hover:bg-teal group-hover:border-teal group-hover:shadow-[0_0_0_4px] group-hover:shadow-teal/15 transition-all duration-300"
+                  >
+                    <svg className="w-3 h-3 text-teal group-hover:text-white transition-colors duration-300" fill="none" viewBox="0 0 10 10">
+                      <motion.path
+                        d="M2 5l2.5 2.5L8 3"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        initial={{ pathLength: 0 }}
+                        whileInView={{ pathLength: 1 }}
+                        viewport={{ once: true, amount: 0.4 }}
+                        transition={{ duration: 0.4, delay: i * 0.08 + 0.2, ease: "easeOut" }}
+                      />
                     </svg>
-                  </span>
-                  <span className="text-navy/80 text-sm leading-relaxed">{service}</span>
-                </div>
+                  </motion.span>
+                  <span className="text-navy/70 text-base leading-relaxed">{service}</span>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -126,8 +147,8 @@ const Home = () => {
             />
             <div className="absolute -bottom-10 -left-4 sm:left-0 md:-left-10 w-1/2 md:w-[40%] shadow-[0_20px_60px_rgba(7,26,36,0.25)] border-4 border-soft">
               <RevealImage
-                src="https://images.unsplash.com/photo-1647242097616-5000e3ae5bd3?auto=format&fit=crop&w=1000&q=80"
-                alt="Acciva professional VIP executive chauffeur"
+                src="https://i.pinimg.com/736x/23/98/7c/23987cfd635b58c2100cb5e1ae52e388.jpg"
+                alt="Acciva mixed fleet vehicles"
                 className="h-[24vh] md:h-[32vh]"
               />
             </div>

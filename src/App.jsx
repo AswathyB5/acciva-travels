@@ -10,6 +10,7 @@ import Services from "./pages/Services";
 import Blog from "./pages/Blog";
 import Technology from "./pages/Technology";
 import Contact from "./pages/Contact";
+import Careers from "./pages/Careers";
 
 function App() {
   const location = useLocation();
@@ -35,6 +36,7 @@ function App() {
               <Route path="/technology" element={<Technology />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/careers" element={<Careers />} />
             </Routes>
           </motion.div>
         </AnimatePresence>

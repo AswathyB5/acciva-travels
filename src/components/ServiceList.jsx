@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { NavLink } from "react-router-dom";
 import { CheckCircle2, ArrowUpRight, ShieldCheck, Sparkles, Filter } from "lucide-react";
+import AnimatedImage from "./AnimatedImage";
 
 const ServiceList = ({ services }) => {
   const [filter, setFilter] = useState("all");
@@ -55,10 +56,10 @@ const ServiceList = ({ services }) => {
             return (
               <motion.div
                 key={service.slug}
-                initial={{ opacity: 0, y: 45 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 viewport={{ once: true, amount: 0.12 }}
-                transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: (i % 2) * 0.15 }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: (i % 2) * 0.15 }}
                 whileHover={{ y: -8, transition: { duration: 0.3 } }}
                 className="p-5 sm:p-6 rounded-3xl bg-white border border-navy/10 hover:border-teal/40 hover:shadow-[0_25px_60px_rgba(38,55,74,0.12)] transition-all duration-500 flex flex-col justify-between overflow-hidden group shadow-[0_10px_35px_rgba(38,55,74,0.05)] relative"
               >
@@ -67,9 +68,10 @@ const ServiceList = ({ services }) => {
 
                 {/* Top Image Showcase */}
                 <div className="relative h-64 sm:h-72 w-full rounded-2xl overflow-hidden bg-navy/5 mb-6">
-                  <img
+                  <AnimatedImage
                     src={service.image}
                     alt={service.title}
+                    effect={i % 2 === 0 ? "zoom-out" : "zoom-in"}
                     className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   />
                 </div>

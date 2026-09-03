@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { NavLink } from "react-router-dom";
 import { ArrowUpRight, Sparkles } from "lucide-react";
+import AnimatedImage from "./AnimatedImage";
 
 const DestinationExpand = ({ destinations }) => {
   const [active, setActive] = useState(0);
@@ -110,16 +111,16 @@ const DestinationExpand = ({ destinations }) => {
         {destinations.map((d, i) => (
           <motion.div
             key={d.name}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.5, delay: (i % 4) * 0.05 }}
           >
             <NavLink to="/services" className="group relative block h-[42vh] rounded-3xl overflow-hidden shadow-xl border border-navy/10">
-              <img
+              <AnimatedImage
                 src={d.image}
                 alt={`${d.name}, ${d.country}`}
-                loading="lazy"
+                effect="zoom-in"
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-linear-to-t from-midnight via-midnight/40 to-transparent" />

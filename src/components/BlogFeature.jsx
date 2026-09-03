@@ -1,12 +1,12 @@
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Calendar, Tag } from "lucide-react";
+import AnimatedImage from "./AnimatedImage";
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 32 },
+  hidden: { opacity: 0 },
   visible: (i) => ({
     opacity: 1,
-    y: 0,
     transition: { duration: 0.55, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] },
   }),
 };
@@ -22,10 +22,11 @@ const BlogCard = ({ post, index }) => (
   >
     {/* Image */}
     <div className="relative overflow-hidden h-52 shrink-0">
-      <img
+      <AnimatedImage
         src={post.image}
         alt={post.title}
-        loading="lazy"
+        effect={index % 2 === 0 ? "zoom-in" : "zoom-out"}
+        delay={index * 0.1}
         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
       />
       {/* Category pill */}

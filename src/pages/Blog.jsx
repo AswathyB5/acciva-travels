@@ -16,6 +16,7 @@ import {
   Award,
 } from "lucide-react";
 import Magnetic from "../components/Magnetic";
+import AnimatedImage from "../components/AnimatedImage";
 import { blogPosts, blogCategories } from "../data/content";
 
 const Blog = () => {
@@ -86,19 +87,15 @@ const Blog = () => {
           </div>
 
           {/* Prominent Header Showcase Image Banner */}
-          <motion.div
-            initial={{ opacity: 0, y: 35, scale: 0.98 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, amount: 0.1 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="relative rounded-3xl overflow-hidden shadow-2xl border border-navy/10 mb-12 group"
-          >
-            <img
-              src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1800&q=80"
+          <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-navy/10 mb-12 group">
+            <AnimatedImage
+              src="https://images.ctfassets.net/i874q3cs1cvx/78289/417b8a1b696306ce7c188499a4cfb747/Fleet-Vehicles.jpg"
               alt="Acciva Corporate Mobility Intelligence & Tech"
+              effect="zoom-in"
+              duration={0.9}
               className="w-full h-[340px] sm:h-[440px] md:h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
             />
-          </motion.div>
+          </div>
 
           {/* Quick Stats Strip */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4">
@@ -180,8 +177,8 @@ const Blog = () => {
                 <motion.article
                   key={post.slug}
                   layout
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
                   viewport={{ once: true, amount: 0.1 }}
                   transition={{ duration: 0.5, delay: (i % 3) * 0.1 }}
                   whileHover={{ y: -8 }}
@@ -189,9 +186,11 @@ const Blog = () => {
                 >
                   {/* Article Card Photo */}
                   <div className="relative h-56 w-full overflow-hidden">
-                    <img
+                    <AnimatedImage
                       src={post.image}
                       alt={post.title}
+                      effect={i % 2 === 0 ? "zoom-in" : "zoom-out"}
+                      delay={(i % 3) * 0.08}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                   </div>

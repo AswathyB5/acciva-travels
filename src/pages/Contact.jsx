@@ -15,6 +15,7 @@ import {
   Award,
   ArrowUpRight,
 } from "lucide-react";
+import AnimatedImage from "../components/AnimatedImage";
 
 const initialForm = {
   name: "",
@@ -314,17 +315,19 @@ const Contact = () => {
 
             {/* LEFT COLUMN (Grid Col 1-5) - SHOWCASE IMAGE BANNER & CONTACT CHANNELS */}
             <motion.div
-              initial={{ opacity: 0, y: 35 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true, amount: 0.08 }}
               transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-5 order-2 lg:order-1 space-y-6"
             >
               {/* Showcase Image Banner */}
               <div className="relative rounded-3xl overflow-hidden shadow-xl border border-navy/10 group">
-                <img
+                <AnimatedImage
                   src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80"
                   alt="Acciva Corporate Command & Operations"
+                  effect="zoom-in"
+                  duration={0.9}
                   className="w-full h-72 sm:h-80 object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </div>

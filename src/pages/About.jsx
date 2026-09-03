@@ -14,6 +14,7 @@ import {
   HeartHandshake,
 } from "lucide-react";
 import Magnetic from "../components/Magnetic";
+import AnimatedImage from "../components/AnimatedImage";
 
 const whyChooseFeatures = [
   {
@@ -92,9 +93,11 @@ const About = () => {
 
           {/* Prominent Header Showcase Image */}
           <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-navy/10 mb-12 group">
-            <img
-              src="https://images.unsplash.com/photo-1759197761283-882699970b3d?auto=format&fit=crop&w=1800&q=80"
+            <AnimatedImage
+              src="https://static.vecteezy.com/system/resources/thumbnails/069/901/279/small_2x/white-delivery-van-fleet-parked-in-row-at-sunset-with-clear-sky-and-warm-light-creating-calm-and-professional-atmosphere-free-photo.jpeg"
               alt="Acciva Corporate Tech Park Transit Network"
+              effect="zoom-in"
+              duration={0.9}
               className="w-full h-[340px] sm:h-[440px] md:h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
             />
           </div>
@@ -167,21 +170,16 @@ const About = () => {
             </motion.div>
 
             {/* Right Visual Image Showcase */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
-              className="lg:col-span-6 relative"
-            >
+            <div className="lg:col-span-6 relative">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-navy/10 group">
-                <img
+                <AnimatedImage
                   src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1200&q=80"
                   alt="Modern executive corporate fleet"
+                  effect="zoom-out"
                   className="h-[380px] sm:h-[480px] w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>

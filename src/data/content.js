@@ -321,6 +321,89 @@ export const blogPosts = [
 
 export const blogCategories = ["All", "Destinations", "Travel Tips", "Guides", "Inspiration"];
 
+export const jobOpenings = [
+  {
+    slug: "corporate-fleet-driver-captain",
+    title: "Fleet Driver Captain",
+    department: "Operations",
+    location: "Bengaluru, Hyderabad, Chennai",
+    type: "Full-Time",
+    experience: "2+ Years",
+    description:
+      "Drive dedicated corporate shift routes for tech park clients, maintaining SLA punctuality and passenger safety standards.",
+    requirements: [
+      "Valid commercial driving license (LMV/Badge)",
+      "2+ years professional driving experience",
+      "Clean driving record & background check clearance",
+      "Familiarity with GPS navigation & route apps",
+    ],
+  },
+  {
+    slug: "fleet-operations-supervisor",
+    title: "Fleet Operations Supervisor",
+    department: "Operations",
+    location: "Bengaluru",
+    type: "Full-Time",
+    experience: "4+ Years",
+    description:
+      "Oversee daily dispatch, shift rostering, and driver-captain performance across a designated tech corridor cluster.",
+    requirements: [
+      "Bachelor's degree or equivalent experience",
+      "4+ years in fleet/logistics operations",
+      "Strong stakeholder & vendor coordination skills",
+      "Proficiency with fleet management software",
+    ],
+  },
+  {
+    slug: "command-center-dispatcher",
+    title: "24/7 Command Center Dispatcher",
+    department: "Command & Control",
+    location: "Bengaluru (HQ)",
+    type: "Full-Time (Rotational Shifts)",
+    experience: "1+ Years",
+    description:
+      "Monitor live GPS telemetry, coordinate emergency response, and resolve real-time routing issues from our central command tower.",
+    requirements: [
+      "Comfortable with rotational / night shifts",
+      "Strong communication & incident-response skills",
+      "Basic proficiency with dispatch/telematics tools",
+      "Prior BPO, control-room, or logistics experience a plus",
+    ],
+  },
+  {
+    slug: "corporate-account-manager",
+    title: "Corporate Account Manager",
+    department: "Client Success",
+    location: "Bengaluru, Pune",
+    type: "Full-Time",
+    experience: "3+ Years",
+    description:
+      "Own the relationship for enterprise clients — from onboarding new shuttle routes to quarterly SLA reviews and renewals.",
+    requirements: [
+      "3+ years in account management or B2B client success",
+      "Experience with enterprise/corporate clients preferred",
+      "Excellent written & verbal communication",
+      "Willingness to travel to client tech parks",
+    ],
+  },
+  {
+    slug: "ev-fleet-technician",
+    title: "EV Fleet Maintenance Technician",
+    department: "Fleet Engineering",
+    location: "Bengaluru, Chennai",
+    type: "Full-Time",
+    experience: "2+ Years",
+    description:
+      "Maintain and diagnose our growing electric vehicle fleet, ensuring charging cycles, battery health, and uptime targets are met.",
+    requirements: [
+      "ITI/Diploma in automobile or electrical engineering",
+      "2+ years hands-on EV or automotive maintenance",
+      "Working knowledge of charging infrastructure",
+      "Willingness to work at depot locations",
+    ],
+  },
+];
+
 export const timeline = [
   {
     year: "2007",

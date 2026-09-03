@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import ServiceList from "../components/ServiceList";
 import Magnetic from "../components/Magnetic";
+import AnimatedImage from "../components/AnimatedImage";
 import { services } from "../data/content";
 
 const Services = () => {
@@ -39,12 +40,12 @@ const Services = () => {
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               className="max-w-3xl"
             >
-              <span className="eyebrow text-teal">01 — Enterprise Solutions</span>
+              <span className="eyebrow text-teal">
+                01 — Enterprise Solutions
+              </span>
               <h1 className="font-display text-navy text-3xl sm:text-5xl md:text-6xl leading-[1.08] mt-6 tracking-tight">
                 Corporate Mobility & Fleet Solutions{" "}
-                <span className="italic text-teal font-normal">
-                  At Scale.
-                </span>
+                <span className="italic text-teal font-normal">At Scale.</span>
               </h1>
             </motion.div>
 
@@ -52,27 +53,29 @@ const Services = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+              transition={{
+                duration: 0.7,
+                ease: [0.16, 1, 0.3, 1],
+                delay: 0.15,
+              }}
               className="max-w-md text-navy/75 text-base sm:text-lg font-light leading-relaxed pb-2"
             >
-              End-to-end employee transportation, tech park shuttle networks, executive transit, and airport transfers managed with 99.8% on-time precision.
+              End-to-end employee transportation, tech park shuttle networks,
+              executive transit, and airport transfers managed with 99.8%
+              on-time precision.
             </motion.p>
           </div>
 
           {/* Prominent Header Showcase Image Banner */}
-          <motion.div
-            initial={{ opacity: 0, y: 35, scale: 0.98 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, amount: 0.1 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="relative rounded-3xl overflow-hidden shadow-2xl border border-navy/10 mb-12 group"
-          >
-            <img
-              src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1800&q=80"
+          <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-navy/10 mb-12 group">
+            <AnimatedImage
+              src="https://static.vecteezy.com/system/resources/thumbnails/053/516/600/small_2x/a-large-number-of-cars-parked-in-a-parking-lot-photo.jpeg"
               alt="Acciva Corporate Fleet Solutions"
+              effect="zoom-in"
+              duration={0.9}
               className="w-full h-[340px] sm:h-[440px] md:h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
             />
-          </motion.div>
+          </div>
 
           {/* Quick Stats Strip with Interactive Hover Cards */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4">
@@ -88,8 +91,12 @@ const Services = () => {
                 <Car size={22} />
               </div>
               <div>
-                <p className="font-display text-xl sm:text-2xl text-navy font-bold">5,000+ Cabs</p>
-                <p className="text-[11px] font-mono text-navy/50 uppercase">Pan-India Fleet</p>
+                <p className="font-display text-xl sm:text-2xl text-navy font-bold">
+                  5,000+ Cabs
+                </p>
+                <p className="text-[11px] font-mono text-navy/50 uppercase">
+                  Pan-India Fleet
+                </p>
               </div>
             </motion.div>
 
@@ -105,8 +112,12 @@ const Services = () => {
                 <Clock size={22} />
               </div>
               <div>
-                <p className="font-display text-xl sm:text-2xl text-teal font-bold">99.8% SLA</p>
-                <p className="text-[11px] font-mono text-navy/50 uppercase">Shift Punctuality</p>
+                <p className="font-display text-xl sm:text-2xl text-teal font-bold">
+                  99.8% SLA
+                </p>
+                <p className="text-[11px] font-mono text-navy/50 uppercase">
+                  Shift Punctuality
+                </p>
               </div>
             </motion.div>
 
@@ -122,8 +133,12 @@ const Services = () => {
                 <ShieldCheck size={22} />
               </div>
               <div>
-                <p className="font-display text-xl sm:text-2xl text-navy font-bold">100% Vetted</p>
-                <p className="text-[11px] font-mono text-navy/50 uppercase">Background Checks</p>
+                <p className="font-display text-xl sm:text-2xl text-navy font-bold">
+                  100% Vetted
+                </p>
+                <p className="text-[11px] font-mono text-navy/50 uppercase">
+                  Background Checks
+                </p>
               </div>
             </motion.div>
 
@@ -139,8 +154,12 @@ const Services = () => {
                 <Users size={22} />
               </div>
               <div>
-                <p className="font-display text-xl sm:text-2xl text-teal font-bold">24/7 ERT</p>
-                <p className="text-[11px] font-mono text-navy/50 uppercase">Command Tower</p>
+                <p className="font-display text-xl sm:text-2xl text-teal font-bold">
+                  24/7 ERT
+                </p>
+                <p className="text-[11px] font-mono text-navy/50 uppercase">
+                  Command Tower
+                </p>
               </div>
             </motion.div>
           </div>
@@ -160,13 +179,18 @@ const Services = () => {
             className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6"
           >
             <div>
-              <span className="eyebrow text-teal">02 — Our Fleet Offerings</span>
+              <span className="eyebrow text-teal">
+                02 — Our Fleet Offerings
+              </span>
               <h2 className="font-display text-2xl sm:text-4xl md:text-5xl leading-[1.08] mt-6 tracking-tight">
-                Tailored Mobility <span className="italic text-teal font-normal">Programs.</span>
+                Tailored Mobility{" "}
+                <span className="italic text-teal font-normal">Programs.</span>
               </h2>
             </div>
             <p className="text-navy/60 text-sm sm:text-base max-w-md font-light">
-              Explore our comprehensive range of specialized transport capabilities designed for corporate technology parks, GCCs, and enterprise teams.
+              Explore our comprehensive range of specialized transport
+              capabilities designed for corporate technology parks, GCCs, and
+              enterprise teams.
             </p>
           </motion.div>
 
@@ -210,14 +234,21 @@ const Services = () => {
           <h2 className="font-display text-3xl sm:text-5xl md:text-6xl leading-[1.08] tracking-tight">
             {[
               { text: "Ready to Optimize Your", cls: "" },
-              { text: "Company Transportation?", cls: "italic text-teal font-normal" },
+              {
+                text: "Company Transportation?",
+                cls: "italic text-teal font-normal",
+              },
             ].map((line, i) => (
               <span className="line-mask block" key={line.text}>
                 <motion.span
                   initial={{ y: "40%", opacity: 0 }}
                   whileInView={{ y: "0%", opacity: 1 }}
                   viewport={{ once: true, amount: 0.05 }}
-                  transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: i * 0.12 }}
+                  transition={{
+                    duration: 0.7,
+                    ease: [0.16, 1, 0.3, 1],
+                    delay: i * 0.12,
+                  }}
                   className={`block ${line.cls}`}
                 >
                   {line.text}
@@ -227,7 +258,8 @@ const Services = () => {
           </h2>
 
           <p className="mt-6 text-navy/75 text-base sm:text-xl font-light max-w-2xl mx-auto leading-relaxed">
-            Get a tailored fleet proposal with live telemetry integration, automated shift rostering, and dedicated command support.
+            Get a tailored fleet proposal with live telemetry integration,
+            automated shift rostering, and dedicated command support.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-5">

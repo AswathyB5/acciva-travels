@@ -1,11 +1,12 @@
 import { NavLink } from "react-router-dom";
+import { Mail, Phone, MapPin, Clock } from "lucide-react";
 
-const links = [
-  { to: "/", label: "Home" },
+const quickLinks = [
   { to: "/about", label: "About" },
   { to: "/services", label: "Services" },
   { to: "/technology", label: "Technology" },
   { to: "/blog", label: "Journal" },
+  { to: "/careers", label: "Careers" },
   { to: "/contact", label: "Contact" },
 ];
 
@@ -15,62 +16,101 @@ const IconLink = ({ href, label, children }) => (
     target="_blank"
     rel="noreferrer"
     aria-label={label}
-    className="w-9 h-9 flex items-center justify-center rounded-full border border-navy/15 text-navy/60 hover:text-soft hover:bg-teal hover:border-teal transition-colors duration-300"
+    className="w-9 h-9 flex items-center justify-center rounded-full border border-navy/15 text-navy/60 hover:text-soft hover:bg-teal hover:border-teal transition-colors duration-300 shrink-0"
   >
     {children}
   </a>
 );
 
+const FooterHeading = ({ children }) => (
+  <p className="eyebrow text-teal mb-6">{children}</p>
+);
+
 const Footer = () => {
   return (
-    <footer className="bg-soft text-navy pt-14 md:pt-18 pb-8">
+    <footer className="bg-soft text-navy pt-16 md:pt-20 pb-8 border-t border-navy/10">
       <div className="container-px">
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-12 pb-16 border-b border-navy/10">
-          <div className="space-y-4 max-w-sm">
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-8 pb-14 border-b border-navy/10">
+          {/* Brand column */}
+          <div className="lg:col-span-4 space-y-5">
             <img
               src="/acciva-logo.png"
               alt="Acciva Travels"
               className="h-12 sm:h-14 w-auto object-contain opacity-95"
             />
-            <p className="text-xs font-mono text-navy/50 uppercase tracking-widest leading-relaxed">
-              Pan-India Corporate Mobility Benchmark • 24/7 Dedicated Command Tower
+            <p className="text-navy/65 text-sm leading-relaxed max-w-sm font-light">
+              Acciva Travels is Pan-India's leading corporate employee transport partner &mdash; delivering safe, punctual, and technology-driven mobility for enterprises and GCCs.
+            </p>
+            <p className="text-[11px] font-mono text-teal uppercase tracking-widest font-semibold">
+              24/7 Dedicated Command Tower
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-12 lg:gap-20 shrink-0">
-            <ul className="space-y-3">
-              {links.map((l) => (
+          {/* Quick Links column */}
+          <div className="lg:col-span-3">
+            <FooterHeading>Quick Links</FooterHeading>
+            <ul className="grid grid-cols-2 grid-flow-col grid-rows-3 gap-x-8 gap-y-3">
+              {quickLinks.map((l) => (
                 <li key={l.to}>
                   <NavLink
                     to={l.to}
-                    className="eyebrow text-navy/60 hover:text-teal transition-colors"
+                    className="group inline-flex items-center gap-2 text-sm text-navy/65 hover:text-teal transition-colors duration-300"
                   >
+                    <span className="w-1 h-1 rounded-full bg-navy/30 group-hover:bg-teal group-hover:scale-150 transition-all duration-300 shrink-0" />
                     {l.label}
                   </NavLink>
                 </li>
               ))}
             </ul>
+          </div>
 
-            <div className="space-y-3 text-sm">
-              <p className="text-navy/60">
-                <a href="mailto:info@accivatravels.com" className="hover:text-teal transition-colors">
-                  info@accivatravels.com
+          {/* Contact column */}
+          <div className="lg:col-span-5">
+            <FooterHeading>Get In Touch</FooterHeading>
+            <ul className="grid sm:grid-cols-2 gap-4">
+              <li>
+                <a
+                  href="tel:+919035012166"
+                  className="group flex items-start gap-3 text-sm text-navy/65 hover:text-teal transition-colors duration-300"
+                >
+                  <span className="w-8 h-8 rounded-lg bg-teal/10 text-teal flex items-center justify-center shrink-0 group-hover:bg-teal group-hover:text-white transition-colors duration-300">
+                    <Phone size={14} />
+                  </span>
+                  <span className="pt-1.5">+91 903 501 2166</span>
                 </a>
-              </p>
-              <p className="text-navy/60">
-                <a href="tel:+919035012166" className="hover:text-teal transition-colors">
-                  +91 903 501 2166
+              </li>
+              <li>
+                <a
+                  href="mailto:info@accivatravels.com"
+                  className="group flex items-start gap-3 text-sm text-navy/65 hover:text-teal transition-colors duration-300"
+                >
+                  <span className="w-8 h-8 rounded-lg bg-teal/10 text-teal flex items-center justify-center shrink-0 group-hover:bg-teal group-hover:text-white transition-colors duration-300">
+                    <Mail size={14} />
+                  </span>
+                  <span className="pt-1.5 break-all">info@accivatravels.com</span>
                 </a>
-              </p>
-              <p className="text-navy/40 max-w-[220px]">
-                Bengaluru, Karnataka, India
-              </p>
-            </div>
+              </li>
+              <li className="flex items-start gap-3 text-sm text-navy/65">
+                <span className="w-8 h-8 rounded-lg bg-teal/10 text-teal flex items-center justify-center shrink-0">
+                  <MapPin size={14} />
+                </span>
+                <span className="pt-1.5">Bengaluru, Karnataka, India</span>
+              </li>
+              <li className="flex items-start gap-3 text-sm text-navy/65">
+                <span className="w-8 h-8 rounded-lg bg-teal/10 text-teal flex items-center justify-center shrink-0">
+                  <Clock size={14} />
+                </span>
+                <span className="pt-1.5">24/7/365 Non-Stop Operations</span>
+              </li>
+            </ul>
           </div>
         </div>
 
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <p className="eyebrow text-navy/40">© 2026 Acciva Travels</p>
+        {/* Bottom bar */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-navy/40 font-mono">
+            &copy; 2026 Acciva Travels. All rights reserved.
+          </p>
           <div className="flex items-center gap-3">
             <IconLink href="https://instagram.com" label="Instagram">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

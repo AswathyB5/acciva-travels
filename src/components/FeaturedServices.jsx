@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import { ArrowUpRight, CheckCircle2, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { services } from "../data/content";
+import AnimatedImage from "./AnimatedImage";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -14,12 +15,10 @@ const containerVariants = {
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 70, scale: 0.92 },
+  hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: { duration: 1.1, ease: [0.16, 1, 0.3, 1], staggerChildren: 0.18, delayChildren: 0.4 },
+    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1], staggerChildren: 0.18, delayChildren: 0.4 },
   },
 };
 
@@ -87,10 +86,11 @@ const FeaturedServices = () => {
 
               {/* Top Image Showcase */}
               <div className="relative h-60 sm:h-64 w-full rounded-2xl overflow-hidden bg-navy/5">
-                <motion.img
+                <AnimatedImage
                   src={service.image}
                   alt={service.title}
-                  loading="lazy"
+                  effect="zoom-in"
+                  delay={i * 0.1}
                   className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-navy/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />

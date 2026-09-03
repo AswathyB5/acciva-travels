@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { ShieldCheck, TrendingUp, Cpu, Compass, MapPin, Sparkles } from "lucide-react";
+import AnimatedImage from "./AnimatedImage";
 
 const DEFAULT_ICONS = [ShieldCheck, TrendingUp, Cpu];
 const PANEL_ACCENTS = ["teal", "sand", "teal"];
@@ -94,7 +95,12 @@ const Panel = ({ panel, index, total }) => {
 
       <div className="order-1 md:order-2 relative">
         <div className="h-56 sm:h-64 md:h-[60vh] overflow-hidden relative rounded-2xl shadow-2xl shadow-navy/15 ring-1 ring-sand/40">
-          <img src={panel.image} alt={panel.word} className="h-full w-full object-cover" loading="lazy" />
+          <AnimatedImage
+            src={panel.image}
+            alt={panel.word}
+            effect={index % 2 === 0 ? "zoom-in" : "zoom-out"}
+            className="h-full w-full object-cover"
+          />
           <div className="absolute inset-0 bg-linear-to-t from-navy/70 via-navy/10 to-transparent" />
           <div className="absolute inset-0 ring-1 ring-inset ring-ivory/20 rounded-2xl pointer-events-none" />
           <div className="absolute top-0 right-0 w-32 h-32 bg-linear-to-bl from-sand/40 to-transparent rounded-bl-full pointer-events-none" />
