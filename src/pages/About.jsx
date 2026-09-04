@@ -1095,7 +1095,7 @@ const About = () => {
                 className="relative rounded-3xl overflow-hidden shadow-2xl border border-navy/10 group"
               >
                 <AnimatedImage
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSybHyfZCj79Hi5MvilFXYbvtUWWkHizyfub5vc23zJgA&s"
+                  src="https://www.jaipurcarrental.org/assets/uploads/blog_images/luxury-car-rental-min-min.JPG"
                   alt="Acciva Travels car fleet"
                   effect="zoom-out"
                   className="h-[420px] sm:h-[520px] w-full object-cover transition-transform duration-700 group-hover:scale-105"

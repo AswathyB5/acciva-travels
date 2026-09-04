@@ -166,7 +166,7 @@ const Home = () => {
 
           <div className="md:col-span-6 relative md:sticky md:top-32">
             <RevealImage
-              src="https://www.jaipurcarrental.org/assets/uploads/blog_images/luxury-car-rental-min-min.JPG"
+              src="https://content.jdmagicbox.com/v2/comp/guwahati/c8/9999px361.x361.260624114535.r2c8/catalogue/ne-car-sarfari-azara-guwahati-travel-agents-0y05j0do2u.jpg"
               alt="Acciva executive fleet vehicle"
               className="h-[38vh] md:h-[58vh] ml-auto w-full md:w-[90%]"
             />
