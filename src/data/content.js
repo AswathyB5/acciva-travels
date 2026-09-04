@@ -38,7 +38,7 @@ export const services = [
       "Custom Client Reports",
     ],
     image:
-      "https://api.formulaindia.com/upload/media//89b1bfa11e7602fa0fb07ddd09c773c9.jpg",
+      "/images/fleet-management.jpg",
   },
   {
     slug: "school-transportation",
