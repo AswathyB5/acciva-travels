@@ -46,19 +46,19 @@ const corporateFleet = [
     name: "Sedan",
     country: "Everyday Corporate Travel",
     description: "Maruti Suzuki Dzire · Honda Amaze class. Compact, fuel-efficient and reliable — the backbone of daily employee pick-up and drop and corporate cab contracts across India.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/0/0a/Maruti_Suzuki_Dzire_VXi_VVT_%28front%29.JPG",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Toyota_Camry_2.5_Hybrid_Ascent_Sport_%28IX%29_%E2%80%93_f_02012026.jpg/1280px-Toyota_Camry_2.5_Hybrid_Ascent_Sport_%28IX%29_%E2%80%93_f_02012026.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=thumbnail",
   },
   {
     name: "MPV",
     country: "Family & Group Travel",
     description: "Toyota Innova Crysta class. Spacious, dependable and India's favourite multi-purpose vehicle — ideal for outstation trips, airport transfers and small group movement.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/8/87/Toyota_Innova_Crysta_2.4_Z_front_right.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Toyota_Innova_Crysta_2.4_Z_front_right.jpg/1280px-Toyota_Innova_Crysta_2.4_Z_front_right.jpg",
   },
   {
     name: "SUV",
     country: "All-Terrain Comfort",
     description: "Mahindra XUV700 class. Commanding road presence with rugged capability — suited for site visits, hilly terrain and executives who need extra ground clearance.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/b/b9/A_black_Mahindra_XUV700_SUV_in_Ashiana_Brahmananda%2C_Jamshedpur%2C_India_%28Ank_Kumar%2C_Infosys_Limited%29_02.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/A_black_Mahindra_XUV700_SUV_in_Ashiana_Brahmananda%2C_Jamshedpur%2C_India_%28Ank_Kumar%2C_Infosys_Limited%29_02.jpg/1280px-A_black_Mahindra_XUV700_SUV_in_Ashiana_Brahmananda%2C_Jamshedpur%2C_India_%28Ank_Kumar%2C_Infosys_Limited%29_02.jpg",
   },
   {
     name: "Luxury Sedan",
@@ -70,31 +70,31 @@ const corporateFleet = [
     name: "Ultra-Luxury Executive",
     country: "Boardroom On Wheels",
     description: "Mercedes-Benz E-Class class. Executive-grade engineering and chauffeur-driven poise for CXOs, VIP delegations and high-profile corporate events, available through our authorised premium fleet network.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/2/21/Mercedes-Benz_W213_E-Class_Exclusive_Obsidian_Black_Metallic_diplomatic.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Mercedes-Benz_W213_E-Class_Exclusive_Obsidian_Black_Metallic_diplomatic.jpg/1280px-Mercedes-Benz_W213_E-Class_Exclusive_Obsidian_Black_Metallic_diplomatic.jpg",
   },
   {
     name: "Tempo Traveller",
     country: "Group Transport",
     description: "12–17 seater configurations built for comfort on long hauls — perfect for team offsites, airport group transfers and mid-sized corporate outings.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/6/61/Force_Traveller%2C_Leh-Manali_Highway.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Force_Traveller%2C_Leh-Manali_Highway.jpg/1280px-Force_Traveller%2C_Leh-Manali_Highway.jpg",
   },
   {
     name: "Mini Bus",
     country: "Shared Mobility",
     description: "AC mini bus fleet for mid-volume employee transport — an efficient, comfortable option for shuttling teams between office campuses and residential clusters.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/9/9d/Force_Motors_-_Traveller_26_-_Agra_2014-05-14_4222.JPG",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Force_Motors_-_Traveller_26_-_Agra_2014-05-14_4222.JPG/1280px-Force_Motors_-_Traveller_26_-_Agra_2014-05-14_4222.JPG",
   },
   {
     name: "Staff Bus",
     country: "Employee Transport",
     description: "Full-size AC/non-AC staff buses for high-volume daily commutes — the core of Acciva's employee transportation management system for large corporate campuses.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/3/3b/Haryana_Roadways_%27Saarthi%27_Volvo_at_ISBT_17%2C_Chandigarh.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Haryana_Roadways_%27Saarthi%27_Volvo_at_ISBT_17%2C_Chandigarh.jpg/1280px-Haryana_Roadways_%27Saarthi%27_Volvo_at_ISBT_17%2C_Chandigarh.jpg",
   },
   {
     name: "Truck",
     country: "Logistics Fleet",
     description: "Ashok Leyland class light and medium commercial trucks — supporting corporate logistics, material movement and last-mile freight alongside our passenger fleet.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/7/70/Ashok_Leyland_Vehicle_Of_Bharti_Logistics.jpg",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Ashok_Leyland_Vehicle_Of_Bharti_Logistics.jpg/1280px-Ashok_Leyland_Vehicle_Of_Bharti_Logistics.jpg",
   },
 ];
 
@@ -318,7 +318,7 @@ const Home = () => {
       {/* Final CTA */}
       <section className="relative py-16 md:py-24 overflow-hidden">
         <img
-          src="https://i.pinimg.com/originals/0d/e5/a8/0de5a8eb83ab56ee38799cd6674b92a6.jpg"
+          src="https://t4.ftcdn.net/jpg/09/30/49/83/360_F_930498387_akToV5jhe5VGgiZzIVZc4NT8PRxVCwJ3.jpg"
           alt=""
           aria-hidden="true"
           className="absolute inset-0 h-full w-full object-cover object-[center_55%]"

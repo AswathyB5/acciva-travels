@@ -4,7 +4,7 @@ import {
   AnimatePresence,
   useReducedMotion,
 } from "framer-motion";
-import { ArrowUpRight, ChevronLeft, ChevronRight, Building2, Truck, Users } from "lucide-react";
+import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { NavLink } from "react-router-dom";
 
 const HERO_TITLE =
@@ -20,12 +20,9 @@ const panels = [
   {
     id: "center-welcome",
     num: "01",
-    badge: "Primary",
-    tag: "Corporate Mobility",
     title: HERO_TITLE,
     supporting: HERO_SUPPORTING,
     desc: HERO_DESC,
-    icon: Building2,
     src: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=2000&q=80",
     link: "/contact",
     linkText: "Get a Corporate Mobility Consultation",
@@ -33,12 +30,9 @@ const panels = [
   {
     id: "left-tech",
     num: "02",
-    badge: "Secondary",
-    tag: "Corporate Mobility",
     title: HERO_TITLE,
     supporting: HERO_SUPPORTING,
     desc: HERO_DESC,
-    icon: Users,
     src: "https://upload.wikimedia.org/wikipedia/commons/6/61/Force_Traveller%2C_Leh-Manali_Highway.jpg",
     link: "/contact",
     linkText: "Request a Corporate Quotation",
@@ -46,12 +40,9 @@ const panels = [
   {
     id: "right-reliable",
     num: "03",
-    badge: "Get In Touch",
-    tag: "Corporate Mobility",
     title: HERO_TITLE,
     supporting: HERO_SUPPORTING,
     desc: HERO_DESC,
-    icon: Truck,
     src: "https://upload.wikimedia.org/wikipedia/commons/7/7d/Ashok_Leyland_U_truck_-_Chennai_-_India.jpg",
     link: "/contact",
     linkText: "Talk to Our Mobility Team",
@@ -121,7 +112,6 @@ const Hero = () => {
   }, [current]);
 
   const currentPanel = panels[current];
-  const IconComponent = currentPanel.icon;
 
   return (
     <section className="relative h-[100svh] min-h-[620px] w-full overflow-hidden bg-midnight select-none">
@@ -173,22 +163,6 @@ const Hero = () => {
             {/* Slide Content */}
             <div className="relative z-10 container-px pb-28 sm:pb-32 md:pb-36 flex flex-col justify-end max-w-5xl">
               <div>
-                {/* Tag and Badge Header */}
-                <motion.div
-                  custom={0}
-                  variants={textVariants}
-                  initial="hidden"
-                  animate="visible"
-                  className="flex items-center gap-3 mb-4"
-                >
-                  <div className="w-8 h-8 rounded-xl bg-sand/20 border border-sand/30 flex items-center justify-center text-sand">
-                    <IconComponent size={16} />
-                  </div>
-                  <span className="h-px w-6 bg-sand" />
-                  <span className="eyebrow text-sand text-xs tracking-[0.25em]">
-                    {currentPanel.tag} · {currentPanel.badge}
-                  </span>
-                </motion.div>
 
                 {/* Title */}
                 <motion.h1

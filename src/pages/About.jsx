@@ -1095,7 +1095,7 @@ const About = () => {
                 className="relative rounded-3xl overflow-hidden shadow-2xl border border-navy/10 group"
               >
                 <AnimatedImage
-                  src="https://content.jdmagicbox.com/v2/comp/ludhiana/k6/0161px161.x161.120401173918.p7k6/catalogue/janta-taxi-railway-station-ludhiana-taxi-services-1g0wgpiwrx.jpg"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSybHyfZCj79Hi5MvilFXYbvtUWWkHizyfub5vc23zJgA&s"
                   alt="Acciva Travels car fleet"
                   effect="zoom-out"
                   className="h-[420px] sm:h-[520px] w-full object-cover transition-transform duration-700 group-hover:scale-105"

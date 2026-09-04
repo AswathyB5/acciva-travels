@@ -51,6 +51,7 @@ const DestinationExpand = ({ destinations }) => {
                   src={d.image}
                   alt={`${d.name}, ${d.country}`}
                   loading="lazy"
+                  decoding="async"
                   animate={{ scale: isActive ? 1.08 : 1 }}
                   transition={{ duration: 1.2, ease: "easeOut" }}
                   className="h-full w-full object-cover"
