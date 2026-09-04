@@ -101,9 +101,9 @@ const About = () => {
       <section
         className="pt-28 sm:pt-32 pb-4 md:pb-6 relative overflow-hidden"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=2000&q=85')`,
+          backgroundImage: `url('https://bestsellingcarsblog.com/wp-content/uploads/2013/07/Maruti-DZire-India-June-2013.jpg')`,
           backgroundSize: "cover",
-          backgroundPosition: "center bottom",
+          backgroundPosition: "center",
           backgroundAttachment: "fixed",
         }}
       >
@@ -202,7 +202,7 @@ const About = () => {
                 className="relative rounded-3xl overflow-hidden shadow-2xl border border-navy/10 group"
               >
                 <AnimatedImage
-                  src="https://images2.alphacoders.com/710/thumb-1920-710409.jpg"
+                  src="https://content.jdmagicbox.com/v2/comp/mysore/h6/0821px821.x821.200818174613.f7h6/catalogue/travel-trendzz-kr-mohalla-mysore-car-rental-0p53jfp5bt.jpg"
                   alt="Acciva Travels fleet operations"
                   effect="zoom-out"
                   className="h-[420px] sm:h-[500px] w-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -1095,7 +1095,7 @@ const About = () => {
                 className="relative rounded-3xl overflow-hidden shadow-2xl border border-navy/10 group"
               >
                 <AnimatedImage
-                  src="https://images.pexels.com/photos/4520924/pexels-photo-4520924.jpeg?cs=srgb&dl=pexels-introspectivedsgn-4520924.jpg&fm=jpg"
+                  src="https://content.jdmagicbox.com/v2/comp/ludhiana/k6/0161px161.x161.120401173918.p7k6/catalogue/janta-taxi-railway-station-ludhiana-taxi-services-1g0wgpiwrx.jpg"
                   alt="Acciva Travels car fleet"
                   effect="zoom-out"
                   className="h-[420px] sm:h-[520px] w-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -1179,7 +1179,7 @@ const About = () => {
       <section className="relative py-16 md:py-24 overflow-hidden">
         {/* Background Image & Overlays (matches Home's Final CTA section) */}
         <img
-          src="https://www.bmw-infinitycars.in/sites/default/files/2026-02/1280_610_new%202.jpg"
+          src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Haryana_Roadways_%27Saarthi%27_Volvo_at_ISBT_17%2C_Chandigarh.jpg"
           alt=""
           aria-hidden="true"
           className="absolute inset-0 h-full w-full object-cover object-[center_55%]"

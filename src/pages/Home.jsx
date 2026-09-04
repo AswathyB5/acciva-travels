@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import Hero from "../components/Hero";
+import Industries from "../components/Industries";
 import SplitText from "../components/SplitText";
 import RevealImage from "../components/RevealImage";
 import DestinationExpand from "../components/DestinationExpand";
@@ -40,36 +41,60 @@ const whyChoosePanels = [
   },
 ];
 
-const luxuryCabs = [
+const corporateFleet = [
   {
-    name: "Rolls-Royce",
-    country: "Ultra Luxury",
-    description: "Cullinan · Phantom · Wraith. The pinnacle of prestige motoring. Chauffeur-driven opulence for executives and high-profile events.",
-    image: "https://images.unsplash.com/photo-1631295868223-63265b40d9e4?auto=format&fit=crop&w=1600&q=80",
+    name: "Sedan",
+    country: "Everyday Corporate Travel",
+    description: "Maruti Suzuki Dzire · Honda Amaze class. Compact, fuel-efficient and reliable — the backbone of daily employee pick-up and drop and corporate cab contracts across India.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/0/0a/Maruti_Suzuki_Dzire_VXi_VVT_%28front%29.JPG",
   },
   {
-    name: "Mercedes-Benz",
-    country: "Premium Luxury",
-    description: "AMG GLC · CLK · B-Class. Sophisticated engineering meets executive comfort. Perfect for corporate airport transfers and client rides.",
-    image: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1600&q=80",
+    name: "MPV",
+    country: "Family & Group Travel",
+    description: "Toyota Innova Crysta class. Spacious, dependable and India's favourite multi-purpose vehicle — ideal for outstation trips, airport transfers and small group movement.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/8/87/Toyota_Innova_Crysta_2.4_Z_front_right.jpg",
   },
   {
-    name: "BMW",
-    country: "Sport Luxury",
-    description: "M Sport · Luxury · xDrive. The ultimate driving experience. Dynamic, refined, and built for those who expect nothing but excellence.",
-    image: "https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=1600&q=80",
+    name: "SUV",
+    country: "All-Terrain Comfort",
+    description: "Mahindra XUV700 class. Commanding road presence with rugged capability — suited for site visits, hilly terrain and executives who need extra ground clearance.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/b/b9/A_black_Mahindra_XUV700_SUV_in_Ashiana_Brahmananda%2C_Jamshedpur%2C_India_%28Ank_Kumar%2C_Infosys_Limited%29_02.jpg",
   },
   {
-    name: "Audi",
-    country: "Executive Luxury",
-    description: "Audi A6 · Q5 · A8 · S5. Vorsprung durch Technik. Sleek, intelligent cabins crafted for the discerning corporate traveller.",
-    image: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=1600&q=80",
+    name: "Luxury Sedan",
+    country: "Premium Business Class",
+    description: "Skoda Superb / Octavia class. A refined, quiet cabin built for client-facing rides — the preferred choice for corporate guests and senior management travel.",
+    image: "https://images.pexels.com/photos/34985962/pexels-photo-34985962.jpeg?auto=compress&cs=tinysrgb&w=1600",
   },
   {
-    name: "Jaguar",
-    country: "British Luxury",
-    description: "F-TYPE · F-PACE · XF · XE. Iconic British craftsmanship meets modern performance. A statement of style for every corporate journey.",
-    image: "https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1600&q=80",
+    name: "Ultra-Luxury Executive",
+    country: "Boardroom On Wheels",
+    description: "Mercedes-Benz E-Class class. Executive-grade engineering and chauffeur-driven poise for CXOs, VIP delegations and high-profile corporate events, available through our authorised premium fleet network.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/2/21/Mercedes-Benz_W213_E-Class_Exclusive_Obsidian_Black_Metallic_diplomatic.jpg",
+  },
+  {
+    name: "Tempo Traveller",
+    country: "Group Transport",
+    description: "12–17 seater configurations built for comfort on long hauls — perfect for team offsites, airport group transfers and mid-sized corporate outings.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/6/61/Force_Traveller%2C_Leh-Manali_Highway.jpg",
+  },
+  {
+    name: "Mini Bus",
+    country: "Shared Mobility",
+    description: "AC mini bus fleet for mid-volume employee transport — an efficient, comfortable option for shuttling teams between office campuses and residential clusters.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/9/9d/Force_Motors_-_Traveller_26_-_Agra_2014-05-14_4222.JPG",
+  },
+  {
+    name: "Staff Bus",
+    country: "Employee Transport",
+    description: "Full-size AC/non-AC staff buses for high-volume daily commutes — the core of Acciva's employee transportation management system for large corporate campuses.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/3/3b/Haryana_Roadways_%27Saarthi%27_Volvo_at_ISBT_17%2C_Chandigarh.jpg",
+  },
+  {
+    name: "Truck",
+    country: "Logistics Fleet",
+    description: "Ashok Leyland class light and medium commercial trucks — supporting corporate logistics, material movement and last-mile freight alongside our passenger fleet.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/7/70/Ashok_Leyland_Vehicle_Of_Bharti_Logistics.jpg",
   },
 ];
 
@@ -141,13 +166,13 @@ const Home = () => {
 
           <div className="md:col-span-6 relative md:sticky md:top-32">
             <RevealImage
-              src="https://i.pinimg.com/1200x/6e/46/5a/6e465aacc98f07549078a74b0050f979.jpg"
+              src="https://www.jaipurcarrental.org/assets/uploads/blog_images/luxury-car-rental-min-min.JPG"
               alt="Acciva executive fleet vehicle"
               className="h-[38vh] md:h-[58vh] ml-auto w-full md:w-[90%]"
             />
             <div className="absolute -bottom-10 -left-4 sm:left-0 md:-left-10 w-1/2 md:w-[40%] shadow-[0_20px_60px_rgba(7,26,36,0.25)] border-4 border-soft">
               <RevealImage
-                src="https://i.pinimg.com/736x/23/98/7c/23987cfd635b58c2100cb5e1ae52e388.jpg"
+                src="https://static.vecteezy.com/system/resources/thumbnails/060/206/512/small/a-row-of-cars-parked-in-a-parking-lot-free-photo.jpeg"
                 alt="Acciva mixed fleet vehicles"
                 className="h-[18vh] md:h-[24vh]"
               />
@@ -157,15 +182,15 @@ const Home = () => {
       </section>
 
 
-      {/* Luxury Cab Services */}
+      {/* Corporate Fleet Showcase */}
       <section className="bg-soft py-16 md:py-20">
         <div className="container-px mb-16">
-          <span className="eyebrow text-teal">Cab Service</span>
+          <span className="eyebrow text-teal">Our Fleet</span>
           <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-6 max-w-2xl tracking-tight">
-            Luxury Cab Services <span className="italic text-teal font-normal">For Every Occasion.</span>
+            A Vehicle For <span className="italic text-teal font-normal">Every Corporate Need.</span>
           </h2>
         </div>
-        <DestinationExpand destinations={luxuryCabs} />
+        <DestinationExpand destinations={corporateFleet} />
       </section>
 
       {/* Statement Banner */}
@@ -249,6 +274,9 @@ const Home = () => {
           <FeaturedServices />
         </div>
       </section>
+
+      {/* Industries We Serve */}
+      <Industries />
 
       {/* Enterprise Trust */}
       <section className="bg-soft pt-8 md:pt-10 pb-6">

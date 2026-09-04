@@ -23,7 +23,7 @@ const Services = () => {
       <section
         className="pt-28 sm:pt-32 pb-4 md:pb-6 relative overflow-hidden"
         style={{
-          backgroundImage: `url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0XMRtF5FrYcjM5vMeWg8KtJOKuYgPyxxr8TqEz62sVFziSolGhfrIs6Y&s=10')`,
+          backgroundImage: `url('https://images.pexels.com/photos/34985962/pexels-photo-34985962.jpeg?auto=compress&cs=tinysrgb&w=1920')`,
           backgroundSize: "cover",
           backgroundPosition: "center 35%",
           backgroundAttachment: "fixed",

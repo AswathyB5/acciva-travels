@@ -4,45 +4,57 @@ import {
   AnimatePresence,
   useReducedMotion,
 } from "framer-motion";
-import { ArrowUpRight, ChevronLeft, ChevronRight, Cpu, Building2, ShieldCheck } from "lucide-react";
+import { ArrowUpRight, ChevronLeft, ChevronRight, Building2, Truck, Users } from "lucide-react";
 import { NavLink } from "react-router-dom";
+
+const HERO_TITLE =
+  "Corporate Mobility & Transportation Solutions for a Moving Business World";
+
+const HERO_SUPPORTING =
+  "Employee Transportation | Corporate Cabs | Corporate Car Rentals | Executive Mobility | Long-Term Leasing | Logistics | Truck Services | Events | PAN India Mobility";
+
+const HERO_DESC =
+  "Acciva Travels provides end-to-end mobility, transportation and logistics solutions for businesses-from daily employee pick-up and drop to executive travel, long-term vehicle leasing, commercial trucks, logistics movement, corporate events and PAN India transportation requirements.";
 
 const panels = [
   {
     id: "center-welcome",
     num: "01",
-    badge: "Pan India Presence",
-    tag: "About Us",
-    title: "Welcome To Acciva",
-    desc: "Acciva Travels has emerged to be one of the best leading Corporate Employee Transport Services.",
+    badge: "Primary",
+    tag: "Corporate Mobility",
+    title: HERO_TITLE,
+    supporting: HERO_SUPPORTING,
+    desc: HERO_DESC,
     icon: Building2,
     src: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=2000&q=80",
     link: "/contact",
-    linkText: "Book Now",
+    linkText: "Get a Corporate Mobility Consultation",
   },
   {
     id: "left-tech",
     num: "02",
-    badge: "Smart Mobility",
-    tag: "Technology",
-    title: "Acciva Driven By Technology",
-    desc: "Maximizing transport efficiency & minimizing operational costs with automated intelligent routing.",
-    icon: Cpu,
-    src: "https://images.unsplash.com/photo-1600320254374-ce2d293c324e?auto=format&fit=crop&w=2000&q=80",
+    badge: "Secondary",
+    tag: "Corporate Mobility",
+    title: HERO_TITLE,
+    supporting: HERO_SUPPORTING,
+    desc: HERO_DESC,
+    icon: Users,
+    src: "https://upload.wikimedia.org/wikipedia/commons/6/61/Force_Traveller%2C_Leh-Manali_Highway.jpg",
     link: "/contact",
-    linkText: "Book Now",
+    linkText: "Request a Corporate Quotation",
   },
   {
     id: "right-reliable",
     num: "03",
-    badge: "Trusted Partner",
-    tag: "Safety & SLA",
-    title: "Reliable & Professional",
-    desc: "Corporate employee transportation provider delivering seamless, secure, and punctual transit.",
-    icon: ShieldCheck,
-    src: "https://images.unsplash.com/photo-1494515843206-f3117d3f51b7?auto=format&fit=crop&w=2000&q=80",
+    badge: "Get In Touch",
+    tag: "Corporate Mobility",
+    title: HERO_TITLE,
+    supporting: HERO_SUPPORTING,
+    desc: HERO_DESC,
+    icon: Truck,
+    src: "https://upload.wikimedia.org/wikipedia/commons/7/7d/Ashok_Leyland_U_truck_-_Chennai_-_India.jpg",
     link: "/contact",
-    linkText: "Book Now",
+    linkText: "Talk to Our Mobility Team",
   },
 ];
 
@@ -159,7 +171,7 @@ const Hero = () => {
             <div className="absolute bottom-0 inset-x-0 h-44 bg-gradient-to-t from-midnight/80 to-transparent pointer-events-none" />
 
             {/* Slide Content */}
-            <div className="relative z-10 container-px pb-28 sm:pb-32 md:pb-36 flex flex-col justify-end max-w-4xl">
+            <div className="relative z-10 container-px pb-28 sm:pb-32 md:pb-36 flex flex-col justify-end max-w-5xl">
               <div>
                 {/* Tag and Badge Header */}
                 <motion.div
@@ -184,14 +196,25 @@ const Hero = () => {
                   variants={textVariants}
                   initial="hidden"
                   animate="visible"
-                  className="font-display text-ivory text-3xl sm:text-4xl md:text-5xl leading-[1.08] tracking-tight drop-shadow-[0_8px_20px_rgba(0,0,0,0.9)] max-w-3xl"
+                  className="font-display text-ivory text-3xl sm:text-4xl md:text-5xl leading-[1.08] tracking-tight drop-shadow-[0_8px_20px_rgba(0,0,0,0.9)] max-w-4xl"
                 >
                   {currentPanel.title}
                 </motion.h1>
 
-                {/* Description */}
+                {/* Supporting Line */}
                 <motion.p
                   custom={2}
+                  variants={textVariants}
+                  initial="hidden"
+                  animate="visible"
+                  className="mt-3 sm:mt-4 text-sand/95 font-mono text-[11px] sm:text-xs tracking-wide leading-relaxed max-w-3xl drop-shadow-md"
+                >
+                  {currentPanel.supporting}
+                </motion.p>
+
+                {/* Description */}
+                <motion.p
+                  custom={3}
                   variants={textVariants}
                   initial="hidden"
                   animate="visible"
@@ -202,7 +225,7 @@ const Hero = () => {
 
                 {/* CTA Button */}
                 <motion.div
-                  custom={3}
+                  custom={4}
                   variants={textVariants}
                   initial="hidden"
                   animate="visible"

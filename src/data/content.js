@@ -22,7 +22,7 @@ export const services = [
       "24/7 Shift Operations",
     ],
     image:
-      "https://routematic.com/wp-content/uploads/managing-employee-transport-in-metro-cities-1024x576.webp",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHlcxnzbgHFk_SBwmoO6jcpprDcpPqoswBD0F_gUoNSQ&s=10",
   },
   {
     slug: "fleet-management",
@@ -38,7 +38,7 @@ export const services = [
       "Custom Client Reports",
     ],
     image:
-      "https://i.pinimg.com/1200x/d5/7e/a6/d57ea63c519583f1342eb70c87552daf.jpg",
+      "https://api.formulaindia.com/upload/media//89b1bfa11e7602fa0fb07ddd09c773c9.jpg",
   },
   {
     slug: "school-transportation",
@@ -54,7 +54,7 @@ export const services = [
       "Dedicated Chauffeurs & Captains",
     ],
     image:
-      "https://i.pinimg.com/736x/a1/72/bf/a172bfc1fe7913c45f81319b6a17a894.jpg",
+      "https://5.imimg.com/data5/SELLER/Default/2021/10/BD/VV/KJ/111856083/whatsapp-image-2021-09-13-at-21-07-43-1-.jpeg",
   },
   {
     slug: "airport-transfer-services",
@@ -70,7 +70,7 @@ export const services = [
       "Luxury Sedans & Premium SUVs",
     ],
     image:
-      "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=80",
+      "https://upload.wikimedia.org/wikipedia/commons/b/b9/A_black_Mahindra_XUV700_SUV_in_Ashiana_Brahmananda%2C_Jamshedpur%2C_India_%28Ank_Kumar%2C_Infosys_Limited%29_02.jpg",
   },
   {
     slug: "staff-bus-transport-services",
@@ -86,7 +86,7 @@ export const services = [
       "Dedicated Route Captains",
     ],
     image:
-      "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80",
+      "https://upload.wikimedia.org/wikipedia/commons/3/3b/Haryana_Roadways_%27Saarthi%27_Volvo_at_ISBT_17%2C_Chandigarh.jpg",
   },
   {
     slug: "corporate-adhoc-services",
@@ -102,7 +102,7 @@ export const services = [
       "Pan-India Multi-City Coordination",
     ],
     image:
-      "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=80",
+      "https://upload.wikimedia.org/wikipedia/commons/2/21/Mercedes-Benz_W213_E-Class_Exclusive_Obsidian_Black_Metallic_diplomatic.jpg",
   },
   {
     slug: "outstation-cab-services",
@@ -118,7 +118,7 @@ export const services = [
       "Verified Long-Distance Drivers",
     ],
     image:
-      "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1200&q=80",
+      "https://upload.wikimedia.org/wikipedia/commons/6/61/Force_Traveller%2C_Leh-Manali_Highway.jpg",
   },
 ];
 
@@ -413,7 +413,7 @@ export const timeline = [
       "Started operations as Gettz Travel Solutions in Bengaluru, pioneering reliable, dedicated employee transit for early IT tech parks.",
     stat: "Initial 50+ Dedicated Vehicles",
     image:
-      "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=600&q=80",
+      "https://upload.wikimedia.org/wikipedia/commons/2/28/Maruti_Suzuki_Swift_Dzire_sedan.jpg",
   },
   {
     year: "2016",
@@ -453,7 +453,7 @@ export const timeline = [
       "Introduced zero-emission electric vehicles into corporate transit loops, cutting corporate carbon footprints across Tier-1 campuses.",
     stat: "100+ Electric Cabs Active",
     image:
-      "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=600&q=80",
+      "https://upload.wikimedia.org/wikipedia/commons/8/87/Toyota_Innova_Crysta_2.4_Z_front_right.jpg",
   },
   {
     year: "2026",
