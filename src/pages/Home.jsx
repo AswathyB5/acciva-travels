@@ -143,13 +143,13 @@ const Home = () => {
             <RevealImage
               src="https://i.pinimg.com/1200x/6e/46/5a/6e465aacc98f07549078a74b0050f979.jpg"
               alt="Acciva executive fleet vehicle"
-              className="h-[50vh] md:h-[78vh] ml-auto w-full md:w-[90%]"
+              className="h-[38vh] md:h-[58vh] ml-auto w-full md:w-[90%]"
             />
             <div className="absolute -bottom-10 -left-4 sm:left-0 md:-left-10 w-1/2 md:w-[40%] shadow-[0_20px_60px_rgba(7,26,36,0.25)] border-4 border-soft">
               <RevealImage
                 src="https://i.pinimg.com/736x/23/98/7c/23987cfd635b58c2100cb5e1ae52e388.jpg"
                 alt="Acciva mixed fleet vehicles"
-                className="h-[24vh] md:h-[32vh]"
+                className="h-[18vh] md:h-[24vh]"
               />
             </div>
           </div>
