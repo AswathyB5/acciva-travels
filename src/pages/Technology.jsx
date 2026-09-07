@@ -114,25 +114,21 @@ const processSteps = [
   {
     step: "01",
     title: "Onboard & Configure",
-    desc: "Set up your fleet, drivers and employee database on the Acciva platform in days, not months.",
     icon: Layers,
   },
   {
     step: "02",
     title: "Roster & Route",
-    desc: "Automated rostering and route optimisation match the right vehicle to the right shift, every time.",
     icon: Navigation,
   },
   {
     step: "03",
     title: "Track Live",
-    desc: "Real-time GPS visibility, safe-drop IVR confirmation and instant alerts keep every trip accounted for.",
     icon: ShieldCheck,
   },
   {
     step: "04",
     title: "Report & Bill",
-    desc: "Paperless e-trip sheets and automated billing feed straight into dashboard analytics for every stakeholder.",
     icon: Gauge,
   },
 ];
@@ -319,7 +315,7 @@ const Technology = () => {
         </p>
 
         {/* Dual-Row Infinite Marquee: Our Corporate Transportation Services */}
-        <div className="relative py-8 bg-white border-y border-navy/10 -rotate-1 scale-105">
+        <div className="relative py-8 bg-white border-y border-navy/10">
           <div className="absolute top-0 bottom-0 left-0 w-24 sm:w-40 bg-linear-to-r from-white to-transparent z-10 pointer-events-none" />
           <div className="absolute top-0 bottom-0 right-0 w-24 sm:w-40 bg-linear-to-l from-white to-transparent z-10 pointer-events-none" />
 
@@ -428,7 +424,7 @@ const Technology = () => {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="mb-12"
           >
-            <span className="eyebrow text-teal">Our Features</span>
+            <span className="eyebrow text-teal">Technology Pillars</span>
             <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-6 tracking-tight">
               Six Pillars Powering{" "}
               <span className="italic text-teal font-normal">Every Trip.</span>

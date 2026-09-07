@@ -51,25 +51,11 @@ const colorStyles = {
   },
 };
 
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.05 },
-  },
-};
-
 const ROW_SIZE = 6;
 
-const cardVariants = {
-  hidden: (direction) => ({ opacity: 0, x: direction * 70, y: 24, scale: 0.96 }),
-  visible: {
-    opacity: 1,
-    x: 0,
-    y: 0,
-    scale: 1,
-    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
-  },
-};
+const rows = Array.from({ length: Math.ceil(industries.length / ROW_SIZE) }, (_, i) =>
+  industries.slice(i * ROW_SIZE, i * ROW_SIZE + ROW_SIZE)
+);
 
 const Industries = () => {
   return (
@@ -101,44 +87,49 @@ const Industries = () => {
           </p>
         </motion.div>
 
-        {/* Industries Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          className="mt-12 md:mt-14 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4"
-        >
-          {industries.map(({ name, icon: Icon }, i) => {
-            const color = i % 2 === 0 ? "teal" : "sand";
-            const row = Math.floor(i / ROW_SIZE);
-            const direction = row % 2 === 0 ? -1 : 1;
-            return (
-            <motion.div
-              key={name}
-              custom={direction}
-              variants={cardVariants}
-              whileHover={{ y: -6, scale: 1.03 }}
-              transition={{ type: "spring", stiffness: 300, damping: 18 }}
-              className="group relative flex flex-col items-center justify-center text-center gap-3 px-4 py-6 sm:py-7 rounded-2xl bg-white border border-navy/10 shadow-[0_10px_35px_rgba(38,55,74,0.05)] hover:border-teal/50 hover:shadow-[0_20px_50px_rgba(7,26,36,0.12)] transition-[border-color,box-shadow] duration-500 overflow-hidden"
-            >
-              {/* Top glow bar */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-teal via-sand to-teal transition-opacity duration-500" />
+      </div>
 
-              <motion.div
-                whileHover={{ rotate: 8 }}
-                className={`w-12 h-12 rounded-2xl border flex items-center justify-center shrink-0 group-hover:shadow-[0_0_0_6px] transition-all duration-300 ${colorStyles[color].badge}`}
+      {/* Industries Marquee Rows: alternating scroll direction per row */}
+      <div className="mt-12 md:mt-14 relative z-10 space-y-3 sm:space-y-4">
+        {rows.map((row, rowIdx) => {
+          const direction = rowIdx % 2 === 0 ? "right" : "left";
+          const items = [...row, ...row];
+          return (
+            <div key={rowIdx} className="relative overflow-hidden">
+              <div className="absolute top-0 bottom-0 left-0 w-12 sm:w-32 bg-linear-to-r from-soft to-transparent z-10 pointer-events-none" />
+              <div className="absolute top-0 bottom-0 right-0 w-12 sm:w-32 bg-linear-to-l from-soft to-transparent z-10 pointer-events-none" />
+
+              <div
+                className={`flex gap-3 sm:gap-4 whitespace-nowrap will-change-transform ${
+                  direction === "right" ? "animate-marquee-right" : "animate-marquee-left"
+                }`}
               >
-                <Icon size={20} />
-              </motion.div>
+                {items.map(({ name, icon: Icon }, i) => {
+                  const color = i % 2 === 0 ? "teal" : "sand";
+                  return (
+                    <div
+                      key={i}
+                      className="group relative flex w-40 sm:w-48 shrink-0 flex-col items-center justify-center text-center gap-2 px-3 py-4 sm:py-5 rounded-2xl bg-white border border-navy/10 shadow-[0_10px_35px_rgba(38,55,74,0.05)] hover:border-teal/50 hover:shadow-[0_20px_50px_rgba(7,26,36,0.12)] transition-[border-color,box-shadow] duration-500 overflow-hidden"
+                    >
+                      {/* Top glow bar */}
+                      <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-teal via-sand to-teal transition-opacity duration-500" />
 
-              <span className={`text-[13px] sm:text-sm text-navy font-semibold leading-snug transition-colors duration-300 ${colorStyles[color].label}`}>
-                {name}
-              </span>
-            </motion.div>
-            );
-          })}
-        </motion.div>
+                      <div
+                        className={`w-12 h-12 rounded-2xl border flex items-center justify-center shrink-0 group-hover:shadow-[0_0_0_6px] transition-all duration-300 ${colorStyles[color].badge}`}
+                      >
+                        <Icon size={20} />
+                      </div>
+
+                      <span className={`text-[13px] sm:text-sm text-navy font-semibold leading-snug whitespace-normal transition-colors duration-300 ${colorStyles[color].label}`}>
+                        {name}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })}
       </div>
     </section>
   );

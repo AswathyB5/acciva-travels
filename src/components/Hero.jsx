@@ -23,7 +23,8 @@ const panels = [
     title: HERO_TITLE,
     supporting: HERO_SUPPORTING,
     desc: HERO_DESC,
-    src: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=2000&q=80",
+    src: "https://img.magnific.com/free-photo/suv-driving-highway-through-rural-landscape-with-copy-space_169016-73133.jpg?semt=ais_hybrid&w=740&q=80",
+    imagePosition: "right center",
     link: "/contact",
     linkText: "Get a Corporate Mobility Consultation",
   },
@@ -33,7 +34,8 @@ const panels = [
     title: HERO_TITLE,
     supporting: HERO_SUPPORTING,
     desc: HERO_DESC,
-    src: "https://upload.wikimedia.org/wikipedia/commons/6/61/Force_Traveller%2C_Leh-Manali_Highway.jpg",
+    src: "https://c.ndtvimg.com/2020-08/cul0tumc_volvo-buses_625x300_13_August_20.png",
+    imagePosition: "right center",
     link: "/contact",
     linkText: "Request a Corporate Quotation",
   },
@@ -43,7 +45,8 @@ const panels = [
     title: HERO_TITLE,
     supporting: HERO_SUPPORTING,
     desc: HERO_DESC,
-    src: "https://upload.wikimedia.org/wikipedia/commons/7/7d/Ashok_Leyland_U_truck_-_Chennai_-_India.jpg",
+    src: "https://media.istockphoto.com/id/847002488/photo/white-bus-traveling-on-the-asphalt-road-in-rural-landscape.jpg?s=612x612&w=0&k=20&c=93yJi_90KhsCtUT-dzjnIqSmXsQoGjUjS6s17X5RIos=",
+    imagePosition: "right center",
     link: "/contact",
     linkText: "Talk to Our Mobility Team",
   },
@@ -152,13 +155,14 @@ const Hero = () => {
               animate={{ scale: zoomed ? 1 : 1.12 }}
               transition={{ duration: 7, ease: "easeOut" }}
               className="absolute inset-0 h-full w-full object-cover"
+              style={{ objectPosition: currentPanel.imagePosition || "center" }}
               src={currentPanel.src}
               alt={currentPanel.title}
             />
             {/* Left and Right Side Soft Dark Gradients + Bottom Scrim */}
-            <div className="absolute inset-0 bg-gradient-to-r from-midnight/95 via-midnight/55 via-40% to-transparent pointer-events-none" />
-            <div className="absolute inset-y-0 right-0 w-[50%] bg-gradient-to-l from-midnight/85 via-midnight/40 to-transparent pointer-events-none" />
-            <div className="absolute bottom-0 inset-x-0 h-44 bg-gradient-to-t from-midnight/80 to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-r from-midnight/70 via-midnight/30 via-40% to-transparent pointer-events-none" />
+            <div className="absolute inset-y-0 right-0 w-[50%] bg-gradient-to-l from-midnight/60 via-midnight/25 to-transparent pointer-events-none" />
+            <div className="absolute bottom-0 inset-x-0 h-44 bg-gradient-to-t from-midnight/35 to-transparent pointer-events-none" />
 
             {/* Slide Content */}
             <div className="relative z-10 container-px pb-32 md:pb-36 flex flex-col justify-end max-w-5xl">

@@ -7,94 +7,67 @@ import SplitText from "../components/SplitText";
 import RevealImage from "../components/RevealImage";
 import DestinationExpand from "../components/DestinationExpand";
 import FeaturedServices from "../components/FeaturedServices";
-import HorizontalGallery from "../components/HorizontalGallery";
+import WhyAcciva from "../components/WhyAcciva";
 import StatCounter from "../components/StatCounter";
 import BlogFeature from "../components/BlogFeature";
 import Testimonial from "../components/Testimonial";
 import Magnetic from "../components/Magnetic";
 import { services, stats, blogPosts } from "../data/content";
 
-const whyChoosePanels = [
-  {
-    word: "Safety And Security",
-    label: "Real-Time Protection",
-    description:
-      "Acciva's software provides real time monitoring, centralised to security operations, an automated safe drop confirmation through IVR call and assures response time of less than 60 seconds in any panic situations.",
-    image:
-      "https://images.unsplash.com/photo-1758411898007-6a17c74ef528?auto=format&fit=crop&w=1600&q=80",
-  },
-  {
-    word: "Cost Optimization",
-    label: "Maximum Efficiency",
-    description:
-      "It increases transport efficiency by utilising the largest technologies and reduces operation cost by utilising manpower and fleet optimally.",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80",
-  },
-  {
-    word: "Technology Integration",
-    label: "Automation Platform",
-    description:
-      "Acciva’s state of art technology is an automation platform for employee transportation that helps Rostering, routing, deployment, live tracking, paperless automated billing and e-trip sheet.",
-    image:
-      "https://cdn.mos.cms.futurecdn.net/CqmoQX7egZuXKVrkrrUUkH.jpg",
-  },
-];
-
 const corporateFleet = [
   {
     name: "Sedan",
     country: "Everyday Corporate Travel",
-    description: "Maruti Suzuki Dzire · Honda Amaze class. Compact, fuel-efficient and reliable — the backbone of daily employee pick-up and drop and corporate cab contracts across India.",
+    description: "Comfortable, fuel-efficient sedans for daily employee commutes and routine office travel.",
     image: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Toyota_Camry_2.5_Hybrid_Ascent_Sport_%28IX%29_%E2%80%93_f_02012026.jpg/1280px-Toyota_Camry_2.5_Hybrid_Ascent_Sport_%28IX%29_%E2%80%93_f_02012026.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=thumbnail",
   },
   {
     name: "MPV",
     country: "Family & Group Travel",
-    description: "Toyota Innova Crysta class. Spacious, dependable and India's favourite multi-purpose vehicle — ideal for outstation trips, airport transfers and small group movement.",
+    description: "Spacious multi-purpose vehicles built for small teams travelling together in comfort.",
     image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Toyota_Innova_Crysta_2.4_Z_front_right.jpg/1280px-Toyota_Innova_Crysta_2.4_Z_front_right.jpg",
   },
   {
     name: "SUV",
     country: "All-Terrain Comfort",
-    description: "Mahindra XUV700 class. Commanding road presence with rugged capability — suited for site visits, hilly terrain and executives who need extra ground clearance.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/A_black_Mahindra_XUV700_SUV_in_Ashiana_Brahmananda%2C_Jamshedpur%2C_India_%28Ank_Kumar%2C_Infosys_Limited%29_02.jpg/1280px-A_black_Mahindra_XUV700_SUV_in_Ashiana_Brahmananda%2C_Jamshedpur%2C_India_%28Ank_Kumar%2C_Infosys_Limited%29_02.jpg",
+    description: "Rugged, powerful SUVs that handle any terrain for site visits and outstation assignments.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/1/1f/2024_Toyota_RAV4_Cruiser_Hybrid_front.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original",
   },
   {
     name: "Luxury Sedan",
     country: "Premium Business Class",
-    description: "Skoda Superb / Octavia class. A refined, quiet cabin built for client-facing rides — the preferred choice for corporate guests and senior management travel.",
+    description: "Refined luxury sedans that make the right impression for client meetings and executive travel.",
     image: "https://images.pexels.com/photos/34985962/pexels-photo-34985962.jpeg?auto=compress&cs=tinysrgb&w=1600",
   },
   {
     name: "Ultra-Luxury Executive",
     country: "Boardroom On Wheels",
-    description: "Mercedes-Benz E-Class class. Executive-grade engineering and chauffeur-driven poise for CXOs, VIP delegations and high-profile corporate events, available through our authorised premium fleet network.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Mercedes-Benz_W213_E-Class_Exclusive_Obsidian_Black_Metallic_diplomatic.jpg/1280px-Mercedes-Benz_W213_E-Class_Exclusive_Obsidian_Black_Metallic_diplomatic.jpg",
+    description: "Top-tier chauffeured vehicles designed for VIP delegates and high-stakes corporate travel.",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS140ZKNRV3Mm7_u2VJ8gbjXNckKdW9rGHpPqK0n-X1jobyiW3gXoYrB2g&s=10",
   },
   {
     name: "Tempo Traveller",
     country: "Group Transport",
-    description: "12–17 seater configurations built for comfort on long hauls — perfect for team offsites, airport group transfers and mid-sized corporate outings.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Force_Traveller%2C_Leh-Manali_Highway.jpg/1280px-Force_Traveller%2C_Leh-Manali_Highway.jpg",
+    description: "Reliable tempo travellers for mid-sized groups moving together to events or off-sites.",
+    image: "https://www.ecorentacar.com/wp-content/uploads/2019/05/Tempo-Traveller-Front-Product_Imgs1.jpg",
   },
   {
     name: "Mini Bus",
     country: "Shared Mobility",
-    description: "AC mini bus fleet for mid-volume employee transport — an efficient, comfortable option for shuttling teams between office campuses and residential clusters.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Force_Motors_-_Traveller_26_-_Agra_2014-05-14_4222.JPG/1280px-Force_Motors_-_Traveller_26_-_Agra_2014-05-14_4222.JPG",
+    description: "Efficient mini buses that keep larger teams connected with shared, scheduled transport.",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDTUp-WRvnjwiNnvdeol89AXwHWwAeNde3M_ag4kMtPxsjg7AFaMKjHwoq&s=10",
   },
   {
     name: "Staff Bus",
     country: "Employee Transport",
-    description: "Full-size AC/non-AC staff buses for high-volume daily commutes — the core of Acciva's employee transportation management system for large corporate campuses.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Haryana_Roadways_%27Saarthi%27_Volvo_at_ISBT_17%2C_Chandigarh.jpg/1280px-Haryana_Roadways_%27Saarthi%27_Volvo_at_ISBT_17%2C_Chandigarh.jpg",
+    description: "Dedicated staff buses that make daily employee pick-up and drop reliable at scale.",
+    image: "https://jcbl.com/jcbl-images/products/elite/banner.jpg",
   },
   {
     name: "Truck",
     country: "Logistics Fleet",
-    description: "Ashok Leyland class light and medium commercial trucks — supporting corporate logistics, material movement and last-mile freight alongside our passenger fleet.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Ashok_Leyland_Vehicle_Of_Bharti_Logistics.jpg/1280px-Ashok_Leyland_Vehicle_Of_Bharti_Logistics.jpg",
+    description: "Sturdy trucks that keep your logistics and material movement running on schedule.",
+    image: "https://t3.ftcdn.net/jpg/03/52/78/44/360_F_352784409_vACH9AegP2m2xM7l6nppLUazM7LhFiz1.jpg",
   },
 ];
 
@@ -184,7 +157,7 @@ const Home = () => {
 
       {/* Corporate Fleet Showcase */}
       <section className="bg-soft py-16 md:py-20">
-        <div className="container-px mb-16">
+        <div className="container-px mb-6">
           <span className="eyebrow text-teal">Our Fleet</span>
           <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-6 max-w-2xl tracking-tight">
             A Vehicle For <span className="italic text-teal font-normal">Every Corporate Need.</span>
@@ -281,13 +254,16 @@ const Home = () => {
       {/* Enterprise Trust */}
       <section className="bg-soft pt-8 md:pt-10 pb-6">
         <div className="container-px">
-          <span className="eyebrow text-teal">Enterprise Trust</span>
+          <span className="eyebrow text-teal">Why Acciva Travels</span>
           <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-6 tracking-tight">
             Why Enterprises <span className="italic text-teal font-normal">Trust Us.</span>
           </h2>
         </div>
       </section>
-      <HorizontalGallery panels={whyChoosePanels} />
+      <WhyAcciva />
+
+      {/* Creative Modern Animated Testimonials */}
+      <Testimonial />
 
       {/* Numbers / Metrics */}
       <section className="bg-soft pt-0 md:pt-1 pb-15">
@@ -297,10 +273,6 @@ const Home = () => {
           ))}
         </div>
       </section>
-
-
-      {/* Creative Modern Animated Testimonials */}
-      <Testimonial />
 
       {/* Travel Journal */}
       <section className="bg-soft pt-8 md:pt-10 pb-16 md:pb-20">

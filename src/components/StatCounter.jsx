@@ -67,9 +67,21 @@ const StatCounter = ({ value, suffix = "", display, label, icon, duration = 1.8,
         </div>
 
         {IconComponent && (
-          <div className="w-10 h-10 rounded-2xl bg-transparent text-teal border border-teal/40 flex items-center justify-center shrink-0 group-hover:border-teal transition-all duration-300">
-            <IconComponent size={20} className="stroke-[1.75]" />
-          </div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5, rotate: -20 }}
+            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            whileHover={{ scale: 1.08, rotate: 4 }}
+            transition={{ type: "spring", stiffness: 260, damping: 16, delay: index * 0.15 + 0.1 }}
+            className="w-10 h-10 rounded-2xl bg-transparent border border-teal/40 text-teal flex items-center justify-center shrink-0 relative group-hover:border-teal transition-colors duration-300"
+          >
+            <motion.span
+              className="absolute inset-0 rounded-2xl border-2 border-teal/40"
+              animate={{ scale: [1, 1.35, 1], opacity: [0.6, 0, 0.6] }}
+              transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut", delay: index * 0.3 }}
+            />
+            <IconComponent size={20} className="stroke-[1.75] relative z-10" />
+          </motion.div>
         )}
       </div>
 
