@@ -231,7 +231,7 @@ const Home = () => {
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               className="font-display italic text-xl sm:text-2xl md:text-3xl text-navy/90 block"
             >
-              Your
+              One Partner.
             </motion.span>
             <motion.span
               initial={{ y: "40%", opacity: 0 }}
@@ -240,7 +240,7 @@ const Home = () => {
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
               className="font-display font-medium text-2xl sm:text-3xl md:text-4xl text-navy block mt-1"
             >
-              Next Chapter
+              One Platform.
             </motion.span>
             <motion.span
               initial={{ y: "40%", opacity: 0 }}
@@ -250,7 +250,7 @@ const Home = () => {
               style={{ fontFamily: "var(--font-accent)", fontSize: "clamp(1.5rem, 4vw, 2.25rem)", lineHeight: "1.08" }}
               className="italic text-teal font-normal block mt-1"
             >
-              Starts Here.
+              Complete Mobility.
             </motion.span>
           </div>
           <p className="mt-5 eyebrow text-teal font-mono tracking-widest uppercase">

@@ -179,6 +179,63 @@ h4 em,
   animation: pulseGlow 4s ease-in-out infinite;
 }
 
+@keyframes pillGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 rgba(59, 141, 196, 0);
+  }
+  50% {
+    box-shadow: 0 0 18px 3px rgba(59, 141, 196, 0.45);
+  }
+}
+
+.animate-pill-glow {
+  animation: pillGlow 2.8s ease-in-out infinite;
+}
+
+@keyframes pillGlowSand {
+  0%, 100% {
+    box-shadow: 0 0 0 rgba(225, 197, 157, 0);
+  }
+  50% {
+    box-shadow: 0 0 18px 3px rgba(225, 197, 157, 0.55);
+  }
+}
+
+.animate-pill-glow-sand {
+  animation: pillGlowSand 2.8s ease-in-out infinite;
+}
+
+@keyframes marqueeLeft {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marqueeRight {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+.animate-marquee-left {
+  animation: marqueeLeft 32s linear infinite;
+}
+
+.animate-marquee-right {
+  animation: marqueeRight 38s linear infinite;
+}
+
+.animate-marquee-left:hover,
+.animate-marquee-right:hover {
+  animation-play-state: paused;
+}
+
 .shimmer-text {
   background: linear-gradient(90deg, var(--color-navy) 0%, var(--color-teal) 50%, var(--color-navy) 100%);
   background-size: 200% auto;
