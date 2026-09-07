@@ -114,9 +114,9 @@ const Hero = () => {
   const currentPanel = panels[current];
 
   return (
-    <section className="relative h-[100svh] min-h-[620px] w-full overflow-hidden bg-midnight select-none">
+    <section className="relative h-[100svh] min-h-[520px] sm:min-h-[620px] w-full overflow-hidden bg-midnight select-none">
       {/* Top scrim gradient for transparent navbar */}
-      <div className="absolute top-0 inset-x-0 h-32 sm:h-40 bg-linear-to-b from-midnight/80 via-midnight/40 to-transparent pointer-events-none z-30" />
+      <div className="absolute top-0 inset-x-0 h-24 sm:h-32 md:h-40 bg-linear-to-b from-midnight/80 via-midnight/40 to-transparent pointer-events-none z-30" />
 
       {/* Main Full-Screen Slider View */}
       <div className="relative w-full h-full overflow-hidden">
@@ -161,7 +161,7 @@ const Hero = () => {
             <div className="absolute bottom-0 inset-x-0 h-44 bg-gradient-to-t from-midnight/80 to-transparent pointer-events-none" />
 
             {/* Slide Content */}
-            <div className="relative z-10 container-px pb-28 sm:pb-32 md:pb-36 flex flex-col justify-end max-w-5xl">
+            <div className="relative z-10 container-px pb-32 md:pb-36 flex flex-col justify-end max-w-5xl">
               <div>
 
                 {/* Title */}
@@ -170,7 +170,7 @@ const Hero = () => {
                   variants={textVariants}
                   initial="hidden"
                   animate="visible"
-                  className="font-display text-ivory text-3xl sm:text-4xl md:text-5xl leading-[1.08] tracking-tight drop-shadow-[0_8px_20px_rgba(0,0,0,0.9)] max-w-4xl"
+                  className="font-display text-ivory text-2xl sm:text-4xl md:text-5xl leading-[1.15] sm:leading-[1.08] tracking-tight drop-shadow-[0_8px_20px_rgba(0,0,0,0.9)] max-w-4xl"
                 >
                   {currentPanel.title}
                 </motion.h1>
@@ -181,7 +181,7 @@ const Hero = () => {
                   variants={textVariants}
                   initial="hidden"
                   animate="visible"
-                  className="mt-3 sm:mt-4 text-sand/95 font-mono text-[11px] sm:text-xs tracking-wide leading-relaxed max-w-3xl drop-shadow-md"
+                  className="mt-3 sm:mt-4 text-sand/95 font-mono text-[10px] sm:text-xs tracking-wide leading-relaxed max-w-3xl drop-shadow-md line-clamp-2 sm:line-clamp-none"
                 >
                   {currentPanel.supporting}
                 </motion.p>
@@ -192,7 +192,7 @@ const Hero = () => {
                   variants={textVariants}
                   initial="hidden"
                   animate="visible"
-                  className="mt-4 sm:mt-5 text-[15px] text-ivory/90 font-medium leading-relaxed max-w-2xl drop-shadow-md"
+                  className="mt-3 sm:mt-5 text-[13px] sm:text-[15px] text-ivory/90 font-medium leading-relaxed max-w-2xl drop-shadow-md line-clamp-3 sm:line-clamp-none"
                 >
                   {currentPanel.desc}
                 </motion.p>
@@ -203,16 +203,16 @@ const Hero = () => {
                   variants={textVariants}
                   initial="hidden"
                   animate="visible"
-                  className="mt-7 sm:mt-8 flex items-center gap-4"
+                  className="mt-6 sm:mt-8 flex items-center gap-4"
                 >
                   <NavLink
                     to={currentPanel.link}
-                    className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full border-2 border-sand bg-sand text-midnight font-mono font-bold text-xs tracking-widest uppercase transition-all duration-300 shadow-xl group active:scale-95"
+                    className="inline-flex items-center gap-2 sm:gap-3 px-5 sm:px-8 py-3 sm:py-3.5 rounded-full border-2 border-sand bg-sand text-midnight font-mono font-bold text-[10px] sm:text-xs tracking-widest uppercase transition-all duration-300 shadow-xl group active:scale-95 max-w-full"
                   >
-                    <span>{currentPanel.linkText}</span>
+                    <span className="truncate">{currentPanel.linkText}</span>
                     <ArrowUpRight
                       size={16}
-                      className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+                      className="shrink-0 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
                     />
                   </NavLink>
                 </motion.div>
@@ -222,24 +222,24 @@ const Hero = () => {
         </AnimatePresence>
 
         {/* Global Controls & Indicators Bar */}
-        <div className="absolute bottom-8 sm:bottom-10 inset-x-0 z-30 pointer-events-auto">
-          <div className="container-px flex items-center justify-between">
+        <div className="absolute bottom-4 sm:bottom-10 inset-x-0 z-30 pointer-events-auto">
+          <div className="container-px flex items-center justify-between gap-3">
             {/* Segmented Pill Indicators + Counter */}
-            <div className="flex items-center gap-4">
-              <span className="font-mono text-xs font-bold text-sand tracking-widest">
+            <div className="flex items-center gap-2 sm:gap-4">
+              <span className="font-mono text-[11px] sm:text-xs font-bold text-sand tracking-widest">
                 0{current + 1} <span className="text-ivory/30">/</span> 0{panels.length}
               </span>
 
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1.5 sm:gap-2">
                 {panels.map((p, idx) => (
                   <button
                     key={p.id}
                     onClick={() => goToSlide(idx)}
                     aria-label={`Go to slide ${idx + 1}`}
-                    className={`h-2 rounded-full transition-all duration-500 cursor-pointer ${
+                    className={`h-1.5 sm:h-2 rounded-full transition-all duration-500 cursor-pointer ${
                       idx === current
-                        ? "w-10 bg-sand shadow-lg"
-                        : "w-2 bg-ivory/30 hover:bg-ivory/60"
+                        ? "w-7 sm:w-10 bg-sand shadow-lg"
+                        : "w-1.5 sm:w-2 bg-ivory/30 hover:bg-ivory/60"
                     }`}
                   />
                 ))}
@@ -247,20 +247,22 @@ const Hero = () => {
             </div>
 
             {/* Next / Prev Nav Arrow Buttons */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3 shrink-0">
               <button
                 onClick={() => paginate(-1)}
                 aria-label="Previous slide"
-                className="w-11 h-11 rounded-full bg-transparent border-2 border-sand flex items-center justify-center text-sand active:scale-90 transition-all duration-300 hover:bg-sand/10 shadow-lg cursor-pointer"
+                className="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-transparent border-2 border-sand flex items-center justify-center text-sand active:scale-90 transition-all duration-300 hover:bg-sand/10 shadow-lg cursor-pointer"
               >
-                <ChevronLeft size={18} />
+                <ChevronLeft size={16} className="sm:hidden" />
+                <ChevronLeft size={18} className="hidden sm:block" />
               </button>
               <button
                 onClick={() => paginate(1)}
                 aria-label="Next slide"
-                className="w-11 h-11 rounded-full bg-transparent border-2 border-sand flex items-center justify-center text-sand active:scale-90 transition-all duration-300 hover:bg-sand/10 shadow-lg cursor-pointer"
+                className="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-transparent border-2 border-sand flex items-center justify-center text-sand active:scale-90 transition-all duration-300 hover:bg-sand/10 shadow-lg cursor-pointer"
               >
-                <ChevronRight size={18} />
+                <ChevronRight size={16} className="sm:hidden" />
+                <ChevronRight size={18} className="hidden sm:block" />
               </button>
             </div>
           </div>

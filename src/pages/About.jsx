@@ -126,9 +126,7 @@ const About = () => {
           {/* Title & Intro Row */}
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-8">
             <div className="max-w-3xl">
-              <span className="eyebrow text-teal">
-                About Acciva Travels
-              </span>
+              <span className="eyebrow text-teal">About Acciva Travels</span>
               <h1 className="font-display text-navy text-3xl sm:text-4xl md:text-5xl leading-[1.08] mt-6 tracking-tight">
                 Our Story, Ethos & <br />
                 <span className="italic text-teal font-normal">
@@ -138,9 +136,12 @@ const About = () => {
             </div>
 
             <p className="max-w-md text-navy/90 text-[15px] font-medium leading-relaxed pb-2">
-              Tracing our journey from boutique employee transit in Bengaluru in
-              2007 to powering over 50,000+ monthly corporate commutes across
-              India.
+              Acciva Travels is a professionally managed mobility and
+              transportation company focused on dependable transportation
+              solutions for businesses. Our role goes beyond providing vehicles.
+              We coordinate vehicles, drivers, transportation operations, trip
+              management, technology, safety practices, reporting and customer
+              support to create a smoother corporate mobility experience.
             </p>
           </div>
         </div>
@@ -1086,7 +1087,11 @@ const About = () => {
               initial={{ opacity: 0, x: 70 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+              transition={{
+                duration: 0.8,
+                ease: [0.16, 1, 0.3, 1],
+                delay: 0.1,
+              }}
               className="lg:col-span-5 relative"
             >
               <motion.div
