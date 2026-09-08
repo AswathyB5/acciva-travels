@@ -11,6 +11,8 @@ import Blog from "./pages/Blog";
 import Technology from "./pages/Technology";
 import Contact from "./pages/Contact";
 import Careers from "./pages/Careers";
+import WhatIsCorporateEmployeeTransportation from "./Blogs/what-is-corporate-employee-transportation";
+import EmployeeTransportationVsPublicTransport from "./Blogs/employee-transportation-vs-public-transport";
 
 function App() {
   const location = useLocation();
@@ -35,6 +37,14 @@ function App() {
               <Route path="/services" element={<Services />} />
               <Route path="/technology" element={<Technology />} />
               <Route path="/blog" element={<Blog />} />
+              <Route
+                path="/blog/what-is-corporate-employee-transportation"
+                element={<WhatIsCorporateEmployeeTransportation />}
+              />
+              <Route
+                path="/blog/employee-transportation-vs-public-transport"
+                element={<EmployeeTransportationVsPublicTransport />}
+              />
               <Route path="/contact" element={<Contact />} />
               <Route path="/careers" element={<Careers />} />
             </Routes>

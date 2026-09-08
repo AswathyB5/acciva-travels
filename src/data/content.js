@@ -6,6 +6,8 @@ import {
   ShieldCheck,
   Navigation,
 } from "lucide-react";
+import corporateEmployeeTransportationImg from "../assets/Corporate Employee Transportation.png";
+import employeeTransportationImg from "../assets/Employee Transportation.png";
 
 export const services = [
   {
@@ -257,69 +259,26 @@ export const testimonials = [
 
 export const blogPosts = [
   {
-    slug: "10-places-you-must-visit",
-    category: "Destinations",
-    date: "August 12, 2026",
-    title: "10 Places You Must Visit at Least Once",
+    slug: "what-is-corporate-employee-transportation",
+    title: "What Is Corporate Employee Transportation? A Complete Guide",
     excerpt:
-      "From hidden coastal towns to iconic city skylines, these are the destinations that belong on every traveler's list.",
-    image:
-      "https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1200&q=80",
-    featured: true,
+      "Learn what corporate employee transportation is, its benefits, models, safety measures, and how smart technology improves employee travel, efficiency, and safety.",
+    category: "Corporate Mobility",
+    date: "Sep 8, 2026",
+    readTime: "9 min read",
+    image: corporateEmployeeTransportationImg,
   },
   {
-    slug: "plan-perfect-international-vacation",
-    category: "Guides",
-    date: "July 28, 2026",
-    title: "How to Plan the Perfect International Vacation",
+    slug: "employee-transportation-vs-public-transport",
+    title: "Employee Transportation vs Public Transport: Which Is Better?",
     excerpt:
-      "A practical, step-by-step approach to planning a trip abroad without the stress, from budgeting to booking.",
-    image:
-      "https://plus.unsplash.com/premium_photo-1723629817274-5408105f3a48?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    slug: "best-destinations-relaxing-getaway",
-    category: "Destinations",
-    date: "July 14, 2026",
-    title: "Best Destinations for a Relaxing Getaway",
-    excerpt:
-      "Slow down and unwind at these serene destinations built for rest, wellness, and quiet luxury.",
-    image:
-      "https://images.unsplash.com/photo-1713843841925-6af6ed0df472?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    slug: "travel-tips-first-time-traveler",
-    category: "Travel Tips",
-    date: "June 30, 2026",
-    title: "Travel Tips Every First-Time Traveler Should Know",
-    excerpt:
-      "Essential advice on packing, documents, and etiquette to help first-time travelers feel confident abroad.",
-    image:
-      "https://images.unsplash.com/photo-1741795854922-87217b375e79?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    slug: "stress-free-next-trip",
-    category: "Guides",
-    date: "June 9, 2026",
-    title: "How to Make Your Next Trip Stress-Free",
-    excerpt:
-      "Simple planning habits and tools that remove the guesswork from travel logistics, start to finish.",
-    image:
-      "https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    slug: "top-bucket-list-experiences",
-    category: "Inspiration",
-    date: "May 22, 2026",
-    title: "Top Experiences to Add to Your Travel Bucket List",
-    excerpt:
-      "Unforgettable, once-in-a-lifetime experiences worth planning your next big journey around.",
-    image:
-      "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1200&q=80",
+      "Compare employee transportation & public transport for cost, safety, reliability, and convenience to choose the best commuting solution for your business needs.",
+    category: "Employee Transportation",
+    date: "Sep 8, 2026",
+    readTime: "8 min read",
+    image: employeeTransportationImg,
   },
 ];
-
-export const blogCategories = ["All", "Destinations", "Travel Tips", "Guides", "Inspiration"];
 
 export const jobOpenings = [
   {

@@ -1,45 +1,14 @@
-import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { NavLink } from "react-router-dom";
 import {
   ChevronRight,
   Clock,
-  Calendar,
   ArrowUpRight,
-  Sparkles,
-  BookOpen,
-  Send,
-  CheckCircle2,
-  TrendingUp,
-  Zap,
-  ShieldCheck,
-  Award,
 } from "lucide-react";
-import Magnetic from "../components/Magnetic";
 import AnimatedImage from "../components/AnimatedImage";
-import { blogPosts, blogCategories } from "../data/content";
+import { blogPosts } from "../data/content";
 
 const Blog = () => {
-  const [activeCategory, setActiveCategory] = useState("All");
-  const [subscribed, setSubscribed] = useState(false);
-  const [email, setEmail] = useState("");
-
-  const filteredPosts = useMemo(
-    () =>
-      blogPosts.filter(
-        (p) => activeCategory === "All" || p.category === activeCategory
-      ),
-    [activeCategory]
-  );
-
-  const handleSubscribe = (e) => {
-    e.preventDefault();
-    if (email.trim()) {
-      setSubscribed(true);
-      setEmail("");
-    }
-  };
-
   return (
     <div className="bg-soft text-navy overflow-hidden">
       {/* ========================================================================= */}
@@ -103,34 +72,14 @@ const Blog = () => {
       {/* CATEGORY FILTER & ARTICLES GRID WITH STAGGER ANIMATIONS              */}
       {/* ========================================================================= */}
       <section className="py-16 md:py-20 bg-soft">
-        <div className="container-px">
-          {/* Animated Category Filter Pills */}
-          <div className="flex flex-wrap items-center gap-3 mb-10">
-            {blogCategories.map((cat) => {
-              const isSelected = activeCategory === cat;
-              return (
-                <button
-                  key={cat}
-                  onClick={() => setActiveCategory(cat)}
-                  className={`px-6 py-2.5 rounded-full text-xs font-mono tracking-wider uppercase transition-all duration-300 cursor-pointer relative ${
-                    isSelected
-                      ? "bg-sand text-navy font-bold shadow-md scale-105"
-                      : "bg-white border border-navy/10 text-navy/90 hover:border-teal/40 hover:text-teal"
-                  }`}
-                >
-                  {cat}
-                </button>
-              );
-            })}
-          </div>
-
+        <div className="px-5 md:px-8 xl:px-12 2xl:px-16">
           {/* Articles Stagger Grid */}
           <motion.div
             layout
             className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             <AnimatePresence>
-              {filteredPosts.map((post, i) => (
+              {blogPosts.map((post, i) => (
                 <motion.article
                   key={post.slug}
                   layout
@@ -138,17 +87,22 @@ const Blog = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, amount: 0.1 }}
                   transition={{ duration: 0.6, delay: (i % 3) * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                  whileHover={{ y: -8 }}
-                  className="rounded-3xl bg-white border border-navy/10 hover:border-teal/50 hover:shadow-2xl transition-[border-color,box-shadow] duration-300 flex flex-col justify-between overflow-hidden group relative shadow-md"
+                  whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                  className="rounded-3xl bg-white border border-navy/10 hover:border-teal/40 hover:shadow-[0_25px_60px_rgba(38,55,74,0.12)] transition-[border-color,box-shadow] duration-500 flex flex-col justify-between overflow-hidden group relative shadow-[0_10px_35px_rgba(38,55,74,0.05)]"
                 >
+                  <NavLink to={`/blog/${post.slug}`} className="absolute inset-0 z-10" aria-label={post.title} />
+
+                  {/* Subtle top shimmer sweep on card hover — matches ServiceList/About card pattern */}
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-transparent via-teal/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20" />
+
                   {/* Article Card Photo */}
-                  <div className="relative h-56 w-full overflow-hidden">
+                  <div className="relative h-56 w-full overflow-hidden bg-white">
                     <AnimatedImage
                       src={post.image}
                       alt={post.title}
                       effect={i % 2 === 0 ? "zoom-in" : "zoom-out"}
                       delay={(i % 3) * 0.08}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
                     />
                   </div>
 
@@ -238,34 +192,6 @@ const Blog = () => {
           <p className="mt-6 text-slate-700 text-[15px] font-normal max-w-xl mx-auto leading-relaxed">
             Subscribe to receive quarterly whitepapers, EV transition benchmarks, and tech park transit optimization case studies.
           </p>
-
-          {subscribed ? (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="mt-10 p-5 rounded-2xl bg-teal/10 border border-teal/40 text-navy inline-flex items-center gap-3 text-sm font-semibold"
-            >
-              <CheckCircle2 size={20} className="text-teal" />
-              <span>Thank you for subscribing to Acciva Mobility Intelligence!</span>
-            </motion.div>
-          ) : (
-            <form onSubmit={handleSubscribe} className="mt-10 max-w-md mx-auto flex flex-col sm:flex-row gap-3">
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your corporate email"
-                className="flex-1 px-5 py-3.5 rounded-full bg-white border border-navy/15 text-navy placeholder:text-navy/40 text-sm focus:outline-none focus:border-teal transition-colors"
-              />
-              <button
-                type="submit"
-                className="px-7 py-3.5 rounded-full bg-sand text-navy font-bold text-xs font-mono uppercase tracking-wider transition-all shrink-0 cursor-pointer shadow-lg"
-              >
-                <span>Subscribe</span>
-              </button>
-            </form>
-          )}
 
           <NavLink
             to="/contact"
