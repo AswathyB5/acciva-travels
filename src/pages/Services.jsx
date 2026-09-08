@@ -675,19 +675,21 @@ const Services = () => {
               className="h-full flex flex-col justify-center space-y-5 text-slate-700 text-[15px] font-normal leading-relaxed"
             >
               <p>
-                At <span className="font-bold text-navy">Acciva Travels</span>, we provide reliable passenger
-                transportation for schools, businesses, corporations, and
-                institutions. We work with each client to understand their
-                requirements and build a transportation service that fits
-                their routes, schedules, and day-to-day operations.
+                At <span className="font-bold text-navy">Acciva Travels</span>,
+                we provide reliable passenger transportation for schools,
+                businesses, corporations, and institutions. We work with each
+                client to understand their requirements and build a
+                transportation service that fits their routes, schedules, and
+                day-to-day operations.
               </p>
               <p>
                 From school and employee transportation to scheduled and
-                customized services, we manage the people, vehicles, routes,
-                and schedules involved in keeping your transportation running
+                customized services, we manage the people, vehicles, routes, and
+                schedules involved in keeping your transportation running
                 smoothly. Our focus is simple:{" "}
                 <span className="font-bold text-navy">
-                  safe journeys, dependable service, and better visibility for our clients.
+                  safe journeys, dependable service, and better visibility for
+                  our clients.
                 </span>
               </p>
             </motion.div>
@@ -720,10 +722,12 @@ const Services = () => {
                 organizations with regular or customized travel requirements.
               </p>
               <p className="font-bold text-navy">
-                Our services include school transportation, corporate and
-                employee transportation, scheduled transportation, route
-                planning, fleet management, and customized transportation
-                services.
+                Our services include{" "}
+                <span className="font-bold text-navy">
+                  school transportation, corporate and employee transportation,
+                  scheduled transportation, route planning, fleet management,
+                  and customized transportation services.
+                </span>
               </p>
             </div>
           </motion.div>
@@ -742,7 +746,10 @@ const Services = () => {
                 className="p-6 sm:p-8 rounded-3xl bg-white border-2 border-teal/25 shadow-lg cursor-default h-full overflow-hidden"
               >
                 <div
-                  style={{ transform: "translateZ(25px)", transformStyle: "preserve-3d" }}
+                  style={{
+                    transform: "translateZ(25px)",
+                    transformStyle: "preserve-3d",
+                  }}
                 >
                   <div className="w-14 h-14 rounded-2xl bg-teal/10 flex items-center justify-center text-teal shadow-inner mb-6">
                     <GraduationCap size={26} />
@@ -751,11 +758,11 @@ const Services = () => {
                     For Schools
                   </h3>
                   <p className="text-[15px] text-slate-700 leading-relaxed font-normal">
-                    For schools, we work with administrators to plan routes, organize
-                    pickup and drop-off points, and manage day-to-day
-                    transportation operations. Our systems can also give
-                    parents better visibility of their child&apos;s journey,
-                    including vehicle location and estimated arrival times.
+                    For schools, we work with administrators to plan routes,
+                    organize pickup and drop-off points, and manage day-to-day
+                    transportation operations. Our systems can also give parents
+                    better visibility of their child&apos;s journey, including
+                    vehicle location and estimated arrival times.
                   </p>
                 </div>
               </TiltCard>
@@ -779,7 +786,10 @@ const Services = () => {
                 className="p-6 sm:p-8 rounded-3xl bg-white border-2 border-sand/30 shadow-lg cursor-default h-full overflow-hidden"
               >
                 <div
-                  style={{ transform: "translateZ(25px)", transformStyle: "preserve-3d" }}
+                  style={{
+                    transform: "translateZ(25px)",
+                    transformStyle: "preserve-3d",
+                  }}
                 >
                   <div className="w-14 h-14 rounded-2xl bg-sand/20 flex items-center justify-center text-navy shadow-inner mb-6">
                     <Building2 size={26} />
@@ -788,11 +798,11 @@ const Services = () => {
                     For Businesses & Corporations
                   </h3>
                   <p className="text-[15px] text-slate-700 leading-relaxed font-normal">
-                    For businesses and corporations, we provide organized employee transportation designed
-                    around working hours, pickup locations, routes, and staff
-                    requirements. Our team handles the coordination so that
-                    businesses can focus on their operations while we take
-                    care of the transportation.
+                    For businesses and corporations, we provide organized
+                    employee transportation designed around working hours,
+                    pickup locations, routes, and staff requirements. Our team
+                    handles the coordination so that businesses can focus on
+                    their operations while we take care of the transportation.
                   </p>
                 </div>
               </TiltCard>
@@ -831,9 +841,7 @@ const Services = () => {
               <span className="eyebrow text-teal">Smarter Visibility</span>
               <h2 className="font-display text-2xl sm:text-3xl md:text-4xl leading-[1.08] tracking-tight">
                 Technology &{" "}
-                <span className="italic text-teal font-normal">
-                  Tracking
-                </span>
+                <span className="italic text-teal font-normal">Tracking</span>
               </h2>
               <div className="space-y-4 text-slate-700 text-[15px] font-normal leading-relaxed">
                 <p>
@@ -845,16 +853,15 @@ const Services = () => {
                   <span className="font-bold text-navy">
                     GPS vehicle tracking and mobile-based monitoring
                   </span>
-                  , clients can have better visibility
-                  of vehicles and routes. Tracking information can help
-                  transportation teams monitor journeys, keep passengers
-                  informed, and respond quickly when routes or schedules need
-                  to change.
+                  , clients can have better visibility of vehicles and routes.
+                  Tracking information can help transportation teams monitor
+                  journeys, keep passengers informed, and respond quickly when
+                  routes or schedules need to change.
                 </p>
                 <p>
-                  For school transportation, tracking can also give parents
-                  and authorized users useful information about the
-                  vehicle&apos;s location and expected arrival time.
+                  For school transportation, tracking can also give parents and
+                  authorized users useful information about the vehicle&apos;s
+                  location and expected arrival time.
                 </p>
                 <p>
                   By combining technology with hands-on operational management,
@@ -930,13 +937,13 @@ const Services = () => {
             </h2>
             <div className="mt-5 space-y-4 text-slate-700 text-[15px] font-normal leading-relaxed">
               <p>
-                When you are responsible for transporting students or
-                employees, safety comes first.
+                When you are responsible for transporting students or employees,
+                safety comes first.
               </p>
               <p>
-                Our aim is to give schools,
-                businesses, passengers, and parents confidence that their
-                transportation is being handled responsibly.
+                Our aim is to give schools, businesses, passengers, and parents
+                confidence that their transportation is being handled
+                responsibly.
               </p>
             </div>
           </motion.div>
@@ -980,21 +987,19 @@ const Services = () => {
               className="lg:col-span-7 space-y-5 text-slate-700 text-[15px] font-normal leading-relaxed"
             >
               <p>
-                Every organization has different transportation needs. A
-                school may need carefully planned student routes, while a
-                company may need employee pickups that match multiple shifts
-                and locations.
+                Every organization has different transportation needs. A school
+                may need carefully planned student routes, while a company may
+                need employee pickups that match multiple shifts and locations.
               </p>
               <p>
-                That&apos;s why we don&apos;t believe in a
-                one-size-fits-all approach.
+                That&apos;s why we don&apos;t believe in a one-size-fits-all
+                approach.
               </p>
               <p>
                 Acciva Travels works with clients to understand their
-                requirements and build transportation services around them.
-                From route planning and scheduling to fleet and driver
-                coordination, our team manages the details that keep the
-                service moving.
+                requirements and build transportation services around them. From
+                route planning and scheduling to fleet and driver coordination,
+                our team manages the details that keep the service moving.
               </p>
 
               <TiltCard
@@ -1006,9 +1011,9 @@ const Services = () => {
                   style={{ transform: "translateZ(20px)" }}
                   className="font-display text-lg sm:text-xl text-navy font-medium leading-snug relative"
                 >
-                  With professional drivers, managed vehicles, route
-                  planning, and technology-supported tracking, we provide
-                  organizations with a{" "}
+                  With professional drivers, managed vehicles, route planning,
+                  and technology-supported tracking, we provide organizations
+                  with a{" "}
                   <span className="italic text-teal">
                     transportation partner they can rely on.
                   </span>
@@ -1061,14 +1066,14 @@ const Services = () => {
               </h2>
               <div className="mt-5 space-y-3 text-slate-700 text-[15px] font-normal leading-relaxed max-w-2xl mx-auto">
                 <p>
-                  Looking for a reliable transportation partner for your
-                  school, business, or organization?
+                  Looking for a reliable transportation partner for your school,
+                  business, or organization?
                 </p>
                 <p>
-                  Talk to Acciva Travels
-                  about your requirements. We&apos;ll work with you to
-                  understand your routes, schedules, and operational needs and
-                  develop a transportation solution that works for you.
+                  Talk to Acciva Travels about your requirements. We&apos;ll
+                  work with you to understand your routes, schedules, and
+                  operational needs and develop a transportation solution that
+                  works for you.
                 </p>
               </div>
               <div className="mt-8 flex justify-center">
