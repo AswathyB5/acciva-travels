@@ -72,7 +72,7 @@ export const services = [
       "Luxury Sedans & Premium SUVs",
     ],
     image:
-      "https://upload.wikimedia.org/wikipedia/commons/b/b9/A_black_Mahindra_XUV700_SUV_in_Ashiana_Brahmananda%2C_Jamshedpur%2C_India_%28Ank_Kumar%2C_Infosys_Limited%29_02.jpg",
+      "https://www.mrreisen.com/wp-content/uploads/2025/01/repteri-transzfer-szallitas.jpg",
   },
   {
     slug: "staff-bus-transport-services",
@@ -88,7 +88,7 @@ export const services = [
       "Dedicated Route Captains",
     ],
     image:
-      "https://upload.wikimedia.org/wikipedia/commons/3/3b/Haryana_Roadways_%27Saarthi%27_Volvo_at_ISBT_17%2C_Chandigarh.jpg",
+      "https://c.ndtvimg.com/daimler-longest-bus-india_625x300_1528202679234.jpg",
   },
   {
     slug: "corporate-adhoc-services",
@@ -104,7 +104,7 @@ export const services = [
       "Pan-India Multi-City Coordination",
     ],
     image:
-      "https://upload.wikimedia.org/wikipedia/commons/2/21/Mercedes-Benz_W213_E-Class_Exclusive_Obsidian_Black_Metallic_diplomatic.jpg",
+      "https://www.asparkholidays.com/uploads/62626_camry_big.jpg",
   },
   {
     slug: "outstation-cab-services",

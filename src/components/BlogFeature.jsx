@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Calendar, Tag } from "lucide-react";
+import { ArrowUpRight, Calendar } from "lucide-react";
 import AnimatedImage from "./AnimatedImage";
 
 const cardVariants = {
@@ -26,19 +26,14 @@ const BlogCard = ({ post, index }) => (
     className="group flex flex-col bg-white rounded-2xl overflow-hidden shadow-[0_4px_24px_rgba(7,26,36,0.07)] hover:shadow-[0_12px_40px_rgba(7,26,36,0.14)] transition-shadow duration-500"
   >
     {/* Image */}
-    <div className="relative overflow-hidden h-52 shrink-0">
+    <div className="relative overflow-hidden h-52 shrink-0 bg-slate-100">
       <AnimatedImage
         src={post.image}
         alt={post.title}
         effect={index % 2 === 0 ? "zoom-in" : "zoom-out"}
         delay={index * 0.1}
-        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
       />
-      {/* Category pill */}
-      <span className="absolute top-4 left-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-midnight/70 backdrop-blur-sm text-sand text-[10px] font-semibold tracking-widest uppercase">
-        <Tag size={10} />
-        {post.category}
-      </span>
     </div>
 
     {/* Body */}

@@ -1,3 +1,4 @@
+import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { NavLink } from "react-router-dom";
 import {
@@ -9,6 +10,23 @@ import AnimatedImage from "../components/AnimatedImage";
 import { blogPosts } from "../data/content";
 
 const Blog = () => {
+  const [activeCategory, setActiveCategory] = useState("All");
+
+  const categories = useMemo(() => {
+    const unique = Array.from(
+      new Set(blogPosts.map((post) => post.category).filter(Boolean))
+    );
+    return ["All", ...unique];
+  }, []);
+
+  const filteredPosts = useMemo(
+    () =>
+      activeCategory === "All"
+        ? blogPosts
+        : blogPosts.filter((post) => post.category === activeCategory),
+    [activeCategory]
+  );
+
   return (
     <div className="bg-soft text-navy overflow-hidden">
       {/* ========================================================================= */}
@@ -17,7 +35,7 @@ const Blog = () => {
       <section
         className="pt-28 sm:pt-32 pb-4 md:pb-6 relative overflow-hidden"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=2000&q=85')`,
+          backgroundImage: `url('https://dam.alfuttaim.com/dx/api/dam/v1/collections/26711d2e-640a-4167-bd6a-a2f1ebd504d6/items/cf0b0423-4519-4326-981d-a3f8f580513e/renditions/6063f964-039e-4fa3-93dd-2903c8ebc68c?binary=true&mformat=true')`,
           backgroundSize: "cover",
           backgroundPosition: "center bottom",
           backgroundAttachment: "fixed",
@@ -73,13 +91,31 @@ const Blog = () => {
       {/* ========================================================================= */}
       <section className="py-16 md:py-20 bg-soft">
         <div className="px-5 md:px-8 xl:px-12 2xl:px-16">
+          {/* Category Filter */}
+          <div className="flex flex-wrap items-center gap-3 mb-10">
+            {categories.map((category) => (
+              <button
+                key={category}
+                type="button"
+                onClick={() => setActiveCategory(category)}
+                className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 ${
+                  activeCategory === category
+                    ? "bg-teal text-white shadow-md"
+                    : "bg-white text-navy/60 border border-navy/10 hover:border-teal/40 hover:text-teal"
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+
           {/* Articles Stagger Grid */}
           <motion.div
             layout
             className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             <AnimatePresence>
-              {blogPosts.map((post, i) => (
+              {filteredPosts.map((post, i) => (
                 <motion.article
                   key={post.slug}
                   layout

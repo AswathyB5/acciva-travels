@@ -80,7 +80,7 @@ const techPillars = [
       "Acciva's live vehicle tracking provides complete visibility of every journey, helping businesses monitor trips, improve coordination and respond quickly to delays or unexpected situations.",
     keywords: ["Live Tracking", "Smart Rostering", "Trip Feedback"],
     image:
-      "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1200&q=80",
+      "https://v3smarttech.com/wp-content/uploads/2022/10/Improve-your-fuel-efficiency-with-a-GPS-tracking-system.png",
   },
   {
     id: "analytics-report",
@@ -148,7 +148,7 @@ const techSolutions = [
     icon: Navigation,
     desc: "Drivers can keep track of trips assigned to them, along with the list of employees and their pickup/drop details, for seamless service. Guided navigation helps drivers reach each employee's pickup point on time and accurately. Drivers can also view their trip incomes, track fuel reimbursements, and see other useful stats.",
     image:
-      "https://upload.wikimedia.org/wikipedia/commons/2/28/Maruti_Suzuki_Swift_Dzire_sedan.jpg",
+      "https://img.magnific.com/free-photo/young-uber-driver-car-interior_23-2149149653.jpg?semt=ais_hybrid&w=740&q=80",
   },
   {
     name: "Web Application",

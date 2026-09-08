@@ -37,19 +37,19 @@ const corporateFleet = [
     name: "Luxury Sedan",
     country: "Premium Business Class",
     description: "Refined luxury sedans that make the right impression for client meetings and executive travel.",
-    image: "https://images.pexels.com/photos/34985962/pexels-photo-34985962.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    image: "https://5.imimg.com/data5/SELLER/Default/2026/7/630120673/LH/ZG/IH/82002021/bmw-7-series-car-rental-service-500x500.jpeg",
   },
   {
     name: "Ultra-Luxury Executive",
     country: "Boardroom On Wheels",
     description: "Top-tier chauffeured vehicles designed for VIP delegates and high-stakes corporate travel.",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS140ZKNRV3Mm7_u2VJ8gbjXNckKdW9rGHpPqK0n-X1jobyiW3gXoYrB2g&s=10",
+    image: "https://i.ytimg.com/vi/3bMYs-09ONU/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBy7HMtb-LrYNIZVX3Q_iaSGeADZA",
   },
   {
     name: "Tempo Traveller",
     country: "Group Transport",
     description: "Reliable tempo travellers for mid-sized groups moving together to events or off-sites.",
-    image: "https://www.ecorentacar.com/wp-content/uploads/2019/05/Tempo-Traveller-Front-Product_Imgs1.jpg",
+    image: "https://cabtaxirentalservicejodhpur.com/assets/img/vehicle/12-seater-tempo-traveller-jodhpur.webp",
   },
   {
     name: "Mini Bus",
@@ -252,7 +252,7 @@ const Home = () => {
       <Industries />
 
       {/* Enterprise Trust */}
-      <section className="bg-soft pt-8 md:pt-10 pb-6">
+      <section className="bg-soft pt-8 md:pt-10 pb-0">
         <div className="container-px">
           <span className="eyebrow text-teal">Why Acciva Travels</span>
           <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-6 tracking-tight">

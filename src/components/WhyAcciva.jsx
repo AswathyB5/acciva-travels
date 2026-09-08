@@ -370,7 +370,7 @@ const WhyAcciva = () => {
   const advance = () => setPhase((p) => (p + 1) % segments.length);
 
   return (
-    <section className="relative bg-soft py-16 md:py-24">
+    <section className="relative bg-soft pt-4 md:pt-6 pb-16 md:pb-24">
       <div className="container-px relative z-10">
         {rows.map((row, rowIdx) => {
           const rowSegIdx = segments.findIndex((s) => s.type === "row" && s.idx === rowIdx);

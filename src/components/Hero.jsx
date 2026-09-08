@@ -6,6 +6,9 @@ import {
 } from "framer-motion";
 import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { NavLink } from "react-router-dom";
+import hero1 from "../assets/hero1.png";
+import hero2 from "../assets/hero2.png";
+import hero3 from "../assets/hero3.png";
 
 const HERO_TITLE =
   "Corporate Mobility & Transportation Solutions for a Moving Business World";
@@ -23,7 +26,7 @@ const panels = [
     title: HERO_TITLE,
     supporting: HERO_SUPPORTING,
     desc: HERO_DESC,
-    src: "https://img.magnific.com/free-photo/suv-driving-highway-through-rural-landscape-with-copy-space_169016-73133.jpg?semt=ais_hybrid&w=740&q=80",
+    src: hero1,
     imagePosition: "right center",
     link: "/contact",
     linkText: "Get a Corporate Mobility Consultation",
@@ -34,7 +37,7 @@ const panels = [
     title: HERO_TITLE,
     supporting: HERO_SUPPORTING,
     desc: HERO_DESC,
-    src: "https://c.ndtvimg.com/2020-08/cul0tumc_volvo-buses_625x300_13_August_20.png",
+    src: hero2,
     imagePosition: "right center",
     link: "/contact",
     linkText: "Request a Corporate Quotation",
@@ -45,7 +48,7 @@ const panels = [
     title: HERO_TITLE,
     supporting: HERO_SUPPORTING,
     desc: HERO_DESC,
-    src: "https://media.istockphoto.com/id/847002488/photo/white-bus-traveling-on-the-asphalt-road-in-rural-landscape.jpg?s=612x612&w=0&k=20&c=93yJi_90KhsCtUT-dzjnIqSmXsQoGjUjS6s17X5RIos=",
+    src: hero3,
     imagePosition: "right center",
     link: "/contact",
     linkText: "Talk to Our Mobility Team",
@@ -160,7 +163,7 @@ const Hero = () => {
               alt={currentPanel.title}
             />
             {/* Left and Right Side Soft Dark Gradients + Bottom Scrim */}
-            <div className="absolute inset-0 bg-gradient-to-r from-midnight/70 via-midnight/30 via-40% to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-r from-midnight/75 via-midnight/30 via-45% to-transparent pointer-events-none" />
             <div className="absolute inset-y-0 right-0 w-[50%] bg-gradient-to-l from-midnight/60 via-midnight/25 to-transparent pointer-events-none" />
             <div className="absolute bottom-0 inset-x-0 h-44 bg-gradient-to-t from-midnight/35 to-transparent pointer-events-none" />
 
