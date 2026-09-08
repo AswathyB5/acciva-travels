@@ -721,7 +721,7 @@ const Services = () => {
                 Acciva Travels provides transportation solutions for
                 organizations with regular or customized travel requirements.
               </p>
-              <p className="font-bold text-navy">
+              <p>
                 Our services include{" "}
                 <span className="font-bold text-navy">
                   school transportation, corporate and employee transportation,
