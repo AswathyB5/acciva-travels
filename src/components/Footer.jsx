@@ -69,15 +69,12 @@ const Footer = () => {
             <FooterHeading>Get In Touch</FooterHeading>
             <ul className="grid sm:grid-cols-2 gap-4">
               <li>
-                <a
-                  href="tel:+919035012166"
-                  className="group flex items-start gap-3 text-sm text-navy/65 hover:text-teal transition-colors duration-300"
-                >
-                  <span className="w-8 h-8 rounded-lg bg-teal/10 text-teal flex items-center justify-center shrink-0 group-hover:bg-teal group-hover:text-white transition-colors duration-300">
+                <span className="flex items-start gap-3 text-sm text-navy/65">
+                  <span className="w-8 h-8 rounded-lg bg-teal/10 text-teal flex items-center justify-center shrink-0">
                     <Phone size={14} />
                   </span>
-                  <span className="pt-1.5">+91 903 501 2166</span>
-                </a>
+                  <span className="pt-1.5">+91 XXXXX XXXXX</span>
+                </span>
               </li>
               <li>
                 <a

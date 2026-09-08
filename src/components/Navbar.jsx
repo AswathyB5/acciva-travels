@@ -1,11 +1,21 @@
 import { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 
 const links = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
-  { to: "/services", label: "Services" },
+  {
+    to: "/services",
+    label: "Services",
+    children: [
+      {
+        to: "/services/employee-transportation-services",
+        label: "Employee Transportation Services",
+      },
+    ],
+  },
   { to: "/technology", label: "Technology" },
   { to: "/blog", label: "Journal" },
   { to: "/careers", label: "Careers" },
@@ -58,34 +68,89 @@ const Navbar = () => {
         </NavLink>
 
         <ul className="hidden lg:flex items-center gap-10">
-          {links.map((link) => (
-            <li key={link.to}>
-              <NavLink
-                to={link.to}
-                end={link.to === "/"}
-                className={({ isActive }) =>
-                  `eyebrow relative pb-1 transition-colors duration-300 ${
-                    isActive
-                      ? "text-teal"
-                      : solid
-                      ? "text-navy/70 hover:text-navy"
-                      : "text-ivory/70 hover:text-ivory"
-                  }`
-                }
-              >
-                {({ isActive }) => (
-                  <span className="relative inline-block">
-                    {link.label}
-                    <span
-                      className={`absolute left-0 -bottom-1 h-px bg-teal transition-all duration-300 ${
-                        isActive ? "w-full" : "w-0"
-                      }`}
-                    />
-                  </span>
-                )}
-              </NavLink>
-            </li>
-          ))}
+          {links.map((link) =>
+            link.children ? (
+              <li key={link.to} className="relative group">
+                <NavLink
+                  to={link.to}
+                  className={({ isActive }) =>
+                    `eyebrow relative pb-1 transition-colors duration-300 inline-flex items-center gap-1.5 ${
+                      isActive
+                        ? "text-teal"
+                        : solid
+                        ? "text-navy/70 hover:text-navy"
+                        : "text-ivory/70 hover:text-ivory"
+                    }`
+                  }
+                >
+                  {({ isActive }) => (
+                    <span className="relative inline-flex items-center gap-1.5">
+                      {link.label}
+                      <ChevronDown
+                        size={13}
+                        className="transition-transform duration-300 group-hover:rotate-180"
+                      />
+                      <span
+                        className={`absolute left-0 -bottom-1 h-px bg-teal transition-all duration-300 ${
+                          isActive ? "w-full" : "w-0"
+                        }`}
+                      />
+                    </span>
+                  )}
+                </NavLink>
+
+                {/* Dropdown panel */}
+                <div className="absolute left-0 top-full pt-3 opacity-0 invisible translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 ease-out">
+                  <ul className="relative w-max min-w-64 rounded-2xl bg-soft/95 backdrop-blur-md border border-navy/10 shadow-xl overflow-hidden py-2 pl-1">
+                    <span className="absolute top-0 bottom-0 left-0 w-1 bg-linear-to-b from-teal via-sand to-teal" />
+                    {link.children.map((child) => (
+                      <li key={child.to}>
+                        <NavLink
+                          to={child.to}
+                          className={({ isActive }) =>
+                            `block px-5 py-3 text-[13px] font-semibold whitespace-nowrap transition-colors duration-200 ${
+                              isActive
+                                ? "text-teal bg-teal/5"
+                                : "text-navy/80 hover:text-teal hover:bg-teal/5"
+                            }`
+                          }
+                        >
+                          {child.label}
+                        </NavLink>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </li>
+            ) : (
+              <li key={link.to}>
+                <NavLink
+                  to={link.to}
+                  end={link.to === "/"}
+                  className={({ isActive }) =>
+                    `eyebrow relative pb-1 transition-colors duration-300 ${
+                      isActive
+                        ? "text-teal"
+                        : solid
+                        ? "text-navy/70 hover:text-navy"
+                        : "text-ivory/70 hover:text-ivory"
+                    }`
+                  }
+                >
+                  {({ isActive }) => (
+                    <span className="relative inline-block">
+                      {link.label}
+                      <span
+                        className={`absolute left-0 -bottom-1 h-px bg-teal transition-all duration-300 ${
+                          isActive ? "w-full" : "w-0"
+                        }`}
+                      />
+                    </span>
+                  )}
+                </NavLink>
+              </li>
+            )
+          )}
         </ul>
 
         <button
@@ -131,13 +196,31 @@ const Navbar = () => {
                     to={link.to}
                     end={link.to === "/"}
                     className={({ isActive }) =>
-                      `font-display text-3xl py-3 block border-b border-navy/10 ${
-                        isActive ? "text-teal" : "text-navy"
-                      }`
+                      `font-display text-3xl py-3 block border-b ${
+                        link.children ? "border-transparent" : "border-navy/10"
+                      } ${isActive ? "text-teal" : "text-navy"}`
                     }
                   >
                     {link.label}
                   </NavLink>
+                  {link.children && (
+                    <ul className="pl-4 pb-3 flex flex-col gap-1 border-b border-navy/10">
+                      {link.children.map((child) => (
+                        <li key={child.to}>
+                          <NavLink
+                            to={child.to}
+                            className={({ isActive }) =>
+                              `block py-2 text-sm font-semibold ${
+                                isActive ? "text-teal" : "text-navy/70"
+                              }`
+                            }
+                          >
+                            {child.label}
+                          </NavLink>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </motion.li>
               ))}
             </ul>

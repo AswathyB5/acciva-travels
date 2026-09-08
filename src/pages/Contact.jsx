@@ -526,18 +526,12 @@ const Contact = () => {
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-            <a
-              href="tel:+919035012166"
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-xs transition-all shadow-md"
-            >
-              <span>Call +91 903 501 2166</span>
-              <ArrowUpRight size={14} />
-            </a>
             <NavLink
               to="/services"
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-sand text-navy transition-all text-xs font-medium"
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-xs transition-all shadow-md"
             >
               <span>Explore Fleet Capabilities</span>
+              <ArrowUpRight size={14} />
             </NavLink>
           </div>
         </div>

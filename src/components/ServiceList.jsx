@@ -121,10 +121,14 @@ const ServiceList = ({ services }) => {
                   {/* Action Footer */}
                   <div className="pt-4 border-t border-navy/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <NavLink
-                      to="/contact"
+                      to={
+                        service.slug === "corporate-employee-transportation"
+                          ? "/services/employee-transportation-services"
+                          : "/contact"
+                      }
                       className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-sand text-navy text-xs font-mono font-semibold transition-all group/btn shadow-md shrink-0"
                     >
-                      <span>Book / Inquire Fleet</span>
+                      <span>View Details</span>
                       <ArrowUpRight
                         size={14}
                         className="transition-transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1"

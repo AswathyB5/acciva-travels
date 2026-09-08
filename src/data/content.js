@@ -40,7 +40,7 @@ export const services = [
       "Custom Client Reports",
     ],
     image:
-      "/images/fleet-management.jpg",
+      "https://images.ctfassets.net/xri6xnn81z4a/5KFkRTEJgAlPxb4jMrr6Qx/72708c6e53687e8f1eb4ada2cfe8500c/Fleet-Management-products-india-2025.jpg",
   },
   {
     slug: "school-transportation",
