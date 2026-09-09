@@ -107,11 +107,11 @@ const ServiceList = ({ services }) => {
                           ? "/services/employee-transportation-services"
                           : "/contact"
                       }
-                      className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-sand text-navy text-xs font-mono font-semibold transition-all group/btn shadow-md shrink-0"
+                      className="inline-flex items-center justify-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl group/btn shrink-0"
                     >
                       <span>View Details</span>
                       <ArrowUpRight
-                        size={14}
+                        size={16}
                         className="transition-transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1"
                       />
                     </NavLink>

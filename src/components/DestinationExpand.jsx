@@ -191,14 +191,14 @@ const DestinationExpand = ({ destinations }) => {
                       whileTap={{ scale: 0.96 }}
                       animate={{ y: [0, -3, 0] }}
                       transition={{ y: { duration: 2, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" } }}
-                      className="mt-6 inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full bg-sand text-navy text-xs font-mono font-bold shadow-md"
+                      className="mt-6 inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
                     >
                       <span>Book This Fleet</span>
                       <motion.span
                         animate={{ x: [0, 3, 0] }}
                         transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
                       >
-                        <ArrowUpRight size={14} />
+                        <ArrowUpRight size={16} />
                       </motion.span>
                     </motion.div>
                   </motion.div>
