@@ -16,7 +16,7 @@ const IconLink = ({ href, label, children }) => (
     target="_blank"
     rel="noreferrer"
     aria-label={label}
-    className="w-9 h-9 flex items-center justify-center rounded-full border border-navy/15 text-navy/60 hover:text-soft hover:bg-teal hover:border-teal transition-colors duration-300 shrink-0"
+    className="w-9 h-9 flex items-center justify-center rounded-full bg-sand/35 border border-sand/60 text-navy/70 hover:text-soft hover:bg-teal hover:border-teal transition-colors duration-300 shrink-0"
   >
     {children}
   </a>
@@ -69,12 +69,19 @@ const Footer = () => {
             <FooterHeading>Get In Touch</FooterHeading>
             <ul className="grid sm:grid-cols-2 gap-4">
               <li>
-                <span className="flex items-start gap-3 text-sm text-navy/65">
-                  <span className="w-8 h-8 rounded-lg bg-teal/10 text-teal flex items-center justify-center shrink-0">
+                <a
+                  href="tel:+919035012166"
+                  className="group flex items-start gap-3 text-sm text-navy/65 hover:text-teal transition-colors duration-300"
+                >
+                  <span className="w-8 h-8 rounded-lg bg-teal/10 text-teal flex items-center justify-center shrink-0 group-hover:bg-teal group-hover:text-white transition-colors duration-300">
                     <Phone size={14} />
                   </span>
-                  <span className="pt-1.5">+91 XXXXX XXXXX</span>
-                </span>
+                  <span className="pt-1.5">
+                    +91 90350 12166
+                    <br />
+                    +91 80 2354 1166
+                  </span>
+                </a>
               </li>
               <li>
                 <a
@@ -111,7 +118,10 @@ const Footer = () => {
             &copy; 2026 Acciva Travels. All rights reserved.
           </p>
           <div className="flex items-center gap-3">
-            <IconLink href="https://instagram.com" label="Instagram">
+            <IconLink
+              href="https://www.instagram.com/accivatravel/"
+              label="Instagram"
+            >
               <svg
                 width="15"
                 height="15"
@@ -131,7 +141,10 @@ const Footer = () => {
                 />
               </svg>
             </IconLink>
-            <IconLink href="https://facebook.com" label="Facebook">
+            <IconLink
+              href="https://www.facebook.com/accivatravelsbangalore/"
+              label="Facebook"
+            >
               <svg
                 width="15"
                 height="15"
@@ -143,7 +156,10 @@ const Footer = () => {
                 <path d="M15 3h-2a4 4 0 0 0-4 4v3H7v4h2v7h4v-7h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
               </svg>
             </IconLink>
-            <IconLink href="https://linkedin.com" label="LinkedIn">
+            <IconLink
+              href="https://in.linkedin.com/company/acciva-travels-p-limited"
+              label="LinkedIn"
+            >
               <svg
                 width="15"
                 height="15"
@@ -158,7 +174,10 @@ const Footer = () => {
                 <path d="M12 17v-4.5c0-1.5 1-2.5 2.5-2.5s2.5 1 2.5 2.5V17" />
               </svg>
             </IconLink>
-            <IconLink href="https://youtube.com" label="YouTube">
+            <IconLink
+              href="https://in.pinterest.com/accivatravel1/"
+              label="Pinterest"
+            >
               <svg
                 width="15"
                 height="15"
@@ -167,8 +186,13 @@ const Footer = () => {
                 stroke="currentColor"
                 strokeWidth="2"
               >
-                <rect x="3" y="6" width="18" height="12" rx="4" />
-                <path d="M11 10l4 2-4 2z" fill="currentColor" stroke="none" />
+                <circle cx="12" cy="12" r="9" />
+                <path
+                  d="M9.5 18c.6-2.2 1.2-4.4 1.8-6.6M12 12c0-1.3 1-2.5 2.6-2.5 1.8 0 2.9 1.3 2.9 3.2 0 2.4-1.3 4.3-3.3 4.3-1 0-1.8-.6-2.1-1.3"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  fill="none"
+                />
               </svg>
             </IconLink>
           </div>
