@@ -17,7 +17,7 @@ const itemVariants = {
 };
 
 const FeaturedServices = () => {
-  const featured = services.slice(0, 3);
+  const featured = services.slice(0, 1);
 
   return (
     <div>

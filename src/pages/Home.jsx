@@ -288,7 +288,7 @@ const Home = () => {
       </section>
 
       {/* Final CTA */}
-      <section className="relative py-16 md:py-24 overflow-hidden">
+      <section className="relative py-8 md:py-10 overflow-hidden">
         <img
           src="https://t4.ftcdn.net/jpg/09/30/49/83/360_F_930498387_akToV5jhe5VGgiZzIVZc4NT8PRxVCwJ3.jpg"
           alt=""
@@ -308,25 +308,17 @@ const Home = () => {
           >
             Let&rsquo;s Create Your Next Journey
           </motion.span>
-          <motion.div
-            className="mx-auto mt-6 h-px w-20 bg-sand/60"
-            style={{ transformOrigin: "center" }}
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.15 }}
-          />
-          <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-6">
+          <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-3">
             Where Will <br />
             <span className="italic text-teal font-normal">You Go Next?</span>
           </h2>
-          <p className="mt-5 text-slate-700 text-[15px] font-normal leading-relaxed max-w-xl mx-auto">
+          <p className="mt-2 text-slate-700 text-[15px] font-normal leading-relaxed max-w-xl mx-auto">
             Tell us where your team needs to be, and we&apos;ll build a corporate mobility plan around it, from daily commutes to citywide fleet deployments.
           </p>
-          <Magnetic className="mt-12">
+          <Magnetic className="mt-6">
             <NavLink
               to="/contact"
-              className="inline-flex items-center gap-3 rounded-full border-2 border-sand bg-sand text-navy font-bold px-10 py-5 eyebrow transition-colors duration-500"
+              className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
             >
               Plan Your Journey &rarr;
             </NavLink>
