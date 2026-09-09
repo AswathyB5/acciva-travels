@@ -100,7 +100,9 @@ const Footer = () => {
                 <span className="w-8 h-8 rounded-lg bg-teal/10 text-teal flex items-center justify-center shrink-0">
                   <MapPin size={14} />
                 </span>
-                <span className="pt-1.5">Bengaluru, Karnataka, India</span>
+                <span className="pt-1.5">
+                  # 52, 1 Main Road, Anand Nagar, Hebbal, Bengaluru 560024.
+                </span>
               </li>
               <li className="flex items-start gap-3 text-sm text-navy/65">
                 <span className="w-8 h-8 rounded-lg bg-teal/10 text-teal flex items-center justify-center shrink-0">

@@ -16,7 +16,7 @@ export const services = [
     title: "Employee Transportation Services",
     tag: "Shift Logistics",
     description:
-      "Acciva ensure that employee transportation is done with upmost care which turns the daily commute with safety, punctuality and efficiency.",
+      "Managing employee transportation can become complicated when you have multiple shifts, pickup locations, routes, and changing workforce requirements. Delays, missed pickups, and poor coordination can affect employee experience and also add unnecessary work for your HR and administration teams.",
     features: [
       "Daily Commute Safety",
       "Punctuality & Efficiency",
@@ -32,7 +32,7 @@ export const services = [
     title: "Fleet Management",
     tag: "Route Optimization",
     description:
-      "Acciva’s efficient route mapping system focuses on maximum optimization of the cabs by multiple pick-ups and reports as per the requirement provided by the client.",
+      "Acciva’s efficient route mapping system focuses on maximum optimization of the cabs by multiple pick-ups and reports as per the requirement provided by the client. Real-time dispatch and utilization tracking keep every vehicle running at peak efficiency.",
     features: [
       "Efficient Route Mapping",
       "Cab Utilization Optimization",
@@ -48,7 +48,7 @@ export const services = [
     title: "School Transportation",
     tag: "Student Safety",
     description:
-      "School Transportation offers our customers are intended to provide safety, reliability and quality. Our operations have both the assets and experience to efficiently design.",
+      "School Transportation offers our customers are intended to provide safety, reliability and quality. Our operations have both the assets and experience to efficiently design routes with trained, background-verified drivers and dedicated chauffeurs for every campus run.",
     features: [
       "Safety & Reliability",
       "Quality Operations & Assets",
@@ -64,7 +64,7 @@ export const services = [
     title: "Airport Transfer Services",
     tag: "Executive Flight Transit",
     description:
-      "Punctual executive transfers to and from international & domestic airports with live flight tracking and terminal meet-and-greet.",
+      "Punctual executive transfers to and from international & domestic airports with live flight tracking and terminal meet-and-greet. Every ride is tracked in real time so pickups stay precise, even when flight schedules shift at the last minute.",
     features: [
       "Real-Time Flight Schedule Sync",
       "Chauffeur Terminal Meet & Greet",
@@ -80,7 +80,7 @@ export const services = [
     title: "Staff Bus & Campus Shuttle",
     tag: "High Capacity Transit",
     description:
-      "High-capacity air-conditioned staff coaches and feeder shuttles connecting tech parks, SEZs, and major metro transit hubs.",
+      "High-capacity air-conditioned staff coaches and feeder shuttles connecting tech parks, SEZs, and major metro transit hubs. Automated boarding and route captains keep large employee groups moving safely on a fixed, predictable schedule.",
     features: [
       "Comfortable Air-Conditioned Buses",
       "Point-to-Point Tech Park Loops",
@@ -96,15 +96,14 @@ export const services = [
     title: "Corporate Ad-Hoc & VIP Delegations",
     tag: "Executive Mobility",
     description:
-      "On-demand luxury transport for executive visits, board meetings, corporate conferences, and high-profile international delegations.",
+      "On-demand luxury transport for executive visits, board meetings, corporate conferences, and high-profile international delegations. Vetted, English-fluent chauffeurs and flexible rental packages adapt to your itinerary at short notice.",
     features: [
       "Luxury Sedans & Premium SUVs",
       "English-Fluent Vetted Chauffeurs",
       "Flexible Hourly & Daily Rental Packages",
       "Pan-India Multi-City Coordination",
     ],
-    image:
-      "https://www.asparkholidays.com/uploads/62626_camry_big.jpg",
+    image: "https://www.asparkholidays.com/uploads/62626_camry_big.jpg",
   },
   {
     slug: "outstation-cab-services",
@@ -112,7 +111,7 @@ export const services = [
     title: "Outstation & Inter-City Transit",
     tag: "Inter-City Connectivity",
     description:
-      "Safe and dependable inter-city business travel for executives and corporate teams across major state industrial corridors.",
+      "Safe and dependable inter-city business travel for executives and corporate teams across major state industrial corridors. Transparent flat-rate billing and round-the-clock highway support keep long-distance trips predictable and stress-free.",
     features: [
       "Transparent Flat-Rate Billing",
       "Toll & Highway Assistance Included",
@@ -184,76 +183,21 @@ export const stats = [
 
 export const testimonials = [
   {
-    name: "Vikram Malhotra",
-    role: "VP of People Operations",
-    company: "Apex Global Tech",
-    tag: "Corporate Transport",
+    name: "Chandra Shekhar",
     rating: 5,
     quote:
-      "Acciva transformed our entire employee transit infrastructure across 4 major tech parks. Punctuality jumped to 99.6% while overall operational transport costs decreased significantly.",
-    avatar:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
-    stats: "2,400+ Daily Commutes",
+      "Wounder full service from Active travels, driver was very professional with great customer service experience. One of the trusted travels in Bangalore.",
   },
   {
-    name: "Priya Nair",
-    role: "Head of Administration",
-    company: "Cognizant Enterprises",
-    tag: "Fleet Management",
+    name: "Soma Krishna Ananda",
     rating: 5,
     quote:
-      "The GPS routing and real-time safety tracking give our employees complete peace of mind. Acciva's technology-driven fleet is by far the most reliable partner we have worked with.",
-    avatar:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
-    stats: "Zero Safety Incidents",
+      "Very nice and comfortable....And a very prompt and pleasing service with very nice drivers.",
   },
   {
-    name: "Daniel Ferreira",
-    role: "Director of Facilities",
-    company: "Syntel Mobility Group",
-    tag: "Pan-India Logistics",
+    name: "Excellent Toner Solution",
     rating: 5,
-    quote:
-      "From round-the-clock dedicated dispatchers to seamless EV fleet integration, Acciva sets the gold standard for corporate mobility and employee satisfaction in India.",
-    avatar:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80",
-    stats: "99.8% Punctual Shifts",
-  },
-  {
-    name: "Ananya Rao",
-    role: "Managing Director",
-    company: "Deloitte Advisory",
-    tag: "Executive Transit",
-    rating: 5,
-    quote:
-      "Every detail from vehicle hygiene to route optimization is executed with surgical precision. Truly effortless travel and professional chauffeurs from beginning to end.",
-    avatar:
-      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80",
-    stats: "5-Star Executive Rating",
-  },
-  {
-    name: "Rajesh Sengupta",
-    role: "Head of Corporate Procurement",
-    company: "Infosys BPM",
-    tag: "24/7 Fleet Operations",
-    rating: 5,
-    quote:
-      "Acciva's round-the-clock command center and strict SLA adherence have made our night shift employee commutes completely seamless and worry-free.",
-    avatar:
-      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=300&q=80",
-    stats: "100% Night SLA Compliance",
-  },
-  {
-    name: "Meera Krishnan",
-    role: "Global Mobility Lead",
-    company: "Amazon Tech Center",
-    tag: "Event & Delegation Logistics",
-    rating: 5,
-    quote:
-      "Flawless coordination for high-profile executive delegations and large-scale tech summits across Bengaluru and Hyderabad. Their luxury fleet is unmatched.",
-    avatar:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80",
-    stats: "15,000+ VIP Airport Trips",
+    quote: "Cab was on time, Driver was so polite, overall happy with the service",
   },
 ];
 

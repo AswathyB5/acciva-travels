@@ -120,7 +120,7 @@ const Industries = () => {
                         <Icon size={20} />
                       </div>
 
-                      <span className={`text-[13px] sm:text-sm text-navy font-semibold leading-snug whitespace-normal transition-colors duration-300 ${colorStyles[color].label}`}>
+                      <span className={`text-[13px] text-navy font-semibold leading-snug whitespace-normal transition-colors duration-300 ${colorStyles[color].label}`}>
                         {name}
                       </span>
                     </div>

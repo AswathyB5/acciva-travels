@@ -67,7 +67,8 @@ const Navbar = () => {
           />
         </NavLink>
 
-        <ul className="hidden lg:flex items-center gap-10">
+        <div className="hidden lg:flex items-center gap-8">
+        <ul className="flex items-center gap-8">
           {links.map((link) =>
             link.children ? (
               <li key={link.to} className="relative group">
@@ -152,6 +153,14 @@ const Navbar = () => {
             )
           )}
         </ul>
+
+        <NavLink
+          to="/contact"
+          className="inline-flex items-center px-6 py-2.5 rounded-full bg-sand text-navy font-semibold text-xs tracking-wide transition-all hover:shadow-lg shrink-0"
+        >
+          Book Now
+        </NavLink>
+        </div>
 
         <button
           onClick={() => setOpen((o) => !o)}

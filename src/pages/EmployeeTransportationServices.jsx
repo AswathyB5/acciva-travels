@@ -655,7 +655,7 @@ const EmployeeTransportationServices = () => {
             <span className="eyebrow text-teal">
               Built Around Your Business
             </span>
-            <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.1] mt-4 tracking-tight">
+            <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-4 tracking-tight">
               Employee Transportation That{" "}
               <span className="italic text-teal font-normal">
                 Works Around Your Business.
@@ -1079,7 +1079,7 @@ const EmployeeTransportationServices = () => {
               >
                 <p
                   style={{ transform: "translateZ(20px)" }}
-                  className="font-display text-sm sm:text-base text-navy font-medium leading-snug relative"
+                  className="font-display text-lg sm:text-xl text-navy font-medium leading-snug relative"
                 >
                   With{" "}
                   <span className="font-bold">
@@ -1174,10 +1174,10 @@ const EmployeeTransportationServices = () => {
                 <Magnetic strength={20}>
                   <NavLink
                     to="/contact"
-                    className="inline-flex items-center gap-3 px-9 py-4 rounded-full bg-sand text-navy font-bold text-sm sm:text-base hover:shadow-2xl hover:scale-105 transition-all shadow-xl"
+                    className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
                   >
                     <span>Talk to Acciva Travels</span>
-                    <ArrowUpRight size={18} />
+                    <ArrowUpRight size={16} />
                   </NavLink>
                 </Magnetic>
               </div>

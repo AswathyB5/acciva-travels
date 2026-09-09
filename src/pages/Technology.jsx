@@ -270,7 +270,7 @@ const Technology = () => {
       {/* ========================================================================= */}
       {/* OUR FEATURES: CENTERED INTRO + DUAL MARQUEE SHOWCASE                 */}
       {/* ========================================================================= */}
-      <section className="pt-16 md:pt-20 pb-8 md:pb-10 bg-soft relative overflow-hidden">
+      <section className="py-10 md:py-14 bg-soft relative overflow-hidden">
         <div className="container-px">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -381,10 +381,10 @@ const Technology = () => {
             </p>
             <NavLink
               to="/contact"
-              className="inline-flex items-center gap-2 mt-7 px-6 py-3 rounded-full bg-sand text-navy transition-colors text-xs font-mono uppercase tracking-widest font-semibold"
+              className="inline-flex items-center gap-3 mt-7 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
             >
               <span>Book Now</span>
-              <ArrowUpRight size={14} />
+              <ArrowUpRight size={16} />
             </NavLink>
           </motion.div>
         </div>
@@ -629,7 +629,7 @@ const Technology = () => {
                     <h4 className="font-display text-lg font-bold text-navy mb-2">
                       {s.title}
                     </h4>
-                    <p className="text-slate-600 text-[14px] font-normal leading-relaxed lg:max-w-[220px]">
+                    <p className="text-slate-600 text-[13px] font-normal leading-relaxed lg:max-w-[220px]">
                       {s.desc}
                     </p>
                   </motion.div>
@@ -643,7 +643,7 @@ const Technology = () => {
       {/* ========================================================================= */}
       {/* SAFE TRANSPORTATION CTA BANNER                                       */}
       {/* ========================================================================= */}
-      <section className="bg-soft">
+      <section className="bg-soft py-6 md:py-8">
         <div className="container-px">
           <motion.div
             initial={{ opacity: 0, y: 25 }}
@@ -670,7 +670,7 @@ const Technology = () => {
                 <h4 className="font-display text-xl sm:text-2xl text-navy font-bold">
                   Safety Transportation Made Easy
                 </h4>
-                <p className="text-slate-600 text-[15px] font-normal mt-0.5">
+                <p className="text-slate-600 text-[15px] font-normal leading-relaxed mt-0.5">
                   Feel free to touch with us.
                 </p>
               </div>
@@ -679,10 +679,10 @@ const Technology = () => {
             <Magnetic>
               <NavLink
                 to="/contact"
-                className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-sand text-navy transition-colors text-xs font-mono uppercase tracking-wider font-semibold relative z-10 shadow-sm"
+                className="shrink-0 inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl relative z-10"
               >
                 <span>Book Now</span>
-                <ArrowUpRight size={14} />
+                <ArrowUpRight size={16} />
               </NavLink>
             </Magnetic>
           </motion.div>
@@ -792,7 +792,7 @@ const Technology = () => {
                     <h4 className="font-display text-lg font-bold text-navy group-hover:text-teal transition-colors duration-300">
                       {item.name}
                     </h4>
-                    <p className="text-slate-600 text-[13.5px] leading-relaxed mt-3">
+                    <p className="text-slate-600 text-[13px] leading-relaxed mt-3">
                       {item.desc}
                     </p>
                   </div>
@@ -804,10 +804,10 @@ const Technology = () => {
           <div className="mt-10 text-center">
             <NavLink
               to="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-sand text-navy transition-colors text-xs font-mono uppercase tracking-widest font-semibold"
+              className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
             >
               <span>Book Now</span>
-              <ArrowUpRight size={14} />
+              <ArrowUpRight size={16} />
             </NavLink>
           </div>
         </div>
@@ -881,9 +881,10 @@ const Technology = () => {
           <Magnetic>
             <NavLink
               to="/contact"
-              className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-sand text-navy transition-all font-bold text-xs tracking-widest uppercase shadow-lg transform hover:-translate-y-0.5"
+              className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
             >
-              <span>Book an Enterprise Platform Demo &rarr;</span>
+              <span>Book an Enterprise Platform</span>
+              <ArrowUpRight size={16} />
             </NavLink>
           </Magnetic>
         </div>

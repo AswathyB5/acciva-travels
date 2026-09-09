@@ -185,7 +185,7 @@ const Blog = () => {
       {/* ========================================================================= */}
       {/* NEWSLETTER & MOBILITY INTELLIGENCE SUBSCRIPTION WITH VIDEO BG        */}
       {/* ========================================================================= */}
-      <section className="py-12 md:py-16 bg-soft text-navy relative overflow-hidden">
+      <section className="py-10 md:py-14 bg-soft text-navy relative overflow-hidden">
         {/* Background Video Loop */}
         <video
           autoPlay
@@ -231,9 +231,10 @@ const Blog = () => {
 
           <NavLink
             to="/contact"
-            className="mt-6 inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-sand text-navy transition-all text-xs font-mono uppercase tracking-wider font-semibold"
+            className="mt-6 inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
           >
             <span>Book Now</span>
+            <ArrowUpRight size={16} />
           </NavLink>
         </div>
       </section>

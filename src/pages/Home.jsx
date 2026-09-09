@@ -79,7 +79,7 @@ const Home = () => {
       <Hero />
 
       {/* Introduction + Giant image story */}
-      <section className="bg-soft py-16 md:py-24 overflow-hidden">
+      <section className="bg-soft pt-16 md:pt-24 pb-8 md:pb-10 overflow-hidden">
         <div className="container-px grid md:grid-cols-12 gap-8 md:gap-8 items-start">
           <div className="md:col-span-6">
             <span className="eyebrow text-teal">About Us</span>
@@ -156,7 +156,7 @@ const Home = () => {
 
 
       {/* Corporate Fleet Showcase */}
-      <section className="bg-soft py-16 md:py-20">
+      <section className="bg-soft pt-8 md:pt-10 pb-16 md:pb-20">
         <div className="container-px mb-6">
           <span className="eyebrow text-teal">Our Fleet</span>
           <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-6 max-w-2xl tracking-tight">

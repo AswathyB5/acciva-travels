@@ -150,7 +150,7 @@ const About = () => {
       {/* ========================================================================= */}
       {/* ACCIVA HISTORY                                                       */}
       {/* ========================================================================= */}
-      <section className="py-8 md:py-10 bg-soft">
+      <section className="py-10 md:py-14 bg-soft">
         <div className="container-px">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Left Content */}
@@ -163,7 +163,7 @@ const About = () => {
             >
               <span className="eyebrow text-teal">Our Heritage</span>
 
-              <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.1] mt-4 tracking-tight">
+              <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-4 tracking-tight">
                 Acciva{" "}
                 <span className="italic text-teal font-normal">History</span>
               </h2>
@@ -217,7 +217,7 @@ const About = () => {
       {/* ========================================================================= */}
       {/* OUR VISION & MISSION (DRAMATIC MOVING LASER LINES & ANIMATED ICONS)   */}
       {/* ========================================================================= */}
-      <section className="py-8 md:py-10 bg-soft relative overflow-hidden">
+      <section className="py-10 md:py-14 bg-soft relative overflow-hidden">
         {/* Dynamic Animated Background Laser Lines & Traveling Energy Photons */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden -z-10 opacity-75">
           <svg
@@ -534,7 +534,7 @@ const About = () => {
       {/* ========================================================================= */}
       {/* WHY CHOOSE ACCIVA? (DRAMATIC INTERACTIVE 3D FEATURE CARDS)           */}
       {/* ========================================================================= */}
-      <section className="py-8 md:py-10 bg-soft text-navy relative overflow-hidden">
+      <section className="py-10 md:py-14 bg-soft text-navy relative overflow-hidden">
         {/* Ambient atmospheric backdrop */}
         <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-teal/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-sand/10 rounded-full blur-3xl pointer-events-none" />
@@ -1013,7 +1013,7 @@ const About = () => {
       {/* ========================================================================= */}
       {/* SAFE JOURNEYS. SMARTER MOBILITY. STRONGER CONNECTIONS.               */}
       {/* ========================================================================= */}
-      <section className="py-8 md:py-10 bg-soft text-navy relative overflow-hidden">
+      <section className="py-10 md:py-14 bg-soft text-navy relative overflow-hidden">
         <div className="container-px relative z-10">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Left Column — Description, slides in from the left */}
@@ -1026,7 +1026,7 @@ const About = () => {
             >
               <span className="eyebrow text-teal">Our Purpose</span>
 
-              <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-navy tracking-tight leading-[1.12]">
+              <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-navy tracking-tight leading-[1.08]">
                 Safe Journeys. Smarter Mobility. <br />
                 <span className="italic text-teal font-normal">
                   Stronger Connections.
@@ -1060,7 +1060,7 @@ const About = () => {
               >
                 <motion.p
                   style={{ transform: "translateZ(20px)" }}
-                  className="font-display text-lg sm:text-2xl text-navy font-medium italic leading-snug relative"
+                  className="font-display text-lg sm:text-xl text-navy font-medium italic leading-snug relative"
                   initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.4 }}
@@ -1071,7 +1071,7 @@ const About = () => {
                 </motion.p>
                 <motion.p
                   style={{ transform: "translateZ(30px)" }}
-                  className="font-display text-lg sm:text-2xl text-sand font-medium italic mt-2 relative"
+                  className="font-display text-lg sm:text-xl text-sand font-medium italic mt-2 relative"
                   initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.4 }}
@@ -1114,7 +1114,7 @@ const About = () => {
       {/* ========================================================================= */}
       {/* SAFE AND RELIABLE TRANSPORTATION MADE EASY                            */}
       {/* ========================================================================= */}
-      <section className="relative bg-soft py-8 md:py-10 mb-6 md:mb-10 overflow-hidden">
+      <section className="relative bg-soft py-10 md:py-14 mb-6 md:mb-10 overflow-hidden">
         {/* Background Video & Overlays (matches Home "Next Chapter" section) */}
         <video
           autoPlay
@@ -1143,7 +1143,7 @@ const About = () => {
           <div className="max-w-4xl mx-auto text-center space-y-6">
             <span className="eyebrow text-teal">Corporate Mobility</span>
 
-            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-navy tracking-tight leading-[1.1]">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-navy tracking-tight leading-[1.08]">
               Safe and Reliable{" "}
               <span className="italic text-teal font-normal">
                 Transportation Made Easy
@@ -1157,7 +1157,7 @@ const About = () => {
               passenger safety, punctuality and customer satisfaction.
             </p>
 
-            <p className="text-slate-600 text-[15px] font-normal max-w-2xl mx-auto">
+            <p className="text-slate-600 text-[15px] font-normal leading-relaxed max-w-2xl mx-auto">
               Have questions or need a reliable transportation solution for your
               business? Get in touch with us today and discover how Acciva
               Travels can support your corporate transportation needs.
@@ -1167,10 +1167,10 @@ const About = () => {
               <Magnetic strength={20}>
                 <NavLink
                   to="/contact"
-                  className="inline-flex items-center gap-3 px-8 sm:px-10 py-4 rounded-full bg-sand text-navy font-bold text-sm sm:text-base hover:shadow-2xl hover:scale-105 transition-all shadow-xl"
+                  className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
                 >
                   <span>Book Your Transportation Service Today</span>
-                  <ArrowUpRight size={18} />
+                  <ArrowUpRight size={16} />
                 </NavLink>
               </Magnetic>
             </div>
@@ -1181,7 +1181,7 @@ const About = () => {
       {/* ========================================================================= */}
       {/* READY TO MOVE WITH ACCIVA? (CLOSING CTA)                             */}
       {/* ========================================================================= */}
-      <section className="relative py-16 md:py-24 overflow-hidden">
+      <section className="relative py-10 md:py-14 overflow-hidden">
         {/* Background Image & Overlays (matches Home's Final CTA section) */}
         <img
           src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Haryana_Roadways_%27Saarthi%27_Volvo_at_ISBT_17%2C_Chandigarh.jpg"
@@ -1194,7 +1194,7 @@ const About = () => {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_35%_45%_at_50%_50%,rgba(212,212,212,0.88)_0%,rgba(212,212,212,0.55)_45%,rgba(212,212,212,0)_75%)]" />
 
         <div className="container-px relative z-10 text-center max-w-3xl mx-auto space-y-6">
-          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-navy leading-[1.08]">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-navy leading-[1.08] tracking-tight">
             Ready to Move With{" "}
             <span className="italic text-teal font-normal">Acciva?</span>
           </h2>
@@ -1208,9 +1208,10 @@ const About = () => {
             <Magnetic strength={20}>
               <NavLink
                 to="/contact"
-                className="inline-flex items-center gap-3 px-10 py-4 rounded-full bg-sand text-navy font-bold text-base hover:shadow-2xl hover:scale-105 transition-all shadow-xl"
+                className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
               >
-                <span>Get Started With Acciva →</span>
+                <span>Get Started With Acciva</span>
+                <ArrowUpRight size={16} />
               </NavLink>
             </Magnetic>
           </div>

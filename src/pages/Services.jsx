@@ -158,7 +158,7 @@ const FeatureChipsRow = () => {
         />
       </div>
 
-      <div className="flex flex-wrap gap-3 relative z-10">
+      <div className="flex flex-wrap lg:flex-nowrap lg:justify-between gap-3 relative z-10">
         {FEATURE_CHIPS.map((item, i) => {
           const isActive = active === i;
           const isSand = item.tone === "sand";
@@ -538,7 +538,7 @@ const DifferentiatorTimeline = () => {
                     transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                   />
                 )}
-                <h3 className="font-display text-navy text-[15px] font-bold leading-snug">
+                <h3 className="font-display text-navy text-lg font-bold leading-snug">
                   {item.title}
                 </h3>
                 <p className="text-slate-600 text-[13px] leading-relaxed mt-1">
@@ -632,7 +632,7 @@ const Services = () => {
             className="max-w-3xl"
           >
             <span className="eyebrow text-teal">Who We Are</span>
-            <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.1] mt-4 tracking-tight">
+            <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-4 tracking-tight">
               Professional, Reliable{" "}
               <span className="italic text-teal font-normal">
                 Transportation Services.
@@ -926,15 +926,17 @@ const Services = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="max-w-3xl mb-10"
+            className="mb-10"
           >
-            <span className="eyebrow text-teal">Trust & Compliance</span>
-            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-4 tracking-tight">
-              Safety &{" "}
-              <span className="italic text-teal font-normal">
-                Driver Standards
-              </span>
-            </h2>
+            <div className="max-w-3xl">
+              <span className="eyebrow text-teal">Trust & Compliance</span>
+              <h2 className="font-display text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-4 tracking-tight">
+                Safety &{" "}
+                <span className="italic text-teal font-normal">
+                  Driver Standards
+                </span>
+              </h2>
+            </div>
             <div className="mt-5 space-y-4 text-slate-700 text-[15px] font-normal leading-relaxed">
               <p>
                 When you are responsible for transporting students or employees,
@@ -1080,10 +1082,10 @@ const Services = () => {
                 <Magnetic strength={20}>
                   <NavLink
                     to="/contact"
-                    className="inline-flex items-center gap-3 px-9 py-4 rounded-full bg-sand text-navy font-bold text-sm sm:text-base hover:shadow-2xl hover:scale-105 transition-all shadow-xl"
+                    className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
                   >
                     <span>Talk to Acciva Travels</span>
-                    <ArrowUpRight size={18} />
+                    <ArrowUpRight size={16} />
                   </NavLink>
                 </Magnetic>
               </div>
@@ -1190,19 +1192,20 @@ const Services = () => {
             <Magnetic strength={20}>
               <NavLink
                 to="/contact"
-                className="inline-flex items-center gap-3 px-9 py-4 rounded-full bg-sand text-navy font-bold text-sm sm:text-base hover:shadow-2xl hover:scale-105 transition-all shadow-xl"
+                className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
               >
                 <span>Request Enterprise Quote</span>
-                <ArrowUpRight size={18} />
+                <ArrowUpRight size={16} />
               </NavLink>
             </Magnetic>
 
             <Magnetic strength={15}>
               <NavLink
                 to="/about"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-sand text-navy transition-all text-sm font-medium"
+                className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
               >
                 <span>Learn About Our Standards</span>
+                <ArrowUpRight size={16} />
               </NavLink>
             </Magnetic>
           </div>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { NavLink } from "react-router-dom";
-import { CheckCircle2, ArrowUpRight, ShieldCheck, Sparkles, Filter } from "lucide-react";
+import { ArrowUpRight, ShieldCheck, Filter } from "lucide-react";
 import AnimatedImage from "./AnimatedImage";
 
 const ServiceList = ({ services }) => {
@@ -98,25 +98,6 @@ const ServiceList = ({ services }) => {
                       {service.description}
                     </p>
                   </div>
-
-                  {/* 4 Feature Cards Grid */}
-                  {service.features && (
-                    <div className="grid sm:grid-cols-2 gap-2.5 pt-2">
-                      {service.features.map((feat) => (
-                        <div
-                          key={feat}
-                          className="p-3 rounded-2xl bg-soft/80 border border-navy/5 flex items-center gap-2.5 transition-colors group-hover:bg-soft"
-                        >
-                          <div className="w-5 h-5 rounded-full bg-teal/15 text-teal flex items-center justify-center shrink-0">
-                            <CheckCircle2 size={13} />
-                          </div>
-                          <span className="text-xs text-navy/85 font-medium leading-snug">
-                            {feat}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  )}
 
                   {/* Action Footer */}
                   <div className="pt-4 border-t border-navy/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">

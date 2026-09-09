@@ -235,7 +235,7 @@ const ArticleCard = ({
             <Icon size={20} />
           </motion.div>
         )}
-        <h3 className="font-display text-navy text-lg sm:text-xl font-bold leading-tight group-hover:text-teal transition-colors mb-2">
+        <h3 className="font-display text-navy text-xl sm:text-2xl font-bold leading-tight group-hover:text-teal transition-colors mb-2">
           {title}
         </h3>
         <div className="space-y-3">
@@ -573,7 +573,7 @@ const EmployeeTransportationVsPublicTransport = () => {
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
                   />
-                  <p className="relative z-10 text-navy/90 font-normal">
+                  <p className="relative z-10 text-slate-700 text-[15px] font-normal leading-relaxed">
                     Rather than replacing public transportation entirely, companies can use
                     targeted employee transportation routes to connect employees with major
                     transit hubs. This creates a hybrid mobility model that combines the
@@ -631,7 +631,7 @@ const EmployeeTransportationVsPublicTransport = () => {
                   <div className="w-11 h-11 rounded-xl flex items-center justify-center bg-teal/10 text-teal">
                     <Calculator size={20} />
                   </div>
-                  <h3 className="font-display text-navy text-lg sm:text-xl font-bold">
+                  <h3 className="font-display text-navy text-xl sm:text-2xl font-bold">
                     Cost-Per-Seat Factors
                   </h3>
                 </div>

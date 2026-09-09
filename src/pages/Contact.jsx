@@ -163,7 +163,7 @@ const Contact = () => {
         </div>
       </section>
 
-      <section className="py-8 md:py-10 bg-soft">
+      <section className="py-10 md:py-14 bg-soft">
         <div className="container-px">
           {/* 2-Column Main Section: Left Visuals & Info | Right Contact Form FIRST */}
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
@@ -177,7 +177,7 @@ const Contact = () => {
               <div className="p-7 sm:p-10 md:p-12 rounded-3xl bg-white border border-navy/10 shadow-2xl relative">
                 <div className="mb-8 pb-6 border-b border-navy/10 flex items-center justify-between">
                   <div>
-                    <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-navy">
+                    <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-navy leading-[1.08] tracking-tight">
                       Request Enterprise Proposal
                     </h2>
                     <p className="text-slate-600 text-[15px] font-normal leading-relaxed mt-1">
@@ -361,7 +361,7 @@ const Contact = () => {
                   <button
                     type="submit"
                     disabled={status === "sending"}
-                    className="w-full py-4 rounded-full bg-sand text-navy font-bold text-xs font-mono uppercase tracking-wider transition-all shadow-lg flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+                    className="w-full py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
                   >
                     <span>{status === "sending" ? "Sending..." : "Send Message"}</span>
                     <ArrowUpRight size={16} />
@@ -509,7 +509,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="rounded-3xl overflow-hidden bg-white border border-navy/10 shadow-2xl"
+            className="max-w-4xl mx-auto rounded-3xl overflow-hidden bg-white border border-navy/10 shadow-2xl"
           >
             {/* Top Map Bar */}
             <div className="p-6 md:p-8 bg-white border-b border-navy/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -517,7 +517,7 @@ const Contact = () => {
                 <span className="eyebrow text-teal block mb-3">
                   Central Command & Fleet Dispatch
                 </span>
-                <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-navy mt-1">
+                <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-navy leading-[1.08] tracking-tight mt-1">
                   Acciva Travels Headquarters in{" "}
                   <span className="italic text-teal font-normal">
                     Bengaluru.
@@ -533,15 +533,15 @@ const Contact = () => {
                 href="https://maps.google.com/?q=Bengaluru,+Karnataka,+India"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-sand text-navy text-xs font-mono font-semibold transition-all shrink-0 shadow-xs"
+                className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl shrink-0"
               >
                 <span>Open in Google Maps</span>
-                <ArrowUpRight size={14} />
+                <ArrowUpRight size={16} />
               </a>
             </div>
 
             {/* Embedded Map */}
-            <div className="w-full h-[380px] sm:h-[460px] relative bg-navy/5">
+            <div className="w-full h-[260px] sm:h-[320px] relative bg-navy/5">
               <iframe
                 title="Acciva Travels Bengaluru Location"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.0961003448615!2d77.59094080000001!3d13.029551899999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae179675b10e35%3A0x4e2fa4b235d073e4!2sAcciva%20Travels%20Private%20Limited!5e0!3m2!1sen!2sin!4v1788930808147!5m2!1sen!2sin"
@@ -611,10 +611,10 @@ const Contact = () => {
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
             <NavLink
               to="/services"
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-xs transition-all shadow-md"
+              className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
             >
               <span>Explore Fleet Capabilities</span>
-              <ArrowUpRight size={14} />
+              <ArrowUpRight size={16} />
             </NavLink>
           </div>
         </div>

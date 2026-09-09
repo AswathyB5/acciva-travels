@@ -365,7 +365,7 @@ const ArticleCard = ({
             <Icon size={20} />
           </motion.div>
         )}
-        <h3 className="font-display text-navy text-lg sm:text-xl font-bold leading-tight group-hover:text-teal transition-colors mb-2">
+        <h3 className="font-display text-navy text-xl sm:text-2xl font-bold leading-tight group-hover:text-teal transition-colors mb-2">
           {title}
         </h3>
         <div className="space-y-3">
@@ -592,7 +592,7 @@ const WhatIsCorporateEmployeeTransportation = () => {
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
                   />
-                  <p className="relative z-10 text-navy/90 font-normal">
+                  <p className="relative z-10 text-slate-700 text-[15px] font-normal leading-relaxed">
                     Acciva Travels provides reliable and technology-enabled corporate employee
                     transportation solutions designed to support businesses with safe,
                     efficient, and well-managed employee mobility. With services focused on
@@ -723,7 +723,7 @@ const WhatIsCorporateEmployeeTransportation = () => {
                       <span className="font-display text-3xl font-bold text-teal/30">
                         {step.n}
                       </span>
-                      <h3 className="font-display text-navy text-lg sm:text-xl font-bold leading-tight group-hover:text-teal transition-colors mt-3 mb-2">
+                      <h3 className="font-display text-navy text-xl sm:text-2xl font-bold leading-tight group-hover:text-teal transition-colors mt-3 mb-2">
                         {step.title}
                       </h3>
                       <div className="space-y-3">

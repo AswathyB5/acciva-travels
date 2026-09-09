@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Star, Quote, ChevronLeft, ChevronRight, Building2 } from "lucide-react";
+import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 import { testimonials } from "../data/content";
 
 const DURATION = 5000;
@@ -65,18 +65,8 @@ const Testimonial = () => {
             className="hidden lg:flex flex-col gap-3 w-[220px] xl:w-[260px] shrink-0 cursor-pointer group"
           >
             <div className="bg-white border border-navy/10 rounded-2xl p-5 shadow-sm group-hover:shadow-md group-hover:border-teal/30 transition-all duration-300 opacity-50 group-hover:opacity-90 scale-95 group-hover:scale-100">
-              <div className="flex items-center gap-3 mb-3">
-                <img
-                  src={testimonials[prevIdx].avatar}
-                  alt={testimonials[prevIdx].name}
-                  className="w-9 h-9 rounded-full object-cover border border-sand/40"
-                />
-                <div>
-                  <p className="text-navy text-xs font-semibold leading-tight">{testimonials[prevIdx].name}</p>
-                  <p className="text-navy/40 text-[10px]">{testimonials[prevIdx].company}</p>
-                </div>
-              </div>
-              <p className="text-navy/50 text-xs leading-relaxed line-clamp-3 italic">
+              <p className="text-navy text-xs font-semibold leading-tight mb-3">{testimonials[prevIdx].name}</p>
+              <p className="text-slate-600 text-[13px] leading-relaxed line-clamp-3 italic">
                 &ldquo;{testimonials[prevIdx].quote}&rdquo;
               </p>
             </div>
@@ -127,31 +117,11 @@ const Testimonial = () => {
                   initial="enter"
                   animate="center"
                   exit="exit"
-                  className="flex flex-col sm:flex-row sm:items-center justify-between gap-5"
+                  className="flex items-center justify-between gap-5"
                 >
                   <div className="flex items-center gap-4">
-                    <div className="relative">
-                      <img
-                        src={t.avatar}
-                        alt={t.name}
-                        className="w-14 h-14 rounded-full object-cover border-2 border-sand/40 shadow-lg"
-                      />
-                      <span className="absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full bg-teal border-2 border-white" />
-                    </div>
-                    <div>
-                      <p className="text-navy font-bold text-base tracking-wide">{t.name}</p>
-                      <p className="text-teal text-xs mt-0.5 font-medium">{t.role}</p>
-                      <p className="text-navy/50 text-xs flex items-center gap-1.5 mt-0.5">
-                        <Building2 size={11} className="text-teal" />
-                        {t.company}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Stat pill */}
-                  <div className="bg-teal/8 border border-teal/20 rounded-2xl px-5 py-3 text-right">
-                    <p className="text-[10px] uppercase font-mono tracking-widest text-navy/40 mb-1">Impact</p>
-                    <p className="text-teal font-bold text-sm font-display">{t.stats}</p>
+                    <span className="w-3 h-3 rounded-full bg-teal shrink-0" />
+                    <p className="text-navy font-bold text-base tracking-wide">{t.name}</p>
                   </div>
                 </motion.div>
               </AnimatePresence>
@@ -207,18 +177,8 @@ const Testimonial = () => {
             className="hidden lg:flex flex-col gap-3 w-[220px] xl:w-[260px] shrink-0 cursor-pointer group"
           >
             <div className="bg-white border border-navy/10 rounded-2xl p-5 shadow-sm group-hover:shadow-md group-hover:border-teal/30 transition-all duration-300 opacity-50 group-hover:opacity-90 scale-95 group-hover:scale-100">
-              <div className="flex items-center gap-3 mb-3">
-                <img
-                  src={testimonials[nextIdx].avatar}
-                  alt={testimonials[nextIdx].name}
-                  className="w-9 h-9 rounded-full object-cover border border-sand/40"
-                />
-                <div>
-                  <p className="text-navy text-xs font-semibold leading-tight">{testimonials[nextIdx].name}</p>
-                  <p className="text-navy/40 text-[10px]">{testimonials[nextIdx].company}</p>
-                </div>
-              </div>
-              <p className="text-navy/50 text-xs leading-relaxed line-clamp-3 italic">
+              <p className="text-navy text-xs font-semibold leading-tight mb-3">{testimonials[nextIdx].name}</p>
+              <p className="text-slate-600 text-[13px] leading-relaxed line-clamp-3 italic">
                 &ldquo;{testimonials[nextIdx].quote}&rdquo;
               </p>
             </div>

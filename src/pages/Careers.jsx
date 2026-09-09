@@ -241,7 +241,7 @@ const AdvantageCard = ({ item, index, isActive }) => {
             className={`stroke-[1.75] relative z-10 transition-transform duration-300 ${active ? "scale-110" : ""}`}
           />
         </div>
-        <h3 className="font-display font-bold text-base sm:text-lg text-navy leading-snug">{item.title}</h3>
+        <h3 className="font-display font-bold text-lg text-navy leading-snug">{item.title}</h3>
       </div>
     </motion.div>
   );
@@ -385,7 +385,7 @@ const Careers = () => {
       {/* ========================================================================= */}
       {/* DRIVE WITH ACCIVA ADVANTAGES                                         */}
       {/* ========================================================================= */}
-      <section className="py-16 md:py-24 bg-white relative overflow-hidden">
+      <section className="py-10 md:py-14 bg-white relative overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[300px] bg-teal/5 rounded-full blur-3xl pointer-events-none" />
         <div className="container-px relative z-10">
           <motion.div
@@ -439,10 +439,247 @@ const Careers = () => {
         </div>
       </section>
 
+
+      {/* ========================================================================= */}
+      {/* REQUIRED DOCUMENTS                                                   */}
+      {/* ========================================================================= */}
+      <section className="py-10 md:py-14 bg-white relative overflow-hidden">
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[900px] h-[280px] bg-sand/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="container-px relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="mb-14 text-center max-w-2xl mx-auto"
+          >
+            <span className="eyebrow text-teal">Onboarding Checklist</span>
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-6 tracking-tight">
+              Required{" "}
+              <span className="italic text-teal font-normal">Documents.</span>
+            </h2>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
+            {docGroups.map((group, gi) => (
+              <motion.div
+                key={group.title}
+                initial={{ opacity: 0, y: 45 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.1 }}
+                whileHover={{ y: -6 }}
+                transition={{
+                  duration: 0.7,
+                  delay: gi * 0.1,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                className="relative p-6 sm:p-7 rounded-3xl bg-soft border-2 border-navy/10 hover:border-teal/50 hover:shadow-xl transition-[border-color,box-shadow,transform] overflow-hidden"
+              >
+                <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-teal via-sand to-teal" />
+
+                <div className="inline-flex items-center px-4 py-2 rounded-xl bg-sand/40 shadow-sm mb-6">
+                  <span className="font-display text-sm sm:text-base font-bold tracking-wide">
+                    {group.title}
+                  </span>
+                </div>
+
+                <DocTimeline items={group.items} />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* ATTACH YOUR VEHICLE WITH ACCIVA                                      */}
+      {/* ========================================================================= */}
+      <section
+        id="attach-vehicle"
+        className="py-10 md:py-14 bg-soft scroll-mt-24 relative overflow-hidden"
+      >
+        <div className="absolute top-0 right-0 w-72 h-72 bg-teal/10 rounded-bl-full pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-sand/15 rounded-tr-full pointer-events-none" />
+
+        <div className="container-px relative z-10 space-y-10 lg:space-y-14">
+          {/* Row 1 — full width intro */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="max-w-3xl"
+          >
+            <span className="eyebrow text-teal">Vehicle Partner Program</span>
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-6 tracking-tight">
+              Attach Your Vehicle{" "}
+              <span className="italic text-teal font-normal">With Acciva.</span>
+            </h2>
+            <p className="mt-5 text-slate-700 text-[15px] font-normal leading-relaxed max-w-2xl">
+              Fill out the form below and our onboarding team will guide you
+              through document verification and vehicle attachment.
+            </p>
+          </motion.div>
+
+          {/* Row 2 — image + form, two columns */}
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-stretch">
+            <motion.div
+              initial={{ opacity: 0, x: -40, scale: 0.97 }}
+              whileInView={{ opacity: 1, x: 0, scale: 1 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+              className="lg:col-span-5 h-full"
+            >
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+                className="h-full min-h-[280px] rounded-3xl overflow-hidden shadow-xl border border-navy/10"
+              >
+                <RevealImage
+                  src="https://www.ascott-trans.com/images/car-rent-in-mumbai.jpg"
+                  className="h-full"
+                />
+              </motion.div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 35 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.08 }}
+              transition={{
+                duration: 0.7,
+                delay: 0.1,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="lg:col-span-7"
+            >
+              <div className="relative p-7 sm:p-10 rounded-3xl bg-white border border-navy/10 shadow-2xl overflow-hidden">
+                <div className="absolute top-0 left-0 right-0 h-1.5 bg-linear-to-r from-teal via-sand to-teal" />
+
+                {status === "success" && (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="p-6 rounded-2xl bg-teal/10 border border-teal/30 text-navy mb-8 flex items-center gap-4"
+                  >
+                    <CheckCircle2 size={24} className="text-teal shrink-0" />
+                    <div>
+                      <h4 className="font-sans font-bold text-sm text-navy">
+                        Message Sent!
+                      </h4>
+                      <p className="text-slate-600 text-[15px] font-normal leading-relaxed mt-0.5">
+                        Our onboarding team will reach out to you shortly.
+                      </p>
+                    </div>
+                  </motion.div>
+                )}
+
+                <form onSubmit={handleSubmit} noValidate className="space-y-6">
+                  <div className="grid sm:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-xs font-mono uppercase tracking-wider text-navy/90 mb-2">
+                        Full Name *
+                      </label>
+                      <input
+                        name="name"
+                        value={form.name}
+                        onChange={handleChange}
+                        placeholder="e.g. Arjun Reddy"
+                        className={`w-full px-4 py-3.5 rounded-2xl bg-soft border text-sm text-navy placeholder:text-navy/30 focus:outline-none focus:border-teal transition-colors ${
+                          errors.name ? "border-red-400" : "border-navy/10"
+                        }`}
+                      />
+                      {errors.name && (
+                        <p className="text-[11px] text-red-500 mt-1 font-mono">
+                          {errors.name}
+                        </p>
+                      )}
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-mono uppercase tracking-wider text-navy/90 mb-2">
+                        Phone Number *
+                      </label>
+                      <input
+                        name="phone"
+                        value={form.phone}
+                        onChange={handleChange}
+                        placeholder="+91 98765 43210"
+                        className={`w-full px-4 py-3.5 rounded-2xl bg-soft border text-sm text-navy placeholder:text-navy/30 focus:outline-none focus:border-teal transition-colors ${
+                          errors.phone ? "border-red-400" : "border-navy/10"
+                        }`}
+                      />
+                      {errors.phone && (
+                        <p className="text-[11px] text-red-500 mt-1 font-mono">
+                          {errors.phone}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="grid sm:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-xs font-mono uppercase tracking-wider text-navy/90 mb-2">
+                        Vehicle Type *
+                      </label>
+                      <input
+                        name="vehicleType"
+                        value={form.vehicleType}
+                        onChange={handleChange}
+                        placeholder="e.g. Sedan / SUV / Van"
+                        className={`w-full px-4 py-3.5 rounded-2xl bg-soft border text-sm text-navy placeholder:text-navy/30 focus:outline-none focus:border-teal transition-colors ${
+                          errors.vehicleType
+                            ? "border-red-400"
+                            : "border-navy/10"
+                        }`}
+                      />
+                      {errors.vehicleType && (
+                        <p className="text-[11px] text-red-500 mt-1 font-mono">
+                          {errors.vehicleType}
+                        </p>
+                      )}
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-mono uppercase tracking-wider text-navy/90 mb-2">
+                        Vehicle Registration Year *
+                      </label>
+                      <input
+                        name="regYear"
+                        value={form.regYear}
+                        onChange={handleChange}
+                        placeholder="e.g. 2022"
+                        className={`w-full px-4 py-3.5 rounded-2xl bg-soft border text-sm text-navy placeholder:text-navy/30 focus:outline-none focus:border-teal transition-colors ${
+                          errors.regYear ? "border-red-400" : "border-navy/10"
+                        }`}
+                      />
+                      {errors.regYear && (
+                        <p className="text-[11px] text-red-500 mt-1 font-mono">
+                          {errors.regYear}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+
+                  <Magnetic strength={8} className="w-full block">
+                    <button
+                      type="submit"
+                      className="w-full py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl flex items-center justify-center gap-2 cursor-pointer"
+                    >
+                      <span>Send Message</span>
+                      <Send size={16} />
+                    </button>
+                  </Magnetic>
+                </form>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* ========================================================================= */}
       {/* QUOTE / CTA BANNER                                                   */}
       {/* ========================================================================= */}
-      <section className="relative py-6 md:py-8 bg-soft text-navy overflow-hidden">
+      <section className="relative mt-10 md:mt-14 py-6 md:py-8 bg-soft text-navy overflow-hidden">
         <motion.div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[280px] bg-teal/15 rounded-full blur-3xl pointer-events-none"
           animate={{ x: [0, 30, 0], y: [0, -18, 0] }}
@@ -493,7 +730,7 @@ const Careers = () => {
             <Magnetic strength={22}>
               <a
                 href="#attach-vehicle"
-                className="inline-flex items-center gap-3 px-9 py-4 rounded-full bg-sand text-navy font-bold text-sm sm:text-base hover:shadow-2xl hover:scale-105 transition-all shadow-xl"
+                className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
               >
                 <span>Book Now</span>
                 <motion.span
@@ -515,7 +752,7 @@ const Careers = () => {
       {/* ========================================================================= */}
       {/* VISIT ACCIVA                                                         */}
       {/* ========================================================================= */}
-      <section className="py-16 md:py-24 bg-soft">
+      <section className="py-10 md:py-14 bg-soft">
         <div className="container-px">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -546,10 +783,10 @@ const Careers = () => {
               <div className="relative">
                 <div className="flex items-start justify-between gap-4 mb-6 pb-6 border-b border-navy/10">
                   <div>
-                    <h3 className="font-display text-xl sm:text-2xl text-navy">
+                    <h3 className="font-display text-xl sm:text-2xl text-navy font-bold">
                       Acciva Travels Private Limited
                     </h3>
-                    <p className="text-slate-600 text-[14px] font-normal leading-relaxed mt-2">
+                    <p className="text-slate-600 text-[15px] font-normal leading-relaxed mt-2">
                       Ground Floor, No.52, 1st Main Rd, HMT Layout, Anandnagar,
                       Hebbal, Bengaluru, Karnataka 560032
                     </p>
@@ -720,242 +957,6 @@ const Careers = () => {
                 referrerPolicy="no-referrer-when-downgrade"
                 className="w-full h-full grayscale contrast-125 opacity-90 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
               />
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================================= */}
-      {/* REQUIRED DOCUMENTS                                                   */}
-      {/* ========================================================================= */}
-      <section className="py-16 md:py-24 bg-white relative overflow-hidden">
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[900px] h-[280px] bg-sand/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="container-px relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.1 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="mb-14 text-center max-w-2xl mx-auto"
-          >
-            <span className="eyebrow text-teal">Onboarding Checklist</span>
-            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-6 tracking-tight">
-              Required{" "}
-              <span className="italic text-teal font-normal">Documents.</span>
-            </h2>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-            {docGroups.map((group, gi) => (
-              <motion.div
-                key={group.title}
-                initial={{ opacity: 0, y: 45 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.1 }}
-                whileHover={{ y: -6 }}
-                transition={{
-                  duration: 0.7,
-                  delay: gi * 0.1,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-                className="relative p-6 sm:p-7 rounded-3xl bg-soft border-2 border-navy/10 hover:border-teal/50 hover:shadow-xl transition-[border-color,box-shadow,transform] overflow-hidden"
-              >
-                <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-teal via-sand to-teal" />
-
-                <div className="inline-flex items-center px-4 py-2 rounded-xl bg-sand/40 shadow-sm mb-6">
-                  <span className="font-display text-sm sm:text-base font-bold tracking-wide">
-                    {group.title}
-                  </span>
-                </div>
-
-                <DocTimeline items={group.items} />
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================================= */}
-      {/* ATTACH YOUR VEHICLE WITH ACCIVA                                      */}
-      {/* ========================================================================= */}
-      <section
-        id="attach-vehicle"
-        className="py-16 md:py-24 bg-soft scroll-mt-24 relative overflow-hidden"
-      >
-        <div className="absolute top-0 right-0 w-72 h-72 bg-teal/10 rounded-bl-full pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-sand/15 rounded-tr-full pointer-events-none" />
-
-        <div className="container-px relative z-10 space-y-10 lg:space-y-14">
-          {/* Row 1 — full width intro */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.1 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="max-w-3xl"
-          >
-            <span className="eyebrow text-teal">Vehicle Partner Program</span>
-            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-6 tracking-tight">
-              Attach Your Vehicle{" "}
-              <span className="italic text-teal font-normal">With Acciva.</span>
-            </h2>
-            <p className="mt-5 text-slate-700 text-[15px] font-normal leading-relaxed max-w-2xl">
-              Fill out the form below and our onboarding team will guide you
-              through document verification and vehicle attachment.
-            </p>
-          </motion.div>
-
-          {/* Row 2 — image + form, two columns */}
-          <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-stretch">
-            <motion.div
-              initial={{ opacity: 0, x: -40, scale: 0.97 }}
-              whileInView={{ opacity: 1, x: 0, scale: 1 }}
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-              className="lg:col-span-5 h-full"
-            >
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
-                className="h-full min-h-[280px] rounded-3xl overflow-hidden shadow-xl border border-navy/10"
-              >
-                <RevealImage
-                  src="https://www.ascott-trans.com/images/car-rent-in-mumbai.jpg"
-                  className="h-full"
-                />
-              </motion.div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 35 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.08 }}
-              transition={{
-                duration: 0.7,
-                delay: 0.1,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className="lg:col-span-7"
-            >
-              <div className="relative p-7 sm:p-10 rounded-3xl bg-white border border-navy/10 shadow-2xl overflow-hidden">
-                <div className="absolute top-0 left-0 right-0 h-1.5 bg-linear-to-r from-teal via-sand to-teal" />
-
-                {status === "success" && (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="p-6 rounded-2xl bg-teal/10 border border-teal/30 text-navy mb-8 flex items-center gap-4"
-                  >
-                    <CheckCircle2 size={24} className="text-teal shrink-0" />
-                    <div>
-                      <h4 className="font-sans font-bold text-sm text-navy">
-                        Message Sent!
-                      </h4>
-                      <p className="text-slate-600 text-[15px] font-normal mt-0.5">
-                        Our onboarding team will reach out to you shortly.
-                      </p>
-                    </div>
-                  </motion.div>
-                )}
-
-                <form onSubmit={handleSubmit} noValidate className="space-y-6">
-                  <div className="grid sm:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-navy/90 mb-2">
-                        Full Name *
-                      </label>
-                      <input
-                        name="name"
-                        value={form.name}
-                        onChange={handleChange}
-                        placeholder="e.g. Arjun Reddy"
-                        className={`w-full px-4 py-3.5 rounded-2xl bg-soft border text-sm text-navy placeholder:text-navy/30 focus:outline-none focus:border-teal transition-colors ${
-                          errors.name ? "border-red-400" : "border-navy/10"
-                        }`}
-                      />
-                      {errors.name && (
-                        <p className="text-[11px] text-red-500 mt-1 font-mono">
-                          {errors.name}
-                        </p>
-                      )}
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-navy/90 mb-2">
-                        Phone Number *
-                      </label>
-                      <input
-                        name="phone"
-                        value={form.phone}
-                        onChange={handleChange}
-                        placeholder="+91 98765 43210"
-                        className={`w-full px-4 py-3.5 rounded-2xl bg-soft border text-sm text-navy placeholder:text-navy/30 focus:outline-none focus:border-teal transition-colors ${
-                          errors.phone ? "border-red-400" : "border-navy/10"
-                        }`}
-                      />
-                      {errors.phone && (
-                        <p className="text-[11px] text-red-500 mt-1 font-mono">
-                          {errors.phone}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="grid sm:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-navy/90 mb-2">
-                        Vehicle Type *
-                      </label>
-                      <input
-                        name="vehicleType"
-                        value={form.vehicleType}
-                        onChange={handleChange}
-                        placeholder="e.g. Sedan / SUV / Van"
-                        className={`w-full px-4 py-3.5 rounded-2xl bg-soft border text-sm text-navy placeholder:text-navy/30 focus:outline-none focus:border-teal transition-colors ${
-                          errors.vehicleType
-                            ? "border-red-400"
-                            : "border-navy/10"
-                        }`}
-                      />
-                      {errors.vehicleType && (
-                        <p className="text-[11px] text-red-500 mt-1 font-mono">
-                          {errors.vehicleType}
-                        </p>
-                      )}
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-mono uppercase tracking-wider text-navy/90 mb-2">
-                        Vehicle Registration Year *
-                      </label>
-                      <input
-                        name="regYear"
-                        value={form.regYear}
-                        onChange={handleChange}
-                        placeholder="e.g. 2022"
-                        className={`w-full px-4 py-3.5 rounded-2xl bg-soft border text-sm text-navy placeholder:text-navy/30 focus:outline-none focus:border-teal transition-colors ${
-                          errors.regYear ? "border-red-400" : "border-navy/10"
-                        }`}
-                      />
-                      {errors.regYear && (
-                        <p className="text-[11px] text-red-500 mt-1 font-mono">
-                          {errors.regYear}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-
-                  <Magnetic strength={8} className="w-full block">
-                    <button
-                      type="submit"
-                      className="w-full py-4 rounded-full bg-sand text-navy font-bold text-xs font-mono uppercase tracking-wider transition-all shadow-lg hover:shadow-2xl flex items-center justify-center gap-2 cursor-pointer"
-                    >
-                      <span>Send Message</span>
-                      <Send size={16} />
-                    </button>
-                  </Magnetic>
-                </form>
-              </div>
             </motion.div>
           </div>
         </div>
