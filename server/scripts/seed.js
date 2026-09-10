@@ -1,0 +1,406 @@
+import "dotenv/config";
+import bcrypt from "bcryptjs";
+import { connectDB } from "../db.js";
+import Admin from "../models/Admin.js";
+import {
+  Service,
+  Destination,
+  Testimonial,
+  Stat,
+  BlogPost,
+  JobOpening,
+  TimelineItem,
+} from "../models/content.js";
+
+// Mirrors the icon names used in src/data/content.js. The frontend maps
+// these strings back to lucide-react components.
+const services = [
+  {
+    slug: "corporate-employee-transportation",
+    icon: "Car",
+    title: "Employee Transportation Services",
+    tag: "Shift Logistics",
+    description:
+      "Managing employee transportation can become complicated when you have multiple shifts, pickup locations, routes, and changing workforce requirements. Delays, missed pickups, and poor coordination can affect employee experience and also add unnecessary work for your HR and administration teams.",
+    features: [
+      "Daily Commute Safety",
+      "Punctuality & Efficiency",
+      "GPS Telematics & AI Routing",
+      "24/7 Shift Operations",
+    ],
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHlcxnzbgHFk_SBwmoO6jcpprDcpPqoswBD0F_gUoNSQ&s=10",
+  },
+  {
+    slug: "fleet-management",
+    icon: "Building2",
+    title: "Fleet Management",
+    tag: "Route Optimization",
+    description:
+      "Acciva’s efficient route mapping system focuses on maximum optimization of the cabs by multiple pick-ups and reports as per the requirement provided by the client. Real-time dispatch and utilization tracking keep every vehicle running at peak efficiency.",
+    features: [
+      "Efficient Route Mapping",
+      "Cab Utilization Optimization",
+      "Multiple Pick-Up Scheduling",
+      "Custom Client Reports",
+    ],
+    image:
+      "https://images.ctfassets.net/xri6xnn81z4a/5KFkRTEJgAlPxb4jMrr6Qx/72708c6e53687e8f1eb4ada2cfe8500c/Fleet-Management-products-india-2025.jpg",
+  },
+  {
+    slug: "school-transportation",
+    icon: "Bus",
+    title: "School Transportation",
+    tag: "Student Safety",
+    description:
+      "School Transportation offers our customers are intended to provide safety, reliability and quality. Our operations have both the assets and experience to efficiently design routes with trained, background-verified drivers and dedicated chauffeurs for every campus run.",
+    features: [
+      "Safety & Reliability",
+      "Quality Operations & Assets",
+      "Experienced Design & Routing",
+      "Dedicated Chauffeurs & Captains",
+    ],
+    image:
+      "https://5.imimg.com/data5/SELLER/Default/2021/10/BD/VV/KJ/111856083/whatsapp-image-2021-09-13-at-21-07-43-1-.jpeg",
+  },
+  {
+    slug: "airport-transfer-services",
+    icon: "Plane",
+    title: "Airport Transfer Services",
+    tag: "Executive Flight Transit",
+    description:
+      "Punctual executive transfers to and from international & domestic airports with live flight tracking and terminal meet-and-greet. Every ride is tracked in real time so pickups stay precise, even when flight schedules shift at the last minute.",
+    features: [
+      "Real-Time Flight Schedule Sync",
+      "Chauffeur Terminal Meet & Greet",
+      "Zero Waiting Time Guarantee",
+      "Luxury Sedans & Premium SUVs",
+    ],
+    image: "https://www.mrreisen.com/wp-content/uploads/2025/01/repteri-transzfer-szallitas.jpg",
+  },
+  {
+    slug: "staff-bus-transport-services",
+    icon: "Bus",
+    title: "Staff Bus & Campus Shuttle",
+    tag: "High Capacity Transit",
+    description:
+      "High-capacity air-conditioned staff coaches and feeder shuttles connecting tech parks, SEZs, and major metro transit hubs. Automated boarding and route captains keep large employee groups moving safely on a fixed, predictable schedule.",
+    features: [
+      "Comfortable Air-Conditioned Buses",
+      "Point-to-Point Tech Park Loops",
+      "Automated RFID Employee Boarding",
+      "Dedicated Route Captains",
+    ],
+    image: "https://c.ndtvimg.com/daimler-longest-bus-india_625x300_1528202679234.jpg",
+  },
+  {
+    slug: "corporate-adhoc-services",
+    icon: "ShieldCheck",
+    title: "Corporate Ad-Hoc & VIP Delegations",
+    tag: "Executive Mobility",
+    description:
+      "On-demand luxury transport for executive visits, board meetings, corporate conferences, and high-profile international delegations. Vetted, English-fluent chauffeurs and flexible rental packages adapt to your itinerary at short notice.",
+    features: [
+      "Luxury Sedans & Premium SUVs",
+      "English-Fluent Vetted Chauffeurs",
+      "Flexible Hourly & Daily Rental Packages",
+      "Pan-India Multi-City Coordination",
+    ],
+    image: "https://www.asparkholidays.com/uploads/62626_camry_big.jpg",
+  },
+  {
+    slug: "outstation-cab-services",
+    icon: "Navigation",
+    title: "Outstation & Inter-City Transit",
+    tag: "Inter-City Connectivity",
+    description:
+      "Safe and dependable inter-city business travel for executives and corporate teams across major state industrial corridors. Transparent flat-rate billing and round-the-clock highway support keep long-distance trips predictable and stress-free.",
+    features: [
+      "Transparent Flat-Rate Billing",
+      "Toll & Highway Assistance Included",
+      "24/7 ERT Pan-Highway Support",
+      "Verified Long-Distance Drivers",
+    ],
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/6/61/Force_Traveller%2C_Leh-Manali_Highway.jpg",
+  },
+];
+
+const destinations = [
+  {
+    name: "Dubai",
+    country: "United Arab Emirates",
+    description: "Futuristic skylines meet timeless desert adventure.",
+    image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1400&q=80",
+    size: "large",
+  },
+  {
+    name: "Paris",
+    country: "France",
+    description: "Romance, art, and cafe culture along the Seine.",
+    image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1400&q=80",
+    size: "small",
+  },
+  {
+    name: "Maldives",
+    country: "Indian Ocean",
+    description: "Overwater villas above crystal turquoise lagoons.",
+    image: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=1400&q=80",
+    size: "small",
+  },
+  {
+    name: "Singapore",
+    country: "Singapore",
+    description: "A gleaming garden city of culture and cuisine.",
+    image: "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&w=1400&q=80",
+    size: "medium",
+  },
+  {
+    name: "Switzerland",
+    country: "Alps",
+    description: "Snow-capped peaks and storybook alpine villages.",
+    image: "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?auto=format&fit=crop&w=1400&q=80",
+    size: "medium",
+  },
+  {
+    name: "Bali",
+    country: "Indonesia",
+    description: "Lush rice terraces, temples, and tranquil shores.",
+    image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1400&q=80",
+    size: "large",
+  },
+];
+
+const stats = [
+  { icon: "MapPin", value: 25, suffix: "+", display: "", label: "Destinations" },
+  { icon: "Users", value: 5000, display: "5K+", suffix: "", label: "Travelers" },
+  { icon: "Award", value: 10, suffix: "+", display: "", label: "Years of Experience" },
+  { icon: "Headphones", value: 24, display: "24/7", suffix: "", label: "Customer Support" },
+];
+
+const testimonials = [
+  {
+    name: "Chandra Shekhar",
+    rating: 5,
+    quote:
+      "Wounder full service from Active travels, driver was very professional with great customer service experience. One of the trusted travels in Bangalore.",
+  },
+  {
+    name: "Soma Krishna Ananda",
+    rating: 5,
+    quote: "Very nice and comfortable....And a very prompt and pleasing service with very nice drivers.",
+  },
+  {
+    name: "Excellent Toner Solution",
+    rating: 5,
+    quote: "Cab was on time, Driver was so polite, overall happy with the service",
+  },
+];
+
+const blogPosts = [
+  {
+    slug: "what-is-corporate-employee-transportation",
+    title: "What Is Corporate Employee Transportation? A Complete Guide",
+    excerpt:
+      "Learn what corporate employee transportation is, its benefits, models, safety measures, and how smart technology improves employee travel, efficiency, and safety.",
+    category: "Corporate Mobility",
+    date: "Sep 8, 2026",
+    readTime: "9 min read",
+    image: "/images/corporate-employee-transportation.png",
+  },
+  {
+    slug: "employee-transportation-vs-public-transport",
+    title: "Employee Transportation vs Public Transport: Which Is Better?",
+    excerpt:
+      "Compare employee transportation & public transport for cost, safety, reliability, and convenience to choose the best commuting solution for your business needs.",
+    category: "Employee Transportation",
+    date: "Sep 8, 2026",
+    readTime: "8 min read",
+    image: "/images/employee-transportation.png",
+  },
+];
+
+const jobOpenings = [
+  {
+    slug: "corporate-fleet-driver-captain",
+    title: "Fleet Driver Captain",
+    department: "Operations",
+    location: "Bengaluru, Hyderabad, Chennai",
+    type: "Full-Time",
+    experience: "2+ Years",
+    description:
+      "Drive dedicated corporate shift routes for tech park clients, maintaining SLA punctuality and passenger safety standards.",
+    requirements: [
+      "Valid commercial driving license (LMV/Badge)",
+      "2+ years professional driving experience",
+      "Clean driving record & background check clearance",
+      "Familiarity with GPS navigation & route apps",
+    ],
+  },
+  {
+    slug: "fleet-operations-supervisor",
+    title: "Fleet Operations Supervisor",
+    department: "Operations",
+    location: "Bengaluru",
+    type: "Full-Time",
+    experience: "4+ Years",
+    description:
+      "Oversee daily dispatch, shift rostering, and driver-captain performance across a designated tech corridor cluster.",
+    requirements: [
+      "Bachelor's degree or equivalent experience",
+      "4+ years in fleet/logistics operations",
+      "Strong stakeholder & vendor coordination skills",
+      "Proficiency with fleet management software",
+    ],
+  },
+  {
+    slug: "command-center-dispatcher",
+    title: "24/7 Command Center Dispatcher",
+    department: "Command & Control",
+    location: "Bengaluru (HQ)",
+    type: "Full-Time (Rotational Shifts)",
+    experience: "1+ Years",
+    description:
+      "Monitor live GPS telemetry, coordinate emergency response, and resolve real-time routing issues from our central command tower.",
+    requirements: [
+      "Comfortable with rotational / night shifts",
+      "Strong communication & incident-response skills",
+      "Basic proficiency with dispatch/telematics tools",
+      "Prior BPO, control-room, or logistics experience a plus",
+    ],
+  },
+  {
+    slug: "corporate-account-manager",
+    title: "Corporate Account Manager",
+    department: "Client Success",
+    location: "Bengaluru, Pune",
+    type: "Full-Time",
+    experience: "3+ Years",
+    description:
+      "Own the relationship for enterprise clients, from onboarding new shuttle routes to quarterly SLA reviews and renewals.",
+    requirements: [
+      "3+ years in account management or B2B client success",
+      "Experience with enterprise/corporate clients preferred",
+      "Excellent written & verbal communication",
+      "Willingness to travel to client tech parks",
+    ],
+  },
+  {
+    slug: "ev-fleet-technician",
+    title: "EV Fleet Maintenance Technician",
+    department: "Fleet Engineering",
+    location: "Bengaluru, Chennai",
+    type: "Full-Time",
+    experience: "2+ Years",
+    description:
+      "Maintain and diagnose our growing electric vehicle fleet, ensuring charging cycles, battery health, and uptime targets are met.",
+    requirements: [
+      "ITI/Diploma in automobile or electrical engineering",
+      "2+ years hands-on EV or automotive maintenance",
+      "Working knowledge of charging infrastructure",
+      "Willingness to work at depot locations",
+    ],
+  },
+];
+
+const timeline = [
+  {
+    year: "2007",
+    title: "Gettz Travel Solutions Genesis",
+    badge: "The Inception",
+    description:
+      "Started operations as Gettz Travel Solutions in Bengaluru, pioneering reliable, dedicated employee transit for early IT tech parks.",
+    stat: "Initial 50+ Dedicated Vehicles",
+    image: "https://upload.wikimedia.org/wikipedia/commons/2/28/Maruti_Suzuki_Swift_Dzire_sedan.jpg",
+  },
+  {
+    year: "2016",
+    title: "Incorporation of Acciva Travels Pvt. Ltd.",
+    badge: "Brand Reborn",
+    description:
+      "Formally incorporated as Acciva Travels Pvt. Ltd., inspired by the ethos to stay 'Active & Achieve', modernizing enterprise mobility.",
+    stat: "10,000+ Monthly Commutes",
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    year: "2019",
+    title: "Pan-India Expansion",
+    badge: "Nationwide Footprint",
+    description:
+      "Expanded enterprise transport networks to Hyderabad, Chennai, Pune, Mumbai, and Delhi NCR, serving major multinational tech hubs.",
+    stat: "6 Major Metros Covered",
+    image: "https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    year: "2022",
+    title: "Tech Command Center & AI Telematics",
+    badge: "Smart Mobility",
+    description:
+      "Launched our 24/7 centralized command center with automated GPS routing, live speed tracking, panic button alerts, and emergency response teams.",
+    stat: "99.8% On-Time SLA",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    year: "2024",
+    title: "Green Mobility & EV Fleet Integration",
+    badge: "Eco Transit",
+    description:
+      "Introduced zero-emission electric vehicles into corporate transit loops, cutting corporate carbon footprints across Tier-1 campuses.",
+    stat: "100+ Electric Cabs Active",
+    image: "https://upload.wikimedia.org/wikipedia/commons/8/87/Toyota_Innova_Crysta_2.4_Z_front_right.jpg",
+  },
+  {
+    year: "2026",
+    title: "50,000+ Monthly Enterprise Commutes",
+    badge: "Industry Benchmark",
+    description:
+      "Recognized as one of India's premier corporate mobility partners, empowering thousands of professionals every day with safety and comfort.",
+    stat: "50,000+ Safe Trips / Mo",
+    image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80",
+  },
+];
+
+async function seedCollection(Model, docs) {
+  const count = await Model.countDocuments();
+  if (count > 0) {
+    console.log(`Skipping ${Model.modelName}: already has ${count} documents`);
+    return;
+  }
+  await Model.insertMany(docs.map((doc, index) => ({ ...doc, order: index })));
+  console.log(`Seeded ${docs.length} ${Model.modelName} documents`);
+}
+
+async function run() {
+  await connectDB();
+
+  const adminUsername = process.env.SEED_ADMIN_USERNAME || "admin";
+  const adminPassword = process.env.SEED_ADMIN_PASSWORD;
+  if (!adminPassword) {
+    throw new Error("Set SEED_ADMIN_PASSWORD in server/.env before seeding.");
+  }
+
+  const existingAdmin = await Admin.findOne({ username: adminUsername });
+  if (existingAdmin) {
+    console.log(`Skipping admin user: "${adminUsername}" already exists`);
+  } else {
+    const passwordHash = await bcrypt.hash(adminPassword, 10);
+    await Admin.create({ username: adminUsername, passwordHash });
+    console.log(`Created admin user "${adminUsername}"`);
+  }
+
+  await seedCollection(Service, services);
+  await seedCollection(Destination, destinations);
+  await seedCollection(Testimonial, testimonials);
+  await seedCollection(Stat, stats);
+  await seedCollection(BlogPost, blogPosts);
+  await seedCollection(JobOpening, jobOpenings);
+  await seedCollection(TimelineItem, timeline);
+
+  console.log("Seeding complete.");
+  process.exit(0);
+}
+
+run().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});

@@ -57,7 +57,12 @@ const rows = Array.from({ length: Math.ceil(industries.length / ROW_SIZE) }, (_,
   industries.slice(i * ROW_SIZE, i * ROW_SIZE + ROW_SIZE)
 );
 
-const Industries = () => {
+const Industries = ({
+  eyebrow = "Industries We Serve",
+  headingMain = "Trusted Across",
+  headingAccent = "Every Sector.",
+  paragraph = "From fast-scaling startups to established multinationals, Acciva powers corporate mobility for organisations across every industry vertical, PAN India.",
+}) => {
   return (
     <section className="relative bg-soft py-16 md:py-24 overflow-hidden">
       {/* Ambient background accents matching site language */}
@@ -78,12 +83,12 @@ const Industries = () => {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-2xl"
         >
-          <span className="eyebrow text-teal">Industries We Serve</span>
+          <span className="eyebrow text-teal">{eyebrow}</span>
           <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-6 tracking-tight">
-            Trusted Across <span className="italic text-teal font-normal">Every Sector.</span>
+            {headingMain} <span className="italic text-teal font-normal">{headingAccent}</span>
           </h2>
           <p className="mt-5 text-slate-700 text-[15px] font-normal leading-relaxed">
-            From fast-scaling startups to established multinationals, Acciva powers corporate mobility for organisations across every industry vertical, PAN India.
+            {paragraph}
           </p>
         </motion.div>
 

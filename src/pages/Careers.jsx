@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import { api } from "../admin/lib/api";
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 import {
   ChevronRight,
@@ -31,6 +32,15 @@ import {
   Flashlight,
   Umbrella,
 } from "lucide-react";
+import { usePageContent } from "../data/useContent";
+
+const CAREERS_DEFAULTS = {
+  heroEyebrow: "Drive With Acciva",
+  heroTitleMain: "Drive With",
+  heroTitleAccent: "Acciva Advantages.",
+  heroIntro:
+    "Join India's most trusted corporate mobility fleet and drive with guaranteed income, on-time payments, and round-the-clock support.",
+};
 import Magnetic from "../components/Magnetic";
 import RevealImage from "../components/RevealImage";
 
@@ -257,6 +267,7 @@ const initialForm = {
 const ADVANTAGE_INTERVAL = 1100;
 
 const Careers = () => {
+  const { data: content } = usePageContent("careers", CAREERS_DEFAULTS);
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState(null);
@@ -291,6 +302,9 @@ const Careers = () => {
       setStatus("error");
       return;
     }
+    api.submitPartner(form).catch(() => {
+      // Non-fatal: still show a success state to the applicant.
+    });
     setStatus("success");
     setForm(initialForm);
   };
@@ -331,7 +345,7 @@ const Careers = () => {
                 transition={{ duration: 0.6 }}
                 className="eyebrow text-teal inline-block"
               >
-                Drive With Acciva
+                {content.heroEyebrow}
               </motion.span>
               <h1 className="font-display text-navy text-3xl sm:text-4xl md:text-5xl leading-[1.08] mt-6 tracking-tight">
                 <span className="line-mask inline-block overflow-hidden">
@@ -345,7 +359,7 @@ const Careers = () => {
                     }}
                     className="block"
                   >
-                    Drive With
+                    {content.heroTitleMain}
                   </motion.span>
                 </span>
                 <span className="line-mask inline-block overflow-hidden">
@@ -359,7 +373,7 @@ const Careers = () => {
                     }}
                     className="block italic text-teal font-normal"
                   >
-                    Acciva Advantages.
+                    {content.heroTitleAccent}
                   </motion.span>
                 </span>
               </h1>
@@ -375,8 +389,7 @@ const Careers = () => {
               }}
               className="max-w-md text-navy/90 text-[15px] font-medium leading-relaxed pb-2"
             >
-              Join India's most trusted corporate mobility fleet and drive with
-              guaranteed income, on-time payments, and round-the-clock support.
+              {content.heroIntro}
             </motion.p>
           </div>
         </div>

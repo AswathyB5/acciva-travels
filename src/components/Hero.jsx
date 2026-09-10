@@ -10,48 +10,48 @@ import hero1 from "../assets/hero1.png";
 import hero2 from "../assets/hero2.png";
 import hero3 from "../assets/hero3.png";
 
-const HERO_TITLE =
+const DEFAULT_TITLE =
   "Corporate Mobility & Transportation Solutions for a Moving Business World";
 
-const HERO_SUPPORTING =
+const DEFAULT_SUPPORTING =
   "Employee Transportation | Corporate Cabs | Corporate Car Rentals | Executive Mobility | Long-Term Leasing | Logistics | Truck Services | Events | PAN India Mobility";
 
-const HERO_DESC =
+const DEFAULT_DESC =
   "Acciva Travels provides end-to-end mobility, transportation and logistics solutions for businesses-from daily employee pick-up and drop to executive travel, long-term vehicle leasing, commercial trucks, logistics movement, corporate events and PAN India transportation requirements.";
 
-const panels = [
+const buildPanels = ({ title, supporting, desc, cta1, cta2, cta3 }) => [
   {
     id: "center-welcome",
     num: "01",
-    title: HERO_TITLE,
-    supporting: HERO_SUPPORTING,
-    desc: HERO_DESC,
+    title,
+    supporting,
+    desc,
     src: hero1,
     imagePosition: "right center",
     link: "/contact",
-    linkText: "Get a Corporate Mobility Consultation",
+    linkText: cta1,
   },
   {
     id: "left-tech",
     num: "02",
-    title: HERO_TITLE,
-    supporting: HERO_SUPPORTING,
-    desc: HERO_DESC,
+    title,
+    supporting,
+    desc,
     src: hero2,
     imagePosition: "right center",
     link: "/contact",
-    linkText: "Request a Corporate Quotation",
+    linkText: cta2,
   },
   {
     id: "right-reliable",
     num: "03",
-    title: HERO_TITLE,
-    supporting: HERO_SUPPORTING,
-    desc: HERO_DESC,
+    title,
+    supporting,
+    desc,
     src: hero3,
     imagePosition: "right center",
     link: "/contact",
-    linkText: "Talk to Our Mobility Team",
+    linkText: cta3,
   },
 ];
 
@@ -81,12 +81,20 @@ const textVariants = {
   }),
 };
 
-const Hero = () => {
+const Hero = ({
+  title = DEFAULT_TITLE,
+  supporting = DEFAULT_SUPPORTING,
+  desc = DEFAULT_DESC,
+  cta1 = "Get a Corporate Mobility Consultation",
+  cta2 = "Request a Corporate Quotation",
+  cta3 = "Talk to Our Mobility Team",
+}) => {
   const reduceMotion = useReducedMotion();
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(0);
   const [zoomed, setZoomed] = useState(false);
   const timer = useRef(null);
+  const panels = buildPanels({ title, supporting, desc, cta1, cta2, cta3 });
 
   const paginate = (newDirection) => {
     setDirection(newDirection);

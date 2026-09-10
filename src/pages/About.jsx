@@ -13,6 +13,90 @@ import {
 } from "lucide-react";
 import Magnetic from "../components/Magnetic";
 import AnimatedImage from "../components/AnimatedImage";
+import { usePageContent } from "../data/useContent";
+
+const ABOUT_DEFAULTS = {
+  heroEyebrow: "About Acciva Travels",
+  heroTitleMain: "Our Story, Ethos &",
+  heroTitleAccent: "Decades of Trust.",
+  heroIntro:
+    "Acciva Travels is a professionally managed mobility and transportation company focused on dependable transportation solutions for businesses. Our role goes beyond providing vehicles. We coordinate vehicles, drivers, transportation operations, trip management, technology, safety practices, reporting and customer support to create a smoother corporate mobility experience.",
+  heroBackgroundImage: "https://bestsellingcarsblog.com/wp-content/uploads/2013/07/Maruti-DZire-India-June-2013.jpg",
+  historyEyebrow: "Our Heritage",
+  historyHeadingMain: "Acciva",
+  historyHeadingAccent: "History",
+  historyParagraphs: [
+    "Acciva Travels was founded in 2016 as a Private Limited Company, building on a strong foundation established in 2007 as Gettz Travel Solutions. Initially, the company started on a smaller scale providing reliable employee transportation services to businesses.",
+    "Over the years, Acciva expanded its operations to meet the growing corporate travel and employee transportation needs of businesses across different locations. With continuous growth, professional expertise and a commitment to quality service. Acciva has developed into a trusted employee transportation and fleet management service provider.",
+    "Today, Acciva Travels has a large and dedicated workforce supported by a sophisticated fleet of vehicles and efficient transportation solutions. The company continues to focus on safe, reliable and technology-driven transportation services, strengthening the Acciva brand and working towards delivering greater value to its customers.",
+  ],
+  historyImage:
+    "https://content.jdmagicbox.com/v2/comp/mysore/h6/0821px821.x821.200818174613.f7h6/catalogue/travel-trendzz-kr-mohalla-mysore-car-rental-0p53jfp5bt.jpg",
+  vmEyebrow: "Strategic Compass",
+  vmHeadingMain: "Our Vision &",
+  vmHeadingAccent: "Mission",
+  visionTitle: "OUR VISION",
+  visionText:
+    "Our vision is to deliver superior travel and transportation services through a proactive approach focused on hospitality, integrity, reliability and customer satisfaction. We strive to set high standards in corporate transportation by providing efficient and dependable mobility solutions that meet the evolving needs of our customers.",
+  missionTitle: "OUR MISSION",
+  missionText:
+    "Our mission is to provide safe, reliable and comfortable transportation services with customer security and satisfaction at the heart of everything we do. We are committed to maintaining the highest standards of safety, service quality and operational excellence, while delivering a seamless and comfortable travel experience for every customer.",
+  whyEyebrow: "Distinct Advantage",
+  whyHeadingMain: "Why Choose",
+  whyHeadingAccent: "Acciva?",
+  whyParagraphs: [
+    "At Acciva Travels, we combine experience, knowledge, confidence and courteous service to deliver reliable travel and transportation solutions. We understand that every customer deserves a safe, comfortable and hassle-free travel experience.",
+    "With years of industry experience, we have built our reputation by maintaining a strong focus on customer satisfaction, service quality, safety and reliability. Our dedicated team works proactively to understand customer needs and provide transportation solutions that consistently meet high standards.",
+    "Choose Acciva Travels for professional service, experienced support, dependable transportation and a customer-first approach you can trust.",
+  ],
+  whyCards: [
+    {
+      title: "Qualified Staff Members",
+      description:
+        "At Acciva Travels, our experienced and professionally trained staff members are committed to delivering safe, reliable and efficient employee transportation services. Our team is well-equipped to understand the needs of corporate clients and ensure a smooth and comfortable travel experience.\n\nFrom trained drivers to dedicated transportation support staff we maintain high standards of professionalism, safety, customer service and operational efficiency.",
+    },
+    {
+      title: "24/7 Emergency Response Team",
+      description:
+        "At Acciva Travels, we understand that reliable transportation requires support around the clock. Our 24/7 Emergency Response Team is available to promptly address unexpected travel and transportation-related issues and help ensure uninterrupted service.\n\nWith a proactive approach and dedicated support, our team works to provide quick assistance, enhanced passenger safety and reliable transportation solutions whenever needed.",
+    },
+    {
+      title: "No Unauthorized Stops During Travel",
+      description:
+        "At Acciva Travels, passenger safety, punctuality and travel efficiency are our top priorities. Our professional transportation team follows planned routes and approved travel schedules, helping ensure a smooth and uninterrupted journey for every passenger.\n\nWe maintain strict guidelines to prevent unauthorized stops during travel, reducing unnecessary delays and supporting a safe, comfortable and timely transportation experience.",
+    },
+    {
+      title: "Minimum Attrition – With Minimal Changes",
+      description:
+        "At Acciva Travels, we focus on maintaining a stable and reliable transportation team to ensure consistent service quality. Our minimum staff attrition helps us maintain operational continuity, strong team coordination and a better understanding of client requirements.\n\nBy making minimal changes to our trained staff and transportation operations, we provide corporate clients with a dependable and seamless employee transportation service.",
+    },
+  ],
+  purposeEyebrow: "Our Purpose",
+  purposeHeadingMain: "Safe Journeys. Smarter Mobility.",
+  purposeHeadingAccent: "Stronger Connections.",
+  purposeSubheading: "We Move What Matters Most - Your People.",
+  purposeParagraphs: [
+    "Every journey carries a responsibility. At Acciva Travels, we take that responsibility seriously.",
+    "With a strong focus on safety, reliability, punctuality and service excellence, we create transportation experiences that help businesses keep their people moving with confidence. From everyday employee commutes to comprehensive corporate mobility requirements, our team is committed to making every journey seamless.",
+  ],
+  purposeQuoteLine1: "Because great transportation isn't just about reaching a destination.",
+  purposeQuoteLine2: "It's about making every journey count.",
+  purposeImage: "https://www.jaipurcarrental.org/assets/uploads/blog_images/luxury-car-rental-min-min.JPG",
+  ctaBannerEyebrow: "Corporate Mobility",
+  ctaBannerHeadingMain: "Safe and Reliable",
+  ctaBannerHeadingAccent: "Transportation Made Easy",
+  ctaBannerParagraph1:
+    "Experience safe, reliable and comfortable employee transportation services with Acciva Travels. Our dedicated team is committed to providing efficient transportation solutions designed around passenger safety, punctuality and customer satisfaction.",
+  ctaBannerParagraph2:
+    "Have questions or need a reliable transportation solution for your business? Get in touch with us today and discover how Acciva Travels can support your corporate transportation needs.",
+  ctaBannerButtonText: "Book Your Transportation Service Today",
+  finalCtaHeadingMain: "Ready to Move With",
+  finalCtaHeadingAccent: "Acciva?",
+  finalCtaParagraph: "Let's create a safer, smarter, and more dependable transportation experience for your organization.",
+  finalCtaButtonText: "Get Started With Acciva",
+  finalCtaBackgroundImage:
+    "https://upload.wikimedia.org/wikipedia/commons/3/3b/Haryana_Roadways_%27Saarthi%27_Volvo_at_ISBT_17%2C_Chandigarh.jpg",
+};
 
 // Dramatic 3D Tilt Card wrapper with multi-layered depth, spotlight, and shimmer sweep
 const TiltCard = ({ children, className, glowColor = "rgba(59,141,196,0.22)", accentGlow = "rgba(59,141,196,0.4)" }) => {
@@ -93,6 +177,7 @@ const TiltCard = ({ children, className, glowColor = "rgba(59,141,196,0.22)", ac
 
 
 const About = () => {
+  const { data: content } = usePageContent("about", ABOUT_DEFAULTS);
   return (
     <div className="bg-soft text-navy overflow-hidden">
       {/* ========================================================================= */}
@@ -101,7 +186,7 @@ const About = () => {
       <section
         className="pt-28 sm:pt-32 pb-4 md:pb-6 relative overflow-hidden"
         style={{
-          backgroundImage: `url('https://bestsellingcarsblog.com/wp-content/uploads/2013/07/Maruti-DZire-India-June-2013.jpg')`,
+          backgroundImage: `url('${content.heroBackgroundImage}')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundAttachment: "fixed",
@@ -126,22 +211,17 @@ const About = () => {
           {/* Title & Intro Row */}
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-8">
             <div className="max-w-3xl">
-              <span className="eyebrow text-teal">About Acciva Travels</span>
+              <span className="eyebrow text-teal">{content.heroEyebrow}</span>
               <h1 className="font-display text-navy text-3xl sm:text-4xl md:text-5xl leading-[1.08] mt-6 tracking-tight">
-                Our Story, Ethos & <br />
+                {content.heroTitleMain} <br />
                 <span className="italic text-teal font-normal">
-                  Decades of Trust.
+                  {content.heroTitleAccent}
                 </span>
               </h1>
             </div>
 
             <p className="max-w-md text-navy/90 text-[15px] font-medium leading-relaxed pb-2">
-              Acciva Travels is a professionally managed mobility and
-              transportation company focused on dependable transportation
-              solutions for businesses. Our role goes beyond providing vehicles.
-              We coordinate vehicles, drivers, transportation operations, trip
-              management, technology, safety practices, reporting and customer
-              support to create a smoother corporate mobility experience.
+              {content.heroIntro}
             </p>
           </div>
         </div>
@@ -161,37 +241,17 @@ const About = () => {
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-7 space-y-6"
             >
-              <span className="eyebrow text-teal">Our Heritage</span>
+              <span className="eyebrow text-teal">{content.historyEyebrow}</span>
 
               <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-4 tracking-tight">
-                Acciva{" "}
-                <span className="italic text-teal font-normal">History</span>
+                {content.historyHeadingMain}{" "}
+                <span className="italic text-teal font-normal">{content.historyHeadingAccent}</span>
               </h2>
 
               <div className="space-y-5 text-slate-700 leading-relaxed text-[15px] font-normal">
-                <p>
-                  Acciva Travels was founded in 2016 as a Private Limited
-                  Company, building on a strong foundation established in 2007
-                  as Gettz Travel Solutions. Initially, the company started on a
-                  smaller scale providing reliable employee transportation
-                  services to businesses.
-                </p>
-                <p>
-                  Over the years, Acciva expanded its operations to meet the
-                  growing corporate travel and employee transportation needs of
-                  businesses across different locations. With continuous growth,
-                  professional expertise and a commitment to quality service.
-                  Acciva has developed into a trusted employee transportation
-                  and fleet management service provider.
-                </p>
-                <p>
-                  Today, Acciva Travels has a large and dedicated workforce
-                  supported by a sophisticated fleet of vehicles and efficient
-                  transportation solutions. The company continues to focus on
-                  safe, reliable and technology-driven transportation services,
-                  strengthening the Acciva brand and working towards delivering
-                  greater value to its customers.
-                </p>
+                {content.historyParagraphs.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
               </div>
             </motion.div>
 
@@ -203,7 +263,7 @@ const About = () => {
                 className="relative rounded-3xl overflow-hidden shadow-2xl border border-navy/10 group"
               >
                 <AnimatedImage
-                  src="https://content.jdmagicbox.com/v2/comp/mysore/h6/0821px821.x821.200818174613.f7h6/catalogue/travel-trendzz-kr-mohalla-mysore-car-rental-0p53jfp5bt.jpg"
+                  src={content.historyImage}
                   alt="Acciva Travels fleet operations"
                   effect="zoom-out"
                   className="h-[420px] sm:h-[500px] w-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -305,10 +365,10 @@ const About = () => {
         <div className="container-px relative z-10">
           {/* Header */}
           <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
-            <span className="eyebrow text-teal">Strategic Compass</span>
+            <span className="eyebrow text-teal">{content.vmEyebrow}</span>
             <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl mt-3 leading-[1.08] tracking-tight">
-              Our Vision &{" "}
-              <span className="italic text-teal font-normal">Mission</span>
+              {content.vmHeadingMain}{" "}
+              <span className="italic text-teal font-normal">{content.vmHeadingAccent}</span>
             </h2>
 
             {/* Expanding Neon Laser Line Beneath Title */}
@@ -403,7 +463,7 @@ const About = () => {
                       viewport={{ once: true, amount: 0.4 }}
                       transition={{ duration: 0.5, delay: 0.1 }}
                     >
-                      OUR VISION
+                      {content.visionTitle}
                     </motion.h3>
 
                     <motion.p
@@ -413,13 +473,7 @@ const About = () => {
                       viewport={{ once: true, amount: 0.4 }}
                       transition={{ duration: 0.5, delay: 0.2 }}
                     >
-                      Our vision is to deliver superior travel and
-                      transportation services through a proactive approach
-                      focused on hospitality, integrity, reliability and
-                      customer satisfaction. We strive to set high standards in
-                      corporate transportation by providing efficient and
-                      dependable mobility solutions that meet the evolving needs
-                      of our customers.
+                      {content.visionText}
                     </motion.p>
                   </div>
                 </TiltCard>
@@ -505,7 +559,7 @@ const About = () => {
                       viewport={{ once: true, amount: 0.4 }}
                       transition={{ duration: 0.5, delay: 0.1 }}
                     >
-                      OUR MISSION
+                      {content.missionTitle}
                     </motion.h3>
 
                     <motion.p
@@ -515,13 +569,7 @@ const About = () => {
                       viewport={{ once: true, amount: 0.4 }}
                       transition={{ duration: 0.5, delay: 0.2 }}
                     >
-                      Our mission is to provide safe, reliable and comfortable
-                      transportation services with customer security and
-                      satisfaction at the heart of everything we do. We are
-                      committed to maintaining the highest standards of safety,
-                      service quality and operational excellence, while
-                      delivering a seamless and comfortable travel experience
-                      for every customer.
+                      {content.missionText}
                     </motion.p>
                   </div>
                 </TiltCard>
@@ -542,31 +590,18 @@ const About = () => {
         <div className="container-px relative z-10">
           {/* Section Header */}
           <div className="mb-8">
-            <span className="eyebrow text-teal">Distinct Advantage</span>
+            <span className="eyebrow text-teal">{content.whyEyebrow}</span>
             <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl tracking-tight leading-[1.08] mt-4">
-              Why Choose{" "}
-              <span className="italic text-teal font-normal">Acciva?</span>
+              {content.whyHeadingMain}{" "}
+              <span className="italic text-teal font-normal">{content.whyHeadingAccent}</span>
             </h2>
 
             <div className="mt-6 space-y-4 text-slate-700 text-[15px] font-normal leading-relaxed">
-              <p>
-                At Acciva Travels, we combine experience, knowledge, confidence
-                and courteous service to deliver reliable travel and
-                transportation solutions. We understand that every customer
-                deserves a safe, comfortable and hassle-free travel experience.
-              </p>
-              <p>
-                With years of industry experience, we have built our reputation
-                by maintaining a strong focus on customer satisfaction, service
-                quality, safety and reliability. Our dedicated team works
-                proactively to understand customer needs and provide
-                transportation solutions that consistently meet high standards.
-              </p>
-              <p className="font-medium text-navy">
-                Choose Acciva Travels for professional service, experienced
-                support, dependable transportation and a customer-first approach
-                you can trust.
-              </p>
+              {content.whyParagraphs.map((p, i) => (
+                <p key={i} className={i === content.whyParagraphs.length - 1 ? "font-medium text-navy" : ""}>
+                  {p}
+                </p>
+              ))}
             </div>
           </div>
 
@@ -653,7 +688,7 @@ const About = () => {
                     viewport={{ once: true, amount: 0.4 }}
                     transition={{ duration: 0.5, delay: 0.1 }}
                   >
-                    Qualified Staff Members
+                    {content.whyCards[0].title}
                   </motion.h3>
 
                   <motion.div
@@ -663,22 +698,9 @@ const About = () => {
                     viewport={{ once: true, amount: 0.4 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
                   >
-                    <p>
-                      At Acciva Travels, our experienced and professionally
-                      trained staff members are committed to delivering safe,
-                      reliable and efficient employee transportation services.
-                      Our team is well-equipped to understand the needs of
-                      corporate clients and ensure a smooth and comfortable
-                      travel experience.
-                    </p>
-                    <p>
-                      From trained drivers to dedicated transportation support
-                      staff we maintain high standards of professionalism,
-                      safety, customer service and operational efficiency. Our
-                      qualified team plays an important role in providing
-                      dependable corporate transportation solutions and
-                      maintaining the quality that Acciva Travels is known for.
-                    </p>
+                    {content.whyCards[0].description.split("\n\n").map((p, i) => (
+                      <p key={i}>{p}</p>
+                    ))}
                   </motion.div>
                 </div>
               </TiltCard>
@@ -764,7 +786,7 @@ const About = () => {
                     viewport={{ once: true, amount: 0.4 }}
                     transition={{ duration: 0.5, delay: 0.1 }}
                   >
-                    24/7 Emergency Response Team
+                    {content.whyCards[1].title}
                   </motion.h3>
 
                   <motion.div
@@ -774,21 +796,9 @@ const About = () => {
                     viewport={{ once: true, amount: 0.4 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
                   >
-                    <p>
-                      At Acciva Travels, we understand that reliable
-                      transportation requires support around the clock. Our 24/7
-                      Emergency Response Team is available to promptly address
-                      unexpected travel and transportation-related issues and
-                      help ensure uninterrupted service.
-                    </p>
-                    <p>
-                      With a proactive approach and dedicated support, our team
-                      works to provide quick assistance, enhanced passenger
-                      safety and reliable transportation solutions whenever
-                      needed. Our round-the-clock response system helps
-                      corporate clients and passengers travel with greater
-                      confidence, comfort and peace of mind.
-                    </p>
+                    {content.whyCards[1].description.split("\n\n").map((p, i) => (
+                      <p key={i}>{p}</p>
+                    ))}
                   </motion.div>
                 </div>
               </TiltCard>
@@ -870,7 +880,7 @@ const About = () => {
                     viewport={{ once: true, amount: 0.4 }}
                     transition={{ duration: 0.5, delay: 0.1 }}
                   >
-                    No Unauthorized Stops During Travel
+                    {content.whyCards[2].title}
                   </motion.h3>
 
                   <motion.div
@@ -880,22 +890,9 @@ const About = () => {
                     viewport={{ once: true, amount: 0.4 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
                   >
-                    <p>
-                      At Acciva Travels, passenger safety, punctuality and
-                      travel efficiency are our top priorities. Our professional
-                      transportation team follows planned routes and approved
-                      travel schedules, helping ensure a smooth and
-                      uninterrupted journey for every passenger.
-                    </p>
-                    <p>
-                      We maintain strict guidelines to prevent unauthorized
-                      stops during travel, reducing unnecessary delays and
-                      supporting a safe, comfortable and timely transportation
-                      experience. This disciplined approach helps corporate
-                      clients manage their employee transportation services
-                      efficiently while giving passengers greater confidence and
-                      peace of mind.
-                    </p>
+                    {content.whyCards[2].description.split("\n\n").map((p, i) => (
+                      <p key={i}>{p}</p>
+                    ))}
                   </motion.div>
                 </div>
               </TiltCard>
@@ -977,7 +974,7 @@ const About = () => {
                     viewport={{ once: true, amount: 0.4 }}
                     transition={{ duration: 0.5, delay: 0.1 }}
                   >
-                    Minimum Attrition – With Minimal Changes
+                    {content.whyCards[3].title}
                   </motion.h3>
 
                   <motion.div
@@ -987,21 +984,9 @@ const About = () => {
                     viewport={{ once: true, amount: 0.4 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
                   >
-                    <p>
-                      At Acciva Travels, we focus on maintaining a stable and
-                      reliable transportation team to ensure consistent service
-                      quality. Our minimum staff attrition helps us maintain
-                      operational continuity, strong team coordination and a
-                      better understanding of client requirements.
-                    </p>
-                    <p>
-                      By making minimal changes to our trained staff and
-                      transportation operations, we provide corporate clients
-                      with a dependable and seamless employee transportation
-                      service. This stability helps ensure consistent
-                      performance, better passenger experiences and reliable
-                      day-to-day transportation management.
-                    </p>
+                    {content.whyCards[3].description.split("\n\n").map((p, i) => (
+                      <p key={i}>{p}</p>
+                    ))}
                   </motion.div>
                 </div>
               </TiltCard>
@@ -1024,32 +1009,23 @@ const About = () => {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-7 space-y-6"
             >
-              <span className="eyebrow text-teal">Our Purpose</span>
+              <span className="eyebrow text-teal">{content.purposeEyebrow}</span>
 
               <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-navy tracking-tight leading-[1.08]">
-                Safe Journeys. Smarter Mobility. <br />
+                {content.purposeHeadingMain} <br />
                 <span className="italic text-teal font-normal">
-                  Stronger Connections.
+                  {content.purposeHeadingAccent}
                 </span>
               </h2>
 
               <p className="font-display text-xl sm:text-2xl text-navy/90 font-medium">
-                We Move What Matters Most - Your People.
+                {content.purposeSubheading}
               </p>
 
               <div className="space-y-5 text-slate-700 text-[15px] font-normal leading-relaxed">
-                <p>
-                  Every journey carries a responsibility. At Acciva Travels, we
-                  take that responsibility seriously.
-                </p>
-                <p>
-                  With a strong focus on safety, reliability, punctuality and
-                  service excellence, we create transportation experiences that
-                  help businesses keep their people moving with confidence. From
-                  everyday employee commutes to comprehensive corporate mobility
-                  requirements, our team is committed to making every journey
-                  seamless.
-                </p>
+                {content.purposeParagraphs.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
               </div>
 
               {/* Highlighted Quote Box with Dramatic 3D Tilt, single round accent (inherited from TiltCard) */}
@@ -1066,8 +1042,7 @@ const About = () => {
                   viewport={{ once: true, amount: 0.4 }}
                   transition={{ duration: 0.6, delay: 0.1 }}
                 >
-                  &ldquo;Because great transportation isn&apos;t just about
-                  reaching a destination.
+                  &ldquo;{content.purposeQuoteLine1}
                 </motion.p>
                 <motion.p
                   style={{ transform: "translateZ(30px)" }}
@@ -1077,7 +1052,7 @@ const About = () => {
                   viewport={{ once: true, amount: 0.4 }}
                   transition={{ duration: 0.6, delay: 0.25 }}
                 >
-                  It&apos;s about making every journey count.&rdquo;
+                  {content.purposeQuoteLine2}&rdquo;
                 </motion.p>
               </TiltCard>
             </motion.div>
@@ -1100,7 +1075,7 @@ const About = () => {
                 className="relative rounded-3xl overflow-hidden shadow-2xl border border-navy/10 group"
               >
                 <AnimatedImage
-                  src="https://www.jaipurcarrental.org/assets/uploads/blog_images/luxury-car-rental-min-min.JPG"
+                  src={content.purposeImage}
                   alt="Acciva Travels car fleet"
                   effect="zoom-out"
                   className="h-[420px] sm:h-[520px] w-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -1141,26 +1116,21 @@ const About = () => {
 
         <div className="container-px relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-6">
-            <span className="eyebrow text-teal">Corporate Mobility</span>
+            <span className="eyebrow text-teal">{content.ctaBannerEyebrow}</span>
 
             <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-navy tracking-tight leading-[1.08]">
-              Safe and Reliable{" "}
+              {content.ctaBannerHeadingMain}{" "}
               <span className="italic text-teal font-normal">
-                Transportation Made Easy
+                {content.ctaBannerHeadingAccent}
               </span>
             </h2>
 
             <p className="text-slate-700 text-[15px] font-normal leading-relaxed max-w-3xl mx-auto">
-              Experience safe, reliable and comfortable employee transportation
-              services with Acciva Travels. Our dedicated team is committed to
-              providing efficient transportation solutions designed around
-              passenger safety, punctuality and customer satisfaction.
+              {content.ctaBannerParagraph1}
             </p>
 
             <p className="text-slate-600 text-[15px] font-normal leading-relaxed max-w-2xl mx-auto">
-              Have questions or need a reliable transportation solution for your
-              business? Get in touch with us today and discover how Acciva
-              Travels can support your corporate transportation needs.
+              {content.ctaBannerParagraph2}
             </p>
 
             <div className="pt-6">
@@ -1169,7 +1139,7 @@ const About = () => {
                   to="/contact"
                   className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
                 >
-                  <span>Book Your Transportation Service Today</span>
+                  <span>{content.ctaBannerButtonText}</span>
                   <ArrowUpRight size={16} />
                 </NavLink>
               </Magnetic>
@@ -1184,7 +1154,7 @@ const About = () => {
       <section className="relative py-10 md:py-14 overflow-hidden">
         {/* Background Image & Overlays (matches Home's Final CTA section) */}
         <img
-          src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Haryana_Roadways_%27Saarthi%27_Volvo_at_ISBT_17%2C_Chandigarh.jpg"
+          src={content.finalCtaBackgroundImage}
           alt=""
           aria-hidden="true"
           className="absolute inset-0 h-full w-full object-cover object-[center_55%]"
@@ -1195,13 +1165,12 @@ const About = () => {
 
         <div className="container-px relative z-10 text-center max-w-3xl mx-auto space-y-6">
           <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-navy leading-[1.08] tracking-tight">
-            Ready to Move With{" "}
-            <span className="italic text-teal font-normal">Acciva?</span>
+            {content.finalCtaHeadingMain}{" "}
+            <span className="italic text-teal font-normal">{content.finalCtaHeadingAccent}</span>
           </h2>
 
           <p className="text-slate-700 text-[15px] font-normal leading-relaxed">
-            Let&apos;s create a safer, smarter, and more dependable
-            transportation experience for your organization.
+            {content.finalCtaParagraph}
           </p>
 
           <div className="pt-4 flex justify-center">
@@ -1210,7 +1179,7 @@ const About = () => {
                 to="/contact"
                 className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
               >
-                <span>Get Started With Acciva</span>
+                <span>{content.finalCtaButtonText}</span>
                 <ArrowUpRight size={16} />
               </NavLink>
             </Magnetic>

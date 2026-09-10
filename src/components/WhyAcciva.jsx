@@ -1,88 +1,52 @@
 import { useId, useState } from "react";
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
-import {
-  Boxes,
-  Cog,
-  Cpu,
-  TrendingUp,
-  ShieldCheck,
-  MapPin,
-  LifeBuoy,
-  ClipboardCheck,
-} from "lucide-react";
+import { resolveIcon } from "../data/iconMap";
 
-const reasons = [
-  {
-    title: "One-Stop Mobility",
-    description: "Multiple transportation services under one partner.",
-    icon: Boxes,
-  },
-  {
-    title: "Operational Expertise",
-    description: "Professionally managed transportation operations.",
-    icon: Cog,
-  },
-  {
-    title: "Technology Enabled",
-    description: "Technology-supported visibility and control where available.",
-    icon: Cpu,
-  },
-  {
-    title: "Scalable Fleet",
-    description: "Solutions from individual executives to large employee transportation programs.",
-    icon: TrendingUp,
-  },
-  {
-    title: "Professional Drivers",
-    description: "Focus on safety, discipline and customer experience.",
-    icon: ShieldCheck,
-  },
-  {
-    title: "PAN India Capability",
-    description: "Multi-city mobility based on genuine service coverage.",
-    icon: MapPin,
-  },
-  {
-    title: "Operational Support",
-    description: "Support aligned to actual service commitments.",
-    icon: LifeBuoy,
-  },
-  {
-    title: "End-to-End Management",
-    description: "From requirement and allocation through trip completion, reporting and billing.",
-    icon: ClipboardCheck,
-  },
+const DEFAULT_REASONS = [
+  { title: "One-Stop Mobility", description: "Multiple transportation services under one partner.", icon: "Car" },
+  { title: "Operational Expertise", description: "Professionally managed transportation operations.", icon: "ShieldCheck" },
+  { title: "Technology Enabled", description: "Technology-supported visibility and control where available.", icon: "Navigation" },
+  { title: "Scalable Fleet", description: "Solutions from individual executives to large employee transportation programs.", icon: "Building2" },
+  { title: "Professional Drivers", description: "Focus on safety, discipline and customer experience.", icon: "ShieldCheck" },
+  { title: "PAN India Capability", description: "Multi-city mobility based on genuine service coverage.", icon: "MapPin" },
+  { title: "Operational Support", description: "Support aligned to actual service commitments.", icon: "Headphones" },
+  { title: "End-to-End Management", description: "From requirement and allocation through trip completion, reporting and billing.", icon: "Award" },
 ];
 
 const ROW_SIZE = 3;
-const rawRows = [];
-for (let i = 0; i < reasons.length; i += ROW_SIZE) {
-  rawRows.push(reasons.slice(i, i + ROW_SIZE));
+
+function buildRows(reasons) {
+  const rawRows = [];
+  for (let i = 0; i < reasons.length; i += ROW_SIZE) {
+    rawRows.push(reasons.slice(i, i + ROW_SIZE));
+  }
+  // Snake layout: even rows render left-to-right, odd rows render right-to-left
+  // (achieved by reversing the array), so the flow zig-zags row after row.
+  return rawRows.map((row, i) =>
+    i % 2 === 0
+      ? row.map((r, idx) => ({ ...r, globalIdx: i * ROW_SIZE + idx }))
+      : row
+          .map((r, idx) => ({ ...r, globalIdx: i * ROW_SIZE + idx }))
+          .reverse()
+  );
 }
 
-// Snake layout: even rows render left-to-right, odd rows render right-to-left
-// (achieved by reversing the array), so the flow zig-zags row after row.
-const rows = rawRows.map((row, i) =>
-  i % 2 === 0
-    ? row.map((r, idx) => ({ ...r, globalIdx: i * ROW_SIZE + idx }))
-    : row
-        .map((r, idx) => ({ ...r, globalIdx: i * ROW_SIZE + idx }))
-        .reverse()
-);
-
-// A single ball relays through the whole snake: each row, then the curve down
-// to the next row, one segment at a time, looping forever.
-const segments = [];
-rows.forEach((_, i) => {
-  segments.push({ type: "row", idx: i });
-  if (i < rows.length - 1) {
-    segments.push({ type: "curve", idx: i, side: i % 2 === 0 ? "right" : "left" });
-  }
-});
+function buildSegments(rows) {
+  // A single ball relays through the whole snake: each row, then the curve down
+  // to the next row, one segment at a time, looping forever.
+  const segments = [];
+  rows.forEach((_, i) => {
+    segments.push({ type: "row", idx: i });
+    if (i < rows.length - 1) {
+      segments.push({ type: "curve", idx: i, side: i % 2 === 0 ? "right" : "left" });
+    }
+  });
+  return segments;
+}
 
 const AccentCard = ({ item, isActive }) => {
   const isTeal = item.globalIdx % 2 === 0;
-  const Icon = item.icon;
+  const Icon = typeof item.icon === "string" ? resolveIcon(item.icon) : item.icon;
   const glow = isTeal ? "rgba(59,141,196,0.4)" : "rgba(225,197,157,0.55)";
 
   const x = useMotionValue(0);
@@ -171,6 +135,7 @@ const AccentCard = ({ item, isActive }) => {
               />
             </>
           )}
+          {/* eslint-disable-next-line react-hooks/static-components -- resolveIcon is a static lookup, not a component factory */}
           <Icon size={26} className="stroke-[1.75] relative z-10" />
         </div>
         <h3 className="font-display text-navy text-lg font-bold leading-snug">{item.title}</h3>
@@ -365,7 +330,9 @@ const StepRow = ({ row, rowIdx, running, onDone, curve, curveRunning, onCurveDon
   );
 };
 
-const WhyAcciva = () => {
+const WhyAcciva = ({ reasons = DEFAULT_REASONS }) => {
+  const rows = buildRows(reasons);
+  const segments = buildSegments(rows);
   const [phase, setPhase] = useState(0);
   const advance = () => setPhase((p) => (p + 1) % segments.length);
 

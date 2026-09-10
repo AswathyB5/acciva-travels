@@ -1,7 +1,9 @@
 import { NavLink } from "react-router-dom";
 import { ArrowUpRight, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
-import { services } from "../data/content";
+import { services as fallbackServices } from "../data/content";
+import { useCollection } from "../data/useContent";
+import { resolveIcon } from "../data/iconMap";
 import AnimatedImage from "./AnimatedImage";
 
 const ACCENTS = ["teal", "sand", "teal"];
@@ -17,6 +19,7 @@ const itemVariants = {
 };
 
 const FeaturedServices = () => {
+  const { items: services } = useCollection("services", fallbackServices);
   const featured = services.slice(0, 1);
 
   return (
@@ -51,7 +54,7 @@ const FeaturedServices = () => {
       {/* Alternating editorial rows, each its own card */}
       <div className="max-w-272 mx-auto space-y-5 sm:space-y-6">
         {featured.map((service, i) => {
-          const Icon = service.icon;
+          const Icon = typeof service.icon === "string" ? resolveIcon(service.icon) : service.icon;
           const reversed = i % 2 === 1;
           const accent = ACCENTS[i % ACCENTS.length];
           const accentClass = accent === "teal" ? "bg-teal/15" : "bg-sand/40";

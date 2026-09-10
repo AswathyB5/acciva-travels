@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Uploaded media (served locally by the API, not committed)
+server/uploads
+
 # Environment variables
 .env
 .env.*

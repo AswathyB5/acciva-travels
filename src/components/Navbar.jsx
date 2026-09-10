@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import { usePageContent } from "../data/useContent";
+
+const NAVBAR_DEFAULTS = { ctaLabel: "Book Now" };
 
 const links = [
   { to: "/", label: "Home" },
@@ -23,6 +26,7 @@ const links = [
 ];
 
 const Navbar = () => {
+  const { data: content } = usePageContent("navbar", NAVBAR_DEFAULTS);
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const location = useLocation();
@@ -158,7 +162,7 @@ const Navbar = () => {
           to="/contact"
           className="inline-flex items-center px-6 py-2.5 rounded-full bg-sand text-navy font-semibold text-xs tracking-wide transition-all hover:shadow-lg shrink-0"
         >
-          Book Now
+          {content.ctaLabel}
         </NavLink>
         </div>
 

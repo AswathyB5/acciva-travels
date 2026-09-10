@@ -1,11 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
-import { testimonials } from "../data/content";
+import { testimonials as fallbackTestimonials } from "../data/content";
+import { useCollection } from "../data/useContent";
 
 const DURATION = 5000;
 
 const Testimonial = () => {
+  const { items: testimonials } = useCollection("testimonials", fallbackTestimonials);
   const [active, setActive] = useState(0);
   const [dir, setDir] = useState(1);
   const timer = useRef(null);

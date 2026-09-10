@@ -17,6 +17,25 @@ import {
 } from "lucide-react";
 import Magnetic from "../components/Magnetic";
 import AnimatedImage from "../components/AnimatedImage";
+import { usePageContent } from "../data/useContent";
+
+const TECHNOLOGY_DEFAULTS = {
+  heroEyebrow: "Employee Management Solutions",
+  heroTitleMain: "Automate Every Mile Of Employee",
+  heroTitleAccent: "Transportation.",
+  heroIntro:
+    "Acciva's state of the art technology is an automation platform for employee transportation that automates everything: rostering, routing, deployment, live tracking, paperless automated billing, and e-trip sheets.",
+  featuresEyebrow: "Our Features",
+  featuresHeadingMain: "Corporate Transportation &",
+  featuresHeadingAccent: "Mobility Solutions",
+  featuresParagraphs: [
+    "Acciva Travels is a professionally managed corporate transportation and mobility company providing dependable, safe and efficient transportation solutions for businesses. We go beyond simply providing vehicles by managing the complete transportation process-from vehicle and driver coordination to trip management, technology, safety, reporting and customer support.",
+    "Our integrated approach helps businesses simplify their employee transportation and corporate mobility operations, improve efficiency and deliver a smoother travel experience for employees and organizations. With a strong focus on reliability, safety, operational efficiency and customer satisfaction, Acciva Travels supports businesses with transportation solutions designed to meet their evolving mobility requirements.",
+  ],
+  featuresClosingParagraph:
+    "At Acciva Travels, we combine people, vehicles, technology and transportation expertise to create reliable corporate mobility solutions that businesses can depend on every day.",
+  featuresButtonText: "Book Now",
+};
 
 const serviceList = [
   { label: "Corporate employee transportation", icon: Smartphone },
@@ -161,6 +180,7 @@ const techSolutions = [
 ];
 
 const Technology = () => {
+  const { data: content } = usePageContent("technology", TECHNOLOGY_DEFAULTS);
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -239,16 +259,11 @@ const Technology = () => {
               transition={{ duration: 0.6 }}
               className="max-w-3xl"
             >
-              <span className="eyebrow text-teal">
-                Employee Management Solutions
-              </span>
+              <span className="eyebrow text-teal">{content.heroEyebrow}</span>
 
               <h1 className="font-display text-navy text-3xl sm:text-4xl md:text-5xl leading-[1.08] mt-6 tracking-tight">
-                Automate Every Mile Of <br />
-                Employee{" "}
-                <span className="italic text-teal font-normal">
-                  Transportation.
-                </span>
+                {content.heroTitleMain}{" "}
+                <span className="italic text-teal font-normal">{content.heroTitleAccent}</span>
               </h1>
             </motion.div>
 
@@ -258,10 +273,7 @@ const Technology = () => {
               transition={{ duration: 0.6, delay: 0.15 }}
               className="max-w-md text-navy/90 text-[15px] font-medium leading-relaxed pb-2"
             >
-              Acciva's state of the art technology is an automation platform for
-              employee transportation that automates everything: rostering,
-              routing, deployment, live tracking, paperless automated billing,
-              and e-trip sheets.
+              {content.heroIntro}
             </motion.p>
           </div>
         </div>
@@ -279,33 +291,17 @@ const Technology = () => {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="text-center mb-12"
           >
-            <span className="eyebrow text-teal">Our Features</span>
+            <span className="eyebrow text-teal">{content.featuresEyebrow}</span>
             <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-6 tracking-tight">
-              Corporate Transportation &{" "}
+              {content.featuresHeadingMain}{" "}
               <span className="italic text-teal font-normal">
-                Mobility Solutions
+                {content.featuresHeadingAccent}
               </span>
             </h2>
             <div className="text-slate-600 text-[15px] font-normal leading-relaxed mt-5 space-y-4">
-              <p>
-                Acciva Travels is a professionally managed corporate
-                transportation and mobility company providing dependable, safe
-                and efficient transportation solutions for businesses. We go
-                beyond simply providing vehicles by managing the complete
-                transportation process-from vehicle and driver coordination to
-                trip management, technology, safety, reporting and customer
-                support.
-              </p>
-              <p>
-                Our integrated approach helps businesses simplify their employee
-                transportation and corporate mobility operations, improve
-                efficiency and deliver a smoother travel experience for
-                employees and organizations.
-                With a strong focus on reliability, safety, operational
-                efficiency and customer satisfaction, Acciva Travels supports
-                businesses with transportation solutions designed to meet their
-                evolving mobility requirements.
-              </p>
+              {content.featuresParagraphs.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
             </div>
           </motion.div>
         </div>
@@ -375,15 +371,13 @@ const Technology = () => {
             className="text-center mt-10"
           >
             <p className="text-slate-600 text-[15px] font-normal leading-relaxed">
-              At Acciva Travels, we combine people, vehicles, technology and
-              transportation expertise to create reliable corporate mobility
-              solutions that businesses can depend on every day.
+              {content.featuresClosingParagraph}
             </p>
             <NavLink
               to="/contact"
               className="inline-flex items-center gap-3 mt-7 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
             >
-              <span>Book Now</span>
+              <span>{content.featuresButtonText}</span>
               <ArrowUpRight size={16} />
             </NavLink>
           </motion.div>

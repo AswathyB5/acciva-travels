@@ -1,5 +1,21 @@
 import { NavLink } from "react-router-dom";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import { usePageContent } from "../data/useContent";
+
+const FOOTER_DEFAULTS = {
+  aboutBlurb:
+    "Acciva Travels was founded in 2016 as a Private Limited Company, building on a strong foundation established in 2007 as Gettz Travel Solutions.",
+  phone1: "+91 90350 12166",
+  phone2: "+91 80 2354 1166",
+  email: "info@accivatravels.com",
+  address: "# 52, 1 Main Road, Anand Nagar, Hebbal, Bengaluru 560024.",
+  hours: "24/7/365 Non-Stop Operations",
+  copyrightText: "© 2026 Acciva Travels. All rights reserved.",
+  socialInstagram: "https://www.instagram.com/accivatravel/",
+  socialFacebook: "https://www.facebook.com/accivatravelsbangalore/",
+  socialLinkedin: "https://in.linkedin.com/company/acciva-travels-p-limited",
+  socialPinterest: "https://in.pinterest.com/accivatravel1/",
+};
 
 const quickLinks = [
   { to: "/about", label: "About" },
@@ -27,6 +43,10 @@ const FooterHeading = ({ children }) => (
 );
 
 const Footer = () => {
+  const { data: content } = usePageContent("footer", FOOTER_DEFAULTS);
+  const telHref = `tel:+${content.phone1.replace(/[^0-9]/g, "")}`;
+  const mailHref = `mailto:${content.email}`;
+
   return (
     <footer className="bg-soft text-navy pt-16 md:pt-20 pb-8 border-t border-navy/10">
       <div className="container-px">
@@ -39,11 +59,8 @@ const Footer = () => {
               className="h-12 sm:h-14 w-auto object-contain opacity-95"
             />
             <p className="text-slate-700 text-[15px] leading-relaxed max-w-sm font-normal">
-              Acciva Travels was founded in 2016 as a Private Limited Company,
-              building on a strong foundation established in 2007 as Gettz
-              Travel Solutions.
+              {content.aboutBlurb}
             </p>
-            
           </div>
 
           {/* Quick Links column */}
@@ -70,45 +87,41 @@ const Footer = () => {
             <ul className="grid sm:grid-cols-2 gap-4">
               <li>
                 <a
-                  href="tel:+919035012166"
+                  href={telHref}
                   className="group flex items-start gap-3 text-sm text-navy/65 hover:text-teal transition-colors duration-300"
                 >
                   <span className="w-8 h-8 rounded-lg bg-teal/10 text-teal flex items-center justify-center shrink-0 group-hover:bg-teal group-hover:text-white transition-colors duration-300">
                     <Phone size={14} />
                   </span>
                   <span className="pt-1.5">
-                    +91 90350 12166
+                    {content.phone1}
                     <br />
-                    +91 80 2354 1166
+                    {content.phone2}
                   </span>
                 </a>
               </li>
               <li>
                 <a
-                  href="mailto:info@accivatravels.com"
+                  href={mailHref}
                   className="group flex items-start gap-3 text-sm text-navy/65 hover:text-teal transition-colors duration-300"
                 >
                   <span className="w-8 h-8 rounded-lg bg-teal/10 text-teal flex items-center justify-center shrink-0 group-hover:bg-teal group-hover:text-white transition-colors duration-300">
                     <Mail size={14} />
                   </span>
-                  <span className="pt-1.5 break-all">
-                    info@accivatravels.com
-                  </span>
+                  <span className="pt-1.5 break-all">{content.email}</span>
                 </a>
               </li>
               <li className="flex items-start gap-3 text-sm text-navy/65">
                 <span className="w-8 h-8 rounded-lg bg-teal/10 text-teal flex items-center justify-center shrink-0">
                   <MapPin size={14} />
                 </span>
-                <span className="pt-1.5">
-                  # 52, 1 Main Road, Anand Nagar, Hebbal, Bengaluru 560024.
-                </span>
+                <span className="pt-1.5">{content.address}</span>
               </li>
               <li className="flex items-start gap-3 text-sm text-navy/65">
                 <span className="w-8 h-8 rounded-lg bg-teal/10 text-teal flex items-center justify-center shrink-0">
                   <Clock size={14} />
                 </span>
-                <span className="pt-1.5">24/7/365 Non-Stop Operations</span>
+                <span className="pt-1.5">{content.hours}</span>
               </li>
             </ul>
           </div>
@@ -116,12 +129,10 @@ const Footer = () => {
 
         {/* Bottom bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-navy/40 font-mono">
-            &copy; 2026 Acciva Travels. All rights reserved.
-          </p>
+          <p className="text-xs text-navy/40 font-mono">{content.copyrightText}</p>
           <div className="flex items-center gap-3">
             <IconLink
-              href="https://www.instagram.com/accivatravel/"
+              href={content.socialInstagram}
               label="Instagram"
             >
               <svg
@@ -144,7 +155,7 @@ const Footer = () => {
               </svg>
             </IconLink>
             <IconLink
-              href="https://www.facebook.com/accivatravelsbangalore/"
+              href={content.socialFacebook}
               label="Facebook"
             >
               <svg
@@ -159,7 +170,7 @@ const Footer = () => {
               </svg>
             </IconLink>
             <IconLink
-              href="https://in.linkedin.com/company/acciva-travels-p-limited"
+              href={content.socialLinkedin}
               label="LinkedIn"
             >
               <svg
@@ -177,7 +188,7 @@ const Footer = () => {
               </svg>
             </IconLink>
             <IconLink
-              href="https://in.pinterest.com/accivatravel1/"
+              href={content.socialPinterest}
               label="Pinterest"
             >
               <svg

@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, Outlet, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -15,8 +15,9 @@ import Contact from "./pages/Contact";
 import Careers from "./pages/Careers";
 import WhatIsCorporateEmployeeTransportation from "./Blogs/what-is-corporate-employee-transportation";
 import EmployeeTransportationVsPublicTransport from "./Blogs/employee-transportation-vs-public-transport";
+import AdminApp from "./admin/admin";
 
-function App() {
+function SiteLayout() {
   const location = useLocation();
 
   return (
@@ -33,33 +34,42 @@ function App() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25, ease: "easeInOut" }}
           >
-            <Routes location={location}>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/services" element={<Services />} />
-              <Route
-                path="/services/employee-transportation-services"
-                element={<EmployeeTransportationServices />}
-              />
-              <Route path="/technology" element={<Technology />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route
-                path="/blog/what-is-corporate-employee-transportation"
-                element={<WhatIsCorporateEmployeeTransportation />}
-              />
-              <Route
-                path="/blog/employee-transportation-vs-public-transport"
-                element={<EmployeeTransportationVsPublicTransport />}
-              />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/careers" element={<Careers />} />
-            </Routes>
+            <Outlet />
           </motion.div>
         </AnimatePresence>
       </main>
       <Footer />
       <WhatsAppButton />
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/admin/*" element={<AdminApp />} />
+      <Route element={<SiteLayout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/services" element={<Services />} />
+        <Route
+          path="/services/employee-transportation-services"
+          element={<EmployeeTransportationServices />}
+        />
+        <Route path="/technology" element={<Technology />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route
+          path="/blog/what-is-corporate-employee-transportation"
+          element={<WhatIsCorporateEmployeeTransportation />}
+        />
+        <Route
+          path="/blog/employee-transportation-vs-public-transport"
+          element={<EmployeeTransportationVsPublicTransport />}
+        />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/careers" element={<Careers />} />
+      </Route>
+    </Routes>
   );
 }
 

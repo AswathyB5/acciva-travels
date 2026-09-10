@@ -7,9 +7,26 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 import AnimatedImage from "../components/AnimatedImage";
-import { blogPosts } from "../data/content";
+import { blogPosts as fallbackBlogPosts } from "../data/content";
+import { useCollection, usePageContent } from "../data/useContent";
+
+const BLOG_DEFAULTS = {
+  heroEyebrow: "Mobility Intelligence & Insights",
+  heroTitleMain: "Stories, Tech &",
+  heroTitleAccent: "Fleet Innovation.",
+  heroIntro:
+    "Explore key industry insights on corporate employee transportation, AI dispatch telematics, EV sustainability, and mobility benchmarks across India.",
+  newsletterEyebrow: "Monthly Fleet Dispatch Digest",
+  newsletterHeadingMain: "Stay Ahead in Corporate",
+  newsletterHeadingAccent: "Mobility Innovation.",
+  newsletterParagraph:
+    "Subscribe to receive quarterly whitepapers, EV transition benchmarks, and tech park transit optimization case studies.",
+  newsletterButtonText: "Book Now",
+};
 
 const Blog = () => {
+  const { items: blogPosts } = useCollection("blog-posts", fallbackBlogPosts);
+  const { data: content } = usePageContent("blog", BLOG_DEFAULTS);
   const [activeCategory, setActiveCategory] = useState("All");
 
   const categories = useMemo(() => {
@@ -17,14 +34,14 @@ const Blog = () => {
       new Set(blogPosts.map((post) => post.category).filter(Boolean))
     );
     return ["All", ...unique];
-  }, []);
+  }, [blogPosts]);
 
   const filteredPosts = useMemo(
     () =>
       activeCategory === "All"
         ? blogPosts
         : blogPosts.filter((post) => post.category === activeCategory),
-    [activeCategory]
+    [activeCategory, blogPosts]
   );
 
   return (
@@ -62,12 +79,12 @@ const Blog = () => {
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               className="max-w-3xl"
             >
-              <span className="eyebrow text-teal">Mobility Intelligence & Insights</span>
+              <span className="eyebrow text-teal">{content.heroEyebrow}</span>
 
               <h1 className="font-display text-navy text-3xl sm:text-4xl md:text-5xl leading-[1.08] mt-6 tracking-tight">
-                Stories, Tech & <br />
+                {content.heroTitleMain} <br />
                 <span className="italic text-teal font-normal">
-                  Fleet Innovation.
+                  {content.heroTitleAccent}
                 </span>
               </h1>
             </motion.div>
@@ -78,7 +95,7 @@ const Blog = () => {
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
               className="max-w-md text-navy/90 text-[15px] font-medium leading-relaxed pb-2"
             >
-              Explore key industry insights on corporate employee transportation, AI dispatch telematics, EV sustainability, and mobility benchmarks across India.
+              {content.heroIntro}
             </motion.p>
           </div>
 
@@ -203,13 +220,13 @@ const Blog = () => {
 
         <div className="container-px relative z-10 text-center max-w-3xl mx-auto">
           <span className="eyebrow text-teal inline-block mb-6">
-            Monthly Fleet Dispatch Digest
+            {content.newsletterEyebrow}
           </span>
 
           <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.08] tracking-tight mb-6">
             {[
-              { text: "Stay Ahead in Corporate", cls: "" },
-              { text: "Mobility Innovation.", cls: "italic text-teal font-normal" },
+              { text: content.newsletterHeadingMain, cls: "" },
+              { text: content.newsletterHeadingAccent, cls: "italic text-teal font-normal" },
             ].map((line, i) => (
               <span className="line-mask block" key={line.text}>
                 <motion.span
@@ -226,14 +243,14 @@ const Blog = () => {
           </h2>
 
           <p className="mt-6 text-slate-700 text-[15px] font-normal max-w-xl mx-auto leading-relaxed">
-            Subscribe to receive quarterly whitepapers, EV transition benchmarks, and tech park transit optimization case studies.
+            {content.newsletterParagraph}
           </p>
 
           <NavLink
             to="/contact"
             className="mt-6 inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
           >
-            <span>Book Now</span>
+            <span>{content.newsletterButtonText}</span>
             <ArrowUpRight size={16} />
           </NavLink>
         </div>

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { api } from "../admin/lib/api";
 import { NavLink } from "react-router-dom";
 import {
   Phone,
@@ -16,6 +17,15 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 import AnimatedImage from "../components/AnimatedImage";
+import { usePageContent } from "../data/useContent";
+
+const CONTACT_DEFAULTS = {
+  heroEyebrow: "Get In Touch",
+  heroTitleMain: "Connect With Our",
+  heroTitleAccent: "Mobility Specialists.",
+  heroIntro:
+    "Request customized enterprise proposals, corporate rate cards, tech park shuttle network setups, or 24/7 dispatch support.",
+};
 
 const SUBJECT_OPTIONS = [
   "Corporate Employee Transportation",
@@ -36,6 +46,7 @@ const initialForm = {
 };
 
 const Contact = () => {
+  const { data: content } = usePageContent("contact", CONTACT_DEFAULTS);
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState(null);
@@ -91,6 +102,18 @@ const Contact = () => {
       const data = await response.json();
       if (!response.ok || !data.success) throw new Error("Send failed");
 
+      api
+        .submitContact({
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          subject: subjectLine,
+          message: form.message,
+        })
+        .catch(() => {
+          // Non-fatal: the email above already went out via web3forms.
+        });
+
       setStatus("success");
       setForm(initialForm);
     } catch {
@@ -136,12 +159,12 @@ const Contact = () => {
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               className="max-w-3xl"
             >
-              <span className="eyebrow text-teal">Get In Touch</span>
+              <span className="eyebrow text-teal">{content.heroEyebrow}</span>
 
               <h1 className="font-display text-navy text-3xl sm:text-4xl md:text-5xl leading-[1.08] mt-6 tracking-tight">
-                Connect With Our{" "}
+                {content.heroTitleMain}{" "}
                 <span className="italic text-teal font-normal">
-                  Mobility Specialists.
+                  {content.heroTitleAccent}
                 </span>
               </h1>
             </motion.div>
@@ -156,8 +179,7 @@ const Contact = () => {
               }}
               className="max-w-md text-navy/90 text-[15px] font-medium leading-relaxed pb-2"
             >
-              Request customized enterprise proposals, corporate rate cards,
-              tech park shuttle network setups, or 24/7 dispatch support.
+              {content.heroIntro}
             </motion.p>
           </div>
         </div>

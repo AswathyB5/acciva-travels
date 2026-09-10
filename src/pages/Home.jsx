@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import Hero from "../components/Hero";
 import Industries from "../components/Industries";
-import SplitText from "../components/SplitText";
 import RevealImage from "../components/RevealImage";
 import DestinationExpand from "../components/DestinationExpand";
 import FeaturedServices from "../components/FeaturedServices";
@@ -12,98 +11,121 @@ import StatCounter from "../components/StatCounter";
 import BlogFeature from "../components/BlogFeature";
 import Testimonial from "../components/Testimonial";
 import Magnetic from "../components/Magnetic";
-import { services, stats, blogPosts } from "../data/content";
+import { stats as fallbackStats, blogPosts as fallbackBlogPosts } from "../data/content";
+import { useCollection, usePageContent } from "../data/useContent";
 
-const corporateFleet = [
-  {
-    name: "Sedan",
-    country: "Everyday Corporate Travel",
-    description: "Comfortable, fuel-efficient sedans for daily employee commutes and routine office travel.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Toyota_Camry_2.5_Hybrid_Ascent_Sport_%28IX%29_%E2%80%93_f_02012026.jpg/1280px-Toyota_Camry_2.5_Hybrid_Ascent_Sport_%28IX%29_%E2%80%93_f_02012026.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=thumbnail",
-  },
-  {
-    name: "MPV",
-    country: "Family & Group Travel",
-    description: "Spacious multi-purpose vehicles built for small teams travelling together in comfort.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Toyota_Innova_Crysta_2.4_Z_front_right.jpg/1280px-Toyota_Innova_Crysta_2.4_Z_front_right.jpg",
-  },
-  {
-    name: "SUV",
-    country: "All-Terrain Comfort",
-    description: "Rugged, powerful SUVs that handle any terrain for site visits and outstation assignments.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/1/1f/2024_Toyota_RAV4_Cruiser_Hybrid_front.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original",
-  },
-  {
-    name: "Luxury Sedan",
-    country: "Premium Business Class",
-    description: "Refined luxury sedans that make the right impression for client meetings and executive travel.",
-    image: "https://5.imimg.com/data5/SELLER/Default/2026/7/630120673/LH/ZG/IH/82002021/bmw-7-series-car-rental-service-500x500.jpeg",
-  },
-  {
-    name: "Ultra-Luxury Executive",
-    country: "Boardroom On Wheels",
-    description: "Top-tier chauffeured vehicles designed for VIP delegates and high-stakes corporate travel.",
-    image: "https://i.ytimg.com/vi/3bMYs-09ONU/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBy7HMtb-LrYNIZVX3Q_iaSGeADZA",
-  },
-  {
-    name: "Tempo Traveller",
-    country: "Group Transport",
-    description: "Reliable tempo travellers for mid-sized groups moving together to events or off-sites.",
-    image: "https://cabtaxirentalservicejodhpur.com/assets/img/vehicle/12-seater-tempo-traveller-jodhpur.webp",
-  },
-  {
-    name: "Mini Bus",
-    country: "Shared Mobility",
-    description: "Efficient mini buses that keep larger teams connected with shared, scheduled transport.",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDTUp-WRvnjwiNnvdeol89AXwHWwAeNde3M_ag4kMtPxsjg7AFaMKjHwoq&s=10",
-  },
-  {
-    name: "Staff Bus",
-    country: "Employee Transport",
-    description: "Dedicated staff buses that make daily employee pick-up and drop reliable at scale.",
-    image: "https://jcbl.com/jcbl-images/products/elite/banner.jpg",
-  },
-  {
-    name: "Truck",
-    country: "Logistics Fleet",
-    description: "Sturdy trucks that keep your logistics and material movement running on schedule.",
-    image: "https://t3.ftcdn.net/jpg/03/52/78/44/360_F_352784409_vACH9AegP2m2xM7l6nppLUazM7LhFiz1.jpg",
-  },
-];
-
-const journalPosts = blogPosts.filter((p) => !p.featured).slice(0, 3);
+const HOME_DEFAULTS = {
+  heroTitle: "Corporate Mobility & Transportation Solutions for a Moving Business World",
+  heroSupporting:
+    "Employee Transportation | Corporate Cabs | Corporate Car Rentals | Executive Mobility | Long-Term Leasing | Logistics | Truck Services | Events | PAN India Mobility",
+  heroDesc:
+    "Acciva Travels provides end-to-end mobility, transportation and logistics solutions for businesses-from daily employee pick-up and drop to executive travel, long-term vehicle leasing, commercial trucks, logistics movement, corporate events and PAN India transportation requirements.",
+  heroCta1: "Get a Corporate Mobility Consultation",
+  heroCta2: "Request a Corporate Quotation",
+  heroCta3: "Talk to Our Mobility Team",
+  introEyebrow: "About Us",
+  introHeadingMain: "Welcome To",
+  introHeadingAccent: "Acciva.",
+  introParagraph:
+    "Acciva Travels has emerged to be one of the best leading Corporate Employee Transport Services & Solutions Pan India. We are committed to provide quality and reliable Employee Transportation services. Our state-of-art app based Technology empowers the entire Employee Transportation Management System process for our Corporate companies.",
+  introServiceList: [
+    "Monthly Basis Cab Taxi Hiring Services Sedan",
+    "Providing Vehicles for Office Work",
+    "Sedan Vehicle on Rental Basis for Corporate",
+    "Hiring of Taxi Services for Corporate",
+    "Cab Taxi Hiring Services Sedan / SUV / MUV",
+    "Hiring of Sedan / SUV / MUV Cars",
+  ],
+  introImageMain:
+    "https://content.jdmagicbox.com/v2/comp/guwahati/c8/9999px361.x361.260624114535.r2c8/catalogue/ne-car-sarfari-azara-guwahati-travel-agents-0y05j0do2u.jpg",
+  introImageSecondary:
+    "https://static.vecteezy.com/system/resources/thumbnails/060/206/512/small/a-row-of-cars-parked-in-a-parking-lot-free-photo.jpeg",
+  fleetEyebrow: "Our Fleet",
+  fleetHeadingMain: "A Vehicle For",
+  fleetHeadingAccent: "Every Corporate Need.",
+  fleetItems: [
+    { name: "Sedan", country: "Everyday Corporate Travel", description: "Comfortable, fuel-efficient sedans for daily employee commutes and routine office travel.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Toyota_Camry_2.5_Hybrid_Ascent_Sport_%28IX%29_%E2%80%93_f_02012026.jpg/1280px-Toyota_Camry_2.5_Hybrid_Ascent_Sport_%28IX%29_%E2%80%93_f_02012026.jpg" },
+    { name: "MPV", country: "Family & Group Travel", description: "Spacious multi-purpose vehicles built for small teams travelling together in comfort.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Toyota_Innova_Crysta_2.4_Z_front_right.jpg/1280px-Toyota_Innova_Crysta_2.4_Z_front_right.jpg" },
+    { name: "SUV", country: "All-Terrain Comfort", description: "Rugged, powerful SUVs that handle any terrain for site visits and outstation assignments.", image: "https://upload.wikimedia.org/wikipedia/commons/1/1f/2024_Toyota_RAV4_Cruiser_Hybrid_front.jpg" },
+    { name: "Luxury Sedan", country: "Premium Business Class", description: "Refined luxury sedans that make the right impression for client meetings and executive travel.", image: "https://5.imimg.com/data5/SELLER/Default/2026/7/630120673/LH/ZG/IH/82002021/bmw-7-series-car-rental-service-500x500.jpeg" },
+    { name: "Ultra-Luxury Executive", country: "Boardroom On Wheels", description: "Top-tier chauffeured vehicles designed for VIP delegates and high-stakes corporate travel.", image: "https://i.ytimg.com/vi/3bMYs-09ONU/hq720.jpg" },
+    { name: "Tempo Traveller", country: "Group Transport", description: "Reliable tempo travellers for mid-sized groups moving together to events or off-sites.", image: "https://cabtaxirentalservicejodhpur.com/assets/img/vehicle/12-seater-tempo-traveller-jodhpur.webp" },
+    { name: "Mini Bus", country: "Shared Mobility", description: "Efficient mini buses that keep larger teams connected with shared, scheduled transport.", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDTUp-WRvnjwiNnvdeol89AXwHWwAeNde3M_ag4kMtPxsjg7AFaMKjHwoq&s=10" },
+    { name: "Staff Bus", country: "Employee Transport", description: "Dedicated staff buses that make daily employee pick-up and drop reliable at scale.", image: "https://jcbl.com/jcbl-images/products/elite/banner.jpg" },
+    { name: "Truck", country: "Logistics Fleet", description: "Sturdy trucks that keep your logistics and material movement running on schedule.", image: "https://t3.ftcdn.net/jpg/03/52/78/44/360_F_352784409_vACH9AegP2m2xM7l6nppLUazM7LhFiz1.jpg" },
+  ],
+  statementLine1: "One Partner.",
+  statementLine2: "One Platform.",
+  statementLine3: "Complete Mobility.",
+  statementTagline: "Acciva Travels · Pan-India Corporate Mobility Benchmark",
+  statementCta: "Book Now",
+  industriesEyebrow: "Industries We Serve",
+  industriesHeadingMain: "Trusted Across",
+  industriesHeadingAccent: "Every Sector.",
+  industriesParagraph:
+    "From fast-scaling startups to established multinationals, Acciva powers corporate mobility for organisations across every industry vertical, PAN India.",
+  whyEyebrow: "Why Acciva Travels",
+  whyHeadingMain: "Why Enterprises",
+  whyHeadingAccent: "Trust Us.",
+  whyReasons: [
+    { title: "One-Stop Mobility", description: "Multiple transportation services under one partner.", icon: "Car" },
+    { title: "Operational Expertise", description: "Professionally managed transportation operations.", icon: "ShieldCheck" },
+    { title: "Technology Enabled", description: "Technology-supported visibility and control where available.", icon: "Navigation" },
+    { title: "Scalable Fleet", description: "Solutions from individual executives to large employee transportation programs.", icon: "Building2" },
+    { title: "Professional Drivers", description: "Focus on safety, discipline and customer experience.", icon: "ShieldCheck" },
+    { title: "PAN India Capability", description: "Multi-city mobility based on genuine service coverage.", icon: "MapPin" },
+    { title: "Operational Support", description: "Support aligned to actual service commitments.", icon: "Headphones" },
+    { title: "End-to-End Management", description: "From requirement and allocation through trip completion, reporting and billing.", icon: "Award" },
+  ],
+  journalEyebrow: "The Journal",
+  journalHeadingMain: "Stories From The",
+  journalHeadingAccent: "Open Road.",
+  ctaEyebrow: "Let's Create Your Next Journey",
+  ctaHeadingMain: "Where Will",
+  ctaHeadingAccent: "You Go Next?",
+  ctaParagraph:
+    "Tell us where your team needs to be, and we'll build a corporate mobility plan around it, from daily commutes to citywide fleet deployments.",
+  ctaButtonText: "Plan Your Journey",
+  ctaBackgroundImage: "https://t4.ftcdn.net/jpg/09/30/49/83/360_F_930498387_akToV5jhe5VGgiZzIVZc4NT8PRxVCwJ3.jpg",
+};
 
 const Home = () => {
+  const { items: stats } = useCollection("stats", fallbackStats);
+  const { items: blogPosts } = useCollection("blog-posts", fallbackBlogPosts);
+  const { data: content } = usePageContent("home", HOME_DEFAULTS);
+  const journalPosts = blogPosts.filter((p) => !p.featured).slice(0, 3);
+
   return (
     <>
-      <Hero />
+      <Hero
+        title={content.heroTitle}
+        supporting={content.heroSupporting}
+        desc={content.heroDesc}
+        cta1={content.heroCta1}
+        cta2={content.heroCta2}
+        cta3={content.heroCta3}
+      />
 
       {/* Introduction + Giant image story */}
       <section className="bg-soft pt-16 md:pt-24 pb-8 md:pb-10 overflow-hidden">
         <div className="container-px grid md:grid-cols-12 gap-8 md:gap-8 items-start">
           <div className="md:col-span-6">
-            <span className="eyebrow text-teal">About Us</span>
+            <span className="eyebrow text-teal">{content.introEyebrow}</span>
             <div className="mt-8 space-y-2">
               <h1 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.08] tracking-tight">
-                Welcome To <span className="italic text-teal font-normal">Acciva.</span>
+                {content.introHeadingMain}{" "}
+                <span className="italic text-teal font-normal">{content.introHeadingAccent}</span>
               </h1>
             </div>
             <div className="mt-10">
               <p className="text-slate-700 text-[15px] font-normal leading-relaxed">
-                Acciva Travels has emerged to be one of the best leading Corporate Employee Transport Services &amp; Solutions Pan India. We are committed to provide quality and reliable Employee Transportation services. Our state-of-art app based Technology empowers the entire Employee Transportation Management System process for our Corporate companies.
+                {content.introParagraph}
               </p>
             </div>
 
             {/* Service list */}
             <div className="mt-10 space-y-3">
-              {[
-                "Monthly Basis Cab Taxi Hiring Services Sedan",
-                "Providing Vehicles for Office Work",
-                "Sedan Vehicle on Rental Basis for Corporate",
-                "Hiring of Taxi Services for Corporate",
-                "Cab Taxi Hiring Services Sedan / SUV / MUV",
-                "Hiring of Sedan / SUV / MUV Cars",
-              ].map((service, i) => (
+              {content.introServiceList.map((service, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, x: -16 }}
@@ -139,13 +161,13 @@ const Home = () => {
 
           <div className="md:col-span-6 relative md:sticky md:top-32">
             <RevealImage
-              src="https://content.jdmagicbox.com/v2/comp/guwahati/c8/9999px361.x361.260624114535.r2c8/catalogue/ne-car-sarfari-azara-guwahati-travel-agents-0y05j0do2u.jpg"
+              src={content.introImageMain}
               alt="Acciva executive fleet vehicle"
               className="h-[38vh] md:h-[58vh] ml-auto w-full md:w-[90%]"
             />
             <div className="absolute -bottom-10 -left-4 sm:left-0 md:-left-10 w-1/2 md:w-[40%] shadow-[0_20px_60px_rgba(7,26,36,0.25)] border-4 border-soft">
               <RevealImage
-                src="https://static.vecteezy.com/system/resources/thumbnails/060/206/512/small/a-row-of-cars-parked-in-a-parking-lot-free-photo.jpeg"
+                src={content.introImageSecondary}
                 alt="Acciva mixed fleet vehicles"
                 className="h-[18vh] md:h-[24vh]"
               />
@@ -158,12 +180,12 @@ const Home = () => {
       {/* Corporate Fleet Showcase */}
       <section className="bg-soft pt-8 md:pt-10 pb-16 md:pb-20">
         <div className="container-px mb-6">
-          <span className="eyebrow text-teal">Our Fleet</span>
+          <span className="eyebrow text-teal">{content.fleetEyebrow}</span>
           <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-6 max-w-2xl tracking-tight">
-            A Vehicle For <span className="italic text-teal font-normal">Every Corporate Need.</span>
+            {content.fleetHeadingMain} <span className="italic text-teal font-normal">{content.fleetHeadingAccent}</span>
           </h2>
         </div>
-        <DestinationExpand destinations={corporateFleet} />
+        <DestinationExpand destinations={content.fleetItems} />
       </section>
 
       {/* Statement Banner */}
@@ -204,7 +226,7 @@ const Home = () => {
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               className="font-display italic text-xl sm:text-2xl md:text-3xl text-navy/90 block"
             >
-              One Partner.
+              {content.statementLine1}
             </motion.span>
             <motion.span
               initial={{ y: "40%", opacity: 0 }}
@@ -213,7 +235,7 @@ const Home = () => {
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
               className="font-display font-medium text-2xl sm:text-3xl md:text-4xl text-navy block mt-1"
             >
-              One Platform.
+              {content.statementLine2}
             </motion.span>
             <motion.span
               initial={{ y: "40%", opacity: 0 }}
@@ -223,18 +245,18 @@ const Home = () => {
               style={{ fontFamily: "var(--font-accent)", fontSize: "clamp(1.5rem, 4vw, 2.25rem)", lineHeight: "1.08" }}
               className="italic text-teal font-normal block mt-1"
             >
-              Complete Mobility.
+              {content.statementLine3}
             </motion.span>
           </div>
           <p className="mt-5 eyebrow text-teal font-mono tracking-widest uppercase">
-            Acciva Travels · Pan-India Corporate Mobility Benchmark
+            {content.statementTagline}
           </p>
           <Magnetic className="mt-6 inline-block">
             <NavLink
               to="/contact"
               className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
             >
-              <span>Book Now</span>
+              <span>{content.statementCta}</span>
               <ArrowUpRight size={16} />
             </NavLink>
           </Magnetic>
@@ -249,18 +271,23 @@ const Home = () => {
       </section>
 
       {/* Industries We Serve */}
-      <Industries />
+      <Industries
+        eyebrow={content.industriesEyebrow}
+        headingMain={content.industriesHeadingMain}
+        headingAccent={content.industriesHeadingAccent}
+        paragraph={content.industriesParagraph}
+      />
 
       {/* Enterprise Trust */}
       <section className="bg-soft pt-8 md:pt-10 pb-0">
         <div className="container-px">
-          <span className="eyebrow text-teal">Why Acciva Travels</span>
+          <span className="eyebrow text-teal">{content.whyEyebrow}</span>
           <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-6 tracking-tight">
-            Why Enterprises <span className="italic text-teal font-normal">Trust Us.</span>
+            {content.whyHeadingMain} <span className="italic text-teal font-normal">{content.whyHeadingAccent}</span>
           </h2>
         </div>
       </section>
-      <WhyAcciva />
+      <WhyAcciva reasons={content.whyReasons} />
 
       {/* Creative Modern Animated Testimonials */}
       <Testimonial />
@@ -277,9 +304,9 @@ const Home = () => {
       {/* Travel Journal */}
       <section className="bg-soft pt-8 md:pt-10 pb-16 md:pb-20">
         <div className="container-px">
-          <span className="eyebrow text-teal">The Journal</span>
+          <span className="eyebrow text-teal">{content.journalEyebrow}</span>
           <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-6 max-w-xl tracking-tight">
-            Stories From The <span className="italic text-teal font-normal">Open Road.</span>
+            {content.journalHeadingMain} <span className="italic text-teal font-normal">{content.journalHeadingAccent}</span>
           </h2>
           <div className="mt-12">
             <BlogFeature posts={journalPosts} />
@@ -290,7 +317,7 @@ const Home = () => {
       {/* Final CTA */}
       <section className="relative py-8 md:py-10 overflow-hidden">
         <img
-          src="https://t4.ftcdn.net/jpg/09/30/49/83/360_F_930498387_akToV5jhe5VGgiZzIVZc4NT8PRxVCwJ3.jpg"
+          src={content.ctaBackgroundImage}
           alt=""
           aria-hidden="true"
           className="absolute inset-0 h-full w-full object-cover object-[center_55%]"
@@ -306,21 +333,21 @@ const Home = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            Let&rsquo;s Create Your Next Journey
+            {content.ctaEyebrow}
           </motion.span>
           <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-3">
-            Where Will <br />
-            <span className="italic text-teal font-normal">You Go Next?</span>
+            {content.ctaHeadingMain} <br />
+            <span className="italic text-teal font-normal">{content.ctaHeadingAccent}</span>
           </h2>
           <p className="mt-2 text-slate-700 text-[15px] font-normal leading-relaxed max-w-xl mx-auto">
-            Tell us where your team needs to be, and we&apos;ll build a corporate mobility plan around it, from daily commutes to citywide fleet deployments.
+            {content.ctaParagraph}
           </p>
           <Magnetic className="mt-6">
             <NavLink
               to="/contact"
               className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
             >
-              Plan Your Journey &rarr;
+              {content.ctaButtonText} &rarr;
             </NavLink>
           </Magnetic>
         </div>
@@ -330,9 +357,3 @@ const Home = () => {
 };
 
 export default Home;
-
-
-
-
-
-

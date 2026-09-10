@@ -20,7 +20,48 @@ import {
 import ServiceList from "../components/ServiceList";
 import Magnetic from "../components/Magnetic";
 import AnimatedImage from "../components/AnimatedImage";
-import { services } from "../data/content";
+import { services as fallbackServices } from "../data/content";
+import { useCollection, usePageContent } from "../data/useContent";
+
+const SERVICES_DEFAULTS = {
+  heroEyebrow: "Enterprise Solutions",
+  heroTitleMain: "Corporate Mobility & Fleet Solutions",
+  heroTitleAccent: "At Scale.",
+  heroIntro:
+    "End-to-end employee transportation, tech park shuttle networks, executive transit, and airport transfers managed with 99.8% on-time precision.",
+  introEyebrow: "Who We Are",
+  introHeadingMain: "Professional, Reliable",
+  introHeadingAccent: "Transportation Services.",
+  introParagraphs: [
+    "At Acciva Travels, we provide reliable passenger transportation for schools, businesses, corporations, and institutions. We work with each client to understand their requirements and build a transportation service that fits their routes, schedules, and day-to-day operations.",
+    "From school and employee transportation to scheduled and customized services, we manage the people, vehicles, routes, and schedules involved in keeping your transportation running smoothly. Our focus is simple: safe journeys, dependable service, and better visibility for our clients.",
+  ],
+  introImage: "https://i.ibb.co/1Whpb03/0cb03a11-e697-445e-8b5e-c08c67dc9c28.jpg",
+  offerEyebrow: "What We Offer",
+  offerHeadingMain: "Our",
+  offerHeadingAccent: "Transportation Services",
+  offerParagraphs: [
+    "Acciva Travels provides transportation solutions for organizations with regular or customized travel requirements.",
+    "Our services include school transportation, corporate and employee transportation, scheduled transportation, route planning, fleet management, and customized transportation services.",
+  ],
+  offerCards: [
+    {
+      title: "For Schools",
+      description:
+        "For schools, we work with administrators to plan routes, organize pickup and drop-off points, and manage day-to-day transportation operations. Our systems can also give parents better visibility of their child's journey, including vehicle location and estimated arrival times.",
+    },
+    {
+      title: "For Businesses & Corporations",
+      description:
+        "For businesses and corporations, we provide organized employee transportation designed around working hours, pickup locations, routes, and staff requirements. Our team handles the coordination so that businesses can focus on their operations while we take care of the transportation.",
+    },
+  ],
+  catalogueEyebrow: "Our Fleet Offerings",
+  catalogueHeadingMain: "Tailored Mobility",
+  catalogueHeadingAccent: "Programs.",
+  catalogueParagraph:
+    "Explore our comprehensive range of specialized transport capabilities designed for corporate technology parks, GCCs, and enterprise teams.",
+};
 
 // 3D Tilt Card wrapper with layered pattern-line hover animations
 // (top shimmer sweep, corner accent, left edge line, animated top thumb line)
@@ -554,6 +595,8 @@ const DifferentiatorTimeline = () => {
 };
 
 const Services = () => {
+  const { items: services } = useCollection("services", fallbackServices);
+  const { data: content } = usePageContent("services", SERVICES_DEFAULTS);
   return (
     <div className="bg-soft text-navy overflow-hidden">
       {/* ========================================================================= */}
@@ -592,10 +635,10 @@ const Services = () => {
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               className="max-w-3xl"
             >
-              <span className="eyebrow text-teal">Enterprise Solutions</span>
+              <span className="eyebrow text-teal">{content.heroEyebrow}</span>
               <h1 className="font-display text-navy text-3xl sm:text-4xl md:text-5xl leading-[1.08] mt-6 tracking-tight">
-                Corporate Mobility & Fleet Solutions{" "}
-                <span className="italic text-teal font-normal">At Scale.</span>
+                {content.heroTitleMain}{" "}
+                <span className="italic text-teal font-normal">{content.heroTitleAccent}</span>
               </h1>
             </motion.div>
 
@@ -609,9 +652,7 @@ const Services = () => {
               }}
               className="max-w-md text-navy/90 text-[15px] font-medium leading-relaxed pb-2"
             >
-              End-to-end employee transportation, tech park shuttle networks,
-              executive transit, and airport transfers managed with 99.8%
-              on-time precision.
+              {content.heroIntro}
             </motion.p>
           </div>
         </div>
@@ -631,11 +672,11 @@ const Services = () => {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-3xl"
           >
-            <span className="eyebrow text-teal">Who We Are</span>
+            <span className="eyebrow text-teal">{content.introEyebrow}</span>
             <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-4 tracking-tight">
-              Professional, Reliable{" "}
+              {content.introHeadingMain}{" "}
               <span className="italic text-teal font-normal">
-                Transportation Services.
+                {content.introHeadingAccent}
               </span>
             </h2>
           </motion.div>
@@ -655,7 +696,7 @@ const Services = () => {
                 className="relative h-full min-h-[260px] rounded-3xl overflow-hidden shadow-2xl border border-navy/10 group"
               >
                 <AnimatedImage
-                  src="https://i.ibb.co/1Whpb03/0cb03a11-e697-445e-8b5e-c08c67dc9c28.jpg"
+                  src={content.introImage}
                   alt="Acciva Travels professional transportation"
                   effect="zoom-out"
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -674,24 +715,9 @@ const Services = () => {
               }}
               className="h-full flex flex-col justify-center space-y-5 text-slate-700 text-[15px] font-normal leading-relaxed"
             >
-              <p>
-                At <span className="font-bold text-navy">Acciva Travels</span>,
-                we provide reliable passenger transportation for schools,
-                businesses, corporations, and institutions. We work with each
-                client to understand their requirements and build a
-                transportation service that fits their routes, schedules, and
-                day-to-day operations.
-              </p>
-              <p>
-                From school and employee transportation to scheduled and
-                customized services, we manage the people, vehicles, routes, and
-                schedules involved in keeping your transportation running
-                smoothly. Our focus is simple:{" "}
-                <span className="font-bold text-navy">
-                  safe journeys, dependable service, and better visibility for
-                  our clients.
-                </span>
-              </p>
+              {content.introParagraphs.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
             </motion.div>
           </div>
         </div>
@@ -709,26 +735,17 @@ const Services = () => {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="mb-10"
           >
-            <span className="eyebrow text-teal">What We Offer</span>
+            <span className="eyebrow text-teal">{content.offerEyebrow}</span>
             <h2 className="font-display text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-4 tracking-tight">
-              Our{" "}
+              {content.offerHeadingMain}{" "}
               <span className="italic text-teal font-normal">
-                Transportation Services
+                {content.offerHeadingAccent}
               </span>
             </h2>
             <div className="mt-5 space-y-4 text-slate-700 text-[15px] font-normal leading-relaxed w-full">
-              <p>
-                Acciva Travels provides transportation solutions for
-                organizations with regular or customized travel requirements.
-              </p>
-              <p>
-                Our services include{" "}
-                <span className="font-bold text-navy">
-                  school transportation, corporate and employee transportation,
-                  scheduled transportation, route planning, fleet management,
-                  and customized transportation services.
-                </span>
-              </p>
+              {content.offerParagraphs.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
             </div>
           </motion.div>
 
@@ -755,14 +772,10 @@ const Services = () => {
                     <GraduationCap size={26} />
                   </div>
                   <h3 className="font-display text-xl sm:text-2xl text-navy font-bold mb-3 group-hover:text-teal transition-colors">
-                    For Schools
+                    {content.offerCards[0].title}
                   </h3>
                   <p className="text-[15px] text-slate-700 leading-relaxed font-normal">
-                    For schools, we work with administrators to plan routes,
-                    organize pickup and drop-off points, and manage day-to-day
-                    transportation operations. Our systems can also give parents
-                    better visibility of their child&apos;s journey, including
-                    vehicle location and estimated arrival times.
+                    {content.offerCards[0].description}
                   </p>
                 </div>
               </TiltCard>
@@ -795,14 +808,10 @@ const Services = () => {
                     <Building2 size={26} />
                   </div>
                   <h3 className="font-display text-xl sm:text-2xl text-navy font-bold mb-3 group-hover:text-teal transition-colors">
-                    For Businesses & Corporations
+                    {content.offerCards[1].title}
                   </h3>
                   <p className="text-[15px] text-slate-700 leading-relaxed font-normal">
-                    For businesses and corporations, we provide organized
-                    employee transportation designed around working hours,
-                    pickup locations, routes, and staff requirements. Our team
-                    handles the coordination so that businesses can focus on
-                    their operations while we take care of the transportation.
+                    {content.offerCards[1].description}
                   </p>
                 </div>
               </TiltCard>
@@ -1107,16 +1116,14 @@ const Services = () => {
             className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6"
           >
             <div>
-              <span className="eyebrow text-teal">Our Fleet Offerings</span>
+              <span className="eyebrow text-teal">{content.catalogueEyebrow}</span>
               <h2 className="font-display text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-6 tracking-tight">
-                Tailored Mobility{" "}
-                <span className="italic text-teal font-normal">Programs.</span>
+                {content.catalogueHeadingMain}{" "}
+                <span className="italic text-teal font-normal">{content.catalogueHeadingAccent}</span>
               </h2>
             </div>
             <p className="text-slate-600 text-[15px] font-normal leading-relaxed max-w-md">
-              Explore our comprehensive range of specialized transport
-              capabilities designed for corporate technology parks, GCCs, and
-              enterprise teams.
+              {content.catalogueParagraph}
             </p>
           </motion.div>
 

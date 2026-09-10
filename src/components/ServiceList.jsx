@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { NavLink } from "react-router-dom";
 import { ArrowUpRight, ShieldCheck, Filter } from "lucide-react";
 import AnimatedImage from "./AnimatedImage";
+import { resolveIcon } from "../data/iconMap";
 
 const ServiceList = ({ services }) => {
   const [filter, setFilter] = useState("all");
@@ -52,7 +53,7 @@ const ServiceList = ({ services }) => {
       <motion.div layout className="grid md:grid-cols-2 gap-8 lg:gap-10">
         <AnimatePresence>
           {filteredServices.map((service, i) => {
-            const Icon = service.icon;
+            const Icon = typeof service.icon === "string" ? resolveIcon(service.icon) : service.icon;
             return (
               <motion.div
                 key={service.slug}
