@@ -19,14 +19,14 @@ const DEFAULT_SUPPORTING =
 const DEFAULT_DESC =
   "Acciva Travels provides end-to-end mobility, transportation and logistics solutions for businesses-from daily employee pick-up and drop to executive travel, long-term vehicle leasing, commercial trucks, logistics movement, corporate events and PAN India transportation requirements.";
 
-const buildPanels = ({ title, supporting, desc, cta1, cta2, cta3 }) => [
+const buildPanels = ({ title, supporting, desc, cta1, cta2, cta3, image1, image2, image3 }) => [
   {
     id: "center-welcome",
     num: "01",
     title,
     supporting,
     desc,
-    src: hero1,
+    src: image1 || hero1,
     imagePosition: "right center",
     link: "/contact",
     linkText: cta1,
@@ -37,7 +37,7 @@ const buildPanels = ({ title, supporting, desc, cta1, cta2, cta3 }) => [
     title,
     supporting,
     desc,
-    src: hero2,
+    src: image2 || hero2,
     imagePosition: "right center",
     link: "/contact",
     linkText: cta2,
@@ -48,7 +48,7 @@ const buildPanels = ({ title, supporting, desc, cta1, cta2, cta3 }) => [
     title,
     supporting,
     desc,
-    src: hero3,
+    src: image3 || hero3,
     imagePosition: "right center",
     link: "/contact",
     linkText: cta3,
@@ -88,13 +88,16 @@ const Hero = ({
   cta1 = "Get a Corporate Mobility Consultation",
   cta2 = "Request a Corporate Quotation",
   cta3 = "Talk to Our Mobility Team",
+  image1,
+  image2,
+  image3,
 }) => {
   const reduceMotion = useReducedMotion();
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(0);
   const [zoomed, setZoomed] = useState(false);
   const timer = useRef(null);
-  const panels = buildPanels({ title, supporting, desc, cta1, cta2, cta3 });
+  const panels = buildPanels({ title, supporting, desc, cta1, cta2, cta3, image1, image2, image3 });
 
   const paginate = (newDirection) => {
     setDirection(newDirection);

@@ -23,6 +23,9 @@ const HOME_DEFAULTS = {
   heroCta1: "Get a Corporate Mobility Consultation",
   heroCta2: "Request a Corporate Quotation",
   heroCta3: "Talk to Our Mobility Team",
+  heroImage1: "",
+  heroImage2: "",
+  heroImage3: "",
   introEyebrow: "About Us",
   introHeadingMain: "Welcome To",
   introHeadingAccent: "Acciva.",
@@ -138,6 +141,9 @@ const Home = () => {
         cta1={content.heroCta1}
         cta2={content.heroCta2}
         cta3={content.heroCta3}
+        image1={content.heroImage1}
+        image2={content.heroImage2}
+        image3={content.heroImage3}
       />
 
       {/* Introduction + Giant image story */}
