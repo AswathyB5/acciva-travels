@@ -186,9 +186,9 @@ export const pages = [
           { name: "heroCta1", label: "Slide 1 Button Text", type: "text", default: "Get a Corporate Mobility Consultation" },
           { name: "heroCta2", label: "Slide 2 Button Text", type: "text", default: "Request a Corporate Quotation" },
           { name: "heroCta3", label: "Slide 3 Button Text", type: "text", default: "Talk to Our Mobility Team" },
-          { name: "heroImage1", label: "Slide 1 Background Image", type: "image", default: "" },
-          { name: "heroImage2", label: "Slide 2 Background Image", type: "image", default: "" },
-          { name: "heroImage3", label: "Slide 3 Background Image", type: "image", default: "" },
+          { name: "heroImage1", label: "Slide 1 Background Image", type: "image", default: "/images/hero1.png" },
+          { name: "heroImage2", label: "Slide 2 Background Image", type: "image", default: "/images/hero2.png" },
+          { name: "heroImage3", label: "Slide 3 Background Image", type: "image", default: "/images/hero3.png" },
         ],
       },
       {
