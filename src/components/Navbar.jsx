@@ -5,6 +5,8 @@ import { ChevronDown } from "lucide-react";
 import { usePageContent } from "../data/useContent";
 
 const NAVBAR_DEFAULTS = {
+  logoSolid: "/acciva-logo.png",
+  logoTransparent: "/acciva-logo-white.png",
   ctaLabel: "Book Now",
   navLinks: [
     { label: "Home", path: "/" },
@@ -73,7 +75,7 @@ const Navbar = () => {
           className="flex items-center gap-3 py-1 group"
         >
           <img
-            src={solid ? "/acciva-logo.png" : "/acciva-logo-white.png"}
+            src={solid ? content.logoSolid : content.logoTransparent}
             alt="Acciva Travels"
             className="h-8 sm:h-9 md:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
           />

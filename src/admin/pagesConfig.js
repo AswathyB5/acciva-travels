@@ -18,7 +18,23 @@ export const pages = [
       {
         key: "main",
         label: "Header Bar",
-        fields: [{ name: "ctaLabel", label: "Header Button Text", type: "text", default: "Book Now" }],
+        fields: [
+          {
+            name: "logoSolid",
+            label: "Logo (scrolled / light background)",
+            type: "image",
+            default: "/acciva-logo.png",
+            hint: "Shown once the header turns solid, or on any non-transparent page header.",
+          },
+          {
+            name: "logoTransparent",
+            label: "Logo (transparent header, dark hero)",
+            type: "image",
+            default: "/acciva-logo-white.png",
+            hint: "Shown over the homepage hero before the header turns solid.",
+          },
+          { name: "ctaLabel", label: "Header Button Text", type: "text", default: "Book Now" },
+        ],
       },
       {
         key: "links",
@@ -64,6 +80,12 @@ export const pages = [
         key: "main",
         label: "Footer Content",
         fields: [
+          {
+            name: "logo",
+            label: "Footer Logo",
+            type: "image",
+            default: "/acciva-logo.png",
+          },
           {
             name: "aboutBlurb",
             label: "About Blurb",
@@ -1596,7 +1618,8 @@ export const pages = [
   },
   {
     key: "employee-transportation-services",
-    label: "Employee Transportation Services Page",
+    label: "Employee Transportation",
+    parent: "services",
     icon: Users,
     description: "The dedicated Employee Transportation Services subpage, linked from the Services nav dropdown.",
     relatedCollections: [],

@@ -3,6 +3,7 @@ import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { usePageContent } from "../data/useContent";
 
 const FOOTER_DEFAULTS = {
+  logo: "/acciva-logo.png",
   aboutBlurb:
     "Acciva Travels was founded in 2016 as a Private Limited Company, building on a strong foundation established in 2007 as Gettz Travel Solutions.",
   phone1: "+91 90350 12166",
@@ -57,7 +58,7 @@ const Footer = () => {
           {/* Brand column */}
           <div className="lg:col-span-4 space-y-5">
             <img
-              src="/acciva-logo.png"
+              src={content.logo}
               alt="Acciva Travels"
               className="h-12 sm:h-14 w-auto object-contain opacity-95"
             />

@@ -1,9 +1,19 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { motion } from "framer-motion";
 import { ArrowRight, Mail, Truck } from "lucide-react";
 import { collections } from "../collectionsConfig";
 import { pages } from "../pagesConfig";
 import { api } from "../lib/api";
+
+const cardGrid = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.05 } },
+};
+const cardItem = {
+  hidden: { opacity: 0, y: 14 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.3, ease: "easeOut" } },
+};
 
 const useCounts = () => {
   const [counts, setCounts] = useState({});
@@ -32,11 +42,17 @@ const Dashboard = () => {
 
   return (
     <div>
-      <div className="bg-navy rounded-2xl p-7 flex items-center gap-5 text-white">
-        <div className="w-12 h-12 rounded-2xl bg-teal flex items-center justify-center shrink-0">
+      <div className="bg-linear-to-br from-navy via-navy to-teal/70 rounded-2xl p-7 flex items-center gap-5 text-white relative overflow-hidden">
+        <span className="absolute -top-10 -right-10 w-40 h-40 bg-sand/20 rounded-full blur-3xl pointer-events-none" />
+        <motion.div
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ type: "spring", stiffness: 260, damping: 18 }}
+          className="w-12 h-12 rounded-2xl bg-teal flex items-center justify-center shrink-0 relative"
+        >
           <Truck size={22} />
-        </div>
-        <div>
+        </motion.div>
+        <div className="relative">
           <p className="font-display font-bold text-xl">Welcome back</p>
           <p className="text-ivory/60 text-sm mt-0.5">
             Pick a page below to edit its text, or open the Content Library to manage lists like services and blog posts.
@@ -47,30 +63,38 @@ const Dashboard = () => {
       <p className="text-xs font-semibold uppercase tracking-wider text-navy/40 mt-9 mb-3">
         Pages &mdash; Edit Any Section
       </p>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <motion.div
+        variants={cardGrid}
+        initial="hidden"
+        animate="show"
+        className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
+      >
         {pages.map((p) => {
           const Icon = p.icon;
           return (
-            <NavLink
-              key={p.key}
-              to={`/admin/pages/${p.key}`}
-              className="group bg-white rounded-2xl border border-navy/10 p-5 hover:border-teal/50 hover:shadow-lg transition-all"
-            >
-              <div className="flex items-start justify-between">
-                <div className="w-11 h-11 rounded-xl bg-teal/10 text-teal flex items-center justify-center">
-                  <Icon size={20} />
+            <motion.div key={p.key} variants={cardItem} whileHover={{ y: -3 }}>
+              <NavLink
+                to={`/admin/pages/${p.key}`}
+                className="group block bg-white rounded-2xl border border-navy/10 p-5 hover:border-teal/50 hover:shadow-lg transition-all"
+              >
+                <div className="flex items-start justify-between">
+                  <div className="w-11 h-11 rounded-xl bg-teal/10 text-teal flex items-center justify-center">
+                    <Icon size={20} />
+                  </div>
+                  <ArrowRight
+                    size={18}
+                    className="text-navy/20 group-hover:text-teal group-hover:translate-x-0.5 transition-all"
+                  />
                 </div>
-                <ArrowRight
-                  size={18}
-                  className="text-navy/20 group-hover:text-teal group-hover:translate-x-0.5 transition-all"
-                />
-              </div>
-              <p className="font-display font-bold text-navy mt-4">{p.label}</p>
-              <p className="text-xs text-navy/45 mt-1 line-clamp-2">{p.description}</p>
-            </NavLink>
+                <p className="font-display font-bold text-navy mt-4">
+                  {p.parent ? `↳ ${p.label}` : p.label}
+                </p>
+                <p className="text-xs text-navy/45 mt-1 line-clamp-2">{p.description}</p>
+              </NavLink>
+            </motion.div>
           );
         })}
-      </div>
+      </motion.div>
 
       <p className="text-xs font-semibold uppercase tracking-wider text-navy/40 mt-9 mb-3">
         Content Library &mdash; Lists Shown Across Pages

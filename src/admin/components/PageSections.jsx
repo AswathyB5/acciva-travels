@@ -10,9 +10,15 @@ const PageSections = () => {
   if (!config) return <p>Unknown page.</p>;
 
   const Icon = config.icon;
+  const parentConfig = config.parent ? getPageConfig(config.parent) : null;
 
   return (
     <div>
+      {parentConfig && (
+        <p className="text-xs font-semibold uppercase tracking-wider text-teal/70 mb-2">
+          {parentConfig.label} Subpage
+        </p>
+      )}
       <div className="flex items-center gap-3">
         <div className="w-11 h-11 rounded-xl bg-teal/10 text-teal flex items-center justify-center shrink-0">
           <Icon size={20} />
