@@ -25,28 +25,76 @@ const CONTACT_DEFAULTS = {
   heroTitleAccent: "Mobility Specialists.",
   heroIntro:
     "Request customized enterprise proposals, corporate rate cards, tech park shuttle network setups, or 24/7 dispatch support.",
+  heroBackgroundImage:
+    "https://carwow-uk-wp-2.imgix.net/Volvo-XC40-white-scaled.jpg?auto=format&cs=tinysrgb&fit=crop&h=800&ixlib=rb-1.1.0&q=60&w=1600",
+  formHeading: "Request Enterprise Proposal",
+  formSubheading:
+    "Submit your fleet requirements below. Our corporate team will respond within 4 hours.",
+  subjectOptions: [
+    "Corporate Employee Transportation",
+    "Fleet Management Inquiry",
+    "Airport Transfer Services",
+    "Vehicle Partner / Careers",
+    "General Inquiry",
+    "Other",
+  ],
+  successHeading: "Inquiry Received Successfully!",
+  successText:
+    "Our corporate enterprise manager will review your requirement and get back to you shortly.",
+  errorHeading: "Something Went Wrong",
+  errorText:
+    "We couldn't send your message right now. Please try again in a moment.",
+  submitButtonText: "Send Message",
+  showcaseImage:
+    "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
+  directLineLabel: "Direct Enterprise Line",
+  rfpLabel: "Corporate RFPs & Inquiries",
+  hqLabel: "Central Operations HQ",
+  dispatchLabel: "Ground Dispatch Tower",
+  mapEyebrow: "Central Command & Fleet Dispatch",
+  mapHeadingMain: "Acciva Travels Headquarters in",
+  mapHeadingAccent: "Bengaluru.",
+  mapDescription:
+    "Serving Manyata Tech Park, Electronic City, Whitefield, Outer Ring Road & Pan-India Corridors.",
+  mapButtonText: "Open in Google Maps",
+  mapLink: "https://maps.google.com/?q=Bengaluru,+Karnataka,+India",
+  mapEmbedUrl:
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.0961003448615!2d77.59094080000001!3d13.029551899999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae179675b10e35%3A0x4e2fa4b235d073e4!2sAcciva%20Travels%20Private%20Limited!5e0!3m2!1sen!2sin!4v1788930808147!5m2!1sen!2sin",
+  closingEyebrow: "Dedicated Enterprise Mobility",
+  closingHeadingMain: "Need Immediate Assistance Or",
+  closingHeadingAccent: "Fleet Consultation?",
+  closingParagraph:
+    "Our corporate transit managers are available round-the-clock to structure scalable transit contracts for your team.",
+  closingButtonText: "Explore Fleet Capabilities",
 };
 
-const SUBJECT_OPTIONS = [
-  "Corporate Employee Transportation",
-  "Fleet Management Inquiry",
-  "Airport Transfer Services",
-  "Vehicle Partner / Careers",
-  "General Inquiry",
-  "Other",
-];
+const FOOTER_DEFAULTS = {
+  aboutBlurb:
+    "Acciva Travels was founded in 2016 as a Private Limited Company, building on a strong foundation established in 2007 as Gettz Travel Solutions.",
+  phone1: "+91 90350 12166",
+  phone2: "+91 80 2354 1166",
+  email: "info@accivatravels.com",
+  address: "# 52, 1 Main Road, Anand Nagar, Hebbal, Bengaluru 560024.",
+  hours: "24/7/365 Non-Stop Operations",
+  copyrightText: "© 2026 Acciva Travels. All rights reserved.",
+  socialInstagram: "https://www.instagram.com/accivatravel/",
+  socialFacebook: "https://www.facebook.com/accivatravelsbangalore/",
+  socialLinkedin: "https://in.linkedin.com/company/acciva-travels-p-limited",
+  socialPinterest: "https://in.pinterest.com/accivatravel1/",
+};
 
 const initialForm = {
   name: "",
   email: "",
   phone: "",
-  subject: SUBJECT_OPTIONS[0],
+  subject: CONTACT_DEFAULTS.subjectOptions[0],
   customSubject: "",
   message: "",
 };
 
 const Contact = () => {
   const { data: content } = usePageContent("contact", CONTACT_DEFAULTS);
+  const { data: footerContent } = usePageContent("footer", FOOTER_DEFAULTS);
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState(null);
@@ -129,7 +177,7 @@ const Contact = () => {
       <section
         className="pt-28 sm:pt-32 pb-4 md:pb-6 relative overflow-hidden"
         style={{
-          backgroundImage: `url('https://carwow-uk-wp-2.imgix.net/Volvo-XC40-white-scaled.jpg?auto=format&cs=tinysrgb&fit=crop&h=800&ixlib=rb-1.1.0&q=60&w=1600')`,
+          backgroundImage: `url('${content.heroBackgroundImage}')`,
           backgroundSize: "cover",
           backgroundPosition: "center bottom",
           backgroundAttachment: "fixed",
@@ -200,11 +248,10 @@ const Contact = () => {
                 <div className="mb-8 pb-6 border-b border-navy/10 flex items-center justify-between">
                   <div>
                     <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-navy leading-[1.08] tracking-tight">
-                      Request Enterprise Proposal
+                      {content.formHeading}
                     </h2>
                     <p className="text-slate-600 text-[15px] font-normal leading-relaxed mt-1">
-                      Submit your fleet requirements below. Our corporate team
-                      will respond within 4 hours.
+                      {content.formSubheading}
                     </p>
                   </div>
                   <div className="w-12 h-12 rounded-2xl bg-teal/10 text-teal flex items-center justify-center shrink-0">
@@ -221,11 +268,10 @@ const Contact = () => {
                     <CheckCircle2 size={24} className="text-teal shrink-0" />
                     <div>
                       <h4 className="font-sans font-bold text-sm text-navy">
-                        Inquiry Received Successfully!
+                        {content.successHeading}
                       </h4>
                       <p className="text-slate-600 text-[15px] font-normal leading-relaxed mt-0.5">
-                        Our corporate enterprise manager will review your
-                        requirement and get back to you shortly.
+                        {content.successText}
                       </p>
                     </div>
                   </motion.div>
@@ -239,11 +285,10 @@ const Contact = () => {
                   >
                     <div>
                       <h4 className="font-sans font-bold text-sm text-navy">
-                        Something Went Wrong
+                        {content.errorHeading}
                       </h4>
                       <p className="text-slate-600 text-[15px] font-normal leading-relaxed mt-0.5">
-                        We couldn't send your message right now. Please try
-                        again in a moment.
+                        {content.errorText}
                       </p>
                     </div>
                   </motion.div>
@@ -324,7 +369,7 @@ const Contact = () => {
                         onChange={handleChange}
                         className="w-full px-4 py-3.5 rounded-2xl bg-soft border border-navy/10 font-sans text-[15px] text-navy focus:outline-none focus:border-teal transition-colors"
                       >
-                        {SUBJECT_OPTIONS.map((option) => (
+                        {content.subjectOptions.map((option) => (
                           <option key={option}>{option}</option>
                         ))}
                       </select>
@@ -385,7 +430,9 @@ const Contact = () => {
                     disabled={status === "sending"}
                     className="w-full py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
                   >
-                    <span>{status === "sending" ? "Sending..." : "Send Message"}</span>
+                    <span>
+                      {status === "sending" ? "Sending..." : content.submitButtonText}
+                    </span>
                     <ArrowUpRight size={16} />
                   </button>
                 </form>
@@ -406,7 +453,7 @@ const Contact = () => {
               {/* Showcase Image Banner */}
               <div className="relative rounded-3xl overflow-hidden shadow-xl border border-navy/10 group">
                 <AnimatedImage
-                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80"
+                  src={content.showcaseImage}
                   alt="Acciva Corporate Command & Operations"
                   effect="zoom-in"
                   eager
@@ -423,7 +470,7 @@ const Contact = () => {
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                   whileHover={{ y: -3, scale: 1.01 }}
-                  href="tel:+919035012166"
+                  href={`tel:+${footerContent.phone1.replace(/[^0-9]/g, "")}`}
                   className="p-4 rounded-2xl bg-white border border-navy/10 shadow-xs hover:border-teal/50 hover:shadow-md transition-[border-color,box-shadow] group flex items-center gap-4"
                 >
                   <div className="w-10 h-10 rounded-xl bg-teal/10 flex items-center justify-center text-teal shrink-0 group-hover:bg-teal group-hover:text-white transition-colors">
@@ -431,10 +478,10 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="text-[10px] font-mono text-navy/50 uppercase">
-                      Direct Enterprise Line
+                      {content.directLineLabel}
                     </p>
                     <p className="font-sans font-bold text-sm text-navy group-hover:text-teal transition-colors">
-                      +91 903 501 2166 / +91 80 2354 1166
+                      {footerContent.phone1} / {footerContent.phone2}
                     </p>
                   </div>
                 </motion.a>
@@ -449,7 +496,7 @@ const Contact = () => {
                     ease: [0.16, 1, 0.3, 1],
                   }}
                   whileHover={{ y: -3, scale: 1.01 }}
-                  href="mailto:info@accivatravels.com"
+                  href={`mailto:${footerContent.email}`}
                   className="p-4 rounded-2xl bg-white border border-navy/10 shadow-xs hover:border-teal/50 hover:shadow-md transition-[border-color,box-shadow] group flex items-center gap-4"
                 >
                   <div className="w-10 h-10 rounded-xl bg-teal/10 flex items-center justify-center text-teal shrink-0 group-hover:bg-teal group-hover:text-white transition-colors">
@@ -457,10 +504,10 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="text-[10px] font-mono text-navy/50 uppercase">
-                      Corporate RFPs & Inquiries
+                      {content.rfpLabel}
                     </p>
                     <p className="font-sans font-bold text-sm text-navy group-hover:text-teal transition-colors">
-                      info@accivatravels.com
+                      {footerContent.email}
                     </p>
                   </div>
                 </motion.a>
@@ -482,11 +529,10 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="text-[10px] font-mono text-navy/50 uppercase">
-                      Central Operations HQ
+                      {content.hqLabel}
                     </p>
                     <p className="font-sans font-bold text-sm text-navy leading-snug">
-                      # 52, 1 Main Road, Anand Nagar, Hebbal,
-                      Bengaluru 560024.
+                      {footerContent.address}
                     </p>
                   </div>
                 </motion.div>
@@ -508,10 +554,10 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="text-[10px] font-mono text-navy/50 uppercase">
-                      Ground Dispatch Tower
+                      {content.dispatchLabel}
                     </p>
                     <p className="font-sans font-bold text-sm text-teal">
-                      24/7/365 Non-Stop Operations
+                      {footerContent.hours}
                     </p>
                   </div>
                 </motion.div>
@@ -537,27 +583,26 @@ const Contact = () => {
             <div className="p-6 md:p-8 bg-white border-b border-navy/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
                 <span className="eyebrow text-teal block mb-3">
-                  Central Command & Fleet Dispatch
+                  {content.mapEyebrow}
                 </span>
                 <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-navy leading-[1.08] tracking-tight mt-1">
-                  Acciva Travels Headquarters in{" "}
+                  {content.mapHeadingMain}{" "}
                   <span className="italic text-teal font-normal">
-                    Bengaluru.
+                    {content.mapHeadingAccent}
                   </span>
                 </h2>
                 <p className="text-slate-600 text-[15px] font-normal leading-relaxed mt-1">
-                  Serving Manyata Tech Park, Electronic City, Whitefield, Outer
-                  Ring Road & Pan-India Corridors.
+                  {content.mapDescription}
                 </p>
               </div>
 
               <a
-                href="https://maps.google.com/?q=Bengaluru,+Karnataka,+India"
+                href={content.mapLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl shrink-0"
               >
-                <span>Open in Google Maps</span>
+                <span>{content.mapButtonText}</span>
                 <ArrowUpRight size={16} />
               </a>
             </div>
@@ -566,7 +611,7 @@ const Contact = () => {
             <div className="w-full h-[260px] sm:h-[320px] relative bg-navy/5">
               <iframe
                 title="Acciva Travels Bengaluru Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.0961003448615!2d77.59094080000001!3d13.029551899999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae179675b10e35%3A0x4e2fa4b235d073e4!2sAcciva%20Travels%20Private%20Limited!5e0!3m2!1sen!2sin!4v1788930808147!5m2!1sen!2sin"
+                src={content.mapEmbedUrl}
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -600,7 +645,7 @@ const Contact = () => {
 
         <div className="container-px relative z-10 text-center max-w-3xl mx-auto">
           <span className="eyebrow text-teal inline-block mb-4">
-            Dedicated Enterprise Mobility
+            {content.closingEyebrow}
           </span>
 
           <motion.div
@@ -613,15 +658,14 @@ const Contact = () => {
           />
 
           <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-navy leading-[1.08] tracking-tight">
-            Need Immediate Assistance Or{" "}
+            {content.closingHeadingMain}{" "}
             <span className="italic text-teal font-normal">
-              Fleet Consultation?
+              {content.closingHeadingAccent}
             </span>
           </h2>
 
           <p className="mt-3 text-slate-700 text-[15px] font-normal leading-relaxed">
-            Our corporate transit managers are available round-the-clock to
-            structure scalable transit contracts for your team.
+            {content.closingParagraph}
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
@@ -629,7 +673,7 @@ const Contact = () => {
               to="/services"
               className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
             >
-              <span>Explore Fleet Capabilities</span>
+              <span>{content.closingButtonText}</span>
               <ArrowUpRight size={16} />
             </NavLink>
           </div>

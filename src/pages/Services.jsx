@@ -6,22 +6,14 @@ import {
   ArrowUpRight,
   GraduationCap,
   Building2,
-  Radar,
-  Smartphone,
-  MapPin,
-  UserCheck,
-  Wrench,
-  Eye,
   MessageCircle,
-  Route,
-  Layers,
-  Sparkles,
 } from "lucide-react";
 import ServiceList from "../components/ServiceList";
 import Magnetic from "../components/Magnetic";
 import AnimatedImage from "../components/AnimatedImage";
 import { services as fallbackServices } from "../data/content";
 import { useCollection, usePageContent } from "../data/useContent";
+import { resolveIcon } from "../data/iconMap";
 
 const SERVICES_DEFAULTS = {
   heroEyebrow: "Enterprise Solutions",
@@ -29,6 +21,8 @@ const SERVICES_DEFAULTS = {
   heroTitleAccent: "At Scale.",
   heroIntro:
     "End-to-end employee transportation, tech park shuttle networks, executive transit, and airport transfers managed with 99.8% on-time precision.",
+  heroBackgroundImage:
+    "https://images.pexels.com/photos/34985962/pexels-photo-34985962.jpeg?auto=compress&cs=tinysrgb&w=1920",
   introEyebrow: "Who We Are",
   introHeadingMain: "Professional, Reliable",
   introHeadingAccent: "Transportation Services.",
@@ -61,6 +55,83 @@ const SERVICES_DEFAULTS = {
   catalogueHeadingAccent: "Programs.",
   catalogueParagraph:
     "Explore our comprehensive range of specialized transport capabilities designed for corporate technology parks, GCCs, and enterprise teams.",
+  catalogueFilterLabel: "Filter Fleet by:",
+  catalogueFilterAllLabel: "All Fleet Capabilities",
+  catalogueFilterDailyLabel: "Daily Employee Transit",
+  catalogueFilterExecutiveLabel: "Executive & VIP",
+  catalogueFilterGroupLabel: "Shuttle & Tech Parks",
+  catalogueCardButtonText: "View Details",
+  catalogueSlaText: "99.8% SLA Backed • Pan-India",
+  techEyebrow: "Smarter Visibility",
+  techHeadingMain: "Technology &",
+  techHeadingAccent: "Tracking",
+  techParagraphs: [
+    "Technology plays an important role in how we manage our transportation services.",
+    "With GPS vehicle tracking and mobile-based monitoring, clients can have better visibility of vehicles and routes. Tracking information can help transportation teams monitor journeys, keep passengers informed, and respond quickly when routes or schedules need to change.",
+    "For school transportation, tracking can also give parents and authorized users useful information about the vehicle's location and expected arrival time.",
+    "By combining technology with hands-on operational management, we make transportation easier to monitor and manage.",
+  ],
+  techFeatureChips: [
+    { icon: "Radar", label: "GPS Vehicle Tracking" },
+    { icon: "Smartphone", label: "Mobile-Based Monitoring" },
+    { icon: "MapPin", label: "Live ETA Visibility" },
+  ],
+  techImage:
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSl1PGWlQMFcALtYDya1LX3qwlmG22SbNwVPm2T3sBLgd8F-GYxd64fZNH9&s=10",
+  safetyEyebrow: "Trust & Compliance",
+  safetyHeadingMain: "Safety &",
+  safetyHeadingAccent: "Driver Standards",
+  safetyParagraphs: [
+    "When you are responsible for transporting students or employees, safety comes first.",
+    "Our aim is to give schools, businesses, passengers, and parents confidence that their transportation is being handled responsibly.",
+  ],
+  safetyCards: [
+    {
+      icon: "UserCheck",
+      title: "Verified Drivers",
+      text: "At Acciva Travels, we take care in selecting and verifying our drivers and ensuring they meet the requirements of the service they are providing. Driver qualifications, experience, conduct, and overall suitability are important parts of our selection process.",
+    },
+    {
+      icon: "Wrench",
+      title: "Vehicle Upkeep",
+      text: "We also pay attention to the condition and upkeep of our vehicles.",
+    },
+    {
+      icon: "Eye",
+      title: "Monitored Operations",
+      text: "We monitor transportation operations to maintain a safe and professional service.",
+    },
+  ],
+  whyEyebrow: "Distinct Advantage",
+  whyHeadingMain: "Why Choose",
+  whyHeadingAccent: "Acciva Travels?",
+  whyParagraphs: [
+    "Every organization has different transportation needs. A school may need carefully planned student routes, while a company may need employee pickups that match multiple shifts and locations.",
+    "That's why we don't believe in a one-size-fits-all approach.",
+    "Acciva Travels works with clients to understand their requirements and build transportation services around them. From route planning and scheduling to fleet and driver coordination, our team manages the details that keep the service moving.",
+  ],
+  whyHighlight:
+    "With professional drivers, managed vehicles, route planning, and technology-supported tracking, we provide organizations with a transportation partner they can rely on.",
+  differentiators: [
+    { icon: "Layers", title: "Not One-Size-Fits-All", text: "Services built around each client's specific routes and schedules." },
+    { icon: "Route", title: "Requirement-Led Planning", text: "Route planning and scheduling shaped by real operational needs." },
+    { icon: "UserCheck", title: "Fleet & Driver Coordination", text: "Vehicles and drivers coordinated so nothing is left to chance." },
+    { icon: "Sparkles", title: "Technology-Supported Tracking", text: "A dependable partner backed by visibility at every step." },
+  ],
+  talkHeadingMain: "Let's Talk About Your",
+  talkHeadingAccent: "Transportation Needs",
+  talkParagraphs: [
+    "Looking for a reliable transportation partner for your school, business, or organization?",
+    "Talk to Acciva Travels about your requirements. We'll work with you to understand your routes, schedules, and operational needs and develop a transportation solution that works for you.",
+  ],
+  talkButtonText: "Talk to Acciva Travels",
+  ctaEyebrow: "Enterprise Mobility Consulting",
+  ctaHeadingMain: "Ready to Optimize Your",
+  ctaHeadingAccent: "Company Transportation?",
+  ctaParagraph:
+    "Get a tailored fleet proposal with live telemetry integration, automated shift rostering, and dedicated command support.",
+  ctaButton1Text: "Request Enterprise Quote",
+  ctaButton2Text: "Learn About Our Standards",
 };
 
 // 3D Tilt Card wrapper with layered pattern-line hover animations
@@ -154,15 +225,10 @@ const TiltCard = ({
 // Row of feature chips with a traveling ball that runs left-to-right along a
 // connecting line, looping forever. Whichever chip the ball is passing under
 // lights up (glow ring + sweep) — same motif as the WhyAcciva ball-relay.
-const FEATURE_CHIPS = [
-  { icon: Radar, label: "GPS Vehicle Tracking", tone: "teal" },
-  { icon: Smartphone, label: "Mobile-Based Monitoring", tone: "sand" },
-  { icon: MapPin, label: "Live ETA Visibility", tone: "teal" },
-];
-
-const FeatureChipsRow = () => {
+const FeatureChipsRow = ({ chips }) => {
   const [active, setActive] = useState(-1);
-  const total = FEATURE_CHIPS.length;
+  const total = chips.length;
+  const toneCycle = ["teal", "sand"];
 
   return (
     <div className="relative pt-4">
@@ -200,10 +266,11 @@ const FeatureChipsRow = () => {
       </div>
 
       <div className="flex flex-wrap lg:flex-nowrap lg:justify-between gap-3 relative z-10">
-        {FEATURE_CHIPS.map((item, i) => {
+        {chips.map((item, i) => {
           const isActive = active === i;
-          const isSand = item.tone === "sand";
+          const isSand = toneCycle[i % toneCycle.length] === "sand";
           const glow = isSand ? "rgba(225,197,157,0.6)" : "rgba(59,141,196,0.4)";
+          const IconComp = resolveIcon(item.icon);
           return (
             <motion.div
               key={item.label}
@@ -239,7 +306,7 @@ const FeatureChipsRow = () => {
                     transition={{ duration: 1, repeat: Infinity, ease: "easeOut" }}
                   />
                 )}
-                <item.icon size={15} className="relative z-10" />
+                <IconComp size={15} className="relative z-10" />
               </span>
               <span
                 className={`text-[13px] font-semibold ${
@@ -260,6 +327,7 @@ const FeatureChipsRow = () => {
 // border, corner accent, top sweep + icon glow ring while the traveling ball
 // is passing beneath it.
 const SafetyCard = ({ card, isActive }) => {
+  const IconComp = resolveIcon(card.icon);
   const isTeal = card.tone === "teal";
   const glow = isTeal ? "rgba(59,141,196,0.4)" : "rgba(225,197,157,0.55)";
 
@@ -348,7 +416,7 @@ const SafetyCard = ({ card, isActive }) => {
               />
             </>
           )}
-          <card.icon size={24} className="stroke-[1.75] relative z-10" />
+          <IconComp size={24} className="stroke-[1.75] relative z-10" />
         </div>
         <h3 className="font-display text-navy text-lg font-bold leading-snug">{card.title}</h3>
         <p className="text-slate-600 text-[13px] leading-relaxed mt-2">{card.text}</p>
@@ -357,35 +425,17 @@ const SafetyCard = ({ card, isActive }) => {
   );
 };
 
-const SAFETY_CARDS = [
-  {
-    icon: UserCheck,
-    title: "Verified Drivers",
-    text: "At Acciva Travels, we take care in selecting and verifying our drivers and ensuring they meet the requirements of the service they are providing. Driver qualifications, experience, conduct, and overall suitability are important parts of our selection process.",
-    tone: "teal",
-    offset: "lg:mt-0",
-  },
-  {
-    icon: Wrench,
-    title: "Vehicle Upkeep",
-    text: "We also pay attention to the condition and upkeep of our vehicles.",
-    tone: "sand",
-    offset: "lg:mt-18",
-  },
-  {
-    icon: Eye,
-    title: "Monitored Operations",
-    text: "We monitor transportation operations to maintain a safe and professional service.",
-    tone: "teal",
-    offset: "lg:mt-36",
-  },
+const SAFETY_CARD_VISUALS = [
+  { tone: "teal", offset: "lg:mt-0" },
+  { tone: "sand", offset: "lg:mt-18" },
+  { tone: "teal", offset: "lg:mt-36" },
 ];
 
 // Row with a bent, stair-step connecting line + traveling ball, same motif
 // and visibility as the Home page's WhyAcciva row (colored gradient line
 // drawn in permanently, plus a glowing ball that relays across, looping
 // forever) — the path itself steps down to match each card's offset.
-const SafetyCardsRow = () => {
+const SafetyCardsRow = ({ cards }) => {
   const [active, setActive] = useState(-1);
   const cx = [150, 225, 300, 375, 450, 525, 600, 675, 750];
   const cy = [56, 56, 56, 92, 128, 128, 128, 162, 196];
@@ -444,53 +494,34 @@ const SafetyCardsRow = () => {
       </svg>
 
       <div className="grid sm:grid-cols-3 gap-6 lg:gap-8 relative z-10">
-        {SAFETY_CARDS.map((card, i) => (
-          <motion.div
-            key={card.title}
-            initial={{ opacity: 0, y: 40, scale: 0.95 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className={card.offset}
-          >
-            <SafetyCard card={card} isActive={active === i} />
-          </motion.div>
-        ))}
+        {cards.map((card, i) => {
+          const visual = SAFETY_CARD_VISUALS[i % SAFETY_CARD_VISUALS.length];
+          const mergedCard = { ...card, ...visual };
+          return (
+            <motion.div
+              key={card.title}
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
+              className={visual.offset}
+            >
+              <SafetyCard card={mergedCard} isActive={active === i} />
+            </motion.div>
+          );
+        })}
       </div>
     </div>
   );
 };
 
-const DIFFERENTIATORS = [
-  {
-    icon: Layers,
-    title: "Not One-Size-Fits-All",
-    text: "Services built around each client's specific routes and schedules.",
-  },
-  {
-    icon: Route,
-    title: "Requirement-Led Planning",
-    text: "Route planning and scheduling shaped by real operational needs.",
-  },
-  {
-    icon: UserCheck,
-    title: "Fleet & Driver Coordination",
-    text: "Vehicles and drivers coordinated so nothing is left to chance.",
-  },
-  {
-    icon: Sparkles,
-    title: "Technology-Supported Tracking",
-    text: "A dependable partner backed by visibility at every step.",
-  },
-];
-
 // Vertical timeline of differentiators with a traveling ball running down the
 // connecting line, looping forever — when it reaches an item, that item's
 // icon and card light up (same motif as the Technology page's "How It Works"
 // process timeline).
-const DifferentiatorTimeline = () => {
+const DifferentiatorTimeline = ({ items }) => {
   const [active, setActive] = useState(-1);
-  const total = DIFFERENTIATORS.length;
+  const total = items.length;
 
   return (
     <div className="relative">
@@ -524,8 +555,9 @@ const DifferentiatorTimeline = () => {
       />
 
       <div className="space-y-5">
-        {DIFFERENTIATORS.map((item, i) => {
+        {items.map((item, i) => {
           const isActive = active === i;
+          const IconComp = resolveIcon(item.icon);
           return (
             <motion.div
               key={item.title}
@@ -558,7 +590,7 @@ const DifferentiatorTimeline = () => {
                     transition={{ duration: 1, repeat: Infinity, ease: "easeOut" }}
                   />
                 )}
-                <item.icon size={18} className="relative z-10" />
+                <IconComp size={18} className="relative z-10" />
               </motion.span>
               <motion.div
                 animate={
@@ -605,7 +637,7 @@ const Services = () => {
       <section
         className="pt-28 sm:pt-32 pb-4 md:pb-6 relative overflow-hidden"
         style={{
-          backgroundImage: `url('https://images.pexels.com/photos/34985962/pexels-photo-34985962.jpeg?auto=compress&cs=tinysrgb&w=1920')`,
+          backgroundImage: `url('${content.heroBackgroundImage}')`,
           backgroundSize: "cover",
           backgroundPosition: "center 35%",
           backgroundAttachment: "fixed",
@@ -847,39 +879,19 @@ const Services = () => {
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-6 space-y-5"
             >
-              <span className="eyebrow text-teal">Smarter Visibility</span>
+              <span className="eyebrow text-teal">{content.techEyebrow}</span>
               <h2 className="font-display text-2xl sm:text-3xl md:text-4xl leading-[1.08] tracking-tight">
-                Technology &{" "}
-                <span className="italic text-teal font-normal">Tracking</span>
+                {content.techHeadingMain}{" "}
+                <span className="italic text-teal font-normal">{content.techHeadingAccent}</span>
               </h2>
               <div className="space-y-4 text-slate-700 text-[15px] font-normal leading-relaxed">
-                <p>
-                  Technology plays an important role in how we manage our
-                  transportation services.
-                </p>
-                <p>
-                  With{" "}
-                  <span className="font-bold text-navy">
-                    GPS vehicle tracking and mobile-based monitoring
-                  </span>
-                  , clients can have better visibility of vehicles and routes.
-                  Tracking information can help transportation teams monitor
-                  journeys, keep passengers informed, and respond quickly when
-                  routes or schedules need to change.
-                </p>
-                <p>
-                  For school transportation, tracking can also give parents and
-                  authorized users useful information about the vehicle&apos;s
-                  location and expected arrival time.
-                </p>
-                <p>
-                  By combining technology with hands-on operational management,
-                  we make transportation easier to monitor and manage.
-                </p>
+                {content.techParagraphs.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
               </div>
 
               {/* Feature chips row */}
-              <FeatureChipsRow />
+              <FeatureChipsRow chips={content.techFeatureChips} />
             </motion.div>
 
             {/* Right — Live tracking radar visual */}
@@ -896,7 +908,7 @@ const Services = () => {
             >
               <div className="relative aspect-square max-w-[420px] mx-auto rounded-3xl bg-white border border-navy/10 shadow-2xl overflow-hidden group">
                 <AnimatedImage
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSl1PGWlQMFcALtYDya1LX3qwlmG22SbNwVPm2T3sBLgd8F-GYxd64fZNH9&s=10"
+                  src={content.techImage}
                   alt="Live GPS vehicle tracking"
                   effect="zoom-out"
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -938,28 +950,22 @@ const Services = () => {
             className="mb-10"
           >
             <div className="max-w-3xl">
-              <span className="eyebrow text-teal">Trust & Compliance</span>
+              <span className="eyebrow text-teal">{content.safetyEyebrow}</span>
               <h2 className="font-display text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-4 tracking-tight">
-                Safety &{" "}
+                {content.safetyHeadingMain}{" "}
                 <span className="italic text-teal font-normal">
-                  Driver Standards
+                  {content.safetyHeadingAccent}
                 </span>
               </h2>
             </div>
             <div className="mt-5 space-y-4 text-slate-700 text-[15px] font-normal leading-relaxed">
-              <p>
-                When you are responsible for transporting students or employees,
-                safety comes first.
-              </p>
-              <p>
-                Our aim is to give schools, businesses, passengers, and parents
-                confidence that their transportation is being handled
-                responsibly.
-              </p>
+              {content.safetyParagraphs.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
             </div>
           </motion.div>
 
-          <SafetyCardsRow />
+          <SafetyCardsRow cards={content.safetyCards} />
         </div>
       </section>
 
@@ -979,11 +985,11 @@ const Services = () => {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-2xl mb-12"
           >
-            <span className="eyebrow text-teal">Distinct Advantage</span>
+            <span className="eyebrow text-teal">{content.whyEyebrow}</span>
             <h2 className="font-display text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-4 tracking-tight">
-              Why Choose{" "}
+              {content.whyHeadingMain}{" "}
               <span className="italic text-teal font-normal">
-                Acciva Travels?
+                {content.whyHeadingAccent}
               </span>
             </h2>
           </motion.div>
@@ -997,21 +1003,9 @@ const Services = () => {
               transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-7 space-y-5 text-slate-700 text-[15px] font-normal leading-relaxed"
             >
-              <p>
-                Every organization has different transportation needs. A school
-                may need carefully planned student routes, while a company may
-                need employee pickups that match multiple shifts and locations.
-              </p>
-              <p>
-                That&apos;s why we don&apos;t believe in a one-size-fits-all
-                approach.
-              </p>
-              <p>
-                Acciva Travels works with clients to understand their
-                requirements and build transportation services around them. From
-                route planning and scheduling to fleet and driver coordination,
-                our team manages the details that keep the service moving.
-              </p>
+              {content.whyParagraphs.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
 
               <TiltCard
                 glowColor="rgba(225,197,157,0.35)"
@@ -1022,12 +1016,7 @@ const Services = () => {
                   style={{ transform: "translateZ(20px)" }}
                   className="font-display text-lg sm:text-xl text-navy font-medium leading-snug relative"
                 >
-                  With professional drivers, managed vehicles, route planning,
-                  and technology-supported tracking, we provide organizations
-                  with a{" "}
-                  <span className="italic text-teal">
-                    transportation partner they can rely on.
-                  </span>
+                  {content.whyHighlight}
                 </p>
               </TiltCard>
             </motion.div>
@@ -1044,7 +1033,7 @@ const Services = () => {
               }}
               className="lg:col-span-5 relative"
             >
-              <DifferentiatorTimeline />
+              <DifferentiatorTimeline items={content.differentiators} />
             </motion.div>
           </div>
         </div>
@@ -1070,22 +1059,15 @@ const Services = () => {
                 <MessageCircle size={26} />
               </div>
               <h2 className="font-display text-2xl sm:text-3xl md:text-4xl leading-[1.08] tracking-tight">
-                Let&apos;s Talk About Your{" "}
+                {content.talkHeadingMain}{" "}
                 <span className="italic text-teal font-normal">
-                  Transportation Needs
+                  {content.talkHeadingAccent}
                 </span>
               </h2>
               <div className="mt-5 space-y-3 text-slate-700 text-[15px] font-normal leading-relaxed max-w-2xl mx-auto">
-                <p>
-                  Looking for a reliable transportation partner for your school,
-                  business, or organization?
-                </p>
-                <p>
-                  Talk to Acciva Travels about your requirements. We&apos;ll
-                  work with you to understand your routes, schedules, and
-                  operational needs and develop a transportation solution that
-                  works for you.
-                </p>
+                {content.talkParagraphs.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
               </div>
               <div className="mt-8 flex justify-center">
                 <Magnetic strength={20}>
@@ -1093,7 +1075,7 @@ const Services = () => {
                     to="/contact"
                     className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
                   >
-                    <span>Talk to Acciva Travels</span>
+                    <span>{content.talkButtonText}</span>
                     <ArrowUpRight size={16} />
                   </NavLink>
                 </Magnetic>
@@ -1127,7 +1109,18 @@ const Services = () => {
             </p>
           </motion.div>
 
-          <ServiceList services={services} />
+          <ServiceList
+            services={services}
+            filterLabel={content.catalogueFilterLabel}
+            filterLabels={{
+              all: content.catalogueFilterAllLabel,
+              daily: content.catalogueFilterDailyLabel,
+              executive: content.catalogueFilterExecutiveLabel,
+              group: content.catalogueFilterGroupLabel,
+            }}
+            cardButtonText={content.catalogueCardButtonText}
+            slaText={content.catalogueSlaText}
+          />
         </div>
       </section>
 
@@ -1152,7 +1145,7 @@ const Services = () => {
 
         <div className="container-px relative z-10 text-center max-w-4xl mx-auto">
           <span className="eyebrow text-teal inline-block">
-            Enterprise Mobility Consulting
+            {content.ctaEyebrow}
           </span>
 
           <motion.div
@@ -1166,13 +1159,13 @@ const Services = () => {
 
           <h2 className="font-display text-2xl sm:text-3xl md:text-4xl leading-[1.08] tracking-tight">
             {[
-              { text: "Ready to Optimize Your", cls: "" },
+              { text: content.ctaHeadingMain, cls: "" },
               {
-                text: "Company Transportation?",
+                text: content.ctaHeadingAccent,
                 cls: "italic text-teal font-normal",
               },
             ].map((line, i) => (
-              <span className="line-mask block" key={line.text}>
+              <span className="line-mask block" key={i}>
                 <motion.span
                   initial={{ y: "40%", opacity: 0 }}
                   whileInView={{ y: "0%", opacity: 1 }}
@@ -1191,8 +1184,7 @@ const Services = () => {
           </h2>
 
           <p className="mt-6 text-slate-700 text-[15px] font-normal max-w-2xl mx-auto leading-relaxed">
-            Get a tailored fleet proposal with live telemetry integration,
-            automated shift rostering, and dedicated command support.
+            {content.ctaParagraph}
           </p>
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-5">
@@ -1201,7 +1193,7 @@ const Services = () => {
                 to="/contact"
                 className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
               >
-                <span>Request Enterprise Quote</span>
+                <span>{content.ctaButton1Text}</span>
                 <ArrowUpRight size={16} />
               </NavLink>
             </Magnetic>
@@ -1211,7 +1203,7 @@ const Services = () => {
                 to="/about"
                 className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
               >
-                <span>Learn About Our Standards</span>
+                <span>{content.ctaButton2Text}</span>
                 <ArrowUpRight size={16} />
               </NavLink>
             </Magnetic>

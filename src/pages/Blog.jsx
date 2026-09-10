@@ -16,6 +16,8 @@ const BLOG_DEFAULTS = {
   heroTitleAccent: "Fleet Innovation.",
   heroIntro:
     "Explore key industry insights on corporate employee transportation, AI dispatch telematics, EV sustainability, and mobility benchmarks across India.",
+  heroBackgroundImage:
+    "https://dam.alfuttaim.com/dx/api/dam/v1/collections/26711d2e-640a-4167-bd6a-a2f1ebd504d6/items/cf0b0423-4519-4326-981d-a3f8f580513e/renditions/6063f964-039e-4fa3-93dd-2903c8ebc68c?binary=true&mformat=true",
   newsletterEyebrow: "Monthly Fleet Dispatch Digest",
   newsletterHeadingMain: "Stay Ahead in Corporate",
   newsletterHeadingAccent: "Mobility Innovation.",
@@ -52,7 +54,7 @@ const Blog = () => {
       <section
         className="pt-28 sm:pt-32 pb-4 md:pb-6 relative overflow-hidden"
         style={{
-          backgroundImage: `url('https://dam.alfuttaim.com/dx/api/dam/v1/collections/26711d2e-640a-4167-bd6a-a2f1ebd504d6/items/cf0b0423-4519-4326-981d-a3f8f580513e/renditions/6063f964-039e-4fa3-93dd-2903c8ebc68c?binary=true&mformat=true')`,
+          backgroundImage: `url('${content.heroBackgroundImage}')`,
           backgroundSize: "cover",
           backgroundPosition: "center bottom",
           backgroundAttachment: "fixed",

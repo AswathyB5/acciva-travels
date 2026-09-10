@@ -18,7 +18,16 @@ const itemVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
 };
 
-const FeaturedServices = () => {
+const FeaturedServices = ({
+  eyebrow = "Our Services",
+  headingMain = "Our Transport",
+  headingAccent = "Services.",
+  buttonText = "Explore All Services",
+  cardButtonText = "View Specifications",
+  stripTitle = "Full Spectrum Fleet Management",
+  stripDescription = "Also providing Dedicated Staff Bus Shuttles, Corporate VIP Delegations & Inter-City Business Transit.",
+  stripButtonText = "View All Capabilities",
+}) => {
   const { items: services } = useCollection("services", fallbackServices);
   const featured = services.slice(0, 1);
 
@@ -33,9 +42,9 @@ const FeaturedServices = () => {
         className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6"
       >
         <div>
-          <span className="eyebrow text-teal">Our Services</span>
+          <span className="eyebrow text-teal">{eyebrow}</span>
           <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-6 tracking-tight">
-            Our Transport <span className="italic text-teal font-normal">Services.</span>
+            {headingMain} <span className="italic text-teal font-normal">{headingAccent}</span>
           </h2>
         </div>
 
@@ -43,7 +52,7 @@ const FeaturedServices = () => {
           to="/services"
           className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl shrink-0 group self-start md:self-end"
         >
-          <span>Explore All Services</span>
+          <span>{buttonText}</span>
           <ArrowUpRight
             size={16}
             className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
@@ -131,7 +140,7 @@ const FeaturedServices = () => {
                       to="/services"
                       className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border backdrop-blur-sm text-xs font-mono font-semibold mt-3 w-fit transition-colors duration-300 group/link ${ctaContainerClass}`}
                     >
-                      <span>View Specifications</span>
+                      <span>{cardButtonText}</span>
                       <ArrowUpRight size={13} className="transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
                     </NavLink>
                   </motion.div>
@@ -159,10 +168,10 @@ const FeaturedServices = () => {
           </motion.div>
           <div>
             <p className="text-xs font-mono uppercase tracking-wider text-teal font-bold">
-              Full Spectrum Fleet Management
+              {stripTitle}
             </p>
             <p className="text-[13px] text-slate-600 leading-relaxed mt-0.5">
-              Also providing Dedicated Staff Bus Shuttles, Corporate VIP Delegations &amp; Inter-City Business Transit.
+              {stripDescription}
             </p>
           </div>
         </div>
@@ -171,7 +180,7 @@ const FeaturedServices = () => {
           to="/services"
           className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl shrink-0"
         >
-          <span>View All Capabilities</span>
+          <span>{stripButtonText}</span>
           <ArrowUpRight size={16} className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
         </NavLink>
       </motion.div>

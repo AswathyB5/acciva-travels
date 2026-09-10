@@ -9,24 +9,128 @@ import {
 import {
   ChevronRight,
   ArrowUpRight,
-  Users,
-  ClipboardList,
-  Route as RouteIcon,
-  Gauge,
-  RefreshCcw,
-  UserCheck,
-  Wrench,
-  Sparkles,
-  Radar,
-  Smartphone,
-  Bell,
   Landmark,
-  Building2,
   MessageCircle,
 } from "lucide-react";
 import Seo from "../components/Seo";
 import AnimatedImage from "../components/AnimatedImage";
 import Magnetic from "../components/Magnetic";
+import { usePageContent } from "../data/useContent";
+import { resolveIcon } from "../data/iconMap";
+
+const ETS_DEFAULTS = {
+  heroEyebrow: "Corporate Mobility",
+  heroTitleMain: "Acciva Travels: Reliable Corporate Employee Transportation Services",
+  heroTitleAccent: "Tailored to Your Business Needs",
+  heroBackgroundImage:
+    "https://images.pexels.com/photos/34985962/pexels-photo-34985962.jpeg?auto=compress&cs=tinysrgb&w=1920",
+  introEyebrow: "Built Around Your Business",
+  introHeadingMain: "Employee Transportation That",
+  introHeadingAccent: "Works Around Your Business.",
+  introParagraphs: [
+    "Managing employee transportation can become complicated when you have multiple shifts, pickup locations, routes, and changing workforce requirements. Delays, missed pickups, and poor coordination can affect employee experience and also add unnecessary work for your HR and administration teams.",
+    "Acciva Travels helps businesses take that responsibility off their hands. We plan and manage employee transportation around your working hours, employee locations, and operational requirements, providing reliable daily pickup and drop-off services while your team focuses on running the business.",
+    "From scheduled employee transportation to shift-based services and customized routes, we handle the coordination of vehicles, drivers, routes, schedules, and tracking to keep your employee transportation organized and dependable.",
+  ],
+  introImage:
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQo3X_Wak1PB2CWrLV-HNNlB9sU84cQOvJi36YLZfHJnXnVGp8Rxn815_s&s=10",
+  offerEyebrow: "What We Offer",
+  offerHeadingMain: "Employee Transportation",
+  offerHeadingAccent: "Services.",
+  offerParagraphs: [
+    "Acciva Travels offers employee transportation solutions that include daily employee pickup and drop-off, shift-based transportation, and multiple pickup and drop-off locations.",
+    "We understand that every organization has different transportation requirements. Some businesses may have several work shifts, while others may have employees travelling from different parts of the city. Transportation requirements can also change as teams, shifts, and employee locations change.",
+    "Our services are designed to accommodate these requirements and provide your staff with timely, consistent, and well-organized transportation every day.",
+  ],
+  offerImage: "https://amazelogistics.com/img/employee-transport-hero.webp",
+  routeEyebrow: "Planning & Coordination",
+  routeHeadingMain: "How We Plan",
+  routeHeadingAccent: "& Manage Routes.",
+  routeParagraphs: [
+    "A good transportation service starts with good planning.",
+    "We work closely with your HR, administration, and operations teams to understand employee locations, shift timings, preferred pickup points, route requirements, and other operational needs. Based on this information, we develop transportation plans that are practical and efficient for your organization.",
+    "Our route planning takes into account factors such as traffic conditions, employee locations, route distances, and shift schedules. This helps us create routes that reduce unnecessary travel time while keeping pickups and drop-offs organized and punctual.",
+    "As requirements change, routes and schedules can also be reviewed and adjusted to keep the service working effectively.",
+  ],
+  routeSteps: [
+    { step: "01", title: "Understand Requirements", icon: "ClipboardList" },
+    { step: "02", title: "Design Practical Routes", icon: "Route" },
+    { step: "03", title: "Keep It Punctual", icon: "Gauge" },
+    { step: "04", title: "Review & Adjust", icon: "RefreshCcw" },
+  ],
+  safetyEyebrow: "Trust & Compliance",
+  safetyHeadingMain: "Safety, Drivers",
+  safetyHeadingAccent: "& Vehicles.",
+  safetyDescription: "Employee safety is one of our priorities.",
+  safetyCards: [
+    {
+      icon: "UserCheck",
+      title: "Verified, Trained Drivers",
+      text: "At Acciva Travels, we maintain a fleet of well-maintained vehicles operated by experienced and trained drivers. Driver verification, qualifications, experience, and professional conduct are important parts of our transportation operations.",
+    },
+    {
+      icon: "Wrench",
+      title: "Vehicle Upkeep",
+      text: "We also pay attention to regular vehicle checks and maintenance to help keep every journey safe and comfortable.",
+    },
+    {
+      icon: "Sparkles",
+      title: "Comfortable Journeys",
+      text: "From clean interiors to comfortable seating and adequate ventilation, we aim to provide employees with a pleasant travel experience throughout their daily commute.",
+    },
+  ],
+  techEyebrow: "Smarter Visibility",
+  techHeadingMain: "GPS Tracking",
+  techHeadingAccent: "& Technology.",
+  techParagraphs: [
+    "Technology gives businesses better visibility over their transportation operations.",
+    "Our corporate transportation services can incorporate GPS vehicle tracking and driver monitoring systems, allowing authorized teams to view vehicle locations and monitor transportation activity.",
+    "This provides HR and administration teams with useful information about ongoing journeys and helps improve communication when there are changes or unexpected delays. Better visibility also makes it easier to manage routes, schedules, and day-to-day transportation requirements.",
+  ],
+  techFeatures: [
+    { icon: "Radar", label: "GPS Vehicle Tracking" },
+    { icon: "Smartphone", label: "Driver Monitoring" },
+    { icon: "Bell", label: "Delay & Change Alerts" },
+  ],
+  techImage:
+    "https://vitalglowgps.com/cdn/shop/articles/node-n_412b4s6n_17cb7cce-2db8-48bd-99f7-0ee28b502dd4.png?v=1780563505&width=1200",
+  benefitsEyebrow: "Why It Matters",
+  benefitsHeadingMain: "Benefits for Employers",
+  benefitsHeadingAccent: "and Employees.",
+  benefitsDescription:
+    "Managing employee transportation can take considerable time, particularly when there are multiple routes, shifts, vehicles, and pickup locations involved.",
+  benefits: [
+    {
+      icon: "Building2",
+      title: "For Employers",
+      text: "With Acciva Travels managing the transportation operation, your HR and administration teams can spend less time dealing with daily transportation coordination. We take care of route coordination, driver and vehicle allocation, scheduling, monitoring, and ongoing operational support.",
+    },
+    {
+      icon: "Users",
+      title: "For Employees",
+      text: "For employees, a dependable transportation service means more predictable commutes, less travel-related stress, and greater confidence in their daily journey to and from work.",
+    },
+  ],
+  whyEyebrow: "Distinct Advantage",
+  whyHeadingMain: "Why Choose",
+  whyHeadingAccent: "Acciva Travels?",
+  whyParagraphs: [
+    "Every business has its own workforce, working hours, locations, and transportation challenges. That's why we take a practical and flexible approach to employee transportation.",
+    "Acciva Travels works with your team to understand what you need and build a transportation plan around your actual requirements. Whether you have multiple shifts, employees travelling from different locations, or changing transportation needs, we work to keep the service organized and reliable.",
+  ],
+  whyHighlight:
+    "With professional drivers, managed vehicles, route planning, GPS tracking, and responsive operational support, we provide businesses with a transportation partner they can rely on.",
+  whyImage:
+    "https://media.istockphoto.com/id/182913362/photo/travel-coaches-at-tourist-destination-parked-in-a-row.jpg?s=612x612&w=0&k=20&c=WydkBjrqbYQKAITmQ9oEWzwzsQbQhp15OCOiSTgqj-g=",
+  talkEyebrow: "",
+  talkHeadingMain: "Let's Talk About Your",
+  talkHeadingAccent: "Employee Transportation Needs",
+  talkParagraphs: [
+    "If your organization is looking for a reliable partner to manage employee or staff transportation, Acciva Travels can help.",
+    "Talk to us about your routes, shift timings, employee locations, and other requirements. We'll work with your team to understand your needs and develop a transportation plan that works for your business and your employees.",
+  ],
+  talkButtonText: "Talk to Acciva Travels",
+};
 
 // 3D tilt card — same motif used across Services/About pages.
 const TiltCard = ({
@@ -145,14 +249,7 @@ const SectionHeading = ({
 // Horizontal route-planning timeline — same motif and layout as the
 // Technology page's "How It Works" process timeline (connecting line with a
 // traveling comet, numbered icon tiles arranged in a responsive row).
-const ROUTE_STEPS = [
-  { step: "01", title: "Understand Requirements", icon: ClipboardList },
-  { step: "02", title: "Design Practical Routes", icon: RouteIcon },
-  { step: "03", title: "Keep It Punctual", icon: Gauge },
-  { step: "04", title: "Review & Adjust", icon: RefreshCcw },
-];
-
-const RouteStepsTimeline = () => {
+const RouteStepsTimeline = ({ steps }) => {
   const [active, setActive] = useState(0);
 
   return (
@@ -185,8 +282,8 @@ const RouteStepsTimeline = () => {
       </div>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
-        {ROUTE_STEPS.map((s, idx) => {
-          const StepIcon = s.icon;
+        {steps.map((s, idx) => {
+          const StepIcon = resolveIcon(s.icon);
           return (
             <motion.div
               key={s.step}
@@ -248,36 +345,8 @@ const RouteStepsTimeline = () => {
 
 // Safety cards — same stair-step card, gradient path, and traveling-ball
 // motif as the Services page's "Trust & Compliance" section.
-const SAFETY_CARDS = [
-  {
-    icon: UserCheck,
-    title: "Verified, Trained Drivers",
-    text: (
-      <>
-        At Acciva Travels, we maintain a fleet of{" "}
-        <span className="font-bold text-navy">well-maintained vehicles</span> operated by
-        experienced and trained drivers. Driver verification, qualifications, experience,
-        and professional conduct are important parts of our transportation operations.
-      </>
-    ),
-    tone: "teal",
-    offset: "lg:mt-0",
-  },
-  {
-    icon: Wrench,
-    title: "Vehicle Upkeep",
-    text: "We also pay attention to regular vehicle checks and maintenance to help keep every journey safe and comfortable.",
-    tone: "sand",
-    offset: "lg:mt-18",
-  },
-  {
-    icon: Sparkles,
-    title: "Comfortable Journeys",
-    text: "From clean interiors to comfortable seating and adequate ventilation, we aim to provide employees with a pleasant travel experience throughout their daily commute.",
-    tone: "teal",
-    offset: "lg:mt-36",
-  },
-];
+const SAFETY_TONES = ["teal", "sand", "teal"];
+const SAFETY_OFFSETS = ["lg:mt-0", "lg:mt-18", "lg:mt-36"];
 
 const SafetyCard = ({ card, isActive }) => {
   const isTeal = card.tone === "teal";
@@ -366,7 +435,10 @@ const SafetyCard = ({ card, isActive }) => {
               />
             </>
           )}
-          <card.icon size={24} className="stroke-[1.75] relative z-10" />
+          {(() => {
+            const CardIcon = resolveIcon(card.icon);
+            return <CardIcon size={24} className="stroke-[1.75] relative z-10" />;
+          })()}
         </div>
         <h3 className="font-display text-navy text-lg font-bold leading-snug">{card.title}</h3>
         <p className="text-slate-600 text-[13px] leading-relaxed mt-2">{card.text}</p>
@@ -375,7 +447,7 @@ const SafetyCard = ({ card, isActive }) => {
   );
 };
 
-const SafetyCardsRow = () => {
+const SafetyCardsRow = ({ cards }) => {
   const [active, setActive] = useState(-1);
   const cx = [150, 225, 300, 375, 450, 525, 600, 675, 750];
   const cy = [56, 56, 56, 92, 128, 128, 128, 162, 196];
@@ -431,16 +503,19 @@ const SafetyCardsRow = () => {
       </svg>
 
       <div className="grid sm:grid-cols-3 gap-6 lg:gap-8 relative z-10">
-        {SAFETY_CARDS.map((card, i) => (
+        {cards.map((card, i) => (
           <motion.div
             key={card.title}
             initial={{ opacity: 0, y: 40, scale: 0.95 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className={card.offset}
+            className={SAFETY_OFFSETS[i % SAFETY_OFFSETS.length]}
           >
-            <SafetyCard card={card} isActive={active === i} />
+            <SafetyCard
+              card={{ ...card, tone: SAFETY_TONES[i % SAFETY_TONES.length] }}
+              isActive={active === i}
+            />
           </motion.div>
         ))}
       </div>
@@ -449,15 +524,11 @@ const SafetyCardsRow = () => {
 };
 
 // GPS Tracking & Technology feature chips.
-const TECH_FEATURES = [
-  { icon: Radar, label: "GPS Vehicle Tracking", tone: "teal" },
-  { icon: Smartphone, label: "Driver Monitoring", tone: "sand" },
-  { icon: Bell, label: "Delay & Change Alerts", tone: "teal" },
-];
+const TECH_TONES = ["teal", "sand", "teal"];
 
-const TechFeatureRow = () => {
+const TechFeatureRow = ({ features }) => {
   const [active, setActive] = useState(-1);
-  const total = TECH_FEATURES.length;
+  const total = features.length;
 
   return (
     <div className="relative pt-4">
@@ -491,9 +562,10 @@ const TechFeatureRow = () => {
       </div>
 
       <div className="flex flex-wrap gap-3 relative z-10">
-        {TECH_FEATURES.map((item, i) => {
+        {features.map((item, i) => {
+          const ItemIcon = resolveIcon(item.icon);
           const isActive = active === i;
-          const isSand = item.tone === "sand";
+          const isSand = TECH_TONES[i % TECH_TONES.length] === "sand";
           const glow = isSand ? "rgba(225,197,157,0.6)" : "rgba(59,141,196,0.4)";
           return (
             <motion.div
@@ -529,7 +601,7 @@ const TechFeatureRow = () => {
                     transition={{ duration: 1, repeat: Infinity, ease: "easeOut" }}
                   />
                 )}
-                <item.icon size={15} className="relative z-10" />
+                <ItemIcon size={15} className="relative z-10" />
               </span>
               <span
                 className={`text-[13px] font-semibold ${isSand ? "text-[#a3843f]" : "text-navy"}`}
@@ -544,38 +616,12 @@ const TechFeatureRow = () => {
   );
 };
 
-const BENEFITS = [
-  {
-    icon: Building2,
-    title: "For Employers",
-    text: (
-      <>
-        With Acciva Travels managing the transportation operation,{" "}
-        <span className="font-bold text-navy">
-          your HR and administration teams can spend less time dealing with daily
-          transportation coordination.
-        </span>{" "}
-        We take care of route coordination, driver and vehicle allocation, scheduling,
-        monitoring, and ongoing operational support.
-      </>
-    ),
-  },
-  {
-    icon: Users,
-    title: "For Employees",
-    text: (
-      <>
-        For employees, a dependable transportation service means{" "}
-        <span className="font-bold text-navy">
-          more predictable commutes, less travel-related stress, and greater confidence in
-          their daily journey to and from work.
-        </span>
-      </>
-    ),
-  },
-];
-
 const EmployeeTransportationServices = () => {
+  const { data: content } = usePageContent(
+    "employee-transportation-services",
+    ETS_DEFAULTS
+  );
+
   return (
     <div className="bg-soft text-navy overflow-hidden">
       <Seo
@@ -590,7 +636,7 @@ const EmployeeTransportationServices = () => {
       <section
         className="pt-28 sm:pt-32 pb-4 md:pb-6 relative overflow-hidden"
         style={{
-          backgroundImage: `url('https://images.pexels.com/photos/34985962/pexels-photo-34985962.jpeg?auto=compress&cs=tinysrgb&w=1920')`,
+          backgroundImage: `url('${content.heroBackgroundImage}')`,
           backgroundSize: "cover",
           backgroundPosition: "center 35%",
           backgroundAttachment: "fixed",
@@ -626,12 +672,11 @@ const EmployeeTransportationServices = () => {
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               className="max-w-6xl"
             >
-              <span className="eyebrow text-teal">Corporate Mobility</span>
+              <span className="eyebrow text-teal">{content.heroEyebrow}</span>
               <h1 className="font-display text-navy text-3xl sm:text-4xl md:text-[2.75rem] leading-[1.08] mt-6 tracking-tight">
-                Acciva Travels: Reliable Corporate Employee Transportation
-                Services{" "}
+                {content.heroTitleMain}{" "}
                 <span className="italic text-teal font-normal">
-                  Tailored to Your Business Needs
+                  {content.heroTitleAccent}
                 </span>{" "}
               </h1>
             </motion.div>
@@ -653,12 +698,12 @@ const EmployeeTransportationServices = () => {
             className="max-w-3xl"
           >
             <span className="eyebrow text-teal">
-              Built Around Your Business
+              {content.introEyebrow}
             </span>
             <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-4 tracking-tight">
-              Employee Transportation That{" "}
+              {content.introHeadingMain}{" "}
               <span className="italic text-teal font-normal">
-                Works Around Your Business.
+                {content.introHeadingAccent}
               </span>
             </h2>
           </motion.div>
@@ -677,7 +722,7 @@ const EmployeeTransportationServices = () => {
                 className="relative h-full min-h-[260px] rounded-3xl overflow-hidden shadow-2xl border border-navy/10 group"
               >
                 <AnimatedImage
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQo3X_Wak1PB2CWrLV-HNNlB9sU84cQOvJi36YLZfHJnXnVGp8Rxn815_s&s=10"
+                  src={content.introImage}
                   alt="Acciva Travels employee transportation service"
                   effect="zoom-out"
                   eager
@@ -697,31 +742,9 @@ const EmployeeTransportationServices = () => {
               }}
               className="h-full flex flex-col justify-center space-y-5 text-slate-700 text-[15px] font-normal leading-relaxed"
             >
-              <p>
-                Managing employee transportation can become complicated when you
-                have multiple shifts, pickup locations, routes, and changing
-                workforce requirements. Delays, missed pickups, and poor
-                coordination can affect employee experience and also add
-                unnecessary work for your HR and administration teams.
-              </p>
-              <p>
-                <span className="font-bold text-navy">
-                  Acciva Travels helps businesses take that responsibility off
-                  their hands.
-                </span>{" "}
-                We plan and manage employee transportation around your working
-                hours, employee locations, and operational requirements,
-                providing reliable daily pickup and drop-off services while your
-                team focuses on running the business.
-              </p>
-              <p>
-                From scheduled employee transportation to shift-based services
-                and customized routes, we handle the coordination of{" "}
-                <span className="font-bold text-navy">
-                  vehicles, drivers, routes, schedules, and tracking
-                </span>{" "}
-                to keep your employee transportation organized and dependable.
-              </p>
+              {content.introParagraphs.map((para, i) => (
+                <p key={i}>{para}</p>
+              ))}
             </motion.div>
           </div>
         </div>
@@ -739,10 +762,10 @@ const EmployeeTransportationServices = () => {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-3xl mb-10"
           >
-            <span className="eyebrow text-teal">What We Offer</span>
+            <span className="eyebrow text-teal">{content.offerEyebrow}</span>
             <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-4 tracking-tight">
-              Employee Transportation{" "}
-              <span className="italic text-teal font-normal">Services.</span>
+              {content.offerHeadingMain}{" "}
+              <span className="italic text-teal font-normal">{content.offerHeadingAccent}</span>
             </h2>
           </motion.div>
 
@@ -754,29 +777,9 @@ const EmployeeTransportationServices = () => {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="space-y-5 text-slate-700 text-[15px] font-normal leading-relaxed"
             >
-              <p>
-                Acciva Travels offers employee transportation solutions that
-                include{" "}
-                <span className="font-bold text-navy">
-                  daily employee pickup and drop-off, shift-based
-                  transportation, and multiple pickup and drop-off locations.
-                </span>
-              </p>
-              <p>
-                We understand that every organization has different
-                transportation requirements. Some businesses may have several
-                work shifts, while others may have employees travelling from
-                different parts of the city. Transportation requirements can
-                also change as teams, shifts, and employee locations change.
-              </p>
-              <p>
-                Our services are designed to accommodate these requirements and
-                provide your staff with{" "}
-                <span className="font-bold text-navy">
-                  timely, consistent, and well-organized transportation every
-                  day.
-                </span>
-              </p>
+              {content.offerParagraphs.map((para, i) => (
+                <p key={i}>{para}</p>
+              ))}
             </motion.div>
 
             <motion.div
@@ -795,7 +798,7 @@ const EmployeeTransportationServices = () => {
                 className="relative h-[260px] sm:h-[300px] rounded-3xl overflow-hidden shadow-2xl border border-navy/10 group"
               >
                 <AnimatedImage
-                  src="https://amazelogistics.com/img/employee-transport-hero.webp"
+                  src={content.offerImage}
                   alt="Employee transportation services"
                   effect="zoom-out"
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -813,37 +816,15 @@ const EmployeeTransportationServices = () => {
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-sand/10 rounded-tr-full pointer-events-none" />
         <div className="container-px relative z-10">
           <SectionHeading
-            eyebrow="Planning & Coordination"
-            title="How We Plan"
-            italicTitle="& Manage Routes."
-            description={[
-              "A good transportation service starts with good planning.",
-              <>
-                We work closely with your{" "}
-                <span className="font-bold text-navy">
-                  HR, administration, and operations teams
-                </span>{" "}
-                to understand employee locations, shift timings, preferred
-                pickup points, route requirements, and other operational needs.
-                Based on this information, we develop transportation plans that
-                are practical and efficient for your organization.
-              </>,
-              <>
-                Our route planning takes into account factors such as{" "}
-                <span className="font-bold text-navy">
-                  traffic conditions, employee locations, route distances, and
-                  shift schedules.
-                </span>{" "}
-                This helps us create routes that reduce unnecessary travel time
-                while keeping pickups and drop-offs organized and punctual.
-              </>,
-              "As requirements change, routes and schedules can also be reviewed and adjusted to keep the service working effectively.",
-            ]}
+            eyebrow={content.routeEyebrow}
+            title={content.routeHeadingMain}
+            italicTitle={content.routeHeadingAccent}
+            description={content.routeParagraphs}
             descriptionClassName="max-w-none w-full"
           />
 
           <div className="mt-4">
-            <RouteStepsTimeline />
+            <RouteStepsTimeline steps={content.routeSteps} />
           </div>
         </div>
       </section>
@@ -854,13 +835,13 @@ const EmployeeTransportationServices = () => {
       <section className="py-10 md:py-14 bg-soft">
         <div className="container-px">
           <SectionHeading
-            eyebrow="Trust & Compliance"
-            title="Safety, Drivers"
-            italicTitle="& Vehicles."
-            description="Employee safety is one of our priorities."
+            eyebrow={content.safetyEyebrow}
+            title={content.safetyHeadingMain}
+            italicTitle={content.safetyHeadingAccent}
+            description={content.safetyDescription}
             descriptionClassName="max-w-none w-full"
           />
-          <SafetyCardsRow />
+          <SafetyCardsRow cards={content.safetyCards} />
         </div>
       </section>
 
@@ -888,35 +869,19 @@ const EmployeeTransportationServices = () => {
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-6 space-y-5"
             >
-              <span className="eyebrow text-teal">Smarter Visibility</span>
+              <span className="eyebrow text-teal">{content.techEyebrow}</span>
               <h2 className="font-display text-2xl sm:text-3xl md:text-4xl leading-[1.08] tracking-tight">
-                GPS Tracking{" "}
+                {content.techHeadingMain}{" "}
                 <span className="italic text-teal font-normal">
-                  & Technology.
+                  {content.techHeadingAccent}
                 </span>
               </h2>
               <div className="space-y-4 text-slate-700 text-[15px] font-normal leading-relaxed">
-                <p>
-                  Technology gives businesses better visibility over their
-                  transportation operations.
-                </p>
-                <p>
-                  Our corporate transportation services can incorporate{" "}
-                  <span className="font-bold text-navy">
-                    GPS vehicle tracking and driver monitoring systems
-                  </span>
-                  , allowing authorized teams to view vehicle locations and
-                  monitor transportation activity.
-                </p>
-                <p>
-                  This provides HR and administration teams with useful
-                  information about ongoing journeys and helps improve
-                  communication when there are changes or unexpected delays.
-                  Better visibility also makes it easier to manage routes,
-                  schedules, and day-to-day transportation requirements.
-                </p>
+                {content.techParagraphs.map((para, i) => (
+                  <p key={i}>{para}</p>
+                ))}
               </div>
-              <TechFeatureRow />
+              <TechFeatureRow features={content.techFeatures} />
             </motion.div>
 
             <motion.div
@@ -932,7 +897,7 @@ const EmployeeTransportationServices = () => {
             >
               <div className="relative h-[240px] sm:h-[280px] rounded-3xl bg-white border border-navy/10 shadow-2xl overflow-hidden group">
                 <AnimatedImage
-                  src="https://vitalglowgps.com/cdn/shop/articles/node-n_412b4s6n_17cb7cce-2db8-48bd-99f7-0ee28b502dd4.png?v=1780563505&width=1200"
+                  src={content.techImage}
                   alt="GPS tracking for corporate employee transportation"
                   effect="zoom-out"
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -965,13 +930,15 @@ const EmployeeTransportationServices = () => {
       <section className="py-10 md:py-14 bg-soft">
         <div className="container-px">
           <SectionHeading
-            eyebrow="Why It Matters"
-            title="Benefits for Employers"
-            italicTitle="and Employees."
-            description="Managing employee transportation can take considerable time, particularly when there are multiple routes, shifts, vehicles, and pickup locations involved."
+            eyebrow={content.benefitsEyebrow}
+            title={content.benefitsHeadingMain}
+            italicTitle={content.benefitsHeadingAccent}
+            description={content.benefitsDescription}
           />
           <div className="grid sm:grid-cols-2 gap-6 lg:gap-8">
-            {BENEFITS.map((item, i) => (
+            {content.benefits.map((item, i) => {
+              const ItemIcon = resolveIcon(item.icon);
+              return (
               <motion.div
                 key={item.title}
                 initial={{ opacity: 0, x: i === 0 ? -40 : 40 }}
@@ -1008,7 +975,7 @@ const EmployeeTransportationServices = () => {
                           : "bg-sand/20 text-navy"
                       }`}
                     >
-                      <item.icon size={26} />
+                      <ItemIcon size={26} />
                     </div>
                     <h3 className="font-display text-xl sm:text-2xl text-navy font-bold mb-3">
                       {item.title}
@@ -1019,7 +986,8 @@ const EmployeeTransportationServices = () => {
                   </div>
                 </TiltCard>
               </motion.div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -1039,11 +1007,11 @@ const EmployeeTransportationServices = () => {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-2xl mb-12"
           >
-            <span className="eyebrow text-teal">Distinct Advantage</span>
+            <span className="eyebrow text-teal">{content.whyEyebrow}</span>
             <h2 className="font-display text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-4 tracking-tight">
-              Why Choose{" "}
+              {content.whyHeadingMain}{" "}
               <span className="italic text-teal font-normal">
-                Acciva Travels?
+                {content.whyHeadingAccent}
               </span>
             </h2>
           </motion.div>
@@ -1056,21 +1024,9 @@ const EmployeeTransportationServices = () => {
               transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-7 space-y-5 text-slate-700 text-[15px] font-normal leading-relaxed"
             >
-              <p>
-                Every business has its own workforce, working hours, locations,
-                and transportation challenges. That&apos;s why we take a{" "}
-                <span className="font-bold text-navy">
-                  practical and flexible approach
-                </span>{" "}
-                to employee transportation.
-              </p>
-              <p>
-                Acciva Travels works with your team to understand what you need
-                and build a transportation plan around your actual requirements.
-                Whether you have multiple shifts, employees travelling from
-                different locations, or changing transportation needs, we work
-                to keep the service organized and reliable.
-              </p>
+              {content.whyParagraphs.map((para, i) => (
+                <p key={i}>{para}</p>
+              ))}
 
               <TiltCard
                 glowColor="rgba(225,197,157,0.35)"
@@ -1081,15 +1037,7 @@ const EmployeeTransportationServices = () => {
                   style={{ transform: "translateZ(20px)" }}
                   className="font-display text-lg sm:text-xl text-navy font-medium leading-snug relative"
                 >
-                  With{" "}
-                  <span className="font-bold">
-                    professional drivers, managed vehicles, route planning, GPS
-                    tracking, and responsive operational support,
-                  </span>{" "}
-                  we provide businesses with{" "}
-                  <span className="italic text-teal">
-                    a transportation partner they can rely on.
-                  </span>
+                  {content.whyHighlight}
                 </p>
               </TiltCard>
             </motion.div>
@@ -1111,7 +1059,7 @@ const EmployeeTransportationServices = () => {
                 className="relative h-full min-h-[260px] rounded-3xl overflow-hidden shadow-2xl border border-navy/10 group"
               >
                 <AnimatedImage
-                  src="https://media.istockphoto.com/id/182913362/photo/travel-coaches-at-tourist-destination-parked-in-a-row.jpg?s=612x612&w=0&k=20&c=WydkBjrqbYQKAITmQ9oEWzwzsQbQhp15OCOiSTgqj-g="
+                  src={content.whyImage}
                   alt="Acciva Travels corporate employee transportation fleet"
                   effect="zoom-out"
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -1148,27 +1096,19 @@ const EmployeeTransportationServices = () => {
               <div className="w-14 h-14 mx-auto rounded-2xl bg-teal/10 flex items-center justify-center text-teal shadow-inner mb-6">
                 <MessageCircle size={26} />
               </div>
+              {content.talkEyebrow && (
+                <span className="eyebrow text-teal block mb-3">{content.talkEyebrow}</span>
+              )}
               <h2 className="font-display text-2xl sm:text-3xl md:text-4xl leading-[1.08] tracking-tight">
-                Let&apos;s Talk About Your{" "}
+                {content.talkHeadingMain}{" "}
                 <span className="italic text-teal font-normal">
-                  Employee Transportation Needs
+                  {content.talkHeadingAccent}
                 </span>
               </h2>
               <div className="mt-5 space-y-3 text-slate-700 text-[15px] font-normal leading-relaxed max-w-2xl mx-auto">
-                <p>
-                  If your organization is looking for a reliable partner to
-                  manage{" "}
-                  <span className="font-bold text-navy">
-                    employee or staff transportation
-                  </span>
-                  , Acciva Travels can help.
-                </p>
-                <p>
-                  Talk to us about your routes, shift timings, employee
-                  locations, and other requirements. We&apos;ll work with your
-                  team to understand your needs and develop a transportation
-                  plan that works for your business and your employees.
-                </p>
+                {content.talkParagraphs.map((para, i) => (
+                  <p key={i}>{para}</p>
+                ))}
               </div>
               <div className="mt-8 flex justify-center">
                 <Magnetic strength={20}>
@@ -1176,7 +1116,7 @@ const EmployeeTransportationServices = () => {
                     to="/contact"
                     className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
                   >
-                    <span>Talk to Acciva Travels</span>
+                    <span>{content.talkButtonText}</span>
                     <ArrowUpRight size={16} />
                   </NavLink>
                 </Magnetic>

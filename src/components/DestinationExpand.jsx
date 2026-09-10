@@ -6,7 +6,11 @@ import AnimatedImage from "./AnimatedImage";
 
 const AUTOPLAY_MS = 3500;
 
-const DestinationExpand = ({ destinations }) => {
+const DestinationExpand = ({
+  destinations,
+  showcaseLabel = "Corporate Fleet Showcase · Hover to Expand",
+  ctaLabel = "Book This Fleet",
+}) => {
   const [active, setActive] = useState(0);
   const count = destinations.length;
 
@@ -56,7 +60,7 @@ const DestinationExpand = ({ destinations }) => {
             />
             <Sparkles size={14} className="text-teal relative z-10" />
           </motion.span>
-          <span>Corporate Fleet Showcase · Hover to Expand</span>
+          <span>{showcaseLabel}</span>
         </p>
 
         {/* Dynamic active index indicator — the fill sweeping across the active
@@ -186,6 +190,16 @@ const DestinationExpand = ({ destinations }) => {
                     >
                       {d.name}
                     </motion.h3>
+                    {d.description && (
+                      <motion.p
+                        initial={false}
+                        animate={{ opacity: isActive ? 1 : 0, x: isActive ? 0 : -20 }}
+                        transition={{ duration: 0.5, delay: 0.2 }}
+                        className="mt-3 text-ivory/80 text-sm leading-relaxed max-w-sm"
+                      >
+                        {d.description}
+                      </motion.p>
+                    )}
                     <motion.div
                       whileHover={{ scale: 1.06 }}
                       whileTap={{ scale: 0.96 }}
@@ -193,7 +207,7 @@ const DestinationExpand = ({ destinations }) => {
                       transition={{ y: { duration: 2, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" } }}
                       className="mt-6 inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
                     >
-                      <span>Book This Fleet</span>
+                      <span>{ctaLabel}</span>
                       <motion.span
                         animate={{ x: [0, 3, 0] }}
                         transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}

@@ -1,23 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { MapPin, Users, Award, Headphones, Clock, Sparkles, ShieldCheck } from "lucide-react";
-
-const ICON_MAP = {
-  MapPin: MapPin,
-  Users: Users,
-  Award: Award,
-  Headphones: Headphones,
-  Clock: Clock,
-  Sparkles: Sparkles,
-  ShieldCheck: ShieldCheck,
-};
+import { iconMap } from "../data/iconMap";
 
 const StatCounter = ({ value, suffix = "", display, label, icon, duration = 1.8, index = 0 }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
   const [count, setCount] = useState(0);
 
-  const IconComponent = icon && ICON_MAP[icon] ? ICON_MAP[icon] : null;
+  const IconComponent = icon && iconMap[icon] ? iconMap[icon] : null;
 
   useEffect(() => {
     if (!isInView || display) return;

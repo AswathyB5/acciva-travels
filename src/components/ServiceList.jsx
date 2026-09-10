@@ -5,14 +5,20 @@ import { ArrowUpRight, ShieldCheck, Filter } from "lucide-react";
 import AnimatedImage from "./AnimatedImage";
 import { resolveIcon } from "../data/iconMap";
 
-const ServiceList = ({ services }) => {
+const ServiceList = ({
+  services,
+  filterLabel = "Filter Fleet by:",
+  filterLabels = {},
+  cardButtonText = "View Details",
+  slaText = "99.8% SLA Backed • Pan-India",
+}) => {
   const [filter, setFilter] = useState("all");
 
   const categories = [
-    { id: "all", label: "All Fleet Capabilities" },
-    { id: "daily", label: "Daily Employee Transit" },
-    { id: "executive", label: "Executive & VIP" },
-    { id: "group", label: "Shuttle & Tech Parks" },
+    { id: "all", label: filterLabels.all || "All Fleet Capabilities" },
+    { id: "daily", label: filterLabels.daily || "Daily Employee Transit" },
+    { id: "executive", label: filterLabels.executive || "Executive & VIP" },
+    { id: "group", label: filterLabels.group || "Shuttle & Tech Parks" },
   ];
 
   const filteredServices = services.filter((s) => {
@@ -29,7 +35,7 @@ const ServiceList = ({ services }) => {
       <div className="flex flex-wrap items-center gap-3 mb-12 pb-6 border-b border-navy/10">
         <div className="flex items-center gap-2 text-xs font-mono text-teal mr-2">
           <Filter size={14} className="text-teal" />
-          <span className="uppercase tracking-wider">Filter Fleet by:</span>
+          <span className="uppercase tracking-wider">{filterLabel}</span>
         </div>
         {categories.map((cat) => {
           const isActive = filter === cat.id;
@@ -110,7 +116,7 @@ const ServiceList = ({ services }) => {
                       }
                       className="inline-flex items-center justify-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl group/btn shrink-0"
                     >
-                      <span>View Details</span>
+                      <span>{cardButtonText}</span>
                       <ArrowUpRight
                         size={16}
                         className="transition-transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1"
@@ -119,7 +125,7 @@ const ServiceList = ({ services }) => {
 
                     <div className="flex items-center gap-2 text-[11px] font-mono text-navy/50 uppercase">
                       <ShieldCheck size={14} className="text-teal" />
-                      <span>99.8% SLA Backed • Pan-India</span>
+                      <span>{slaText}</span>
                     </div>
                   </div>
                 </div>

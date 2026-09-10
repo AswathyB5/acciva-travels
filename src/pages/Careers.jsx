@@ -4,12 +4,6 @@ import { api } from "../admin/lib/api";
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 import {
   ChevronRight,
-  Wallet,
-  Clock,
-  ShieldCheck,
-  Fuel,
-  Wrench,
-  Headphones,
   Phone,
   Mail,
   MapPin,
@@ -17,22 +11,12 @@ import {
   ArrowUpRight,
   Send,
   CheckCircle2,
-  FileText,
-  Car,
-  IdCard,
-  Image as ImageIcon,
-  ScrollText,
-  FileCheck2,
-  Stethoscope,
-  Users,
-  FileBadge,
-  Wallet as WalletIcon,
-  Flame,
-  BriefcaseMedical,
-  Flashlight,
-  Umbrella,
+  Briefcase,
+  Clock,
 } from "lucide-react";
-import { usePageContent } from "../data/useContent";
+import { usePageContent, useCollection } from "../data/useContent";
+import { resolveIcon } from "../data/iconMap";
+import { jobOpenings as fallbackJobOpenings } from "../data/content";
 
 const CAREERS_DEFAULTS = {
   heroEyebrow: "Drive With Acciva",
@@ -40,54 +24,90 @@ const CAREERS_DEFAULTS = {
   heroTitleAccent: "Acciva Advantages.",
   heroIntro:
     "Join India's most trusted corporate mobility fleet and drive with guaranteed income, on-time payments, and round-the-clock support.",
+  heroBackgroundImage:
+    "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=2000&q=85",
+  advantagesEyebrow: "Why Drive With Us",
+  advantagesHeadingMain: "Drive With",
+  advantagesHeadingAccent: "Acciva Advantages.",
+  advantages: [
+    { icon: "Wallet", title: "Guaranteed Income" },
+    { icon: "Clock", title: "On-Time Payments" },
+    { icon: "ShieldCheck", title: "Corporate Duty" },
+    { icon: "Fuel", title: "Fuel Advance" },
+    { icon: "Wrench", title: "Maintenance Discount" },
+    { icon: "Headphones", title: "Driver Support" },
+  ],
+  documentsEyebrow: "Onboarding Checklist",
+  documentsHeadingMain: "Required",
+  documentsHeadingAccent: "Documents.",
+  driverDocumentsTitle: "Driver Documents",
+  driverDocuments: [
+    { icon: "IdCard", label: "Original Driving License" },
+    { icon: "FileBadge", label: "Display Card" },
+    { icon: "Image", label: "Passport Size 3 Photos" },
+    { icon: "ShieldCheck", label: "Police Verification Certificate (PVC)" },
+    { icon: "IdCard", label: "Aadhaar Card" },
+    { icon: "FileText", label: "House Agreement (Driver Name)" },
+    { icon: "Stethoscope", label: "Medical Certificate" },
+    { icon: "FileText", label: "PAN Card" },
+    { icon: "Users", label: "Family Photo" },
+  ],
+  vehicleDocumentsTitle: "Vehicle Documents",
+  vehicleDocuments: [
+    { icon: "Car", label: "Vehicle RC" },
+    { icon: "ScrollText", label: "Vehicle Permit" },
+    { icon: "FileCheck2", label: "Vehicle Insurance" },
+    { icon: "FileText", label: "Vehicle Tax" },
+    { icon: "FileCheck2", label: "Fitness Certificate (FC)" },
+    { icon: "ShieldCheck", label: "Emission" },
+    { icon: "Image", label: "RC Owner 1 PHOTO" },
+    { icon: "Wallet", label: "RC Owner PAN & Pass Book" },
+  ],
+  inVehicleItemsTitle: "In Vehicle",
+  inVehicleItems: [
+    { icon: "Flame", label: "Fire Kit" },
+    { icon: "BriefcaseMedical", label: "First Aid" },
+    { icon: "Flashlight", label: "Torch" },
+    { icon: "Umbrella", label: "Umbrella" },
+  ],
+  vehicleEyebrow: "Vehicle Partner Program",
+  vehicleHeadingMain: "Attach Your Vehicle",
+  vehicleHeadingAccent: "With Acciva.",
+  vehicleParagraph:
+    "Fill out the form below and our onboarding team will guide you through document verification and vehicle attachment.",
+  vehicleImage: "https://www.ascott-trans.com/images/car-rent-in-mumbai.jpg",
+  vehicleSuccessHeading: "Message Sent!",
+  vehicleSuccessText: "Our onboarding team will reach out to you shortly.",
+  quoteEyebrow: "Safety Transportation Made Easy",
+  quoteHeadingAccent: "Touch With Us.",
+  quoteButtonText: "Book Now",
+  visitEyebrow: "Get In Touch",
+  visitHeadingAccent: "Acciva.",
+  visitCompanyName: "Acciva Travels Private Limited",
+  visitAddress:
+    "Ground Floor, No.52, 1st Main Rd, HMT Layout, Anandnagar, Hebbal, Bengaluru, Karnataka 560032",
+  visitRating: 4.7,
+  visitReviewCount: "(134 reviews)",
+  visitMapEmbedUrl:
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.0961003448615!2d77.59094080000001!3d13.029551899999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae179675b10e35%3A0x4e2fa4b235d073e4!2sAcciva%20Travels%20Private%20Limited!5e0!3m2!1sen!2sin!4v1788930808147!5m2!1sen!2sin",
+};
+
+const FOOTER_DEFAULTS = {
+  aboutBlurb:
+    "Acciva Travels was founded in 2016 as a Private Limited Company, building on a strong foundation established in 2007 as Gettz Travel Solutions.",
+  phone1: "+91 90350 12166",
+  phone2: "+91 80 2354 1166",
+  email: "info@accivatravels.com",
+  address: "# 52, 1 Main Road, Anand Nagar, Hebbal, Bengaluru 560024.",
+  hours: "24/7/365 Non-Stop Operations",
+  copyrightText: "© 2026 Acciva Travels. All rights reserved.",
+  socialInstagram: "https://www.instagram.com/accivatravel/",
+  socialFacebook: "https://www.facebook.com/accivatravelsbangalore/",
+  socialLinkedin: "https://in.linkedin.com/company/acciva-travels-p-limited",
+  socialPinterest: "https://in.pinterest.com/accivatravel1/",
 };
 import Magnetic from "../components/Magnetic";
 import RevealImage from "../components/RevealImage";
-
-const advantages = [
-  { icon: Wallet, title: "Guaranteed Income" },
-  { icon: Clock, title: "On-Time Payments" },
-  { icon: ShieldCheck, title: "Corporate Duty" },
-  { icon: Fuel, title: "Fuel Advance" },
-  { icon: Wrench, title: "Maintenance Discount" },
-  { icon: Headphones, title: "Driver Support" },
-];
-
-const driverDocuments = [
-  { icon: IdCard, label: "Original Driving License" },
-  { icon: FileBadge, label: "Display Card" },
-  { icon: ImageIcon, label: "Passport Size 3 Photos" },
-  { icon: ShieldCheck, label: "Police Verification Certificate (PVC)" },
-  { icon: IdCard, label: "Aadhaar Card" },
-  { icon: FileText, label: "House Agreement (Driver Name)" },
-  { icon: Stethoscope, label: "Medical Certificate" },
-  { icon: FileText, label: "PAN Card" },
-  { icon: Users, label: "Family Photo" },
-];
-
-const vehicleDocuments = [
-  { icon: Car, label: "Vehicle RC" },
-  { icon: ScrollText, label: "Vehicle Permit" },
-  { icon: FileCheck2, label: "Vehicle Insurance" },
-  { icon: FileText, label: "Vehicle Tax" },
-  { icon: FileCheck2, label: "Fitness Certificate (FC)" },
-  { icon: ShieldCheck, label: "Emission" },
-  { icon: ImageIcon, label: "RC Owner 1 PHOTO" },
-  { icon: WalletIcon, label: "RC Owner PAN & Pass Book" },
-];
-
-const inVehicleItems = [
-  { icon: Flame, label: "Fire Kit" },
-  { icon: BriefcaseMedical, label: "First Aid" },
-  { icon: Flashlight, label: "Torch" },
-  { icon: Umbrella, label: "Umbrella" },
-];
-
-const docGroups = [
-  { title: "Driver Documents", items: driverDocuments },
-  { title: "Vehicle Documents", items: vehicleDocuments },
-  { title: "In Vehicle", items: inVehicleItems },
-];
 
 /* ---- Document checklist — a traveling ball relays down the connecting line and
    whichever item it reaches zooms/lights up, same motif as the Services page's
@@ -130,7 +150,7 @@ const DocTimeline = ({ items }) => {
       <ul className="space-y-3.5">
         {items.map((item, i) => {
           const isActive = active === i;
-          const Icon = item.icon;
+          const Icon = resolveIcon(item.icon);
           return (
             <motion.li
               key={item.label}
@@ -182,7 +202,7 @@ const DocTimeline = ({ items }) => {
    pulses whenever this card is "active", whether the visitor is hovering it or the
    auto-relay (see ADVANTAGE_INTERVAL below) has landed on it. ---- */
 const AdvantageCard = ({ item, index, isActive }) => {
-  const Icon = item.icon;
+  const Icon = resolveIcon(item.icon);
   const isTeal = index % 2 === 0;
   const glow = isTeal ? "rgba(59,141,196,0.35)" : "rgba(225,197,157,0.5)";
   const [hovered, setHovered] = useState(false);
@@ -268,17 +288,29 @@ const ADVANTAGE_INTERVAL = 1100;
 
 const Careers = () => {
   const { data: content } = usePageContent("careers", CAREERS_DEFAULTS);
+  const { data: footerContent } = usePageContent("footer", FOOTER_DEFAULTS);
+  const { items: jobOpenings } = useCollection("job-openings", fallbackJobOpenings);
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState(null);
   const [activeAdvantage, setActiveAdvantage] = useState(0);
 
+  const docGroups = [
+    { title: content.driverDocumentsTitle, items: content.driverDocuments },
+    { title: content.vehicleDocumentsTitle, items: content.vehicleDocuments },
+    { title: content.inVehicleItemsTitle, items: content.inVehicleItems },
+  ];
+
+  const mobileTelHref = `tel:+${footerContent.phone1.replace(/[^0-9]/g, "")}`;
+  const landlineTelHref = `tel:+${footerContent.phone2.replace(/[^0-9]/g, "")}`;
+  const mailHref = `mailto:${footerContent.email}`;
+
   useEffect(() => {
     const id = setInterval(() => {
-      setActiveAdvantage((prev) => (prev + 1) % advantages.length);
+      setActiveAdvantage((prev) => (prev + 1) % content.advantages.length);
     }, ADVANTAGE_INTERVAL);
     return () => clearInterval(id);
-  }, []);
+  }, [content.advantages.length]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -317,7 +349,7 @@ const Careers = () => {
       <section
         className="pt-28 sm:pt-32 pb-4 md:pb-6 relative overflow-hidden"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=2000&q=85')`,
+          backgroundImage: `url('${content.heroBackgroundImage}')`,
           backgroundSize: "cover",
           backgroundPosition: "center bottom",
           backgroundAttachment: "fixed",
@@ -408,11 +440,11 @@ const Careers = () => {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="mb-14 text-center max-w-2xl mx-auto"
           >
-            <span className="eyebrow text-teal">Why Drive With Us</span>
+            <span className="eyebrow text-teal">{content.advantagesEyebrow}</span>
             <h2 className="font-display text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-6 tracking-tight">
-              Drive With{" "}
+              {content.advantagesHeadingMain}{" "}
               <span className="italic text-teal font-normal">
-                Acciva Advantages.
+                {content.advantagesHeadingAccent}
               </span>
             </h2>
             <motion.div
@@ -429,7 +461,7 @@ const Careers = () => {
             className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-5xl mx-auto"
             style={{ perspective: 1200 }}
           >
-            {advantages.map((item, i) => (
+            {content.advantages.map((item, i) => (
               <motion.div
                 key={item.title}
                 initial={{ opacity: 0, y: 40 }}
@@ -466,10 +498,10 @@ const Careers = () => {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="mb-14 text-center max-w-2xl mx-auto"
           >
-            <span className="eyebrow text-teal">Onboarding Checklist</span>
+            <span className="eyebrow text-teal">{content.documentsEyebrow}</span>
             <h2 className="font-display text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-6 tracking-tight">
-              Required{" "}
-              <span className="italic text-teal font-normal">Documents.</span>
+              {content.documentsHeadingMain}{" "}
+              <span className="italic text-teal font-normal">{content.documentsHeadingAccent}</span>
             </h2>
           </motion.div>
 
@@ -504,6 +536,88 @@ const Careers = () => {
       </section>
 
       {/* ========================================================================= */}
+      {/* CURRENT OPENINGS                                                     */}
+      {/* ========================================================================= */}
+      {jobOpenings.length > 0 && (
+        <section className="py-10 md:py-14 bg-soft relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-72 h-72 bg-teal/10 rounded-bl-full pointer-events-none" />
+          <div className="container-px relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="mb-14 text-center max-w-2xl mx-auto"
+            >
+              <span className="eyebrow text-teal">Join Our Team</span>
+              <h2 className="font-display text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-6 tracking-tight">
+                Current <span className="italic text-teal font-normal">Openings.</span>
+              </h2>
+            </motion.div>
+
+            <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
+              {jobOpenings.map((job, i) => (
+                <motion.div
+                  key={job.slug || job.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.1 }}
+                  transition={{ duration: 0.6, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                  className="p-6 sm:p-7 rounded-3xl bg-white border-2 border-navy/10 hover:border-teal/40 hover:shadow-xl transition-[border-color,box-shadow] overflow-hidden relative"
+                >
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-teal via-sand to-teal" />
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="w-12 h-12 rounded-2xl bg-teal/10 flex items-center justify-center text-teal shrink-0">
+                      <Briefcase size={20} />
+                    </div>
+                    {job.type && (
+                      <span className="px-3 py-1 rounded-full bg-sand/30 text-navy text-[11px] font-bold uppercase tracking-wider">
+                        {job.type}
+                      </span>
+                    )}
+                  </div>
+                  <h3 className="font-display text-lg sm:text-xl text-navy font-bold mt-4">{job.title}</h3>
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 mt-2.5 text-[13px] text-slate-600 font-medium">
+                    {job.department && <span>{job.department}</span>}
+                    {job.location && (
+                      <span className="inline-flex items-center gap-1.5">
+                        <MapPin size={13} className="text-teal" /> {job.location}
+                      </span>
+                    )}
+                    {job.experience && (
+                      <span className="inline-flex items-center gap-1.5">
+                        <Clock size={13} className="text-teal" /> {job.experience}
+                      </span>
+                    )}
+                  </div>
+                  {job.description && (
+                    <p className="text-[14px] text-slate-700 leading-relaxed mt-4">{job.description}</p>
+                  )}
+                  {Array.isArray(job.requirements) && job.requirements.length > 0 && (
+                    <ul className="mt-4 space-y-1.5">
+                      {job.requirements.map((req, ri) => (
+                        <li key={ri} className="flex items-start gap-2 text-[13px] text-slate-600">
+                          <CheckCircle2 size={14} className="text-teal shrink-0 mt-0.5" />
+                          <span>{req}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  <NavLink
+                    to="/contact"
+                    className="mt-6 inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-sand text-navy font-bold text-xs hover:shadow-lg transition-all"
+                  >
+                    <span>Apply Now</span>
+                    <ArrowUpRight size={14} />
+                  </NavLink>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ========================================================================= */}
       {/* ATTACH YOUR VEHICLE WITH ACCIVA                                      */}
       {/* ========================================================================= */}
       <section
@@ -522,14 +636,13 @@ const Careers = () => {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-3xl"
           >
-            <span className="eyebrow text-teal">Vehicle Partner Program</span>
+            <span className="eyebrow text-teal">{content.vehicleEyebrow}</span>
             <h2 className="font-display text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-6 tracking-tight">
-              Attach Your Vehicle{" "}
-              <span className="italic text-teal font-normal">With Acciva.</span>
+              {content.vehicleHeadingMain}{" "}
+              <span className="italic text-teal font-normal">{content.vehicleHeadingAccent}</span>
             </h2>
             <p className="mt-5 text-slate-700 text-[15px] font-normal leading-relaxed max-w-2xl">
-              Fill out the form below and our onboarding team will guide you
-              through document verification and vehicle attachment.
+              {content.vehicleParagraph}
             </p>
           </motion.div>
 
@@ -548,7 +661,7 @@ const Careers = () => {
                 className="h-full min-h-[280px] rounded-3xl overflow-hidden shadow-xl border border-navy/10"
               >
                 <RevealImage
-                  src="https://www.ascott-trans.com/images/car-rent-in-mumbai.jpg"
+                  src={content.vehicleImage}
                   className="h-full"
                 />
               </motion.div>
@@ -577,10 +690,10 @@ const Careers = () => {
                     <CheckCircle2 size={24} className="text-teal shrink-0" />
                     <div>
                       <h4 className="font-sans font-bold text-sm text-navy">
-                        Message Sent!
+                        {content.vehicleSuccessHeading}
                       </h4>
                       <p className="text-slate-600 text-[15px] font-normal leading-relaxed mt-0.5">
-                        Our onboarding team will reach out to you shortly.
+                        {content.vehicleSuccessText}
                       </p>
                     </div>
                   </motion.div>
@@ -713,7 +826,7 @@ const Careers = () => {
             transition={{ duration: 0.6 }}
             className="eyebrow text-teal inline-block"
           >
-            Safety Transportation Made Easy
+            {content.quoteEyebrow}
           </motion.span>
 
           <motion.div
@@ -731,7 +844,7 @@ const Careers = () => {
             className="font-display text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-6 tracking-tight"
           >
             Feel Free To{" "}
-            <span className="italic text-teal font-normal">Touch With Us.</span>
+            <span className="italic text-teal font-normal">{content.quoteHeadingAccent}</span>
           </motion.h2>
 
           <motion.div
@@ -745,7 +858,7 @@ const Careers = () => {
                 href="#attach-vehicle"
                 className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
               >
-                <span>Book Now</span>
+                <span>{content.quoteButtonText}</span>
                 <motion.span
                   animate={{ x: [0, 4, 0] }}
                   transition={{
@@ -774,10 +887,10 @@ const Careers = () => {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="mb-12"
           >
-            <span className="eyebrow text-teal">Get In Touch</span>
+            <span className="eyebrow text-teal">{content.visitEyebrow}</span>
             <h2 className="font-display text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-6 tracking-tight">
               Visit{" "}
-              <span className="italic text-teal font-normal">Acciva.</span>
+              <span className="italic text-teal font-normal">{content.visitHeadingAccent}</span>
             </h2>
           </motion.div>
 
@@ -797,11 +910,10 @@ const Careers = () => {
                 <div className="flex items-start justify-between gap-4 mb-6 pb-6 border-b border-navy/10">
                   <div>
                     <h3 className="font-display text-xl sm:text-2xl text-navy font-bold">
-                      Acciva Travels Private Limited
+                      {content.visitCompanyName}
                     </h3>
                     <p className="text-slate-600 text-[15px] font-normal leading-relaxed mt-2">
-                      Ground Floor, No.52, 1st Main Rd, HMT Layout, Anandnagar,
-                      Hebbal, Bengaluru, Karnataka 560032
+                      {content.visitAddress}
                     </p>
                   </div>
                 </div>
@@ -823,17 +935,17 @@ const Careers = () => {
                       >
                         <Star
                           size={16}
-                          fill={i < 5 ? "currentColor" : "none"}
+                          fill={i < Math.round(content.visitRating) ? "currentColor" : "none"}
                           className={i === 4 ? "text-navy/20" : ""}
                         />
                       </motion.span>
                     ))}
                   </div>
                   <span className="font-sans font-bold text-sm text-navy">
-                    4.7
+                    {content.visitRating}
                   </span>
                   <span className="text-slate-500 text-xs font-mono">
-                    (134 reviews)
+                    {content.visitReviewCount}
                   </span>
                 </div>
 
@@ -844,7 +956,7 @@ const Careers = () => {
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                     whileHover={{ y: -3, scale: 1.01 }}
-                    href="mailto:info@accivatravels.com"
+                    href={mailHref}
                     className="p-4 rounded-2xl bg-soft border border-navy/10 hover:border-teal/50 hover:shadow-md transition-[border-color,box-shadow] flex items-center gap-4 group"
                   >
                     <div className="w-10 h-10 rounded-xl bg-teal/10 flex items-center justify-center text-teal shrink-0 group-hover:bg-teal group-hover:text-white transition-colors">
@@ -855,7 +967,7 @@ const Careers = () => {
                         Email
                       </p>
                       <p className="font-sans font-bold text-sm text-navy group-hover:text-teal transition-colors">
-                        info@accivatravels.com
+                        {footerContent.email}
                       </p>
                     </div>
                   </motion.a>
@@ -870,7 +982,7 @@ const Careers = () => {
                       ease: [0.16, 1, 0.3, 1],
                     }}
                     whileHover={{ y: -3, scale: 1.01 }}
-                    href="tel:+919035012166"
+                    href={mobileTelHref}
                     className="p-4 rounded-2xl bg-soft border border-navy/10 hover:border-teal/50 hover:shadow-md transition-[border-color,box-shadow] flex items-center gap-4 group"
                   >
                     <div className="w-10 h-10 rounded-xl bg-teal/10 flex items-center justify-center text-teal shrink-0 group-hover:bg-teal group-hover:text-white transition-colors">
@@ -881,7 +993,7 @@ const Careers = () => {
                         Mobile
                       </p>
                       <p className="font-sans font-bold text-sm text-navy group-hover:text-teal transition-colors">
-                        +91 90350 12166
+                        {footerContent.phone1}
                       </p>
                     </div>
                   </motion.a>
@@ -896,7 +1008,7 @@ const Careers = () => {
                       ease: [0.16, 1, 0.3, 1],
                     }}
                     whileHover={{ y: -3, scale: 1.01 }}
-                    href="tel:+918023541166"
+                    href={landlineTelHref}
                     className="p-4 rounded-2xl bg-soft border border-navy/10 hover:border-teal/50 hover:shadow-md transition-[border-color,box-shadow] flex items-center gap-4 group"
                   >
                     <div className="w-10 h-10 rounded-xl bg-teal/10 flex items-center justify-center text-teal shrink-0 group-hover:bg-teal group-hover:text-white transition-colors">
@@ -907,7 +1019,7 @@ const Careers = () => {
                         Landline
                       </p>
                       <p className="font-sans font-bold text-sm text-navy group-hover:text-teal transition-colors">
-                        +91 80 2354 1166
+                        {footerContent.phone2}
                       </p>
                     </div>
                   </motion.a>
@@ -932,8 +1044,7 @@ const Careers = () => {
                         Bengaluru Address
                       </p>
                       <p className="font-sans font-bold text-sm text-navy leading-snug">
-                        # 52, 1 Main Road, Anand Nagar, Hebbal, Bengaluru
-                        560024.
+                        {footerContent.address}
                       </p>
                     </div>
                   </motion.div>
@@ -955,7 +1066,7 @@ const Careers = () => {
             >
               <iframe
                 title="Acciva Travels Bengaluru Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.0961003448615!2d77.59094080000001!3d13.029551899999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae179675b10e35%3A0x4e2fa4b235d073e4!2sAcciva%20Travels%20Private%20Limited!5e0!3m2!1sen!2sin!4v1788930808147!5m2!1sen!2sin"
+                src={content.visitMapEmbedUrl}
                 width="100%"
                 height="100%"
                 style={{ border: 0, minHeight: 380 }}

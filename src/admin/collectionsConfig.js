@@ -1,4 +1,4 @@
-import { Car, MapPinned, Star, BarChart3, Newspaper, Briefcase, History } from "lucide-react";
+import { Car, Star, BarChart3, Newspaper, Briefcase, History } from "lucide-react";
 import { iconNames } from "../data/iconMap";
 
 // Describes each editable collection: its API path, a human label, the
@@ -20,22 +20,6 @@ export const collections = [
       { name: "description", label: "Description", type: "textarea" },
       { name: "features", label: "Features", type: "list" },
       { name: "image", label: "Image URL", type: "image" },
-    ],
-  },
-  {
-    key: "destinations",
-    label: "Destinations",
-    singular: "Destination",
-    icon: MapPinned,
-    titleField: "name",
-    imageField: "image",
-    subtitleField: "country",
-    fields: [
-      { name: "name", label: "Name", type: "text", required: true },
-      { name: "country", label: "Country", type: "text" },
-      { name: "description", label: "Description", type: "textarea" },
-      { name: "image", label: "Image URL", type: "image" },
-      { name: "size", label: "Card Size", type: "select", options: ["small", "medium", "large"] },
     ],
   },
   {

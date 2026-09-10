@@ -6,14 +6,12 @@ import {
   Award,
   ArrowUpRight,
   ChevronRight,
-  UserCheck,
-  Ban,
-  PhoneCall,
-  HeartHandshake,
 } from "lucide-react";
 import Magnetic from "../components/Magnetic";
 import AnimatedImage from "../components/AnimatedImage";
-import { usePageContent } from "../data/useContent";
+import { usePageContent, useCollection } from "../data/useContent";
+import { resolveIcon } from "../data/iconMap";
+import { timeline as fallbackTimeline } from "../data/content";
 
 const ABOUT_DEFAULTS = {
   heroEyebrow: "About Acciva Travels",
@@ -36,9 +34,11 @@ const ABOUT_DEFAULTS = {
   vmHeadingMain: "Our Vision &",
   vmHeadingAccent: "Mission",
   visionTitle: "OUR VISION",
+  visionBadge: "Future Horizon",
   visionText:
     "Our vision is to deliver superior travel and transportation services through a proactive approach focused on hospitality, integrity, reliability and customer satisfaction. We strive to set high standards in corporate transportation by providing efficient and dependable mobility solutions that meet the evolving needs of our customers.",
   missionTitle: "OUR MISSION",
+  missionBadge: "Core Commitment",
   missionText:
     "Our mission is to provide safe, reliable and comfortable transportation services with customer security and satisfaction at the heart of everything we do. We are committed to maintaining the highest standards of safety, service quality and operational excellence, while delivering a seamless and comfortable travel experience for every customer.",
   whyEyebrow: "Distinct Advantage",
@@ -54,21 +54,29 @@ const ABOUT_DEFAULTS = {
       title: "Qualified Staff Members",
       description:
         "At Acciva Travels, our experienced and professionally trained staff members are committed to delivering safe, reliable and efficient employee transportation services. Our team is well-equipped to understand the needs of corporate clients and ensure a smooth and comfortable travel experience.\n\nFrom trained drivers to dedicated transportation support staff we maintain high standards of professionalism, safety, customer service and operational efficiency.",
+      icon: "UserCheck",
+      badge: "Professional Team",
     },
     {
       title: "24/7 Emergency Response Team",
       description:
         "At Acciva Travels, we understand that reliable transportation requires support around the clock. Our 24/7 Emergency Response Team is available to promptly address unexpected travel and transportation-related issues and help ensure uninterrupted service.\n\nWith a proactive approach and dedicated support, our team works to provide quick assistance, enhanced passenger safety and reliable transportation solutions whenever needed.",
+      icon: "PhoneCall",
+      badge: "Round-the-Clock",
     },
     {
       title: "No Unauthorized Stops During Travel",
       description:
         "At Acciva Travels, passenger safety, punctuality and travel efficiency are our top priorities. Our professional transportation team follows planned routes and approved travel schedules, helping ensure a smooth and uninterrupted journey for every passenger.\n\nWe maintain strict guidelines to prevent unauthorized stops during travel, reducing unnecessary delays and supporting a safe, comfortable and timely transportation experience.",
+      icon: "Ban",
+      badge: "Strict Route Discipline",
     },
     {
       title: "Minimum Attrition – With Minimal Changes",
       description:
         "At Acciva Travels, we focus on maintaining a stable and reliable transportation team to ensure consistent service quality. Our minimum staff attrition helps us maintain operational continuity, strong team coordination and a better understanding of client requirements.\n\nBy making minimal changes to our trained staff and transportation operations, we provide corporate clients with a dependable and seamless employee transportation service.",
+      icon: "HeartHandshake",
+      badge: "Stable Team",
     },
   ],
   purposeEyebrow: "Our Purpose",
@@ -178,6 +186,7 @@ const TiltCard = ({ children, className, glowColor = "rgba(59,141,196,0.22)", ac
 
 const About = () => {
   const { data: content } = usePageContent("about", ABOUT_DEFAULTS);
+  const { items: timeline } = useCollection("timeline", fallbackTimeline);
   return (
     <div className="bg-soft text-navy overflow-hidden">
       {/* ========================================================================= */}
@@ -273,6 +282,72 @@ const About = () => {
           </div>
         </div>
       </section>
+
+      {/* ========================================================================= */}
+      {/* COMPANY TIMELINE                                                     */}
+      {/* ========================================================================= */}
+      {timeline.length > 0 && (
+        <section className="py-10 md:py-14 bg-white relative overflow-hidden">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[280px] bg-teal/5 rounded-full blur-3xl pointer-events-none" />
+          <div className="container-px relative z-10">
+            <div className="mb-14 text-center max-w-2xl mx-auto">
+              <span className="eyebrow text-teal">Our Journey</span>
+              <h2 className="font-display text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-6 tracking-tight">
+                Milestones Along <span className="italic text-teal font-normal">The Way.</span>
+              </h2>
+            </div>
+
+            <div className="relative">
+              <div className="hidden lg:block absolute left-0 right-0 top-6 h-0.5 bg-navy/10" />
+              <div className="grid gap-8 lg:grid-cols-4">
+                {timeline.map((entry, i) => (
+                  <motion.div
+                    key={entry.year + entry.title}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                    className="relative"
+                  >
+                    <div className="hidden lg:flex w-3 h-3 rounded-full bg-teal ring-4 ring-teal/20 mb-5" />
+                    <div className="rounded-3xl bg-soft border border-navy/10 hover:border-teal/40 hover:shadow-xl transition-[border-color,box-shadow] overflow-hidden">
+                      {entry.image && (
+                        <div className="h-36 w-full overflow-hidden">
+                          <AnimatedImage
+                            src={entry.image}
+                            alt={entry.title}
+                            effect="zoom-in"
+                            className="h-full w-full object-cover"
+                          />
+                        </div>
+                      )}
+                      <div className="p-5">
+                        <div className="flex items-center justify-between gap-2 mb-2">
+                          <span className="font-display text-teal text-xl font-bold">{entry.year}</span>
+                          {entry.badge && (
+                            <span className="px-2.5 py-1 rounded-full bg-sand/30 text-navy text-[10px] font-bold uppercase tracking-wider">
+                              {entry.badge}
+                            </span>
+                          )}
+                        </div>
+                        <h3 className="font-display text-navy text-base font-bold leading-snug">{entry.title}</h3>
+                        {entry.description && (
+                          <p className="text-slate-600 text-[13px] leading-relaxed mt-2">{entry.description}</p>
+                        )}
+                        {entry.stat && (
+                          <p className="mt-3 text-[11px] font-mono uppercase tracking-wider text-teal font-bold">
+                            {entry.stat}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ========================================================================= */}
       {/* OUR VISION & MISSION (DRAMATIC MOVING LASER LINES & ANIMATED ICONS)   */}
@@ -447,7 +522,7 @@ const About = () => {
                         style={{ transform: "translateZ(20px)" }}
                         className="px-3.5 py-1 rounded-full bg-teal/10 border border-teal/25 text-teal text-[10px] font-mono tracking-widest uppercase font-semibold"
                       >
-                        Future Horizon
+                        {content.visionBadge}
                       </span>
                     </div>
 
@@ -543,7 +618,7 @@ const About = () => {
                         style={{ transform: "translateZ(20px)" }}
                         className="px-3.5 py-1 rounded-full bg-sand/20 border border-sand/40 text-navy text-[10px] font-mono tracking-widest uppercase font-semibold"
                       >
-                        Core Commitment
+                        {content.missionBadge}
                       </span>
                     </div>
 
@@ -663,10 +738,15 @@ const About = () => {
                             ease: "easeInOut",
                           }}
                         >
-                          <UserCheck
-                            size={26}
-                            className="transition-transform duration-300 group-hover:scale-110"
-                          />
+                          {(() => {
+                            const CardIcon = resolveIcon(content.whyCards[0].icon);
+                            return (
+                              <CardIcon
+                                size={26}
+                                className="transition-transform duration-300 group-hover:scale-110"
+                              />
+                            );
+                          })()}
                         </motion.div>
                       </motion.div>
                     </div>
@@ -676,7 +756,7 @@ const About = () => {
                       className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-navy/5 border border-navy/15 text-[11px] font-mono tracking-wider uppercase text-navy/90 font-semibold"
                     >
                       <ShieldCheck size={12} className="text-teal" />
-                      Professional Team
+                      {content.whyCards[0].badge}
                     </span>
                   </div>
 
@@ -757,10 +837,15 @@ const About = () => {
                             ease: "easeInOut",
                           }}
                         >
-                          <PhoneCall
-                            size={26}
-                            className="transition-transform duration-300 group-hover:scale-110"
-                          />
+                          {(() => {
+                            const CardIcon = resolveIcon(content.whyCards[1].icon);
+                            return (
+                              <CardIcon
+                                size={26}
+                                className="transition-transform duration-300 group-hover:scale-110"
+                              />
+                            );
+                          })()}
                         </motion.div>
                       </motion.div>
                     </div>
@@ -774,7 +859,7 @@ const About = () => {
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal opacity-75" />
                         <span className="relative inline-flex rounded-full h-2 w-2 bg-teal" />
                       </span>
-                      <span>Round-the-Clock</span>
+                      <span>{content.whyCards[1].badge}</span>
                     </div>
                   </div>
 
@@ -855,10 +940,15 @@ const About = () => {
                             ease: "easeInOut",
                           }}
                         >
-                          <Ban
-                            size={26}
-                            className="transition-transform duration-300 group-hover:scale-110"
-                          />
+                          {(() => {
+                            const CardIcon = resolveIcon(content.whyCards[2].icon);
+                            return (
+                              <CardIcon
+                                size={26}
+                                className="transition-transform duration-300 group-hover:scale-110"
+                              />
+                            );
+                          })()}
                         </motion.div>
                       </motion.div>
                     </div>
@@ -868,7 +958,7 @@ const About = () => {
                       className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-navy/5 border border-navy/15 text-[11px] font-mono tracking-wider uppercase text-navy/90 font-semibold"
                     >
                       <Compass size={12} className="text-teal" />
-                      Strict Route Discipline
+                      {content.whyCards[2].badge}
                     </span>
                   </div>
 
@@ -949,10 +1039,15 @@ const About = () => {
                             ease: "easeInOut",
                           }}
                         >
-                          <HeartHandshake
-                            size={26}
-                            className="transition-transform duration-300 group-hover:scale-110"
-                          />
+                          {(() => {
+                            const CardIcon = resolveIcon(content.whyCards[3].icon);
+                            return (
+                              <CardIcon
+                                size={26}
+                                className="transition-transform duration-300 group-hover:scale-110"
+                              />
+                            );
+                          })()}
                         </motion.div>
                       </motion.div>
                     </div>
@@ -962,7 +1057,7 @@ const About = () => {
                       className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-navy/5 border border-navy/15 text-[11px] font-mono tracking-wider uppercase text-navy/90 font-semibold"
                     >
                       <Award size={12} className="text-sand" />
-                      Stable Team
+                      {content.whyCards[3].badge}
                     </span>
                   </div>
 

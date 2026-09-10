@@ -15,16 +15,15 @@ const FOOTER_DEFAULTS = {
   socialFacebook: "https://www.facebook.com/accivatravelsbangalore/",
   socialLinkedin: "https://in.linkedin.com/company/acciva-travels-p-limited",
   socialPinterest: "https://in.pinterest.com/accivatravel1/",
+  quickLinks: [
+    { label: "About", path: "/about" },
+    { label: "Services", path: "/services" },
+    { label: "Technology", path: "/technology" },
+    { label: "Journal", path: "/blog" },
+    { label: "Careers", path: "/careers" },
+    { label: "Contact", path: "/contact" },
+  ],
 };
-
-const quickLinks = [
-  { to: "/about", label: "About" },
-  { to: "/services", label: "Services" },
-  { to: "/technology", label: "Technology" },
-  { to: "/blog", label: "Journal" },
-  { to: "/careers", label: "Careers" },
-  { to: "/contact", label: "Contact" },
-];
 
 const IconLink = ({ href, label, children }) => (
   <a
@@ -46,6 +45,10 @@ const Footer = () => {
   const { data: content } = usePageContent("footer", FOOTER_DEFAULTS);
   const telHref = `tel:+${content.phone1.replace(/[^0-9]/g, "")}`;
   const mailHref = `mailto:${content.email}`;
+  const quickLinks = (content.quickLinks || []).map((l) => ({
+    to: l.path,
+    label: l.label,
+  }));
 
   return (
     <footer className="bg-soft text-navy pt-16 md:pt-20 pb-8 border-t border-navy/10">

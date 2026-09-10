@@ -6,7 +6,11 @@ import { useCollection } from "../data/useContent";
 
 const DURATION = 5000;
 
-const Testimonial = () => {
+const Testimonial = ({
+  eyebrow = "Enterprise Trust & Reviews",
+  headingMain = "Trusted By India's Leading",
+  headingAccent = "Enterprises.",
+}) => {
   const { items: testimonials } = useCollection("testimonials", fallbackTestimonials);
   const [active, setActive] = useState(0);
   const [dir, setDir] = useState(1);
@@ -51,10 +55,10 @@ const Testimonial = () => {
       <div className="container-px relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
-          <span className="eyebrow text-teal">Enterprise Trust &amp; Reviews</span>
+          <span className="eyebrow text-teal">{eyebrow}</span>
           <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl mt-6 leading-[1.08] tracking-tight">
-            Trusted By India&rsquo;s Leading{" "}
-            <span className="italic text-teal font-normal">Enterprises.</span>
+            {headingMain}{" "}
+            <span className="italic text-teal font-normal">{headingAccent}</span>
           </h2>
         </div>
 

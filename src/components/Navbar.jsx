@@ -4,29 +4,37 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { usePageContent } from "../data/useContent";
 
-const NAVBAR_DEFAULTS = { ctaLabel: "Book Now" };
-
-const links = [
-  { to: "/", label: "Home" },
-  { to: "/about", label: "About" },
-  {
-    to: "/services",
-    label: "Services",
-    children: [
-      {
-        to: "/services/employee-transportation-services",
-        label: "Employee Transportation Services",
-      },
-    ],
-  },
-  { to: "/technology", label: "Technology" },
-  { to: "/blog", label: "Journal" },
-  { to: "/careers", label: "Careers" },
-  { to: "/contact", label: "Contact" },
-];
+const NAVBAR_DEFAULTS = {
+  ctaLabel: "Book Now",
+  navLinks: [
+    { label: "Home", path: "/" },
+    { label: "About", path: "/about" },
+    { label: "Services", path: "/services" },
+    { label: "Technology", path: "/technology" },
+    { label: "Journal", path: "/blog" },
+    { label: "Careers", path: "/careers" },
+    { label: "Contact", path: "/contact" },
+  ],
+  servicesDropdownLabel: "Employee Transportation Services",
+};
 
 const Navbar = () => {
   const { data: content } = usePageContent("navbar", NAVBAR_DEFAULTS);
+
+  const links = (content.navLinks || []).map((l) => ({
+    to: l.path,
+    label: l.label,
+  }));
+  const servicesLink = links.find((l) => l.to === "/services");
+  if (servicesLink) {
+    servicesLink.children = [
+      {
+        to: "/services/employee-transportation-services",
+        label: content.servicesDropdownLabel,
+      },
+    ];
+  }
+
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const location = useLocation();

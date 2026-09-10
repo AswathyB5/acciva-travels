@@ -3,21 +3,14 @@ import { NavLink } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
   ChevronRight,
-  Cpu,
-  ShieldCheck,
-  Smartphone,
-  Navigation,
-  Server,
   ArrowUpRight,
-  FileCode2,
-  Layers,
   Sparkles,
-  Gauge,
   CheckCircle2,
 } from "lucide-react";
 import Magnetic from "../components/Magnetic";
 import AnimatedImage from "../components/AnimatedImage";
 import { usePageContent } from "../data/useContent";
+import { resolveIcon } from "../data/iconMap";
 
 const TECHNOLOGY_DEFAULTS = {
   heroEyebrow: "Employee Management Solutions",
@@ -25,6 +18,8 @@ const TECHNOLOGY_DEFAULTS = {
   heroTitleAccent: "Transportation.",
   heroIntro:
     "Acciva's state of the art technology is an automation platform for employee transportation that automates everything: rostering, routing, deployment, live tracking, paperless automated billing, and e-trip sheets.",
+  heroBackgroundImage:
+    "https://static.vecteezy.com/system/resources/thumbnails/036/470/491/small/ai-generated-circuit-board-background-electronic-computer-hardware-technology-ai-generative-photo.jpg",
   featuresEyebrow: "Our Features",
   featuresHeadingMain: "Corporate Transportation &",
   featuresHeadingAccent: "Mobility Solutions",
@@ -35,149 +30,145 @@ const TECHNOLOGY_DEFAULTS = {
   featuresClosingParagraph:
     "At Acciva Travels, we combine people, vehicles, technology and transportation expertise to create reliable corporate mobility solutions that businesses can depend on every day.",
   featuresButtonText: "Book Now",
+  serviceMarquee: [
+    { icon: "Smartphone", label: "Corporate employee transportation" },
+    { icon: "Server", label: "Fleet and vehicle management" },
+    { icon: "Navigation", label: "Professional driver coordination" },
+    { icon: "Layers", label: "Employee trip and route management" },
+    { icon: "Cpu", label: "Transportation technology solutions" },
+    { icon: "ShieldCheck", label: "Safety and compliance management" },
+    { icon: "Gauge", label: "Transportation reporting and monitoring" },
+    { icon: "Sparkles", label: "Dedicated customer support" },
+  ],
+  pillarsEyebrow: "Technology Pillars",
+  pillarsHeadingMain: "Six Pillars Powering",
+  pillarsHeadingAccent: "Every Trip.",
+  pillarsParagraph:
+    "Safety, cost efficiency, paperless workflows, live tracking, analytics and platform reliability — six interlocking systems working together behind every trip you book.",
+  pillars: [
+    {
+      category: "Safety & Security",
+      title: "Your Safety, Our Priority",
+      tag: "Real-time protection. Rapid response.",
+      icon: "ShieldCheck",
+      badge: "Real-Time Protection",
+      description:
+        "Acciva combines real-time monitoring, centralized security and automated safe-drop confirmation to ensure a safer journey. In emergency situations, our system enables a rapid response within 60 seconds.",
+      keywords: ["Real-Time Monitoring", "Safe-Drop Confirmation", "Emergency Response"],
+      image:
+        "https://driveclick.cy/images/cache/blogfull/89654/BVOM07avum0KkEhg.png",
+    },
+    {
+      category: "Efficient & Cost-Effective",
+      title: "More Efficiency. Lower Costs.",
+      tag: "Smarter operations. Greater value.",
+      icon: "Gauge",
+      badge: "Smarter Operations",
+      description:
+        "Acciva optimizes fleet and manpower utilization through smart technology, helping businesses reduce operational costs, improve efficiency and get more value from their transportation operations.",
+      keywords: ["Fleet Optimization", "Resource Utilization", "Cost Efficiency"],
+      image:
+        "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1200&q=80",
+    },
+    {
+      category: "Paperless Documentation",
+      title: "Go Digital. Go Paperless.",
+      tag: "Less paperwork. More efficiency.",
+      icon: "FileCode2",
+      badge: "Paperless",
+      description:
+        "Acciva's automated billing and e-trip sheets eliminate paper-based processes, simplifying transportation management while reducing administrative effort and supporting a more sustainable operation.",
+      keywords: ["Automated Billing", "E-Trip Sheets", "Reduced Paperwork"],
+      image:
+        "https://www.certum.eu/en/wp-content/uploads/2022/05/GettyImages-1349390515-1-1024x683.jpg",
+    },
+    {
+      category: "Vehicle Tracking",
+      title: "Know Where Every Ride Is",
+      tag: "Real-time visibility. Better control.",
+      icon: "Navigation",
+      badge: "Live Visibility",
+      description:
+        "Acciva's live vehicle tracking provides complete visibility of every journey, helping businesses monitor trips, improve coordination and respond quickly to delays or unexpected situations.",
+      keywords: ["Live Tracking", "Smart Rostering", "Trip Feedback"],
+      image:
+        "https://v3smarttech.com/wp-content/uploads/2022/10/Improve-your-fuel-efficiency-with-a-GPS-tracking-system.png",
+    },
+    {
+      category: "Analytics & Reporting",
+      title: "Turn Data Into Decisions",
+      tag: "Clear insights. Smarter operations.",
+      icon: "Layers",
+      badge: "Clear Insights",
+      description:
+        "Acciva transforms transportation data into actionable insights through customized reports and intuitive dashboards, helping businesses monitor performance, control costs and optimize operations.",
+      keywords: ["Custom Reports", "Performance Insights", "Data-Driven Decisions"],
+      image:
+        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+    },
+    {
+      category: "Robust Technology",
+      title: "Technology That Moves Business",
+      tag: "Smarter technology. Stronger operations.",
+      icon: "Cpu",
+      badge: "Smart Technology",
+      description:
+        "Acciva's scalable technology platform simplifies transportation management through intelligent routing, automation and real-time data—helping businesses improve efficiency and maintain greater operational control.",
+      keywords: ["Intelligent Routing", "Automation", "Operational Control"],
+      image:
+        "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
+    },
+  ],
+  processHeadingMain: "From Onboarding To",
+  processHeadingAccent: "Every Mile Tracked.",
+  processSteps: [
+    { step: "01", title: "Onboard & Configure", icon: "Layers" },
+    { step: "02", title: "Roster & Route", icon: "Navigation" },
+    { step: "03", title: "Track Live", icon: "ShieldCheck" },
+    { step: "04", title: "Report & Bill", icon: "Gauge" },
+  ],
+  bannerHeading: "Safety Transportation Made Easy",
+  bannerText: "Feel free to touch with us.",
+  bannerButtonText: "Book Now",
+  solutionsEyebrow: "Technology Solutions",
+  solutionsHeadingMain: "One Platform.",
+  solutionsHeadingAccent: "Three Seamless Experiences.",
+  solutionsParagraph:
+    "Purpose-built apps for employees, drivers, and transport managers, connected in real time to deliver a smooth, on-time, and safe commute for every enterprise shift.",
+  techSolutions: [
+    {
+      name: "Employee App",
+      tag: "For Corporate Employees",
+      icon: "Smartphone",
+      desc: "Ensures a seamless commute experience for corporate employees with on-time, comfortable, safe travel. Acciva's self-rostering app captures real-time GPS coordinates of employees for more accurate supervision. Employees are notified with relevant trip details such as driver profile, pickup and drop points, and vehicle details.",
+      image:
+        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=80",
+    },
+    {
+      name: "Driver App",
+      tag: "For Drivers",
+      icon: "Navigation",
+      desc: "Drivers can keep track of trips assigned to them, along with the list of employees and their pickup/drop details, for seamless service. Guided navigation helps drivers reach each employee's pickup point on time and accurately. Drivers can also view their trip incomes, track fuel reimbursements, and see other useful stats.",
+      image:
+        "https://img.magnific.com/free-photo/young-uber-driver-car-interior_23-2149149653.jpg?semt=ais_hybrid&w=740&q=80",
+    },
+    {
+      name: "Web Application",
+      tag: "For Transport Managers",
+      icon: "Server",
+      desc: "The transport manager can easily manage all employee transportation activities centrally: rostering, booking, ongoing trips, real-time tracking, analysis, and MIS reports. Using the web platform, admins can view the list of all drivers with their current status and other records, and manage every vehicle in the transportation fleet.",
+      image:
+        "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=80",
+    },
+  ],
+  solutionsButtonText: "Book Now",
+  ctaEyebrow: "Schedule a Demo",
+  ctaHeadingMain: "Ready to Upgrade to Intelligent",
+  ctaHeadingAccent: "Corporate Mobility?",
+  ctaParagraph:
+    "Let our technical mobility consultants audit your current route logistics, calculate potential cost savings, and set up a live Command Tower trial.",
+  ctaButtonText: "Book an Enterprise Platform",
 };
-
-const serviceList = [
-  { label: "Corporate employee transportation", icon: Smartphone },
-  { label: "Fleet and vehicle management", icon: Server },
-  { label: "Professional driver coordination", icon: Navigation },
-  { label: "Employee trip and route management", icon: Layers },
-  { label: "Transportation technology solutions", icon: Cpu },
-  { label: "Safety and compliance management", icon: ShieldCheck },
-  { label: "Transportation reporting and monitoring", icon: Gauge },
-  { label: "Dedicated customer support", icon: Sparkles },
-];
-
-const techPillars = [
-  {
-    id: "safety-security",
-    category: "Safety & Security",
-    title: "Your Safety, Our Priority",
-    tag: "Real-time protection. Rapid response.",
-    icon: ShieldCheck,
-    badge: "Real-Time Protection",
-    description:
-      "Acciva combines real-time monitoring, centralized security and automated safe-drop confirmation to ensure a safer journey. In emergency situations, our system enables a rapid response within 60 seconds.",
-    keywords: ["Real-Time Monitoring", "Safe-Drop Confirmation", "Emergency Response"],
-    image:
-      "https://driveclick.cy/images/cache/blogfull/89654/BVOM07avum0KkEhg.png",
-  },
-  {
-    id: "efficient-cost-effective",
-    category: "Efficient & Cost-Effective",
-    title: "More Efficiency. Lower Costs.",
-    tag: "Smarter operations. Greater value.",
-    icon: Gauge,
-    badge: "Smarter Operations",
-    description:
-      "Acciva optimizes fleet and manpower utilization through smart technology, helping businesses reduce operational costs, improve efficiency and get more value from their transportation operations.",
-    keywords: ["Fleet Optimization", "Resource Utilization", "Cost Efficiency"],
-    image:
-      "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    id: "paperless-documentation",
-    category: "Paperless Documentation",
-    title: "Go Digital. Go Paperless.",
-    tag: "Less paperwork. More efficiency.",
-    icon: FileCode2,
-    badge: "Paperless",
-    description:
-      "Acciva's automated billing and e-trip sheets eliminate paper-based processes, simplifying transportation management while reducing administrative effort and supporting a more sustainable operation.",
-    keywords: ["Automated Billing", "E-Trip Sheets", "Reduced Paperwork"],
-    image:
-      "https://www.certum.eu/en/wp-content/uploads/2022/05/GettyImages-1349390515-1-1024x683.jpg",
-  },
-  {
-    id: "vehicle-tracking",
-    category: "Vehicle Tracking",
-    title: "Know Where Every Ride Is",
-    tag: "Real-time visibility. Better control.",
-    icon: Navigation,
-    badge: "Live Visibility",
-    description:
-      "Acciva's live vehicle tracking provides complete visibility of every journey, helping businesses monitor trips, improve coordination and respond quickly to delays or unexpected situations.",
-    keywords: ["Live Tracking", "Smart Rostering", "Trip Feedback"],
-    image:
-      "https://v3smarttech.com/wp-content/uploads/2022/10/Improve-your-fuel-efficiency-with-a-GPS-tracking-system.png",
-  },
-  {
-    id: "analytics-report",
-    category: "Analytics & Reporting",
-    title: "Turn Data Into Decisions",
-    tag: "Clear insights. Smarter operations.",
-    icon: Layers,
-    badge: "Clear Insights",
-    description:
-      "Acciva transforms transportation data into actionable insights through customized reports and intuitive dashboards, helping businesses monitor performance, control costs and optimize operations.",
-    keywords: ["Custom Reports", "Performance Insights", "Data-Driven Decisions"],
-    image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    id: "robust-technology",
-    category: "Robust Technology",
-    title: "Technology That Moves Business",
-    tag: "Smarter technology. Stronger operations.",
-    icon: Cpu,
-    badge: "Smart Technology",
-    description:
-      "Acciva's scalable technology platform simplifies transportation management through intelligent routing, automation and real-time data—helping businesses improve efficiency and maintain greater operational control.",
-    keywords: ["Intelligent Routing", "Automation", "Operational Control"],
-    image:
-      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
-  },
-];
-
-const processSteps = [
-  {
-    step: "01",
-    title: "Onboard & Configure",
-    icon: Layers,
-  },
-  {
-    step: "02",
-    title: "Roster & Route",
-    icon: Navigation,
-  },
-  {
-    step: "03",
-    title: "Track Live",
-    icon: ShieldCheck,
-  },
-  {
-    step: "04",
-    title: "Report & Bill",
-    icon: Gauge,
-  },
-];
-
-const techSolutions = [
-  {
-    name: "Employee App",
-    tag: "For Corporate Employees",
-    icon: Smartphone,
-    desc: "Ensures a seamless commute experience for corporate employees with on-time, comfortable, safe travel. Acciva's self-rostering app captures real-time GPS coordinates of employees for more accurate supervision. Employees are notified with relevant trip details such as driver profile, pickup and drop points, and vehicle details.",
-    image:
-      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    name: "Driver App",
-    tag: "For Drivers",
-    icon: Navigation,
-    desc: "Drivers can keep track of trips assigned to them, along with the list of employees and their pickup/drop details, for seamless service. Guided navigation helps drivers reach each employee's pickup point on time and accurately. Drivers can also view their trip incomes, track fuel reimbursements, and see other useful stats.",
-    image:
-      "https://img.magnific.com/free-photo/young-uber-driver-car-interior_23-2149149653.jpg?semt=ais_hybrid&w=740&q=80",
-  },
-  {
-    name: "Web Application",
-    tag: "For Transport Managers",
-    icon: Server,
-    desc: "The transport manager can easily manage all employee transportation activities centrally: rostering, booking, ongoing trips, real-time tracking, analysis, and MIS reports. Using the web platform, admins can view the list of all drivers with their current status and other records, and manage every vehicle in the transportation fleet.",
-    image:
-      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=80",
-  },
-];
 
 const Technology = () => {
   const { data: content } = usePageContent("technology", TECHNOLOGY_DEFAULTS);
@@ -204,7 +195,7 @@ const Technology = () => {
           style={{
             y: heroBgY,
             opacity: heroFade,
-            backgroundImage: `url('https://static.vecteezy.com/system/resources/thumbnails/036/470/491/small/ai-generated-circuit-board-background-electronic-computer-hardware-technology-ai-generative-photo.jpg')`,
+            backgroundImage: `url('${content.heroBackgroundImage}')`,
             backgroundSize: "cover",
             backgroundPosition: "center bottom",
           }}
@@ -316,6 +307,7 @@ const Technology = () => {
           <div className="absolute top-0 bottom-0 right-0 w-24 sm:w-40 bg-linear-to-l from-white to-transparent z-10 pointer-events-none" />
 
           {[0, 1].map((row) => {
+            const serviceList = content.serviceMarquee;
             const items =
               row === 0
                 ? serviceList
@@ -328,7 +320,7 @@ const Technology = () => {
                 }`}
               >
                 {[...items, ...items].map((item, idx) => {
-                  const ItemIcon = item.icon;
+                  const ItemIcon = resolveIcon(item.icon);
                   const isSand = idx % 2 === 1;
                   return (
                     <div
@@ -418,24 +410,22 @@ const Technology = () => {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="mb-12"
           >
-            <span className="eyebrow text-teal">Technology Pillars</span>
+            <span className="eyebrow text-teal">{content.pillarsEyebrow}</span>
             <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-6 tracking-tight">
-              Six Pillars Powering{" "}
-              <span className="italic text-teal font-normal">Every Trip.</span>
+              {content.pillarsHeadingMain}{" "}
+              <span className="italic text-teal font-normal">{content.pillarsHeadingAccent}</span>
             </h2>
             <p className="text-slate-700 text-[15px] font-normal mt-4 leading-relaxed">
-              Safety, cost efficiency, paperless workflows, live tracking,
-              analytics and platform reliability — six interlocking systems
-              working together behind every trip you book.
+              {content.pillarsParagraph}
             </p>
           </motion.div>
 
           <div className="max-w-7xl mx-auto space-y-7">
-            {techPillars.map((p, idx) => {
-              const IconComp = p.icon;
+            {content.pillars.map((p, idx) => {
+              const IconComp = resolveIcon(p.icon);
               return (
                 <motion.div
-                  key={p.id}
+                  key={p.title}
                   initial={{ opacity: 0, x: idx % 2 === 0 ? -50 : 50 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, amount: 0.1 }}
@@ -518,9 +508,9 @@ const Technology = () => {
           >
             <span className="eyebrow text-teal">How It Works</span>
             <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-6 tracking-tight">
-              From Onboarding To{" "}
+              {content.processHeadingMain}{" "}
               <span className="italic text-teal font-normal">
-                Every Mile Tracked.
+                {content.processHeadingAccent}
               </span>
             </h2>
           </motion.div>
@@ -559,8 +549,8 @@ const Technology = () => {
             </div>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
-              {processSteps.map((s, idx) => {
-                const StepIcon = s.icon;
+              {content.processSteps.map((s, idx) => {
+                const StepIcon = resolveIcon(s.icon);
                 return (
                   <motion.div
                     key={s.step}
@@ -662,10 +652,10 @@ const Technology = () => {
               </motion.div>
               <div>
                 <h4 className="font-display text-xl sm:text-2xl text-navy font-bold">
-                  Safety Transportation Made Easy
+                  {content.bannerHeading}
                 </h4>
                 <p className="text-slate-600 text-[15px] font-normal leading-relaxed mt-0.5">
-                  Feel free to touch with us.
+                  {content.bannerText}
                 </p>
               </div>
             </div>
@@ -675,7 +665,7 @@ const Technology = () => {
                 to="/contact"
                 className="shrink-0 inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl relative z-10"
               >
-                <span>Book Now</span>
+                <span>{content.bannerButtonText}</span>
                 <ArrowUpRight size={16} />
               </NavLink>
             </Magnetic>
@@ -717,17 +707,15 @@ const Technology = () => {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="mb-12 max-w-2xl"
           >
-            <span className="eyebrow text-teal">Technology Solutions</span>
+            <span className="eyebrow text-teal">{content.solutionsEyebrow}</span>
             <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-6 tracking-tight">
-              One Platform.{" "}
+              {content.solutionsHeadingMain}{" "}
               <span className="italic text-teal font-normal">
-                Three Seamless Experiences.
+                {content.solutionsHeadingAccent}
               </span>
             </h2>
             <p className="text-slate-700 text-[15px] font-normal mt-4 leading-relaxed">
-              Purpose-built apps for employees, drivers, and transport managers,
-              connected in real time to deliver a smooth, on-time, and safe
-              commute for every enterprise shift.
+              {content.solutionsParagraph}
             </p>
           </motion.div>
 
@@ -739,8 +727,8 @@ const Technology = () => {
             variants={{ visible: { transition: { staggerChildren: 0.12 } } }}
             className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-7"
           >
-            {techSolutions.map((item, idx) => {
-              const ItemIcon = item.icon;
+            {content.techSolutions.map((item, idx) => {
+              const ItemIcon = resolveIcon(item.icon);
               return (
                 <motion.div
                   key={item.name}
@@ -800,7 +788,7 @@ const Technology = () => {
               to="/contact"
               className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
             >
-              <span>Book Now</span>
+              <span>{content.solutionsButtonText}</span>
               <ArrowUpRight size={16} />
             </NavLink>
           </div>
@@ -837,14 +825,14 @@ const Technology = () => {
 
         <div className="container-px relative z-10 text-center max-w-4xl mx-auto">
           <span className="eyebrow text-teal inline-block mb-6">
-            Schedule a Demo
+            {content.ctaEyebrow}
           </span>
 
           <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.08] tracking-tight mb-6">
             {[
-              { text: "Ready to Upgrade to Intelligent", cls: "" },
+              { text: content.ctaHeadingMain, cls: "" },
               {
-                text: "Corporate Mobility?",
+                text: content.ctaHeadingAccent,
                 cls: "italic text-teal font-normal",
               },
             ].map((line, i) => (
@@ -867,9 +855,7 @@ const Technology = () => {
           </h2>
 
           <p className="text-slate-700 text-[15px] font-normal max-w-xl mx-auto mb-10 leading-relaxed">
-            Let our technical mobility consultants audit your current route
-            logistics, calculate potential cost savings, and set up a live
-            Command Tower trial.
+            {content.ctaParagraph}
           </p>
 
           <Magnetic>
@@ -877,7 +863,7 @@ const Technology = () => {
               to="/contact"
               className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
             >
-              <span>Book an Enterprise Platform</span>
+              <span>{content.ctaButtonText}</span>
               <ArrowUpRight size={16} />
             </NavLink>
           </Magnetic>

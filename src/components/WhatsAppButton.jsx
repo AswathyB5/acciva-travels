@@ -1,10 +1,28 @@
 import { motion } from "framer-motion";
+import { usePageContent } from "../data/useContent";
 
-// Decorative for now — intentionally not a link/clickable yet.
+const WHATSAPP_DEFAULTS = {
+  whatsappNumber: "",
+  whatsappMessage: "Hi Acciva Travels, I'd like to know more about your corporate transportation services.",
+};
+
+// Renders as a real wa.me link once a WhatsApp number is set in the Footer
+// admin content; otherwise stays decorative/non-clickable as before.
 const WhatsAppButton = () => {
+  const { data: content } = usePageContent("footer", WHATSAPP_DEFAULTS);
+  const digits = (content.whatsappNumber || "").replace(/[^0-9]/g, "");
+  const href = digits
+    ? `https://wa.me/${digits}?text=${encodeURIComponent(content.whatsappMessage || "")}`
+    : null;
+
+  const MotionWrapper = href ? motion.a : motion.div;
+  const wrapperProps = href
+    ? { href, target: "_blank", rel: "noopener noreferrer", "aria-label": "Chat with us on WhatsApp" }
+    : { "aria-hidden": "true" };
+
   return (
-    <motion.div
-      aria-hidden="true"
+    <MotionWrapper
+      {...wrapperProps}
       initial={{ opacity: 0, scale: 0.5, y: 20 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
@@ -33,7 +51,7 @@ const WhatsAppButton = () => {
           </svg>
         </div>
       </div>
-    </motion.div>
+    </MotionWrapper>
   );
 };
 

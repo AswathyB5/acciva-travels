@@ -1,43 +1,25 @@
 import { motion } from "framer-motion";
-import {
-  Cpu,
-  Headset,
-  Landmark,
-  Factory,
-  HeartPulse,
-  Pill,
-  Briefcase,
-  Cog,
-  Car,
-  CircuitBoard,
-  ShoppingCart,
-  Truck,
-  Store,
-  Globe2,
-  Rocket,
-  Building2,
-  Building,
-} from "lucide-react";
+import { resolveIcon } from "../data/iconMap";
 
-const industries = [
-  { name: "IT & Technology", icon: Cpu },
-  { name: "ITES", icon: Headset },
-  { name: "BFSI", icon: Landmark },
-  { name: "Manufacturing", icon: Factory },
-  { name: "Healthcare", icon: HeartPulse },
-  { name: "Pharmaceuticals", icon: Pill },
-  { name: "Consulting", icon: Briefcase },
-  { name: "Engineering", icon: Cog },
-  { name: "Automotive", icon: Car },
-  { name: "Electronics", icon: CircuitBoard },
-  { name: "E-commerce", icon: ShoppingCart },
-  { name: "Logistics", icon: Truck },
-  { name: "Retail", icon: Store },
-  { name: "Global Capability Centres", icon: Globe2 },
-  { name: "Startups", icon: Rocket },
-  { name: "MNCs", icon: Building2 },
-  { name: "Industrial Companies", icon: Factory },
-  { name: "Corporate Offices", icon: Building },
+const DEFAULT_INDUSTRIES = [
+  { name: "IT & Technology", icon: "Cpu" },
+  { name: "ITES", icon: "Headset" },
+  { name: "BFSI", icon: "Landmark" },
+  { name: "Manufacturing", icon: "Factory" },
+  { name: "Healthcare", icon: "HeartPulse" },
+  { name: "Pharmaceuticals", icon: "Pill" },
+  { name: "Consulting", icon: "Briefcase" },
+  { name: "Engineering", icon: "Cog" },
+  { name: "Automotive", icon: "Car" },
+  { name: "Electronics", icon: "CircuitBoard" },
+  { name: "E-commerce", icon: "ShoppingCart" },
+  { name: "Logistics", icon: "Truck" },
+  { name: "Retail", icon: "Store" },
+  { name: "Global Capability Centres", icon: "Globe2" },
+  { name: "Startups", icon: "Rocket" },
+  { name: "MNCs", icon: "Building2" },
+  { name: "Industrial Companies", icon: "Factory" },
+  { name: "Corporate Offices", icon: "Building" },
 ];
 
 const colorStyles = {
@@ -53,16 +35,17 @@ const colorStyles = {
 
 const ROW_SIZE = 6;
 
-const rows = Array.from({ length: Math.ceil(industries.length / ROW_SIZE) }, (_, i) =>
-  industries.slice(i * ROW_SIZE, i * ROW_SIZE + ROW_SIZE)
-);
-
 const Industries = ({
   eyebrow = "Industries We Serve",
   headingMain = "Trusted Across",
   headingAccent = "Every Sector.",
   paragraph = "From fast-scaling startups to established multinationals, Acciva powers corporate mobility for organisations across every industry vertical, PAN India.",
+  items = DEFAULT_INDUSTRIES,
 }) => {
+  const rows = Array.from({ length: Math.ceil(items.length / ROW_SIZE) }, (_, i) =>
+    items.slice(i * ROW_SIZE, i * ROW_SIZE + ROW_SIZE)
+  );
+
   return (
     <section className="relative bg-soft py-16 md:py-24 overflow-hidden">
       {/* Ambient background accents matching site language */}
@@ -98,7 +81,7 @@ const Industries = ({
       <div className="mt-12 md:mt-14 relative z-10 space-y-3 sm:space-y-4">
         {rows.map((row, rowIdx) => {
           const direction = rowIdx % 2 === 0 ? "right" : "left";
-          const items = [...row, ...row];
+          const rowItems = [...row, ...row];
           return (
             <div key={rowIdx} className="relative overflow-hidden">
               <div className="absolute top-0 bottom-0 left-0 w-12 sm:w-32 bg-linear-to-r from-soft to-transparent z-10 pointer-events-none" />
@@ -109,7 +92,8 @@ const Industries = ({
                   direction === "right" ? "animate-marquee-right" : "animate-marquee-left"
                 }`}
               >
-                {items.map(({ name, icon: Icon }, i) => {
+                {rowItems.map(({ name, icon }, i) => {
+                  const Icon = resolveIcon(icon);
                   const color = i % 2 === 0 ? "teal" : "sand";
                   return (
                     <div

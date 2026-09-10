@@ -15,6 +15,7 @@ import Contact from "./pages/Contact";
 import Careers from "./pages/Careers";
 import WhatIsCorporateEmployeeTransportation from "./Blogs/what-is-corporate-employee-transportation";
 import EmployeeTransportationVsPublicTransport from "./Blogs/employee-transportation-vs-public-transport";
+import BlogPost from "./pages/BlogPost";
 import AdminApp from "./admin/admin";
 
 function SiteLayout() {
@@ -66,6 +67,7 @@ function App() {
           path="/blog/employee-transportation-vs-public-transport"
           element={<EmployeeTransportationVsPublicTransport />}
         />
+        <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/careers" element={<Careers />} />
       </Route>

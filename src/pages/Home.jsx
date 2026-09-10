@@ -43,6 +43,8 @@ const HOME_DEFAULTS = {
   fleetEyebrow: "Our Fleet",
   fleetHeadingMain: "A Vehicle For",
   fleetHeadingAccent: "Every Corporate Need.",
+  fleetShowcaseLabel: "Corporate Fleet Showcase · Hover to Expand",
+  fleetCtaLabel: "Book This Fleet",
   fleetItems: [
     { name: "Sedan", country: "Everyday Corporate Travel", description: "Comfortable, fuel-efficient sedans for daily employee commutes and routine office travel.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Toyota_Camry_2.5_Hybrid_Ascent_Sport_%28IX%29_%E2%80%93_f_02012026.jpg/1280px-Toyota_Camry_2.5_Hybrid_Ascent_Sport_%28IX%29_%E2%80%93_f_02012026.jpg" },
     { name: "MPV", country: "Family & Group Travel", description: "Spacious multi-purpose vehicles built for small teams travelling together in comfort.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Toyota_Innova_Crysta_2.4_Z_front_right.jpg/1280px-Toyota_Innova_Crysta_2.4_Z_front_right.jpg" },
@@ -59,11 +61,40 @@ const HOME_DEFAULTS = {
   statementLine3: "Complete Mobility.",
   statementTagline: "Acciva Travels · Pan-India Corporate Mobility Benchmark",
   statementCta: "Book Now",
+  servicesEyebrow: "Our Services",
+  servicesHeadingMain: "Our Transport",
+  servicesHeadingAccent: "Services.",
+  servicesButtonText: "Explore All Services",
+  servicesCardButtonText: "View Specifications",
+  servicesStripTitle: "Full Spectrum Fleet Management",
+  servicesStripDescription:
+    "Also providing Dedicated Staff Bus Shuttles, Corporate VIP Delegations & Inter-City Business Transit.",
+  servicesStripButtonText: "View All Capabilities",
   industriesEyebrow: "Industries We Serve",
   industriesHeadingMain: "Trusted Across",
   industriesHeadingAccent: "Every Sector.",
   industriesParagraph:
     "From fast-scaling startups to established multinationals, Acciva powers corporate mobility for organisations across every industry vertical, PAN India.",
+  industriesList: [
+    { name: "IT & Technology", icon: "Cpu" },
+    { name: "ITES", icon: "Headset" },
+    { name: "BFSI", icon: "Landmark" },
+    { name: "Manufacturing", icon: "Factory" },
+    { name: "Healthcare", icon: "HeartPulse" },
+    { name: "Pharmaceuticals", icon: "Pill" },
+    { name: "Consulting", icon: "Briefcase" },
+    { name: "Engineering", icon: "Cog" },
+    { name: "Automotive", icon: "Car" },
+    { name: "Electronics", icon: "CircuitBoard" },
+    { name: "E-commerce", icon: "ShoppingCart" },
+    { name: "Logistics", icon: "Truck" },
+    { name: "Retail", icon: "Store" },
+    { name: "Global Capability Centres", icon: "Globe2" },
+    { name: "Startups", icon: "Rocket" },
+    { name: "MNCs", icon: "Building2" },
+    { name: "Industrial Companies", icon: "Factory" },
+    { name: "Corporate Offices", icon: "Building" },
+  ],
   whyEyebrow: "Why Acciva Travels",
   whyHeadingMain: "Why Enterprises",
   whyHeadingAccent: "Trust Us.",
@@ -77,6 +108,9 @@ const HOME_DEFAULTS = {
     { title: "Operational Support", description: "Support aligned to actual service commitments.", icon: "Headphones" },
     { title: "End-to-End Management", description: "From requirement and allocation through trip completion, reporting and billing.", icon: "Award" },
   ],
+  testimonialsEyebrow: "Enterprise Trust & Reviews",
+  testimonialsHeadingMain: "Trusted By India's Leading",
+  testimonialsHeadingAccent: "Enterprises.",
   journalEyebrow: "The Journal",
   journalHeadingMain: "Stories From The",
   journalHeadingAccent: "Open Road.",
@@ -185,7 +219,11 @@ const Home = () => {
             {content.fleetHeadingMain} <span className="italic text-teal font-normal">{content.fleetHeadingAccent}</span>
           </h2>
         </div>
-        <DestinationExpand destinations={content.fleetItems} />
+        <DestinationExpand
+          destinations={content.fleetItems}
+          showcaseLabel={content.fleetShowcaseLabel}
+          ctaLabel={content.fleetCtaLabel}
+        />
       </section>
 
       {/* Statement Banner */}
@@ -266,7 +304,16 @@ const Home = () => {
       {/* What We Offer (Enhanced Featured Showcase) */}
       <section className="bg-soft pt-14 md:pt-18 pb-6 md:pb-8 text-navy">
         <div className="container-px">
-          <FeaturedServices />
+          <FeaturedServices
+            eyebrow={content.servicesEyebrow}
+            headingMain={content.servicesHeadingMain}
+            headingAccent={content.servicesHeadingAccent}
+            buttonText={content.servicesButtonText}
+            cardButtonText={content.servicesCardButtonText}
+            stripTitle={content.servicesStripTitle}
+            stripDescription={content.servicesStripDescription}
+            stripButtonText={content.servicesStripButtonText}
+          />
         </div>
       </section>
 
@@ -276,6 +323,7 @@ const Home = () => {
         headingMain={content.industriesHeadingMain}
         headingAccent={content.industriesHeadingAccent}
         paragraph={content.industriesParagraph}
+        items={content.industriesList}
       />
 
       {/* Enterprise Trust */}
@@ -290,7 +338,11 @@ const Home = () => {
       <WhyAcciva reasons={content.whyReasons} />
 
       {/* Creative Modern Animated Testimonials */}
-      <Testimonial />
+      <Testimonial
+        eyebrow={content.testimonialsEyebrow}
+        headingMain={content.testimonialsHeadingMain}
+        headingAccent={content.testimonialsHeadingAccent}
+      />
 
       {/* Numbers / Metrics */}
       <section className="bg-soft pt-0 md:pt-1 pb-15">
