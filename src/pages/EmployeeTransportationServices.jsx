@@ -15,6 +15,7 @@ import {
 import Seo from "../components/Seo";
 import AnimatedImage from "../components/AnimatedImage";
 import Magnetic from "../components/Magnetic";
+import SmartLink from "../components/SmartLink";
 import { usePageContent } from "../data/useContent";
 import { resolveIcon } from "../data/iconMap";
 
@@ -130,6 +131,7 @@ const ETS_DEFAULTS = {
     "Talk to us about your routes, shift timings, employee locations, and other requirements. We'll work with your team to understand your needs and develop a transportation plan that works for your business and your employees.",
   ],
   talkButtonText: "Talk to Acciva Travels",
+  talkButtonLink: "/contact",
 };
 
 // 3D tilt card — same motif used across Services/About pages.
@@ -1112,13 +1114,13 @@ const EmployeeTransportationServices = () => {
               </div>
               <div className="mt-8 flex justify-center">
                 <Magnetic strength={20}>
-                  <NavLink
-                    to="/contact"
+                  <SmartLink
+                    to={content.talkButtonLink}
                     className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
                   >
                     <span>{content.talkButtonText}</span>
                     <ArrowUpRight size={16} />
-                  </NavLink>
+                  </SmartLink>
                 </Magnetic>
               </div>
             </div>

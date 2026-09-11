@@ -1,20 +1,32 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useParams, NavLink, Navigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ChevronRight, Clock, ArrowUpRight, ArrowLeft, RefreshCw } from "lucide-react";
 import AnimatedImage from "../components/AnimatedImage";
 import Seo from "../components/Seo";
 import { blogPosts as fallbackBlogPosts } from "../data/content";
-import { useCollection } from "../data/useContent";
+import { useCollection, usePageContent } from "../data/useContent";
+import { sanitizeArticleHtml } from "../data/articleHtml";
+
+// Same hero background image as the Blog listing page ("The Journal") — it
+// lives on the shared "blog" page content, not per-post, so every post gets
+// it automatically, admin-added or not, and editing it once updates it
+// everywhere.
+const BLOG_INTRO_DEFAULTS = {
+  heroBackgroundImage:
+    "https://dam.alfuttaim.com/dx/api/dam/v1/collections/26711d2e-640a-4167-bd6a-a2f1ebd504d6/items/cf0b0423-4519-4326-981d-a3f8f580513e/renditions/6063f964-039e-4fa3-93dd-2903c8ebc68c?binary=true&mformat=true",
+};
 
 // Renders any blog post created/edited through the admin CMS. Its "Full
-// Content" field is free text — split on blank lines into paragraphs so
-// editors can write normally without needing to hand-author markup.
+// Content" field is HTML, written with the admin's WYSIWYG editor — rendered
+// here through the same styling as the site's hand-built articles.
 const BlogPost = () => {
   const { slug } = useParams();
   const [retryKey, setRetryKey] = useState(0);
   const { items: blogPosts, loading, error } = useCollection("blog-posts", fallbackBlogPosts, retryKey);
+  const { data: blogContent } = usePageContent("blog", BLOG_INTRO_DEFAULTS);
   const post = blogPosts.find((p) => p.slug === slug);
+  const contentHtml = useMemo(() => sanitizeArticleHtml(post?.content), [post?.content]);
 
   // Only bounce back to the listing once we've *confirmed* (a successful
   // fetch) that no such post exists — a network hiccup on this page's own
@@ -44,23 +56,29 @@ const BlogPost = () => {
     );
   }
 
-  const paragraphs = (post?.content || "")
-    .split(/\n\s*\n/)
-    .map((p) => p.trim())
-    .filter(Boolean);
-
   return (
     <div className="bg-soft text-navy overflow-hidden">
       {post && <Seo title={post.title} description={post.excerpt} />}
 
-      <section className="pt-28 sm:pt-32 pb-10 md:pb-14">
-        <div className="container-px">
-          <div className="flex items-center gap-2 text-xs font-bold text-navy/60 mb-6 uppercase tracking-wider">
-            <NavLink to="/" className="hover:text-teal transition-colors font-bold">
+      <section
+        className="pt-28 sm:pt-32 pb-10 md:pb-14 relative overflow-hidden"
+        style={{
+          backgroundImage: `url('${blogContent.heroBackgroundImage}')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center bottom",
+          backgroundAttachment: "fixed",
+        }}
+      >
+        {/* Light overlay for text legibility, matching the Journal listing page */}
+        <div className="absolute inset-0 bg-slate-300/80 backdrop-blur-[1px]" />
+
+        <div className="container-px relative z-10">
+          <div className="flex items-center gap-2 text-xs font-bold text-navy mb-6 uppercase tracking-wider">
+            <NavLink to="/" className="hover:text-teal transition-colors text-navy/70 font-bold">
               Home
             </NavLink>
             <ChevronRight size={12} />
-            <NavLink to="/blog" className="hover:text-teal transition-colors font-bold">
+            <NavLink to="/blog" className="hover:text-teal transition-colors text-navy/70 font-bold">
               The Journal
             </NavLink>
             <ChevronRight size={12} />
@@ -72,7 +90,7 @@ const BlogPost = () => {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="max-w-3xl"
+              className="max-w-4xl"
             >
               {post.category && (
                 <span className="px-3 py-1 rounded-full bg-teal/10 text-teal text-[11px] font-bold uppercase tracking-wider">
@@ -111,15 +129,18 @@ const BlogPost = () => {
 
       <section className="pb-16 md:pb-20">
         <div className="container-px">
-          <div className="max-w-3xl mx-auto space-y-6 text-slate-700 text-[16px] leading-relaxed font-normal">
-            {paragraphs.length > 0 ? (
-              paragraphs.map((p, i) => <p key={i}>{p}</p>)
-            ) : (
-              <p>{post?.excerpt}</p>
-            )}
-          </div>
+          {contentHtml ? (
+            <div
+              className="article-content max-w-4xl mx-auto"
+              dangerouslySetInnerHTML={{ __html: contentHtml }}
+            />
+          ) : (
+            <p className="max-w-4xl mx-auto text-slate-700 text-[16px] leading-relaxed font-normal">
+              {post?.excerpt}
+            </p>
+          )}
 
-          <div className="max-w-3xl mx-auto mt-14 flex flex-wrap items-center justify-between gap-4">
+          <div className="max-w-4xl mx-auto mt-14 flex flex-wrap items-center justify-between gap-4">
             <NavLink
               to="/blog"
               className="inline-flex items-center gap-2 text-sm font-bold text-navy hover:text-teal transition-colors"

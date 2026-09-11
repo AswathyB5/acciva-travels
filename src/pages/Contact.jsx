@@ -2,6 +2,8 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { api } from "../admin/lib/api";
 import { NavLink } from "react-router-dom";
+import SmartLink from "../components/SmartLink";
+import { isValidEmail, isValidName, isValidPhone, sanitizePhoneInput } from "../data/validators";
 import {
   Phone,
   Mail,
@@ -9,11 +11,7 @@ import {
   Clock,
   Send,
   CheckCircle2,
-  ShieldCheck,
-  Building2,
   ChevronRight,
-  Headphones,
-  Award,
   ArrowUpRight,
 } from "lucide-react";
 import AnimatedImage from "../components/AnimatedImage";
@@ -66,6 +64,7 @@ const CONTACT_DEFAULTS = {
   closingParagraph:
     "Our corporate transit managers are available round-the-clock to structure scalable transit contracts for your team.",
   closingButtonText: "Explore Fleet Capabilities",
+  closingButtonLink: "/services",
 };
 
 const FOOTER_DEFAULTS = {
@@ -101,18 +100,27 @@ const Contact = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
+    const next = name === "phone" ? sanitizePhoneInput(value) : value;
+    setForm((prev) => ({ ...prev, [name]: next }));
   };
 
   const validate = () => {
     const newErrors = {};
-    if (!form.name.trim()) newErrors.name = "Name is required";
+    if (!form.name.trim()) {
+      newErrors.name = "Name is required";
+    } else if (!isValidName(form.name)) {
+      newErrors.name = "Name can only contain letters";
+    }
     if (!form.email.trim()) {
       newErrors.email = "Email is required";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+    } else if (!isValidEmail(form.email)) {
       newErrors.email = "Enter a valid email address";
     }
-    if (!form.phone.trim()) newErrors.phone = "Phone number is required";
+    if (!form.phone.trim()) {
+      newErrors.phone = "Phone number is required";
+    } else if (!isValidPhone(form.phone)) {
+      newErrors.phone = "Enter a valid phone number";
+    }
     if (form.subject === "Other" && !form.customSubject.trim()) {
       newErrors.customSubject = "Please specify a subject";
     }
@@ -345,6 +353,8 @@ const Contact = () => {
                       </label>
                       <input
                         name="phone"
+                        type="tel"
+                        inputMode="tel"
                         value={form.phone}
                         onChange={handleChange}
                         placeholder="+91 98765 43210"
@@ -669,13 +679,13 @@ const Contact = () => {
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-            <NavLink
-              to="/services"
+            <SmartLink
+              to={content.closingButtonLink}
               className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
             >
               <span>{content.closingButtonText}</span>
               <ArrowUpRight size={16} />
-            </NavLink>
+            </SmartLink>
           </div>
         </div>
       </section>

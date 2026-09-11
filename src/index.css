@@ -100,6 +100,144 @@ h4 em,
   }
 }
 
+/* Long-form article body — used by both the public blog post page and the
+   admin's WYSIWYG editor, so what an editor sees while writing a post
+   matches exactly what a visitor sees on the live page. */
+.article-content {
+  color: #334155; /* slate-700, matches every other article paragraph on the site */
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.article-content > * + * {
+  margin-top: 1.5rem;
+}
+
+.article-content h1,
+.article-content h2,
+.article-content h3,
+.article-content h4,
+.article-content h5,
+.article-content h6 {
+  font-family: var(--font-display);
+  color: var(--color-navy);
+  font-weight: 700 !important;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  margin-top: 2.5rem;
+}
+
+.article-content h1 {
+  font-size: 1.875rem;
+}
+
+.article-content h2 {
+  font-size: 1.5rem;
+}
+
+.article-content h3 {
+  font-size: 1.25rem;
+}
+
+.article-content h4 {
+  font-size: 1.125rem;
+}
+
+.article-content h5,
+.article-content h6 {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.article-content > h1:first-child,
+.article-content > h2:first-child,
+.article-content > h3:first-child,
+.article-content > h4:first-child,
+.article-content > h5:first-child,
+.article-content > h6:first-child {
+  margin-top: 0;
+}
+
+.article-content u {
+  text-decoration: underline;
+}
+
+[contenteditable].article-content:empty::before {
+  content: attr(data-placeholder);
+  color: rgba(25, 42, 58, 0.35);
+}
+
+.article-content strong {
+  color: var(--color-navy);
+  font-weight: 700;
+}
+
+.article-content a {
+  color: var(--color-teal);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.article-content a:hover {
+  opacity: 0.8;
+}
+
+.article-content ul,
+.article-content ol {
+  padding-left: 1.5rem;
+}
+
+.article-content ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.article-content ul li {
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.article-content ul li::before {
+  content: "";
+  position: absolute;
+  left: 0.25rem;
+  top: 0.65rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--color-teal);
+}
+
+.article-content ol {
+  list-style: decimal;
+}
+
+.article-content ol li::marker {
+  color: var(--color-teal);
+  font-weight: 700;
+}
+
+.article-content li + li {
+  margin-top: 0.5rem;
+}
+
+.article-content blockquote {
+  border-left: 3px solid var(--color-teal);
+  background: color-mix(in srgb, var(--color-teal) 6%, transparent);
+  padding: 0.25rem 1.25rem;
+  border-radius: 0 0.75rem 0.75rem 0;
+  font-style: italic;
+}
+
+.article-content code {
+  background: var(--color-ivory);
+  padding: 0.15em 0.4em;
+  border-radius: 0.35em;
+  font-size: 0.9em;
+}
+
 .eyebrow {
   font-family: var(--font-sans);
   font-size: 0.75rem;

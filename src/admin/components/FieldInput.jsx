@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { X, Plus, Upload } from "lucide-react";
 import { api } from "../lib/api";
+import RichTextEditor from "./RichTextEditor";
 
 const baseInputClass =
   "w-full rounded-xl border border-navy/15 px-3.5 py-2.5 text-sm text-navy focus:outline-none focus:ring-2 focus:ring-teal/50 focus:border-teal transition-colors";
@@ -62,6 +63,10 @@ const ImageField = ({ value, onChange }) => {
 };
 
 const FieldInput = ({ field, value, onChange }) => {
+  if (field.type === "richtext") {
+    return <RichTextEditor value={value} onChange={onChange} />;
+  }
+
   if (field.type === "textarea") {
     return (
       <textarea
@@ -95,6 +100,28 @@ const FieldInput = ({ field, value, onChange }) => {
           </option>
         ))}
       </select>
+    );
+  }
+
+  // Dropdown of suggested values that also accepts a free-typed new one —
+  // e.g. blog categories: pick an existing one, or type a brand new category.
+  if (field.type === "combo") {
+    const listId = `combo-${field.name}`;
+    return (
+      <>
+        <input
+          list={listId}
+          className={baseInputClass}
+          value={value || ""}
+          onChange={(e) => onChange(e.target.value)}
+          placeholder={field.placeholder || "Select or type a new value..."}
+        />
+        <datalist id={listId}>
+          {(field.options || []).map((opt) => (
+            <option key={opt} value={opt} />
+          ))}
+        </datalist>
+      </>
     );
   }
 

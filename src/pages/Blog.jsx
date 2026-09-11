@@ -7,6 +7,7 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 import AnimatedImage from "../components/AnimatedImage";
+import SmartLink from "../components/SmartLink";
 import { blogPosts as fallbackBlogPosts } from "../data/content";
 import { useCollection, usePageContent } from "../data/useContent";
 
@@ -24,6 +25,7 @@ const BLOG_DEFAULTS = {
   newsletterParagraph:
     "Subscribe to receive quarterly whitepapers, EV transition benchmarks, and tech park transit optimization case studies.",
   newsletterButtonText: "Book Now",
+  newsletterButtonLink: "/contact",
 };
 
 const Blog = () => {
@@ -248,13 +250,13 @@ const Blog = () => {
             {content.newsletterParagraph}
           </p>
 
-          <NavLink
-            to="/contact"
+          <SmartLink
+            to={content.newsletterButtonLink}
             className="mt-6 inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
           >
             <span>{content.newsletterButtonText}</span>
             <ArrowUpRight size={16} />
-          </NavLink>
+          </SmartLink>
         </div>
       </section>
     </div>

@@ -1,10 +1,10 @@
-import { NavLink } from "react-router-dom";
 import { ArrowUpRight, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { services as fallbackServices } from "../data/content";
 import { useCollection } from "../data/useContent";
 import { resolveIcon } from "../data/iconMap";
 import AnimatedImage from "./AnimatedImage";
+import SmartLink from "./SmartLink";
 
 const ACCENTS = ["teal", "sand", "teal"];
 
@@ -23,10 +23,13 @@ const FeaturedServices = ({
   headingMain = "Our Transport",
   headingAccent = "Services.",
   buttonText = "Explore All Services",
+  buttonLink = "/services",
   cardButtonText = "View Specifications",
+  cardButtonLink = "/services",
   stripTitle = "Full Spectrum Fleet Management",
   stripDescription = "Also providing Dedicated Staff Bus Shuttles, Corporate VIP Delegations & Inter-City Business Transit.",
   stripButtonText = "View All Capabilities",
+  stripButtonLink = "/services",
 }) => {
   const { items: services } = useCollection("services", fallbackServices);
   const featured = services.slice(0, 1);
@@ -48,8 +51,8 @@ const FeaturedServices = ({
           </h2>
         </div>
 
-        <NavLink
-          to="/services"
+        <SmartLink
+          to={buttonLink}
           className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl shrink-0 group self-start md:self-end"
         >
           <span>{buttonText}</span>
@@ -57,7 +60,7 @@ const FeaturedServices = ({
             size={16}
             className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
           />
-        </NavLink>
+        </SmartLink>
       </motion.div>
 
       {/* Alternating editorial rows, each its own card */}
@@ -136,13 +139,13 @@ const FeaturedServices = ({
                   </motion.p>
 
                   <motion.div variants={itemVariants}>
-                    <NavLink
-                      to="/services"
+                    <SmartLink
+                      to={cardButtonLink}
                       className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border backdrop-blur-sm text-xs font-mono font-semibold mt-3 w-fit transition-colors duration-300 group/link ${ctaContainerClass}`}
                     >
                       <span>{cardButtonText}</span>
                       <ArrowUpRight size={13} className="transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
-                    </NavLink>
+                    </SmartLink>
                   </motion.div>
                 </motion.div>
               </div>
@@ -176,13 +179,13 @@ const FeaturedServices = ({
           </div>
         </div>
 
-        <NavLink
-          to="/services"
+        <SmartLink
+          to={stripButtonLink}
           className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl shrink-0"
         >
           <span>{stripButtonText}</span>
           <ArrowUpRight size={16} className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
-        </NavLink>
+        </SmartLink>
       </motion.div>
     </div>
   );

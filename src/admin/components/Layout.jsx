@@ -1,9 +1,56 @@
+import { useEffect, useState } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { LayoutDashboard, MessageSquare, Truck, LogOut, ExternalLink, CornerDownRight } from "lucide-react";
 import { collections } from "../collectionsConfig";
 import { pages } from "../pagesConfig";
 import { useAuth } from "../lib/useAuth";
+import { api } from "../lib/api";
+
+const NotificationBadge = ({ count }) => (
+  <AnimatePresence>
+    {count > 0 && (
+      <motion.span
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0, opacity: 0 }}
+        transition={{ type: "spring", stiffness: 400, damping: 20 }}
+        className="ml-auto shrink-0 min-w-5 h-5 px-1.5 rounded-full bg-sand text-navy text-[11px] font-bold flex items-center justify-center shadow-sm"
+      >
+        {count > 99 ? "99+" : count}
+      </motion.span>
+    )}
+  </AnimatePresence>
+);
+
+function useSubmissionCounts() {
+  const [counts, setCounts] = useState({ contact: 0, partner: 0 });
+
+  useEffect(() => {
+    let cancelled = false;
+    const load = () => {
+      Promise.all([api.listSubmissions("contact"), api.listSubmissions("partner")])
+        .then(([contact, partner]) => {
+          if (cancelled) return;
+          setCounts({
+            contact: contact.filter((i) => !i.read).length,
+            partner: partner.filter((i) => !i.read).length,
+          });
+        })
+        .catch(() => {
+          // Not logged in yet, or a transient error — badges just stay at 0.
+        });
+    };
+    load();
+    const id = setInterval(load, 30000);
+    return () => {
+      cancelled = true;
+      clearInterval(id);
+    };
+  }, []);
+
+  return counts;
+}
 
 const navItemClass = ({ isActive }) =>
   `group relative flex items-center gap-3 pl-4 pr-3 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-teal/40 ${
@@ -39,6 +86,7 @@ const Layout = () => {
   const { username, logout } = useAuth();
   const location = useLocation();
   const initial = username ? username.charAt(0).toUpperCase() : "A";
+  const submissionCounts = useSubmissionCounts();
 
   return (
     <div className="h-screen flex bg-ivory overflow-hidden">
@@ -142,7 +190,8 @@ const Layout = () => {
                     <span className="absolute left-0 top-1.5 bottom-1.5 w-1 rounded-full bg-sand" />
                   )}
                   <MessageSquare size={17} className="shrink-0" />
-                  Contact Enquiries
+                  <span className="truncate">Contact Enquiries</span>
+                  <NotificationBadge count={submissionCounts.contact} />
                 </>
               )}
             </NavLink>
@@ -153,7 +202,8 @@ const Layout = () => {
                     <span className="absolute left-0 top-1.5 bottom-1.5 w-1 rounded-full bg-sand" />
                   )}
                   <MessageSquare size={17} className="shrink-0" />
-                  Partner Applications
+                  <span className="truncate">Partner Applications</span>
+                  <NotificationBadge count={submissionCounts.partner} />
                 </>
               )}
             </NavLink>

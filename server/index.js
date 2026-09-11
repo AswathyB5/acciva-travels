@@ -22,6 +22,11 @@ fs.mkdirSync(uploadsDir, { recursive: true });
 
 const app = express();
 
+// Render/Vercel/Railway terminate TLS at their edge and forward plain HTTP
+// internally, setting X-Forwarded-Proto. Without this, req.protocol always
+// reports "http" even in production, which leaked into uploaded image URLs.
+app.set("trust proxy", 1);
+
 const allowedOrigins = (process.env.CORS_ORIGIN || "http://localhost:5173")
   .split(",")
   .map((origin) => origin.trim());

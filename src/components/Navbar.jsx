@@ -3,11 +3,13 @@ import { NavLink, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { usePageContent } from "../data/useContent";
+import SmartLink from "./SmartLink";
 
 const NAVBAR_DEFAULTS = {
   logoSolid: "/acciva-logo.png",
   logoTransparent: "/acciva-logo-white.png",
   ctaLabel: "Book Now",
+  ctaLink: "/contact",
   navLinks: [
     { label: "Home", path: "/" },
     { label: "About", path: "/about" },
@@ -168,12 +170,12 @@ const Navbar = () => {
           )}
         </ul>
 
-        <NavLink
-          to="/contact"
+        <SmartLink
+          to={content.ctaLink}
           className="inline-flex items-center px-6 py-2.5 rounded-full bg-sand text-navy font-semibold text-xs tracking-wide transition-all hover:shadow-lg shrink-0"
         >
           {content.ctaLabel}
-        </NavLink>
+        </SmartLink>
         </div>
 
         <button

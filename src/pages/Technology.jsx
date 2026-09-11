@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import Magnetic from "../components/Magnetic";
 import AnimatedImage from "../components/AnimatedImage";
+import SmartLink from "../components/SmartLink";
 import { usePageContent } from "../data/useContent";
 import { resolveIcon } from "../data/iconMap";
 
@@ -30,6 +31,7 @@ const TECHNOLOGY_DEFAULTS = {
   featuresClosingParagraph:
     "At Acciva Travels, we combine people, vehicles, technology and transportation expertise to create reliable corporate mobility solutions that businesses can depend on every day.",
   featuresButtonText: "Book Now",
+  featuresButtonLink: "/contact",
   serviceMarquee: [
     { icon: "Smartphone", label: "Corporate employee transportation" },
     { icon: "Server", label: "Fleet and vehicle management" },
@@ -130,6 +132,7 @@ const TECHNOLOGY_DEFAULTS = {
   bannerHeading: "Safety Transportation Made Easy",
   bannerText: "Feel free to touch with us.",
   bannerButtonText: "Book Now",
+  bannerButtonLink: "/contact",
   solutionsEyebrow: "Technology Solutions",
   solutionsHeadingMain: "One Platform.",
   solutionsHeadingAccent: "Three Seamless Experiences.",
@@ -162,12 +165,14 @@ const TECHNOLOGY_DEFAULTS = {
     },
   ],
   solutionsButtonText: "Book Now",
+  solutionsButtonLink: "/contact",
   ctaEyebrow: "Schedule a Demo",
   ctaHeadingMain: "Ready to Upgrade to Intelligent",
   ctaHeadingAccent: "Corporate Mobility?",
   ctaParagraph:
     "Let our technical mobility consultants audit your current route logistics, calculate potential cost savings, and set up a live Command Tower trial.",
   ctaButtonText: "Book an Enterprise Platform",
+  ctaButtonLink: "/contact",
 };
 
 const Technology = () => {
@@ -365,13 +370,13 @@ const Technology = () => {
             <p className="text-slate-600 text-[15px] font-normal leading-relaxed">
               {content.featuresClosingParagraph}
             </p>
-            <NavLink
-              to="/contact"
+            <SmartLink
+              to={content.featuresButtonLink}
               className="inline-flex items-center gap-3 mt-7 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
             >
               <span>{content.featuresButtonText}</span>
               <ArrowUpRight size={16} />
-            </NavLink>
+            </SmartLink>
           </motion.div>
         </div>
       </section>
@@ -661,13 +666,13 @@ const Technology = () => {
             </div>
 
             <Magnetic>
-              <NavLink
-                to="/contact"
+              <SmartLink
+                to={content.bannerButtonLink}
                 className="shrink-0 inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl relative z-10"
               >
                 <span>{content.bannerButtonText}</span>
                 <ArrowUpRight size={16} />
-              </NavLink>
+              </SmartLink>
             </Magnetic>
           </motion.div>
         </div>
@@ -784,13 +789,13 @@ const Technology = () => {
           </motion.div>
 
           <div className="mt-10 text-center">
-            <NavLink
-              to="/contact"
+            <SmartLink
+              to={content.solutionsButtonLink}
               className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
             >
               <span>{content.solutionsButtonText}</span>
               <ArrowUpRight size={16} />
-            </NavLink>
+            </SmartLink>
           </div>
         </div>
       </section>
@@ -859,13 +864,13 @@ const Technology = () => {
           </p>
 
           <Magnetic>
-            <NavLink
-              to="/contact"
+            <SmartLink
+              to={content.ctaButtonLink}
               className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
             >
               <span>{content.ctaButtonText}</span>
               <ArrowUpRight size={16} />
-            </NavLink>
+            </SmartLink>
           </Magnetic>
         </div>
       </section>

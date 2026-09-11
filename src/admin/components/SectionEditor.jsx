@@ -83,14 +83,17 @@ const SectionEditor = () => {
           onSubmit={handleSubmit}
           className="mt-6 bg-white rounded-2xl border border-navy/10 shadow-sm p-6 space-y-5"
         >
-          <div className="grid sm:grid-cols-2 gap-5">
+          <div className="grid sm:grid-cols-2 gap-4">
             {sectionConfig.fields.map((field) => (
               <div
                 key={field.name}
-                className={field.type === "textarea" || field.type === "list" || field.type === "cards" ? "sm:col-span-2" : ""}
+                className={`rounded-xl border border-navy/10 bg-ivory/40 p-4 transition-colors hover:border-teal/30 ${
+                  field.type === "textarea" || field.type === "list" || field.type === "cards" ? "sm:col-span-2" : ""
+                }`}
               >
-                <label className="block text-xs font-semibold text-navy/75 mb-1.5">{field.label}</label>
+                <label className="block text-xs font-semibold text-navy/75 mb-2">{field.label}</label>
                 <FieldInput field={field} value={fullData[field.name]} onChange={(v) => setField(field.name, v)} />
+                {field.hint && <p className="text-xs text-navy/50 mt-1.5">{field.hint}</p>}
               </div>
             ))}
           </div>

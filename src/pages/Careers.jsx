@@ -13,7 +13,15 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import { usePageContent } from "../data/useContent";
+import SmartLink from "../components/SmartLink";
 import { resolveIcon } from "../data/iconMap";
+import {
+  isValidName,
+  isValidPhone,
+  isValidYear,
+  sanitizeDigitsInput,
+  sanitizePhoneInput,
+} from "../data/validators";
 
 const CAREERS_DEFAULTS = {
   heroEyebrow: "Drive With Acciva",
@@ -78,6 +86,7 @@ const CAREERS_DEFAULTS = {
   quoteEyebrow: "Safety Transportation Made Easy",
   quoteHeadingAccent: "Touch With Us.",
   quoteButtonText: "Book Now",
+  quoteButtonLink: "#attach-vehicle",
   visitEyebrow: "Get In Touch",
   visitHeadingAccent: "Acciva.",
   visitCompanyName: "Acciva Travels Private Limited",
@@ -310,15 +319,29 @@ const Careers = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
+    const next =
+      name === "phone" ? sanitizePhoneInput(value) : name === "regYear" ? sanitizeDigitsInput(value) : value;
+    setForm((prev) => ({ ...prev, [name]: next }));
   };
 
   const validate = () => {
     const newErrors = {};
-    if (!form.name.trim()) newErrors.name = "Full name is required";
-    if (!form.phone.trim()) newErrors.phone = "Phone number is required";
+    if (!form.name.trim()) {
+      newErrors.name = "Full name is required";
+    } else if (!isValidName(form.name)) {
+      newErrors.name = "Name can only contain letters";
+    }
+    if (!form.phone.trim()) {
+      newErrors.phone = "Phone number is required";
+    } else if (!isValidPhone(form.phone)) {
+      newErrors.phone = "Enter a valid phone number";
+    }
     if (!form.vehicleType.trim()) newErrors.vehicleType = "Vehicle type is required";
-    if (!form.regYear.trim()) newErrors.regYear = "Registration year is required";
+    if (!form.regYear.trim()) {
+      newErrors.regYear = "Registration year is required";
+    } else if (!isValidYear(form.regYear)) {
+      newErrors.regYear = "Enter a valid 4-digit year";
+    }
     return newErrors;
   };
 
@@ -642,6 +665,8 @@ const Careers = () => {
                       </label>
                       <input
                         name="phone"
+                        type="tel"
+                        inputMode="tel"
                         value={form.phone}
                         onChange={handleChange}
                         placeholder="+91 98765 43210"
@@ -686,6 +711,8 @@ const Careers = () => {
                       </label>
                       <input
                         name="regYear"
+                        inputMode="numeric"
+                        maxLength={4}
                         value={form.regYear}
                         onChange={handleChange}
                         placeholder="e.g. 2022"
@@ -769,8 +796,8 @@ const Careers = () => {
             className="mt-8"
           >
             <Magnetic strength={22}>
-              <a
-                href="#attach-vehicle"
+              <SmartLink
+                to={content.quoteButtonLink}
                 className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
               >
                 <span>{content.quoteButtonText}</span>
@@ -784,7 +811,7 @@ const Careers = () => {
                 >
                   <ArrowUpRight size={18} />
                 </motion.span>
-              </a>
+              </SmartLink>
             </Magnetic>
           </motion.div>
         </div>

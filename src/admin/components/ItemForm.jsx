@@ -54,7 +54,12 @@ const ItemForm = ({ config, item, onCancel, onSave }) => {
 
       <div className="grid sm:grid-cols-2 gap-5">
         {config.fields.map((field) => (
-          <div key={field.name} className={field.type === "textarea" || field.type === "list" ? "sm:col-span-2" : ""}>
+          <div
+            key={field.name}
+            className={
+              field.type === "textarea" || field.type === "list" || field.type === "richtext" ? "sm:col-span-2" : ""
+            }
+          >
             <label className="block text-xs font-semibold text-navy/75 mb-1.5">
               {field.label}
               {field.required && <span className="text-teal ml-0.5">*</span>}

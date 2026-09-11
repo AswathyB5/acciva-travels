@@ -11,6 +11,7 @@ import StatCounter from "../components/StatCounter";
 import BlogFeature from "../components/BlogFeature";
 import Testimonial from "../components/Testimonial";
 import Magnetic from "../components/Magnetic";
+import SmartLink from "../components/SmartLink";
 import { stats as fallbackStats, blogPosts as fallbackBlogPosts } from "../data/content";
 import { useCollection, usePageContent } from "../data/useContent";
 
@@ -23,9 +24,9 @@ const HOME_DEFAULTS = {
   heroCta1: "Get a Corporate Mobility Consultation",
   heroCta2: "Request a Corporate Quotation",
   heroCta3: "Talk to Our Mobility Team",
-  heroImage1: "/images/hero1.png",
-  heroImage2: "/images/hero2.png",
-  heroImage3: "/images/hero3.png",
+  heroImage1: "/images/hero1.webp",
+  heroImage2: "/images/hero2.webp",
+  heroImage3: "/images/hero3.webp",
   introEyebrow: "About Us",
   introHeadingMain: "Welcome To",
   introHeadingAccent: "Acciva.",
@@ -48,6 +49,7 @@ const HOME_DEFAULTS = {
   fleetHeadingAccent: "Every Corporate Need.",
   fleetShowcaseLabel: "Corporate Fleet Showcase · Hover to Expand",
   fleetCtaLabel: "Book This Fleet",
+  fleetCtaLink: "/services",
   fleetItems: [
     { name: "Sedan", country: "Everyday Corporate Travel", description: "Comfortable, fuel-efficient sedans for daily employee commutes and routine office travel.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Toyota_Camry_2.5_Hybrid_Ascent_Sport_%28IX%29_%E2%80%93_f_02012026.jpg/1280px-Toyota_Camry_2.5_Hybrid_Ascent_Sport_%28IX%29_%E2%80%93_f_02012026.jpg" },
     { name: "MPV", country: "Family & Group Travel", description: "Spacious multi-purpose vehicles built for small teams travelling together in comfort.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Toyota_Innova_Crysta_2.4_Z_front_right.jpg/1280px-Toyota_Innova_Crysta_2.4_Z_front_right.jpg" },
@@ -68,11 +70,14 @@ const HOME_DEFAULTS = {
   servicesHeadingMain: "Our Transport",
   servicesHeadingAccent: "Services.",
   servicesButtonText: "Explore All Services",
+  servicesButtonLink: "/services",
   servicesCardButtonText: "View Specifications",
+  servicesCardButtonLink: "/services",
   servicesStripTitle: "Full Spectrum Fleet Management",
   servicesStripDescription:
     "Also providing Dedicated Staff Bus Shuttles, Corporate VIP Delegations & Inter-City Business Transit.",
   servicesStripButtonText: "View All Capabilities",
+  servicesStripButtonLink: "/services",
   industriesEyebrow: "Industries We Serve",
   industriesHeadingMain: "Trusted Across",
   industriesHeadingAccent: "Every Sector.",
@@ -123,6 +128,7 @@ const HOME_DEFAULTS = {
   ctaParagraph:
     "Tell us where your team needs to be, and we'll build a corporate mobility plan around it, from daily commutes to citywide fleet deployments.",
   ctaButtonText: "Plan Your Journey",
+  ctaButtonLink: "/contact",
   ctaBackgroundImage: "https://t4.ftcdn.net/jpg/09/30/49/83/360_F_930498387_akToV5jhe5VGgiZzIVZc4NT8PRxVCwJ3.jpg",
 };
 
@@ -229,6 +235,7 @@ const Home = () => {
           destinations={content.fleetItems}
           showcaseLabel={content.fleetShowcaseLabel}
           ctaLabel={content.fleetCtaLabel}
+          ctaLink={content.fleetCtaLink}
         />
       </section>
 
@@ -315,10 +322,13 @@ const Home = () => {
             headingMain={content.servicesHeadingMain}
             headingAccent={content.servicesHeadingAccent}
             buttonText={content.servicesButtonText}
+            buttonLink={content.servicesButtonLink}
             cardButtonText={content.servicesCardButtonText}
+            cardButtonLink={content.servicesCardButtonLink}
             stripTitle={content.servicesStripTitle}
             stripDescription={content.servicesStripDescription}
             stripButtonText={content.servicesStripButtonText}
+            stripButtonLink={content.servicesStripButtonLink}
           />
         </div>
       </section>
@@ -401,12 +411,12 @@ const Home = () => {
             {content.ctaParagraph}
           </p>
           <Magnetic className="mt-6">
-            <NavLink
-              to="/contact"
+            <SmartLink
+              to={content.ctaButtonLink}
               className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
             >
               {content.ctaButtonText} &rarr;
-            </NavLink>
+            </SmartLink>
           </Magnetic>
         </div>
       </section>

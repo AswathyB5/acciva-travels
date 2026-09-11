@@ -6,8 +6,8 @@ import {
   ShieldCheck,
   Navigation,
 } from "lucide-react";
-import corporateEmployeeTransportationImg from "../assets/Corporate Employee Transportation.png";
-import employeeTransportationImg from "../assets/Employee Transportation.png";
+import corporateEmployeeTransportationImg from "../assets/Corporate Employee Transportation.webp";
+import employeeTransportationImg from "../assets/Employee Transportation.webp";
 
 export const services = [
   {

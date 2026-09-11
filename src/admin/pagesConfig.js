@@ -34,6 +34,7 @@ export const pages = [
             hint: "Shown over the homepage hero before the header turns solid.",
           },
           { name: "ctaLabel", label: "Header Button Text", type: "text", default: "Book Now" },
+          { name: "ctaLink", label: "Button Link", type: "text", hint: "Where this button goes — an internal path like /contact, or a full https:// URL." , default: "/contact" },
         ],
       },
       {
@@ -208,9 +209,9 @@ export const pages = [
           { name: "heroCta1", label: "Slide 1 Button Text", type: "text", default: "Get a Corporate Mobility Consultation" },
           { name: "heroCta2", label: "Slide 2 Button Text", type: "text", default: "Request a Corporate Quotation" },
           { name: "heroCta3", label: "Slide 3 Button Text", type: "text", default: "Talk to Our Mobility Team" },
-          { name: "heroImage1", label: "Slide 1 Background Image", type: "image", default: "/images/hero1.png" },
-          { name: "heroImage2", label: "Slide 2 Background Image", type: "image", default: "/images/hero2.png" },
-          { name: "heroImage3", label: "Slide 3 Background Image", type: "image", default: "/images/hero3.png" },
+          { name: "heroImage1", label: "Slide 1 Background Image", type: "image", default: "/images/hero1.webp" },
+          { name: "heroImage2", label: "Slide 2 Background Image", type: "image", default: "/images/hero2.webp" },
+          { name: "heroImage3", label: "Slide 3 Background Image", type: "image", default: "/images/hero3.webp" },
         ],
       },
       {
@@ -265,6 +266,7 @@ export const pages = [
           { name: "fleetHeadingAccent", label: "Heading (Highlighted)", type: "text", default: "Every Corporate Need." },
           { name: "fleetShowcaseLabel", label: "Showcase Strip Label", type: "text", default: "Corporate Fleet Showcase · Hover to Expand" },
           { name: "fleetCtaLabel", label: "Card Button Text", type: "text", default: "Book This Fleet" },
+          { name: "fleetCtaLink", label: "Button Link", type: "text", hint: "Where this button goes — an internal path like /contact, or a full https:// URL." , default: "/services" },
           {
             name: "fleetItems",
             label: "Fleet Vehicles",
@@ -314,7 +316,9 @@ export const pages = [
           { name: "servicesHeadingMain", label: "Heading", type: "text", default: "Our Transport" },
           { name: "servicesHeadingAccent", label: "Heading (Highlighted)", type: "text", default: "Services." },
           { name: "servicesButtonText", label: "Header Button Text", type: "text", default: "Explore All Services" },
+          { name: "servicesButtonLink", label: "Button Link", type: "text", hint: "Where this button goes — an internal path like /contact, or a full https:// URL." , default: "/services" },
           { name: "servicesCardButtonText", label: "Card Button Text", type: "text", default: "View Specifications" },
+          { name: "servicesCardButtonLink", label: "Button Link", type: "text", hint: "Where this button goes — an internal path like /contact, or a full https:// URL." , default: "/services" },
           { name: "servicesStripTitle", label: "Capability Strip Title", type: "text", default: "Full Spectrum Fleet Management" },
           {
             name: "servicesStripDescription",
@@ -323,6 +327,7 @@ export const pages = [
             default: "Also providing Dedicated Staff Bus Shuttles, Corporate VIP Delegations & Inter-City Business Transit.",
           },
           { name: "servicesStripButtonText", label: "Capability Strip Button Text", type: "text", default: "View All Capabilities" },
+          { name: "servicesStripButtonLink", label: "Button Link", type: "text", hint: "Where this button goes — an internal path like /contact, or a full https:// URL." , default: "/services" },
         ],
       },
       {
@@ -434,6 +439,7 @@ export const pages = [
               "Tell us where your team needs to be, and we'll build a corporate mobility plan around it, from daily commutes to citywide fleet deployments.",
           },
           { name: "ctaButtonText", label: "Button Text", type: "text", default: "Plan Your Journey" },
+          { name: "ctaButtonLink", label: "Button Link", type: "text", hint: "Where this button goes — an internal path like /contact, or a full https:// URL." , default: "/contact" },
           {
             name: "ctaBackgroundImage",
             label: "Background Image",
@@ -449,7 +455,7 @@ export const pages = [
     label: "About Page",
     icon: Info,
     description: "Every section of the About page, top to bottom.",
-    relatedCollections: ["timeline", "testimonials"],
+    relatedCollections: ["testimonials"],
     sections: [
       {
         key: "hero",
@@ -655,6 +661,7 @@ export const pages = [
             type: "text",
             default: "Book Your Transportation Service Today",
           },
+          { name: "ctaBannerButtonLink", label: "Button Link", type: "text", hint: "Where this button goes — an internal path like /contact, or a full https:// URL." , default: "/contact" },
         ],
       },
       {
@@ -670,6 +677,7 @@ export const pages = [
             default: "Let's create a safer, smarter, and more dependable transportation experience for your organization.",
           },
           { name: "finalCtaButtonText", label: "Button Text", type: "text", default: "Get Started With Acciva" },
+          { name: "finalCtaButtonLink", label: "Button Link", type: "text", hint: "Where this button goes — an internal path like /contact, or a full https:// URL." , default: "/contact" },
           {
             name: "finalCtaBackgroundImage",
             label: "Background Image",
@@ -796,6 +804,7 @@ export const pages = [
           { name: "catalogueFilterExecutiveLabel", label: "\"Executive\" Filter Label", type: "text", default: "Executive & VIP" },
           { name: "catalogueFilterGroupLabel", label: "\"Group\" Filter Label", type: "text", default: "Shuttle & Tech Parks" },
           { name: "catalogueCardButtonText", label: "Card Button Text", type: "text", default: "View Details" },
+          { name: "catalogueCardButtonLink", label: "Button Link", type: "text", hint: "Where this button goes — an internal path like /contact, or a full https:// URL." , default: "/contact" },
           { name: "catalogueSlaText", label: "Card SLA Chip Text", type: "text", default: "99.8% SLA Backed • Pan-India" },
         ],
       },
@@ -946,6 +955,7 @@ export const pages = [
             ],
           },
           { name: "talkButtonText", label: "Button Text", type: "text", default: "Talk to Acciva Travels" },
+          { name: "talkButtonLink", label: "Button Link", type: "text", hint: "Where this button goes — an internal path like /contact, or a full https:// URL." , default: "/contact" },
         ],
       },
       {
@@ -963,7 +973,9 @@ export const pages = [
               "Get a tailored fleet proposal with live telemetry integration, automated shift rostering, and dedicated command support.",
           },
           { name: "ctaButton1Text", label: "Button 1 Text", type: "text", default: "Request Enterprise Quote" },
+          { name: "ctaButton1Link", label: "Button 1 Link", type: "text", default: "/contact" },
           { name: "ctaButton2Text", label: "Button 2 Text", type: "text", default: "Learn About Our Standards" },
+          { name: "ctaButton2Link", label: "Button 2 Link", type: "text", default: "/about" },
         ],
       },
     ],
@@ -1022,6 +1034,7 @@ export const pages = [
               "At Acciva Travels, we combine people, vehicles, technology and transportation expertise to create reliable corporate mobility solutions that businesses can depend on every day.",
           },
           { name: "featuresButtonText", label: "Button Text", type: "text", default: "Book Now" },
+          { name: "featuresButtonLink", label: "Button Link", type: "text", hint: "Where this button goes — an internal path like /contact, or a full https:// URL." , default: "/contact" },
           {
             name: "serviceMarquee",
             label: "Marquee Service Chips",
@@ -1176,6 +1189,7 @@ export const pages = [
           { name: "bannerHeading", label: "Heading", type: "text", default: "Safety Transportation Made Easy" },
           { name: "bannerText", label: "Text", type: "text", default: "Feel free to touch with us." },
           { name: "bannerButtonText", label: "Button Text", type: "text", default: "Book Now" },
+          { name: "bannerButtonLink", label: "Button Link", type: "text", hint: "Where this button goes — an internal path like /contact, or a full https:// URL." , default: "/contact" },
         ],
       },
       {
@@ -1229,6 +1243,7 @@ export const pages = [
             ],
           },
           { name: "solutionsButtonText", label: "Button Text", type: "text", default: "Book Now" },
+          { name: "solutionsButtonLink", label: "Button Link", type: "text", hint: "Where this button goes — an internal path like /contact, or a full https:// URL." , default: "/contact" },
         ],
       },
       {
@@ -1246,6 +1261,7 @@ export const pages = [
               "Let our technical mobility consultants audit your current route logistics, calculate potential cost savings, and set up a live Command Tower trial.",
           },
           { name: "ctaButtonText", label: "Button Text", type: "text", default: "Book an Enterprise Platform" },
+          { name: "ctaButtonLink", label: "Button Link", type: "text", hint: "Where this button goes — an internal path like /contact, or a full https:// URL." , default: "/contact" },
         ],
       },
     ],
@@ -1295,6 +1311,7 @@ export const pages = [
               "Subscribe to receive quarterly whitepapers, EV transition benchmarks, and tech park transit optimization case studies.",
           },
           { name: "newsletterButtonText", label: "Button Text", type: "text", default: "Book Now" },
+          { name: "newsletterButtonLink", label: "Button Link", type: "text", hint: "Where this button goes — an internal path like /contact, or a full https:// URL." , default: "/contact" },
         ],
       },
     ],
@@ -1424,6 +1441,7 @@ export const pages = [
             default: "Our corporate transit managers are available round-the-clock to structure scalable transit contracts for your team.",
           },
           { name: "closingButtonText", label: "Button Text", type: "text", default: "Explore Fleet Capabilities" },
+          { name: "closingButtonLink", label: "Button Link", type: "text", hint: "Where this button goes — an internal path like /contact, or a full https:// URL." , default: "/services" },
         ],
       },
     ],
@@ -1588,6 +1606,7 @@ export const pages = [
           { name: "quoteEyebrow", label: "Eyebrow", type: "text", default: "Safety Transportation Made Easy" },
           { name: "quoteHeadingAccent", label: "Heading (Highlighted)", type: "text", default: "Touch With Us." },
           { name: "quoteButtonText", label: "Button Text", type: "text", default: "Book Now" },
+          { name: "quoteButtonLink", label: "Button Link", type: "text", hint: "Where this button goes — an internal path like /contact, or a full https:// URL." , default: "#attach-vehicle" },
         ],
       },
       {
@@ -1899,6 +1918,7 @@ export const pages = [
             ],
           },
           { name: "talkButtonText", label: "Button Text", type: "text", default: "Talk to Acciva Travels" },
+          { name: "talkButtonLink", label: "Button Link", type: "text", hint: "Where this button goes — an internal path like /contact, or a full https:// URL." , default: "/contact" },
         ],
       },
     ],

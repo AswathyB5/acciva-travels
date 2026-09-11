@@ -11,6 +11,7 @@ import {
 import ServiceList from "../components/ServiceList";
 import Magnetic from "../components/Magnetic";
 import AnimatedImage from "../components/AnimatedImage";
+import SmartLink from "../components/SmartLink";
 import { services as fallbackServices } from "../data/content";
 import { useCollection, usePageContent } from "../data/useContent";
 import { resolveIcon } from "../data/iconMap";
@@ -61,6 +62,7 @@ const SERVICES_DEFAULTS = {
   catalogueFilterExecutiveLabel: "Executive & VIP",
   catalogueFilterGroupLabel: "Shuttle & Tech Parks",
   catalogueCardButtonText: "View Details",
+  catalogueCardButtonLink: "/contact",
   catalogueSlaText: "99.8% SLA Backed • Pan-India",
   techEyebrow: "Smarter Visibility",
   techHeadingMain: "Technology &",
@@ -125,13 +127,16 @@ const SERVICES_DEFAULTS = {
     "Talk to Acciva Travels about your requirements. We'll work with you to understand your routes, schedules, and operational needs and develop a transportation solution that works for you.",
   ],
   talkButtonText: "Talk to Acciva Travels",
+  talkButtonLink: "/contact",
   ctaEyebrow: "Enterprise Mobility Consulting",
   ctaHeadingMain: "Ready to Optimize Your",
   ctaHeadingAccent: "Company Transportation?",
   ctaParagraph:
     "Get a tailored fleet proposal with live telemetry integration, automated shift rostering, and dedicated command support.",
   ctaButton1Text: "Request Enterprise Quote",
+  ctaButton1Link: "/contact",
   ctaButton2Text: "Learn About Our Standards",
+  ctaButton2Link: "/about",
 };
 
 // 3D Tilt Card wrapper with layered pattern-line hover animations
@@ -1071,13 +1076,13 @@ const Services = () => {
               </div>
               <div className="mt-8 flex justify-center">
                 <Magnetic strength={20}>
-                  <NavLink
-                    to="/contact"
+                  <SmartLink
+                    to={content.talkButtonLink}
                     className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
                   >
                     <span>{content.talkButtonText}</span>
                     <ArrowUpRight size={16} />
-                  </NavLink>
+                  </SmartLink>
                 </Magnetic>
               </div>
             </div>
@@ -1119,6 +1124,7 @@ const Services = () => {
               group: content.catalogueFilterGroupLabel,
             }}
             cardButtonText={content.catalogueCardButtonText}
+            cardButtonLink={content.catalogueCardButtonLink}
             slaText={content.catalogueSlaText}
           />
         </div>
@@ -1189,23 +1195,23 @@ const Services = () => {
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-5">
             <Magnetic strength={20}>
-              <NavLink
-                to="/contact"
+              <SmartLink
+                to={content.ctaButton1Link}
                 className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
               >
                 <span>{content.ctaButton1Text}</span>
                 <ArrowUpRight size={16} />
-              </NavLink>
+              </SmartLink>
             </Magnetic>
 
             <Magnetic strength={15}>
-              <NavLink
-                to="/about"
+              <SmartLink
+                to={content.ctaButton2Link}
                 className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
               >
                 <span>{content.ctaButton2Text}</span>
                 <ArrowUpRight size={16} />
-              </NavLink>
+              </SmartLink>
             </Magnetic>
           </div>
         </div>

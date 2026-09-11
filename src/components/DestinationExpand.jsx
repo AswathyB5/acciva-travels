@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { NavLink } from "react-router-dom";
 import { ArrowUpRight, Sparkles } from "lucide-react";
 import AnimatedImage from "./AnimatedImage";
+import SmartLink from "./SmartLink";
 
 const AUTOPLAY_MS = 3500;
 
@@ -10,6 +10,7 @@ const DestinationExpand = ({
   destinations,
   showcaseLabel = "Corporate Fleet Showcase · Hover to Expand",
   ctaLabel = "Book This Fleet",
+  ctaLink = "/services",
 }) => {
   const [active, setActive] = useState(0);
   const count = destinations.length;
@@ -140,7 +141,7 @@ const DestinationExpand = ({
                 )}
               </div>
 
-              <NavLink to="/services" className="absolute inset-0 block">
+              <SmartLink to={ctaLink} className="absolute inset-0 block">
                 <motion.img
                   src={d.image}
                   alt={`${d.name}, ${d.country}`}
@@ -217,7 +218,7 @@ const DestinationExpand = ({
                     </motion.div>
                   </motion.div>
                 </div>
-              </NavLink>
+              </SmartLink>
             </motion.div>
           );
         })}
@@ -233,7 +234,7 @@ const DestinationExpand = ({
             viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.6, delay: (i % 4) * 0.05, ease: [0.16, 1, 0.3, 1] }}
           >
-            <NavLink to="/services" className="group relative block h-[42vh] rounded-3xl overflow-hidden shadow-xl border border-navy/10">
+            <SmartLink to={ctaLink} className="group relative block h-[42vh] rounded-3xl overflow-hidden shadow-xl border border-navy/10">
               <AnimatedImage
                 src={d.image}
                 alt={`${d.name}, ${d.country}`}
@@ -247,7 +248,7 @@ const DestinationExpand = ({
                 </span>
                 <h3 className="font-display text-ivory text-2xl mt-1">{d.name}</h3>
               </div>
-            </NavLink>
+            </SmartLink>
           </motion.div>
         ))}
       </div>

@@ -6,9 +6,9 @@ import {
 } from "framer-motion";
 import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { NavLink } from "react-router-dom";
-import hero1 from "../assets/hero1.png";
-import hero2 from "../assets/hero2.png";
-import hero3 from "../assets/hero3.png";
+import hero1 from "../assets/hero1.webp";
+import hero2 from "../assets/hero2.webp";
+import hero3 from "../assets/hero3.webp";
 
 const DEFAULT_TITLE =
   "Corporate Mobility & Transportation Solutions for a Moving Business World";

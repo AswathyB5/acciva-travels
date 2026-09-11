@@ -9,9 +9,9 @@ import {
 } from "lucide-react";
 import Magnetic from "../components/Magnetic";
 import AnimatedImage from "../components/AnimatedImage";
-import { usePageContent, useCollection } from "../data/useContent";
+import SmartLink from "../components/SmartLink";
+import { usePageContent } from "../data/useContent";
 import { resolveIcon } from "../data/iconMap";
-import { timeline as fallbackTimeline } from "../data/content";
 
 const ABOUT_DEFAULTS = {
   heroEyebrow: "About Acciva Travels",
@@ -98,10 +98,12 @@ const ABOUT_DEFAULTS = {
   ctaBannerParagraph2:
     "Have questions or need a reliable transportation solution for your business? Get in touch with us today and discover how Acciva Travels can support your corporate transportation needs.",
   ctaBannerButtonText: "Book Your Transportation Service Today",
+  ctaBannerButtonLink: "/contact",
   finalCtaHeadingMain: "Ready to Move With",
   finalCtaHeadingAccent: "Acciva?",
   finalCtaParagraph: "Let's create a safer, smarter, and more dependable transportation experience for your organization.",
   finalCtaButtonText: "Get Started With Acciva",
+  finalCtaButtonLink: "/contact",
   finalCtaBackgroundImage:
     "https://upload.wikimedia.org/wikipedia/commons/3/3b/Haryana_Roadways_%27Saarthi%27_Volvo_at_ISBT_17%2C_Chandigarh.jpg",
 };
@@ -186,7 +188,6 @@ const TiltCard = ({ children, className, glowColor = "rgba(59,141,196,0.22)", ac
 
 const About = () => {
   const { data: content } = usePageContent("about", ABOUT_DEFAULTS);
-  const { items: timeline } = useCollection("timeline", fallbackTimeline);
   return (
     <div className="bg-soft text-navy overflow-hidden">
       {/* ========================================================================= */}
@@ -282,72 +283,6 @@ const About = () => {
           </div>
         </div>
       </section>
-
-      {/* ========================================================================= */}
-      {/* COMPANY TIMELINE                                                     */}
-      {/* ========================================================================= */}
-      {timeline.length > 0 && (
-        <section className="py-10 md:py-14 bg-white relative overflow-hidden">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[280px] bg-teal/5 rounded-full blur-3xl pointer-events-none" />
-          <div className="container-px relative z-10">
-            <div className="mb-14 text-center max-w-2xl mx-auto">
-              <span className="eyebrow text-teal">Our Journey</span>
-              <h2 className="font-display text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-6 tracking-tight">
-                Milestones Along <span className="italic text-teal font-normal">The Way.</span>
-              </h2>
-            </div>
-
-            <div className="relative">
-              <div className="hidden lg:block absolute left-0 right-0 top-6 h-0.5 bg-navy/10" />
-              <div className="grid gap-8 lg:grid-cols-4">
-                {timeline.map((entry, i) => (
-                  <motion.div
-                    key={entry.year + entry.title}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.2 }}
-                    transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                    className="relative"
-                  >
-                    <div className="hidden lg:flex w-3 h-3 rounded-full bg-teal ring-4 ring-teal/20 mb-5" />
-                    <div className="rounded-3xl bg-soft border border-navy/10 hover:border-teal/40 hover:shadow-xl transition-[border-color,box-shadow] overflow-hidden">
-                      {entry.image && (
-                        <div className="h-36 w-full overflow-hidden">
-                          <AnimatedImage
-                            src={entry.image}
-                            alt={entry.title}
-                            effect="zoom-in"
-                            className="h-full w-full object-cover"
-                          />
-                        </div>
-                      )}
-                      <div className="p-5">
-                        <div className="flex items-center justify-between gap-2 mb-2">
-                          <span className="font-display text-teal text-xl font-bold">{entry.year}</span>
-                          {entry.badge && (
-                            <span className="px-2.5 py-1 rounded-full bg-sand/30 text-navy text-[10px] font-bold uppercase tracking-wider">
-                              {entry.badge}
-                            </span>
-                          )}
-                        </div>
-                        <h3 className="font-display text-navy text-base font-bold leading-snug">{entry.title}</h3>
-                        {entry.description && (
-                          <p className="text-slate-600 text-[13px] leading-relaxed mt-2">{entry.description}</p>
-                        )}
-                        {entry.stat && (
-                          <p className="mt-3 text-[11px] font-mono uppercase tracking-wider text-teal font-bold">
-                            {entry.stat}
-                          </p>
-                        )}
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* ========================================================================= */}
       {/* OUR VISION & MISSION (DRAMATIC MOVING LASER LINES & ANIMATED ICONS)   */}
@@ -1230,13 +1165,13 @@ const About = () => {
 
             <div className="pt-6">
               <Magnetic strength={20}>
-                <NavLink
-                  to="/contact"
+                <SmartLink
+                  to={content.ctaBannerButtonLink}
                   className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
                 >
                   <span>{content.ctaBannerButtonText}</span>
                   <ArrowUpRight size={16} />
-                </NavLink>
+                </SmartLink>
               </Magnetic>
             </div>
           </div>
@@ -1270,13 +1205,13 @@ const About = () => {
 
           <div className="pt-4 flex justify-center">
             <Magnetic strength={20}>
-              <NavLink
-                to="/contact"
+              <SmartLink
+                to={content.finalCtaButtonLink}
                 className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
               >
                 <span>{content.finalCtaButtonText}</span>
                 <ArrowUpRight size={16} />
-              </NavLink>
+              </SmartLink>
             </Magnetic>
           </div>
         </div>

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { NavLink } from "react-router-dom";
 import { ArrowUpRight, ShieldCheck, Filter } from "lucide-react";
 import AnimatedImage from "./AnimatedImage";
+import SmartLink from "./SmartLink";
 import { resolveIcon } from "../data/iconMap";
 
 const ServiceList = ({
@@ -10,6 +10,7 @@ const ServiceList = ({
   filterLabel = "Filter Fleet by:",
   filterLabels = {},
   cardButtonText = "View Details",
+  cardButtonLink = "/contact",
   slaText = "99.8% SLA Backed • Pan-India",
 }) => {
   const [filter, setFilter] = useState("all");
@@ -108,11 +109,11 @@ const ServiceList = ({
 
                   {/* Action Footer */}
                   <div className="pt-4 border-t border-navy/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                    <NavLink
+                    <SmartLink
                       to={
                         service.slug === "corporate-employee-transportation"
                           ? "/services/employee-transportation-services"
-                          : "/contact"
+                          : cardButtonLink
                       }
                       className="inline-flex items-center justify-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl group/btn shrink-0"
                     >
@@ -121,7 +122,7 @@ const ServiceList = ({
                         size={16}
                         className="transition-transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1"
                       />
-                    </NavLink>
+                    </SmartLink>
 
                     <div className="flex items-center gap-2 text-[11px] font-mono text-navy/50 uppercase">
                       <ShieldCheck size={14} className="text-teal" />
