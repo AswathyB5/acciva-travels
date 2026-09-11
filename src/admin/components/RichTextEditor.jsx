@@ -26,6 +26,48 @@ const HEADING_OPTIONS = [
 
 const COLOR_SWATCHES = ["#192a3a", "#3b8dc4", "#e1c59d", "#dc2626", "#16a34a", "#7c3aed"];
 
+// Content pasted from Word, Google Docs, or another webpage very often
+// expresses "bold"/"italic"/"underline" as inline CSS on a <span>/<div>
+// rather than a real <strong>/<em>/<u> tag. The sanitizer only ever keeps
+// `color` out of a style attribute (everything else is stripped for
+// security), so without this pass that formatting would silently vanish on
+// paste. This walks the pasted fragment and swaps CSS-only formatting for
+// the equivalent semantic tag before it ever reaches the sanitizer.
+const BOLD_STYLE_RE = /font-weight\s*:\s*(bold|[6-9]00)/i;
+const ITALIC_STYLE_RE = /font-style\s*:\s*italic/i;
+const UNDERLINE_STYLE_RE = /text-decoration[a-z-]*\s*:\s*[^;]*underline/i;
+
+function normalizePastedFormatting(root) {
+  const toWrap = [];
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT);
+  let node = walker.currentNode;
+  while (node) {
+    const style = node.getAttribute && node.getAttribute("style");
+    if (style) {
+      if (BOLD_STYLE_RE.test(style) && !["STRONG", "B"].includes(node.tagName)) {
+        toWrap.push({ node, tag: "strong" });
+      }
+      if (ITALIC_STYLE_RE.test(style) && !["EM", "I"].includes(node.tagName)) {
+        toWrap.push({ node, tag: "em" });
+      }
+      if (UNDERLINE_STYLE_RE.test(style) && node.tagName !== "U") {
+        toWrap.push({ node, tag: "u" });
+      }
+    }
+    node = walker.nextNode();
+  }
+  toWrap.forEach(({ node, tag }) => {
+    const wrapper = document.createElement(tag);
+    while (node.firstChild) wrapper.appendChild(node.firstChild);
+    node.appendChild(wrapper);
+  });
+  return root.innerHTML;
+}
+
+function escapeHtml(text) {
+  return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
 // A CMS-style WYSIWYG editor for long-form content (blog posts): headings
 // actually render at heading size while you type (not "## " symbols in a
 // textarea), and Bold/Italic/color/links apply live. Content is stored and
@@ -112,6 +154,30 @@ const RichTextEditor = ({ value, onChange }) => {
     exec("createLink", url);
     setLinkOpen(false);
     setLinkUrl("");
+  };
+
+  const handlePaste = (e) => {
+    e.preventDefault();
+    editorRef.current?.focus();
+
+    const clipboard = e.clipboardData;
+    const html = clipboard?.getData("text/html");
+    const text = clipboard?.getData("text/plain") || "";
+
+    let toInsert;
+    if (html) {
+      const container = document.createElement("div");
+      container.innerHTML = html;
+      toInsert = normalizePastedFormatting(container);
+    } else {
+      toInsert = text
+        .split(/\r?\n/)
+        .map((line) => `<p>${escapeHtml(line) || "<br>"}</p>`)
+        .join("");
+    }
+
+    document.execCommand("insertHTML", false, toInsert);
+    emitChange();
   };
 
   const applyColor = (color) => {
@@ -341,6 +407,7 @@ const RichTextEditor = ({ value, onChange }) => {
         suppressContentEditableWarning
         data-placeholder="Write your post here — use the toolbar above for headings, bold, links, and color."
         onInput={emitChange}
+        onPaste={handlePaste}
         onMouseUp={saveSelection}
         onKeyUp={saveSelection}
         onBlur={() => {

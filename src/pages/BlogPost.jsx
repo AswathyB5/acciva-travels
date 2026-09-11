@@ -67,7 +67,7 @@ const BlogPost = () => {
       )}
 
       <section
-        className="pt-28 sm:pt-32 pb-10 md:pb-14 relative overflow-hidden"
+        className="pt-28 sm:pt-32 pb-14 md:pb-20 relative overflow-hidden"
         style={{
           backgroundImage: `url('${blogContent.heroBackgroundImage}')`,
           backgroundSize: "cover",
