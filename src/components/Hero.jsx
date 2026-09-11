@@ -213,7 +213,7 @@ const Hero = ({
                   variants={textVariants}
                   initial="hidden"
                   animate="visible"
-                  className="article-content mt-3 sm:mt-5 text-[13px] sm:text-[15px] text-ivory/90 font-medium leading-relaxed max-w-2xl drop-shadow-md line-clamp-3 sm:line-clamp-none"
+                  className="article-content mt-3 sm:mt-5 text-[13px] sm:text-[15px] text-white font-medium leading-relaxed max-w-2xl drop-shadow-md line-clamp-3 sm:line-clamp-none"
                 />
 
                 {/* CTA Button */}

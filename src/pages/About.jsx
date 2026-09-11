@@ -253,11 +253,15 @@ const About = () => {
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-7 space-y-6"
             >
-              <span className="eyebrow text-teal">{content.historyEyebrow}</span>
+              <span className="eyebrow text-teal">
+                {content.historyEyebrow}
+              </span>
 
               <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-4 tracking-tight">
                 {content.historyHeadingMain}{" "}
-                <span className="italic text-teal font-normal">{content.historyHeadingAccent}</span>
+                <span className="italic text-teal font-normal">
+                  {content.historyHeadingAccent}
+                </span>
               </h2>
 
               <div className="space-y-5 text-slate-700 leading-relaxed text-[15px] font-normal">
@@ -380,7 +384,9 @@ const About = () => {
             <span className="eyebrow text-teal">{content.vmEyebrow}</span>
             <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl mt-3 leading-[1.08] tracking-tight">
               {content.vmHeadingMain}{" "}
-              <span className="italic text-teal font-normal">{content.vmHeadingAccent}</span>
+              <span className="italic text-teal font-normal">
+                {content.vmHeadingAccent}
+              </span>
             </h2>
 
             {/* Expanding Neon Laser Line Beneath Title */}
@@ -481,7 +487,7 @@ const About = () => {
                     <RichText
                       as={motion.div}
                       html={content.visionText}
-                      className="article-content text-slate-700 text-[15px] font-normal leading-relaxed"
+                      className="article-content text-slate-700 !text-[14px] font-normal leading-relaxed"
                       initial={{ opacity: 0, y: 16 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true, amount: 0.4 }}
@@ -553,7 +559,7 @@ const About = () => {
 
                       <span
                         style={{ transform: "translateZ(20px)" }}
-                        className="px-3.5 py-1 rounded-full bg-sand/20 border border-sand/40 text-navy text-[10px] font-mono tracking-widest uppercase font-semibold"
+                        className="px-3.5 py-1 rounded-full bg-sand/20 border border-sand/40 text-navy !text-[14px] font-mono tracking-widest uppercase font-semibold"
                       >
                         {content.missionBadge}
                       </span>
@@ -577,7 +583,7 @@ const About = () => {
                     <RichText
                       as={motion.div}
                       html={content.missionText}
-                      className="article-content text-slate-700 text-[15px] font-normal leading-relaxed"
+                      className="article-content text-slate-700 !text-[14px] font-normal leading-relaxed"
                       initial={{ opacity: 0, y: 16 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true, amount: 0.4 }}
@@ -605,12 +611,21 @@ const About = () => {
             <span className="eyebrow text-teal">{content.whyEyebrow}</span>
             <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl tracking-tight leading-[1.08] mt-4">
               {content.whyHeadingMain}{" "}
-              <span className="italic text-teal font-normal">{content.whyHeadingAccent}</span>
+              <span className="italic text-teal font-normal">
+                {content.whyHeadingAccent}
+              </span>
             </h2>
 
             <div className="mt-6 space-y-4 text-slate-700 text-[15px] font-normal leading-relaxed">
               {content.whyParagraphs.map((p, i) => (
-                <p key={i} className={i === content.whyParagraphs.length - 1 ? "font-medium text-navy" : ""}>
+                <p
+                  key={i}
+                  className={
+                    i === content.whyParagraphs.length - 1
+                      ? "font-medium text-navy"
+                      : ""
+                  }
+                >
                   {p}
                 </p>
               ))}
@@ -676,7 +691,9 @@ const About = () => {
                           }}
                         >
                           {(() => {
-                            const CardIcon = resolveIcon(content.whyCards[0].icon);
+                            const CardIcon = resolveIcon(
+                              content.whyCards[0].icon,
+                            );
                             return (
                               <CardIcon
                                 size={26}
@@ -715,9 +732,11 @@ const About = () => {
                     viewport={{ once: true, amount: 0.4 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
                   >
-                    {content.whyCards[0].description.split("\n\n").map((p, i) => (
-                      <p key={i}>{p}</p>
-                    ))}
+                    {content.whyCards[0].description
+                      .split("\n\n")
+                      .map((p, i) => (
+                        <p key={i}>{p}</p>
+                      ))}
                   </motion.div>
                 </div>
               </TiltCard>
@@ -775,7 +794,9 @@ const About = () => {
                           }}
                         >
                           {(() => {
-                            const CardIcon = resolveIcon(content.whyCards[1].icon);
+                            const CardIcon = resolveIcon(
+                              content.whyCards[1].icon,
+                            );
                             return (
                               <CardIcon
                                 size={26}
@@ -818,9 +839,11 @@ const About = () => {
                     viewport={{ once: true, amount: 0.4 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
                   >
-                    {content.whyCards[1].description.split("\n\n").map((p, i) => (
-                      <p key={i}>{p}</p>
-                    ))}
+                    {content.whyCards[1].description
+                      .split("\n\n")
+                      .map((p, i) => (
+                        <p key={i}>{p}</p>
+                      ))}
                   </motion.div>
                 </div>
               </TiltCard>
@@ -878,7 +901,9 @@ const About = () => {
                           }}
                         >
                           {(() => {
-                            const CardIcon = resolveIcon(content.whyCards[2].icon);
+                            const CardIcon = resolveIcon(
+                              content.whyCards[2].icon,
+                            );
                             return (
                               <CardIcon
                                 size={26}
@@ -917,9 +942,11 @@ const About = () => {
                     viewport={{ once: true, amount: 0.4 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
                   >
-                    {content.whyCards[2].description.split("\n\n").map((p, i) => (
-                      <p key={i}>{p}</p>
-                    ))}
+                    {content.whyCards[2].description
+                      .split("\n\n")
+                      .map((p, i) => (
+                        <p key={i}>{p}</p>
+                      ))}
                   </motion.div>
                 </div>
               </TiltCard>
@@ -977,7 +1004,9 @@ const About = () => {
                           }}
                         >
                           {(() => {
-                            const CardIcon = resolveIcon(content.whyCards[3].icon);
+                            const CardIcon = resolveIcon(
+                              content.whyCards[3].icon,
+                            );
                             return (
                               <CardIcon
                                 size={26}
@@ -1016,9 +1045,11 @@ const About = () => {
                     viewport={{ once: true, amount: 0.4 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
                   >
-                    {content.whyCards[3].description.split("\n\n").map((p, i) => (
-                      <p key={i}>{p}</p>
-                    ))}
+                    {content.whyCards[3].description
+                      .split("\n\n")
+                      .map((p, i) => (
+                        <p key={i}>{p}</p>
+                      ))}
                   </motion.div>
                 </div>
               </TiltCard>
@@ -1041,7 +1072,9 @@ const About = () => {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-7 space-y-6"
             >
-              <span className="eyebrow text-teal">{content.purposeEyebrow}</span>
+              <span className="eyebrow text-teal">
+                {content.purposeEyebrow}
+              </span>
 
               <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-navy tracking-tight leading-[1.08]">
                 {content.purposeHeadingMain} <br />
@@ -1148,7 +1181,9 @@ const About = () => {
 
         <div className="container-px relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-6">
-            <span className="eyebrow text-teal">{content.ctaBannerEyebrow}</span>
+            <span className="eyebrow text-teal">
+              {content.ctaBannerEyebrow}
+            </span>
 
             <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-navy tracking-tight leading-[1.08]">
               {content.ctaBannerHeadingMain}{" "}
@@ -1198,7 +1233,9 @@ const About = () => {
         <div className="container-px relative z-10 text-center max-w-3xl mx-auto space-y-6">
           <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-navy leading-[1.08] tracking-tight">
             {content.finalCtaHeadingMain}{" "}
-            <span className="italic text-teal font-normal">{content.finalCtaHeadingAccent}</span>
+            <span className="italic text-teal font-normal">
+              {content.finalCtaHeadingAccent}
+            </span>
           </h2>
 
           <p className="text-slate-700 text-[15px] font-normal leading-relaxed">

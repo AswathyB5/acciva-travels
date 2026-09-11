@@ -20,6 +20,8 @@ const NAVBAR_DEFAULTS = {
     { label: "Contact", path: "/contact" },
   ],
   servicesDropdownLabel: "Employee Transportation Services",
+  servicesDropdownLabel2: "Corporate Cab Services",
+  servicesDropdownLabel3: "Fleet Management Service",
 };
 
 const Navbar = () => {
@@ -35,6 +37,14 @@ const Navbar = () => {
       {
         to: "/services/employee-transportation-services",
         label: content.servicesDropdownLabel,
+      },
+      {
+        to: "/services/corporate-cab-services",
+        label: content.servicesDropdownLabel2,
+      },
+      {
+        to: "/services/fleet-management-services",
+        label: content.servicesDropdownLabel3,
       },
     ];
   }

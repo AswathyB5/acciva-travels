@@ -1,4 +1,4 @@
-import { PanelTop, PanelBottom, Home, Info, Car, Cpu, Newspaper, Mail, Briefcase, Users } from "lucide-react";
+import { PanelTop, PanelBottom, Home, Info, Car, Cpu, Newspaper, Mail, Briefcase, Users, Truck } from "lucide-react";
 import { iconNames } from "../data/iconMap";
 
 // Describes every editable "page" of the site: the header/footer plus each
@@ -66,6 +66,18 @@ export const pages = [
             type: "text",
             default: "Employee Transportation Services",
           },
+          {
+            name: "servicesDropdownLabel2",
+            label: "Services Dropdown Item Label 2",
+            type: "text",
+            default: "Corporate Cab Services",
+          },
+          {
+            name: "servicesDropdownLabel3",
+            label: "Services Dropdown Item Label 3",
+            type: "text",
+            default: "Fleet Management Service",
+          },
         ],
       },
     ],
@@ -122,6 +134,12 @@ export const pages = [
             label: "Copyright Text",
             type: "text",
             default: "© 2026 Acciva Travels. All rights reserved.",
+          },
+          {
+            name: "citiesText",
+            label: "Cities Served (below copyright)",
+            type: "text",
+            default: "India | Bangalore | Chennai | Hyderabad | New Delhi | Mumbai | Pune | Ahmedabad | Kolkata | Kochi",
           },
           {
             name: "socialInstagram",
@@ -539,7 +557,7 @@ export const pages = [
           { name: "missionTitle", label: "Mission Card Title", type: "text", default: "OUR MISSION" },
           { name: "missionBadge", label: "Mission Card Badge", type: "text", default: "Core Commitment" },
           {
-            name: "missionText",
+            name: "Text",
             label: "Mission Card Text",
             type: "richtext",
             default:
@@ -1950,6 +1968,715 @@ export const pages = [
             default: [
               "If your organization is looking for a reliable partner to manage employee or staff transportation, Acciva Travels can help.",
               "Talk to us about your routes, shift timings, employee locations, and other requirements. We'll work with your team to understand your needs and develop a transportation plan that works for your business and your employees.",
+            ],
+          },
+          { name: "talkButtonText", label: "Button Text", type: "text", default: "Talk to Acciva Travels" },
+          { name: "talkButtonLink", label: "Button Link", type: "text", hint: "Where this button goes — an internal path like /contact, or a full https:// URL." , default: "/contact" },
+        ],
+      },
+    ],
+  },
+  {
+    key: "corporate-cab-services",
+    label: "Corporate Cab Services",
+    parent: "services",
+    icon: Car,
+    description: "The dedicated Corporate Cab Services subpage, linked from the Services nav dropdown.",
+    relatedCollections: [],
+    sections: [
+      {
+        key: "hero",
+        label: "1. Hero",
+        fields: [
+          { name: "heroEyebrow", label: "Eyebrow", type: "text", default: "Corporate Mobility" },
+          {
+            name: "heroTitleMain",
+            label: "Title",
+            type: "textarea",
+            default: "Acciva Travels: Corporate Employee Transportation Services",
+          },
+          { name: "heroTitleAccent", label: "Title (Highlighted)", type: "text", default: "Tailored to Your Business Needs" },
+          {
+            name: "heroBackgroundImage",
+            label: "Background Image",
+            type: "image",
+            default:
+              "https://images.pexels.com/photos/34985962/pexels-photo-34985962.jpeg?auto=compress&cs=tinysrgb&w=1920",
+          },
+        ],
+      },
+      {
+        key: "intro",
+        label: "2. Introduction",
+        fields: [
+          { name: "introEyebrow", label: "Eyebrow", type: "text", default: "Introduction" },
+          { name: "introHeadingMain", label: "Heading", type: "text", default: "Keeping Everyday Operations" },
+          { name: "introHeadingAccent", label: "Heading (Highlighted)", type: "text", default: "On Track." },
+          {
+            name: "introParagraphs",
+            label: "Paragraphs",
+            type: "list",
+            default: [
+              "For businesses operating across multiple shifts and locations, employee transportation is an important part of keeping everyday operations on track. Late pickups, poorly planned routes, or inconsistent transport arrangements can affect employee punctuality, productivity, and overall work experience.",
+              "Acciva Travels provides corporate employee transportation services for companies, IT firms, institutions, and other organizations that need a dependable way to manage staff travel. We work with HR, administration, and operations teams to understand their requirements and put practical transportation arrangements in place based on employee locations, work schedules, and shift timings.",
+              "Our role goes beyond arranging vehicles. We help businesses coordinate the day-to-day transportation process so that employees can get to and from work without adding unnecessary pressure to internal teams.",
+            ],
+          },
+          {
+            name: "introImage",
+            label: "Image",
+            type: "image",
+            default:
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQo3X_Wak1PB2CWrLV-HNNlB9sU84cQOvJi36YLZfHJnXnVGp8Rxn815_s&s=10",
+          },
+        ],
+      },
+      {
+        key: "offer",
+        label: "3. Employee Transportation Services",
+        fields: [
+          { name: "offerEyebrow", label: "Eyebrow", type: "text", default: "What We Offer" },
+          { name: "offerHeadingMain", label: "Heading", type: "text", default: "Employee Transportation" },
+          { name: "offerHeadingAccent", label: "Heading (Highlighted)", type: "text", default: "Services." },
+          {
+            name: "offerParagraphs",
+            label: "Paragraphs",
+            type: "list",
+            default: [
+              "Acciva Travels provides employee transportation solutions for organizations with regular or shift-based travel requirements. Services can include daily employee pickup and drop-off, transportation for different work shifts, and arrangements covering multiple employee pickup and drop-off points.",
+              "Every organization has a different workforce structure. Some may have employees travelling from several areas, while others may operate early morning, evening, or night shifts. Transportation requirements can also change as employees join, leave, relocate, or change their working hours.",
+              "We take these factors into account when planning transportation arrangements, helping businesses maintain a practical system that can adapt to their changing requirements.",
+            ],
+          },
+          {
+            name: "offerImage",
+            label: "Image",
+            type: "image",
+            default: "https://amazelogistics.com/img/employee-transport-hero.webp",
+          },
+        ],
+      },
+      {
+        key: "routePlanning",
+        label: "4. Route Planning and Transportation Management",
+        fields: [
+          { name: "routeEyebrow", label: "Eyebrow", type: "text", default: "Planning & Coordination" },
+          { name: "routeHeadingMain", label: "Heading", type: "text", default: "Route Planning and" },
+          { name: "routeHeadingAccent", label: "Heading (Highlighted)", type: "text", default: "Transportation Management." },
+          {
+            name: "routeParagraphs",
+            label: "Paragraphs",
+            type: "list",
+            default: [
+              "An effective employee transportation system starts with understanding where employees live and when they need to travel.",
+              "We coordinate with the relevant teams to understand employee locations, shift schedules, pickup requirements, and operational preferences. Based on this information, transportation routes can be planned around the distribution of employees and their working hours.",
+              "Well-planned routes can help avoid unnecessary detours, reduce travel time, and make daily pickups more manageable. When employee locations or shift timings change, the transportation plan can also be adjusted accordingly.",
+              "This approach allows HR and administration teams to have a more organized transportation system without having to coordinate every individual trip themselves.",
+            ],
+          },
+          {
+            name: "routeSteps",
+            label: "Route Planning Steps",
+            type: "cards",
+            itemLabel: "Step",
+            default: [
+              { step: "01", title: "Understand Employee Locations", icon: "MapPin" },
+              { step: "02", title: "Plan Practical Routes", icon: "Route" },
+              { step: "03", title: "Reduce Travel Time", icon: "Gauge" },
+              { step: "04", title: "Adjust As Needed", icon: "RefreshCcw" },
+            ],
+            itemFields: [
+              { name: "step", label: "Step Number", type: "text" },
+              { name: "title", label: "Title", type: "text" },
+              { name: "icon", label: "Icon", type: "select", options: iconNames },
+            ],
+          },
+        ],
+      },
+      {
+        key: "safety",
+        label: "5. Drivers and Vehicles",
+        fields: [
+          { name: "safetyEyebrow", label: "Eyebrow", type: "text", default: "Trust & Compliance" },
+          { name: "safetyHeadingMain", label: "Heading", type: "text", default: "Drivers and" },
+          { name: "safetyHeadingAccent", label: "Heading (Highlighted)", type: "text", default: "Vehicles." },
+          { name: "safetyDescription", label: "Description", type: "text", default: "The quality of employee transportation depends on both the vehicles being used and the people operating them." },
+          {
+            name: "safetyCards",
+            label: "Safety Cards",
+            type: "cards",
+            itemLabel: "Card",
+            default: [
+              {
+                icon: "UserCheck",
+                title: "Experienced Drivers & Vehicles",
+                text: "Acciva Travels works with experienced drivers and vehicles suitable for corporate transportation requirements. Regular attention to vehicle condition helps ensure that employees have a comfortable and dependable commute.",
+              },
+              {
+                icon: "ShieldCheck",
+                title: "Professional Conduct",
+                text: "Drivers are expected to maintain professional conduct while transporting employees and follow the agreed routes and schedules.",
+              },
+              {
+                icon: "Wrench",
+                title: "Consistent Arrangements",
+                text: "For businesses, having a consistent transportation arrangement also means fewer day-to-day uncertainties around employee travel.",
+              },
+            ],
+            itemFields: [
+              { name: "icon", label: "Icon", type: "select", options: iconNames },
+              { name: "title", label: "Title", type: "text" },
+              { name: "text", label: "Text", type: "textarea" },
+            ],
+          },
+        ],
+      },
+      {
+        key: "tech",
+        label: "6. GPS Tracking and Technology",
+        fields: [
+          { name: "techEyebrow", label: "Eyebrow", type: "text", default: "Smarter Visibility" },
+          { name: "techHeadingMain", label: "Heading", type: "text", default: "GPS Tracking" },
+          { name: "techHeadingAccent", label: "Heading (Highlighted)", type: "text", default: "& Technology." },
+          {
+            name: "techParagraphs",
+            label: "Paragraphs",
+            type: "list",
+            default: [
+              "Technology can make corporate transportation easier to monitor and coordinate.",
+              "Where GPS-enabled transportation is used, vehicle locations can be monitored during trips, giving the concerned teams better visibility of ongoing journeys. This can also make it easier to communicate with drivers and respond when there are changes or delays.",
+              "For HR and administration teams, having access to transportation information can simplify coordination and provide greater visibility into daily employee travel.",
+            ],
+          },
+          {
+            name: "techFeatures",
+            label: "Feature Chips",
+            type: "cards",
+            itemLabel: "Chip",
+            default: [
+              { icon: "Radar", label: "GPS Vehicle Tracking" },
+              { icon: "Smartphone", label: "Driver Communication" },
+              { icon: "Bell", label: "Change & Delay Updates" },
+            ],
+            itemFields: [
+              { name: "icon", label: "Icon", type: "select", options: iconNames },
+              { name: "label", label: "Label", type: "text" },
+            ],
+          },
+          {
+            name: "techImage",
+            label: "Image",
+            type: "image",
+            default:
+              "https://vitalglowgps.com/cdn/shop/articles/node-n_412b4s6n_17cb7cce-2db8-48bd-99f7-0ee28b502dd4.png?v=1780563505&width=1200",
+          },
+        ],
+      },
+      {
+        key: "benefits",
+        label: "7. Benefits for Businesses",
+        fields: [
+          { name: "benefitsEyebrow", label: "Eyebrow", type: "text", default: "Why It Matters" },
+          { name: "benefitsHeadingMain", label: "Heading", type: "text", default: "Benefits for" },
+          { name: "benefitsHeadingAccent", label: "Heading (Highlighted)", type: "text", default: "Businesses." },
+          {
+            name: "benefitsDescription",
+            label: "Description",
+            type: "text",
+            default: "A professionally managed employee transportation system can make a noticeable difference to the way a company handles its daily operations.",
+          },
+          {
+            name: "benefits",
+            label: "Benefits",
+            type: "cards",
+            itemLabel: "Benefit",
+            default: [
+              {
+                icon: "Users",
+                title: "Reduced Workload for HR and Administration Teams",
+                text: "Managing employee transportation involves more than booking vehicles. Routes, schedules, employee locations, driver coordination, and last-minute changes all require attention. Working with a transportation provider can reduce the amount of daily coordination handled internally.",
+              },
+              {
+                icon: "Clock",
+                title: "Better Management of Shift Transportation",
+                text: "Companies operating across multiple shifts often have transportation requirements outside conventional office hours. Having a planned system in place makes it easier to coordinate employee travel around different reporting and departure times.",
+              },
+              {
+                icon: "Sparkles",
+                title: "Greater Convenience for Employees",
+                text: "Reliable pickup and drop arrangements can make the daily commute easier for employees, particularly those working long or irregular shifts.",
+              },
+              {
+                icon: "Layers",
+                title: "More Organised Transportation Operations",
+                text: "With routes, schedules, and vehicle arrangements planned in advance, companies can have a clearer system for managing employee travel instead of handling transportation requirements on an ad-hoc basis.",
+              },
+              {
+                icon: "RefreshCcw",
+                title: "Support for Changing Business Requirements",
+                text: "Employee numbers, work locations, and shift patterns can change over time. A flexible transportation arrangement allows companies to make adjustments when their workforce requirements change.",
+              },
+            ],
+            itemFields: [
+              { name: "icon", label: "Icon", type: "select", options: iconNames },
+              { name: "title", label: "Title", type: "text" },
+              { name: "text", label: "Text", type: "textarea" },
+            ],
+          },
+        ],
+      },
+      {
+        key: "industries",
+        label: "8. Corporate Transportation for Different Industries",
+        fields: [
+          { name: "industriesEyebrow", label: "Eyebrow", type: "text", default: "Who We Serve" },
+          { name: "industriesHeadingMain", label: "Heading", type: "text", default: "Corporate Transportation for" },
+          { name: "industriesHeadingAccent", label: "Heading (Highlighted)", type: "text", default: "Different Industries." },
+          {
+            name: "industriesParagraphs",
+            label: "Paragraphs",
+            type: "list",
+            default: [
+              "Employee transportation can be useful across a wide range of businesses and institutions.",
+              "Acciva Travels can support transportation requirements for:",
+            ],
+          },
+          {
+            name: "industriesChips",
+            label: "Industries",
+            type: "cards",
+            itemLabel: "Industry",
+            default: [
+              { icon: "Cpu", label: "IT & Technology Companies" },
+              { icon: "Headset", label: "BPO & KPO Companies" },
+              { icon: "Building2", label: "Corporate Offices" },
+              { icon: "Factory", label: "Manufacturing & Industrial Businesses" },
+              { icon: "HeartPulse", label: "Hospitals & Healthcare Organizations" },
+              { icon: "GraduationCap", label: "Educational Institutions" },
+              { icon: "ShoppingCart", label: "Retail & Commercial Businesses" },
+              { icon: "Clock", label: "Organizations with Shift-Based Employees" },
+            ],
+            itemFields: [
+              { name: "icon", label: "Icon", type: "select", options: iconNames },
+              { name: "label", label: "Label", type: "text" },
+            ],
+          },
+          {
+            name: "industriesClosing",
+            label: "Closing Paragraph",
+            type: "textarea",
+            default: "Whether a company requires regular office transportation or arrangements for employees working at different times, the transportation plan can be developed around its specific operational requirements.",
+          },
+        ],
+      },
+      {
+        key: "whyChoose",
+        label: "9. Why Choose Acciva Travels",
+        fields: [
+          { name: "whyEyebrow", label: "Eyebrow", type: "text", default: "Distinct Advantage" },
+          { name: "whyHeadingMain", label: "Heading", type: "text", default: "Why Choose" },
+          { name: "whyHeadingAccent", label: "Heading (Highlighted)", type: "text", default: "Acciva Travels?" },
+          {
+            name: "whyParagraphs",
+            label: "Paragraphs",
+            type: "list",
+            default: [
+              "Choosing a corporate transportation provider is ultimately about finding a service that fits the way your business operates.",
+              "Acciva Travels focuses on understanding the transportation requirements of each organization before putting a service arrangement in place. From employee locations and shift timings to route planning and vehicle coordination, the different parts of the process can be managed as one system.",
+              "For businesses, this means having a transportation partner they can work with as their requirements evolve, rather than having to manage every transportation need independently.",
+            ],
+          },
+          {
+            name: "whyHighlight",
+            label: "Highlight Quote",
+            type: "textarea",
+            default:
+              "Our approach is centred on clear communication and practical planning. We work with the teams responsible for employee transportation to help keep daily travel organised while reducing the amount of coordination required from within the company.",
+          },
+          {
+            name: "whyImage",
+            label: "Image",
+            type: "image",
+            default:
+              "https://media.istockphoto.com/id/182913362/photo/travel-coaches-at-tourist-destination-parked-in-a-row.jpg?s=612x612&w=0&k=20&c=WydkBjrqbYQKAITmQ9oEWzwzsQbQhp15OCOiSTgqj-g=",
+          },
+        ],
+      },
+      {
+        key: "talk",
+        label: "10. Let's Talk CTA",
+        fields: [
+          { name: "talkEyebrow", label: "Eyebrow", type: "text", default: "" },
+          { name: "talkHeadingMain", label: "Heading", type: "text", default: "A Corporate Transportation Partner" },
+          { name: "talkHeadingAccent", label: "Heading (Highlighted)", type: "text", default: "You Can Rely On" },
+          {
+            name: "talkParagraphs",
+            label: "Paragraphs",
+            type: "list",
+            default: [
+              "Employee transportation may seem like a small part of business operations, but when hundreds of employees depend on it every day, the way it is managed matters.",
+              "A well-organised transportation system can help businesses manage shift schedules, reduce administrative work, and provide employees with a more convenient way to travel to and from work.",
+              "Acciva Travels works with businesses to develop employee transportation arrangements that fit their workforce, schedules, and operational needs.",
+              "If your company is looking for a corporate transportation partner, get in touch with Acciva Travels to discuss your employee pickup and drop requirements and explore a transportation plan that works for your business.",
+            ],
+          },
+          { name: "talkButtonText", label: "Button Text", type: "text", default: "Talk to Acciva Travels" },
+          { name: "talkButtonLink", label: "Button Link", type: "text", hint: "Where this button goes — an internal path like /contact, or a full https:// URL." , default: "/contact" },
+        ],
+      },
+    ],
+  },
+  {
+    key: "fleet-management-services",
+    label: "Fleet Management Service",
+    parent: "services",
+    icon: Truck,
+    description: "The dedicated Fleet Management Service subpage, linked from the Services nav dropdown.",
+    relatedCollections: [],
+    sections: [
+      {
+        key: "hero",
+        label: "1. Hero",
+        fields: [
+          { name: "heroEyebrow", label: "Eyebrow", type: "text", default: "Fleet Operations" },
+          {
+            name: "heroTitleMain",
+            label: "Title",
+            type: "textarea",
+            default: "Fleet Management Services for Businesses:",
+          },
+          { name: "heroTitleAccent", label: "Title (Highlighted)", type: "text", default: "Keeping Your Vehicles Organised and Operational" },
+          {
+            name: "heroBackgroundImage",
+            label: "Background Image",
+            type: "image",
+            default:
+              "https://images.pexels.com/photos/34985962/pexels-photo-34985962.jpeg?auto=compress&cs=tinysrgb&w=1920",
+          },
+        ],
+      },
+      {
+        key: "intro",
+        label: "2. Introduction",
+        fields: [
+          { name: "introEyebrow", label: "Eyebrow", type: "text", default: "Introduction" },
+          { name: "introHeadingMain", label: "Heading", type: "text", default: "Keeping Your Fleet" },
+          { name: "introHeadingAccent", label: "Heading (Highlighted)", type: "text", default: "Organised and Operational." },
+          {
+            name: "introParagraphs",
+            label: "Paragraphs",
+            type: "list",
+            default: [
+              "Owning a fleet of vehicles is only the starting point. The real challenge for any business begins after the vehicles are on the road — keeping them available when needed, maintained on schedule, properly documented, and coordinated with drivers and routes on a daily basis. For corporates, IT companies, logistics providers, hospitals, and institutions running multiple vehicles, this responsibility can quietly grow into a full-time operational burden.",
+              "Vehicle availability has to be planned around shifting business needs. Maintenance has to be tracked so breakdowns don't disrupt operations. Drivers have to be coordinated across schedules, locations, and routes. Fuel costs need monitoring to prevent waste. Documentation — insurance, permits, registration, compliance records — has to stay current and accessible. None of this happens automatically, and when it's managed informally or reactively, it tends to consume far more time, money, and attention than businesses expect.",
+              "This is where professional fleet management services come in. Instead of internal teams juggling vehicle logistics alongside their core responsibilities, a dedicated fleet management company takes on the day-to-day coordination, so vehicles stay organised, costs stay controlled, and transportation runs smoothly in the background of business operations.",
+            ],
+          },
+          {
+            name: "introImage",
+            label: "Image",
+            type: "image",
+            default:
+              "https://images.pexels.com/photos/6870582/pexels-photo-6870582.jpeg?auto=compress&cs=tinysrgb&w=1200",
+          },
+        ],
+      },
+      {
+        key: "offer",
+        label: "3. What Fleet Management Actually Involves",
+        fields: [
+          { name: "offerEyebrow", label: "Eyebrow", type: "text", default: "Core Functions" },
+          { name: "offerHeadingMain", label: "Heading", type: "text", default: "What Fleet Management" },
+          { name: "offerHeadingAccent", label: "Heading (Highlighted)", type: "text", default: "Actually Involves." },
+          {
+            name: "offerParagraphs",
+            label: "Paragraphs (lead-in, closing)",
+            type: "list",
+            default: [
+              "Fleet management is not a single task — it's an ongoing set of coordinated activities that keep a vehicle fleet functional and cost-effective. At its core, it covers:",
+              "When these functions are handled together, in a coordinated way, a fleet stops being a collection of individual vehicle problems and starts operating as a single, manageable system.",
+            ],
+          },
+          {
+            name: "offerCards",
+            label: "Function Cards",
+            type: "cards",
+            itemLabel: "Card",
+            default: [
+              { icon: "ClipboardList", title: "Vehicle Scheduling", text: "Ensuring the right vehicle is available at the right time for the right purpose, without gaps or overlaps in usage." },
+              { icon: "Users", title: "Driver Coordination", text: "Matching drivers to vehicles and routes, managing availability, and keeping communication clear between drivers and the business." },
+              { icon: "Wrench", title: "Preventive Maintenance", text: "Servicing vehicles on a planned schedule rather than waiting for problems to surface, which reduces breakdowns and extends vehicle life." },
+              { icon: "Route", title: "Route Planning", text: "Organising routes to reduce travel time, avoid unnecessary mileage, and keep operations predictable." },
+              { icon: "Radar", title: "Vehicle Tracking", text: "Maintaining visibility over where vehicles are and how they're being used, which supports both accountability and planning." },
+              { icon: "Fuel", title: "Fuel Monitoring", text: "Keeping track of fuel consumption patterns to identify inefficiencies and control one of the largest recurring costs in fleet operations." },
+              { icon: "FileText", title: "Documentation Management", text: "Keeping insurance, permits, registration, and compliance paperwork organised and up to date, so nothing lapses unnoticed." },
+              { icon: "Cog", title: "Fleet Operations Support", text: "General day-to-day coordination that ties all of the above together, so the business doesn't have to manage each piece separately." },
+            ],
+            itemFields: [
+              { name: "icon", label: "Icon", type: "select", options: iconNames },
+              { name: "title", label: "Title", type: "text" },
+              { name: "text", label: "Text", type: "textarea" },
+            ],
+          },
+        ],
+      },
+      {
+        key: "routePlanning",
+        label: "4. Why Businesses Struggle to Manage Fleets Internally",
+        fields: [
+          { name: "routeEyebrow", label: "Eyebrow", type: "text", default: "Common Challenges" },
+          { name: "routeHeadingMain", label: "Heading", type: "text", default: "Why Businesses Struggle to" },
+          { name: "routeHeadingAccent", label: "Heading (Highlighted)", type: "text", default: "Manage Fleets Internally." },
+          {
+            name: "routeParagraphs",
+            label: "Paragraphs",
+            type: "list",
+            default: [
+              "Most businesses don't set out to build a transportation department — vehicles are usually added incrementally as operational needs grow. A company might start with two or three vehicles and, over time, find itself managing a dozen or more, each with its own maintenance history, driver assignments, and documentation requirements.",
+              "Without a structured approach, several problems tend to surface:",
+            ],
+          },
+          {
+            name: "routeIssues",
+            label: "Challenge Points",
+            type: "cards",
+            itemLabel: "Point",
+            default: [
+              { icon: "Wrench", text: "Maintenance gets delayed until a vehicle actually breaks down, leading to unplanned downtime." },
+              { icon: "Gauge", text: "Vehicle usage becomes uneven, with some vehicles overused and others underutilised." },
+              { icon: "Users", text: "Driver schedules conflict with business needs, causing delays." },
+              { icon: "Fuel", text: "Fuel costs rise without a clear explanation, because consumption isn't being tracked systematically." },
+              { icon: "FileText", text: "Documentation is scattered across departments or individuals, increasing the risk of compliance issues." },
+              { icon: "Clock", text: "Internal staff spend time on vehicle logistics instead of their primary responsibilities." },
+            ],
+            itemFields: [
+              { name: "icon", label: "Icon", type: "select", options: iconNames },
+              { name: "text", label: "Text", type: "textarea" },
+            ],
+          },
+          {
+            name: "routeClosing",
+            label: "Closing Paragraph",
+            type: "textarea",
+            default: "Individually, these issues might seem minor. Together, they add up to real operational and financial inefficiency — and they tend to worsen as a fleet grows.",
+          },
+          {
+            name: "routeSteps",
+            label: "Challenge Tiles",
+            type: "cards",
+            itemLabel: "Tile",
+            default: [
+              { step: "01", title: "Delayed Maintenance", icon: "Wrench" },
+              { step: "02", title: "Uneven Vehicle Usage", icon: "Gauge" },
+              { step: "03", title: "Driver Schedule Conflicts", icon: "Users" },
+              { step: "04", title: "Rising Fuel Costs", icon: "Fuel" },
+              { step: "05", title: "Scattered Documentation", icon: "FileText" },
+              { step: "06", title: "Diverted Staff Time", icon: "Clock" },
+            ],
+            itemFields: [
+              { name: "step", label: "Step Number", type: "text" },
+              { name: "title", label: "Title", type: "text" },
+              { name: "icon", label: "Icon", type: "select", options: iconNames },
+            ],
+          },
+        ],
+      },
+      {
+        key: "safety",
+        label: "5. The Business Case for Corporate Fleet Management",
+        fields: [
+          { name: "safetyEyebrow", label: "Eyebrow", type: "text", default: "Why It Matters" },
+          { name: "safetyHeadingMain", label: "Heading", type: "text", default: "The Business Case for" },
+          { name: "safetyHeadingAccent", label: "Heading (Highlighted)", type: "text", default: "Corporate Fleet Management." },
+          {
+            name: "safetyDescription",
+            label: "Description",
+            type: "text",
+            default: "Corporate fleet management addresses these issues by centralising responsibility for fleet operations under a structured, ongoing process rather than leaving it to ad hoc internal handling. The benefits extend across several areas of the business:",
+          },
+          {
+            name: "safetyCards",
+            label: "Benefit Cards",
+            type: "cards",
+            itemLabel: "Card",
+            default: [
+              {
+                icon: "Users",
+                title: "Reduced Operational Workload",
+                text: "When vehicle scheduling, maintenance tracking, and driver coordination are handled externally, internal teams are freed up to focus on their actual roles instead of managing transportation logistics.",
+              },
+              {
+                icon: "Wallet",
+                title: "Better Cost Control",
+                text: "Preventive maintenance reduces the likelihood of expensive emergency repairs. Fuel monitoring highlights inefficient usage patterns. Organised scheduling reduces idle time and unnecessary vehicle deployment — all of which contribute to more predictable, controlled costs.",
+              },
+              {
+                icon: "Gauge",
+                title: "Improved Vehicle Utilisation",
+                text: "With clear visibility into which vehicles are being used, how often, and for what purpose, businesses can make informed decisions about fleet size and allocation, rather than over- or under-investing in vehicles.",
+              },
+              {
+                icon: "ShieldCheck",
+                title: "Fewer Disruptions",
+                text: "Vehicles that are properly maintained and scheduled are less likely to cause delays. This matters particularly for businesses where transportation directly supports operations — logistics companies moving goods, hospitals transporting patients or supplies, and corporates managing employee transport.",
+              },
+              {
+                icon: "FileCheck2",
+                title: "Stronger Compliance and Documentation",
+                text: "Keeping permits, insurance, and registration up to date across an entire fleet is easy to overlook when handled informally. A structured approach keeps this information organised and accessible.",
+              },
+            ],
+            itemFields: [
+              { name: "icon", label: "Icon", type: "select", options: iconNames },
+              { name: "title", label: "Title", type: "text" },
+              { name: "text", label: "Text", type: "textarea" },
+            ],
+          },
+        ],
+      },
+      {
+        key: "tech",
+        label: "6. How Fleet Management Solutions Fit Into Daily Operations",
+        fields: [
+          { name: "techEyebrow", label: "Eyebrow", type: "text", default: "Daily Operations" },
+          { name: "techHeadingMain", label: "Heading", type: "text", default: "How Fleet Management Solutions" },
+          { name: "techHeadingAccent", label: "Heading (Highlighted)", type: "text", default: "Fit Into Daily Operations." },
+          {
+            name: "techParagraphs",
+            label: "Paragraphs",
+            type: "list",
+            default: [
+              "A practical fleet management solution works alongside a business's existing operations rather than requiring it to restructure how it works. Vehicle scheduling is planned around actual business requirements. Drivers are coordinated based on availability and route needs. Maintenance is scheduled proactively, based on usage and service intervals, rather than left until a vehicle needs urgent repair. Route planning is adjusted based on operational priorities, whether that's minimising delay, reducing distance, or accommodating multiple stops.",
+              "Vehicle tracking and fuel monitoring provide ongoing visibility, giving businesses a clearer picture of how their fleet is actually being used — information that's difficult to gather consistently through informal, in-house tracking. Documentation is maintained on an ongoing basis, so compliance doesn't become a periodic scramble.",
+              "The result is a fleet that functions predictably: vehicles are available when needed, maintenance doesn't cause unexpected disruptions, and the business has clear oversight of its transportation operations without having to manage each element separately.",
+            ],
+          },
+          {
+            name: "techFeatures",
+            label: "Feature Chips",
+            type: "cards",
+            itemLabel: "Chip",
+            default: [
+              { icon: "ClipboardList", label: "Vehicle Scheduling" },
+              { icon: "Wrench", label: "Proactive Maintenance" },
+              { icon: "Route", label: "Route Planning" },
+              { icon: "Radar", label: "Tracking & Fuel Monitoring" },
+              { icon: "FileText", label: "Ongoing Documentation" },
+            ],
+            itemFields: [
+              { name: "icon", label: "Icon", type: "select", options: iconNames },
+              { name: "label", label: "Label", type: "text" },
+            ],
+          },
+          {
+            name: "techImage",
+            label: "Image",
+            type: "image",
+            default:
+              "https://vitalglowgps.com/cdn/shop/articles/node-n_412b4s6n_17cb7cce-2db8-48bd-99f7-0ee28b502dd4.png?v=1780563505&width=1200",
+          },
+        ],
+      },
+      {
+        key: "benefits",
+        label: "7. Who Needs Fleet Management Services",
+        fields: [
+          { name: "benefitsEyebrow", label: "Eyebrow", type: "text", default: "Who We Serve" },
+          { name: "benefitsHeadingMain", label: "Heading", type: "text", default: "Who Needs" },
+          { name: "benefitsHeadingAccent", label: "Heading (Highlighted)", type: "text", default: "Fleet Management Services." },
+          {
+            name: "benefitsDescription",
+            label: "Description",
+            type: "text",
+            default: "Fleet management services are relevant to any organisation operating more than a handful of vehicles, but the need becomes particularly pronounced in certain sectors:",
+          },
+          {
+            name: "benefits",
+            label: "Sectors",
+            type: "cards",
+            itemLabel: "Sector",
+            default: [
+              {
+                icon: "Building2",
+                title: "IT Companies and Corporates",
+                text: "IT companies and corporates often manage employee transport, shuttle services, or executive vehicles across multiple shifts and locations. Coordinating this internally, alongside core business functions, is rarely an efficient use of internal resources.",
+              },
+              {
+                icon: "Truck",
+                title: "Logistics Companies",
+                text: "Logistics companies depend on vehicle availability and route efficiency as a direct extension of their service quality. Downtime or poor route planning has immediate operational consequences.",
+              },
+              {
+                icon: "HeartPulse",
+                title: "Hospitals and Healthcare Institutions",
+                text: "Hospitals and healthcare institutions rely on vehicles for patient transport, staff movement, and supply logistics, where reliability and scheduling accuracy are not optional.",
+              },
+              {
+                icon: "GraduationCap",
+                title: "Educational and Other Institutions",
+                text: "Educational and other institutions managing transport for staff, students, or operations benefit from having vehicle scheduling and maintenance handled by a team focused specifically on that responsibility.",
+              },
+            ],
+            itemFields: [
+              { name: "icon", label: "Icon", type: "select", options: iconNames },
+              { name: "title", label: "Title", type: "text" },
+              { name: "text", label: "Text", type: "textarea" },
+            ],
+          },
+          {
+            name: "benefitsClosing",
+            label: "Closing Paragraph",
+            type: "textarea",
+            default: "Across all of these sectors, the common thread is the same: transportation supports the core business, but it isn't the core business. Handing over fleet operations to a dedicated provider allows organisations to keep transportation reliable without diverting attention from what they actually do.",
+          },
+        ],
+      },
+      {
+        key: "whyChoose",
+        label: "8. Working With a Fleet Management Company",
+        fields: [
+          { name: "whyEyebrow", label: "Eyebrow", type: "text", default: "Partnering Up" },
+          { name: "whyHeadingMain", label: "Heading", type: "text", default: "Working With a" },
+          { name: "whyHeadingAccent", label: "Heading (Highlighted)", type: "text", default: "Fleet Management Company." },
+          {
+            name: "whyParagraphs",
+            label: "Paragraphs",
+            type: "list",
+            default: [
+              "Partnering with a fleet management company means shifting the day-to-day responsibility of fleet operations to a team that focuses on exactly that. Rather than distributing vehicle-related tasks across administrative staff, operations teams, or individual departments, businesses gain a single point of coordination for scheduling, maintenance, driver management, and documentation.",
+              "This structure is particularly valuable for organisations managing multiple vehicles across different locations or use cases, where informal coordination becomes increasingly difficult to sustain as the fleet grows.",
+            ],
+          },
+          {
+            name: "whyHighlight",
+            label: "Highlight Quote",
+            type: "textarea",
+            default:
+              "A dedicated fleet management partner brings consistency to these processes, helping businesses avoid the gradual accumulation of small inefficiencies that come with managing vehicles reactively.",
+          },
+          {
+            name: "whyImage",
+            label: "Image",
+            type: "image",
+            default:
+              "https://media.istockphoto.com/id/182913362/photo/travel-coaches-at-tourist-destination-parked-in-a-row.jpg?s=612x612&w=0&k=20&c=WydkBjrqbYQKAITmQ9oEWzwzsQbQhp15OCOiSTgqj-g=",
+          },
+        ],
+      },
+      {
+        key: "talk",
+        label: "9. Let's Talk CTA",
+        fields: [
+          { name: "talkEyebrow", label: "Eyebrow", type: "text", default: "" },
+          { name: "talkHeadingMain", label: "Heading", type: "text", default: "Get Organised Fleet Support" },
+          { name: "talkHeadingAccent", label: "Heading (Highlighted)", type: "text", default: "With Acciva Travels" },
+          {
+            name: "talkParagraphs",
+            label: "Paragraphs",
+            type: "list",
+            default: [
+              "Managing a fleet involves far more than keeping vehicles on the road — it requires consistent scheduling, proactive maintenance, coordinated drivers, and organised documentation to keep operations running without disruption. For businesses, corporates, logistics providers, hospitals, and institutions managing multiple vehicles, professional fleet management support can reduce operational strain and bring structure to day-to-day transportation.",
+              "If your organisation is looking to bring more organisation and control to its vehicle fleet, get in touch with Acciva Travels to discuss your fleet management requirements and find an approach that fits your operational needs.",
             ],
           },
           { name: "talkButtonText", label: "Button Text", type: "text", default: "Talk to Acciva Travels" },

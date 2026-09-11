@@ -12,6 +12,8 @@ const FOOTER_DEFAULTS = {
   address: "# 52, 1 Main Road, Anand Nagar, Hebbal, Bengaluru 560024.",
   hours: "24/7/365 Non-Stop Operations",
   copyrightText: "© 2026 Acciva Travels. All rights reserved.",
+  citiesText:
+    "India | Bangalore | Chennai | Hyderabad | New Delhi | Mumbai | Pune | Ahmedabad | Kolkata | Kochi",
   socialInstagram: "https://www.instagram.com/accivatravel/",
   socialFacebook: "https://www.facebook.com/accivatravelsbangalore/",
   socialLinkedin: "https://in.linkedin.com/company/acciva-travels-p-limited",
@@ -133,8 +135,11 @@ const Footer = () => {
 
         {/* Bottom bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-navy/40 font-mono">{content.copyrightText}</p>
-          <div className="flex items-center gap-3">
+          <p className="text-xs text-navy/40 font-mono shrink-0">{content.copyrightText}</p>
+          <p className="text-xs text-navy/40 font-mono text-center sm:flex-1">
+            {content.citiesText}
+          </p>
+          <div className="flex items-center gap-3 shrink-0">
             <IconLink
               href={content.socialInstagram}
               label="Instagram"
