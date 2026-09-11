@@ -62,6 +62,22 @@ function fixHeadingsWithBlockContent(container) {
   });
 }
 
+// The browser's own list-command (execCommand("insertUnorderedList"/
+// "insertOrderedList")) can leave a <ul>/<ol> wrapped in a <p> in the live
+// contentEditable DOM — invalid, since a <p> can't contain block content.
+// Re-parsing that (which both DOMPurify and the innerHTML assignment below
+// do) auto-splits it per the HTML parsing algorithm, but leaves the now
+//-empty <p></p> tags behind as debris immediately before/after the list.
+// Left in place, each one adds its own blank-paragraph spacing around every
+// list. A <p> with zero child nodes (not even a <br>) is never meaningful
+// content — real blank lines a person typed always contain a <br> — so
+// it's always safe to drop.
+function removeEmptyParagraphDebris(container) {
+  container.querySelectorAll("p").forEach((p) => {
+    if (p.childNodes.length === 0) p.remove();
+  });
+}
+
 export function sanitizeArticleHtml(html) {
   ensureColorOnlyStyleHook();
   const cleaned = DOMPurify.sanitize(html || "", { ALLOWED_TAGS, ALLOWED_ATTR });
@@ -70,5 +86,6 @@ export function sanitizeArticleHtml(html) {
   const container = document.createElement("div");
   container.innerHTML = cleaned;
   fixHeadingsWithBlockContent(container);
+  removeEmptyParagraphDebris(container);
   return container.innerHTML;
 }

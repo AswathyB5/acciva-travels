@@ -117,9 +117,21 @@ h4 em,
   margin: 0 0 1em;
 }
 
+/* Tailwind's base reset strips list-style/padding from every ul/ol
+   site-wide, so without restoring it here bullets and numbers never
+   actually render — the <ul>/<ol> markup is correct, it's just invisible. */
 .blog-article ul,
 .blog-article ol {
-  margin: 0 0 1em 1.25em;
+  margin: 0 0 1em;
+  padding-left: 1.25em;
+}
+
+.blog-article ul {
+  list-style-type: disc;
+}
+
+.blog-article ol {
+  list-style-type: decimal;
 }
 
 .blog-article li {
