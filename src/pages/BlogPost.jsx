@@ -154,11 +154,11 @@ const BlogPost = () => {
         <div className="container-px">
           {contentHtml ? (
             <div
-              className="article-content blog-article max-w-4xl mx-auto text-slate-700 text-[15px] font-normal leading-relaxed"
+              className="article-content blog-article max-w-4xl mx-auto text-slate-700 text-sm font-normal leading-relaxed"
               dangerouslySetInnerHTML={{ __html: contentHtml }}
             />
           ) : (
-            <p className="max-w-4xl mx-auto text-slate-700 text-[16px] leading-relaxed font-normal">
+            <p className="max-w-4xl mx-auto text-slate-700 text-sm leading-relaxed font-normal">
               {post?.excerpt}
             </p>
           )}

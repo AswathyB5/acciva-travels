@@ -420,7 +420,7 @@ const RichTextEditor = ({ value, onChange }) => {
           if (toolbarRef.current?.contains(e.relatedTarget)) return;
           setColorOpen(false);
         }}
-        className="article-content blog-article px-4 py-3.5 min-h-56 max-h-112 overflow-y-auto text-slate-700 text-[15px] font-normal leading-relaxed focus:outline-none"
+        className="article-content blog-article px-4 py-3.5 min-h-56 max-h-112 overflow-y-auto text-slate-700 text-sm font-normal leading-relaxed focus:outline-none"
       />
     </div>
   );
