@@ -58,7 +58,13 @@ const BlogPost = () => {
 
   return (
     <div className="bg-soft text-navy overflow-hidden">
-      {post && <Seo title={post.title} description={post.excerpt} />}
+      {post && (
+        <Seo
+          title={post.metaTitle || post.title}
+          description={post.metaDescription || post.excerpt}
+          schema={post.schemaMarkup}
+        />
+      )}
 
       <section
         className="pt-28 sm:pt-32 pb-10 md:pb-14 relative overflow-hidden"

@@ -77,6 +77,24 @@ export const collections = [
         hint: "Use the toolbar for headings, bold, color, and links. This renders on the live post with the exact same styling as every other article.",
       },
       { name: "image", label: "Image URL", type: "image" },
+      {
+        name: "metaTitle",
+        label: "Meta Title",
+        type: "text",
+        hint: "Overrides the browser tab / search result title. Leave blank to fall back to the post title.",
+      },
+      {
+        name: "metaDescription",
+        label: "Meta Description",
+        type: "textarea",
+        hint: "Overrides the search result snippet. Leave blank to fall back to the excerpt.",
+      },
+      {
+        name: "schemaMarkup",
+        label: "Schema Markup (JSON-LD)",
+        type: "textarea",
+        hint: "Optional. Paste raw JSON-LD (e.g. an Article schema) to embed on this post. Must be valid JSON — invalid JSON is ignored.",
+      },
     ],
   },
   {
