@@ -24,7 +24,7 @@ const HEADING_OPTIONS = [
   { value: "H6", label: "Heading 6" },
 ];
 
-const COLOR_SWATCHES = ["#192a3a", "#3b8dc4", "#e1c59d", "#dc2626", "#16a34a", "#7c3aed"];
+const COLOR_SWATCHES = ["#000000", "#192a3a", "#3b8dc4", "#e1c59d", "#dc2626", "#16a34a", "#7c3aed"];
 
 // Content pasted from Word, Google Docs, or another webpage very often
 // expresses "bold"/"italic"/"underline" as inline CSS on a <span>/<div>
@@ -291,6 +291,13 @@ const RichTextEditor = ({ value, onChange }) => {
               ))}
               <input
                 type="color"
+                // Left unset, a native color input defaults to "#000000" —
+                // so opening the picker and choosing black (a color someone
+                // would very reasonably want) is *not* a change from that
+                // default, and no change event fires, silently doing
+                // nothing. Starting from a non-black default guarantees
+                // picking black is always a real, detectable change.
+                defaultValue="#192a3a"
                 onChange={(e) => applyColor(e.target.value)}
                 className="w-6 h-6 rounded-full border border-navy/15 shrink-0 cursor-pointer p-0 bg-transparent"
                 title="Custom color"

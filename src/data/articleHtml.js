@@ -28,7 +28,47 @@ function ensureColorOnlyStyleHook() {
   });
 }
 
+const BLOCK_CONTENT_SELECTOR = "p, ul, ol, blockquote";
+
+// A heading (h1–h6) may only contain phrasing content — never a <p>, list,
+// or blockquote. That rule isn't just cosmetic: content pasted from some
+// external sources (Word/Docs exports, other CMSs, or content authored
+// before this editor existed) can arrive with an entire block of paragraphs
+// wrongly wrapped inside a heading tag. When that happens, every one of
+// those paragraphs inherits the heading's (much larger) font size, while
+// the real heading right above it stops looking distinct — which reads as
+// "the sizes/colors are all inconsistent" even though the CSS rules
+// themselves are correct. This repairs that structure on every render: for
+// each heading, everything from its first illegal block-level child onward
+// is moved out to become a sibling immediately after the heading, and a
+// heading left with no text of its own is removed entirely.
+function fixHeadingsWithBlockContent(container) {
+  container.querySelectorAll("h1, h2, h3, h4, h5, h6").forEach((heading) => {
+    const children = Array.from(heading.childNodes);
+    const splitIndex = children.findIndex(
+      (child) =>
+        child.nodeType === 1 &&
+        (child.matches(BLOCK_CONTENT_SELECTOR) || child.querySelector(BLOCK_CONTENT_SELECTOR))
+    );
+    if (splitIndex === -1) return;
+
+    const nextSibling = heading.nextSibling;
+    children.slice(splitIndex).forEach((node) => {
+      heading.parentNode.insertBefore(node, nextSibling);
+    });
+    if (!heading.textContent.trim()) {
+      heading.remove();
+    }
+  });
+}
+
 export function sanitizeArticleHtml(html) {
   ensureColorOnlyStyleHook();
-  return DOMPurify.sanitize(html || "", { ALLOWED_TAGS, ALLOWED_ATTR });
+  const cleaned = DOMPurify.sanitize(html || "", { ALLOWED_TAGS, ALLOWED_ATTR });
+  if (typeof document === "undefined" || !cleaned) return cleaned;
+
+  const container = document.createElement("div");
+  container.innerHTML = cleaned;
+  fixHeadingsWithBlockContent(container);
+  return container.innerHTML;
 }
