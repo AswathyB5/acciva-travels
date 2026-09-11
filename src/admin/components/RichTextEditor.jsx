@@ -75,6 +75,7 @@ function escapeHtml(text) {
 // public blog post page will show.
 const RichTextEditor = ({ value, onChange }) => {
   const editorRef = useRef(null);
+  const toolbarRef = useRef(null);
   const savedRangeRef = useRef(null);
   const [linkOpen, setLinkOpen] = useState(false);
   const [linkUrl, setLinkUrl] = useState("");
@@ -196,7 +197,7 @@ const RichTextEditor = ({ value, onChange }) => {
 
   return (
     <div className="rounded-xl border border-navy/15 overflow-visible bg-white">
-      <div className="flex items-center gap-1 px-2 py-1.5 border-b border-navy/10 bg-ivory/60 flex-wrap relative">
+      <div ref={toolbarRef} className="flex items-center gap-1 px-2 py-1.5 border-b border-navy/10 bg-ivory/60 flex-wrap relative">
         <select
           onMouseDown={saveSelection}
           onChange={(e) => {
@@ -290,7 +291,6 @@ const RichTextEditor = ({ value, onChange }) => {
               ))}
               <input
                 type="color"
-                onMouseDown={(e) => e.preventDefault()}
                 onChange={(e) => applyColor(e.target.value)}
                 className="w-6 h-6 rounded-full border border-navy/15 shrink-0 cursor-pointer p-0 bg-transparent"
                 title="Custom color"
@@ -410,8 +410,14 @@ const RichTextEditor = ({ value, onChange }) => {
         onPaste={handlePaste}
         onMouseUp={saveSelection}
         onKeyUp={saveSelection}
-        onBlur={() => {
+        onBlur={(e) => {
           saveSelection();
+          // Don't close the color popover when focus is moving *into* it
+          // (e.g. the native <input type="color"> swatch, which must take
+          // focus to open its picker) — only when focus leaves the toolbar
+          // entirely. Otherwise the popover unmounts before the native
+          // color picker can open, and custom colors never apply.
+          if (toolbarRef.current?.contains(e.relatedTarget)) return;
           setColorOpen(false);
         }}
         className="article-content blog-article px-4 py-3.5 min-h-56 max-h-112 overflow-y-auto text-sm focus:outline-none"

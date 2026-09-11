@@ -21,7 +21,9 @@ function ensureColorOnlyStyleHook() {
   // or crafted value can't smuggle in position/overlay-style CSS.
   DOMPurify.addHook("uponSanitizeAttribute", (node, data) => {
     if (data.attrName !== "style") return;
-    const match = /color\s*:\s*(#[0-9a-fA-F]{3,8}|rgb\([^)]*\)|[a-zA-Z]+)/.exec(data.attrValue);
+    const match = /(?<!background-)(?:^|;)\s*color\s*:\s*(#[0-9a-fA-F]{3,8}|rgb\([^)]*\)|[a-zA-Z]+)/i.exec(
+      data.attrValue
+    );
     data.attrValue = match ? `color: ${match[1]}` : "";
   });
 }
