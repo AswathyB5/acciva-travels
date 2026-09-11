@@ -89,6 +89,7 @@ h4 em,
 .blog-article h4,
 .blog-article h5,
 .blog-article h6 {
+  font-family: var(--font-display);
   font-size: 1.1rem;
   line-height: 1.4;
   margin: 1.1em 0 0.5em;
@@ -100,16 +101,18 @@ h4 em,
   margin-top: 0;
 }
 
+/* Paragraphs/lists deliberately don't set their own font-size/color here —
+   they inherit it from the same "text-slate-700 text-[15px] leading-relaxed"
+   utility classes every other RichText block on the site uses (applied on
+   the ".blog-article" wrapper itself), so blog body copy always matches the
+   rest of the site's paragraph styling instead of a second hardcoded value
+   that could drift out of sync with it. */
 .blog-article p {
-  font-size: 1rem;
-  line-height: 1.75;
   margin: 0 0 1em;
 }
 
 .blog-article ul,
 .blog-article ol {
-  font-size: 1rem;
-  line-height: 1.75;
   margin: 0 0 1em 1.25em;
 }
 
@@ -118,12 +121,10 @@ h4 em,
 }
 
 .blog-article blockquote {
-  font-size: 1.05rem;
   font-style: italic;
   border-left: 3px solid var(--color-teal);
   padding-left: 1em;
   margin: 1.2em 0;
-  color: var(--color-navy);
   opacity: 0.85;
 }
 
