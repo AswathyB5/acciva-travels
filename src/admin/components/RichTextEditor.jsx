@@ -414,7 +414,7 @@ const RichTextEditor = ({ value, onChange }) => {
           saveSelection();
           setColorOpen(false);
         }}
-        className="article-content px-4 py-3.5 min-h-56 max-h-112 overflow-y-auto text-sm focus:outline-none"
+        className="article-content blog-article px-4 py-3.5 min-h-56 max-h-112 overflow-y-auto text-sm focus:outline-none"
       />
     </div>
   );

@@ -154,7 +154,7 @@ const BlogPost = () => {
         <div className="container-px">
           {contentHtml ? (
             <div
-              className="article-content max-w-4xl mx-auto"
+              className="article-content blog-article max-w-4xl mx-auto"
               dangerouslySetInnerHTML={{ __html: contentHtml }}
             />
           ) : (
