@@ -39,7 +39,7 @@ const ImageField = ({ value, onChange }) => {
           type="button"
           onClick={() => fileRef.current?.click()}
           disabled={uploading}
-          className="shrink-0 inline-flex items-center gap-1.5 px-3.5 rounded-xl border border-navy/15 text-navy/60 hover:bg-navy/5 text-xs font-semibold disabled:opacity-50"
+          className="shrink-0 inline-flex items-center gap-1.5 px-3.5 rounded-xl border border-navy/15 text-navy/75 hover:bg-navy/5 text-xs font-semibold disabled:opacity-50"
         >
           <Upload size={14} />
           {uploading ? "Uploading..." : "Upload"}
@@ -119,7 +119,7 @@ const FieldInput = ({ field, value, onChange }) => {
             <button
               type="button"
               onClick={() => removeAt(i)}
-              className="w-10 shrink-0 rounded-xl border border-navy/15 text-navy/40 hover:bg-red-50 hover:text-red-500 hover:border-red-200 flex items-center justify-center transition-colors"
+              className="w-10 shrink-0 rounded-xl border border-navy/15 text-navy/55 hover:bg-red-50 hover:text-red-500 hover:border-red-200 flex items-center justify-center transition-colors"
               title="Remove"
             >
               <X size={15} />
@@ -160,7 +160,7 @@ const FieldInput = ({ field, value, onChange }) => {
         {items.map((item, i) => (
           <div key={i} className="rounded-xl border border-navy/15 p-4 space-y-3 bg-ivory/40">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-semibold text-navy/50">
+              <span className="text-xs font-semibold text-navy/68">
                 {field.itemLabel || "Item"} {i + 1}
               </span>
               <div className="flex items-center gap-1">
@@ -168,7 +168,7 @@ const FieldInput = ({ field, value, onChange }) => {
                   type="button"
                   onClick={() => moveItem(i, -1)}
                   disabled={i === 0}
-                  className="w-7 h-7 rounded-lg border border-navy/15 text-navy/50 hover:bg-navy/5 disabled:opacity-25 flex items-center justify-center text-xs"
+                  className="w-7 h-7 rounded-lg border border-navy/15 text-navy/68 hover:bg-navy/5 disabled:opacity-25 flex items-center justify-center text-xs"
                   title="Move up"
                 >
                   ↑
@@ -177,7 +177,7 @@ const FieldInput = ({ field, value, onChange }) => {
                   type="button"
                   onClick={() => moveItem(i, 1)}
                   disabled={i === items.length - 1}
-                  className="w-7 h-7 rounded-lg border border-navy/15 text-navy/50 hover:bg-navy/5 disabled:opacity-25 flex items-center justify-center text-xs"
+                  className="w-7 h-7 rounded-lg border border-navy/15 text-navy/68 hover:bg-navy/5 disabled:opacity-25 flex items-center justify-center text-xs"
                   title="Move down"
                 >
                   ↓
@@ -195,7 +195,7 @@ const FieldInput = ({ field, value, onChange }) => {
             <div className="grid sm:grid-cols-2 gap-3">
               {field.itemFields.map((sub) => (
                 <div key={sub.name} className={sub.type === "textarea" ? "sm:col-span-2" : ""}>
-                  <label className="block text-[11px] font-semibold text-navy/50 mb-1">{sub.label}</label>
+                  <label className="block text-[11px] font-semibold text-navy/68 mb-1">{sub.label}</label>
                   <FieldInput
                     field={sub}
                     value={item[sub.name]}

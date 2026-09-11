@@ -57,14 +57,14 @@ const SectionEditor = () => {
     <div>
       <NavLink
         to={`/admin/pages/${key}`}
-        className="inline-flex items-center gap-1.5 text-xs font-semibold text-navy/50 hover:text-teal mb-4"
+        className="inline-flex items-center gap-1.5 text-xs font-semibold text-navy/68 hover:text-teal mb-4"
       >
         <ChevronLeft size={14} />
         {pageConfig.label}
       </NavLink>
 
       <h1 className="font-display font-bold text-navy text-xl">{sectionConfig.label}</h1>
-      <p className="text-xs text-navy/45 mt-1">All text and images shown in this section of the page.</p>
+      <p className="text-xs text-navy/62 mt-1">All text and images shown in this section of the page.</p>
 
       {error && (
         <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-xl px-3.5 py-2.5 mt-4">
@@ -89,7 +89,7 @@ const SectionEditor = () => {
                 key={field.name}
                 className={field.type === "textarea" || field.type === "list" || field.type === "cards" ? "sm:col-span-2" : ""}
               >
-                <label className="block text-xs font-semibold text-navy/60 mb-1.5">{field.label}</label>
+                <label className="block text-xs font-semibold text-navy/75 mb-1.5">{field.label}</label>
                 <FieldInput field={field} value={fullData[field.name]} onChange={(v) => setField(field.name, v)} />
               </div>
             ))}

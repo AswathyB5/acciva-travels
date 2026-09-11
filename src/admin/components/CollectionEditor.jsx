@@ -76,7 +76,7 @@ const CollectionEditor = () => {
           </div>
           <div>
             <h1 className="font-display font-bold text-navy text-xl">{config.label}</h1>
-            <p className="text-xs text-navy/45">
+            <p className="text-xs text-navy/62">
               {loading ? "Loading..." : `${items.length} ${items.length === 1 ? "entry" : "entries"}`}
             </p>
           </div>
@@ -113,10 +113,10 @@ const CollectionEditor = () => {
       ) : items.length === 0 ? (
         <div className="mt-6 bg-white rounded-2xl border border-dashed border-navy/15 py-14 flex flex-col items-center text-center">
           <div className="w-12 h-12 rounded-full bg-navy/5 flex items-center justify-center mb-3">
-            <Inbox size={20} className="text-navy/30" />
+            <Inbox size={20} className="text-navy/45" />
           </div>
-          <p className="text-navy/60 text-sm font-medium">Nothing here yet.</p>
-          <p className="text-navy/40 text-xs mt-1">Add your first {config.singular.toLowerCase()} to get started.</p>
+          <p className="text-navy/75 text-sm font-medium">Nothing here yet.</p>
+          <p className="text-navy/55 text-xs mt-1">Add your first {config.singular.toLowerCase()} to get started.</p>
         </div>
       ) : (
         <ul className="mt-6 space-y-2.5">
@@ -143,7 +143,7 @@ const CollectionEditor = () => {
               <div className="min-w-0 flex-1">
                 <p className="font-semibold text-navy truncate">{item[config.titleField]}</p>
                 {config.subtitleField && item[config.subtitleField] && (
-                  <p className="text-xs text-navy/45 truncate mt-0.5">{item[config.subtitleField]}</p>
+                  <p className="text-xs text-navy/62 truncate mt-0.5">{item[config.subtitleField]}</p>
                 )}
               </div>
 
@@ -151,7 +151,7 @@ const CollectionEditor = () => {
                 <button
                   onClick={() => move(i, -1)}
                   disabled={i === 0}
-                  className="w-8 h-8 rounded-lg border border-navy/10 text-navy/50 hover:bg-navy/5 disabled:opacity-25 flex items-center justify-center"
+                  className="w-8 h-8 rounded-lg border border-navy/10 text-navy/68 hover:bg-navy/5 disabled:opacity-25 flex items-center justify-center"
                   title="Move up"
                 >
                   <ArrowUp size={14} />
@@ -159,14 +159,14 @@ const CollectionEditor = () => {
                 <button
                   onClick={() => move(i, 1)}
                   disabled={i === items.length - 1}
-                  className="w-8 h-8 rounded-lg border border-navy/10 text-navy/50 hover:bg-navy/5 disabled:opacity-25 flex items-center justify-center"
+                  className="w-8 h-8 rounded-lg border border-navy/10 text-navy/68 hover:bg-navy/5 disabled:opacity-25 flex items-center justify-center"
                   title="Move down"
                 >
                   <ArrowDown size={14} />
                 </button>
                 <button
                   onClick={() => setEditing(item)}
-                  className="w-8 h-8 rounded-lg border border-navy/10 text-navy/60 hover:bg-teal/10 hover:text-teal hover:border-teal/30 flex items-center justify-center"
+                  className="w-8 h-8 rounded-lg border border-navy/10 text-navy/75 hover:bg-teal/10 hover:text-teal hover:border-teal/30 flex items-center justify-center"
                   title="Edit"
                 >
                   <Pencil size={14} />

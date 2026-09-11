@@ -42,7 +42,7 @@ const ItemForm = ({ config, item, onCancel, onSave }) => {
         <h2 className="font-display font-bold text-navy">
           {item?._id ? `Edit ${config.singular}` : `New ${config.singular}`}
         </h2>
-        <span className="text-xs text-navy/40">Changes go live as soon as you save.</span>
+        <span className="text-xs text-navy/55">Changes go live as soon as you save.</span>
       </div>
 
       {error && (
@@ -55,12 +55,12 @@ const ItemForm = ({ config, item, onCancel, onSave }) => {
       <div className="grid sm:grid-cols-2 gap-5">
         {config.fields.map((field) => (
           <div key={field.name} className={field.type === "textarea" || field.type === "list" ? "sm:col-span-2" : ""}>
-            <label className="block text-xs font-semibold text-navy/60 mb-1.5">
+            <label className="block text-xs font-semibold text-navy/75 mb-1.5">
               {field.label}
               {field.required && <span className="text-teal ml-0.5">*</span>}
             </label>
             <FieldInput field={field} value={draft[field.name]} onChange={(v) => setField(field.name, v)} />
-            {field.hint && <p className="text-xs text-navy/35 mt-1">{field.hint}</p>}
+            {field.hint && <p className="text-xs text-navy/50 mt-1">{field.hint}</p>}
           </div>
         ))}
       </div>
@@ -76,7 +76,7 @@ const ItemForm = ({ config, item, onCancel, onSave }) => {
         <button
           type="button"
           onClick={onCancel}
-          className="px-5 py-2.5 mt-4 rounded-xl border border-navy/15 text-sm font-semibold text-navy/60 hover:bg-navy/5 transition-colors"
+          className="px-5 py-2.5 mt-4 rounded-xl border border-navy/15 text-sm font-semibold text-navy/75 hover:bg-navy/5 transition-colors"
         >
           Cancel
         </button>

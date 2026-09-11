@@ -42,25 +42,26 @@ const Dashboard = () => {
 
   return (
     <div>
-      <div className="bg-linear-to-br from-navy via-navy to-teal/70 rounded-2xl p-7 flex items-center gap-5 text-white relative overflow-hidden">
-        <span className="absolute -top-10 -right-10 w-40 h-40 bg-sand/20 rounded-full blur-3xl pointer-events-none" />
+      <div className="bg-soft border border-navy/10 rounded-2xl p-7 flex items-center gap-5 text-navy relative overflow-hidden">
+        <span className="absolute -top-10 -right-10 w-40 h-40 bg-teal/10 rounded-full blur-3xl pointer-events-none" />
+        <span className="absolute -bottom-10 -left-10 w-32 h-32 bg-sand/25 rounded-full blur-3xl pointer-events-none" />
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ type: "spring", stiffness: 260, damping: 18 }}
-          className="w-12 h-12 rounded-2xl bg-teal flex items-center justify-center shrink-0 relative"
+          className="w-12 h-12 rounded-2xl bg-teal flex items-center justify-center shrink-0 relative text-white"
         >
           <Truck size={22} />
         </motion.div>
         <div className="relative">
-          <p className="font-display font-bold text-xl">Welcome back</p>
-          <p className="text-ivory/60 text-sm mt-0.5">
+          <p className="font-display font-bold text-xl text-navy">Welcome back</p>
+          <p className="text-navy/72 text-sm mt-0.5">
             Pick a page below to edit its text, or open the Content Library to manage lists like services and blog posts.
           </p>
         </div>
       </div>
 
-      <p className="text-xs font-semibold uppercase tracking-wider text-navy/40 mt-9 mb-3">
+      <p className="text-xs font-semibold uppercase tracking-wider text-navy/55 mt-9 mb-3">
         Pages &mdash; Edit Any Section
       </p>
       <motion.div
@@ -83,20 +84,20 @@ const Dashboard = () => {
                   </div>
                   <ArrowRight
                     size={18}
-                    className="text-navy/20 group-hover:text-teal group-hover:translate-x-0.5 transition-all"
+                    className="text-navy/35 group-hover:text-teal group-hover:translate-x-0.5 transition-all"
                   />
                 </div>
                 <p className="font-display font-bold text-navy mt-4">
                   {p.parent ? `↳ ${p.label}` : p.label}
                 </p>
-                <p className="text-xs text-navy/45 mt-1 line-clamp-2">{p.description}</p>
+                <p className="text-xs text-navy/62 mt-1 line-clamp-2">{p.description}</p>
               </NavLink>
             </motion.div>
           );
         })}
       </motion.div>
 
-      <p className="text-xs font-semibold uppercase tracking-wider text-navy/40 mt-9 mb-3">
+      <p className="text-xs font-semibold uppercase tracking-wider text-navy/55 mt-9 mb-3">
         Content Library &mdash; Lists Shown Across Pages
       </p>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -115,11 +116,11 @@ const Dashboard = () => {
                 </div>
                 <ArrowRight
                   size={18}
-                  className="text-navy/20 group-hover:text-teal group-hover:translate-x-0.5 transition-all"
+                  className="text-navy/35 group-hover:text-teal group-hover:translate-x-0.5 transition-all"
                 />
               </div>
               <p className="font-display font-bold text-navy mt-4">{c.label}</p>
-              <p className="text-xs text-navy/45 mt-1">
+              <p className="text-xs text-navy/62 mt-1">
                 {count === null ? "Unavailable" : count === undefined ? "Loading..." : `${count} ${count === 1 ? "entry" : "entries"}`}
               </p>
             </NavLink>
@@ -127,7 +128,7 @@ const Dashboard = () => {
         })}
       </div>
 
-      <p className="text-xs font-semibold uppercase tracking-wider text-navy/40 mt-9 mb-3">Form Submissions</p>
+      <p className="text-xs font-semibold uppercase tracking-wider text-navy/55 mt-9 mb-3">Form Submissions</p>
       <div className="grid sm:grid-cols-2 gap-4">
         <NavLink
           to="/admin/submissions/contact"
@@ -138,11 +139,11 @@ const Dashboard = () => {
           </div>
           <div className="min-w-0">
             <p className="font-display font-bold text-navy">Contact Enquiries</p>
-            <p className="text-xs text-navy/45 mt-0.5">Messages submitted via the Contact page.</p>
+            <p className="text-xs text-navy/62 mt-0.5">Messages submitted via the Contact page.</p>
           </div>
           <ArrowRight
             size={18}
-            className="ml-auto shrink-0 text-navy/20 group-hover:text-teal group-hover:translate-x-0.5 transition-all"
+            className="ml-auto shrink-0 text-navy/35 group-hover:text-teal group-hover:translate-x-0.5 transition-all"
           />
         </NavLink>
 
@@ -155,11 +156,11 @@ const Dashboard = () => {
           </div>
           <div className="min-w-0">
             <p className="font-display font-bold text-navy">Partner Applications</p>
-            <p className="text-xs text-navy/45 mt-0.5">Driver/vehicle sign-ups from the Careers page.</p>
+            <p className="text-xs text-navy/62 mt-0.5">Driver/vehicle sign-ups from the Careers page.</p>
           </div>
           <ArrowRight
             size={18}
-            className="ml-auto shrink-0 text-navy/20 group-hover:text-teal group-hover:translate-x-0.5 transition-all"
+            className="ml-auto shrink-0 text-navy/35 group-hover:text-teal group-hover:translate-x-0.5 transition-all"
           />
         </NavLink>
       </div>

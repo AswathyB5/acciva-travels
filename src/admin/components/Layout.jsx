@@ -9,17 +9,17 @@ const navItemClass = ({ isActive }) =>
   `flex items-center gap-3 px-3 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${
     isActive
       ? "bg-teal text-white shadow-sm shadow-teal/30"
-      : "text-ivory/70 hover:bg-white/10 hover:text-ivory hover:translate-x-0.5"
+      : "text-navy/75 hover:bg-navy/5 hover:text-navy hover:translate-x-0.5"
   }`;
 
 const subNavItemClass = ({ isActive }) =>
   `flex items-center gap-2 pl-2 pr-3 py-2 rounded-xl text-[13px] font-medium transition-all duration-200 ${
     isActive
       ? "bg-teal/90 text-white shadow-sm shadow-teal/30"
-      : "text-ivory/55 hover:bg-white/10 hover:text-ivory hover:translate-x-0.5"
+      : "text-navy/62 hover:bg-navy/5 hover:text-navy hover:translate-x-0.5"
   }`;
 
-const sectionLabelClass = "px-3 text-[11px] uppercase tracking-wider font-semibold text-ivory/35 mt-6 mb-2";
+const sectionLabelClass = "px-3 text-[11px] uppercase tracking-wider font-semibold text-navy/50 mt-6 mb-2";
 
 const topLevelPages = pages.filter((p) => !p.parent);
 const childPagesOf = (key) => pages.filter((p) => p.parent === key);
@@ -42,9 +42,9 @@ const Layout = () => {
 
   return (
     <div className="min-h-screen flex bg-ivory">
-      <aside className="w-72 shrink-0 bg-linear-to-b from-navy to-midnight text-ivory flex flex-col p-4 relative">
-        <span className="absolute top-0 right-0 w-24 h-24 bg-teal/20 rounded-full blur-3xl pointer-events-none" />
-        <span className="absolute bottom-24 left-0 w-28 h-28 bg-sand/10 rounded-full blur-3xl pointer-events-none" />
+      <aside className="w-72 shrink-0 bg-soft border-r border-navy/10 text-navy flex flex-col p-4 relative">
+        <span className="absolute top-0 right-0 w-24 h-24 bg-teal/10 rounded-full blur-3xl pointer-events-none" />
+        <span className="absolute bottom-24 left-0 w-28 h-28 bg-sand/20 rounded-full blur-3xl pointer-events-none" />
         <div className="flex items-center gap-2.5 px-1 mb-2 relative">
           <motion.div
             whileHover={{ rotate: -8, scale: 1.06 }}
@@ -54,8 +54,8 @@ const Layout = () => {
             <Truck size={18} className="text-white" />
           </motion.div>
           <div className="min-w-0">
-            <p className="font-display font-bold text-white leading-tight truncate">Acciva Admin</p>
-            <p className="text-[11px] text-ivory/40 truncate">Content Control Center</p>
+            <p className="font-display font-bold text-navy leading-tight truncate">Acciva Admin</p>
+            <p className="text-[11px] text-navy/55 truncate">Content Control Center</p>
           </div>
         </div>
 
@@ -78,7 +78,7 @@ const Layout = () => {
                     {p.label}
                   </NavLink>
                   {children.length > 0 && (
-                    <div className="mt-1 ml-4 pl-3 border-l border-white/10 space-y-1">
+                    <div className="mt-1 ml-4 pl-3 border-l border-navy/10 space-y-1">
                       {children.map((c) => {
                         const CIcon = c.icon;
                         return (
@@ -126,23 +126,23 @@ const Layout = () => {
           href="/"
           target="_blank"
           rel="noreferrer"
-          className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-ivory/70 hover:bg-white/10 hover:text-ivory transition-colors mt-2"
+          className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-navy/75 hover:bg-navy/5 hover:text-navy transition-colors mt-2"
         >
           <ExternalLink size={17} />
           View Live Site
         </a>
 
-        <div className="mt-3 pt-3 border-t border-white/10 flex items-center justify-between gap-2">
+        <div className="mt-3 pt-3 border-t border-navy/10 flex items-center justify-between gap-2">
           <div className="flex items-center gap-2.5 min-w-0">
             <div className="w-8 h-8 rounded-full bg-sand text-navy flex items-center justify-center text-sm font-bold shrink-0">
               {initial}
             </div>
-            <p className="text-sm font-medium text-ivory truncate">{username}</p>
+            <p className="text-sm font-medium text-navy truncate">{username}</p>
           </div>
           <button
             onClick={logout}
             title="Log out"
-            className="w-8 h-8 rounded-lg flex items-center justify-center text-ivory/60 hover:bg-white/10 hover:text-white shrink-0"
+            className="w-8 h-8 rounded-lg flex items-center justify-center text-navy/68 hover:bg-navy/5 hover:text-navy shrink-0"
           >
             <LogOut size={16} />
           </button>

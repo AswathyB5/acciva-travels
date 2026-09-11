@@ -25,11 +25,11 @@ const PageSections = () => {
         </div>
         <div>
           <h1 className="font-display font-bold text-navy text-xl">{config.label}</h1>
-          <p className="text-xs text-navy/45">{config.description}</p>
+          <p className="text-xs text-navy/62">{config.description}</p>
         </div>
       </div>
 
-      <p className="text-xs font-semibold uppercase tracking-wider text-navy/40 mt-8 mb-3 flex items-center gap-1.5">
+      <p className="text-xs font-semibold uppercase tracking-wider text-navy/55 mt-8 mb-3 flex items-center gap-1.5">
         <ListOrdered size={13} />
         Sections, In The Order They Appear On The Page
       </p>
@@ -41,12 +41,12 @@ const PageSections = () => {
             className="group flex items-center gap-4 bg-white rounded-2xl border border-navy/10 px-5 py-4 hover:border-teal/50 hover:shadow-sm transition-all"
           >
             <span className="text-sm font-semibold text-navy flex-1 min-w-0 truncate">{section.label}</span>
-            <span className="text-xs text-navy/40 shrink-0">
+            <span className="text-xs text-navy/55 shrink-0">
               {section.fields.length} {section.fields.length === 1 ? "field" : "fields"}
             </span>
             <ArrowRight
               size={16}
-              className="text-navy/20 group-hover:text-teal group-hover:translate-x-0.5 transition-all shrink-0"
+              className="text-navy/35 group-hover:text-teal group-hover:translate-x-0.5 transition-all shrink-0"
             />
           </NavLink>
         ))}
@@ -54,7 +54,7 @@ const PageSections = () => {
 
       {config.relatedCollections.length > 0 && (
         <div className="mt-8">
-          <p className="text-xs font-semibold uppercase tracking-wider text-navy/40 mb-3">
+          <p className="text-xs font-semibold uppercase tracking-wider text-navy/55 mb-3">
             Also Shown On This Page
           </p>
           <div className="grid sm:grid-cols-2 gap-3">
@@ -76,7 +76,7 @@ const PageSections = () => {
                   </span>
                   <ArrowRight
                     size={15}
-                    className="text-navy/20 group-hover:text-teal group-hover:translate-x-0.5 transition-all shrink-0"
+                    className="text-navy/35 group-hover:text-teal group-hover:translate-x-0.5 transition-all shrink-0"
                   />
                 </NavLink>
               );

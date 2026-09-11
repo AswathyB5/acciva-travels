@@ -28,20 +28,20 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-navy px-4 relative overflow-hidden">
-      <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-teal/10 blur-3xl" />
-      <div className="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-sand/10 blur-3xl" />
+    <div className="min-h-screen flex items-center justify-center bg-ivory px-4 relative overflow-hidden">
+      <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-teal/15 blur-3xl" />
+      <div className="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-sand/25 blur-3xl" />
 
       <form
         onSubmit={handleSubmit}
-        className="relative w-full max-w-sm bg-white rounded-3xl shadow-2xl p-8 space-y-6"
+        className="relative w-full max-w-sm bg-soft border border-navy/10 rounded-3xl shadow-2xl shadow-navy/5 p-8 space-y-6"
       >
         <div className="flex flex-col items-center text-center">
           <div className="w-14 h-14 rounded-2xl bg-teal flex items-center justify-center mb-4 shadow-lg shadow-teal/30">
             <Truck size={26} className="text-white" />
           </div>
           <h1 className="font-display text-xl font-bold text-navy">Acciva Admin</h1>
-          <p className="text-sm text-navy/50 mt-1">Sign in to manage your site content.</p>
+          <p className="text-sm text-navy/68 mt-1">Sign in to manage your site content.</p>
         </div>
 
         {error && (
@@ -52,7 +52,7 @@ const Login = () => {
         )}
 
         <div>
-          <label className="block text-xs font-semibold text-navy/60 mb-1.5">Username</label>
+          <label className="block text-xs font-semibold text-navy/75 mb-1.5">Username</label>
           <input
             value={username}
             onChange={(e) => setUsername(e.target.value)}
@@ -64,7 +64,7 @@ const Login = () => {
         </div>
 
         <div>
-          <label className="block text-xs font-semibold text-navy/60 mb-1.5">Password</label>
+          <label className="block text-xs font-semibold text-navy/75 mb-1.5">Password</label>
           <input
             type="password"
             value={password}

@@ -87,10 +87,10 @@ const Submissions = () => {
       ) : items.length === 0 ? (
         <div className="mt-6 bg-white rounded-2xl border border-dashed border-navy/15 py-14 flex flex-col items-center text-center">
           <div className="w-12 h-12 rounded-full bg-navy/5 flex items-center justify-center mb-3">
-            <Inbox size={20} className="text-navy/30" />
+            <Inbox size={20} className="text-navy/45" />
           </div>
-          <p className="text-navy/60 text-sm font-medium">No submissions yet.</p>
-          <p className="text-navy/40 text-xs mt-1">They'll show up here as soon as someone submits the form.</p>
+          <p className="text-navy/75 text-sm font-medium">No submissions yet.</p>
+          <p className="text-navy/55 text-xs mt-1">They'll show up here as soon as someone submits the form.</p>
         </div>
       ) : (
         <div className="mt-6 space-y-3">
@@ -105,7 +105,7 @@ const Submissions = () => {
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-2 mb-2">
                     {!item.read && <span className="w-2 h-2 rounded-full bg-teal shrink-0" />}
-                    <p className="text-xs text-navy/40">{new Date(item.createdAt).toLocaleString()}</p>
+                    <p className="text-xs text-navy/55">{new Date(item.createdAt).toLocaleString()}</p>
                   </div>
                   <dl className="text-sm space-y-1.5">
                     {meta.fields.map((f) => (
@@ -120,7 +120,7 @@ const Submissions = () => {
                   <button
                     onClick={() => toggleRead(item)}
                     title={item.read ? "Mark unread" : "Mark read"}
-                    className="w-9 h-9 rounded-lg border border-navy/10 text-navy/60 hover:bg-teal/10 hover:text-teal hover:border-teal/30 flex items-center justify-center"
+                    className="w-9 h-9 rounded-lg border border-navy/10 text-navy/75 hover:bg-teal/10 hover:text-teal hover:border-teal/30 flex items-center justify-center"
                   >
                     {item.read ? <Mail size={15} /> : <MailOpen size={15} />}
                   </button>
