@@ -92,7 +92,13 @@ const RichTextEditor = ({ value, onChange }) => {
     // its content to be structured.
     document.execCommand("defaultParagraphSeparator", false, "p");
     if (editorRef.current) {
-      const initial = value || "<p><br></p>";
+      // Run existing content through the same sanitizer the live page uses
+      // (not just the raw stored value) so a post authored before a
+      // structural fix (e.g. a heading wrongly wrapping whole paragraphs)
+      // shows up in the editor already repaired, matching what visitors
+      // actually see — instead of the editor displaying the old broken
+      // markup while the live page shows the fixed version.
+      const initial = value ? sanitizeArticleHtml(value) : "<p><br></p>";
       if (editorRef.current.innerHTML !== initial) {
         editorRef.current.innerHTML = initial;
       }

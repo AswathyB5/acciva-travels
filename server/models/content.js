@@ -54,12 +54,16 @@ export const BlogPost = model(
   withOrder({
     slug: { type: String, required: true, unique: true, trim: true },
     title: { type: String, required: true },
+    titleAccent: { type: String, default: "" },
     excerpt: { type: String, default: "" },
     category: { type: String, default: "" },
     date: { type: String, default: "" },
     readTime: { type: String, default: "" },
     image: { type: String, default: "" },
     content: { type: String, default: "" },
+    metaTitle: { type: String, default: "" },
+    metaDescription: { type: String, default: "" },
+    schemaMarkup: { type: String, default: "" },
   })
 );
 
