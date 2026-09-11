@@ -1,5 +1,5 @@
-import { useRef, useState } from "react";
-import { X, Plus, Upload } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { X, Plus, Upload, ChevronUp, ChevronDown } from "lucide-react";
 import { api } from "../lib/api";
 import RichTextEditor from "./RichTextEditor";
 
@@ -58,6 +58,118 @@ const ImageField = ({ value, onChange }) => {
           }}
         />
       )}
+    </div>
+  );
+};
+
+// Lets an editor pick specific items out of another admin-managed collection
+// (e.g. choose which Services show on the Home page) and control their order,
+// instead of always showing "the first N" from that collection.
+const CollectionPickerField = ({ field, value, onChange }) => {
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const selected = Array.isArray(value) ? value : [];
+  const optionLabel = field.optionLabel || "title";
+  const optionValue = field.optionValue || "slug";
+
+  useEffect(() => {
+    let cancelled = false;
+    api
+      .list(field.collection)
+      .then((data) => {
+        if (!cancelled) setItems(Array.isArray(data) ? data : []);
+      })
+      .catch((err) => {
+        if (!cancelled) setError(err.message || "Couldn't load options");
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [field.collection]);
+
+  const labelFor = (val) => items.find((it) => it[optionValue] === val)?.[optionLabel] || val;
+
+  const toggle = (val, checked) => {
+    if (checked) onChange([...selected, val]);
+    else onChange(selected.filter((v) => v !== val));
+  };
+
+  const move = (index, dir) => {
+    const target = index + dir;
+    if (target < 0 || target >= selected.length) return;
+    const copy = [...selected];
+    [copy[index], copy[target]] = [copy[target], copy[index]];
+    onChange(copy);
+  };
+
+  if (loading) return <p className="text-xs text-navy/50">Loading options...</p>;
+  if (error) return <p className="text-xs text-red-600">{error}</p>;
+
+  return (
+    <div className="space-y-3">
+      {selected.length > 0 && (
+        <div className="space-y-1.5">
+          {selected.map((val, i) => (
+            <div
+              key={val}
+              className="flex items-center justify-between gap-2 rounded-lg border border-teal/30 bg-teal/5 px-3 py-1.5"
+            >
+              <span className="text-xs font-semibold text-navy">{labelFor(val)}</span>
+              <div className="flex items-center gap-1">
+                <button
+                  type="button"
+                  onClick={() => move(i, -1)}
+                  disabled={i === 0}
+                  className="w-6 h-6 rounded-md border border-navy/15 text-navy/60 hover:bg-navy/5 disabled:opacity-25 flex items-center justify-center"
+                  title="Move up"
+                >
+                  <ChevronUp size={12} />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => move(i, 1)}
+                  disabled={i === selected.length - 1}
+                  className="w-6 h-6 rounded-md border border-navy/15 text-navy/60 hover:bg-navy/5 disabled:opacity-25 flex items-center justify-center"
+                  title="Move down"
+                >
+                  <ChevronDown size={12} />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => toggle(val, false)}
+                  className="w-6 h-6 rounded-md border border-red-200 text-red-500 hover:bg-red-50 flex items-center justify-center"
+                  title="Remove"
+                >
+                  <X size={12} />
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      <div className="rounded-xl border border-navy/15 p-3 max-h-56 overflow-y-auto space-y-1.5 bg-ivory/40">
+        {items.length === 0 && <p className="text-xs text-navy/50">No items in this collection yet.</p>}
+        {items.map((it) => {
+          const val = it[optionValue];
+          const checked = selected.includes(val);
+          return (
+            <label key={val} className="flex items-center gap-2 text-xs text-navy/80 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={checked}
+                onChange={(e) => toggle(val, e.target.checked)}
+                className="accent-teal"
+              />
+              {it[optionLabel]}
+            </label>
+          );
+        })}
+      </div>
     </div>
   );
 };
@@ -247,6 +359,10 @@ const FieldInput = ({ field, value, onChange }) => {
 
   if (field.type === "image") {
     return <ImageField value={value} onChange={onChange} />;
+  }
+
+  if (field.type === "collection-picker") {
+    return <CollectionPickerField field={field} value={value} onChange={onChange} />;
   }
 
   return (

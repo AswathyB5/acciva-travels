@@ -144,7 +144,7 @@ const DestinationExpand = ({
               <SmartLink to={ctaLink} className="absolute inset-0 block">
                 <motion.img
                   src={d.image}
-                  alt={`${d.name}, ${d.country}`}
+                  alt={d.name}
                   loading="lazy"
                   decoding="async"
                   animate={{ scale: isActive ? 1.08 : 1 }}
@@ -244,7 +244,7 @@ const DestinationExpand = ({
               <div className="absolute inset-0 bg-linear-to-t from-midnight/75 via-midnight/20 to-transparent" />
               <div className="absolute inset-0 flex flex-col justify-end p-6">
                 <span className="eyebrow text-sand font-mono">
-                  {String(i + 1).padStart(2, "0")} · {d.country}
+                  {String(i + 1).padStart(2, "0")}
                 </span>
                 <h3 className="font-display text-ivory text-2xl mt-1">{d.name}</h3>
               </div>

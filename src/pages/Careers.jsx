@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { usePageContent } from "../data/useContent";
 import SmartLink from "../components/SmartLink";
+import RichText from "../components/RichText";
 import { resolveIcon } from "../data/iconMap";
 import {
   isValidName,
@@ -83,6 +84,14 @@ const CAREERS_DEFAULTS = {
   vehicleImage: "https://www.ascott-trans.com/images/car-rent-in-mumbai.jpg",
   vehicleSuccessHeading: "Message Sent!",
   vehicleSuccessText: "Our onboarding team will reach out to you shortly.",
+  nameFieldLabel: "Full Name *",
+  nameFieldPlaceholder: "e.g. Arjun Reddy",
+  phoneFieldLabel: "Phone Number *",
+  phoneFieldPlaceholder: "+91 98765 43210",
+  vehicleTypeFieldLabel: "Vehicle Type *",
+  vehicleTypeFieldPlaceholder: "e.g. Sedan / SUV / Van",
+  regYearFieldLabel: "Vehicle Registration Year *",
+  regYearFieldPlaceholder: "e.g. 2022",
   quoteEyebrow: "Safety Transportation Made Easy",
   quoteHeadingAccent: "Touch With Us.",
   quoteButtonText: "Book Now",
@@ -430,7 +439,9 @@ const Careers = () => {
               </h1>
             </div>
 
-            <motion.p
+            <RichText
+              as={motion.div}
+              html={content.heroIntro}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
@@ -438,10 +449,8 @@ const Careers = () => {
                 ease: [0.16, 1, 0.3, 1],
                 delay: 0.4,
               }}
-              className="max-w-md text-navy/90 text-[15px] font-medium leading-relaxed pb-2"
-            >
-              {content.heroIntro}
-            </motion.p>
+              className="article-content max-w-md text-navy/90 text-[15px] font-medium leading-relaxed pb-2"
+            />
           </div>
         </div>
       </section>
@@ -641,13 +650,13 @@ const Careers = () => {
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-xs font-mono uppercase tracking-wider text-navy/90 mb-2">
-                        Full Name *
+                        {content.nameFieldLabel}
                       </label>
                       <input
                         name="name"
                         value={form.name}
                         onChange={handleChange}
-                        placeholder="e.g. Arjun Reddy"
+                        placeholder={content.nameFieldPlaceholder}
                         className={`w-full px-4 py-3.5 rounded-2xl bg-soft border text-sm text-navy placeholder:text-navy/30 focus:outline-none focus:border-teal transition-colors ${
                           errors.name ? "border-red-400" : "border-navy/10"
                         }`}
@@ -661,7 +670,7 @@ const Careers = () => {
 
                     <div>
                       <label className="block text-xs font-mono uppercase tracking-wider text-navy/90 mb-2">
-                        Phone Number *
+                        {content.phoneFieldLabel}
                       </label>
                       <input
                         name="phone"
@@ -669,7 +678,7 @@ const Careers = () => {
                         inputMode="tel"
                         value={form.phone}
                         onChange={handleChange}
-                        placeholder="+91 98765 43210"
+                        placeholder={content.phoneFieldPlaceholder}
                         className={`w-full px-4 py-3.5 rounded-2xl bg-soft border text-sm text-navy placeholder:text-navy/30 focus:outline-none focus:border-teal transition-colors ${
                           errors.phone ? "border-red-400" : "border-navy/10"
                         }`}
@@ -685,13 +694,13 @@ const Careers = () => {
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-xs font-mono uppercase tracking-wider text-navy/90 mb-2">
-                        Vehicle Type *
+                        {content.vehicleTypeFieldLabel}
                       </label>
                       <input
                         name="vehicleType"
                         value={form.vehicleType}
                         onChange={handleChange}
-                        placeholder="e.g. Sedan / SUV / Van"
+                        placeholder={content.vehicleTypeFieldPlaceholder}
                         className={`w-full px-4 py-3.5 rounded-2xl bg-soft border text-sm text-navy placeholder:text-navy/30 focus:outline-none focus:border-teal transition-colors ${
                           errors.vehicleType
                             ? "border-red-400"
@@ -707,7 +716,7 @@ const Careers = () => {
 
                     <div>
                       <label className="block text-xs font-mono uppercase tracking-wider text-navy/90 mb-2">
-                        Vehicle Registration Year *
+                        {content.regYearFieldLabel}
                       </label>
                       <input
                         name="regYear"
@@ -715,7 +724,7 @@ const Careers = () => {
                         maxLength={4}
                         value={form.regYear}
                         onChange={handleChange}
-                        placeholder="e.g. 2022"
+                        placeholder={content.regYearFieldPlaceholder}
                         className={`w-full px-4 py-3.5 rounded-2xl bg-soft border text-sm text-navy placeholder:text-navy/30 focus:outline-none focus:border-teal transition-colors ${
                           errors.regYear ? "border-red-400" : "border-navy/10"
                         }`}

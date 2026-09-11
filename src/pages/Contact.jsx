@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { api } from "../admin/lib/api";
 import { NavLink } from "react-router-dom";
 import SmartLink from "../components/SmartLink";
+import RichText from "../components/RichText";
 import { isValidEmail, isValidName, isValidPhone, sanitizePhoneInput } from "../data/validators";
 import {
   Phone,
@@ -43,6 +44,17 @@ const CONTACT_DEFAULTS = {
   errorText:
     "We couldn't send your message right now. Please try again in a moment.",
   submitButtonText: "Send Message",
+  nameFieldLabel: "Full Name *",
+  nameFieldPlaceholder: "e.g. Rajesh Kumar",
+  emailFieldLabel: "Email Address *",
+  emailFieldPlaceholder: "rajesh@company.com",
+  phoneFieldLabel: "Phone Number *",
+  phoneFieldPlaceholder: "+91 98765 43210",
+  subjectFieldLabel: "Subject *",
+  customSubjectFieldLabel: "Please Specify Subject *",
+  customSubjectFieldPlaceholder: "Type your subject here...",
+  messageFieldLabel: "Message *",
+  messageFieldPlaceholder: "Tell us how we can help...",
   showcaseImage:
     "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
   directLineLabel: "Direct Enterprise Line",
@@ -225,7 +237,9 @@ const Contact = () => {
               </h1>
             </motion.div>
 
-            <motion.p
+            <RichText
+              as={motion.div}
+              html={content.heroIntro}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
@@ -233,10 +247,8 @@ const Contact = () => {
                 delay: 0.15,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="max-w-md text-navy/90 text-[15px] font-medium leading-relaxed pb-2"
-            >
-              {content.heroIntro}
-            </motion.p>
+              className="article-content max-w-md text-navy/90 text-[15px] font-medium leading-relaxed pb-2"
+            />
           </div>
         </div>
       </section>
@@ -306,13 +318,13 @@ const Contact = () => {
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-xs font-mono uppercase tracking-wider text-navy/90 mb-2">
-                        Full Name *
+                        {content.nameFieldLabel}
                       </label>
                       <input
                         name="name"
                         value={form.name}
                         onChange={handleChange}
-                        placeholder="e.g. Rajesh Kumar"
+                        placeholder={content.nameFieldPlaceholder}
                         className={`w-full px-4 py-3.5 rounded-2xl bg-soft border font-sans text-[15px] text-navy placeholder:font-sans placeholder:text-navy/30 focus:outline-none focus:border-teal transition-colors ${
                           errors.name ? "border-red-400" : "border-navy/10"
                         }`}
@@ -326,14 +338,14 @@ const Contact = () => {
 
                     <div>
                       <label className="block text-xs font-mono uppercase tracking-wider text-navy/90 mb-2">
-                        Email Address *
+                        {content.emailFieldLabel}
                       </label>
                       <input
                         name="email"
                         type="email"
                         value={form.email}
                         onChange={handleChange}
-                        placeholder="rajesh@company.com"
+                        placeholder={content.emailFieldPlaceholder}
                         className={`w-full px-4 py-3.5 rounded-2xl bg-soft border font-sans text-[15px] text-navy placeholder:font-sans placeholder:text-navy/30 focus:outline-none focus:border-teal transition-colors ${
                           errors.email ? "border-red-400" : "border-navy/10"
                         }`}
@@ -349,7 +361,7 @@ const Contact = () => {
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-xs font-mono uppercase tracking-wider text-navy/90 mb-2">
-                        Phone Number *
+                        {content.phoneFieldLabel}
                       </label>
                       <input
                         name="phone"
@@ -357,7 +369,7 @@ const Contact = () => {
                         inputMode="tel"
                         value={form.phone}
                         onChange={handleChange}
-                        placeholder="+91 98765 43210"
+                        placeholder={content.phoneFieldPlaceholder}
                         className={`w-full px-4 py-3.5 rounded-2xl bg-soft border font-sans text-[15px] text-navy placeholder:font-sans placeholder:text-navy/30 focus:outline-none focus:border-teal transition-colors ${
                           errors.phone ? "border-red-400" : "border-navy/10"
                         }`}
@@ -371,7 +383,7 @@ const Contact = () => {
 
                     <div>
                       <label className="block text-xs font-mono uppercase tracking-wider text-navy/90 mb-2">
-                        Subject *
+                        {content.subjectFieldLabel}
                       </label>
                       <select
                         name="subject"
@@ -393,13 +405,13 @@ const Contact = () => {
                       transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                     >
                       <label className="block text-xs font-mono uppercase tracking-wider text-navy/90 mb-2">
-                        Please Specify Subject *
+                        {content.customSubjectFieldLabel}
                       </label>
                       <input
                         name="customSubject"
                         value={form.customSubject}
                         onChange={handleChange}
-                        placeholder="Type your subject here..."
+                        placeholder={content.customSubjectFieldPlaceholder}
                         className={`w-full px-4 py-3.5 rounded-2xl bg-soft border font-sans text-[15px] text-navy placeholder:font-sans placeholder:text-navy/30 focus:outline-none focus:border-teal transition-colors ${
                           errors.customSubject
                             ? "border-red-400"
@@ -416,14 +428,14 @@ const Contact = () => {
 
                   <div>
                     <label className="block text-xs font-mono uppercase tracking-wider text-navy/90 mb-2">
-                      Message *
+                      {content.messageFieldLabel}
                     </label>
                     <textarea
                       name="message"
                       rows={4}
                       value={form.message}
                       onChange={handleChange}
-                      placeholder="Tell us how we can help..."
+                      placeholder={content.messageFieldPlaceholder}
                       className={`w-full px-4 py-3.5 rounded-2xl bg-soft border font-sans text-[15px] text-navy placeholder:font-sans placeholder:text-navy/30 focus:outline-none focus:border-teal transition-colors resize-none ${
                         errors.message ? "border-red-400" : "border-navy/10"
                       }`}

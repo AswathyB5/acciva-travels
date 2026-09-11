@@ -12,6 +12,7 @@ import ServiceList from "../components/ServiceList";
 import Magnetic from "../components/Magnetic";
 import AnimatedImage from "../components/AnimatedImage";
 import SmartLink from "../components/SmartLink";
+import RichText from "../components/RichText";
 import { services as fallbackServices } from "../data/content";
 import { useCollection, usePageContent } from "../data/useContent";
 import { resolveIcon } from "../data/iconMap";
@@ -679,7 +680,9 @@ const Services = () => {
               </h1>
             </motion.div>
 
-            <motion.p
+            <RichText
+              as={motion.div}
+              html={content.heroIntro}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
@@ -687,10 +690,8 @@ const Services = () => {
                 ease: [0.16, 1, 0.3, 1],
                 delay: 0.15,
               }}
-              className="max-w-md text-navy/90 text-[15px] font-medium leading-relaxed pb-2"
-            >
-              {content.heroIntro}
-            </motion.p>
+              className="article-content max-w-md text-navy/90 text-[15px] font-medium leading-relaxed pb-2"
+            />
           </div>
         </div>
       </section>
@@ -1109,9 +1110,10 @@ const Services = () => {
                 <span className="italic text-teal font-normal">{content.catalogueHeadingAccent}</span>
               </h2>
             </div>
-            <p className="text-slate-600 text-[15px] font-normal leading-relaxed max-w-md">
-              {content.catalogueParagraph}
-            </p>
+            <RichText
+              html={content.catalogueParagraph}
+              className="article-content text-slate-600 text-[15px] font-normal leading-relaxed max-w-md"
+            />
           </motion.div>
 
           <ServiceList
@@ -1189,9 +1191,10 @@ const Services = () => {
             ))}
           </h2>
 
-          <p className="mt-6 text-slate-700 text-[15px] font-normal max-w-2xl mx-auto leading-relaxed">
-            {content.ctaParagraph}
-          </p>
+          <RichText
+            html={content.ctaParagraph}
+            className="article-content mt-6 text-slate-700 text-[15px] font-normal max-w-2xl mx-auto leading-relaxed"
+          />
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-5">
             <Magnetic strength={20}>

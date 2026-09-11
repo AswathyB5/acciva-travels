@@ -30,9 +30,14 @@ const FeaturedServices = ({
   stripDescription = "Also providing Dedicated Staff Bus Shuttles, Corporate VIP Delegations & Inter-City Business Transit.",
   stripButtonText = "View All Capabilities",
   stripButtonLink = "/services",
+  limit = 3,
+  selectedSlugs = [],
 }) => {
   const { items: services } = useCollection("services", fallbackServices);
-  const featured = services.slice(0, 1);
+  const numericLimit = Math.min(3, Math.max(1, Number(limit) || 3));
+  const bySlug = new Map(services.map((s) => [s.slug, s]));
+  const picked = selectedSlugs.map((slug) => bySlug.get(slug)).filter(Boolean);
+  const featured = (picked.length > 0 ? picked : services).slice(0, numericLimit);
 
   return (
     <div>

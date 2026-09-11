@@ -6,6 +6,7 @@ import {
 } from "framer-motion";
 import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { NavLink } from "react-router-dom";
+import RichText from "./RichText";
 import hero1 from "../assets/hero1.webp";
 import hero2 from "../assets/hero2.webp";
 import hero3 from "../assets/hero3.webp";
@@ -205,15 +206,15 @@ const Hero = ({
                 </motion.p>
 
                 {/* Description */}
-                <motion.p
+                <RichText
+                  as={motion.div}
+                  html={currentPanel.desc}
                   custom={3}
                   variants={textVariants}
                   initial="hidden"
                   animate="visible"
-                  className="mt-3 sm:mt-5 text-[13px] sm:text-[15px] text-ivory/90 font-medium leading-relaxed max-w-2xl drop-shadow-md line-clamp-3 sm:line-clamp-none"
-                >
-                  {currentPanel.desc}
-                </motion.p>
+                  className="article-content mt-3 sm:mt-5 text-[13px] sm:text-[15px] text-ivory/90 font-medium leading-relaxed max-w-2xl drop-shadow-md line-clamp-3 sm:line-clamp-none"
+                />
 
                 {/* CTA Button */}
                 <motion.div

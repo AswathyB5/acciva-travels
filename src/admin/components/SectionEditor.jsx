@@ -88,7 +88,13 @@ const SectionEditor = () => {
               <div
                 key={field.name}
                 className={`rounded-xl border border-navy/10 bg-ivory/40 p-4 transition-colors hover:border-teal/30 ${
-                  field.type === "textarea" || field.type === "list" || field.type === "cards" ? "sm:col-span-2" : ""
+                  field.type === "textarea" ||
+                  field.type === "list" ||
+                  field.type === "cards" ||
+                  field.type === "richtext" ||
+                  field.type === "collection-picker"
+                    ? "sm:col-span-2"
+                    : ""
                 }`}
               >
                 <label className="block text-xs font-semibold text-navy/75 mb-2">{field.label}</label>

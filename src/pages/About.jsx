@@ -10,6 +10,7 @@ import {
 import Magnetic from "../components/Magnetic";
 import AnimatedImage from "../components/AnimatedImage";
 import SmartLink from "../components/SmartLink";
+import RichText from "../components/RichText";
 import { usePageContent } from "../data/useContent";
 import { resolveIcon } from "../data/iconMap";
 
@@ -230,9 +231,10 @@ const About = () => {
               </h1>
             </div>
 
-            <p className="max-w-md text-navy/90 text-[15px] font-medium leading-relaxed pb-2">
-              {content.heroIntro}
-            </p>
+            <RichText
+              html={content.heroIntro}
+              className="article-content max-w-md text-navy/90 text-[15px] font-medium leading-relaxed pb-2"
+            />
           </div>
         </div>
       </section>
@@ -476,15 +478,15 @@ const About = () => {
                       {content.visionTitle}
                     </motion.h3>
 
-                    <motion.p
-                      className="text-slate-700 text-[15px] font-normal leading-relaxed"
+                    <RichText
+                      as={motion.div}
+                      html={content.visionText}
+                      className="article-content text-slate-700 text-[15px] font-normal leading-relaxed"
                       initial={{ opacity: 0, y: 16 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true, amount: 0.4 }}
                       transition={{ duration: 0.5, delay: 0.2 }}
-                    >
-                      {content.visionText}
-                    </motion.p>
+                    />
                   </div>
                 </TiltCard>
               </motion.div>
@@ -572,15 +574,15 @@ const About = () => {
                       {content.missionTitle}
                     </motion.h3>
 
-                    <motion.p
-                      className="text-slate-700 text-[15px] font-normal leading-relaxed"
+                    <RichText
+                      as={motion.div}
+                      html={content.missionText}
+                      className="article-content text-slate-700 text-[15px] font-normal leading-relaxed"
                       initial={{ opacity: 0, y: 16 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true, amount: 0.4 }}
                       transition={{ duration: 0.5, delay: 0.2 }}
-                    >
-                      {content.missionText}
-                    </motion.p>
+                    />
                   </div>
                 </TiltCard>
               </motion.div>

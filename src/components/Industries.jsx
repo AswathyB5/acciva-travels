@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { resolveIcon } from "../data/iconMap";
+import RichText from "./RichText";
 
 const DEFAULT_INDUSTRIES = [
   { name: "IT & Technology", icon: "Cpu" },
@@ -70,9 +71,10 @@ const Industries = ({
           <h2 className="font-display text-navy text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-6 tracking-tight">
             {headingMain} <span className="italic text-teal font-normal">{headingAccent}</span>
           </h2>
-          <p className="mt-5 text-slate-700 text-[15px] font-normal leading-relaxed">
-            {paragraph}
-          </p>
+          <RichText
+            html={paragraph}
+            className="article-content mt-5 text-slate-700 text-[15px] font-normal leading-relaxed"
+          />
         </motion.div>
 
       </div>

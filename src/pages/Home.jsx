@@ -12,6 +12,7 @@ import BlogFeature from "../components/BlogFeature";
 import Testimonial from "../components/Testimonial";
 import Magnetic from "../components/Magnetic";
 import SmartLink from "../components/SmartLink";
+import RichText from "../components/RichText";
 import { stats as fallbackStats, blogPosts as fallbackBlogPosts } from "../data/content";
 import { useCollection, usePageContent } from "../data/useContent";
 
@@ -73,6 +74,8 @@ const HOME_DEFAULTS = {
   servicesButtonLink: "/services",
   servicesCardButtonText: "View Specifications",
   servicesCardButtonLink: "/services",
+  servicesLimit: "3",
+  servicesSelectedSlugs: [],
   servicesStripTitle: "Full Spectrum Fleet Management",
   servicesStripDescription:
     "Also providing Dedicated Staff Bus Shuttles, Corporate VIP Delegations & Inter-City Business Transit.",
@@ -164,9 +167,11 @@ const Home = () => {
               </h1>
             </div>
             <div className="mt-10">
-              <p className="text-slate-700 text-[15px] font-normal leading-relaxed">
-                {content.introParagraph}
-              </p>
+              <RichText
+                as="div"
+                html={content.introParagraph}
+                className="article-content text-slate-700 text-[15px] font-normal leading-relaxed"
+              />
             </div>
 
             {/* Service list */}
@@ -325,6 +330,8 @@ const Home = () => {
             buttonLink={content.servicesButtonLink}
             cardButtonText={content.servicesCardButtonText}
             cardButtonLink={content.servicesCardButtonLink}
+            limit={content.servicesLimit}
+            selectedSlugs={content.servicesSelectedSlugs}
             stripTitle={content.servicesStripTitle}
             stripDescription={content.servicesStripDescription}
             stripButtonText={content.servicesStripButtonText}
@@ -407,9 +414,10 @@ const Home = () => {
             {content.ctaHeadingMain} <br />
             <span className="italic text-teal font-normal">{content.ctaHeadingAccent}</span>
           </h2>
-          <p className="mt-2 text-slate-700 text-[15px] font-normal leading-relaxed max-w-xl mx-auto">
-            {content.ctaParagraph}
-          </p>
+          <RichText
+            html={content.ctaParagraph}
+            className="article-content mt-2 text-slate-700 text-[15px] font-normal leading-relaxed max-w-xl mx-auto"
+          />
           <Magnetic className="mt-6">
             <SmartLink
               to={content.ctaButtonLink}

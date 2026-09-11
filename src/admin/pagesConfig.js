@@ -202,7 +202,7 @@ export const pages = [
           {
             name: "heroDesc",
             label: "Hero Description",
-            type: "textarea",
+            type: "richtext",
             default:
               "Acciva Travels provides end-to-end mobility, transportation and logistics solutions for businesses-from daily employee pick-up and drop to executive travel, long-term vehicle leasing, commercial trucks, logistics movement, corporate events and PAN India transportation requirements.",
           },
@@ -224,7 +224,7 @@ export const pages = [
           {
             name: "introParagraph",
             label: "Paragraph",
-            type: "textarea",
+            type: "richtext",
             default:
               "Acciva Travels has emerged to be one of the best leading Corporate Employee Transport Services & Solutions Pan India. We are committed to provide quality and reliable Employee Transportation services. Our state-of-art app based Technology empowers the entire Employee Transportation Management System process for our Corporate companies.",
           },
@@ -273,19 +273,18 @@ export const pages = [
             type: "cards",
             itemLabel: "Vehicle",
             default: [
-              { name: "Sedan", country: "Everyday Corporate Travel", description: "Comfortable, fuel-efficient sedans for daily employee commutes and routine office travel.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Toyota_Camry_2.5_Hybrid_Ascent_Sport_%28IX%29_%E2%80%93_f_02012026.jpg/1280px-Toyota_Camry_2.5_Hybrid_Ascent_Sport_%28IX%29_%E2%80%93_f_02012026.jpg" },
-              { name: "MPV", country: "Family & Group Travel", description: "Spacious multi-purpose vehicles built for small teams travelling together in comfort.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Toyota_Innova_Crysta_2.4_Z_front_right.jpg/1280px-Toyota_Innova_Crysta_2.4_Z_front_right.jpg" },
-              { name: "SUV", country: "All-Terrain Comfort", description: "Rugged, powerful SUVs that handle any terrain for site visits and outstation assignments.", image: "https://upload.wikimedia.org/wikipedia/commons/1/1f/2024_Toyota_RAV4_Cruiser_Hybrid_front.jpg" },
-              { name: "Luxury Sedan", country: "Premium Business Class", description: "Refined luxury sedans that make the right impression for client meetings and executive travel.", image: "https://5.imimg.com/data5/SELLER/Default/2026/7/630120673/LH/ZG/IH/82002021/bmw-7-series-car-rental-service-500x500.jpeg" },
-              { name: "Ultra-Luxury Executive", country: "Boardroom On Wheels", description: "Top-tier chauffeured vehicles designed for VIP delegates and high-stakes corporate travel.", image: "https://i.ytimg.com/vi/3bMYs-09ONU/hq720.jpg" },
-              { name: "Tempo Traveller", country: "Group Transport", description: "Reliable tempo travellers for mid-sized groups moving together to events or off-sites.", image: "https://cabtaxirentalservicejodhpur.com/assets/img/vehicle/12-seater-tempo-traveller-jodhpur.webp" },
-              { name: "Mini Bus", country: "Shared Mobility", description: "Efficient mini buses that keep larger teams connected with shared, scheduled transport.", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDTUp-WRvnjwiNnvdeol89AXwHWwAeNde3M_ag4kMtPxsjg7AFaMKjHwoq&s=10" },
-              { name: "Staff Bus", country: "Employee Transport", description: "Dedicated staff buses that make daily employee pick-up and drop reliable at scale.", image: "https://jcbl.com/jcbl-images/products/elite/banner.jpg" },
-              { name: "Truck", country: "Logistics Fleet", description: "Sturdy trucks that keep your logistics and material movement running on schedule.", image: "https://t3.ftcdn.net/jpg/03/52/78/44/360_F_352784409_vACH9AegP2m2xM7l6nppLUazM7LhFiz1.jpg" },
+              { name: "Sedan", description: "Comfortable, fuel-efficient sedans for daily employee commutes and routine office travel.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Toyota_Camry_2.5_Hybrid_Ascent_Sport_%28IX%29_%E2%80%93_f_02012026.jpg/1280px-Toyota_Camry_2.5_Hybrid_Ascent_Sport_%28IX%29_%E2%80%93_f_02012026.jpg" },
+              { name: "MPV", description: "Spacious multi-purpose vehicles built for small teams travelling together in comfort.", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Toyota_Innova_Crysta_2.4_Z_front_right.jpg/1280px-Toyota_Innova_Crysta_2.4_Z_front_right.jpg" },
+              { name: "SUV", description: "Rugged, powerful SUVs that handle any terrain for site visits and outstation assignments.", image: "https://upload.wikimedia.org/wikipedia/commons/1/1f/2024_Toyota_RAV4_Cruiser_Hybrid_front.jpg" },
+              { name: "Luxury Sedan", description: "Refined luxury sedans that make the right impression for client meetings and executive travel.", image: "https://5.imimg.com/data5/SELLER/Default/2026/7/630120673/LH/ZG/IH/82002021/bmw-7-series-car-rental-service-500x500.jpeg" },
+              { name: "Ultra-Luxury Executive", description: "Top-tier chauffeured vehicles designed for VIP delegates and high-stakes corporate travel.", image: "https://i.ytimg.com/vi/3bMYs-09ONU/hq720.jpg" },
+              { name: "Tempo Traveller", description: "Reliable tempo travellers for mid-sized groups moving together to events or off-sites.", image: "https://cabtaxirentalservicejodhpur.com/assets/img/vehicle/12-seater-tempo-traveller-jodhpur.webp" },
+              { name: "Mini Bus", description: "Efficient mini buses that keep larger teams connected with shared, scheduled transport.", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDTUp-WRvnjwiNnvdeol89AXwHWwAeNde3M_ag4kMtPxsjg7AFaMKjHwoq&s=10" },
+              { name: "Staff Bus", description: "Dedicated staff buses that make daily employee pick-up and drop reliable at scale.", image: "https://jcbl.com/jcbl-images/products/elite/banner.jpg" },
+              { name: "Truck", description: "Sturdy trucks that keep your logistics and material movement running on schedule.", image: "https://t3.ftcdn.net/jpg/03/52/78/44/360_F_352784409_vACH9AegP2m2xM7l6nppLUazM7LhFiz1.jpg" },
             ],
             itemFields: [
               { name: "name", label: "Vehicle Name", type: "text" },
-              { name: "country", label: "Use Case", type: "text" },
               { name: "description", label: "Description", type: "textarea" },
               { name: "image", label: "Image", type: "image" },
             ],
@@ -319,6 +318,23 @@ export const pages = [
           { name: "servicesButtonLink", label: "Button Link", type: "text", hint: "Where this button goes — an internal path like /contact, or a full https:// URL." , default: "/services" },
           { name: "servicesCardButtonText", label: "Card Button Text", type: "text", default: "View Specifications" },
           { name: "servicesCardButtonLink", label: "Button Link", type: "text", hint: "Where this button goes — an internal path like /contact, or a full https:// URL." , default: "/services" },
+          {
+            name: "servicesLimit",
+            label: "Number of Services to Show",
+            type: "select",
+            options: ["1", "2", "3"],
+            default: "3",
+          },
+          {
+            name: "servicesSelectedSlugs",
+            label: "Which Services to Show",
+            type: "collection-picker",
+            collection: "services",
+            optionLabel: "title",
+            optionValue: "slug",
+            hint: "Pick which services appear on the Home page, in the order shown. Leave none picked to automatically show the first services from the Services collection.",
+            default: [],
+          },
           { name: "servicesStripTitle", label: "Capability Strip Title", type: "text", default: "Full Spectrum Fleet Management" },
           {
             name: "servicesStripDescription",
@@ -340,7 +356,7 @@ export const pages = [
           {
             name: "industriesParagraph",
             label: "Paragraph",
-            type: "textarea",
+            type: "richtext",
             default:
               "From fast-scaling startups to established multinationals, Acciva powers corporate mobility for organisations across every industry vertical, PAN India.",
           },
@@ -434,7 +450,7 @@ export const pages = [
           {
             name: "ctaParagraph",
             label: "Paragraph",
-            type: "textarea",
+            type: "richtext",
             default:
               "Tell us where your team needs to be, and we'll build a corporate mobility plan around it, from daily commutes to citywide fleet deployments.",
           },
@@ -467,7 +483,7 @@ export const pages = [
           {
             name: "heroIntro",
             label: "Intro Paragraph",
-            type: "textarea",
+            type: "richtext",
             default:
               "Acciva Travels is a professionally managed mobility and transportation company focused on dependable transportation solutions for businesses. Our role goes beyond providing vehicles. We coordinate vehicles, drivers, transportation operations, trip management, technology, safety practices, reporting and customer support to create a smoother corporate mobility experience.",
           },
@@ -516,7 +532,7 @@ export const pages = [
           {
             name: "visionText",
             label: "Vision Card Text",
-            type: "textarea",
+            type: "richtext",
             default:
               "Our vision is to deliver superior travel and transportation services through a proactive approach focused on hospitality, integrity, reliability and customer satisfaction. We strive to set high standards in corporate transportation by providing efficient and dependable mobility solutions that meet the evolving needs of our customers.",
           },
@@ -525,7 +541,7 @@ export const pages = [
           {
             name: "missionText",
             label: "Mission Card Text",
-            type: "textarea",
+            type: "richtext",
             default:
               "Our mission is to provide safe, reliable and comfortable transportation services with customer security and satisfaction at the heart of everything we do. We are committed to maintaining the highest standards of safety, service quality and operational excellence, while delivering a seamless and comfortable travel experience for every customer.",
           },
@@ -705,7 +721,7 @@ export const pages = [
           {
             name: "heroIntro",
             label: "Intro Paragraph",
-            type: "textarea",
+            type: "richtext",
             default:
               "End-to-end employee transportation, tech park shuttle networks, executive transit, and airport transfers managed with 99.8% on-time precision.",
           },
@@ -785,32 +801,8 @@ export const pages = [
         ],
       },
       {
-        key: "catalogue",
-        label: "4. Fleet Catalogue Intro",
-        fields: [
-          { name: "catalogueEyebrow", label: "Eyebrow", type: "text", default: "Our Fleet Offerings" },
-          { name: "catalogueHeadingMain", label: "Heading", type: "text", default: "Tailored Mobility" },
-          { name: "catalogueHeadingAccent", label: "Heading (Highlighted)", type: "text", default: "Programs." },
-          {
-            name: "catalogueParagraph",
-            label: "Paragraph",
-            type: "textarea",
-            default:
-              "Explore our comprehensive range of specialized transport capabilities designed for corporate technology parks, GCCs, and enterprise teams.",
-          },
-          { name: "catalogueFilterLabel", label: "Filter Bar Label", type: "text", default: "Filter Fleet by:" },
-          { name: "catalogueFilterAllLabel", label: "\"All\" Filter Label", type: "text", default: "All Fleet Capabilities" },
-          { name: "catalogueFilterDailyLabel", label: "\"Daily\" Filter Label", type: "text", default: "Daily Employee Transit" },
-          { name: "catalogueFilterExecutiveLabel", label: "\"Executive\" Filter Label", type: "text", default: "Executive & VIP" },
-          { name: "catalogueFilterGroupLabel", label: "\"Group\" Filter Label", type: "text", default: "Shuttle & Tech Parks" },
-          { name: "catalogueCardButtonText", label: "Card Button Text", type: "text", default: "View Details" },
-          { name: "catalogueCardButtonLink", label: "Button Link", type: "text", hint: "Where this button goes — an internal path like /contact, or a full https:// URL." , default: "/contact" },
-          { name: "catalogueSlaText", label: "Card SLA Chip Text", type: "text", default: "99.8% SLA Backed • Pan-India" },
-        ],
-      },
-      {
         key: "techTracking",
-        label: "5. Technology & Tracking",
+        label: "4. Technology & Tracking",
         fields: [
           { name: "techEyebrow", label: "Eyebrow", type: "text", default: "Smarter Visibility" },
           { name: "techHeadingMain", label: "Heading", type: "text", default: "Technology &" },
@@ -852,7 +844,7 @@ export const pages = [
       },
       {
         key: "safety",
-        label: "6. Safety & Driver Standards",
+        label: "5. Safety & Driver Standards",
         fields: [
           { name: "safetyEyebrow", label: "Eyebrow", type: "text", default: "Trust & Compliance" },
           { name: "safetyHeadingMain", label: "Heading", type: "text", default: "Safety &" },
@@ -898,7 +890,7 @@ export const pages = [
       },
       {
         key: "whyChoose",
-        label: "7. Why Choose Acciva Travels",
+        label: "6. Why Choose Acciva Travels",
         fields: [
           { name: "whyEyebrow", label: "Eyebrow", type: "text", default: "Distinct Advantage" },
           { name: "whyHeadingMain", label: "Heading", type: "text", default: "Why Choose" },
@@ -941,7 +933,7 @@ export const pages = [
       },
       {
         key: "talk",
-        label: "8. Let's Talk CTA",
+        label: "7. Let's Talk CTA",
         fields: [
           { name: "talkHeadingMain", label: "Heading", type: "text", default: "Let's Talk About Your" },
           { name: "talkHeadingAccent", label: "Heading (Highlighted)", type: "text", default: "Transportation Needs" },
@@ -959,6 +951,30 @@ export const pages = [
         ],
       },
       {
+        key: "catalogue",
+        label: "8. Fleet Catalogue Intro",
+        fields: [
+          { name: "catalogueEyebrow", label: "Eyebrow", type: "text", default: "Our Fleet Offerings" },
+          { name: "catalogueHeadingMain", label: "Heading", type: "text", default: "Tailored Mobility" },
+          { name: "catalogueHeadingAccent", label: "Heading (Highlighted)", type: "text", default: "Programs." },
+          {
+            name: "catalogueParagraph",
+            label: "Paragraph",
+            type: "richtext",
+            default:
+              "Explore our comprehensive range of specialized transport capabilities designed for corporate technology parks, GCCs, and enterprise teams.",
+          },
+          { name: "catalogueFilterLabel", label: "Filter Bar Label", type: "text", default: "Filter Fleet by:" },
+          { name: "catalogueFilterAllLabel", label: "\"All\" Filter Label", type: "text", default: "All Fleet Capabilities" },
+          { name: "catalogueFilterDailyLabel", label: "\"Daily\" Filter Label", type: "text", default: "Daily Employee Transit" },
+          { name: "catalogueFilterExecutiveLabel", label: "\"Executive\" Filter Label", type: "text", default: "Executive & VIP" },
+          { name: "catalogueFilterGroupLabel", label: "\"Group\" Filter Label", type: "text", default: "Shuttle & Tech Parks" },
+          { name: "catalogueCardButtonText", label: "Card Button Text", type: "text", default: "View Details" },
+          { name: "catalogueCardButtonLink", label: "Button Link", type: "text", hint: "Where this button goes — an internal path like /contact, or a full https:// URL." , default: "/contact" },
+          { name: "catalogueSlaText", label: "Card SLA Chip Text", type: "text", default: "99.8% SLA Backed • Pan-India" },
+        ],
+      },
+      {
         key: "closingCta",
         label: "9. Cinematic Closing CTA",
         fields: [
@@ -968,7 +984,7 @@ export const pages = [
           {
             name: "ctaParagraph",
             label: "Paragraph",
-            type: "textarea",
+            type: "richtext",
             default:
               "Get a tailored fleet proposal with live telemetry integration, automated shift rostering, and dedicated command support.",
           },
@@ -997,7 +1013,7 @@ export const pages = [
           {
             name: "heroIntro",
             label: "Intro Paragraph",
-            type: "textarea",
+            type: "richtext",
             default:
               "Acciva's state of the art technology is an automation platform for employee transportation that automates everything: rostering, routing, deployment, live tracking, paperless automated billing, and e-trip sheets.",
           },
@@ -1029,7 +1045,7 @@ export const pages = [
           {
             name: "featuresClosingParagraph",
             label: "Closing Paragraph",
-            type: "textarea",
+            type: "richtext",
             default:
               "At Acciva Travels, we combine people, vehicles, technology and transportation expertise to create reliable corporate mobility solutions that businesses can depend on every day.",
           },
@@ -1067,7 +1083,7 @@ export const pages = [
           {
             name: "pillarsParagraph",
             label: "Paragraph",
-            type: "textarea",
+            type: "richtext",
             default:
               "Safety, cost efficiency, paperless workflows, live tracking, analytics and platform reliability — six interlocking systems working together behind every trip you book.",
           },
@@ -1202,7 +1218,7 @@ export const pages = [
           {
             name: "solutionsParagraph",
             label: "Paragraph",
-            type: "textarea",
+            type: "richtext",
             default:
               "Purpose-built apps for employees, drivers, and transport managers, connected in real time to deliver a smooth, on-time, and safe commute for every enterprise shift.",
           },
@@ -1256,7 +1272,7 @@ export const pages = [
           {
             name: "ctaParagraph",
             label: "Paragraph",
-            type: "textarea",
+            type: "richtext",
             default:
               "Let our technical mobility consultants audit your current route logistics, calculate potential cost savings, and set up a live Command Tower trial.",
           },
@@ -1283,7 +1299,7 @@ export const pages = [
           {
             name: "heroIntro",
             label: "Intro Paragraph",
-            type: "textarea",
+            type: "richtext",
             default:
               "Explore key industry insights on corporate employee transportation, AI dispatch telematics, EV sustainability, and mobility benchmarks across India.",
           },
@@ -1306,7 +1322,7 @@ export const pages = [
           {
             name: "newsletterParagraph",
             label: "Paragraph",
-            type: "textarea",
+            type: "richtext",
             default:
               "Subscribe to receive quarterly whitepapers, EV transition benchmarks, and tech park transit optimization case studies.",
           },
@@ -1333,7 +1349,7 @@ export const pages = [
           {
             name: "heroIntro",
             label: "Intro Paragraph",
-            type: "textarea",
+            type: "richtext",
             default:
               "Request customized enterprise proposals, corporate rate cards, tech park shuttle network setups, or 24/7 dispatch support.",
           },
@@ -1385,6 +1401,17 @@ export const pages = [
             default: "We couldn't send your message right now. Please try again in a moment.",
           },
           { name: "submitButtonText", label: "Submit Button Text", type: "text", default: "Send Message" },
+          { name: "nameFieldLabel", label: "Name Field Label", type: "text", default: "Full Name *" },
+          { name: "nameFieldPlaceholder", label: "Name Field Placeholder", type: "text", default: "e.g. Rajesh Kumar" },
+          { name: "emailFieldLabel", label: "Email Field Label", type: "text", default: "Email Address *" },
+          { name: "emailFieldPlaceholder", label: "Email Field Placeholder", type: "text", default: "rajesh@company.com" },
+          { name: "phoneFieldLabel", label: "Phone Field Label", type: "text", default: "Phone Number *" },
+          { name: "phoneFieldPlaceholder", label: "Phone Field Placeholder", type: "text", default: "+91 98765 43210" },
+          { name: "subjectFieldLabel", label: "Subject Field Label", type: "text", default: "Subject *" },
+          { name: "customSubjectFieldLabel", label: "\"Other\" Subject Field Label", type: "text", default: "Please Specify Subject *" },
+          { name: "customSubjectFieldPlaceholder", label: "\"Other\" Subject Field Placeholder", type: "text", default: "Type your subject here..." },
+          { name: "messageFieldLabel", label: "Message Field Label", type: "text", default: "Message *" },
+          { name: "messageFieldPlaceholder", label: "Message Field Placeholder", type: "text", default: "Tell us how we can help..." },
           {
             name: "showcaseImage",
             label: "Showcase Image",
@@ -1463,7 +1490,7 @@ export const pages = [
           {
             name: "heroIntro",
             label: "Intro Paragraph",
-            type: "textarea",
+            type: "richtext",
             default:
               "Join India's most trusted corporate mobility fleet and drive with guaranteed income, on-time payments, and round-the-clock support.",
           },
@@ -1597,6 +1624,14 @@ export const pages = [
             type: "text",
             default: "Our onboarding team will reach out to you shortly.",
           },
+          { name: "nameFieldLabel", label: "Name Field Label", type: "text", default: "Full Name *" },
+          { name: "nameFieldPlaceholder", label: "Name Field Placeholder", type: "text", default: "e.g. Arjun Reddy" },
+          { name: "phoneFieldLabel", label: "Phone Field Label", type: "text", default: "Phone Number *" },
+          { name: "phoneFieldPlaceholder", label: "Phone Field Placeholder", type: "text", default: "+91 98765 43210" },
+          { name: "vehicleTypeFieldLabel", label: "Vehicle Type Field Label", type: "text", default: "Vehicle Type *" },
+          { name: "vehicleTypeFieldPlaceholder", label: "Vehicle Type Field Placeholder", type: "text", default: "e.g. Sedan / SUV / Van" },
+          { name: "regYearFieldLabel", label: "Registration Year Field Label", type: "text", default: "Vehicle Registration Year *" },
+          { name: "regYearFieldPlaceholder", label: "Registration Year Field Placeholder", type: "text", default: "e.g. 2022" },
         ],
       },
       {

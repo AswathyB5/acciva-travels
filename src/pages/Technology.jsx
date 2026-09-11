@@ -10,6 +10,7 @@ import {
 import Magnetic from "../components/Magnetic";
 import AnimatedImage from "../components/AnimatedImage";
 import SmartLink from "../components/SmartLink";
+import RichText from "../components/RichText";
 import { usePageContent } from "../data/useContent";
 import { resolveIcon } from "../data/iconMap";
 
@@ -263,14 +264,14 @@ const Technology = () => {
               </h1>
             </motion.div>
 
-            <motion.p
+            <RichText
+              as={motion.div}
+              html={content.heroIntro}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.15 }}
-              className="max-w-md text-navy/90 text-[15px] font-medium leading-relaxed pb-2"
-            >
-              {content.heroIntro}
-            </motion.p>
+              className="article-content max-w-md text-navy/90 text-[15px] font-medium leading-relaxed pb-2"
+            />
           </div>
         </div>
       </section>
@@ -367,9 +368,10 @@ const Technology = () => {
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="text-center mt-10"
           >
-            <p className="text-slate-600 text-[15px] font-normal leading-relaxed">
-              {content.featuresClosingParagraph}
-            </p>
+            <RichText
+              html={content.featuresClosingParagraph}
+              className="article-content text-slate-600 text-[15px] font-normal leading-relaxed"
+            />
             <SmartLink
               to={content.featuresButtonLink}
               className="inline-flex items-center gap-3 mt-7 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl"
@@ -420,9 +422,10 @@ const Technology = () => {
               {content.pillarsHeadingMain}{" "}
               <span className="italic text-teal font-normal">{content.pillarsHeadingAccent}</span>
             </h2>
-            <p className="text-slate-700 text-[15px] font-normal mt-4 leading-relaxed">
-              {content.pillarsParagraph}
-            </p>
+            <RichText
+              html={content.pillarsParagraph}
+              className="article-content text-slate-700 text-[15px] font-normal mt-4 leading-relaxed"
+            />
           </motion.div>
 
           <div className="max-w-7xl mx-auto space-y-7">
@@ -719,9 +722,10 @@ const Technology = () => {
                 {content.solutionsHeadingAccent}
               </span>
             </h2>
-            <p className="text-slate-700 text-[15px] font-normal mt-4 leading-relaxed">
-              {content.solutionsParagraph}
-            </p>
+            <RichText
+              html={content.solutionsParagraph}
+              className="article-content text-slate-700 text-[15px] font-normal mt-4 leading-relaxed"
+            />
           </motion.div>
 
           {/* Always-Visible Solution Card Grid */}
@@ -859,9 +863,10 @@ const Technology = () => {
             ))}
           </h2>
 
-          <p className="text-slate-700 text-[15px] font-normal max-w-xl mx-auto mb-10 leading-relaxed">
-            {content.ctaParagraph}
-          </p>
+          <RichText
+            html={content.ctaParagraph}
+            className="article-content text-slate-700 text-[15px] font-normal max-w-xl mx-auto mb-10 leading-relaxed"
+          />
 
           <Magnetic>
             <SmartLink

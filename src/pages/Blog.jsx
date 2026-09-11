@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import AnimatedImage from "../components/AnimatedImage";
 import SmartLink from "../components/SmartLink";
+import RichText from "../components/RichText";
 import { blogPosts as fallbackBlogPosts } from "../data/content";
 import { useCollection, usePageContent } from "../data/useContent";
 
@@ -93,14 +94,14 @@ const Blog = () => {
               </h1>
             </motion.div>
 
-            <motion.p
+            <RichText
+              as={motion.div}
+              html={content.heroIntro}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
-              className="max-w-md text-navy/90 text-[15px] font-medium leading-relaxed pb-2"
-            >
-              {content.heroIntro}
-            </motion.p>
+              className="article-content max-w-md text-navy/90 text-[15px] font-medium leading-relaxed pb-2"
+            />
           </div>
 
 
@@ -246,9 +247,10 @@ const Blog = () => {
             ))}
           </h2>
 
-          <p className="mt-6 text-slate-700 text-[15px] font-normal max-w-xl mx-auto leading-relaxed">
-            {content.newsletterParagraph}
-          </p>
+          <RichText
+            html={content.newsletterParagraph}
+            className="article-content mt-6 text-slate-700 text-[15px] font-normal max-w-xl mx-auto leading-relaxed"
+          />
 
           <SmartLink
             to={content.newsletterButtonLink}
