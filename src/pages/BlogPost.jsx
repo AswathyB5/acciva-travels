@@ -17,6 +17,23 @@ const BLOG_INTRO_DEFAULTS = {
     "https://dam.alfuttaim.com/dx/api/dam/v1/collections/26711d2e-640a-4167-bd6a-a2f1ebd504d6/items/cf0b0423-4519-4326-981d-a3f8f580513e/renditions/6063f964-039e-4fa3-93dd-2903c8ebc68c?binary=true&mformat=true",
 };
 
+// Highlights the admin-picked "Title Accent" substring within the title using
+// the same italic-teal accent style every other page's heading uses. Falls
+// back to a plain title when there's no accent, or it doesn't match.
+const renderTitleWithAccent = (title, accent) => {
+  if (!title) return title;
+  if (!accent) return title;
+  const idx = title.indexOf(accent);
+  if (idx === -1) return title;
+  return (
+    <>
+      {title.slice(0, idx)}
+      <span className="italic text-teal font-normal">{accent}</span>
+      {title.slice(idx + accent.length)}
+    </>
+  );
+};
+
 // Renders any blog post created/edited through the admin CMS. Its "Full
 // Content" field is HTML, written with the admin's WYSIWYG editor — rendered
 // here through the same styling as the site's hand-built articles.
@@ -67,7 +84,7 @@ const BlogPost = () => {
       )}
 
       <section
-        className="pt-28 sm:pt-32 pb-14 md:pb-20 relative overflow-hidden"
+        className="pt-28 sm:pt-32 pb-10 md:pb-14 relative overflow-hidden"
         style={{
           backgroundImage: `url('${blogContent.heroBackgroundImage}')`,
           backgroundSize: "cover",
@@ -104,7 +121,7 @@ const BlogPost = () => {
                 </span>
               )}
               <h1 className="font-display text-navy text-3xl sm:text-4xl md:text-5xl leading-[1.08] mt-6 tracking-tight">
-                {post.title}
+                {renderTitleWithAccent(post.title, post.titleAccent)}
               </h1>
               <div className="flex items-center gap-4 mt-6 text-sm text-slate-600 font-medium">
                 {post.date && <span>{post.date}</span>}
@@ -121,13 +138,13 @@ const BlogPost = () => {
       </section>
 
       {post?.image && (
-        <section className="container-px pb-10 md:pb-14">
-          <div className="rounded-3xl overflow-hidden border border-navy/10 shadow-xl max-w-4xl mx-auto">
+        <section className="container-px pt-10 md:pt-14 pb-10 md:pb-14">
+          <div className="rounded-3xl overflow-hidden border border-navy/10 shadow-xl max-w-4xl mx-auto bg-white">
             <AnimatedImage
               src={post.image}
               alt={post.title}
               effect="zoom-in"
-              className="w-full max-h-[480px] object-cover"
+              className="w-full max-h-[560px] object-contain"
             />
           </div>
         </section>

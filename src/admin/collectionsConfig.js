@@ -59,6 +59,12 @@ export const collections = [
     subtitleField: "category",
     fields: [
       { name: "title", label: "Title", type: "text", required: true },
+      {
+        name: "titleAccent",
+        label: "Title Accent (Highlighted)",
+        type: "text",
+        hint: "Optional. Type the exact portion of the Title above that should show in the site's italic teal accent style (matching every other page's heading). Must match text within the Title exactly, or it's ignored.",
+      },
       { name: "slug", label: "Slug", type: "text", required: true },
       {
         name: "category",
