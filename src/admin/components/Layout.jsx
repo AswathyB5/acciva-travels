@@ -6,20 +6,20 @@ import { pages } from "../pagesConfig";
 import { useAuth } from "../lib/useAuth";
 
 const navItemClass = ({ isActive }) =>
-  `flex items-center gap-3 px-3 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${
+  `group relative flex items-center gap-3 pl-4 pr-3 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-teal/40 ${
     isActive
-      ? "bg-teal text-white shadow-sm shadow-teal/30"
-      : "text-navy/75 hover:bg-navy/5 hover:text-navy hover:translate-x-0.5"
+      ? "bg-teal text-white shadow-md shadow-teal/25"
+      : "text-navy/70 hover:bg-navy/6 hover:text-navy"
   }`;
 
 const subNavItemClass = ({ isActive }) =>
-  `flex items-center gap-2 pl-2 pr-3 py-2 rounded-xl text-[13px] font-medium transition-all duration-200 ${
+  `flex items-center gap-2 pl-2 pr-3 py-2 rounded-xl text-[13px] font-medium transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-teal/40 ${
     isActive
-      ? "bg-teal/90 text-white shadow-sm shadow-teal/30"
-      : "text-navy/62 hover:bg-navy/5 hover:text-navy hover:translate-x-0.5"
+      ? "bg-teal/90 text-white shadow-sm shadow-teal/25"
+      : "text-navy/60 hover:bg-navy/6 hover:text-navy"
   }`;
 
-const sectionLabelClass = "px-3 text-[11px] uppercase tracking-wider font-semibold text-navy/50 mt-6 mb-2";
+const sectionLabelClass = "px-4 text-[10.5px] uppercase tracking-[0.12em] font-bold text-navy/40 mt-7 mb-2.5";
 
 const topLevelPages = pages.filter((p) => !p.parent);
 const childPagesOf = (key) => pages.filter((p) => p.parent === key);
@@ -41,15 +41,16 @@ const Layout = () => {
   const initial = username ? username.charAt(0).toUpperCase() : "A";
 
   return (
-    <div className="min-h-screen flex bg-ivory">
-      <aside className="w-72 shrink-0 bg-soft border-r border-navy/10 text-navy flex flex-col p-4 relative">
+    <div className="h-screen flex bg-ivory overflow-hidden">
+      <aside className="w-72 shrink-0 h-full bg-soft border-r border-navy/10 text-navy flex flex-col relative">
         <span className="absolute top-0 right-0 w-24 h-24 bg-teal/10 rounded-full blur-3xl pointer-events-none" />
         <span className="absolute bottom-24 left-0 w-28 h-28 bg-sand/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="flex items-center gap-2.5 px-1 mb-2 relative">
+
+        <div className="flex items-center gap-2.5 px-4 pt-4 pb-3 relative shrink-0">
           <motion.div
             whileHover={{ rotate: -8, scale: 1.06 }}
             transition={{ type: "spring", stiffness: 300, damping: 15 }}
-            className="w-9 h-9 rounded-xl bg-teal flex items-center justify-center shrink-0"
+            className="w-9 h-9 rounded-xl bg-linear-to-br from-teal to-teal/70 shadow-md shadow-teal/25 flex items-center justify-center shrink-0"
           >
             <Truck size={18} className="text-white" />
           </motion.div>
@@ -59,11 +60,20 @@ const Layout = () => {
           </div>
         </div>
 
-        <nav className="flex-1 overflow-y-auto mt-2">
+        <div className="h-px mx-4 bg-navy/10 shrink-0" />
+
+        <nav className="flex-1 min-h-0 overflow-y-auto px-3 pb-3 scrollbar-thin">
           <p className={sectionLabelClass}>Overview</p>
           <NavLink to="/admin" end className={navItemClass}>
-            <LayoutDashboard size={17} />
-            Dashboard
+            {({ isActive }) => (
+              <>
+                {isActive && (
+                  <span className="absolute left-0 top-1.5 bottom-1.5 w-1 rounded-full bg-sand" />
+                )}
+                <LayoutDashboard size={17} className="shrink-0" />
+                Dashboard
+              </>
+            )}
           </NavLink>
 
           <p className={sectionLabelClass}>Pages</p>
@@ -74,8 +84,15 @@ const Layout = () => {
               return (
                 <div key={p.key}>
                   <NavLink to={`/admin/pages/${p.key}`} className={navItemClass}>
-                    <Icon size={17} />
-                    {p.label}
+                    {({ isActive }) => (
+                      <>
+                        {isActive && (
+                          <span className="absolute left-0 top-1.5 bottom-1.5 w-1 rounded-full bg-sand" />
+                        )}
+                        <Icon size={17} className="shrink-0" />
+                        <span className="truncate">{p.label}</span>
+                      </>
+                    )}
                   </NavLink>
                   {children.length > 0 && (
                     <div className="mt-1 ml-4 pl-3 border-l border-navy/10 space-y-1">
@@ -102,8 +119,15 @@ const Layout = () => {
               const Icon = c.icon;
               return (
                 <NavLink key={c.key} to={`/admin/content/${c.key}`} className={navItemClass}>
-                  <Icon size={17} />
-                  {c.label}
+                  {({ isActive }) => (
+                    <>
+                      {isActive && (
+                        <span className="absolute left-0 top-1.5 bottom-1.5 w-1 rounded-full bg-sand" />
+                      )}
+                      <Icon size={17} className="shrink-0" />
+                      <span className="truncate">{c.label}</span>
+                    </>
+                  )}
                 </NavLink>
               );
             })}
@@ -112,44 +136,60 @@ const Layout = () => {
           <p className={sectionLabelClass}>Form Submissions</p>
           <div className="space-y-1">
             <NavLink to="/admin/submissions/contact" className={navItemClass}>
-              <MessageSquare size={17} />
-              Contact Enquiries
+              {({ isActive }) => (
+                <>
+                  {isActive && (
+                    <span className="absolute left-0 top-1.5 bottom-1.5 w-1 rounded-full bg-sand" />
+                  )}
+                  <MessageSquare size={17} className="shrink-0" />
+                  Contact Enquiries
+                </>
+              )}
             </NavLink>
             <NavLink to="/admin/submissions/partner" className={navItemClass}>
-              <MessageSquare size={17} />
-              Partner Applications
+              {({ isActive }) => (
+                <>
+                  {isActive && (
+                    <span className="absolute left-0 top-1.5 bottom-1.5 w-1 rounded-full bg-sand" />
+                  )}
+                  <MessageSquare size={17} className="shrink-0" />
+                  Partner Applications
+                </>
+              )}
             </NavLink>
           </div>
         </nav>
 
-        <a
-          href="/"
-          target="_blank"
-          rel="noreferrer"
-          className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-navy/75 hover:bg-navy/5 hover:text-navy transition-colors mt-2"
-        >
-          <ExternalLink size={17} />
-          View Live Site
-        </a>
-
-        <div className="mt-3 pt-3 border-t border-navy/10 flex items-center justify-between gap-2">
-          <div className="flex items-center gap-2.5 min-w-0">
-            <div className="w-8 h-8 rounded-full bg-sand text-navy flex items-center justify-center text-sm font-bold shrink-0">
-              {initial}
-            </div>
-            <p className="text-sm font-medium text-navy truncate">{username}</p>
-          </div>
-          <button
-            onClick={logout}
-            title="Log out"
-            className="w-8 h-8 rounded-lg flex items-center justify-center text-navy/68 hover:bg-navy/5 hover:text-navy shrink-0"
+        <div className="shrink-0 px-3 pb-3">
+          <a
+            href="/"
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium text-navy/70 hover:bg-navy/6 hover:text-navy transition-colors outline-none focus-visible:ring-2 focus-visible:ring-teal/40"
           >
-            <LogOut size={16} />
-          </button>
+            <ExternalLink size={17} className="shrink-0" />
+            View Live Site
+          </a>
+
+          <div className="mt-2 pt-3 border-t border-navy/10 flex items-center justify-between gap-2 px-1">
+            <div className="flex items-center gap-2.5 min-w-0">
+              <div className="w-8 h-8 rounded-full bg-linear-to-br from-sand to-sand/70 text-navy flex items-center justify-center text-sm font-bold shrink-0 shadow-sm">
+                {initial}
+              </div>
+              <p className="text-sm font-medium text-navy truncate">{username}</p>
+            </div>
+            <button
+              onClick={logout}
+              title="Log out"
+              className="w-8 h-8 rounded-lg flex items-center justify-center text-navy/60 hover:bg-navy/6 hover:text-navy shrink-0 outline-none focus-visible:ring-2 focus-visible:ring-teal/40"
+            >
+              <LogOut size={16} />
+            </button>
+          </div>
         </div>
       </aside>
 
-      <div className="flex-1 min-w-0 flex flex-col">
+      <div className="flex-1 min-w-0 h-full flex flex-col">
         <header className="h-16 shrink-0 bg-white border-b border-navy/10 flex items-center px-6 md:px-10 relative overflow-hidden">
           <motion.h1
             key={pageTitle(location.pathname)}
@@ -162,7 +202,7 @@ const Layout = () => {
           </motion.h1>
           <span className="absolute left-0 bottom-0 h-0.5 w-full bg-linear-to-r from-teal via-sand to-teal/40" />
         </header>
-        <main className="flex-1 min-w-0 p-6 md:p-10 overflow-y-auto">
+        <main className="flex-1 min-h-0 overflow-y-auto p-6 md:p-10">
           <motion.div
             key={location.pathname}
             initial={{ opacity: 0, y: 10 }}

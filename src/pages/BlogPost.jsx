@@ -1,6 +1,7 @@
+import { useState } from "react";
 import { useParams, NavLink, Navigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ChevronRight, Clock, ArrowUpRight, ArrowLeft } from "lucide-react";
+import { ChevronRight, Clock, ArrowUpRight, ArrowLeft, RefreshCw } from "lucide-react";
 import AnimatedImage from "../components/AnimatedImage";
 import Seo from "../components/Seo";
 import { blogPosts as fallbackBlogPosts } from "../data/content";
@@ -11,11 +12,36 @@ import { useCollection } from "../data/useContent";
 // editors can write normally without needing to hand-author markup.
 const BlogPost = () => {
   const { slug } = useParams();
-  const { items: blogPosts, loading } = useCollection("blog-posts", fallbackBlogPosts);
+  const [retryKey, setRetryKey] = useState(0);
+  const { items: blogPosts, loading, error } = useCollection("blog-posts", fallbackBlogPosts, retryKey);
   const post = blogPosts.find((p) => p.slug === slug);
 
-  if (!loading && !post) {
+  // Only bounce back to the listing once we've *confirmed* (a successful
+  // fetch) that no such post exists — a network hiccup on this page's own
+  // fetch must never silently kick the visitor back to /blog.
+  if (!loading && !error && !post) {
     return <Navigate to="/blog" replace />;
+  }
+
+  if (!loading && error && !post) {
+    return (
+      <div className="bg-soft text-navy min-h-[60vh] flex items-center justify-center pt-24">
+        <div className="text-center max-w-sm px-4">
+          <p className="font-display text-xl font-bold">Couldn't load this post</p>
+          <p className="text-navy/60 text-sm mt-2">
+            There was a connection problem loading this article. Please try again.
+          </p>
+          <button
+            type="button"
+            onClick={() => setRetryKey((k) => k + 1)}
+            className="mt-6 inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-sand text-navy font-bold text-xs hover:shadow-lg transition-all"
+          >
+            <RefreshCw size={14} />
+            Try Again
+          </button>
+        </div>
+      </div>
+    );
   }
 
   const paragraphs = (post?.content || "")

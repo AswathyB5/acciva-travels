@@ -1432,8 +1432,8 @@ export const pages = [
     key: "careers",
     label: "Careers Page",
     icon: Briefcase,
-    description: "The Careers page hero, advantages, document checklist, vehicle program, and location. Job openings are managed in the Content Library.",
-    relatedCollections: ["job-openings"],
+    description: "The Careers page hero, advantages, document checklist, vehicle program, and location.",
+    relatedCollections: [],
     sections: [
       {
         key: "hero",

@@ -11,12 +11,9 @@ import {
   ArrowUpRight,
   Send,
   CheckCircle2,
-  Briefcase,
-  Clock,
 } from "lucide-react";
-import { usePageContent, useCollection } from "../data/useContent";
+import { usePageContent } from "../data/useContent";
 import { resolveIcon } from "../data/iconMap";
-import { jobOpenings as fallbackJobOpenings } from "../data/content";
 
 const CAREERS_DEFAULTS = {
   heroEyebrow: "Drive With Acciva",
@@ -289,7 +286,6 @@ const ADVANTAGE_INTERVAL = 1100;
 const Careers = () => {
   const { data: content } = usePageContent("careers", CAREERS_DEFAULTS);
   const { data: footerContent } = usePageContent("footer", FOOTER_DEFAULTS);
-  const { items: jobOpenings } = useCollection("job-openings", fallbackJobOpenings);
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState(null);
@@ -535,87 +531,6 @@ const Careers = () => {
         </div>
       </section>
 
-      {/* ========================================================================= */}
-      {/* CURRENT OPENINGS                                                     */}
-      {/* ========================================================================= */}
-      {jobOpenings.length > 0 && (
-        <section className="py-10 md:py-14 bg-soft relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-72 h-72 bg-teal/10 rounded-bl-full pointer-events-none" />
-          <div className="container-px relative z-10">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="mb-14 text-center max-w-2xl mx-auto"
-            >
-              <span className="eyebrow text-teal">Join Our Team</span>
-              <h2 className="font-display text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-6 tracking-tight">
-                Current <span className="italic text-teal font-normal">Openings.</span>
-              </h2>
-            </motion.div>
-
-            <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
-              {jobOpenings.map((job, i) => (
-                <motion.div
-                  key={job.slug || job.title}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.1 }}
-                  transition={{ duration: 0.6, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                  className="p-6 sm:p-7 rounded-3xl bg-white border-2 border-navy/10 hover:border-teal/40 hover:shadow-xl transition-[border-color,box-shadow] overflow-hidden relative"
-                >
-                  <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-teal via-sand to-teal" />
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="w-12 h-12 rounded-2xl bg-teal/10 flex items-center justify-center text-teal shrink-0">
-                      <Briefcase size={20} />
-                    </div>
-                    {job.type && (
-                      <span className="px-3 py-1 rounded-full bg-sand/30 text-navy text-[11px] font-bold uppercase tracking-wider">
-                        {job.type}
-                      </span>
-                    )}
-                  </div>
-                  <h3 className="font-display text-lg sm:text-xl text-navy font-bold mt-4">{job.title}</h3>
-                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 mt-2.5 text-[13px] text-slate-600 font-medium">
-                    {job.department && <span>{job.department}</span>}
-                    {job.location && (
-                      <span className="inline-flex items-center gap-1.5">
-                        <MapPin size={13} className="text-teal" /> {job.location}
-                      </span>
-                    )}
-                    {job.experience && (
-                      <span className="inline-flex items-center gap-1.5">
-                        <Clock size={13} className="text-teal" /> {job.experience}
-                      </span>
-                    )}
-                  </div>
-                  {job.description && (
-                    <p className="text-[14px] text-slate-700 leading-relaxed mt-4">{job.description}</p>
-                  )}
-                  {Array.isArray(job.requirements) && job.requirements.length > 0 && (
-                    <ul className="mt-4 space-y-1.5">
-                      {job.requirements.map((req, ri) => (
-                        <li key={ri} className="flex items-start gap-2 text-[13px] text-slate-600">
-                          <CheckCircle2 size={14} className="text-teal shrink-0 mt-0.5" />
-                          <span>{req}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                  <NavLink
-                    to="/contact"
-                    className="mt-6 inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-sand text-navy font-bold text-xs hover:shadow-lg transition-all"
-                  >
-                    <span>Apply Now</span>
-                    <ArrowUpRight size={14} />
-                  </NavLink>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* ========================================================================= */}
       {/* ATTACH YOUR VEHICLE WITH ACCIVA                                      */}
