@@ -6,6 +6,7 @@ import {
   Link2,
   List,
   ListOrdered,
+  ArrowRight,
   Quote,
   Palette,
   Unlink,
@@ -147,6 +148,32 @@ const RichTextEditor = ({ value, onChange }) => {
     exec("formatBlock", `<${tag}>`);
   };
 
+  // Toggles the arrow-bullet style (see ".blog-article ul.list-arrow" in
+  // index.css) on the list the selection is currently in — turning a plain
+  // selection into a list first if it isn't one already.
+  const applyArrowList = () => {
+    editorRef.current?.focus();
+    restoreSelection();
+
+    const findList = () => {
+      const sel = window.getSelection();
+      if (!sel || sel.rangeCount === 0) return null;
+      let node = sel.getRangeAt(0).startContainer;
+      if (node.nodeType === 3) node = node.parentElement;
+      return node?.closest?.("ul");
+    };
+
+    let list = findList();
+    if (!list) {
+      document.execCommand("insertUnorderedList", false, undefined);
+      list = findList();
+    }
+    list?.classList.toggle("list-arrow");
+
+    emitChange();
+    updateActiveMarks();
+  };
+
   const openLinkPopover = () => {
     saveSelection();
     const sel = window.getSelection();
@@ -197,6 +224,20 @@ const RichTextEditor = ({ value, onChange }) => {
     document.execCommand("styleWithCSS", false, true);
     document.execCommand("foreColor", false, color);
     document.execCommand("styleWithCSS", false, false);
+
+    // A bullet/number/arrow marker takes its color from the <li> element
+    // itself (the same way it inherits currentColor from a plain paragraph),
+    // not from a <span> wrapping the li's text — foreColor only ever
+    // produces that span, so without this the marker would stay its old
+    // color while the text next to it changes.
+    const sel = window.getSelection();
+    if (sel && sel.rangeCount > 0) {
+      let node = sel.getRangeAt(0).startContainer;
+      if (node.nodeType === 3) node = node.parentElement;
+      const li = node?.closest?.("li");
+      if (li) li.style.color = color;
+    }
+
     emitChange();
     setColorOpen(false);
   };
@@ -399,6 +440,18 @@ const RichTextEditor = ({ value, onChange }) => {
           className="w-8 h-8 rounded-lg flex items-center justify-center text-navy/60 hover:bg-navy/8 hover:text-navy transition-colors"
         >
           <ListOrdered size={15} />
+        </button>
+        <button
+          type="button"
+          title="Arrow bullets"
+          onMouseDown={(e) => {
+            e.preventDefault();
+            saveSelection();
+            applyArrowList();
+          }}
+          className="w-8 h-8 rounded-lg flex items-center justify-center text-navy/60 hover:bg-navy/8 hover:text-navy transition-colors"
+        >
+          <ArrowRight size={15} />
         </button>
         <button
           type="button"

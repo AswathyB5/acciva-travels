@@ -10,16 +10,28 @@ const ALLOWED_TAGS = [
   "h1", "h2", "h3", "h4", "h5", "h6",
   "ul", "ol", "li", "blockquote", "span", "div",
 ];
-const ALLOWED_ATTR = ["href", "target", "rel", "style"];
+const ALLOWED_ATTR = ["href", "target", "rel", "style", "class"];
+
+// The only class the editor itself ever produces (the arrow-bullet list
+// style toggle) — anything else is stripped, so "class" being allowed at
+// all can't be used to smuggle in arbitrary styling hooks.
+const ALLOWED_CLASSES = new Set(["list-arrow"]);
 
 let hookInstalled = false;
-function ensureColorOnlyStyleHook() {
+function ensureSanitizeHooks() {
   if (hookInstalled) return;
   hookInstalled = true;
   // "style" is only ever used here for text color (the color picker uses
   // execCommand("foreColor")) — strip every other CSS property so a paste
   // or crafted value can't smuggle in position/overlay-style CSS.
   DOMPurify.addHook("uponSanitizeAttribute", (node, data) => {
+    if (data.attrName === "class") {
+      data.attrValue = data.attrValue
+        .split(/\s+/)
+        .filter((c) => ALLOWED_CLASSES.has(c))
+        .join(" ");
+      return;
+    }
     if (data.attrName !== "style") return;
     const match = /(?<!background-)(?:^|;)\s*color\s*:\s*(#[0-9a-fA-F]{3,8}|rgb\([^)]*\)|[a-zA-Z]+)/i.exec(
       data.attrValue
@@ -79,7 +91,7 @@ function removeEmptyParagraphDebris(container) {
 }
 
 export function sanitizeArticleHtml(html) {
-  ensureColorOnlyStyleHook();
+  ensureSanitizeHooks();
   const cleaned = DOMPurify.sanitize(html || "", { ALLOWED_TAGS, ALLOWED_ATTR });
   if (typeof document === "undefined" || !cleaned) return cleaned;
 

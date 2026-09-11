@@ -134,6 +134,26 @@ h4 em,
   list-style-type: decimal;
 }
 
+/* Arrow-bullet list style, toggled via the editor's "Arrow bullets" button.
+   Uses a real marker (not a background-image bullet) so it inherits
+   `currentColor` the same way a native disc/decimal marker does — applying
+   a text color to a list item recolors its arrow along with it. */
+.blog-article ul.list-arrow {
+  list-style: none;
+  padding-left: 1.5em;
+}
+
+.blog-article ul.list-arrow > li {
+  position: relative;
+}
+
+.blog-article ul.list-arrow > li::before {
+  content: "→";
+  position: absolute;
+  left: -1.4em;
+  color: currentColor;
+}
+
 .blog-article li {
   margin-bottom: 0.4em;
 }
