@@ -144,7 +144,7 @@ const BlogPost = () => {
               src={post.image}
               alt={post.title}
               effect="zoom-in"
-              className="w-full max-h-[560px] object-contain"
+              className="w-full h-auto object-contain"
             />
           </div>
         </section>
