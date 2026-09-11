@@ -134,10 +134,18 @@ h4 em,
   list-style-type: decimal;
 }
 
+/* A marker's color is independently settable via --marker-color (falling
+   back to the text's own currentColor when not set), so the color picker
+   can recolor just a bullet/number/arrow without touching its text — see
+   RichTextEditor's applyColor, which sets this custom property on the <li>
+   rather than wrapping the text in a colored span. */
+.blog-article li::marker {
+  color: var(--marker-color, currentColor);
+}
+
 /* Arrow-bullet list style, toggled via the editor's "Arrow bullets" button.
-   Uses a real marker (not a background-image bullet) so it inherits
-   `currentColor` the same way a native disc/decimal marker does — applying
-   a text color to a list item recolors its arrow along with it. */
+   A heavier, rounder glyph plus bold weight reads clearly as a bullet
+   rather than a thin typographic arrow. */
 .blog-article ul.list-arrow {
   list-style: none;
   padding-left: 1.5em;
@@ -148,10 +156,12 @@ h4 em,
 }
 
 .blog-article ul.list-arrow > li::before {
-  content: "→";
+  content: "➜";
   position: absolute;
   left: -1.4em;
-  color: currentColor;
+  font-weight: 700;
+  font-size: 1.05em;
+  color: var(--marker-color, currentColor);
 }
 
 .blog-article li {

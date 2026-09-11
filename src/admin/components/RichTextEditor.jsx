@@ -217,25 +217,29 @@ const RichTextEditor = ({ value, onChange }) => {
   const applyColor = (color) => {
     editorRef.current?.focus();
     restoreSelection();
-    // Force span+style output instead of the legacy <font color> tag most
-    // browsers default to — the sanitizer only allows "style" attributes
-    // (scoped to color), so a <font> tag would otherwise get stripped and
-    // silently lose the color.
-    document.execCommand("styleWithCSS", false, true);
-    document.execCommand("foreColor", false, color);
-    document.execCommand("styleWithCSS", false, false);
 
-    // A bullet/number/arrow marker takes its color from the <li> element
-    // itself (the same way it inherits currentColor from a plain paragraph),
-    // not from a <span> wrapping the li's text — foreColor only ever
-    // produces that span, so without this the marker would stay its old
-    // color while the text next to it changes.
+    // Inside a list item, the color picker recolors only the bullet/number/
+    // arrow marker (via the --marker-color custom property in index.css),
+    // leaving the item's own text color untouched — a marker is the "point"
+    // itself, and changing it shouldn't also repaint what it labels.
     const sel = window.getSelection();
+    let li = null;
     if (sel && sel.rangeCount > 0) {
       let node = sel.getRangeAt(0).startContainer;
       if (node.nodeType === 3) node = node.parentElement;
-      const li = node?.closest?.("li");
-      if (li) li.style.color = color;
+      li = node?.closest?.("li");
+    }
+
+    if (li) {
+      li.style.setProperty("--marker-color", color);
+    } else {
+      // Force span+style output instead of the legacy <font color> tag most
+      // browsers default to — the sanitizer only allows "style" attributes
+      // (scoped to color), so a <font> tag would otherwise get stripped and
+      // silently lose the color.
+      document.execCommand("styleWithCSS", false, true);
+      document.execCommand("foreColor", false, color);
+      document.execCommand("styleWithCSS", false, false);
     }
 
     emitChange();

@@ -33,10 +33,20 @@ function ensureSanitizeHooks() {
       return;
     }
     if (data.attrName !== "style") return;
-    const match = /(?<!background-)(?:^|;)\s*color\s*:\s*(#[0-9a-fA-F]{3,8}|rgb\([^)]*\)|[a-zA-Z]+)/i.exec(
+    const parts = [];
+    const colorMatch = /(?<!background-)(?:^|;)\s*color\s*:\s*(#[0-9a-fA-F]{3,8}|rgb\([^)]*\)|[a-zA-Z]+)/i.exec(
       data.attrValue
     );
-    data.attrValue = match ? `color: ${match[1]}` : "";
+    if (colorMatch) parts.push(`color: ${colorMatch[1]}`);
+    // "--marker-color" lets a list item recolor just its bullet/number/arrow
+    // marker (via ::marker/::before in index.css) independently of its own
+    // text color — a custom property, so it never falls into the `color`
+    // match above and needs its own explicit allowance here.
+    const markerMatch = /--marker-color\s*:\s*(#[0-9a-fA-F]{3,8}|rgb\([^)]*\)|[a-zA-Z]+)/i.exec(
+      data.attrValue
+    );
+    if (markerMatch) parts.push(`--marker-color: ${markerMatch[1]}`);
+    data.attrValue = parts.join("; ");
   });
 }
 
