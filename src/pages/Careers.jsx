@@ -354,7 +354,7 @@ const Careers = () => {
     return newErrors;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = validate();
     setErrors(newErrors);
@@ -362,6 +362,22 @@ const Careers = () => {
       setStatus("error");
       return;
     }
+
+    fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({
+        access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY,
+        subject: "New Vehicle Partner Application",
+        name: form.name,
+        phone: form.phone,
+        vehicle_type: form.vehicleType,
+        registration_year: form.regYear,
+      }),
+    }).catch(() => {
+      // Non-fatal: the submission is still saved to the admin panel below.
+    });
+
     api.submitPartner(form).catch(() => {
       // Non-fatal: still show a success state to the applicant.
     });
