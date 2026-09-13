@@ -17,6 +17,23 @@ import { services as fallbackServices } from "../data/content";
 import { useCollection, usePageContent } from "../data/useContent";
 import { resolveIcon } from "../data/iconMap";
 
+// Bolds a specific known phrase within a plain-text paragraph, without
+// changing the underlying (admin-editable) string data itself. Falls back
+// to the plain text untouched if the phrase isn't found (e.g. the content
+// was edited since).
+const boldPhrase = (text, phrase) => {
+  if (!phrase) return text;
+  const idx = text.indexOf(phrase);
+  if (idx === -1) return text;
+  return (
+    <>
+      {text.slice(0, idx)}
+      <strong>{phrase}</strong>
+      {text.slice(idx + phrase.length)}
+    </>
+  );
+};
+
 const SERVICES_DEFAULTS = {
   heroEyebrow: "Enterprise Solutions",
   heroTitleMain: "Corporate Mobility & Fleet Solutions",
@@ -44,12 +61,12 @@ const SERVICES_DEFAULTS = {
     {
       title: "For Schools",
       description:
-        "For schools, we work with administrators to plan routes, organize pickup and drop-off points, and manage day-to-day transportation operations. Our systems can also give parents better visibility of their child's journey, including vehicle location and estimated arrival times.",
+        "we work with administrators to plan routes, organize pickup and drop-off points, and manage day-to-day transportation operations. Our systems can also give parents better visibility of their child's journey, including vehicle location and estimated arrival times.",
     },
     {
       title: "For Businesses & Corporations",
       description:
-        "For businesses and corporations, we provide organized employee transportation designed around working hours, pickup locations, routes, and staff requirements. Our team handles the coordination so that businesses can focus on their operations while we take care of the transportation.",
+        "we provide organized employee transportation designed around working hours, pickup locations, routes, and staff requirements. Our team handles the coordination so that businesses can focus on their operations while we take care of the transportation.",
     },
   ],
   catalogueEyebrow: "Our Fleet Offerings",
@@ -86,22 +103,18 @@ const SERVICES_DEFAULTS = {
   safetyHeadingAccent: "Driver Standards",
   safetyParagraphs: [
     "When you are responsible for transporting students or employees, safety comes first.",
-    "Our aim is to give schools, businesses, passengers, and parents confidence that their transportation is being handled responsibly.",
   ],
   safetyCards: [
     {
       icon: "UserCheck",
-      title: "Verified Drivers",
       text: "At Acciva Travels, we take care in selecting and verifying our drivers and ensuring they meet the requirements of the service they are providing. Driver qualifications, experience, conduct, and overall suitability are important parts of our selection process.",
     },
     {
       icon: "Wrench",
-      title: "Vehicle Upkeep",
       text: "We also pay attention to the condition and upkeep of our vehicles.",
     },
     {
       icon: "Eye",
-      title: "Monitored Operations",
       text: "We monitor transportation operations to maintain a safe and professional service.",
     },
   ],
@@ -754,7 +767,14 @@ const Services = () => {
               className="h-full flex flex-col justify-center space-y-5 text-slate-700 text-[15px] font-normal leading-relaxed"
             >
               {content.introParagraphs.map((p, i) => (
-                <p key={i}>{p}</p>
+                <p key={i}>
+                  {boldPhrase(
+                    p,
+                    i === 1
+                      ? "safe journeys, dependable service, and better visibility for our clients."
+                      : null
+                  )}
+                </p>
               ))}
             </motion.div>
           </div>
@@ -782,7 +802,14 @@ const Services = () => {
             </h2>
             <div className="mt-5 space-y-4 text-slate-700 text-[15px] font-normal leading-relaxed w-full">
               {content.offerParagraphs.map((p, i) => (
-                <p key={i}>{p}</p>
+                <p key={i}>
+                  {boldPhrase(
+                    p,
+                    i === 1
+                      ? "school transportation, corporate and employee transportation, scheduled transportation, route planning, fleet management, and customized transportation services."
+                      : null
+                  )}
+                </p>
               ))}
             </div>
           </motion.div>
@@ -892,7 +919,12 @@ const Services = () => {
               </h2>
               <div className="space-y-4 text-slate-700 text-[15px] font-normal leading-relaxed">
                 {content.techParagraphs.map((p, i) => (
-                  <p key={i}>{p}</p>
+                  <p key={i}>
+                    {boldPhrase(
+                      p,
+                      i === 1 ? "GPS vehicle tracking and mobile-based monitoring" : null
+                    )}
+                  </p>
                 ))}
               </div>
 
@@ -1010,7 +1042,14 @@ const Services = () => {
               className="lg:col-span-7 space-y-5 text-slate-700 text-[15px] font-normal leading-relaxed"
             >
               {content.whyParagraphs.map((p, i) => (
-                <p key={i}>{p}</p>
+                <p key={i}>
+                  {boldPhrase(
+                    p,
+                    i === 2
+                      ? "Acciva Travels works with clients to understand their requirements and build transportation services around them."
+                      : null
+                  )}
+                </p>
               ))}
 
               <TiltCard

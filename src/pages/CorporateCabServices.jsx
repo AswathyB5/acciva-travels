@@ -26,8 +26,6 @@ const CCS_DEFAULTS = {
   heroBackgroundImage:
     "https://images.pexels.com/photos/34985962/pexels-photo-34985962.jpeg?auto=compress&cs=tinysrgb&w=1920",
   introEyebrow: "Introduction",
-  introHeadingMain: "Keeping Everyday Operations",
-  introHeadingAccent: "On Track.",
   introParagraphs: [
     "For businesses operating across multiple shifts and locations, employee transportation is an important part of keeping everyday operations on track. Late pickups, poorly planned routes, or inconsistent transport arrangements can affect employee punctuality, productivity, and overall work experience.",
     "Acciva Travels provides corporate employee transportation services for companies, IT firms, institutions, and other organizations that need a dependable way to manage staff travel. We work with HR, administration, and operations teams to understand their requirements and put practical transportation arrangements in place based on employee locations, work schedules, and shift timings.",
@@ -67,17 +65,14 @@ const CCS_DEFAULTS = {
   safetyCards: [
     {
       icon: "UserCheck",
-      title: "Experienced Drivers & Vehicles",
       text: "Acciva Travels works with experienced drivers and vehicles suitable for corporate transportation requirements. Regular attention to vehicle condition helps ensure that employees have a comfortable and dependable commute.",
     },
     {
       icon: "ShieldCheck",
-      title: "Professional Conduct",
       text: "Drivers are expected to maintain professional conduct while transporting employees and follow the agreed routes and schedules.",
     },
     {
       icon: "Wrench",
-      title: "Consistent Arrangements",
       text: "For businesses, having a consistent transportation arrangement also means fewer day-to-day uncertainties around employee travel.",
     },
   ],
@@ -153,10 +148,10 @@ const CCS_DEFAULTS = {
   whyParagraphs: [
     "Choosing a corporate transportation provider is ultimately about finding a service that fits the way your business operates.",
     "Acciva Travels focuses on understanding the transportation requirements of each organization before putting a service arrangement in place. From employee locations and shift timings to route planning and vehicle coordination, the different parts of the process can be managed as one system.",
-    "For businesses, this means having a transportation partner they can work with as their requirements evolve, rather than having to manage every transportation need independently.",
+    "Our approach is centred on clear communication and practical planning. We work with the teams responsible for employee transportation to help keep daily travel organised while reducing the amount of coordination required from within the company",
   ],
   whyHighlight:
-    "Our approach is centred on clear communication and practical planning. We work with the teams responsible for employee transportation to help keep daily travel organised while reducing the amount of coordination required from within the company.",
+    "For businesses, this means having a transportation partner they can work with as their requirements evolve, rather than having to manage every transportation need independently.",
   whyImage:
     "https://media.istockphoto.com/id/182913362/photo/travel-coaches-at-tourist-destination-parked-in-a-row.jpg?s=612x612&w=0&k=20&c=WydkBjrqbYQKAITmQ9oEWzwzsQbQhp15OCOiSTgqj-g=",
   talkEyebrow: "",
@@ -667,7 +662,10 @@ const IndustryChipsRow = ({ chips }) => {
       <div className="absolute top-0 bottom-0 left-0 w-12 sm:w-24 bg-linear-to-r from-soft to-transparent z-10 pointer-events-none" />
       <div className="absolute top-0 bottom-0 right-0 w-12 sm:w-24 bg-linear-to-l from-soft to-transparent z-10 pointer-events-none" />
 
-      <div className="flex gap-3 whitespace-nowrap will-change-transform animate-marquee-left">
+      <div
+        className="flex gap-3 whitespace-nowrap will-change-transform animate-marquee-left"
+        style={{ animationDuration: "14s" }}
+      >
         {loopChips.map((item, i) => {
           const ItemIcon = resolveIcon(item.icon);
           const isSand = i % 2 === 1;
@@ -703,7 +701,7 @@ const CorporateCabServices = () => {
     <div className="bg-soft text-navy overflow-hidden">
       <Seo
         title="Corporate Cab Services"
-        description="Corporate cab and employee transportation services tailored to your business needs — shift-based scheduling, route planning, GPS tracking, and verified drivers."
+        description="Corporate cab and employee transportation services tailored to your business needs - shift-based scheduling, route planning, GPS tracking, and verified drivers."
         canonical="https://www.accivatravels.com/services/corporate-cab-services"
       />
 
@@ -889,7 +887,7 @@ const CorporateCabServices = () => {
       {/* ========================================================================= */}
       {/* ROUTE PLANNING AND TRANSPORTATION MANAGEMENT (HORIZONTAL TIMELINE)   */}
       {/* ========================================================================= */}
-      <section className="py-10 md:py-14 bg-soft relative overflow-hidden">
+      <section className="py-5 md:py-5 bg-soft relative overflow-hidden">
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-sand/10 rounded-tr-full pointer-events-none" />
         <div className="container-px relative z-10">
           <SectionHeading
@@ -1090,7 +1088,7 @@ const CorporateCabServices = () => {
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="mt-8 max-w-none w-full text-slate-700 text-[15px] font-normal leading-relaxed"
             >
               {content.industriesClosing}

@@ -19,6 +19,23 @@ import SmartLink from "../components/SmartLink";
 import { usePageContent } from "../data/useContent";
 import { resolveIcon } from "../data/iconMap";
 
+// Bolds a specific known phrase within a plain-text paragraph, without
+// changing the underlying (admin-editable) string data itself. Falls back
+// to the plain text untouched if the phrase isn't found (e.g. the content
+// was edited since).
+const boldPhrase = (text, phrase) => {
+  if (!phrase) return text;
+  const idx = text.indexOf(phrase);
+  if (idx === -1) return text;
+  return (
+    <>
+      {text.slice(0, idx)}
+      <strong>{phrase}</strong>
+      {text.slice(idx + phrase.length)}
+    </>
+  );
+};
+
 const ETS_DEFAULTS = {
   heroEyebrow: "Corporate Mobility",
   heroTitleMain: "Acciva Travels: Reliable Corporate Employee Transportation Services",
@@ -66,17 +83,14 @@ const ETS_DEFAULTS = {
   safetyCards: [
     {
       icon: "UserCheck",
-      title: "Verified, Trained Drivers",
       text: "At Acciva Travels, we maintain a fleet of well-maintained vehicles operated by experienced and trained drivers. Driver verification, qualifications, experience, and professional conduct are important parts of our transportation operations.",
     },
     {
       icon: "Wrench",
-      title: "Vehicle Upkeep",
       text: "We also pay attention to regular vehicle checks and maintenance to help keep every journey safe and comfortable.",
     },
     {
       icon: "Sparkles",
-      title: "Comfortable Journeys",
       text: "From clean interiors to comfortable seating and adequate ventilation, we aim to provide employees with a pleasant travel experience throughout their daily commute.",
     },
   ],
@@ -103,12 +117,10 @@ const ETS_DEFAULTS = {
   benefits: [
     {
       icon: "Building2",
-      title: "For Employers",
       text: "With Acciva Travels managing the transportation operation, your HR and administration teams can spend less time dealing with daily transportation coordination. We take care of route coordination, driver and vehicle allocation, scheduling, monitoring, and ongoing operational support.",
     },
     {
       icon: "Users",
-      title: "For Employees",
       text: "For employees, a dependable transportation service means more predictable commutes, less travel-related stress, and greater confidence in their daily journey to and from work.",
     },
   ],
@@ -212,6 +224,7 @@ const SectionHeading = ({
   description,
   center,
   descriptionClassName = "max-w-3xl",
+  boldPhrases,
 }) => {
   const paragraphs = Array.isArray(description) ? description : description ? [description] : [];
   return (
@@ -240,7 +253,7 @@ const SectionHeading = ({
           } ${descriptionClassName}`}
         >
           {paragraphs.map((para, i) => (
-            <p key={i}>{para}</p>
+            <p key={i}>{boldPhrases ? boldPhrase(para, boldPhrases[i]) : para}</p>
           ))}
         </motion.div>
       )}
@@ -443,7 +456,9 @@ const SafetyCard = ({ card, isActive }) => {
           })()}
         </div>
         <h3 className="font-display text-navy text-lg font-bold leading-snug">{card.title}</h3>
-        <p className="text-slate-600 text-[13px] leading-relaxed mt-2">{card.text}</p>
+        <p className="text-slate-600 text-[13px] leading-relaxed mt-2">
+          {boldPhrase(card.text, "well-maintained vehicles")}
+        </p>
       </div>
     </motion.div>
   );
@@ -628,7 +643,7 @@ const EmployeeTransportationServices = () => {
     <div className="bg-soft text-navy overflow-hidden">
       <Seo
         title="Employee Transportation Services"
-        description="Reliable corporate employee transportation services tailored to your business needs — shift-based scheduling, route planning, GPS tracking, and verified drivers."
+        description="Reliable corporate employee transportation services tailored to your business needs - shift-based scheduling, route planning, GPS tracking, and verified drivers."
         canonical="https://www.accivatravels.com/services/employee-transportation-services"
       />
 
@@ -745,7 +760,16 @@ const EmployeeTransportationServices = () => {
               className="h-full flex flex-col justify-center space-y-5 text-slate-700 text-[15px] font-normal leading-relaxed"
             >
               {content.introParagraphs.map((para, i) => (
-                <p key={i}>{para}</p>
+                <p key={i}>
+                  {boldPhrase(
+                    para,
+                    i === 1
+                      ? "Acciva Travels helps businesses take that responsibility off their hands."
+                      : i === 2
+                        ? "vehicles, drivers, routes, schedules, and tracking"
+                        : null
+                  )}
+                </p>
               ))}
             </motion.div>
           </div>
@@ -780,7 +804,16 @@ const EmployeeTransportationServices = () => {
               className="space-y-5 text-slate-700 text-[15px] font-normal leading-relaxed"
             >
               {content.offerParagraphs.map((para, i) => (
-                <p key={i}>{para}</p>
+                <p key={i}>
+                  {boldPhrase(
+                    para,
+                    i === 0
+                      ? "daily employee pickup and drop-off, shift-based transportation, and multiple pickup and drop-off locations."
+                      : i === 2
+                        ? "timely, consistent, and well-organized transportation every day."
+                        : null
+                  )}
+                </p>
               ))}
             </motion.div>
 
@@ -823,6 +856,12 @@ const EmployeeTransportationServices = () => {
             italicTitle={content.routeHeadingAccent}
             description={content.routeParagraphs}
             descriptionClassName="max-w-none w-full"
+            boldPhrases={[
+              null,
+              "HR, administration, and operations teams",
+              "traffic conditions, employee locations, route distances, and shift schedules",
+              null,
+            ]}
           />
 
           <div className="mt-4">
@@ -880,7 +919,12 @@ const EmployeeTransportationServices = () => {
               </h2>
               <div className="space-y-4 text-slate-700 text-[15px] font-normal leading-relaxed">
                 {content.techParagraphs.map((para, i) => (
-                  <p key={i}>{para}</p>
+                  <p key={i}>
+                    {boldPhrase(
+                      para,
+                      i === 1 ? "GPS vehicle tracking and driver monitoring systems" : null
+                    )}
+                  </p>
                 ))}
               </div>
               <TechFeatureRow features={content.techFeatures} />
@@ -983,7 +1027,14 @@ const EmployeeTransportationServices = () => {
                       {item.title}
                     </h3>
                     <p className="text-[15px] text-slate-700 leading-relaxed font-normal">
-                      {item.text}
+                      {boldPhrase(
+                        item.text,
+                        i === 0
+                          ? "HR and administration teams can spend less time dealing with daily transportation coordination."
+                          : i === 1
+                            ? "more predictable commutes, less travel-related stress, and greater confidence in their daily journey to and from work."
+                            : null
+                      )}
                     </p>
                   </div>
                 </TiltCard>
@@ -1027,7 +1078,9 @@ const EmployeeTransportationServices = () => {
               className="lg:col-span-7 space-y-5 text-slate-700 text-[15px] font-normal leading-relaxed"
             >
               {content.whyParagraphs.map((para, i) => (
-                <p key={i}>{para}</p>
+                <p key={i}>
+                  {boldPhrase(para, i === 0 ? "practical and flexible approach" : null)}
+                </p>
               ))}
 
               <TiltCard
@@ -1039,7 +1092,10 @@ const EmployeeTransportationServices = () => {
                   style={{ transform: "translateZ(20px)" }}
                   className="font-display text-lg sm:text-xl text-navy font-medium leading-snug relative"
                 >
-                  {content.whyHighlight}
+                  {boldPhrase(
+                    content.whyHighlight,
+                    "professional drivers, managed vehicles, route planning, GPS tracking, and responsive operational support,"
+                  )}
                 </p>
               </TiltCard>
             </motion.div>
@@ -1109,7 +1165,9 @@ const EmployeeTransportationServices = () => {
               </h2>
               <div className="mt-5 space-y-3 text-slate-700 text-[15px] font-normal leading-relaxed max-w-2xl mx-auto">
                 {content.talkParagraphs.map((para, i) => (
-                  <p key={i}>{para}</p>
+                  <p key={i}>
+                    {boldPhrase(para, i === 0 ? "employee or staff transportation" : null)}
+                  </p>
                 ))}
               </div>
               <div className="mt-8 flex justify-center">

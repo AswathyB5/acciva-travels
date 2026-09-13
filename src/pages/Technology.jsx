@@ -47,7 +47,7 @@ const TECHNOLOGY_DEFAULTS = {
   pillarsHeadingMain: "Six Pillars Powering",
   pillarsHeadingAccent: "Every Trip.",
   pillarsParagraph:
-    "Safety, cost efficiency, paperless workflows, live tracking, analytics and platform reliability — six interlocking systems working together behind every trip you book.",
+    "Safety, cost efficiency, paperless workflows, live tracking, analytics and platform reliability - six interlocking systems working together behind every trip you book.",
   pillars: [
     {
       category: "Safety & Security",
@@ -116,7 +116,7 @@ const TECHNOLOGY_DEFAULTS = {
       icon: "Cpu",
       badge: "Smart Technology",
       description:
-        "Acciva's scalable technology platform simplifies transportation management through intelligent routing, automation and real-time data—helping businesses improve efficiency and maintain greater operational control.",
+        "Acciva's scalable technology platform simplifies transportation management through intelligent routing, automation and real-time data - helping businesses improve efficiency and maintain greater operational control.",
       keywords: ["Intelligent Routing", "Automation", "Operational Control"],
       image:
         "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",

@@ -1103,7 +1103,7 @@ export const pages = [
             label: "Paragraph",
             type: "richtext",
             default:
-              "Safety, cost efficiency, paperless workflows, live tracking, analytics and platform reliability — six interlocking systems working together behind every trip you book.",
+              "Safety, cost efficiency, paperless workflows, live tracking, analytics and platform reliability - six interlocking systems working together behind every trip you book.",
           },
           {
             name: "pillars",
@@ -1173,7 +1173,7 @@ export const pages = [
                 icon: "Cpu",
                 badge: "Smart Technology",
                 description:
-                  "Acciva's scalable technology platform simplifies transportation management through intelligent routing, automation and real-time data—helping businesses improve efficiency and maintain greater operational control.",
+                  "Acciva's scalable technology platform simplifies transportation management through intelligent routing, automation and real-time data - helping businesses improve efficiency and maintain greater operational control.",
                 keywords: ["Intelligent Routing", "Automation", "Operational Control"],
                 image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
               },
@@ -2367,8 +2367,8 @@ export const pages = [
             label: "Paragraphs",
             type: "list",
             default: [
-              "Owning a fleet of vehicles is only the starting point. The real challenge for any business begins after the vehicles are on the road — keeping them available when needed, maintained on schedule, properly documented, and coordinated with drivers and routes on a daily basis. For corporates, IT companies, logistics providers, hospitals, and institutions running multiple vehicles, this responsibility can quietly grow into a full-time operational burden.",
-              "Vehicle availability has to be planned around shifting business needs. Maintenance has to be tracked so breakdowns don't disrupt operations. Drivers have to be coordinated across schedules, locations, and routes. Fuel costs need monitoring to prevent waste. Documentation — insurance, permits, registration, compliance records — has to stay current and accessible. None of this happens automatically, and when it's managed informally or reactively, it tends to consume far more time, money, and attention than businesses expect.",
+              "Owning a fleet of vehicles is only the starting point. The real challenge for any business begins after the vehicles are on the road - keeping them available when needed, maintained on schedule, properly documented, and coordinated with drivers and routes on a daily basis. For corporates, IT companies, logistics providers, hospitals, and institutions running multiple vehicles, this responsibility can quietly grow into a full-time operational burden.",
+              "Vehicle availability has to be planned around shifting business needs. Maintenance has to be tracked so breakdowns don't disrupt operations. Drivers have to be coordinated across schedules, locations, and routes. Fuel costs need monitoring to prevent waste. Documentation - insurance, permits, registration, compliance records - has to stay current and accessible. None of this happens automatically, and when it's managed informally or reactively, it tends to consume far more time, money, and attention than businesses expect.",
               "This is where professional fleet management services come in. Instead of internal teams juggling vehicle logistics alongside their core responsibilities, a dedicated fleet management company takes on the day-to-day coordination, so vehicles stay organised, costs stay controlled, and transportation runs smoothly in the background of business operations.",
             ],
           },
@@ -2393,7 +2393,7 @@ export const pages = [
             label: "Paragraphs (lead-in, closing)",
             type: "list",
             default: [
-              "Fleet management is not a single task — it's an ongoing set of coordinated activities that keep a vehicle fleet functional and cost-effective. At its core, it covers:",
+              "Fleet management is not a single task - it's an ongoing set of coordinated activities that keep a vehicle fleet functional and cost-effective. At its core, it covers:",
               "When these functions are handled together, in a coordinated way, a fleet stops being a collection of individual vehicle problems and starts operating as a single, manageable system.",
             ],
           },
@@ -2432,7 +2432,7 @@ export const pages = [
             label: "Paragraphs",
             type: "list",
             default: [
-              "Most businesses don't set out to build a transportation department — vehicles are usually added incrementally as operational needs grow. A company might start with two or three vehicles and, over time, find itself managing a dozen or more, each with its own maintenance history, driver assignments, and documentation requirements.",
+              "Most businesses don't set out to build a transportation department - vehicles are usually added incrementally as operational needs grow. A company might start with two or three vehicles and, over time, find itself managing a dozen or more, each with its own maintenance history, driver assignments, and documentation requirements.",
               "Without a structured approach, several problems tend to surface:",
             ],
           },
@@ -2458,7 +2458,7 @@ export const pages = [
             name: "routeClosing",
             label: "Closing Paragraph",
             type: "textarea",
-            default: "Individually, these issues might seem minor. Together, they add up to real operational and financial inefficiency — and they tend to worsen as a fleet grows.",
+            default: "Individually, these issues might seem minor. Together, they add up to real operational and financial inefficiency - and they tend to worsen as a fleet grows.",
           },
           {
             name: "routeSteps",
@@ -2508,7 +2508,7 @@ export const pages = [
               {
                 icon: "Wallet",
                 title: "Better Cost Control",
-                text: "Preventive maintenance reduces the likelihood of expensive emergency repairs. Fuel monitoring highlights inefficient usage patterns. Organised scheduling reduces idle time and unnecessary vehicle deployment — all of which contribute to more predictable, controlled costs.",
+                text: "Preventive maintenance reduces the likelihood of expensive emergency repairs. Fuel monitoring highlights inefficient usage patterns. Organised scheduling reduces idle time and unnecessary vehicle deployment - all of which contribute to more predictable, controlled costs.",
               },
               {
                 icon: "Gauge",
@@ -2518,7 +2518,7 @@ export const pages = [
               {
                 icon: "ShieldCheck",
                 title: "Fewer Disruptions",
-                text: "Vehicles that are properly maintained and scheduled are less likely to cause delays. This matters particularly for businesses where transportation directly supports operations — logistics companies moving goods, hospitals transporting patients or supplies, and corporates managing employee transport.",
+                text: "Vehicles that are properly maintained and scheduled are less likely to cause delays. This matters particularly for businesses where transportation directly supports operations - logistics companies moving goods, hospitals transporting patients or supplies, and corporates managing employee transport.",
               },
               {
                 icon: "FileCheck2",
@@ -2547,7 +2547,7 @@ export const pages = [
             type: "list",
             default: [
               "A practical fleet management solution works alongside a business's existing operations rather than requiring it to restructure how it works. Vehicle scheduling is planned around actual business requirements. Drivers are coordinated based on availability and route needs. Maintenance is scheduled proactively, based on usage and service intervals, rather than left until a vehicle needs urgent repair. Route planning is adjusted based on operational priorities, whether that's minimising delay, reducing distance, or accommodating multiple stops.",
-              "Vehicle tracking and fuel monitoring provide ongoing visibility, giving businesses a clearer picture of how their fleet is actually being used — information that's difficult to gather consistently through informal, in-house tracking. Documentation is maintained on an ongoing basis, so compliance doesn't become a periodic scramble.",
+              "Vehicle tracking and fuel monitoring provide ongoing visibility, giving businesses a clearer picture of how their fleet is actually being used - information that's difficult to gather consistently through informal, in-house tracking. Documentation is maintained on an ongoing basis, so compliance doesn't become a periodic scramble.",
               "The result is a fleet that functions predictably: vehicles are available when needed, maintenance doesn't cause unexpected disruptions, and the business has clear oversight of its transportation operations without having to manage each element separately.",
             ],
           },
@@ -2675,7 +2675,7 @@ export const pages = [
             label: "Paragraphs",
             type: "list",
             default: [
-              "Managing a fleet involves far more than keeping vehicles on the road — it requires consistent scheduling, proactive maintenance, coordinated drivers, and organised documentation to keep operations running without disruption. For businesses, corporates, logistics providers, hospitals, and institutions managing multiple vehicles, professional fleet management support can reduce operational strain and bring structure to day-to-day transportation.",
+              "Managing a fleet involves far more than keeping vehicles on the road - it requires consistent scheduling, proactive maintenance, coordinated drivers, and organised documentation to keep operations running without disruption. For businesses, corporates, logistics providers, hospitals, and institutions managing multiple vehicles, professional fleet management support can reduce operational strain and bring structure to day-to-day transportation.",
               "If your organisation is looking to bring more organisation and control to its vehicle fleet, get in touch with Acciva Travels to discuss your fleet management requirements and find an approach that fits your operational needs.",
             ],
           },
