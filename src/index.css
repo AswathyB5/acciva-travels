@@ -183,6 +183,16 @@ h4 em,
   opacity: 0.85;
 }
 
+.blog-article a {
+  color: var(--color-teal);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.blog-article a:hover {
+  opacity: 0.85;
+}
+
 ::selection {
   background: var(--color-sand);
   color: var(--color-navy);

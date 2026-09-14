@@ -177,7 +177,14 @@ const RichTextEditor = ({ value, onChange }) => {
   const openLinkPopover = () => {
     saveSelection();
     const sel = window.getSelection();
-    setLinkUrl(sel && !sel.isCollapsed ? "" : "");
+    let existingHref = "";
+    if (sel && sel.rangeCount > 0) {
+      let node = sel.getRangeAt(0).startContainer;
+      if (node.nodeType === 3) node = node.parentElement;
+      const anchor = node?.closest?.("a");
+      if (anchor && editorRef.current?.contains(anchor)) existingHref = anchor.getAttribute("href") || "";
+    }
+    setLinkUrl(existingHref);
     setColorOpen(false);
     setLinkOpen(true);
   };
@@ -405,6 +412,8 @@ const RichTextEditor = ({ value, onChange }) => {
             </div>
           )}
         </div>
+
+        <div className="w-px h-5 bg-navy/10 mx-1" />
 
         <button
           type="button"
