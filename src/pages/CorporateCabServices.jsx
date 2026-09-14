@@ -13,6 +13,7 @@ import {
   MessageCircle,
 } from "lucide-react";
 import Seo from "../components/Seo";
+import RichText from "../components/RichText";
 import AnimatedImage from "../components/AnimatedImage";
 import Magnetic from "../components/Magnetic";
 import SmartLink from "../components/SmartLink";
@@ -273,7 +274,7 @@ const SectionHeading = ({
           } ${descriptionClassName}`}
         >
           {paragraphs.map((para, i) => (
-            <p key={i}>{para}</p>
+            <RichText key={i} as="p" html={para} />
           ))}
         </motion.div>
       )}
@@ -476,7 +477,7 @@ const SafetyCard = ({ card, isActive }) => {
           })()}
         </div>
         <h3 className="font-display text-navy text-lg font-bold leading-snug">{card.title}</h3>
-        <p className="text-slate-600 text-[13px] leading-relaxed mt-2">{card.text}</p>
+        <RichText as="p" html={card.text} className="text-slate-600 text-[13px] leading-relaxed mt-2" />
       </div>
     </motion.div>
   );
@@ -818,7 +819,7 @@ const CorporateCabServices = () => {
               className="h-full flex flex-col justify-center space-y-5 text-slate-700 text-[15px] font-normal leading-relaxed"
             >
               {content.introParagraphs.map((para, i) => (
-                <p key={i}>{para}</p>
+                <RichText key={i} as="p" html={para} />
               ))}
             </motion.div>
           </div>
@@ -853,7 +854,7 @@ const CorporateCabServices = () => {
               className="space-y-5 text-slate-700 text-[15px] font-normal leading-relaxed"
             >
               {content.offerParagraphs.map((para, i) => (
-                <p key={i}>{para}</p>
+                <RichText key={i} as="p" html={para} />
               ))}
             </motion.div>
 
@@ -953,7 +954,7 @@ const CorporateCabServices = () => {
               </h2>
               <div className="space-y-4 text-slate-700 text-[15px] font-normal leading-relaxed">
                 {content.techParagraphs.map((para, i) => (
-                  <p key={i}>{para}</p>
+                  <RichText key={i} as="p" html={para} />
                 ))}
               </div>
               <TechFeatureRow features={content.techFeatures} />
@@ -1055,9 +1056,11 @@ const CorporateCabServices = () => {
                     <h3 className="font-display text-lg sm:text-xl text-navy font-bold mb-3">
                       {item.title}
                     </h3>
-                    <p className="text-[15px] text-slate-700 leading-relaxed font-normal">
-                      {item.text}
-                    </p>
+                    <RichText
+                      as="p"
+                      html={item.text}
+                      className="text-[15px] text-slate-700 leading-relaxed font-normal"
+                    />
                   </div>
                 </TiltCard>
               </motion.div>
@@ -1084,15 +1087,15 @@ const CorporateCabServices = () => {
           <IndustryChipsRow chips={content.industriesChips} />
 
           {content.industriesClosing && (
-            <motion.p
+            <RichText
+              as={motion.p}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="mt-8 max-w-none w-full text-slate-700 text-[15px] font-normal leading-relaxed"
-            >
-              {content.industriesClosing}
-            </motion.p>
+              html={content.industriesClosing}
+            />
           )}
         </div>
       </section>
@@ -1130,7 +1133,7 @@ const CorporateCabServices = () => {
               className="lg:col-span-7 space-y-5 text-slate-700 text-[15px] font-normal leading-relaxed"
             >
               {content.whyParagraphs.map((para, i) => (
-                <p key={i}>{para}</p>
+                <RichText key={i} as="p" html={para} />
               ))}
 
               <TiltCard
@@ -1138,12 +1141,12 @@ const CorporateCabServices = () => {
                 accentGlow="rgba(59,141,196,0.45)"
                 className="p-6 sm:p-7 rounded-3xl bg-white border border-teal/30 shadow-xl cursor-default overflow-hidden"
               >
-                <p
+                <RichText
+                  as="p"
                   style={{ transform: "translateZ(20px)" }}
                   className="font-display text-lg sm:text-xl text-navy font-medium leading-snug relative"
-                >
-                  {content.whyHighlight}
-                </p>
+                  html={content.whyHighlight}
+                />
               </TiltCard>
             </motion.div>
 
@@ -1212,7 +1215,7 @@ const CorporateCabServices = () => {
               </h2>
               <div className="mt-5 space-y-3 text-slate-700 text-[15px] font-normal leading-relaxed max-w-2xl mx-auto">
                 {content.talkParagraphs.map((para, i) => (
-                  <p key={i}>{para}</p>
+                  <RichText key={i} as="p" html={para} />
                 ))}
               </div>
               <div className="mt-8 flex justify-center">

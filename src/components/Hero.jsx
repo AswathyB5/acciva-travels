@@ -226,9 +226,9 @@ const Hero = ({
                 >
                   <NavLink
                     to={currentPanel.link}
-                    className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-sm hover:shadow-2xl transition-all shadow-xl group active:scale-95 max-w-full"
+                    className="inline-flex items-center gap-3 px-6 sm:px-8 py-3.5 rounded-full bg-sand text-navy font-bold text-xs sm:text-sm hover:shadow-2xl transition-all shadow-xl group active:scale-95 max-w-full text-left"
                   >
-                    <span className="truncate">{currentPanel.linkText}</span>
+                    <span>{currentPanel.linkText}</span>
                     <ArrowUpRight
                       size={16}
                       className="shrink-0 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"

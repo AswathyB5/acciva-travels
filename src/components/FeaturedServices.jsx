@@ -5,6 +5,7 @@ import { useCollection } from "../data/useContent";
 import { resolveIcon } from "../data/iconMap";
 import AnimatedImage from "./AnimatedImage";
 import SmartLink from "./SmartLink";
+import RichText from "./RichText";
 
 const ACCENTS = ["teal", "sand", "teal"];
 
@@ -178,9 +179,11 @@ const FeaturedServices = ({
             <p className="text-xs font-mono uppercase tracking-wider text-teal font-bold">
               {stripTitle}
             </p>
-            <p className="text-[13px] text-slate-600 leading-relaxed mt-0.5">
-              {stripDescription}
-            </p>
+            <RichText
+              as="p"
+              html={stripDescription}
+              className="text-[13px] text-slate-600 leading-relaxed mt-0.5"
+            />
           </div>
         </div>
 

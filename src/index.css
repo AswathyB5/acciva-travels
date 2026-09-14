@@ -24,6 +24,13 @@
 
 html {
   scroll-behavior: smooth;
+  /* Off-screen entrance-animation states (e.g. initial={{ x: ±40 }} before a
+     whileInView reveal) translate elements outside the viewport before they
+     scroll into view. `overflow-x: hidden` on body alone doesn't reliably
+     stop that from making the actual scrolling viewport (documentElement)
+     wider than the screen — setting it here too closes that gap site-wide,
+     instead of adding overflow-hidden to every individual animated section. */
+  overflow-x: hidden;
 }
 
 body {

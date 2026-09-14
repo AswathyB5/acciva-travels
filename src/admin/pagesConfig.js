@@ -303,7 +303,7 @@ export const pages = [
             ],
             itemFields: [
               { name: "name", label: "Vehicle Name", type: "text" },
-              { name: "description", label: "Description", type: "textarea" },
+              { name: "description", label: "Description", type: "richtext" },
               { name: "image", label: "Image", type: "image" },
             ],
           },
@@ -357,7 +357,7 @@ export const pages = [
           {
             name: "servicesStripDescription",
             label: "Capability Strip Description",
-            type: "textarea",
+            type: "richtext",
             default: "Also providing Dedicated Staff Bus Shuttles, Corporate VIP Delegations & Inter-City Business Transit.",
           },
           { name: "servicesStripButtonText", label: "Capability Strip Button Text", type: "text", default: "View All Capabilities" },
@@ -434,7 +434,7 @@ export const pages = [
             ],
             itemFields: [
               { name: "title", label: "Title", type: "text" },
-              { name: "description", label: "Description", type: "textarea" },
+              { name: "description", label: "Description", type: "richtext" },
               { name: "icon", label: "Icon", type: "select", options: iconNames },
             ],
           },
@@ -524,6 +524,7 @@ export const pages = [
             name: "historyParagraphs",
             label: "Paragraphs",
             type: "list",
+            richItems: true,
             default: [
               "Acciva Travels was founded in 2016 as a Private Limited Company, building on a strong foundation established in 2007 as Gettz Travel Solutions. Initially, the company started on a smaller scale providing reliable employee transportation services to businesses.",
               "Over the years, Acciva expanded its operations to meet the growing corporate travel and employee transportation needs of businesses across different locations. With continuous growth, professional expertise and a commitment to quality service. Acciva has developed into a trusted employee transportation and fleet management service provider.",
@@ -576,6 +577,7 @@ export const pages = [
             name: "whyParagraphs",
             label: "Intro Paragraphs",
             type: "list",
+            richItems: true,
             default: [
               "At Acciva Travels, we combine experience, knowledge, confidence and courteous service to deliver reliable travel and transportation solutions. We understand that every customer deserves a safe, comfortable and hassle-free travel experience.",
               "With years of industry experience, we have built our reputation by maintaining a strong focus on customer satisfaction, service quality, safety and reliability. Our dedicated team works proactively to understand customer needs and provide transportation solutions that consistently meet high standards.",
@@ -619,7 +621,7 @@ export const pages = [
             ],
             itemFields: [
               { name: "title", label: "Title", type: "text" },
-              { name: "description", label: "Description", type: "textarea" },
+              { name: "description", label: "Description", type: "richtext" },
               { name: "icon", label: "Icon", type: "select", options: iconNames },
               { name: "badge", label: "Badge Chip Text", type: "text" },
             ],
@@ -643,6 +645,7 @@ export const pages = [
             name: "purposeParagraphs",
             label: "Paragraphs",
             type: "list",
+            richItems: true,
             default: [
               "Every journey carries a responsibility. At Acciva Travels, we take that responsibility seriously.",
               "With a strong focus on safety, reliability, punctuality and service excellence, we create transportation experiences that help businesses keep their people moving with confidence. From everyday employee commutes to comprehensive corporate mobility requirements, our team is committed to making every journey seamless.",
@@ -707,7 +710,7 @@ export const pages = [
           {
             name: "finalCtaParagraph",
             label: "Paragraph",
-            type: "textarea",
+            type: "richtext",
             default: "Let's create a safer, smarter, and more dependable transportation experience for your organization.",
           },
           { name: "finalCtaButtonText", label: "Button Text", type: "text", default: "Get Started With Acciva" },
@@ -763,6 +766,7 @@ export const pages = [
             name: "introParagraphs",
             label: "Paragraphs",
             type: "list",
+            richItems: true,
             default: [
               "At Acciva Travels, we provide reliable passenger transportation for schools, businesses, corporations, and institutions. We work with each client to understand their requirements and build a transportation service that fits their routes, schedules, and day-to-day operations.",
               "From school and employee transportation to scheduled and customized services, we manage the people, vehicles, routes, and schedules involved in keeping your transportation running smoothly. Our focus is simple: safe journeys, dependable service, and better visibility for our clients.",
@@ -787,6 +791,7 @@ export const pages = [
             name: "offerParagraphs",
             label: "Paragraphs",
             type: "list",
+            richItems: true,
             default: [
               "Acciva Travels provides transportation solutions for organizations with regular or customized travel requirements.",
               "Our services include school transportation, corporate and employee transportation, scheduled transportation, route planning, fleet management, and customized transportation services.",
@@ -813,7 +818,7 @@ export const pages = [
             ],
             itemFields: [
               { name: "title", label: "Title", type: "text" },
-              { name: "description", label: "Description", type: "textarea" },
+              { name: "description", label: "Description", type: "richtext" },
             ],
           },
         ],
@@ -829,6 +834,7 @@ export const pages = [
             name: "techParagraphs",
             label: "Paragraphs",
             type: "list",
+            richItems: true,
             default: [
               "Technology plays an important role in how we manage our transportation services.",
               "With GPS vehicle tracking and mobile-based monitoring, clients can have better visibility of vehicles and routes. Tracking information can help transportation teams monitor journeys, keep passengers informed, and respond quickly when routes or schedules need to change.",
@@ -871,6 +877,7 @@ export const pages = [
             name: "safetyParagraphs",
             label: "Paragraphs",
             type: "list",
+            richItems: true,
             default: [
               "When you are responsible for transporting students or employees, safety comes first.",
               "Our aim is to give schools, businesses, passengers, and parents confidence that their transportation is being handled responsibly.",
@@ -901,7 +908,7 @@ export const pages = [
             itemFields: [
               { name: "icon", label: "Icon", type: "select", options: iconNames },
               { name: "title", label: "Title", type: "text" },
-              { name: "text", label: "Text", type: "textarea" },
+              { name: "text", label: "Text", type: "richtext" },
             ],
           },
         ],
@@ -917,6 +924,7 @@ export const pages = [
             name: "whyParagraphs",
             label: "Paragraphs",
             type: "list",
+            richItems: true,
             default: [
               "Every organization has different transportation needs. A school may need carefully planned student routes, while a company may need employee pickups that match multiple shifts and locations.",
               "That's why we don't believe in a one-size-fits-all approach.",
@@ -926,7 +934,7 @@ export const pages = [
           {
             name: "whyHighlight",
             label: "Highlight Quote",
-            type: "textarea",
+            type: "richtext",
             default:
               "With professional drivers, managed vehicles, route planning, and technology-supported tracking, we provide organizations with a transportation partner they can rely on.",
           },
@@ -944,7 +952,7 @@ export const pages = [
             itemFields: [
               { name: "icon", label: "Icon", type: "select", options: iconNames },
               { name: "title", label: "Title", type: "text" },
-              { name: "text", label: "Text", type: "textarea" },
+              { name: "text", label: "Text", type: "richtext" },
             ],
           },
         ],
@@ -959,6 +967,7 @@ export const pages = [
             name: "talkParagraphs",
             label: "Paragraphs",
             type: "list",
+            richItems: true,
             default: [
               "Looking for a reliable transportation partner for your school, business, or organization?",
               "Talk to Acciva Travels about your requirements. We'll work with you to understand your routes, schedules, and operational needs and develop a transportation solution that works for you.",
@@ -1055,6 +1064,7 @@ export const pages = [
             name: "featuresParagraphs",
             label: "Paragraphs",
             type: "list",
+            richItems: true,
             default: [
               "Acciva Travels is a professionally managed corporate transportation and mobility company providing dependable, safe and efficient transportation solutions for businesses. We go beyond simply providing vehicles by managing the complete transportation process-from vehicle and driver coordination to trip management, technology, safety, reporting and customer support.",
               "Our integrated approach helps businesses simplify their employee transportation and corporate mobility operations, improve efficiency and deliver a smoother travel experience for employees and organizations. With a strong focus on reliability, safety, operational efficiency and customer satisfaction, Acciva Travels supports businesses with transportation solutions designed to meet their evolving mobility requirements.",
@@ -1184,7 +1194,7 @@ export const pages = [
               { name: "tag", label: "Tag", type: "text" },
               { name: "icon", label: "Icon", type: "select", options: iconNames },
               { name: "badge", label: "Badge", type: "text" },
-              { name: "description", label: "Description", type: "textarea" },
+              { name: "description", label: "Description", type: "richtext" },
               { name: "keywords", label: "Keywords", type: "list" },
               { name: "image", label: "Image", type: "image" },
             ],
@@ -1452,7 +1462,7 @@ export const pages = [
           {
             name: "mapDescription",
             label: "Description",
-            type: "text",
+            type: "richtext",
             default: "Serving Manyata Tech Park, Electronic City, Whitefield, Outer Ring Road & Pan-India Corridors.",
           },
           { name: "mapButtonText", label: "Button Text", type: "text", default: "Open in Google Maps" },
@@ -1482,7 +1492,7 @@ export const pages = [
           {
             name: "closingParagraph",
             label: "Paragraph",
-            type: "text",
+            type: "richtext",
             default: "Our corporate transit managers are available round-the-clock to structure scalable transit contracts for your team.",
           },
           { name: "closingButtonText", label: "Button Text", type: "text", default: "Explore Fleet Capabilities" },
@@ -1626,7 +1636,7 @@ export const pages = [
           {
             name: "vehicleParagraph",
             label: "Paragraph",
-            type: "text",
+            type: "richtext",
             default: "Fill out the form below and our onboarding team will guide you through document verification and vehicle attachment.",
           },
           {
@@ -1728,10 +1738,11 @@ export const pages = [
             name: "introParagraphs",
             label: "Paragraphs",
             type: "list",
+            richItems: true,
             default: [
               "Managing employee transportation can become complicated when you have multiple shifts, pickup locations, routes, and changing workforce requirements. Delays, missed pickups, and poor coordination can affect employee experience and also add unnecessary work for your HR and administration teams.",
-              "Acciva Travels helps businesses take that responsibility off their hands. We plan and manage employee transportation around your working hours, employee locations, and operational requirements, providing reliable daily pickup and drop-off services while your team focuses on running the business.",
-              "From scheduled employee transportation to shift-based services and customized routes, we handle the coordination of vehicles, drivers, routes, schedules, and tracking to keep your employee transportation organized and dependable.",
+              "<strong>Acciva Travels helps businesses take that responsibility off their hands.</strong> We plan and manage employee transportation around your working hours, employee locations, and operational requirements, providing reliable daily pickup and drop-off services while your team focuses on running the business.",
+              "From scheduled employee transportation to shift-based services and customized routes, we handle the coordination of <strong>vehicles, drivers, routes, schedules, and tracking</strong> to keep your employee transportation organized and dependable.",
             ],
           },
           {
@@ -1754,10 +1765,11 @@ export const pages = [
             name: "offerParagraphs",
             label: "Paragraphs",
             type: "list",
+            richItems: true,
             default: [
-              "Acciva Travels offers employee transportation solutions that include daily employee pickup and drop-off, shift-based transportation, and multiple pickup and drop-off locations.",
+              "Acciva Travels offers employee transportation solutions that include <strong>daily employee pickup and drop-off, shift-based transportation, and multiple pickup and drop-off locations.</strong>",
               "We understand that every organization has different transportation requirements. Some businesses may have several work shifts, while others may have employees travelling from different parts of the city. Transportation requirements can also change as teams, shifts, and employee locations change.",
-              "Our services are designed to accommodate these requirements and provide your staff with timely, consistent, and well-organized transportation every day.",
+              "Our services are designed to accommodate these requirements and provide your staff with <strong>timely, consistent, and well-organized transportation every day.</strong>",
             ],
           },
           {
@@ -1779,10 +1791,11 @@ export const pages = [
             name: "routeParagraphs",
             label: "Paragraphs",
             type: "list",
+            richItems: true,
             default: [
               "A good transportation service starts with good planning.",
-              "We work closely with your HR, administration, and operations teams to understand employee locations, shift timings, preferred pickup points, route requirements, and other operational needs. Based on this information, we develop transportation plans that are practical and efficient for your organization.",
-              "Our route planning takes into account factors such as traffic conditions, employee locations, route distances, and shift schedules. This helps us create routes that reduce unnecessary travel time while keeping pickups and drop-offs organized and punctual.",
+              "We work closely with your <strong>HR, administration, and operations teams</strong> to understand employee locations, shift timings, preferred pickup points, route requirements, and other operational needs. Based on this information, we develop transportation plans that are practical and efficient for your organization.",
+              "Our route planning takes into account factors such as <strong>traffic conditions, employee locations, route distances, and shift schedules</strong>. This helps us create routes that reduce unnecessary travel time while keeping pickups and drop-offs organized and punctual.",
               "As requirements change, routes and schedules can also be reviewed and adjusted to keep the service working effectively.",
             ],
           },
@@ -1812,7 +1825,7 @@ export const pages = [
           { name: "safetyEyebrow", label: "Eyebrow", type: "text", default: "Trust & Compliance" },
           { name: "safetyHeadingMain", label: "Heading", type: "text", default: "Safety, Drivers" },
           { name: "safetyHeadingAccent", label: "Heading (Highlighted)", type: "text", default: "& Vehicles." },
-          { name: "safetyDescription", label: "Description", type: "text", default: "Employee safety is one of our priorities." },
+          { name: "safetyDescription", label: "Description", type: "richtext", default: "Employee safety is one of our priorities." },
           {
             name: "safetyCards",
             label: "Safety Cards",
@@ -1822,7 +1835,7 @@ export const pages = [
               {
                 icon: "UserCheck",
                 title: "Verified, Trained Drivers",
-                text: "At Acciva Travels, we maintain a fleet of well-maintained vehicles operated by experienced and trained drivers. Driver verification, qualifications, experience, and professional conduct are important parts of our transportation operations.",
+                text: "At Acciva Travels, we maintain a fleet of <strong>well-maintained vehicles</strong> operated by experienced and trained drivers. Driver verification, qualifications, experience, and professional conduct are important parts of our transportation operations.",
               },
               {
                 icon: "Wrench",
@@ -1838,7 +1851,7 @@ export const pages = [
             itemFields: [
               { name: "icon", label: "Icon", type: "select", options: iconNames },
               { name: "title", label: "Title", type: "text" },
-              { name: "text", label: "Text", type: "textarea" },
+              { name: "text", label: "Text", type: "richtext" },
             ],
           },
         ],
@@ -1854,9 +1867,10 @@ export const pages = [
             name: "techParagraphs",
             label: "Paragraphs",
             type: "list",
+            richItems: true,
             default: [
               "Technology gives businesses better visibility over their transportation operations.",
-              "Our corporate transportation services can incorporate GPS vehicle tracking and driver monitoring systems, allowing authorized teams to view vehicle locations and monitor transportation activity.",
+              "Our corporate transportation services can incorporate <strong>GPS vehicle tracking and driver monitoring systems</strong>, allowing authorized teams to view vehicle locations and monitor transportation activity.",
               "This provides HR and administration teams with useful information about ongoing journeys and helps improve communication when there are changes or unexpected delays. Better visibility also makes it easier to manage routes, schedules, and day-to-day transportation requirements.",
             ],
           },
@@ -1894,7 +1908,7 @@ export const pages = [
           {
             name: "benefitsDescription",
             label: "Description",
-            type: "text",
+            type: "richtext",
             default: "Managing employee transportation can take considerable time, particularly when there are multiple routes, shifts, vehicles, and pickup locations involved.",
           },
           {
@@ -1906,18 +1920,18 @@ export const pages = [
               {
                 icon: "Building2",
                 title: "For Employers",
-                text: "With Acciva Travels managing the transportation operation, your HR and administration teams can spend less time dealing with daily transportation coordination. We take care of route coordination, driver and vehicle allocation, scheduling, monitoring, and ongoing operational support.",
+                text: "With Acciva Travels managing the transportation operation, <strong>your HR and administration teams can spend less time dealing with daily transportation coordination.</strong> We take care of route coordination, driver and vehicle allocation, scheduling, monitoring, and ongoing operational support.",
               },
               {
                 icon: "Users",
                 title: "For Employees",
-                text: "For employees, a dependable transportation service means more predictable commutes, less travel-related stress, and greater confidence in their daily journey to and from work.",
+                text: "For employees, a dependable transportation service means <strong>more predictable commutes, less travel-related stress, and greater confidence in their daily journey to and from work.</strong>",
               },
             ],
             itemFields: [
               { name: "icon", label: "Icon", type: "select", options: iconNames },
               { name: "title", label: "Title", type: "text" },
-              { name: "text", label: "Text", type: "textarea" },
+              { name: "text", label: "Text", type: "richtext" },
             ],
           },
         ],
@@ -1933,17 +1947,18 @@ export const pages = [
             name: "whyParagraphs",
             label: "Paragraphs",
             type: "list",
+            richItems: true,
             default: [
-              "Every business has its own workforce, working hours, locations, and transportation challenges. That's why we take a practical and flexible approach to employee transportation.",
+              "Every business has its own workforce, working hours, locations, and transportation challenges. That's why we take a <strong>practical and flexible approach</strong> to employee transportation.",
               "Acciva Travels works with your team to understand what you need and build a transportation plan around your actual requirements. Whether you have multiple shifts, employees travelling from different locations, or changing transportation needs, we work to keep the service organized and reliable.",
             ],
           },
           {
             name: "whyHighlight",
             label: "Highlight Quote",
-            type: "textarea",
+            type: "richtext",
             default:
-              "With professional drivers, managed vehicles, route planning, GPS tracking, and responsive operational support, we provide businesses with a transportation partner they can rely on.",
+              "With <strong>professional drivers, managed vehicles, route planning, GPS tracking, and responsive operational support,</strong> we provide businesses with a transportation partner they can rely on.",
           },
           {
             name: "whyImage",
@@ -1965,8 +1980,9 @@ export const pages = [
             name: "talkParagraphs",
             label: "Paragraphs",
             type: "list",
+            richItems: true,
             default: [
-              "If your organization is looking for a reliable partner to manage employee or staff transportation, Acciva Travels can help.",
+              "If your organization is looking for a reliable partner to manage <strong>employee or staff transportation</strong>, Acciva Travels can help.",
               "Talk to us about your routes, shift timings, employee locations, and other requirements. We'll work with your team to understand your needs and develop a transportation plan that works for your business and your employees.",
             ],
           },
@@ -2016,6 +2032,7 @@ export const pages = [
             name: "introParagraphs",
             label: "Paragraphs",
             type: "list",
+            richItems: true,
             default: [
               "For businesses operating across multiple shifts and locations, employee transportation is an important part of keeping everyday operations on track. Late pickups, poorly planned routes, or inconsistent transport arrangements can affect employee punctuality, productivity, and overall work experience.",
               "Acciva Travels provides corporate employee transportation services for companies, IT firms, institutions, and other organizations that need a dependable way to manage staff travel. We work with HR, administration, and operations teams to understand their requirements and put practical transportation arrangements in place based on employee locations, work schedules, and shift timings.",
@@ -2042,6 +2059,7 @@ export const pages = [
             name: "offerParagraphs",
             label: "Paragraphs",
             type: "list",
+            richItems: true,
             default: [
               "Acciva Travels provides employee transportation solutions for organizations with regular or shift-based travel requirements. Services can include daily employee pickup and drop-off, transportation for different work shifts, and arrangements covering multiple employee pickup and drop-off points.",
               "Every organization has a different workforce structure. Some may have employees travelling from several areas, while others may operate early morning, evening, or night shifts. Transportation requirements can also change as employees join, leave, relocate, or change their working hours.",
@@ -2067,6 +2085,7 @@ export const pages = [
             name: "routeParagraphs",
             label: "Paragraphs",
             type: "list",
+            richItems: true,
             default: [
               "An effective employee transportation system starts with understanding where employees live and when they need to travel.",
               "We coordinate with the relevant teams to understand employee locations, shift schedules, pickup requirements, and operational preferences. Based on this information, transportation routes can be planned around the distribution of employees and their working hours.",
@@ -2100,7 +2119,7 @@ export const pages = [
           { name: "safetyEyebrow", label: "Eyebrow", type: "text", default: "Trust & Compliance" },
           { name: "safetyHeadingMain", label: "Heading", type: "text", default: "Drivers and" },
           { name: "safetyHeadingAccent", label: "Heading (Highlighted)", type: "text", default: "Vehicles." },
-          { name: "safetyDescription", label: "Description", type: "text", default: "The quality of employee transportation depends on both the vehicles being used and the people operating them." },
+          { name: "safetyDescription", label: "Description", type: "richtext", default: "The quality of employee transportation depends on both the vehicles being used and the people operating them." },
           {
             name: "safetyCards",
             label: "Safety Cards",
@@ -2126,7 +2145,7 @@ export const pages = [
             itemFields: [
               { name: "icon", label: "Icon", type: "select", options: iconNames },
               { name: "title", label: "Title", type: "text" },
-              { name: "text", label: "Text", type: "textarea" },
+              { name: "text", label: "Text", type: "richtext" },
             ],
           },
         ],
@@ -2142,6 +2161,7 @@ export const pages = [
             name: "techParagraphs",
             label: "Paragraphs",
             type: "list",
+            richItems: true,
             default: [
               "Technology can make corporate transportation easier to monitor and coordinate.",
               "Where GPS-enabled transportation is used, vehicle locations can be monitored during trips, giving the concerned teams better visibility of ongoing journeys. This can also make it easier to communicate with drivers and respond when there are changes or delays.",
@@ -2182,7 +2202,7 @@ export const pages = [
           {
             name: "benefitsDescription",
             label: "Description",
-            type: "text",
+            type: "richtext",
             default: "A professionally managed employee transportation system can make a noticeable difference to the way a company handles its daily operations.",
           },
           {
@@ -2220,7 +2240,7 @@ export const pages = [
             itemFields: [
               { name: "icon", label: "Icon", type: "select", options: iconNames },
               { name: "title", label: "Title", type: "text" },
-              { name: "text", label: "Text", type: "textarea" },
+              { name: "text", label: "Text", type: "richtext" },
             ],
           },
         ],
@@ -2236,6 +2256,7 @@ export const pages = [
             name: "industriesParagraphs",
             label: "Paragraphs",
             type: "list",
+            richItems: true,
             default: [
               "Employee transportation can be useful across a wide range of businesses and institutions.",
               "Acciva Travels can support transportation requirements for:",
@@ -2264,7 +2285,7 @@ export const pages = [
           {
             name: "industriesClosing",
             label: "Closing Paragraph",
-            type: "textarea",
+            type: "richtext",
             default: "Whether a company requires regular office transportation or arrangements for employees working at different times, the transportation plan can be developed around its specific operational requirements.",
           },
         ],
@@ -2280,6 +2301,7 @@ export const pages = [
             name: "whyParagraphs",
             label: "Paragraphs",
             type: "list",
+            richItems: true,
             default: [
               "Choosing a corporate transportation provider is ultimately about finding a service that fits the way your business operates.",
               "Acciva Travels focuses on understanding the transportation requirements of each organization before putting a service arrangement in place. From employee locations and shift timings to route planning and vehicle coordination, the different parts of the process can be managed as one system.",
@@ -2289,7 +2311,7 @@ export const pages = [
           {
             name: "whyHighlight",
             label: "Highlight Quote",
-            type: "textarea",
+            type: "richtext",
             default:
               "Our approach is centred on clear communication and practical planning. We work with the teams responsible for employee transportation to help keep daily travel organised while reducing the amount of coordination required from within the company.",
           },
@@ -2313,6 +2335,7 @@ export const pages = [
             name: "talkParagraphs",
             label: "Paragraphs",
             type: "list",
+            richItems: true,
             default: [
               "Employee transportation may seem like a small part of business operations, but when hundreds of employees depend on it every day, the way it is managed matters.",
               "A well-organised transportation system can help businesses manage shift schedules, reduce administrative work, and provide employees with a more convenient way to travel to and from work.",
@@ -2366,6 +2389,7 @@ export const pages = [
             name: "introParagraphs",
             label: "Paragraphs",
             type: "list",
+            richItems: true,
             default: [
               "Owning a fleet of vehicles is only the starting point. The real challenge for any business begins after the vehicles are on the road - keeping them available when needed, maintained on schedule, properly documented, and coordinated with drivers and routes on a daily basis. For corporates, IT companies, logistics providers, hospitals, and institutions running multiple vehicles, this responsibility can quietly grow into a full-time operational burden.",
               "Vehicle availability has to be planned around shifting business needs. Maintenance has to be tracked so breakdowns don't disrupt operations. Drivers have to be coordinated across schedules, locations, and routes. Fuel costs need monitoring to prevent waste. Documentation - insurance, permits, registration, compliance records - has to stay current and accessible. None of this happens automatically, and when it's managed informally or reactively, it tends to consume far more time, money, and attention than businesses expect.",
@@ -2392,6 +2416,7 @@ export const pages = [
             name: "offerParagraphs",
             label: "Paragraphs (lead-in, closing)",
             type: "list",
+            richItems: true,
             default: [
               "Fleet management is not a single task - it's an ongoing set of coordinated activities that keep a vehicle fleet functional and cost-effective. At its core, it covers:",
               "When these functions are handled together, in a coordinated way, a fleet stops being a collection of individual vehicle problems and starts operating as a single, manageable system.",
@@ -2415,7 +2440,7 @@ export const pages = [
             itemFields: [
               { name: "icon", label: "Icon", type: "select", options: iconNames },
               { name: "title", label: "Title", type: "text" },
-              { name: "text", label: "Text", type: "textarea" },
+              { name: "text", label: "Text", type: "richtext" },
             ],
           },
         ],
@@ -2431,6 +2456,7 @@ export const pages = [
             name: "routeParagraphs",
             label: "Paragraphs",
             type: "list",
+            richItems: true,
             default: [
               "Most businesses don't set out to build a transportation department - vehicles are usually added incrementally as operational needs grow. A company might start with two or three vehicles and, over time, find itself managing a dozen or more, each with its own maintenance history, driver assignments, and documentation requirements.",
               "Without a structured approach, several problems tend to surface:",
@@ -2451,13 +2477,13 @@ export const pages = [
             ],
             itemFields: [
               { name: "icon", label: "Icon", type: "select", options: iconNames },
-              { name: "text", label: "Text", type: "textarea" },
+              { name: "text", label: "Text", type: "richtext" },
             ],
           },
           {
             name: "routeClosing",
             label: "Closing Paragraph",
-            type: "textarea",
+            type: "richtext",
             default: "Individually, these issues might seem minor. Together, they add up to real operational and financial inefficiency - and they tend to worsen as a fleet grows.",
           },
           {
@@ -2491,7 +2517,7 @@ export const pages = [
           {
             name: "safetyDescription",
             label: "Description",
-            type: "text",
+            type: "richtext",
             default: "Corporate fleet management addresses these issues by centralising responsibility for fleet operations under a structured, ongoing process rather than leaving it to ad hoc internal handling. The benefits extend across several areas of the business:",
           },
           {
@@ -2529,7 +2555,7 @@ export const pages = [
             itemFields: [
               { name: "icon", label: "Icon", type: "select", options: iconNames },
               { name: "title", label: "Title", type: "text" },
-              { name: "text", label: "Text", type: "textarea" },
+              { name: "text", label: "Text", type: "richtext" },
             ],
           },
         ],
@@ -2545,6 +2571,7 @@ export const pages = [
             name: "techParagraphs",
             label: "Paragraphs",
             type: "list",
+            richItems: true,
             default: [
               "A practical fleet management solution works alongside a business's existing operations rather than requiring it to restructure how it works. Vehicle scheduling is planned around actual business requirements. Drivers are coordinated based on availability and route needs. Maintenance is scheduled proactively, based on usage and service intervals, rather than left until a vehicle needs urgent repair. Route planning is adjusted based on operational priorities, whether that's minimising delay, reducing distance, or accommodating multiple stops.",
               "Vehicle tracking and fuel monitoring provide ongoing visibility, giving businesses a clearer picture of how their fleet is actually being used - information that's difficult to gather consistently through informal, in-house tracking. Documentation is maintained on an ongoing basis, so compliance doesn't become a periodic scramble.",
@@ -2587,7 +2614,7 @@ export const pages = [
           {
             name: "benefitsDescription",
             label: "Description",
-            type: "text",
+            type: "richtext",
             default: "Fleet management services are relevant to any organisation operating more than a handful of vehicles, but the need becomes particularly pronounced in certain sectors:",
           },
           {
@@ -2620,13 +2647,13 @@ export const pages = [
             itemFields: [
               { name: "icon", label: "Icon", type: "select", options: iconNames },
               { name: "title", label: "Title", type: "text" },
-              { name: "text", label: "Text", type: "textarea" },
+              { name: "text", label: "Text", type: "richtext" },
             ],
           },
           {
             name: "benefitsClosing",
             label: "Closing Paragraph",
-            type: "textarea",
+            type: "richtext",
             default: "Across all of these sectors, the common thread is the same: transportation supports the core business, but it isn't the core business. Handing over fleet operations to a dedicated provider allows organisations to keep transportation reliable without diverting attention from what they actually do.",
           },
         ],
@@ -2642,6 +2669,7 @@ export const pages = [
             name: "whyParagraphs",
             label: "Paragraphs",
             type: "list",
+            richItems: true,
             default: [
               "Partnering with a fleet management company means shifting the day-to-day responsibility of fleet operations to a team that focuses on exactly that. Rather than distributing vehicle-related tasks across administrative staff, operations teams, or individual departments, businesses gain a single point of coordination for scheduling, maintenance, driver management, and documentation.",
               "This structure is particularly valuable for organisations managing multiple vehicles across different locations or use cases, where informal coordination becomes increasingly difficult to sustain as the fleet grows.",
@@ -2650,7 +2678,7 @@ export const pages = [
           {
             name: "whyHighlight",
             label: "Highlight Quote",
-            type: "textarea",
+            type: "richtext",
             default:
               "A dedicated fleet management partner brings consistency to these processes, helping businesses avoid the gradual accumulation of small inefficiencies that come with managing vehicles reactively.",
           },
@@ -2674,6 +2702,7 @@ export const pages = [
             name: "talkParagraphs",
             label: "Paragraphs",
             type: "list",
+            richItems: true,
             default: [
               "Managing a fleet involves far more than keeping vehicles on the road - it requires consistent scheduling, proactive maintenance, coordinated drivers, and organised documentation to keep operations running without disruption. For businesses, corporates, logistics providers, hospitals, and institutions managing multiple vehicles, professional fleet management support can reduce operational strain and bring structure to day-to-day transportation.",
               "If your organisation is looking to bring more organisation and control to its vehicle fleet, get in touch with Acciva Travels to discuss your fleet management requirements and find an approach that fits your operational needs.",

@@ -1,6 +1,7 @@
 import { useId, useState } from "react";
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { resolveIcon } from "../data/iconMap";
+import RichText from "./RichText";
 
 const DEFAULT_REASONS = [
   { title: "One-Stop Mobility", description: "Multiple transportation services under one partner.", icon: "Car" },
@@ -139,7 +140,7 @@ const AccentCard = ({ item, isActive }) => {
           <Icon size={26} className="stroke-[1.75] relative z-10" />
         </div>
         <h3 className="font-display text-navy text-lg font-bold leading-snug">{item.title}</h3>
-        <p className="text-slate-600 text-[13px] leading-relaxed mt-2">{item.description}</p>
+        <RichText as="p" html={item.description} className="text-slate-600 text-[13px] leading-relaxed mt-2" />
       </div>
     </motion.div>
   );

@@ -13,28 +13,12 @@ import {
   MessageCircle,
 } from "lucide-react";
 import Seo from "../components/Seo";
+import RichText from "../components/RichText";
 import AnimatedImage from "../components/AnimatedImage";
 import Magnetic from "../components/Magnetic";
 import SmartLink from "../components/SmartLink";
 import { usePageContent } from "../data/useContent";
 import { resolveIcon } from "../data/iconMap";
-
-// Bolds a specific known phrase within a plain-text paragraph, without
-// changing the underlying (admin-editable) string data itself. Falls back
-// to the plain text untouched if the phrase isn't found (e.g. the content
-// was edited since).
-const boldPhrase = (text, phrase) => {
-  if (!phrase) return text;
-  const idx = text.indexOf(phrase);
-  if (idx === -1) return text;
-  return (
-    <>
-      {text.slice(0, idx)}
-      <strong>{phrase}</strong>
-      {text.slice(idx + phrase.length)}
-    </>
-  );
-};
 
 const ETS_DEFAULTS = {
   heroEyebrow: "Corporate Mobility",
@@ -47,8 +31,8 @@ const ETS_DEFAULTS = {
   introHeadingAccent: "Works Around Your Business.",
   introParagraphs: [
     "Managing employee transportation can become complicated when you have multiple shifts, pickup locations, routes, and changing workforce requirements. Delays, missed pickups, and poor coordination can affect employee experience and also add unnecessary work for your HR and administration teams.",
-    "Acciva Travels helps businesses take that responsibility off their hands. We plan and manage employee transportation around your working hours, employee locations, and operational requirements, providing reliable daily pickup and drop-off services while your team focuses on running the business.",
-    "From scheduled employee transportation to shift-based services and customized routes, we handle the coordination of vehicles, drivers, routes, schedules, and tracking to keep your employee transportation organized and dependable.",
+    "<strong>Acciva Travels helps businesses take that responsibility off their hands.</strong> We plan and manage employee transportation around your working hours, employee locations, and operational requirements, providing reliable daily pickup and drop-off services while your team focuses on running the business.",
+    "From scheduled employee transportation to shift-based services and customized routes, we handle the coordination of <strong>vehicles, drivers, routes, schedules, and tracking</strong> to keep your employee transportation organized and dependable.",
   ],
   introImage:
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQo3X_Wak1PB2CWrLV-HNNlB9sU84cQOvJi36YLZfHJnXnVGp8Rxn815_s&s=10",
@@ -56,9 +40,9 @@ const ETS_DEFAULTS = {
   offerHeadingMain: "Employee Transportation",
   offerHeadingAccent: "Services.",
   offerParagraphs: [
-    "Acciva Travels offers employee transportation solutions that include daily employee pickup and drop-off, shift-based transportation, and multiple pickup and drop-off locations.",
+    "Acciva Travels offers employee transportation solutions that include <strong>daily employee pickup and drop-off, shift-based transportation, and multiple pickup and drop-off locations.</strong>",
     "We understand that every organization has different transportation requirements. Some businesses may have several work shifts, while others may have employees travelling from different parts of the city. Transportation requirements can also change as teams, shifts, and employee locations change.",
-    "Our services are designed to accommodate these requirements and provide your staff with timely, consistent, and well-organized transportation every day.",
+    "Our services are designed to accommodate these requirements and provide your staff with <strong>timely, consistent, and well-organized transportation every day.</strong>",
   ],
   offerImage: "https://amazelogistics.com/img/employee-transport-hero.webp",
   routeEyebrow: "Planning & Coordination",
@@ -66,8 +50,8 @@ const ETS_DEFAULTS = {
   routeHeadingAccent: "& Manage Routes.",
   routeParagraphs: [
     "A good transportation service starts with good planning.",
-    "We work closely with your HR, administration, and operations teams to understand employee locations, shift timings, preferred pickup points, route requirements, and other operational needs. Based on this information, we develop transportation plans that are practical and efficient for your organization.",
-    "Our route planning takes into account factors such as traffic conditions, employee locations, route distances, and shift schedules. This helps us create routes that reduce unnecessary travel time while keeping pickups and drop-offs organized and punctual.",
+    "We work closely with your <strong>HR, administration, and operations teams</strong> to understand employee locations, shift timings, preferred pickup points, route requirements, and other operational needs. Based on this information, we develop transportation plans that are practical and efficient for your organization.",
+    "Our route planning takes into account factors such as <strong>traffic conditions, employee locations, route distances, and shift schedules</strong>. This helps us create routes that reduce unnecessary travel time while keeping pickups and drop-offs organized and punctual.",
     "As requirements change, routes and schedules can also be reviewed and adjusted to keep the service working effectively.",
   ],
   routeSteps: [
@@ -83,7 +67,7 @@ const ETS_DEFAULTS = {
   safetyCards: [
     {
       icon: "UserCheck",
-      text: "At Acciva Travels, we maintain a fleet of well-maintained vehicles operated by experienced and trained drivers. Driver verification, qualifications, experience, and professional conduct are important parts of our transportation operations.",
+      text: "At Acciva Travels, we maintain a fleet of <strong>well-maintained vehicles</strong> operated by experienced and trained drivers. Driver verification, qualifications, experience, and professional conduct are important parts of our transportation operations.",
     },
     {
       icon: "Wrench",
@@ -99,7 +83,7 @@ const ETS_DEFAULTS = {
   techHeadingAccent: "& Technology.",
   techParagraphs: [
     "Technology gives businesses better visibility over their transportation operations.",
-    "Our corporate transportation services can incorporate GPS vehicle tracking and driver monitoring systems, allowing authorized teams to view vehicle locations and monitor transportation activity.",
+    "Our corporate transportation services can incorporate <strong>GPS vehicle tracking and driver monitoring systems</strong>, allowing authorized teams to view vehicle locations and monitor transportation activity.",
     "This provides HR and administration teams with useful information about ongoing journeys and helps improve communication when there are changes or unexpected delays. Better visibility also makes it easier to manage routes, schedules, and day-to-day transportation requirements.",
   ],
   techFeatures: [
@@ -117,29 +101,29 @@ const ETS_DEFAULTS = {
   benefits: [
     {
       icon: "Building2",
-      text: "With Acciva Travels managing the transportation operation, your HR and administration teams can spend less time dealing with daily transportation coordination. We take care of route coordination, driver and vehicle allocation, scheduling, monitoring, and ongoing operational support.",
+      text: "With Acciva Travels managing the transportation operation, <strong>your HR and administration teams can spend less time dealing with daily transportation coordination.</strong> We take care of route coordination, driver and vehicle allocation, scheduling, monitoring, and ongoing operational support.",
     },
     {
       icon: "Users",
-      text: "For employees, a dependable transportation service means more predictable commutes, less travel-related stress, and greater confidence in their daily journey to and from work.",
+      text: "For employees, a dependable transportation service means <strong>more predictable commutes, less travel-related stress, and greater confidence in their daily journey to and from work.</strong>",
     },
   ],
   whyEyebrow: "Distinct Advantage",
   whyHeadingMain: "Why Choose",
   whyHeadingAccent: "Acciva Travels?",
   whyParagraphs: [
-    "Every business has its own workforce, working hours, locations, and transportation challenges. That's why we take a practical and flexible approach to employee transportation.",
+    "Every business has its own workforce, working hours, locations, and transportation challenges. That's why we take a <strong>practical and flexible approach</strong> to employee transportation.",
     "Acciva Travels works with your team to understand what you need and build a transportation plan around your actual requirements. Whether you have multiple shifts, employees travelling from different locations, or changing transportation needs, we work to keep the service organized and reliable.",
   ],
   whyHighlight:
-    "With professional drivers, managed vehicles, route planning, GPS tracking, and responsive operational support, we provide businesses with a transportation partner they can rely on.",
+    "With <strong>professional drivers, managed vehicles, route planning, GPS tracking, and responsive operational support,</strong> we provide businesses with a transportation partner they can rely on.",
   whyImage:
     "https://media.istockphoto.com/id/182913362/photo/travel-coaches-at-tourist-destination-parked-in-a-row.jpg?s=612x612&w=0&k=20&c=WydkBjrqbYQKAITmQ9oEWzwzsQbQhp15OCOiSTgqj-g=",
   talkEyebrow: "",
   talkHeadingMain: "Let's Talk About Your",
   talkHeadingAccent: "Employee Transportation Needs",
   talkParagraphs: [
-    "If your organization is looking for a reliable partner to manage employee or staff transportation, Acciva Travels can help.",
+    "If your organization is looking for a reliable partner to manage <strong>employee or staff transportation</strong>, Acciva Travels can help.",
     "Talk to us about your routes, shift timings, employee locations, and other requirements. We'll work with your team to understand your needs and develop a transportation plan that works for your business and your employees.",
   ],
   talkButtonText: "Talk to Acciva Travels",
@@ -224,7 +208,6 @@ const SectionHeading = ({
   description,
   center,
   descriptionClassName = "max-w-3xl",
-  boldPhrases,
 }) => {
   const paragraphs = Array.isArray(description) ? description : description ? [description] : [];
   return (
@@ -253,7 +236,7 @@ const SectionHeading = ({
           } ${descriptionClassName}`}
         >
           {paragraphs.map((para, i) => (
-            <p key={i}>{boldPhrases ? boldPhrase(para, boldPhrases[i]) : para}</p>
+            <RichText key={i} as="p" html={para} />
           ))}
         </motion.div>
       )}
@@ -456,9 +439,7 @@ const SafetyCard = ({ card, isActive }) => {
           })()}
         </div>
         <h3 className="font-display text-navy text-lg font-bold leading-snug">{card.title}</h3>
-        <p className="text-slate-600 text-[13px] leading-relaxed mt-2">
-          {boldPhrase(card.text, "well-maintained vehicles")}
-        </p>
+        <RichText as="p" html={card.text} className="text-slate-600 text-[13px] leading-relaxed mt-2" />
       </div>
     </motion.div>
   );
@@ -760,16 +741,7 @@ const EmployeeTransportationServices = () => {
               className="h-full flex flex-col justify-center space-y-5 text-slate-700 text-[15px] font-normal leading-relaxed"
             >
               {content.introParagraphs.map((para, i) => (
-                <p key={i}>
-                  {boldPhrase(
-                    para,
-                    i === 1
-                      ? "Acciva Travels helps businesses take that responsibility off their hands."
-                      : i === 2
-                        ? "vehicles, drivers, routes, schedules, and tracking"
-                        : null
-                  )}
-                </p>
+                <RichText key={i} as="p" html={para} />
               ))}
             </motion.div>
           </div>
@@ -804,16 +776,7 @@ const EmployeeTransportationServices = () => {
               className="space-y-5 text-slate-700 text-[15px] font-normal leading-relaxed"
             >
               {content.offerParagraphs.map((para, i) => (
-                <p key={i}>
-                  {boldPhrase(
-                    para,
-                    i === 0
-                      ? "daily employee pickup and drop-off, shift-based transportation, and multiple pickup and drop-off locations."
-                      : i === 2
-                        ? "timely, consistent, and well-organized transportation every day."
-                        : null
-                  )}
-                </p>
+                <RichText key={i} as="p" html={para} />
               ))}
             </motion.div>
 
@@ -856,12 +819,6 @@ const EmployeeTransportationServices = () => {
             italicTitle={content.routeHeadingAccent}
             description={content.routeParagraphs}
             descriptionClassName="max-w-none w-full"
-            boldPhrases={[
-              null,
-              "HR, administration, and operations teams",
-              "traffic conditions, employee locations, route distances, and shift schedules",
-              null,
-            ]}
           />
 
           <div className="mt-4">
@@ -919,12 +876,7 @@ const EmployeeTransportationServices = () => {
               </h2>
               <div className="space-y-4 text-slate-700 text-[15px] font-normal leading-relaxed">
                 {content.techParagraphs.map((para, i) => (
-                  <p key={i}>
-                    {boldPhrase(
-                      para,
-                      i === 1 ? "GPS vehicle tracking and driver monitoring systems" : null
-                    )}
-                  </p>
+                  <RichText key={i} as="p" html={para} />
                 ))}
               </div>
               <TechFeatureRow features={content.techFeatures} />
@@ -1026,16 +978,11 @@ const EmployeeTransportationServices = () => {
                     <h3 className="font-display text-xl sm:text-2xl text-navy font-bold mb-3">
                       {item.title}
                     </h3>
-                    <p className="text-[15px] text-slate-700 leading-relaxed font-normal">
-                      {boldPhrase(
-                        item.text,
-                        i === 0
-                          ? "HR and administration teams can spend less time dealing with daily transportation coordination."
-                          : i === 1
-                            ? "more predictable commutes, less travel-related stress, and greater confidence in their daily journey to and from work."
-                            : null
-                      )}
-                    </p>
+                    <RichText
+                      as="p"
+                      html={item.text}
+                      className="text-[15px] text-slate-700 leading-relaxed font-normal"
+                    />
                   </div>
                 </TiltCard>
               </motion.div>
@@ -1078,9 +1025,7 @@ const EmployeeTransportationServices = () => {
               className="lg:col-span-7 space-y-5 text-slate-700 text-[15px] font-normal leading-relaxed"
             >
               {content.whyParagraphs.map((para, i) => (
-                <p key={i}>
-                  {boldPhrase(para, i === 0 ? "practical and flexible approach" : null)}
-                </p>
+                <RichText key={i} as="p" html={para} />
               ))}
 
               <TiltCard
@@ -1088,15 +1033,12 @@ const EmployeeTransportationServices = () => {
                 accentGlow="rgba(59,141,196,0.45)"
                 className="p-6 sm:p-7 rounded-3xl bg-white border border-teal/30 shadow-xl cursor-default overflow-hidden"
               >
-                <p
+                <RichText
+                  as="p"
                   style={{ transform: "translateZ(20px)" }}
                   className="font-display text-lg sm:text-xl text-navy font-medium leading-snug relative"
-                >
-                  {boldPhrase(
-                    content.whyHighlight,
-                    "professional drivers, managed vehicles, route planning, GPS tracking, and responsive operational support,"
-                  )}
-                </p>
+                  html={content.whyHighlight}
+                />
               </TiltCard>
             </motion.div>
 
@@ -1165,9 +1107,7 @@ const EmployeeTransportationServices = () => {
               </h2>
               <div className="mt-5 space-y-3 text-slate-700 text-[15px] font-normal leading-relaxed max-w-2xl mx-auto">
                 {content.talkParagraphs.map((para, i) => (
-                  <p key={i}>
-                    {boldPhrase(para, i === 0 ? "employee or staff transportation" : null)}
-                  </p>
+                  <RichText key={i} as="p" html={para} />
                 ))}
               </div>
               <div className="mt-8 flex justify-center">

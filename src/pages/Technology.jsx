@@ -297,7 +297,7 @@ const Technology = () => {
             </h2>
             <div className="text-slate-600 text-[15px] font-normal leading-relaxed mt-5 space-y-4">
               {content.featuresParagraphs.map((p, i) => (
-                <p key={i}>{p}</p>
+                <RichText key={i} as="p" html={p} />
               ))}
             </div>
           </motion.div>
@@ -478,9 +478,11 @@ const Technology = () => {
                     <h4 className="font-mono text-sm text-navy font-black uppercase tracking-wide mt-3 mb-3">
                       {p.title}
                     </h4>
-                    <p className="text-slate-600 text-[15px] font-normal leading-relaxed">
-                      {p.description}
-                    </p>
+                    <RichText
+                      as="p"
+                      html={p.description}
+                      className="text-slate-600 text-[15px] font-normal leading-relaxed"
+                    />
 
                     {/* Keyword strip */}
                     <div className="flex flex-wrap gap-2 mt-5 pt-5 border-t border-navy/10">

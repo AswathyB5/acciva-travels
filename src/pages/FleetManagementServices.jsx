@@ -13,6 +13,7 @@ import {
   MessageCircle,
 } from "lucide-react";
 import Seo from "../components/Seo";
+import RichText from "../components/RichText";
 import AnimatedImage from "../components/AnimatedImage";
 import Magnetic from "../components/Magnetic";
 import SmartLink from "../components/SmartLink";
@@ -312,7 +313,7 @@ const SectionHeading = ({
           } ${descriptionClassName}`}
         >
           {paragraphs.map((para, i) => (
-            <p key={i}>{para}</p>
+            <RichText key={i} as="p" html={para} />
           ))}
         </motion.div>
       )}
@@ -524,7 +525,7 @@ const SafetyCard = ({ card, isActive, iconRef }) => {
           })()}
         </div>
         <h3 className="font-display text-navy text-lg font-bold leading-snug">{card.title}</h3>
-        <p className="text-slate-600 text-[13px] leading-relaxed mt-2">{card.text}</p>
+        <RichText as="p" html={card.text} className="text-slate-600 text-[13px] leading-relaxed mt-2" />
       </div>
     </motion.div>
   );
@@ -892,7 +893,7 @@ const FleetManagementServices = () => {
               className="h-full flex flex-col justify-center space-y-5 text-slate-700 text-[15px] font-normal leading-relaxed"
             >
               {content.introParagraphs.map((para, i) => (
-                <p key={i}>{para}</p>
+                <RichText key={i} as="p" html={para} />
               ))}
             </motion.div>
           </div>
@@ -919,9 +920,11 @@ const FleetManagementServices = () => {
               </span>
             </h2>
             {content.offerParagraphs?.[0] && (
-              <p className="mt-5 text-slate-700 text-[15px] font-normal leading-relaxed">
-                {content.offerParagraphs[0]}
-              </p>
+              <RichText
+                as="p"
+                html={content.offerParagraphs[0]}
+                className="mt-5 text-slate-700 text-[15px] font-normal leading-relaxed"
+              />
             )}
           </motion.div>
 
@@ -974,9 +977,11 @@ const FleetManagementServices = () => {
                       <h3 className="font-display text-base sm:text-lg text-navy font-bold mb-2">
                         {card.title}
                       </h3>
-                      <p className="text-[14px] text-slate-700 leading-relaxed font-normal">
-                        {card.text}
-                      </p>
+                      <RichText
+                        as="p"
+                        html={card.text}
+                        className="text-[14px] text-slate-700 leading-relaxed font-normal"
+                      />
                     </div>
                   </TiltCard>
                 </motion.div>
@@ -985,7 +990,8 @@ const FleetManagementServices = () => {
           </div>
 
           {content.offerParagraphs?.[1] && (
-            <motion.p
+            <RichText
+              as={motion.p}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
@@ -995,9 +1001,8 @@ const FleetManagementServices = () => {
                 ease: [0.16, 1, 0.3, 1],
               }}
               className="mt-8 max-w-none w-full text-slate-700 text-[15px] font-normal leading-relaxed"
-            >
-              {content.offerParagraphs[1]}
-            </motion.p>
+              html={content.offerParagraphs[1]}
+            />
           )}
         </div>
       </section>
@@ -1035,16 +1040,19 @@ const FleetManagementServices = () => {
                   <span className="w-9 h-9 shrink-0 rounded-xl bg-teal/10 text-teal flex items-center justify-center">
                     <IssueIcon size={17} />
                   </span>
-                  <p className="text-slate-700 text-[14px] leading-relaxed font-normal pt-1.5">
-                    {issue.text}
-                  </p>
+                  <RichText
+                    as="p"
+                    html={issue.text}
+                    className="text-slate-700 text-[14px] leading-relaxed font-normal pt-1.5"
+                  />
                 </motion.div>
               );
             })}
           </div>
 
           {content.routeClosing && (
-            <motion.p
+            <RichText
+              as={motion.p}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
@@ -1054,9 +1062,8 @@ const FleetManagementServices = () => {
                 ease: [0.16, 1, 0.3, 1],
               }}
               className="mt-6 max-w-none w-full text-slate-700 text-[15px] font-normal leading-relaxed"
-            >
-              {content.routeClosing}
-            </motion.p>
+              html={content.routeClosing}
+            />
           )}
 
           <div className="mt-10">
@@ -1142,9 +1149,11 @@ const FleetManagementServices = () => {
                       <h3 className="font-display text-lg sm:text-xl text-navy font-bold mb-3">
                         {item.title}
                       </h3>
-                      <p className="text-[15px] text-slate-700 leading-relaxed font-normal">
-                        {item.text}
-                      </p>
+                      <RichText
+                        as="p"
+                        html={item.text}
+                        className="text-[15px] text-slate-700 leading-relaxed font-normal"
+                      />
                     </div>
                   </TiltCard>
                 </motion.div>
@@ -1153,7 +1162,8 @@ const FleetManagementServices = () => {
           </div>
 
           {content.benefitsClosing && (
-            <motion.p
+            <RichText
+              as={motion.p}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
@@ -1163,9 +1173,8 @@ const FleetManagementServices = () => {
                 ease: [0.16, 1, 0.3, 1],
               }}
               className="mt-8 max-w-none w-full text-slate-700 text-[15px] font-normal leading-relaxed"
-            >
-              {content.benefitsClosing}
-            </motion.p>
+              html={content.benefitsClosing}
+            />
           )}
         </div>
       </section>
@@ -1203,7 +1212,7 @@ const FleetManagementServices = () => {
               </h2>
               <div className="space-y-4 text-slate-700 text-[15px] font-normal leading-relaxed">
                 {content.techParagraphs.map((para, i) => (
-                  <p key={i}>{para}</p>
+                  <RichText key={i} as="p" html={para} />
                 ))}
               </div>
             </motion.div>
@@ -1291,7 +1300,7 @@ const FleetManagementServices = () => {
               className="lg:col-span-7 space-y-5 text-slate-700 text-[15px] font-normal leading-relaxed"
             >
               {content.whyParagraphs.map((para, i) => (
-                <p key={i}>{para}</p>
+                <RichText key={i} as="p" html={para} />
               ))}
 
               <TiltCard
@@ -1299,12 +1308,12 @@ const FleetManagementServices = () => {
                 accentGlow="rgba(59,141,196,0.45)"
                 className="p-6 sm:p-7 rounded-3xl bg-white border border-teal/30 shadow-xl cursor-default overflow-hidden"
               >
-                <p
+                <RichText
+                  as="p"
                   style={{ transform: "translateZ(20px)" }}
                   className="font-display text-lg sm:text-xl text-navy font-medium leading-snug relative"
-                >
-                  {content.whyHighlight}
-                </p>
+                  html={content.whyHighlight}
+                />
               </TiltCard>
             </motion.div>
 
@@ -1375,7 +1384,7 @@ const FleetManagementServices = () => {
               </h2>
               <div className="mt-5 space-y-3 text-slate-700 text-[15px] font-normal leading-relaxed max-w-2xl mx-auto">
                 {content.talkParagraphs.map((para, i) => (
-                  <p key={i}>{para}</p>
+                  <RichText key={i} as="p" html={para} />
                 ))}
               </div>
               <div className="mt-8 flex justify-center">

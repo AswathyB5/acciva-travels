@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, Sparkles } from "lucide-react";
 import AnimatedImage from "./AnimatedImage";
 import SmartLink from "./SmartLink";
+import RichText from "./RichText";
 
 const AUTOPLAY_MS = 3500;
 
@@ -192,14 +193,14 @@ const DestinationExpand = ({
                       {d.name}
                     </motion.h3>
                     {d.description && (
-                      <motion.p
+                      <RichText
+                        as={motion.p}
                         initial={false}
                         animate={{ opacity: isActive ? 1 : 0, x: isActive ? 0 : -20 }}
                         transition={{ duration: 0.5, delay: 0.2 }}
                         className="mt-3 text-ivory/80 text-sm leading-relaxed max-w-sm"
-                      >
-                        {d.description}
-                      </motion.p>
+                        html={d.description}
+                      />
                     )}
                     <motion.div
                       whileHover={{ scale: 1.06 }}

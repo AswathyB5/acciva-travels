@@ -246,6 +246,40 @@ const FieldInput = ({ field, value, onChange }) => {
     };
     const removeAt = (index) => onChange(items.filter((_, i) => i !== index));
 
+    // Paragraph-style list fields (richItems: true) get the full bold/
+    // underline/link/color toolbar per item instead of a plain text input —
+    // each array entry is independently-formatted rich text, sanitized and
+    // rendered the same way a blog post's content is.
+    if (field.richItems) {
+      return (
+        <div className="space-y-3">
+          {items.map((item, i) => (
+            <div key={i} className="flex gap-2 items-start">
+              <div className="flex-1 min-w-0">
+                <RichTextEditor value={item} onChange={(next) => updateAt(i, next)} />
+              </div>
+              <button
+                type="button"
+                onClick={() => removeAt(i)}
+                className="w-10 h-10 shrink-0 rounded-xl border border-navy/15 text-navy/55 hover:bg-red-50 hover:text-red-500 hover:border-red-200 flex items-center justify-center transition-colors"
+                title="Remove"
+              >
+                <X size={15} />
+              </button>
+            </div>
+          ))}
+          <button
+            type="button"
+            onClick={() => onChange([...items, ""])}
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-teal hover:opacity-80"
+          >
+            <Plus size={13} />
+            Add item
+          </button>
+        </div>
+      );
+    }
+
     return (
       <div className="space-y-2">
         {items.map((item, i) => (

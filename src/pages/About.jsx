@@ -266,7 +266,7 @@ const About = () => {
 
               <div className="space-y-5 text-slate-700 leading-relaxed text-[15px] font-normal">
                 {content.historyParagraphs.map((p, i) => (
-                  <p key={i}>{p}</p>
+                  <RichText key={i} as="p" html={p} />
                 ))}
               </div>
             </motion.div>
@@ -725,19 +725,15 @@ const About = () => {
                     {content.whyCards[0].title}
                   </motion.h3>
 
-                  <motion.div
+                  <RichText
+                    as={motion.div}
                     className="space-y-3 text-[15px] text-slate-700 leading-relaxed font-normal"
                     initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.4 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
-                  >
-                    {content.whyCards[0].description
-                      .split("\n\n")
-                      .map((p, i) => (
-                        <p key={i}>{p}</p>
-                      ))}
-                  </motion.div>
+                    html={content.whyCards[0].description}
+                  />
                 </div>
               </TiltCard>
             </motion.div>
@@ -832,19 +828,15 @@ const About = () => {
                     {content.whyCards[1].title}
                   </motion.h3>
 
-                  <motion.div
+                  <RichText
+                    as={motion.div}
                     className="space-y-3 text-[15px] text-slate-700 leading-relaxed font-normal"
                     initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.4 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
-                  >
-                    {content.whyCards[1].description
-                      .split("\n\n")
-                      .map((p, i) => (
-                        <p key={i}>{p}</p>
-                      ))}
-                  </motion.div>
+                    html={content.whyCards[1].description}
+                  />
                 </div>
               </TiltCard>
             </motion.div>
@@ -935,19 +927,15 @@ const About = () => {
                     {content.whyCards[2].title}
                   </motion.h3>
 
-                  <motion.div
+                  <RichText
+                    as={motion.div}
                     className="space-y-3 text-[15px] text-slate-700 leading-relaxed font-normal"
                     initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.4 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
-                  >
-                    {content.whyCards[2].description
-                      .split("\n\n")
-                      .map((p, i) => (
-                        <p key={i}>{p}</p>
-                      ))}
-                  </motion.div>
+                    html={content.whyCards[2].description}
+                  />
                 </div>
               </TiltCard>
             </motion.div>
@@ -1038,19 +1026,15 @@ const About = () => {
                     {content.whyCards[3].title}
                   </motion.h3>
 
-                  <motion.div
+                  <RichText
+                    as={motion.div}
                     className="space-y-3 text-[15px] text-slate-700 leading-relaxed font-normal"
                     initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.4 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
-                  >
-                    {content.whyCards[3].description
-                      .split("\n\n")
-                      .map((p, i) => (
-                        <p key={i}>{p}</p>
-                      ))}
-                  </motion.div>
+                    html={content.whyCards[3].description}
+                  />
                 </div>
               </TiltCard>
             </motion.div>
@@ -1089,7 +1073,7 @@ const About = () => {
 
               <div className="space-y-5 text-slate-700 text-[15px] font-normal leading-relaxed">
                 {content.purposeParagraphs.map((p, i) => (
-                  <p key={i}>{p}</p>
+                  <RichText key={i} as="p" html={p} />
                 ))}
               </div>
 
@@ -1238,9 +1222,11 @@ const About = () => {
             </span>
           </h2>
 
-          <p className="text-slate-700 text-[15px] font-normal leading-relaxed">
-            {content.finalCtaParagraph}
-          </p>
+          <RichText
+            as="p"
+            html={content.finalCtaParagraph}
+            className="text-slate-700 text-[15px] font-normal leading-relaxed"
+          />
 
           <div className="pt-4 flex justify-center">
             <Magnetic strength={20}>

@@ -17,23 +17,6 @@ import { services as fallbackServices } from "../data/content";
 import { useCollection, usePageContent } from "../data/useContent";
 import { resolveIcon } from "../data/iconMap";
 
-// Bolds a specific known phrase within a plain-text paragraph, without
-// changing the underlying (admin-editable) string data itself. Falls back
-// to the plain text untouched if the phrase isn't found (e.g. the content
-// was edited since).
-const boldPhrase = (text, phrase) => {
-  if (!phrase) return text;
-  const idx = text.indexOf(phrase);
-  if (idx === -1) return text;
-  return (
-    <>
-      {text.slice(0, idx)}
-      <strong>{phrase}</strong>
-      {text.slice(idx + phrase.length)}
-    </>
-  );
-};
-
 const SERVICES_DEFAULTS = {
   heroEyebrow: "Enterprise Solutions",
   heroTitleMain: "Corporate Mobility & Fleet Solutions",
@@ -47,7 +30,7 @@ const SERVICES_DEFAULTS = {
   introHeadingAccent: "Transportation Services.",
   introParagraphs: [
     "At Acciva Travels, we provide reliable passenger transportation for schools, businesses, corporations, and institutions. We work with each client to understand their requirements and build a transportation service that fits their routes, schedules, and day-to-day operations.",
-    "From school and employee transportation to scheduled and customized services, we manage the people, vehicles, routes, and schedules involved in keeping your transportation running smoothly. Our focus is simple: safe journeys, dependable service, and better visibility for our clients.",
+    "From school and employee transportation to scheduled and customized services, we manage the people, vehicles, routes, and schedules involved in keeping your transportation running smoothly. Our focus is simple: <strong>safe journeys, dependable service, and better visibility for our clients.</strong>",
   ],
   introImage: "https://i.ibb.co/1Whpb03/0cb03a11-e697-445e-8b5e-c08c67dc9c28.jpg",
   offerEyebrow: "What We Offer",
@@ -55,7 +38,7 @@ const SERVICES_DEFAULTS = {
   offerHeadingAccent: "Transportation Services",
   offerParagraphs: [
     "Acciva Travels provides transportation solutions for organizations with regular or customized travel requirements.",
-    "Our services include school transportation, corporate and employee transportation, scheduled transportation, route planning, fleet management, and customized transportation services.",
+    "Our services include <strong>school transportation, corporate and employee transportation, scheduled transportation, route planning, fleet management, and customized transportation services.</strong>",
   ],
   offerCards: [
     {
@@ -87,7 +70,7 @@ const SERVICES_DEFAULTS = {
   techHeadingAccent: "Tracking",
   techParagraphs: [
     "Technology plays an important role in how we manage our transportation services.",
-    "With GPS vehicle tracking and mobile-based monitoring, clients can have better visibility of vehicles and routes. Tracking information can help transportation teams monitor journeys, keep passengers informed, and respond quickly when routes or schedules need to change.",
+    "With <strong>GPS vehicle tracking and mobile-based monitoring</strong>, clients can have better visibility of vehicles and routes. Tracking information can help transportation teams monitor journeys, keep passengers informed, and respond quickly when routes or schedules need to change.",
     "For school transportation, tracking can also give parents and authorized users useful information about the vehicle's location and expected arrival time.",
     "By combining technology with hands-on operational management, we make transportation easier to monitor and manage.",
   ],
@@ -124,7 +107,7 @@ const SERVICES_DEFAULTS = {
   whyParagraphs: [
     "Every organization has different transportation needs. A school may need carefully planned student routes, while a company may need employee pickups that match multiple shifts and locations.",
     "That's why we don't believe in a one-size-fits-all approach.",
-    "Acciva Travels works with clients to understand their requirements and build transportation services around them. From route planning and scheduling to fleet and driver coordination, our team manages the details that keep the service moving.",
+    "<strong>Acciva Travels works with clients to understand their requirements and build transportation services around them.</strong> From route planning and scheduling to fleet and driver coordination, our team manages the details that keep the service moving.",
   ],
   whyHighlight:
     "With professional drivers, managed vehicles, route planning, and technology-supported tracking, we provide organizations with a transportation partner they can rely on.",
@@ -438,7 +421,7 @@ const SafetyCard = ({ card, isActive }) => {
           <IconComp size={24} className="stroke-[1.75] relative z-10" />
         </div>
         <h3 className="font-display text-navy text-lg font-bold leading-snug">{card.title}</h3>
-        <p className="text-slate-600 text-[13px] leading-relaxed mt-2">{card.text}</p>
+        <RichText as="p" html={card.text} className="text-slate-600 text-[13px] leading-relaxed mt-2" />
       </div>
     </motion.div>
   );
@@ -633,9 +616,11 @@ const DifferentiatorTimeline = ({ items }) => {
                 <h3 className="font-display text-navy text-lg font-bold leading-snug">
                   {item.title}
                 </h3>
-                <p className="text-slate-600 text-[13px] leading-relaxed mt-1">
-                  {item.text}
-                </p>
+                <RichText
+                  as="p"
+                  html={item.text}
+                  className="text-slate-600 text-[13px] leading-relaxed mt-1"
+                />
               </motion.div>
             </motion.div>
           );
@@ -767,14 +752,7 @@ const Services = () => {
               className="h-full flex flex-col justify-center space-y-5 text-slate-700 text-[15px] font-normal leading-relaxed"
             >
               {content.introParagraphs.map((p, i) => (
-                <p key={i}>
-                  {boldPhrase(
-                    p,
-                    i === 1
-                      ? "safe journeys, dependable service, and better visibility for our clients."
-                      : null
-                  )}
-                </p>
+                <RichText key={i} as="p" html={p} />
               ))}
             </motion.div>
           </div>
@@ -802,14 +780,7 @@ const Services = () => {
             </h2>
             <div className="mt-5 space-y-4 text-slate-700 text-[15px] font-normal leading-relaxed w-full">
               {content.offerParagraphs.map((p, i) => (
-                <p key={i}>
-                  {boldPhrase(
-                    p,
-                    i === 1
-                      ? "school transportation, corporate and employee transportation, scheduled transportation, route planning, fleet management, and customized transportation services."
-                      : null
-                  )}
-                </p>
+                <RichText key={i} as="p" html={p} />
               ))}
             </div>
           </motion.div>
@@ -839,9 +810,11 @@ const Services = () => {
                   <h3 className="font-display text-xl sm:text-2xl text-navy font-bold mb-3 group-hover:text-teal transition-colors">
                     {content.offerCards[0].title}
                   </h3>
-                  <p className="text-[15px] text-slate-700 leading-relaxed font-normal">
-                    {content.offerCards[0].description}
-                  </p>
+                  <RichText
+                    as="p"
+                    html={content.offerCards[0].description}
+                    className="text-[15px] text-slate-700 leading-relaxed font-normal"
+                  />
                 </div>
               </TiltCard>
             </motion.div>
@@ -875,9 +848,11 @@ const Services = () => {
                   <h3 className="font-display text-xl sm:text-2xl text-navy font-bold mb-3 group-hover:text-teal transition-colors">
                     {content.offerCards[1].title}
                   </h3>
-                  <p className="text-[15px] text-slate-700 leading-relaxed font-normal">
-                    {content.offerCards[1].description}
-                  </p>
+                  <RichText
+                    as="p"
+                    html={content.offerCards[1].description}
+                    className="text-[15px] text-slate-700 leading-relaxed font-normal"
+                  />
                 </div>
               </TiltCard>
             </motion.div>
@@ -919,12 +894,7 @@ const Services = () => {
               </h2>
               <div className="space-y-4 text-slate-700 text-[15px] font-normal leading-relaxed">
                 {content.techParagraphs.map((p, i) => (
-                  <p key={i}>
-                    {boldPhrase(
-                      p,
-                      i === 1 ? "GPS vehicle tracking and mobile-based monitoring" : null
-                    )}
-                  </p>
+                  <RichText key={i} as="p" html={p} />
                 ))}
               </div>
 
@@ -998,7 +968,7 @@ const Services = () => {
             </div>
             <div className="mt-5 space-y-4 text-slate-700 text-[15px] font-normal leading-relaxed">
               {content.safetyParagraphs.map((p, i) => (
-                <p key={i}>{p}</p>
+                <RichText key={i} as="p" html={p} />
               ))}
             </div>
           </motion.div>
@@ -1042,14 +1012,7 @@ const Services = () => {
               className="lg:col-span-7 space-y-5 text-slate-700 text-[15px] font-normal leading-relaxed"
             >
               {content.whyParagraphs.map((p, i) => (
-                <p key={i}>
-                  {boldPhrase(
-                    p,
-                    i === 2
-                      ? "Acciva Travels works with clients to understand their requirements and build transportation services around them."
-                      : null
-                  )}
-                </p>
+                <RichText key={i} as="p" html={p} />
               ))}
 
               <TiltCard
@@ -1057,12 +1020,12 @@ const Services = () => {
                 accentGlow="rgba(59,141,196,0.45)"
                 className="p-6 sm:p-7 rounded-3xl bg-white border border-teal/30 shadow-xl cursor-default overflow-hidden"
               >
-                <p
+                <RichText
+                  as="p"
                   style={{ transform: "translateZ(20px)" }}
                   className="font-display text-lg sm:text-xl text-navy font-medium leading-snug relative"
-                >
-                  {content.whyHighlight}
-                </p>
+                  html={content.whyHighlight}
+                />
               </TiltCard>
             </motion.div>
 
@@ -1111,7 +1074,7 @@ const Services = () => {
               </h2>
               <div className="mt-5 space-y-3 text-slate-700 text-[15px] font-normal leading-relaxed max-w-2xl mx-auto">
                 {content.talkParagraphs.map((p, i) => (
-                  <p key={i}>{p}</p>
+                  <RichText key={i} as="p" html={p} />
                 ))}
               </div>
               <div className="mt-8 flex justify-center">

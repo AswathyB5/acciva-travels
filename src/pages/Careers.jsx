@@ -604,9 +604,11 @@ const Careers = () => {
               {content.vehicleHeadingMain}{" "}
               <span className="italic text-teal font-normal">{content.vehicleHeadingAccent}</span>
             </h2>
-            <p className="mt-5 text-slate-700 text-[15px] font-normal leading-relaxed max-w-2xl">
-              {content.vehicleParagraph}
-            </p>
+            <RichText
+              as="p"
+              html={content.vehicleParagraph}
+              className="mt-5 text-slate-700 text-[15px] font-normal leading-relaxed max-w-2xl"
+            />
           </motion.div>
 
           {/* Row 2 — image + form, two columns */}

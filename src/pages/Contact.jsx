@@ -613,9 +613,11 @@ const Contact = () => {
                     {content.mapHeadingAccent}
                   </span>
                 </h2>
-                <p className="text-slate-600 text-[15px] font-normal leading-relaxed mt-1">
-                  {content.mapDescription}
-                </p>
+                <RichText
+                  as="p"
+                  html={content.mapDescription}
+                  className="text-slate-600 text-[15px] font-normal leading-relaxed mt-1"
+                />
               </div>
 
               <a
@@ -686,9 +688,11 @@ const Contact = () => {
             </span>
           </h2>
 
-          <p className="mt-3 text-slate-700 text-[15px] font-normal leading-relaxed">
-            {content.closingParagraph}
-          </p>
+          <RichText
+            as="p"
+            html={content.closingParagraph}
+            className="mt-3 text-slate-700 text-[15px] font-normal leading-relaxed"
+          />
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
             <SmartLink
