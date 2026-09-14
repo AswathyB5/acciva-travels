@@ -36,6 +36,47 @@ export function useCollection(collection, fallback = [], retryToken = 0) {
   return { items, loading, error };
 }
 
+// Fetches a single item from a collection by its `slug`, instead of
+// downloading the entire collection just to find one record client-side —
+// important for something like a blog post, where every OTHER post's full
+// HTML content would otherwise be fetched and parsed just to display one
+// article. Falls back to searching the given static fallback list by slug
+// if the API is unreachable or the item genuinely doesn't exist there yet.
+export function useCollectionItemBySlug(collection, slug, fallbackList = [], retryToken = 0) {
+  const fallbackItem = fallbackList.find((it) => it.slug === slug) || null;
+  const [item, setItem] = useState(fallbackItem);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setLoading(true);
+    setError(false);
+    if (!slug) {
+      setLoading(false);
+      return undefined;
+    }
+    api
+      .getBySlug(collection, slug)
+      .then((data) => {
+        if (!cancelled && data) setItem(data);
+      })
+      .catch(() => {
+        if (!cancelled) setError(true);
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [collection, slug, retryToken]);
+
+  return { item, loading, error };
+}
+
 // Fetches editable free-text copy for a page (headings, blurbs, etc). Falls
 // back to the given defaults if the API is unreachable or fields are unset.
 export function usePageContent(page, defaults = {}) {

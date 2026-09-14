@@ -5,7 +5,7 @@ import { ChevronRight, Clock, ArrowUpRight, ArrowLeft, RefreshCw } from "lucide-
 import AnimatedImage from "../components/AnimatedImage";
 import Seo from "../components/Seo";
 import { blogPosts as fallbackBlogPosts } from "../data/content";
-import { useCollection, usePageContent } from "../data/useContent";
+import { useCollectionItemBySlug, usePageContent } from "../data/useContent";
 import { sanitizeArticleHtml } from "../data/articleHtml";
 
 // Same hero background image as the Blog listing page ("The Journal") — it
@@ -40,9 +40,8 @@ const renderTitleWithAccent = (title, accent) => {
 const BlogPost = () => {
   const { slug } = useParams();
   const [retryKey, setRetryKey] = useState(0);
-  const { items: blogPosts, loading, error } = useCollection("blog-posts", fallbackBlogPosts, retryKey);
+  const { item: post, loading, error } = useCollectionItemBySlug("blog-posts", slug, fallbackBlogPosts, retryKey);
   const { data: blogContent } = usePageContent("blog", BLOG_INTRO_DEFAULTS);
-  const post = blogPosts.find((p) => p.slug === slug);
   const contentHtml = useMemo(() => sanitizeArticleHtml(post?.content), [post?.content]);
 
   // Only bounce back to the listing once we've *confirmed* (a successful

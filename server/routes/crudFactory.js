@@ -3,6 +3,11 @@ import { requireAuth } from "../middleware/auth.js";
 
 // Builds a REST router for a mongoose model:
 //   GET    /            public, sorted by `order` then createdAt
+//   GET    /slug/:slug  public, a single document by its `slug` field —
+//                       lets a detail page (e.g. one blog post) fetch just
+//                       the one record it needs instead of downloading the
+//                       entire collection (every document's full content)
+//                       just to find one by slug client-side.
 //   POST   /            admin only, create
 //   PUT    /:id         admin only, update
 //   DELETE /:id         admin only, delete
@@ -13,6 +18,15 @@ export function crudRouter(Model) {
   router.get("/", async (req, res) => {
     const items = await Model.find().sort({ order: 1, createdAt: 1 });
     res.json(items);
+  });
+
+  // Registered before "/:id"-style routes matter less here since this is a
+  // GET under a distinct "/slug" prefix, but keep it above POST "/" for
+  // readability alongside the other GET route.
+  router.get("/slug/:slug", async (req, res) => {
+    const item = await Model.findOne({ slug: req.params.slug });
+    if (!item) return res.status(404).json({ error: "Not found" });
+    res.json(item);
   });
 
   router.post("/", requireAuth, async (req, res) => {

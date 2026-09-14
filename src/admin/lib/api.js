@@ -66,6 +66,7 @@ export const api = {
   uploadImage,
 
   list: (collection) => request(`/${collection}`),
+  getBySlug: (collection, slug) => request(`/${collection}/slug/${encodeURIComponent(slug)}`),
   create: (collection, payload) => request(`/${collection}`, { method: "POST", body: payload, auth: true }),
   update: (collection, id, payload) =>
     request(`/${collection}/${id}`, { method: "PUT", body: payload, auth: true }),
