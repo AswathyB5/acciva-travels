@@ -32,7 +32,7 @@ const FMS_DEFAULTS = {
     "This is where professional fleet management services come in. Instead of internal teams juggling vehicle logistics alongside their core responsibilities, a dedicated fleet management company takes on the day-to-day coordination, so vehicles stay organised, costs stay controlled, and transportation runs smoothly in the background of business operations.",
   ],
   introImage:
-    "https://images.pexels.com/photos/6870582/pexels-photo-6870582.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtMSwUNQqwxgdt_orVpe97R8v_GJVsO8qloxDwNv4_LsX5SalIAQgzJEqJ&s=10",
   offerEyebrow: "Core Functions",
   offerHeadingMain: "What Fleet Management",
   offerHeadingAccent: "Actually Involves.",
@@ -90,12 +90,30 @@ const FMS_DEFAULTS = {
     "Without a structured approach, several problems tend to surface:",
   ],
   routeIssues: [
-    { icon: "Wrench", text: "Maintenance gets delayed until a vehicle actually breaks down, leading to unplanned downtime." },
-    { icon: "Gauge", text: "Vehicle usage becomes uneven, with some vehicles overused and others underutilised." },
-    { icon: "Users", text: "Driver schedules conflict with business needs, causing delays." },
-    { icon: "Fuel", text: "Fuel costs rise without a clear explanation, because consumption isn't being tracked systematically." },
-    { icon: "FileText", text: "Documentation is scattered across departments or individuals, increasing the risk of compliance issues." },
-    { icon: "Clock", text: "Internal staff spend time on vehicle logistics instead of their primary responsibilities." },
+    {
+      icon: "Wrench",
+      text: "Maintenance gets delayed until a vehicle actually breaks down, leading to unplanned downtime.",
+    },
+    {
+      icon: "Gauge",
+      text: "Vehicle usage becomes uneven, with some vehicles overused and others underutilised.",
+    },
+    {
+      icon: "Users",
+      text: "Driver schedules conflict with business needs, causing delays.",
+    },
+    {
+      icon: "Fuel",
+      text: "Fuel costs rise without a clear explanation, because consumption isn't being tracked systematically.",
+    },
+    {
+      icon: "FileText",
+      text: "Documentation is scattered across departments or individuals, increasing the risk of compliance issues.",
+    },
+    {
+      icon: "Clock",
+      text: "Internal staff spend time on vehicle logistics instead of their primary responsibilities.",
+    },
   ],
   routeClosing:
     "Individually, these issues might seem minor. Together, they add up to real operational and financial inefficiency - and they tend to worsen as a fleet grows.",

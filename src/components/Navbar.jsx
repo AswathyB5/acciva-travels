@@ -22,6 +22,8 @@ const NAVBAR_DEFAULTS = {
   servicesDropdownLabel: "Employee Transportation Services",
   servicesDropdownLabel2: "Corporate Cab Services",
   servicesDropdownLabel3: "Fleet Management Service",
+  servicesDropdownLabel4: "Corporate Car Rental Services",
+  servicesDropdownLabel5: "Luxury Car Rental",
 };
 
 const Navbar = () => {
@@ -45,6 +47,14 @@ const Navbar = () => {
       {
         to: "/services/fleet-management-services",
         label: content.servicesDropdownLabel3,
+      },
+      {
+        to: "/services/corporate-car-rental-services",
+        label: content.servicesDropdownLabel4,
+      },
+      {
+        to: "/services/luxury-car-rental",
+        label: content.servicesDropdownLabel5,
       },
     ];
   }

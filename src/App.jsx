@@ -14,6 +14,8 @@ const Services = lazy(() => import("./pages/Services"));
 const EmployeeTransportationServices = lazy(() => import("./pages/EmployeeTransportationServices"));
 const CorporateCabServices = lazy(() => import("./pages/CorporateCabServices"));
 const FleetManagementServices = lazy(() => import("./pages/FleetManagementServices"));
+const CorporateCarRentalServices = lazy(() => import("./pages/CorporateCarRentalServices"));
+const LuxuryCarRentalServices = lazy(() => import("./pages/LuxuryCarRentalServices"));
 const Blog = lazy(() => import("./pages/Blog"));
 const Technology = lazy(() => import("./pages/Technology"));
 const Contact = lazy(() => import("./pages/Contact"));
@@ -80,6 +82,14 @@ function App() {
         <Route
           path="/services/fleet-management-services"
           element={<FleetManagementServices />}
+        />
+        <Route
+          path="/services/corporate-car-rental-services"
+          element={<CorporateCarRentalServices />}
+        />
+        <Route
+          path="/services/luxury-car-rental"
+          element={<LuxuryCarRentalServices />}
         />
         <Route path="/technology" element={<Technology />} />
         <Route path="/blog" element={<Blog />} />
