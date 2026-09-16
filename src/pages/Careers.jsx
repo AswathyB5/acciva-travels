@@ -791,7 +791,8 @@ const Careers = () => {
         <div className="container-px relative z-10 text-center max-w-3xl mx-auto">
           <motion.span
             initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6 }}
             className="eyebrow text-teal inline-block"
           >
@@ -802,13 +803,15 @@ const Careers = () => {
             className="mx-auto mt-6 h-px w-16 bg-sand/60"
             style={{ transformOrigin: "center" }}
             initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8, delay: 0.1 }}
           />
 
           <motion.h2
             initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="font-display text-2xl sm:text-3xl md:text-4xl leading-[1.08] mt-6 tracking-tight"
           >
@@ -818,7 +821,8 @@ const Careers = () => {
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, delay: 0.35 }}
             className="mt-8"
           >

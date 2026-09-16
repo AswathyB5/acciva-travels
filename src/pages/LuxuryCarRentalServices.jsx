@@ -332,7 +332,9 @@ const StepsTimeline = ({ steps }) => {
         />
         <motion.div
           className="absolute top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-teal shadow-[0_0_12px_4px_rgba(59,141,196,0.55)]"
-          animate={{ left: ["0%", "100%"], opacity: [0, 1, 1, 0] }}
+          initial={{ left: "0%", opacity: 0 }}
+          whileInView={{ left: ["0%", "100%"], opacity: [0, 1, 1, 0] }}
+          viewport={{ once: true, amount: 0.3 }}
           onUpdate={(latest) => {
             const pct = parseFloat(latest.left);
             if (Number.isNaN(pct)) return;

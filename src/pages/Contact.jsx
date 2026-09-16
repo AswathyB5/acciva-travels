@@ -260,7 +260,8 @@ const Contact = () => {
             {/* RIGHT COLUMN (Placed in Grid Col 7-12) - THE CONTACT FORM */}
             <motion.div
               initial={{ opacity: 0, y: 35 }}
-              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-7 order-1 lg:order-2"
             >
@@ -464,7 +465,8 @@ const Contact = () => {
             {/* LEFT COLUMN (Grid Col 1-5) - SHOWCASE IMAGE BANNER & CONTACT CHANNELS */}
             <motion.div
               initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, amount: 0.15 }}
               transition={{
                 duration: 0.7,
                 delay: 0.15,

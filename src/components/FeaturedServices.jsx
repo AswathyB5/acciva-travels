@@ -104,7 +104,8 @@ const FeaturedServices = ({
               <div className="relative grid sm:grid-cols-5 gap-4 sm:gap-6 items-center">
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true, amount: 0.1 }}
                   transition={{ duration: 0.6, delay: i * 0.1 + 0.1, ease: [0.16, 1, 0.3, 1] }}
                   className={`relative h-52 sm:h-60 sm:col-span-2 rounded-2xl overflow-hidden group ${
                     reversed ? "sm:order-2" : "sm:order-1"
@@ -121,7 +122,8 @@ const FeaturedServices = ({
                 <motion.div
                   variants={contentVariants}
                   initial="hidden"
-                  animate="visible"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.1 }}
                   className={`px-2 sm:px-1 py-1 sm:col-span-3 ${reversed ? "sm:order-1" : "sm:order-2"}`}
                 >
                   <motion.span
